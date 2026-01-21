@@ -33,9 +33,11 @@ export default async function NDAPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
-  // These would come from environment variables
-  const stripePaymentLink = process.env.NEXT_PUBLIC_STRIPE_NDA_LINK || '#'
-  const documentUrl = '/documents/nda-template.pdf' // Placeholder
+  // Stripe payment link and document URLs
+  const stripePaymentLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
+  const documentUrl = isEnglish 
+    ? '/documents/FreelanceServiceAgreement-Modern-EN.docx'
+    : '/documents/SerbestCalisanHizmetSozlesmesi-Modern-TR.docx'
 
   const content = isEnglish ? {
     title: 'Non-Disclosure Agreement (NDA)',
@@ -150,7 +152,7 @@ export default async function NDAPage({
 
           {/* Last Updated */}
           <p className="text-sm text-legal-gray mb-8">
-            {dict.contract.lastUpdated}: January 20, 2026
+            {dict.contract.lastUpdated}: January 21, 2026
           </p>
 
           {/* Introduction */}
@@ -256,7 +258,7 @@ export default async function NDAPage({
               name: 'EchoLegal',
             },
             datePublished: '2025-01-15',
-            dateModified: '2025-01-20',
+            dateModified: '2026-01-21',
             inLanguage: lang,
             isAccessibleForFree: true,
             offers: {
