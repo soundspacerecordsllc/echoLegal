@@ -11,10 +11,10 @@ export default async function Home({
   const isEnglish = lang === 'en'
 
   return (
-    <>
+    <div className="bg-white min-h-screen">
       {/* Minimal Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
-        <nav className="flex justify-between items-center px-8 py-6">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+        <nav className="flex justify-between items-center px-8 py-5">
           <Link href={`/${lang}`} className="text-2xl font-black tracking-tight">
             ECHOLEGAL
           </Link>
@@ -26,18 +26,17 @@ export default async function Home({
               href={`/${lang === 'en' ? 'tr' : 'en'}`}
               className="flex items-center gap-2 text-sm font-medium border border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition-all"
             >
-              <span className="w-4 h-4">🌐</span>
-              {isEnglish ? 'English' : 'Türkçe'}
+              🌐 {isEnglish ? 'English' : 'Türkçe'}
             </Link>
           </div>
         </nav>
       </header>
 
-      <main>
+      <main className="bg-white pt-[72px]">
         {/* Hero Section - Split Layout */}
-        <section className="min-h-screen grid md:grid-cols-2">
+        <section className="min-h-[calc(100vh-72px)] grid md:grid-cols-2">
           {/* Left - Image */}
-          <div className="relative h-[50vh] md:h-screen">
+          <div className="relative h-[50vh] md:h-[calc(100vh-72px)]">
             <img 
               src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
               alt="Legal documents"
@@ -46,8 +45,8 @@ export default async function Home({
           </div>
           
           {/* Right - Content */}
-          <div className="flex flex-col justify-center px-8 md:px-16 py-20 md:py-0">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-8">
+          <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-8 bg-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-tight mb-8">
               LEGAL<br />
               KNOWLEDGE<br />
               SHOULD<br />
@@ -55,48 +54,48 @@ export default async function Home({
               EVERYONE.
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-4 max-w-md">
+            <p className="text-base md:text-lg text-gray-600 mb-3 max-w-md">
               {isEnglish 
                 ? 'EchoLegal is a growing legal encyclopedia with professionally drafted contracts and explanations in English and Turkish.'
                 : 'EchoLegal, İngilizce ve Türkçe olarak profesyonelce hazırlanmış sözleşmeler ve açıklamalar içeren büyüyen bir hukuk ansiklopedisidir.'
               }
             </p>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-md">
+            <p className="text-base md:text-lg text-gray-600 mb-8 max-w-md">
               {isEnglish 
                 ? 'Pay what you can. $20 recommended. Free access available by request.'
                 : 'Ödeyebileceğiniz kadar ödeyin. 20$ önerilir. Talep üzerine ücretsiz erişim mevcuttur.'
               }
             </p>
 
-            <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+            <div className="space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                 {isEnglish ? 'Featured Documents' : 'Öne Çıkan Belgeler'}
               </p>
               
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <Link 
                   href={`/${lang}/contracts/nda`}
-                  className="block text-lg font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
+                  className="block text-base font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
                 >
                   {isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)'}
                 </Link>
                 <Link 
                   href={`/${lang}/contracts/service-agreement`}
-                  className="block text-lg font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
+                  className="block text-base font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
                 >
                   {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}
                 </Link>
               </div>
 
-              <p className="text-sm text-gray-500 mt-4">
+              <p className="text-sm text-gray-500">
                 {isEnglish ? 'Available in English and Turkish.' : 'İngilizce ve Türkçe olarak mevcuttur.'}
               </p>
             </div>
 
             <Link 
               href={`/${lang}/contracts`}
-              className="inline-block mt-10 bg-black text-white text-center px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-800 transition-colors w-fit"
+              className="inline-block mt-8 bg-black text-white text-center px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-800 transition-colors w-fit"
             >
               {isEnglish ? 'BROWSE ECHOLEGAL LIBRARY' : 'ECHOLEGAL KÜTÜPHANESİNE GÖZ ATIN'}
             </Link>
@@ -104,11 +103,11 @@ export default async function Home({
         </section>
 
         {/* About Section */}
-        <section className="bg-gray-50 py-24">
+        <section className="bg-white py-20 border-t border-gray-100">
           <div className="max-w-6xl mx-auto px-8">
             <div className="grid md:grid-cols-3 gap-12">
               <div>
-                <h3 className="text-2xl font-bold mb-4">
+                <h3 className="text-xl font-bold mb-4">
                   {isEnglish ? 'What This Is' : 'Bu Nedir'}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -120,7 +119,7 @@ export default async function Home({
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold mb-4">
+                <h3 className="text-xl font-bold mb-4">
                   {isEnglish ? "Who It's For" : 'Kimin İçin'}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -132,7 +131,7 @@ export default async function Home({
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold mb-4">
+                <h3 className="text-xl font-bold mb-4">
                   {isEnglish ? 'How You Can Use It' : 'Nasıl Kullanabilirsiniz'}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -147,12 +146,12 @@ export default async function Home({
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-8">
+        <section className="py-20 px-8 bg-white">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
+            <h2 className="text-3xl md:text-4xl font-black mb-6">
               {isEnglish ? 'Ready to get started?' : 'Başlamaya hazır mısınız?'}
             </h2>
-            <p className="text-xl text-gray-600 mb-10">
+            <p className="text-lg text-gray-600 mb-8">
               {isEnglish 
                 ? 'Browse our library of professionally drafted legal templates.'
                 : 'Profesyonelce hazırlanmış yasal şablon kütüphanemize göz atın.'
@@ -160,7 +159,7 @@ export default async function Home({
             </p>
             <Link 
               href={`/${lang}/contracts`}
-              className="inline-block bg-black text-white px-10 py-5 text-sm font-semibold uppercase tracking-wider hover:bg-gray-800 transition-colors"
+              className="inline-block bg-black text-white px-10 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-800 transition-colors"
             >
               {isEnglish ? 'VIEW ALL CONTRACTS' : 'TÜM SÖZLEŞMELERİ GÖRÜNTÜLE'}
             </Link>
@@ -169,7 +168,7 @@ export default async function Home({
       </main>
 
       {/* Minimal Footer */}
-      <footer className="border-t border-gray-200 py-12 px-8">
+      <footer className="border-t border-gray-200 py-12 px-8 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <div>
@@ -189,21 +188,15 @@ export default async function Home({
               <Link href={`/${lang}/support`} className="hover:opacity-60 transition-opacity">
                 {isEnglish ? 'Support' : 'Destek'}
               </Link>
-              <Link href={`/${lang}/legal/privacy`} className="hover:opacity-60 transition-opacity">
-                {isEnglish ? 'Privacy' : 'Gizlilik'}
-              </Link>
-              <Link href={`/${lang}/legal/terms`} className="hover:opacity-60 transition-opacity">
-                {isEnglish ? 'Terms' : 'Şartlar'}
-              </Link>
             </div>
           </div>
           
           {/* Legal Disclaimer */}
-          <div className="mt-12 pt-8 border-t border-gray-100">
+          <div className="mt-10 pt-8 border-t border-gray-100">
             <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
               {isEnglish 
                 ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship. Laws vary by jurisdiction and individual circumstances differ. You should consult with a licensed attorney in your jurisdiction before relying on any information or documents from this site.'
-                : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanımı avukat-müvekkil ilişkisi oluşturmaz. Yasalar yargı yetkilerine göre değişir ve bireysel durumlar farklıdır.'
+                : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanımı avukat-müvekkil ilişkisi oluşturmaz.'
               }
             </p>
             <p className="text-xs text-gray-400 mt-4">
@@ -212,6 +205,6 @@ export default async function Home({
           </div>
         </div>
       </footer>
-    </>
+    </div>
   )
 }
