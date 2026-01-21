@@ -1,7 +1,5 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export default async function Home({
@@ -10,144 +8,210 @@ export default async function Home({
   params: { lang: Locale }
 }) {
   const dict = await getDictionary(lang)
+  const isEnglish = lang === 'en'
 
   return (
     <>
-      <Header lang={lang} dict={dict} />
-      
+      {/* Minimal Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
+        <nav className="flex justify-between items-center px-8 py-6">
+          <Link href={`/${lang}`} className="text-2xl font-black tracking-tight">
+            ECHOLEGAL
+          </Link>
+          <div className="flex items-center gap-8">
+            <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60 transition-opacity">
+              {isEnglish ? 'Home' : 'Ana Sayfa'}
+            </Link>
+            <Link 
+              href={`/${lang === 'en' ? 'tr' : 'en'}`}
+              className="flex items-center gap-2 text-sm font-medium border border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition-all"
+            >
+              <span className="w-4 h-4">🌐</span>
+              {isEnglish ? 'English' : 'Türkçe'}
+            </Link>
+          </div>
+        </nav>
+      </header>
+
       <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-legal-navy to-legal-navy-light text-white py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6">
-              {dict.home.hero}
+        {/* Hero Section - Split Layout */}
+        <section className="min-h-screen grid md:grid-cols-2">
+          {/* Left - Image */}
+          <div className="relative h-[50vh] md:h-screen">
+            <img 
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
+              alt="Legal documents"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          {/* Right - Content */}
+          <div className="flex flex-col justify-center px-8 md:px-16 py-20 md:py-0">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-8">
+              LEGAL<br />
+              KNOWLEDGE<br />
+              SHOULD<br />
+              BELONG TO<br />
+              EVERYONE.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-200 mb-4">
-              {dict.home.subtitle}
+            
+            <p className="text-lg md:text-xl text-gray-600 mb-4 max-w-md">
+              {isEnglish 
+                ? 'EchoLegal is a growing legal encyclopedia with professionally drafted contracts and explanations in English and Turkish.'
+                : 'EchoLegal, İngilizce ve Türkçe olarak profesyonelce hazırlanmış sözleşmeler ve açıklamalar içeren büyüyen bir hukuk ansiklopedisidir.'
+              }
             </p>
-            <p className="text-lg text-legal-gold mb-10">
-              {dict.home.pricing}
+            
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-md">
+              {isEnglish 
+                ? 'Pay what you can. $20 recommended. Free access available by request.'
+                : 'Ödeyebileceğiniz kadar ödeyin. 20$ önerilir. Talep üzerine ücretsiz erişim mevcuttur.'
+              }
             </p>
+
+            <div className="space-y-4">
+              <p className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+                {isEnglish ? 'Featured Documents' : 'Öne Çıkan Belgeler'}
+              </p>
+              
+              <div className="space-y-2">
+                <Link 
+                  href={`/${lang}/contracts/nda`}
+                  className="block text-lg font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
+                >
+                  {isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)'}
+                </Link>
+                <Link 
+                  href={`/${lang}/contracts/service-agreement`}
+                  className="block text-lg font-medium underline underline-offset-4 hover:opacity-60 transition-opacity"
+                >
+                  {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}
+                </Link>
+              </div>
+
+              <p className="text-sm text-gray-500 mt-4">
+                {isEnglish ? 'Available in English and Turkish.' : 'İngilizce ve Türkçe olarak mevcuttur.'}
+              </p>
+            </div>
+
             <Link 
               href={`/${lang}/contracts`}
-              className="inline-block bg-legal-gold text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-legal-gold-light transition-all hover:shadow-2xl"
+              className="inline-block mt-10 bg-black text-white text-center px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-gray-800 transition-colors w-fit"
             >
-              {dict.home.browseLibrary}
+              {isEnglish ? 'BROWSE ECHOLEGAL LIBRARY' : 'ECHOLEGAL KÜTÜPHANESİNE GÖZ ATIN'}
             </Link>
           </div>
         </section>
 
-        {/* What This Is Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg border border-legal-gray-light">
-              <h3 className="font-serif text-2xl font-bold mb-4 text-legal-navy">
-                {lang === 'en' ? 'What This Is' : 'Bu Nedir'}
-              </h3>
-              <p className="text-legal-gray">
-                {lang === 'en' 
-                  ? 'A bilingual legal encyclopedia with professionally drafted legal templates and explanatory guides in English and Turkish.'
-                  : 'İngilizce ve Türkçe olarak profesyonelce hazırlanmış yasal şablonlar ve açıklayıcı kılavuzlar içeren iki dilli bir hukuk ansiklopedisi.'
-                }
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg border border-legal-gray-light">
-              <h3 className="font-serif text-2xl font-bold mb-4 text-legal-navy">
-                {lang === 'en' ? 'Who It\'s For' : 'Kimin İçin'}
-              </h3>
-              <p className="text-legal-gray">
-                {lang === 'en'
-                  ? 'Students, small business owners, independent creators, and lawyers looking for reliable, structured legal information.'
-                  : 'Öğrenciler, küçük işletme sahipleri, bağımsız yaratıcılar ve güvenilir, yapılandırılmış hukuki bilgi arayan avukatlar.'
-                }
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg border border-legal-gray-light">
-              <h3 className="font-serif text-2xl font-bold mb-4 text-legal-navy">
-                {lang === 'en' ? 'How You Can Use It' : 'Nasıl Kullanabilirsiniz'}
-              </h3>
-              <p className="text-legal-gray">
-                {lang === 'en'
-                  ? 'Browse articles or download templates to learn, reference, and apply fundamentals in everyday legal situations.'
-                  : 'Günlük yasal durumlarda temelleri öğrenmek, referans almak ve uygulamak için makalelere göz atın veya şablonları indirin.'
-                }
-              </p>
+        {/* About Section */}
+        <section className="bg-gray-50 py-24">
+          <div className="max-w-6xl mx-auto px-8">
+            <div className="grid md:grid-cols-3 gap-12">
+              <div>
+                <h3 className="text-2xl font-bold mb-4">
+                  {isEnglish ? 'What This Is' : 'Bu Nedir'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {isEnglish 
+                    ? 'A bilingual legal encyclopedia with professionally drafted legal templates and explanatory guides in English and Turkish.'
+                    : 'İngilizce ve Türkçe olarak profesyonelce hazırlanmış yasal şablonlar ve açıklayıcı kılavuzlar içeren iki dilli bir hukuk ansiklopedisi.'
+                  }
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold mb-4">
+                  {isEnglish ? "Who It's For" : 'Kimin İçin'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {isEnglish
+                    ? 'Students, small business owners, independent creators, and lawyers looking for reliable, structured legal information.'
+                    : 'Öğrenciler, küçük işletme sahipleri, bağımsız yaratıcılar ve güvenilir, yapılandırılmış hukuki bilgi arayan avukatlar.'
+                  }
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold mb-4">
+                  {isEnglish ? 'How You Can Use It' : 'Nasıl Kullanabilirsiniz'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {isEnglish
+                    ? 'Browse articles or download templates to learn, reference, and apply fundamentals in everyday legal situations.'
+                    : 'Günlük yasal durumlarda temelleri öğrenmek, referans almak ve uygulamak için makalelere göz atın veya şablonları indirin.'
+                  }
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Featured Documents */}
-        <section className="bg-gray-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-serif text-3xl font-bold text-center mb-12 text-legal-navy">
-              {dict.home.featuredDocuments}
+        {/* CTA Section */}
+        <section className="py-24 px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
+              {isEnglish ? 'Ready to get started?' : 'Başlamaya hazır mısınız?'}
             </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* NDA Card */}
-              <Link 
-                href={`/${lang}/contracts/nda`}
-                className="bg-white p-8 rounded-lg border-2 border-legal-gray-light hover:border-legal-gold transition-all hover:shadow-lg group"
-              >
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-legal-gold text-white text-sm font-semibold rounded-full">
-                    {lang === 'en' ? 'Popular' : 'Popüler'}
-                  </span>
-                </div>
-                <h3 className="font-serif text-2xl font-bold mb-3 text-legal-navy group-hover:text-legal-gold transition-colors">
-                  Non-Disclosure Agreement (NDA)
-                </h3>
-                <p className="text-legal-gray mb-4">
-                  {lang === 'en'
-                    ? 'Protect confidential business information in partnerships, employment, and negotiations.'
-                    : 'Ortaklıklarda, istihdamda ve müzakerelerde gizli iş bilgilerini koruyun.'
-                  }
-                </p>
-                <div className="flex items-center text-legal-gold font-semibold">
-                  {lang === 'en' ? 'Learn More' : 'Daha Fazla'} →
-                </div>
-              </Link>
-
-              {/* Service Agreement Card */}
-              <Link 
-                href={`/${lang}/contracts/service-agreement`}
-                className="bg-white p-8 rounded-lg border-2 border-legal-gray-light hover:border-legal-gold transition-all hover:shadow-lg group"
-              >
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-legal-navy text-white text-sm font-semibold rounded-full">
-                    {lang === 'en' ? 'Essential' : 'Temel'}
-                  </span>
-                </div>
-                <h3 className="font-serif text-2xl font-bold mb-3 text-legal-navy group-hover:text-legal-gold transition-colors">
-                  Service Agreement
-                </h3>
-                <p className="text-legal-gray mb-4">
-                  {lang === 'en'
-                    ? 'Define clear terms for service-based relationships with clients and contractors.'
-                    : 'Müşteriler ve yüklenicilerle hizmet tabanlı ilişkiler için net şartları tanımlayın.'
-                  }
-                </p>
-                <div className="flex items-center text-legal-gold font-semibold">
-                  {lang === 'en' ? 'Learn More' : 'Daha Fazla'} →
-                </div>
-              </Link>
-            </div>
-
-            <div className="text-center mt-12">
-              <Link 
-                href={`/${lang}/contracts`}
-                className="inline-block btn-secondary"
-              >
-                {lang === 'en' ? 'View All Contracts' : 'Tüm Sözleşmeleri Görüntüle'}
-              </Link>
-            </div>
+            <p className="text-xl text-gray-600 mb-10">
+              {isEnglish 
+                ? 'Browse our library of professionally drafted legal templates.'
+                : 'Profesyonelce hazırlanmış yasal şablon kütüphanemize göz atın.'
+              }
+            </p>
+            <Link 
+              href={`/${lang}/contracts`}
+              className="inline-block bg-black text-white px-10 py-5 text-sm font-semibold uppercase tracking-wider hover:bg-gray-800 transition-colors"
+            >
+              {isEnglish ? 'VIEW ALL CONTRACTS' : 'TÜM SÖZLEŞMELERİ GÖRÜNTÜLE'}
+            </Link>
           </div>
         </section>
       </main>
 
-      <Footer lang={lang} dict={dict} />
+      {/* Minimal Footer */}
+      <footer className="border-t border-gray-200 py-12 px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div>
+              <p className="text-2xl font-black tracking-tight mb-2">ECHOLEGAL</p>
+              <p className="text-sm text-gray-500">
+                {isEnglish ? 'Legal Encyclopedia' : 'Hukuk Ansiklopedisi'}
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap gap-6 text-sm">
+              <Link href={`/${lang}/contracts`} className="hover:opacity-60 transition-opacity">
+                {isEnglish ? 'Contracts' : 'Sözleşmeler'}
+              </Link>
+              <Link href={`/${lang}/encyclopedia`} className="hover:opacity-60 transition-opacity">
+                {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
+              </Link>
+              <Link href={`/${lang}/support`} className="hover:opacity-60 transition-opacity">
+                {isEnglish ? 'Support' : 'Destek'}
+              </Link>
+              <Link href={`/${lang}/legal/privacy`} className="hover:opacity-60 transition-opacity">
+                {isEnglish ? 'Privacy' : 'Gizlilik'}
+              </Link>
+              <Link href={`/${lang}/legal/terms`} className="hover:opacity-60 transition-opacity">
+                {isEnglish ? 'Terms' : 'Şartlar'}
+              </Link>
+            </div>
+          </div>
+          
+          {/* Legal Disclaimer */}
+          <div className="mt-12 pt-8 border-t border-gray-100">
+            <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
+              {isEnglish 
+                ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship. Laws vary by jurisdiction and individual circumstances differ. You should consult with a licensed attorney in your jurisdiction before relying on any information or documents from this site.'
+                : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanımı avukat-müvekkil ilişkisi oluşturmaz. Yasalar yargı yetkilerine göre değişir ve bireysel durumlar farklıdır.'
+              }
+            </p>
+            <p className="text-xs text-gray-400 mt-4">
+              © 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
+            </p>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
