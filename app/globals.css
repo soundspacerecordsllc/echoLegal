@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans text-legal-gray bg-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-legal-navy;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-legal-gold text-white px-6 py-3 rounded-lg font-semibold transition-all hover:bg-legal-gold-light hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-legal-navy text-white px-6 py-3 rounded-lg font-semibold transition-all hover:bg-legal-navy-light hover:shadow-lg;
+  }
+  
+  .disclaimer-box {
+    @apply bg-amber-50 border-l-4 border-legal-gold p-6 rounded-r-lg my-8;
+  }
+  
+  .prose-legal {
+    @apply prose prose-lg prose-gray max-w-none;
+    @apply prose-headings:font-serif prose-headings:text-legal-navy;
+    @apply prose-a:text-legal-gold prose-a:no-underline hover:prose-a:text-legal-gold-light;
+  }
+}
