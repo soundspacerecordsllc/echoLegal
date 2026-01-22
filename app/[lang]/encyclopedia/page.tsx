@@ -119,4 +119,10 @@ export default async function EncyclopediaPage({
       </main>
 
       <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-        <div className=
+        <div className="max-w-7xl mx-auto">
+          <p className="text-xs text-gray-400">© 2025 EchoLegal. Prepared under supervision of NY licensed attorney (Bar #5552336).</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
