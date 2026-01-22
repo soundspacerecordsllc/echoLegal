@@ -171,4 +171,135 @@ export default async function WhatIsNDAPage({
 
           {/* Section 4: Key Clauses */}
           <section id="key-clauses" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4">{isEnglish ? '4. Key Clauses in an NDA
+            <h2 className="text-2xl font-bold mb-4">{isEnglish ? '4. Key Clauses in an NDA' : '4. NDA\'daki Temel Maddeler'}</h2>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              {isEnglish 
+                ? 'A well-drafted NDA should include these essential elements:'
+                : 'İyi hazırlanmış bir NDA şu temel unsurları içermelidir:'}
+            </p>
+            
+            <div className="space-y-6">
+              {(isEnglish ? [
+                { title: 'Definition of Confidential Information', desc: 'Clearly specify what information is considered confidential. Be specific but comprehensive enough to cover all sensitive data.' },
+                { title: 'Obligations of Receiving Party', desc: 'Detail how the receiving party must handle, store, and protect the confidential information.' },
+                { title: 'Exclusions from Confidentiality', desc: 'List information that is NOT considered confidential (publicly available info, independently developed info, etc.).' },
+                { title: 'Time Period', desc: 'Specify how long the confidentiality obligations last. This can range from 2-5 years or indefinitely for trade secrets.' },
+                { title: 'Return or Destruction of Information', desc: 'Require the receiving party to return or destroy all confidential materials when the relationship ends.' },
+                { title: 'Consequences of Breach', desc: 'Outline remedies available if the agreement is violated, including monetary damages and injunctive relief.' }
+              ] : [
+                { title: 'Gizli Bilgi Tanımı', desc: 'Hangi bilgilerin gizli kabul edildiğini açıkça belirtin. Spesifik olun ama tüm hassas verileri kapsayacak kadar kapsamlı olun.' },
+                { title: 'Alıcı Tarafın Yükümlülükleri', desc: 'Alıcı tarafın gizli bilgileri nasıl işlemesi, saklaması ve koruması gerektiğini detaylandırın.' },
+                { title: 'Gizlilik Dışı Bilgiler', desc: 'Gizli SAYILMAYAN bilgileri listeleyin (kamuya açık bilgiler, bağımsız geliştirilen bilgiler vb.).' },
+                { title: 'Süre', desc: 'Gizlilik yükümlülüklerinin ne kadar süreceğini belirtin. Bu 2-5 yıl veya ticari sırlar için süresiz olabilir.' },
+                { title: 'Bilgilerin İadesi veya İmhası', desc: 'İlişki sona erdiğinde alıcı tarafın tüm gizli materyalleri iade etmesini veya imha etmesini isteyin.' },
+                { title: 'İhlal Sonuçları', desc: 'Sözleşme ihlal edilirse mevcut çözümleri belirtin; parasal tazminat ve ihtiyati tedbir dahil.' }
+              ]).map((clause, i) => (
+                <div key={i} className="border-l-4 border-[#C9A227] pl-4">
+                  <h3 className="text-lg font-semibold mb-1">{clause.title}</h3>
+                  <p className="text-gray-600">{clause.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Section 5: Mistakes */}
+          <section id="mistakes" className="mb-12">
+            <h2 className="text-2xl font-bold mb-4">{isEnglish ? '5. Common Mistakes to Avoid' : '5. Kaçınılması Gereken Hatalar'}</h2>
+            
+            <div className="space-y-4">
+              {(isEnglish ? [
+                { mistake: 'Being too vague', fix: 'Clearly define what constitutes confidential information. Vague definitions may not hold up in court.' },
+                { mistake: 'Making it too broad', fix: 'An overly broad NDA might be deemed unenforceable. Be reasonable in scope.' },
+                { mistake: 'Forgetting exclusions', fix: 'Always include standard exclusions for publicly known information and independently developed materials.' },
+                { mistake: 'No time limit', fix: 'Specify a reasonable duration. Indefinite NDAs may be challenged unless protecting true trade secrets.' },
+                { mistake: 'Not specifying jurisdiction', fix: 'Always include which state/country\'s laws govern the agreement and where disputes will be resolved.' }
+              ] : [
+                { mistake: 'Çok belirsiz olmak', fix: 'Gizli bilgilerin ne olduğunu açıkça tanımlayın. Belirsiz tanımlar mahkemede geçerli olmayabilir.' },
+                { mistake: 'Çok geniş kapsamlı olmak', fix: 'Aşırı geniş bir NDA uygulanamaz kabul edilebilir. Kapsamda makul olun.' },
+                { mistake: 'İstisnaları unutmak', fix: 'Kamuya açık bilgiler ve bağımsız geliştirilen materyaller için standart istisnaları her zaman ekleyin.' },
+                { mistake: 'Süre belirtmemek', fix: 'Makul bir süre belirtin. Süresiz NDA\'lar, gerçek ticari sırları korumadıkça itiraz edilebilir.' },
+                { mistake: 'Yargı yetkisi belirtmemek', fix: 'Hangi eyalet/ülke yasalarının geçerli olduğunu ve uyuşmazlıkların nerede çözüleceğini her zaman belirtin.' }
+              ]).map((item, i) => (
+                <div key={i} className="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p className="font-semibold text-red-800">❌ {item.mistake}</p>
+                  <p className="text-red-700 mt-1">✅ {item.fix}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Section 6: Template CTA */}
+          <section id="template" className="mb-12">
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-xl p-8">
+              <h2 className="text-3xl font-bold mb-4">{isEnglish ? 'Get Your NDA Template' : 'NDA Şablonunuzu Alın'}</h2>
+              <p className="text-gray-300 mb-6">
+                {isEnglish 
+                  ? 'Download our professionally drafted NDA template. Available in English and Turkish. Pay what you can – $20 recommended, free option available.'
+                  : 'Profesyonelce hazırlanmış NDA şablonumuzu indirin. İngilizce ve Türkçe olarak mevcuttur. Ödeyebildiğiniz kadar ödeyin – $20 önerilir, ücretsiz seçenek mevcuttur.'}
+              </p>
+              <Link 
+                href={`/${lang}/contracts/nda`}
+                className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors"
+              >
+                {isEnglish ? 'Download NDA Template →' : 'NDA Şablonunu İndir →'}
+              </Link>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">{isEnglish ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}</h2>
+            
+            <div className="space-y-4">
+              {(isEnglish ? [
+                { q: 'Is an NDA legally binding?', a: 'Yes, when properly drafted and signed, an NDA is a legally enforceable contract. Breach of an NDA can result in lawsuits for damages and injunctive relief.' },
+                { q: 'Can I write my own NDA?', a: 'Yes, but it\'s recommended to use a professionally drafted template or consult with an attorney to ensure it\'s enforceable and covers all necessary elements.' },
+                { q: 'How long should an NDA last?', a: 'Typically 2-5 years for general business information. Trade secrets may be protected indefinitely. The duration should be reasonable for the type of information being protected.' },
+                { q: 'What happens if someone breaks an NDA?', a: 'You can sue for damages (monetary compensation for losses) and seek an injunction (court order to stop further disclosure). The specific remedies depend on the terms of your NDA.' }
+              ] : [
+                { q: 'NDA yasal olarak bağlayıcı mı?', a: 'Evet, düzgün hazırlanıp imzalandığında NDA yasal olarak uygulanabilir bir sözleşmedir. NDA ihlali tazminat davaları ve ihtiyati tedbir ile sonuçlanabilir.' },
+                { q: 'Kendi NDA\'mı yazabilir miyim?', a: 'Evet, ancak uygulanabilir olduğundan ve tüm gerekli unsurları kapsadığından emin olmak için profesyonelce hazırlanmış bir şablon kullanmanız veya bir avukata danışmanız önerilir.' },
+                { q: 'NDA ne kadar sürmeli?', a: 'Genel iş bilgileri için genellikle 2-5 yıl. Ticari sırlar süresiz olarak korunabilir. Süre, korunan bilgi türü için makul olmalıdır.' },
+                { q: 'Birisi NDA\'yı ihlal ederse ne olur?', a: 'Tazminat davası açabilir (kayıplar için parasal tazminat) ve ihtiyati tedbir (daha fazla ifşayı durdurmak için mahkeme kararı) talep edebilirsiniz.' }
+              ]).map((faq, i) => (
+                <details key={i} className="border border-gray-200 rounded-lg">
+                  <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.q}</summary>
+                  <p className="p-4 pt-0 text-gray-600">{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+        </article>
+
+        {/* Related Articles */}
+        <section className="bg-gray-50 rounded-lg p-6">
+          <h2 className="text-xl font-bold mb-4">{isEnglish ? 'Related Articles' : 'İlgili Makaleler'}</h2>
+          <ul className="space-y-2">
+            <li>
+              <Link href={`/${lang}/contracts/nda`} className="text-[#C9A227] hover:underline">
+                {isEnglish ? 'NDA Template (Download)' : 'NDA Şablonu (İndir)'} →
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${lang}/encyclopedia`} className="text-[#C9A227] hover:underline">
+                {isEnglish ? 'Back to Encyclopedia' : 'Ansiklopediye Dön'} →
+              </Link>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer className="border-t border-gray-200 mt-20 py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
+            {isEnglish 
+              ? 'LEGAL DISCLAIMER: This article is for educational purposes only and does not constitute legal advice. Laws vary by jurisdiction. Consult a licensed attorney for advice specific to your situation. Prepared under the supervision of a New York licensed attorney (NY Bar #5552336).'
+              : 'HUKUKI SORUMLULUK REDDİ: Bu makale yalnızca eğitim amaçlıdır ve hukuki tavsiye teşkil etmez. Yasalar yargı yetkisine göre değişir. Durumunuza özel tavsiye için lisanslı bir avukata danışın. New York lisanslı avukat gözetiminde hazırlanmıştır (NY Bar #5552336).'}
+          </p>
+          <p className="text-xs text-gray-400 mt-4">© 2025 EchoLegal.</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
