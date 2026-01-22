@@ -1,12 +1,28 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params
+  const isEnglish = lang === 'en'
+  
+  return {
+    title: isEnglish 
+      ? 'Free Independent Contractor Agreement Template (English & Turkish) | EchoLegal'
+      : 'Ücretsiz Bağımsız Yüklenici Sözleşmesi Şablonu (İngilizce & Türkçe) | EchoLegal',
+    description: isEnglish
+      ? 'Free bilingual contractor agreement template. Pay what you can ($20 recommended) or download free. Avoid misclassification issues.'
+      : 'Ücretsiz iki dilli yüklenici sözleşmesi. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin.',
+  }
+}
 
 export default async function IndependentContractorPage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
@@ -14,6 +30,18 @@ export default async function IndependentContractorPage({
   const documentUrl = isEnglish 
     ? '/documents/IndependentContractorAgreement-EN.docx'
     : '/documents/BagimsizYukleniciSozlesmesi-TR.docx'
+
+  // Cross-sell related contracts
+  const relatedContracts = [
+    {
+      slug: 'freelance-agreement',
+      title: isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
+    },
+    {
+      slug: 'nda',
+      title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
+    },
+  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -89,18 +117,45 @@ export default async function IndependentContractorPage({
           </p>
         </div>
 
+        {/* Download Section - Updated */}
         <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
           <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
-          <p className="text-center text-gray-600 mb-8">{isEnglish ? 'Pay what you can. $20 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir.'}</p>
+          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'Pay what you can. $20 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir.'}</p>
           
-          <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-4">
-            💳 {isEnglish ? 'I CAN Afford It – Pay $20' : 'Ödeyebilirim – $20 Öde'}
+          <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
+            💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
           </a>
           
-          <a href={documentUrl} download className="block w-full bg-black text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-800">
-            📄 {isEnglish ? 'I CANNOT Afford It – Download Free' : 'Ödeyemiyorum – Ücretsiz İndir'}
+          <a href={documentUrl} download className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4">
+            📄 {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
           </a>
+
+          {/* Microcopy */}
+          <p className="text-center text-sm text-gray-500">
+            {isEnglish 
+              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
+              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
+          </p>
         </div>
+
+        {/* Cross-sell: People also download */}
+        <section className="bg-gray-50 rounded-xl p-6 mb-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            {isEnglish ? 'People Also Download' : 'Bunlar da İndiriliyor'}
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {relatedContracts.map((contract) => (
+              <Link
+                key={contract.slug}
+                href={`/${lang}/contracts/${contract.slug}`}
+                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
+              >
+                <span className="font-medium text-gray-800">{contract.title}</span>
+                <span className="text-[#C9A227]">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-gray-200 py-12 px-4">
