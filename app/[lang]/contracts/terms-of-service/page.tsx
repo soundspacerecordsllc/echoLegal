@@ -3,10 +3,11 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 
 export default async function TermsOfServicePage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
@@ -91,4 +92,25 @@ export default async function TermsOfServicePage({
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12"
+        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+          <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
+          <p className="text-center text-gray-600 mb-8">{isEnglish ? 'Pay what you can. $20 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir.'}</p>
+          
+          <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-4">
+            💳 {isEnglish ? 'I CAN Afford It – Pay $20' : 'Ödeyebilirim – $20 Öde'}
+          </a>
+          
+          <a href={documentUrl} download className="block w-full bg-black text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-800">
+            📄 {isEnglish ? 'I CANNOT Afford It – Download Free' : 'Ödeyemiyorum – Ücretsiz İndir'}
+          </a>
+        </div>
+      </main>
+
+      <footer className="border-t border-gray-200 py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-xs text-gray-400">© 2025 EchoLegal. Prepared under supervision of NY licensed attorney (Bar #5552336).</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
