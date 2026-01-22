@@ -3,21 +3,25 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 
-export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
-  const isEnglish = params.lang === 'en'
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params
+  const isEnglish = lang === 'en'
   return {
-    title: isEnglish ? 'Legal Contract Templates | EchoLegal' : 'Hukuki Sözleşme Şablonları | EchoLegal',
+    title: isEnglish 
+      ? 'Free Legal Contract Templates (English & Turkish) | EchoLegal' 
+      : 'Ücretsiz Hukuki Sözleşme Şablonları (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
-      ? 'Professional legal contract templates. Pay what you can or download free.'
-      : 'Profesyonel hukuki sözleşme şablonları. Ödeyebildiğiniz kadar ödeyin veya ücretsiz indirin.',
+      ? 'Download free bilingual legal templates. Pay what you can ($20 recommended) or download free. NDA, Privacy Policy, Terms of Service & more.'
+      : 'Ücretsiz iki dilli hukuki şablonlar indirin. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin. NDA, Gizlilik Politikası ve daha fazlası.',
   }
 }
 
 export default async function ContractsPage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
@@ -107,10 +111,16 @@ export default async function ContractsPage({
         <h1 className="text-4xl font-black text-black mb-4">
           {isEnglish ? 'Contracts' : 'Sözleşmeler'}
         </h1>
-        <p className="text-lg text-gray-600 mb-12">
+        <p className="text-lg text-gray-600 mb-2">
           {isEnglish 
             ? 'Professional legal templates for everyday business needs. Pay what you can, or download for free.'
             : 'Günlük iş ihtiyaçları için profesyonel hukuki şablonlar. Ödeyebildiğiniz kadar ödeyin veya ücretsiz indirin.'}
+        </p>
+        {/* New subtitle line for Pay What You Can */}
+        <p className="text-base text-gray-500 mb-12">
+          {isEnglish 
+            ? 'Download free, or pay what you can — $20 recommended.'
+            : 'Ücretsiz indir, ya da gücün kadar öde — önerilen 20$.'}
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -138,12 +148,22 @@ export default async function ContractsPage({
               </p>
               
               {contract.available ? (
-                <Link
-                  href={`/${lang}/contracts/${contract.slug}`}
-                  className="inline-block bg-[#C9A227] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
-                >
-                  {isEnglish ? 'View Template →' : 'Şablonu Gör →'}
-                </Link>
+                <div className="space-y-2">
+                  <Link
+                    href={`/${lang}/contracts/${contract.slug}`}
+                    className="inline-block bg-[#C9A227] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
+                  >
+                    {isEnglish ? 'View & Download →' : 'Görüntüle & İndir →'}
+                  </Link>
+                  <div>
+                    <Link
+                      href={`/${lang}/support`}
+                      className="text-sm text-gray-500 hover:text-[#C9A227] transition-colors"
+                    >
+                      {isEnglish ? 'Why Pay What You Can?' : "Neden 'Gücün Kadar Öde'?"}
+                    </Link>
+                  </div>
+                </div>
               ) : (
                 <span className="inline-block bg-gray-200 text-gray-500 px-6 py-3 rounded-lg font-semibold cursor-not-allowed">
                   {isEnglish ? 'Coming Soon' : 'Yakında'}
