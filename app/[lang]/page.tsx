@@ -22,6 +22,12 @@ export default async function Home({
             <Link href={`/${lang}`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
               {isEnglish ? 'Home' : 'Ana Sayfa'}
             </Link>
+            <Link href={`/${lang}/contracts`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Contracts' : 'Sözleşmeler'}
+            </Link>
+            <Link href={`/${lang}/consular-documents`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Consular' : 'Konsolosluk'}
+            </Link>
             <Link 
               href={`/${lang === 'en' ? 'tr' : 'en'}`}
               className="flex items-center gap-2 text-sm font-semibold border-2 border-[#000000] rounded-full px-4 py-2 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
@@ -145,6 +151,29 @@ export default async function Home({
           </div>
         </section>
 
+        {/* Consular Section Promo */}
+        <section className="py-16 px-8 bg-red-50 border-t border-red-100">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="inline-block px-4 py-2 bg-white text-red-800 rounded-full text-sm font-semibold mb-4">
+              🇹🇷 {isEnglish ? 'New Section' : 'Yeni Bölüm'}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
+              {isEnglish ? 'Turkish Consular Documents' : 'Türk Konsolosluk Belgeleri'}
+            </h2>
+            <p className="text-lg text-[#444444] mb-6">
+              {isEnglish 
+                ? 'Free checklists for passport, ID, notary services, birth & marriage registration. In English & Turkish.'
+                : 'Pasaport, kimlik, noter hizmetleri, doğum ve evlilik kaydı için ücretsiz kontrol listeleri. İngilizce & Türkçe.'}
+            </p>
+            <Link 
+              href={`/${lang}/consular-documents`}
+              className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#B8922A] transition-colors"
+            >
+              {isEnglish ? 'View Consular Checklists →' : 'Konsolosluk Kontrol Listelerini Gör →'}
+            </Link>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-8 bg-[#ffffff]">
           <div className="max-w-4xl mx-auto text-center">
@@ -181,6 +210,9 @@ export default async function Home({
             <div className="flex flex-wrap gap-6 text-sm">
               <Link href={`/${lang}/contracts`} className="hover:opacity-60 transition-opacity text-[#000000]">
                 {isEnglish ? 'Contracts' : 'Sözleşmeler'}
+              </Link>
+              <Link href={`/${lang}/consular-documents`} className="hover:opacity-60 transition-opacity text-[#000000]">
+                {isEnglish ? 'Consular' : 'Konsolosluk'}
               </Link>
               <Link href={`/${lang}/encyclopedia`} className="hover:opacity-60 transition-opacity text-[#000000]">
                 {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
