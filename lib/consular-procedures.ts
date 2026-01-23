@@ -101,6 +101,3 @@ export function getProcedureBySlug(slug: string): ConsularProcedure | undefined 
 export function getChecklistUrl(procedure: ConsularProcedure, lang: 'en' | 'tr'): string {
   return lang === 'en' ? procedure.checklistPdfEn : procedure.checklistPdfTr
 }
-export function getChecklistUrl(procedure: ConsularProcedure, lang: 'en' | 'tr'): string {
-  return lang === 'en' ? procedure.checklistPdfEn : procedure.checklistPdfTr
-}
