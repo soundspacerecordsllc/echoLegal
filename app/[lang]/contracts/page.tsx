@@ -1,3 +1,5 @@
+// app/[lang]/contracts/page.tsx
+
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
@@ -32,6 +34,14 @@ export default async function ContractsPage({
       description: isEnglish 
         ? 'Protect confidential business information in partnerships and negotiations.'
         : 'Ortaklıklarda ve müzakerelerde gizli iş bilgilerini koruyun.',
+      available: true,
+    },
+    {
+      slug: 'service-agreement',
+      title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
+      description: isEnglish 
+        ? 'Professional contract for service providers and clients. Define scope, payment, and deliverables.'
+        : 'Hizmet sağlayıcılar ve müşteriler için profesyonel sözleşme. Kapsam, ödeme ve teslimatları tanımlayın.',
       available: true,
     },
     {
