@@ -11,7 +11,7 @@ export type ConsularProcedure = {
   processingNotesTr: string[]
   checklistUrlEn: string
   checklistUrlTr: string
-  relatedProcedures: string[] // slugs
+  relatedProcedures: string[]
   relatedContracts: { slug: string; titleEn: string; titleTr: string }[]
   metaTitleEn: string
   metaTitleTr: string
@@ -59,8 +59,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'Pasaport geçerliliği: yetişkinler için 10 yıl, küçükler için değişir',
       'Ücretler konsoloslukta ödenir; güncel ücretler için resmi portala bakın'
     ],
-    checklistUrlEn: '/documents/PassportChecklistEN.pdf',
-    checklistUrlTr: '/documents/PasaportKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Passport-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Pasaport-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['turkish-id', 'birth-registration'],
     relatedContracts: [
       { slug: 'nda', titleEn: 'Non-Disclosure Agreement', titleTr: 'Gizlilik Sözleşmesi' }
@@ -107,8 +107,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'Kimlik kartı diğer konsolosluk işlemleri için gereklidir',
       'T.C. Kimlik Numaranızı tüm başvurular için hazır bulundurun'
     ],
-    checklistUrlEn: '/documents/TurkishIDChecklistEN.pdf',
-    checklistUrlTr: '/documents/KimlikKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Turkish-ID-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Kimlik-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['passport', 'population-registry'],
     relatedContracts: [
       { slug: 'service-agreement', titleEn: 'Service Agreement', titleTr: 'Hizmet Sözleşmesi' }
@@ -157,8 +157,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'Belgeler Türkiye\'de geçerlidir; başka yerlerde kullanım için apostil gerekebilir',
       'Azilname, daha önce verilen vekaletnameyi iptal eder'
     ],
-    checklistUrlEn: '/documents/NotaryServicesChecklistEN.pdf',
-    checklistUrlTr: '/documents/NoterlikKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Notary-Services-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Noterlik-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['document-certification', 'passport'],
     relatedContracts: [
       { slug: 'service-agreement', titleEn: 'Service Agreement', titleTr: 'Hizmet Sözleşmesi' },
@@ -210,8 +210,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'Randevu konsolosluk.gov.tr üzerinden',
       'İşlem süresi: kayıt onayı için genellikle 2-4 hafta'
     ],
-    checklistUrlEn: '/documents/BirthRegistrationChecklistEN.pdf',
-    checklistUrlTr: '/documents/DogumTesciliKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Birth-Registration-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Dogum-Tescili-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['turkish-id', 'passport', 'population-registry'],
     relatedContracts: [
       { slug: 'nda', titleEn: 'Non-Disclosure Agreement', titleTr: 'Gizlilik Sözleşmesi' }
@@ -262,8 +262,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'İşlem süresi: genellikle 2-4 hafta',
       'Türk kayıtlarındaki evlilik tarihi orijinal tören tarihini yansıtır'
     ],
-    checklistUrlEn: '/documents/MarriageRegistrationChecklistEN.pdf',
-    checklistUrlTr: '/documents/EvlilikTesciliKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Marriage-Registration-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Evlilik-Tescili-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['population-registry', 'birth-registration'],
     relatedContracts: [
       { slug: 'nda', titleEn: 'Non-Disclosure Agreement', titleTr: 'Gizlilik Sözleşmesi' }
@@ -310,8 +310,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'İşlem süresi: türe göre aynı gün ile 1 hafta arası',
       'Belge geçerliliği alıcı kurumun gereksinimlerine göre değişir'
     ],
-    checklistUrlEn: '/documents/PopulationRegistryChecklistEN.pdf',
-    checklistUrlTr: '/documents/NufusKayitOrnegiKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Population-Registry-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Nufus-Kayit-Ornegi-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['turkish-id', 'birth-registration', 'marriage-registration'],
     relatedContracts: [
       { slug: 'service-agreement', titleEn: 'Service Agreement', titleTr: 'Hizmet Sözleşmesi' }
@@ -360,8 +360,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'Türk Hava Yolları ve diğer taşıyıcıların özel kargo prosedürleri var',
       'Bazı masraflar varsa seyahat sigortası kapsamında olabilir'
     ],
-    checklistUrlEn: '/documents/DeathRegistrationChecklistEN.pdf',
-    checklistUrlTr: '/documents/OlumTesciliKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Death-Registration-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Olum-Tescili-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['population-registry', 'document-certification'],
     relatedContracts: [
       { slug: 'service-agreement', titleEn: 'Service Agreement', titleTr: 'Hizmet Sözleşmesi' }
@@ -410,8 +410,8 @@ export const consularProcedures: ConsularProcedure[] = [
       'ABD\'de kullanılacak Türk belgeleri için: konsolosluk tasdiki yeterli olabilir',
       'İşlem süresi: basit talepler için genellikle aynı gün'
     ],
-    checklistUrlEn: '/documents/DocumentCertificationChecklistEN.pdf',
-    checklistUrlTr: '/documents/BelgeTasdikiKontrolListesiTR.pdf',
+    checklistUrlEn: '/documents/Document-Certification-Checklist-EN.pdf',
+    checklistUrlTr: '/documents/Belge-Tasdiki-Kontrol-Listesi-TR.pdf',
     relatedProcedures: ['notary-services', 'birth-registration', 'marriage-registration'],
     relatedContracts: [
       { slug: 'nda', titleEn: 'Non-Disclosure Agreement', titleTr: 'Gizlilik Sözleşmesi' },
@@ -424,12 +424,10 @@ export const consularProcedures: ConsularProcedure[] = [
   }
 ]
 
-// Helper function to get procedure by slug (either EN or TR)
 export function getProcedureBySlug(slug: string): ConsularProcedure | undefined {
   return consularProcedures.find(p => p.slug === slug || p.slugTr === slug)
 }
 
-// Helper to get slug for opposite language
 export function getOppositeSlug(slug: string, currentLang: 'en' | 'tr'): string {
   const procedure = getProcedureBySlug(slug)
   if (!procedure) return slug
