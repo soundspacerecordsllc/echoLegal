@@ -1,5 +1,3 @@
-// app/[lang]/contracts/service-agreement/page.tsx
-
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
@@ -30,8 +28,8 @@ export default async function ServiceAgreementPage({
 
   const stripePaymentLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
   const documentUrl = isEnglish 
-    ? '/documents/ServiceAgreement-EN.docx'
-    : '/documents/HizmetSozlesmesi-TR.docx'
+    ? '/documents/Service-Agreement-EN.docx'
+    : '/documents/Service-Agreement-TR.docx'
 
   // Cross-sell related contracts
   const relatedContracts = [
