@@ -12,11 +12,11 @@ export default function MobileNav({ lang, isEnglish }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { href: `/${lang}/library`, labelEn: 'Library', labelTr: 'Kütüphane' },
+    { href: `/${lang}/amerika`, labelEn: 'Coming to the US', labelTr: "ABD'ye Gelmek & İş Kurmak" },
+    { href: `/${lang}/library`, labelEn: 'Legal Guides', labelTr: 'Hukuki Rehberler' },
     { href: `/${lang}/contracts`, labelEn: 'Contracts', labelTr: 'Sözleşmeler' },
-    { href: `/${lang}/legal-kits`, labelEn: 'Kits', labelTr: 'Kitler' },
-    { href: `/${lang}/consular-documents`, labelEn: 'Consular', labelTr: 'Konsolosluk' },
-    { href: `/${lang}/amerika`, labelEn: 'US Guide', labelTr: 'ABD Rehberi' },
+    { href: `/${lang}/legal-kits`, labelEn: 'Starter Kits', labelTr: 'Başlangıç Kitleri' },
+    { href: `/${lang}/consular-documents`, labelEn: 'Official Sources', labelTr: 'Resmî Kaynaklar' },
   ]
 
   return (

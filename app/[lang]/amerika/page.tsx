@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : "ABD'de İş Yapan Türkler İçin Hukuki Rehber | EchoLegal",
     description: isEnglish
       ? 'Comprehensive legal reference hub for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and essential documents.'
-      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans merkezi. LLC kurulumu, vergi gerçekleri, yaygın yanılgılar ve temel belgeler.",
+      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans merkezi. LLC kurulumu, vergi gerçekleri, sık yapılan hatalar ve temel belgeler.",
   }
 }
 
@@ -158,7 +158,7 @@ export default async function AmerikaHubPage({
             >
               <span className="text-3xl mb-3 block">❌</span>
               <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                {isEnglish ? 'Common Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+                {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
               </h3>
               <p className="text-gray-600 text-sm">
                 {isEnglish

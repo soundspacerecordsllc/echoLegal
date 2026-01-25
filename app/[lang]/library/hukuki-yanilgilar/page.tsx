@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? 'Common Legal Misconceptions About US Business | EchoLegal'
-      : 'ABD\'de İş Yapan Türklerin Yaygın Hukuki Yanılgıları | EchoLegal',
+      : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları | EchoLegal',
     description: isEnglish
       ? 'Debunking common myths about doing business in the US. LLC formation, visas, taxes, and more explained with facts.'
       : 'ABD\'de iş yapma hakkındaki yaygın mitleri çürütme. LLC kurulumu, vizeler, vergiler ve daha fazlası gerçeklerle açıklandı.',
@@ -201,7 +201,7 @@ export default async function LegalMisconceptionsPage({
           <span className="mx-2">→</span>
           <Link href={`/${lang}/library`} className="hover:text-black">{isEnglish ? 'Library' : 'Kütüphane'}</Link>
           <span className="mx-2">→</span>
-          <span className="text-black">{isEnglish ? 'Legal Misconceptions' : 'Hukuki Yanılgılar'}</span>
+          <span className="text-black">{isEnglish ? 'Common Mistakes' : 'Sık Yapılan Hatalar'}</span>
         </nav>
 
         {/* Article Header */}
@@ -214,7 +214,7 @@ export default async function LegalMisconceptionsPage({
             <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
               {isEnglish
                 ? 'Common Legal Misconceptions'
-                : 'ABD\'de İş Yapan Türklerin Yaygın Hukuki Yanılgıları'}
+                : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları'}
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
