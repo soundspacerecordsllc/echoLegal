@@ -379,6 +379,246 @@ Your professional legal encyclopedia is now live with:
 
 ---
 
-**Built with ❤️ for EchoLegal**  
-**Version**: 1.0  
-**Last Updated**: January 21, 2026
+---
+
+## 💵 Monetization Features (New)
+
+EchoLegal now includes a complete monetization system:
+
+### Display Ads (Google AdSense)
+
+```bash
+# Enable in .env.local
+NEXT_PUBLIC_ADS_ENABLED=true
+NEXT_PUBLIC_ADSENSE_PUBLISHER_ID=ca-pub-XXXXXXXXXXXXXXXX
+```
+
+Configure ad placements in `lib/ads-config.ts`. Disable ads on specific pages by updating the `pages` config.
+
+### Affiliate Marketing
+
+Add affiliate links in `lib/affiliate.ts`:
+
+```tsx
+import { AffiliateTextLink, AffiliateCard } from '@/components/AffiliateLink'
+
+// In your content:
+<AffiliateTextLink id="incfile-llc" lang="en" />
+<AffiliateCard id="stripe-atlas" lang="tr" />
+```
+
+### Digital Products (Stripe)
+
+Products are defined in `data/products.json`. Each product needs:
+- Stripe Product ID (`stripeProductId`)
+- Stripe Price ID (`stripePriceId`)
+
+```tsx
+import { PayWhatYouWant, CheckoutButton } from '@/components/Checkout'
+
+<PayWhatYouWant
+  productId="business-starter-kit"
+  priceId="price_XXX"
+  suggestedPrice={20}
+  allowFreeAccess={true}
+  lang="en"
+/>
+```
+
+### Membership System
+
+Tiers defined in `lib/membership.ts`:
+- **Free**: Basic access
+- **Supporter** ($9/mo): Premium guides, ad-free
+- **Professional** ($29/mo): All kits, webinars, priority support
+
+```tsx
+import { MembershipPricing, PremiumGate } from '@/components/Membership'
+
+// Pricing page
+<MembershipPricing lang="en" showAnnual={true} />
+
+// Gate premium content
+<PremiumGate lang="en" contentTitle="Advanced Tax Guide" requiredTier="supporter" />
+```
+
+### Donations
+
+```tsx
+import { DonationForm, DonationBanner } from '@/components/DonationForm'
+
+// Full form
+<DonationForm lang="en" variant="full" />
+
+// Compact inline
+<DonationForm lang="tr" variant="compact" />
+
+// Banner CTA
+<DonationBanner lang="en" />
+```
+
+### Courses & Webinars
+
+```tsx
+import { CourseLanding, WebinarLanding } from '@/components/CourseLanding'
+
+<CourseLanding
+  course={courseData}
+  lang="en"
+/>
+```
+
+Integrates with Teachable/Podia via URL or direct Stripe checkout.
+
+---
+
+## 🤖 AI Content Generation
+
+Generate draft content using AI:
+
+```bash
+# Set your AI API key
+export AI_API_KEY=your_key_here
+
+# Generate content for a topic
+python scripts/ai-content-generator.py --topic "LLC formation in Delaware" --lang en
+
+# Generate Q&A content
+python scripts/ai-content-generator.py --question "What are E-2 visa requirements?" --lang tr
+```
+
+Drafts are saved to `content/drafts/{lang}/` and require attorney review before publishing.
+
+---
+
+## 🔍 SEO Enhancements
+
+### Metadata Utilities
+
+```tsx
+import { generatePageMetadata, seoConfigs } from '@/lib/seo'
+
+export async function generateMetadata({ params }) {
+  return generatePageMetadata(seoConfigs.library, params.lang, '/library')
+}
+```
+
+### JSON-LD Schema
+
+```tsx
+import { ArticleSchema, ProductSchema, FAQSchema } from '@/components/JsonLd'
+
+<ArticleSchema
+  title="LLC Formation Guide"
+  description="..."
+  url="https://echo-legal.com/en/library/llc-guide"
+  datePublished="2024-01-01"
+  lang="en"
+/>
+```
+
+### Disclaimer Component
+
+```tsx
+import Disclaimer, { FooterDisclaimer, AffiliateDisclosure } from '@/components/Disclaimer'
+
+<Disclaimer lang="en" variant="full" />
+<Disclaimer lang="tr" variant="compact" />
+<Disclaimer lang="en" variant="inline" />
+<AffiliateDisclosure lang="en" />
+```
+
+---
+
+## 🔧 Environment Variables (Complete)
+
+```bash
+# Base URL
+NEXT_PUBLIC_BASE_URL=https://echo-legal.com
+
+# Stripe Configuration
+STRIPE_SECRET_KEY=sk_live_XXXXXXXX
+STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXX
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_XXXXXXXX
+STRIPE_MONTHLY_DONATION_PRICE_ID=price_XXXXXXXX
+
+# Stripe Payment Links (legacy)
+NEXT_PUBLIC_STRIPE_NDA_LINK=https://buy.stripe.com/xxx
+NEXT_PUBLIC_STRIPE_SERVICE_AGREEMENT_LINK=https://buy.stripe.com/xxx
+
+# AdSense
+NEXT_PUBLIC_ADS_ENABLED=true
+NEXT_PUBLIC_ADSENSE_PUBLISHER_ID=ca-pub-XXXXXXXX
+
+# AI Content Generation
+AI_API_KEY=your_ai_api_key
+AI_API_URL=https://api.anthropic.com/v1
+```
+
+---
+
+## 📂 New Project Structure
+
+```
+echolegal/
+├── components/
+│   ├── Disclaimer.tsx        # Legal disclaimers
+│   ├── JsonLd.tsx            # SEO schema markup
+│   ├── AffiliateLink.tsx     # Affiliate marketing
+│   ├── AdSlot.tsx            # Display ads
+│   ├── Checkout.tsx          # E-commerce checkout
+│   ├── Membership.tsx        # Subscription UI
+│   ├── DonationForm.tsx      # Donation forms
+│   ├── CourseLanding.tsx     # Course/webinar templates
+│   └── MobileNav.tsx         # Mobile navigation
+├── lib/
+│   ├── seo.ts                # SEO metadata utilities
+│   ├── stripe.ts             # Stripe integration
+│   ├── affiliate.ts          # Affiliate link config
+│   ├── ads-config.ts         # Ad configuration
+│   └── membership.ts         # Membership tiers
+├── data/
+│   └── products.json         # Product catalog
+├── app/api/
+│   ├── checkout/route.ts     # Stripe checkout
+│   ├── webhook/route.ts      # Stripe webhooks
+│   └── donate/route.ts       # Donation processing
+└── scripts/
+    ├── generate-sitemap.py   # Sitemap generator
+    └── ai-content-generator.py
+```
+
+---
+
+## ⏰ Cron Jobs (GitHub Actions)
+
+Create `.github/workflows/sitemap.yml` for automatic sitemap updates:
+
+```yaml
+name: Update Sitemap
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: python scripts/generate-sitemap.py
+      - run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add public/sitemap.xml
+          git diff --staged --quiet || git commit -m "Update sitemap"
+          git push
+```
+
+---
+
+**Built with ❤️ for EchoLegal**
+**Version**: 2.0
+**Last Updated**: January 25, 2026

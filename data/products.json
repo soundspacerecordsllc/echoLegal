@@ -1,0 +1,199 @@
+{
+  "products": [
+    {
+      "id": "business-starter-kit",
+      "slug": "business-starter",
+      "type": "kit",
+      "name": {
+        "en": "US Business Starter Legal Kit",
+        "tr": "ABD İş Başlangıç Hukuk Kiti"
+      },
+      "description": {
+        "en": "5 essential legal documents for Turkish entrepreneurs starting a business in the US. Includes NDA, Service Agreement, Privacy Policy, Terms of Service, and Independent Contractor Agreement.",
+        "tr": "ABD'de iş kuran Türk girişimciler için 5 temel hukuki belge: NDA, Hizmet Sözleşmesi, Gizlilik Politikası, Kullanım Koşulları ve Bağımsız Yüklenici Sözleşmesi."
+      },
+      "price": 20.00,
+      "currency": "USD",
+      "suggestedPrice": 20.00,
+      "allowFreeAccess": true,
+      "stripePriceId": "price_XXXXXXXXXX",
+      "stripeProductId": "prod_XXXXXXXXXX",
+      "documents": [
+        "nda",
+        "service-agreement",
+        "privacy-policy",
+        "terms-of-service",
+        "independent-contractor"
+      ],
+      "downloadUrl": "/downloads/business-starter-kit.zip",
+      "image": "/images/products/business-starter-kit.png",
+      "features": {
+        "en": [
+          "5 professionally drafted documents",
+          "Bilingual (English & Turkish)",
+          "Word & PDF formats",
+          "Free updates for 1 year"
+        ],
+        "tr": [
+          "5 profesyonelce hazırlanmış belge",
+          "İki dilli (İngilizce ve Türkçe)",
+          "Word ve PDF formatları",
+          "1 yıl ücretsiz güncelleme"
+        ]
+      },
+      "category": "kits",
+      "popular": true,
+      "active": true
+    },
+    {
+      "id": "freelancer-kit",
+      "slug": "freelancer",
+      "type": "kit",
+      "name": {
+        "en": "Freelancer Legal Kit",
+        "tr": "Serbest Çalışan Hukuk Kiti"
+      },
+      "description": {
+        "en": "Essential contracts for freelancers and independent contractors. Protect yourself and your clients with professional agreements.",
+        "tr": "Serbest çalışanlar ve bağımsız yükleniciler için temel sözleşmeler. Profesyonel anlaşmalarla kendinizi ve müşterilerinizi koruyun."
+      },
+      "price": 15.00,
+      "currency": "USD",
+      "suggestedPrice": 15.00,
+      "allowFreeAccess": true,
+      "stripePriceId": "price_XXXXXXXXXX",
+      "stripeProductId": "prod_XXXXXXXXXX",
+      "documents": [
+        "freelance-contract",
+        "nda",
+        "invoice-template"
+      ],
+      "downloadUrl": "/downloads/freelancer-kit.zip",
+      "image": "/images/products/freelancer-kit.png",
+      "features": {
+        "en": [
+          "3 essential freelance documents",
+          "Bilingual templates",
+          "Customizable formats"
+        ],
+        "tr": [
+          "3 temel serbest çalışan belgesi",
+          "İki dilli şablonlar",
+          "Özelleştirilebilir formatlar"
+        ]
+      },
+      "category": "kits",
+      "popular": false,
+      "active": true
+    },
+    {
+      "id": "llc-formation-ebook",
+      "slug": "llc-formation-guide",
+      "type": "ebook",
+      "name": {
+        "en": "Complete LLC Formation Guide",
+        "tr": "Kapsamlı LLC Kurma Rehberi"
+      },
+      "description": {
+        "en": "Step-by-step guide to forming an LLC in the United States. Covers state selection, registration, operating agreements, and tax considerations.",
+        "tr": "Amerika Birleşik Devletleri'nde LLC kurma adım adım rehberi. Eyalet seçimi, kayıt, işletme sözleşmeleri ve vergi değerlendirmelerini kapsar."
+      },
+      "price": 29.00,
+      "currency": "USD",
+      "suggestedPrice": 29.00,
+      "allowFreeAccess": false,
+      "stripePriceId": "price_XXXXXXXXXX",
+      "stripeProductId": "prod_XXXXXXXXXX",
+      "downloadUrl": "/downloads/llc-formation-guide.pdf",
+      "image": "/images/products/llc-guide.png",
+      "features": {
+        "en": [
+          "150+ page comprehensive guide",
+          "State-by-state comparison",
+          "Tax planning strategies",
+          "Checklist templates included"
+        ],
+        "tr": [
+          "150+ sayfa kapsamlı rehber",
+          "Eyalet bazında karşılaştırma",
+          "Vergi planlama stratejileri",
+          "Kontrol listesi şablonları dahil"
+        ]
+      },
+      "category": "ebooks",
+      "popular": false,
+      "active": true
+    },
+    {
+      "id": "visa-navigator-checklist",
+      "slug": "visa-navigator",
+      "type": "checklist",
+      "name": {
+        "en": "US Visa Navigator Checklist",
+        "tr": "ABD Vize Navigatör Kontrol Listesi"
+      },
+      "description": {
+        "en": "Comprehensive checklists for B1/B2, E-2, L-1, and O-1 visa applications. Know exactly what documents you need.",
+        "tr": "B1/B2, E-2, L-1 ve O-1 vize başvuruları için kapsamlı kontrol listeleri. Tam olarak hangi belgelere ihtiyacınız olduğunu bilin."
+      },
+      "price": 9.00,
+      "currency": "USD",
+      "suggestedPrice": 9.00,
+      "allowFreeAccess": true,
+      "stripePriceId": "price_XXXXXXXXXX",
+      "stripeProductId": "prod_XXXXXXXXXX",
+      "downloadUrl": "/downloads/visa-navigator.pdf",
+      "image": "/images/products/visa-checklist.png",
+      "features": {
+        "en": [
+          "4 visa type checklists",
+          "Document requirements",
+          "Timeline recommendations"
+        ],
+        "tr": [
+          "4 vize türü kontrol listesi",
+          "Belge gereksinimleri",
+          "Zaman çizelgesi önerileri"
+        ]
+      },
+      "category": "checklists",
+      "popular": false,
+      "active": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "kits",
+      "name": {
+        "en": "Legal Kits",
+        "tr": "Hukuk Kitleri"
+      },
+      "description": {
+        "en": "Bundled document packages for specific needs",
+        "tr": "Belirli ihtiyaçlar için paketlenmiş belge paketleri"
+      }
+    },
+    {
+      "id": "ebooks",
+      "name": {
+        "en": "E-Books & Guides",
+        "tr": "E-Kitaplar ve Rehberler"
+      },
+      "description": {
+        "en": "In-depth guides and educational resources",
+        "tr": "Derinlemesine rehberler ve eğitim kaynakları"
+      }
+    },
+    {
+      "id": "checklists",
+      "name": {
+        "en": "Checklists",
+        "tr": "Kontrol Listeleri"
+      },
+      "description": {
+        "en": "Practical checklists for legal processes",
+        "tr": "Hukuki süreçler için pratik kontrol listeleri"
+      }
+    }
+  ]
+}
