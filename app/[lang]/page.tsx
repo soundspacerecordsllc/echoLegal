@@ -1,6 +1,7 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
+import MobileNav from '@/components/MobileNav'
 
 export default async function Home({
   params: { lang },
@@ -13,34 +14,12 @@ export default async function Home({
   return (
     <div className="bg-[#ffffff] min-h-screen">
       {/* Professional Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff] border-b border-gray-100">
-        <nav className="flex justify-between items-center px-8 py-5">
-          <Link href={`/${lang}`} className="text-2xl font-black tracking-tight text-[#000000]">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff] border-b border-gray-100 relative">
+        <nav className="flex justify-between items-center px-4 sm:px-8 py-4 sm:py-5">
+          <Link href={`/${lang}`} className="text-xl sm:text-2xl font-black tracking-tight text-[#000000]">
             EchoLegal
           </Link>
-          <div className="hidden md:flex items-center gap-6">
-            <Link href={`/${lang}/amerika`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Coming to the US' : "ABD'ye Gelmek & İş Kurmak"}
-            </Link>
-            <Link href={`/${lang}/library`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Legal Guides' : 'Hukuki Rehberler'}
-            </Link>
-            <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Contracts' : 'Sözleşmeler'}
-            </Link>
-            <Link href={`/${lang}/legal-kits`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Starter Kits' : 'Başlangıç Kitleri'}
-            </Link>
-            <Link href={`/${lang}/consular-documents`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Official Sources' : 'Resmî Kaynaklar'}
-            </Link>
-            <Link
-              href={`/${lang === 'en' ? 'tr' : 'en'}`}
-              className="text-sm font-semibold border border-[#000000] rounded-full px-4 py-1.5 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
-            >
-              {isEnglish ? 'TR' : 'EN'}
-            </Link>
-          </div>
+          <MobileNav lang={lang} isEnglish={isEnglish} />
         </nav>
       </header>
 

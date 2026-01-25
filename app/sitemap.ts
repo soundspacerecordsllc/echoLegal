@@ -1,7 +1,14 @@
 import { MetadataRoute } from 'next'
 
+/**
+ * Dynamic Sitemap Generator for EchoLegal
+ * Generates XML sitemap with hreflang alternates for all pages
+ *
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
+ */
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.echo-legal.com'
+  const baseUrl = 'https://echo-legal.com'
 
   // Static pages
   const staticPages = [
@@ -16,11 +23,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contracts/influencer-agreement',
     '/consular-documents',
     '/encyclopedia',
+    '/encyclopedia/what-is-nda',
     '/support',
     '/legal/privacy',
     '/legal/terms',
     '/legal/disclaimer',
     '/legal/cookies',
+  ]
+
+  // Library pages (educational content)
+  const libraryPages = [
+    '/library',
+    '/library/llc-kurma-rehberi',
+    '/library/llc-vize-yanilgisi',
+    '/library/irs-vergi-gercekleri',
+    '/library/hukuki-yanilgilar',
+    '/library/temel-sozlesmeler',
+  ]
+
+  // Legal kit pages
+  const legalKitPages = [
+    '/legal-kits',
+    '/legal-kits/business-starter',
+    '/legal-kits/freelancer-essentials',
+    '/legal-kits/ecommerce-bundle',
+  ]
+
+  // Checklist pages
+  const checklistPages = [
+    '/checklists/llc-kontrol-listesi',
+    '/checklists/w8-w9-karar-haritasi',
+    '/checklists/irs-mektup-rehberi',
   ]
 
   // Amerika Hub pages
@@ -54,39 +87,62 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'population-registry',
   ]
 
-  const languages = ['tr', 'en']
+  const languages = ['tr', 'en'] as const
   const now = new Date().toISOString()
 
   const urls: MetadataRoute.Sitemap = []
 
-  // Add static pages for both languages
-  for (const lang of languages) {
-    for (const page of staticPages) {
-      urls.push({
-        url: `${baseUrl}/${lang}${page}`,
-        lastModified: now,
-        changeFrequency: 'weekly',
-        priority: page === '' ? 1.0 : 0.8,
-      })
-    }
+  // Helper to determine priority
+  const getPriority = (page: string, lang: string): number => {
+    if (page === '') return 1.0
+    if (page === '/contracts' || page === '/library' || page === '/legal-kits') return 0.9
+    if (page.startsWith('/contracts/')) return 0.8
+    if (page.startsWith('/legal-kits/')) return 0.8
+    if (page.startsWith('/library/')) return 0.8
+    if (page.startsWith('/amerika')) return lang === 'tr' ? 0.8 : 0.7
+    if (page.startsWith('/consular-documents')) return 0.7
+    if (page.startsWith('/checklists')) return 0.6
+    if (page.startsWith('/encyclopedia')) return 0.6
+    if (page.startsWith('/legal/')) return 0.4
+    return 0.5
+  }
 
-    // Add Amerika Hub pages (higher priority for TR)
-    for (const page of amerikaPages) {
+  // Helper to determine change frequency
+  const getChangeFreq = (page: string): 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' => {
+    if (page === '') return 'weekly'
+    if (page.startsWith('/legal/')) return 'yearly'
+    if (page.startsWith('/contracts') || page.startsWith('/legal-kits')) return 'monthly'
+    return 'monthly'
+  }
+
+  // Combine all page arrays
+  const allPages = [
+    ...staticPages,
+    ...libraryPages,
+    ...legalKitPages,
+    ...checklistPages,
+    ...amerikaPages,
+  ]
+
+  // Add all pages for both languages
+  for (const lang of languages) {
+    for (const page of allPages) {
       urls.push({
         url: `${baseUrl}/${lang}${page}`,
         lastModified: now,
-        changeFrequency: 'weekly',
-        priority: lang === 'tr' ? 0.9 : 0.7,
+        changeFrequency: getChangeFreq(page),
+        priority: getPriority(page, lang),
       })
     }
 
     // Add consular document pages
     for (const slug of consularSlugs) {
+      const page = `/consular-documents/${slug}`
       urls.push({
-        url: `${baseUrl}/${lang}/consular-documents/${slug}`,
+        url: `${baseUrl}/${lang}${page}`,
         lastModified: now,
         changeFrequency: 'monthly',
-        priority: 0.6,
+        priority: 0.7,
       })
     }
   }

@@ -1,0 +1,17 @@
+# EchoLegal Robots.txt
+# https://echo-legal.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://echo-legal.com/sitemap.xml
+
+# Disallow admin/internal paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /documents/
+
+# Crawl-delay for politeness (optional)
+# Crawl-delay: 1
