@@ -1,7 +1,14 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
-import MobileNav from '@/components/MobileNav'
+import { Metadata } from 'next'
+import HomeSearch from '@/components/HomeSearch'
+
+export const metadata: Metadata = {
+  title: 'EchoLegal | Trusted Legal Resources, Written by Attorneys',
+  description:
+    'A bilingual legal encyclopedia providing professionally drafted contracts, guides, and templates in English and Turkish. Reference-grade legal information for Turkish entrepreneurs in the US.',
+}
 
 export default async function Home({
   params: { lang },
@@ -12,325 +19,422 @@ export default async function Home({
   const isEnglish = lang === 'en'
 
   return (
-    <div className="bg-[#ffffff] min-h-screen">
-      {/* Professional Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff] border-b border-gray-100 relative">
-        <nav className="flex justify-between items-center px-4 sm:px-8 py-4 sm:py-5">
-          <Link href={`/${lang}`} className="text-xl sm:text-2xl font-black tracking-tight text-[#000000]">
-            EchoLegal
-          </Link>
-          <MobileNav lang={lang} isEnglish={isEnglish} />
-        </nav>
-      </header>
+    <div className="bg-white">
+      {/* Hero Section - Professional Authority Design */}
+      <section className="border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="max-w-4xl">
+            {/* Professional Tagline */}
+            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+              {isEnglish
+                ? 'Trusted Legal Resources, Written by Attorneys'
+                : 'Avukatlar Tarafından Hazırlanan Güvenilir Hukuki Kaynaklar'}
+            </p>
 
-      <main className="bg-[#ffffff] pt-[72px]">
-        {/* Hero Section - Split Layout */}
-        <section className="min-h-[calc(100vh-72px)] grid md:grid-cols-2">
-          {/* Left - Image */}
-          <div className="relative h-[50vh] md:h-[calc(100vh-72px)]">
-            <img 
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
-              alt="Legal documents"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          
-          {/* Right - Content */}
-          <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-8 bg-[#ffffff]">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-tight mb-8 text-[#000000]">
+            {/* Main Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
               {isEnglish ? (
-                <>LEGAL<br />KNOWLEDGE<br />SHOULD<br />BELONG TO<br />EVERYONE.</>
+                <>
+                  Reference-Grade Legal
+                  <br />
+                  <span className="text-gray-600">Information & Templates</span>
+                </>
               ) : (
-                <>HUKUKİ<br />BİLGİ<br />HERKESİN<br />HAKKI<br />OLMALI.</>
+                <>
+                  Referans Kalitesinde Hukuki
+                  <br />
+                  <span className="text-gray-600">Bilgi ve Şablonlar</span>
+                </>
               )}
             </h1>
-            
-            <p className="text-base md:text-lg text-[#444444] mb-3 max-w-md">
-              {isEnglish 
-                ? 'EchoLegal is a growing legal encyclopedia with professionally drafted contracts and explanations in English and Turkish.'
-                : 'EchoLegal, İngilizce ve Türkçe olarak profesyonelce hazırlanmış sözleşmeler ve açıklamalar içeren büyüyen bir hukuk ansiklopedisidir.'
-              }
-            </p>
-            
-            <p className="text-base md:text-lg text-[#444444] mb-8 max-w-md">
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed">
               {isEnglish
-                ? 'I support EchoLegal – $20 recommended. Free access available.'
-                : 'EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir; isterseniz ücretsiz erişim sağlayabilirsiniz.'
-              }
+                ? 'A bilingual legal encyclopedia with professionally drafted contracts, comprehensive guides, and practical templates. Designed for Turkish entrepreneurs doing business in the United States.'
+                : 'Profesyonelce hazırlanmış sözleşmeler, kapsamlı rehberler ve pratik şablonlar içeren iki dilli bir hukuk ansiklopedisi. ABD\'de iş yapan Türk girişimciler için tasarlandı.'}
             </p>
 
-            <div className="space-y-3">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#666666]">
-                {isEnglish ? 'Featured Documents' : 'Öne Çıkan Belgeler'}
-              </p>
-              
-              <div className="space-y-1">
-                <Link 
-                  href={`/${lang}/contracts/nda`}
-                  className="block text-base font-semibold underline underline-offset-4 hover:opacity-60 transition-opacity text-[#000000]"
-                >
-                  {isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)'}
-                </Link>
-                <Link 
-                  href={`/${lang}/contracts/service-agreement`}
-                  className="block text-base font-semibold underline underline-offset-4 hover:opacity-60 transition-opacity text-[#000000]"
-                >
-                  {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}
-                </Link>
-              </div>
-
-              <p className="text-sm text-[#666666]">
-                {isEnglish ? 'Available in English and Turkish.' : 'İngilizce ve Türkçe olarak mevcuttur.'}
-              </p>
+            {/* Search Bar - Prominent on Homepage */}
+            <div className="mb-10">
+              <HomeSearch lang={lang} />
             </div>
 
-            <Link 
-              href={`/${lang}/contracts`}
-              className="inline-block mt-8 bg-[#000000] text-[#ffffff] text-center px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-[#333333] transition-colors w-fit"
-            >
-              {isEnglish ? 'BROWSE ECHOLEGAL LIBRARY' : 'ECHOLEGAL KÜTÜPHANESİNE GÖZ ATIN'}
-            </Link>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section className="bg-[#ffffff] py-20 border-t border-gray-100">
-          <div className="max-w-6xl mx-auto px-8">
-            <div className="grid md:grid-cols-3 gap-12">
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-[#000000]">
-                  {isEnglish ? 'What This Is' : 'Bu Nedir'}
-                </h3>
-                <p className="text-[#444444] leading-relaxed">
-                  {isEnglish 
-                    ? 'A bilingual legal encyclopedia with professionally drafted legal templates and explanatory guides in English and Turkish.'
-                    : 'İngilizce ve Türkçe olarak profesyonelce hazırlanmış yasal şablonlar ve açıklayıcı kılavuzlar içeren iki dilli bir hukuk ansiklopedisi.'
-                  }
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-[#000000]">
-                  {isEnglish ? "Who It's For" : 'Kimin İçin'}
-                </h3>
-                <p className="text-[#444444] leading-relaxed">
-                  {isEnglish
-                    ? 'Students, small business owners, independent creators, and lawyers looking for reliable, structured legal information.'
-                    : 'Öğrenciler, küçük işletme sahipleri, bağımsız yaratıcılar ve güvenilir, yapılandırılmış hukuki bilgi arayan avukatlar.'
-                  }
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-bold mb-4 text-[#000000]">
-                  {isEnglish ? 'How You Can Use It' : 'Nasıl Kullanabilirsiniz'}
-                </h3>
-                <p className="text-[#444444] leading-relaxed">
-                  {isEnglish
-                    ? 'Browse articles or download templates to learn, reference, and apply fundamentals in everyday legal situations.'
-                    : 'Günlük yasal durumlarda temelleri öğrenmek, referans almak ve uygulamak için makalelere göz atın veya şablonları indirin.'
-                  }
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Legal Reference Library - Primary Money Hubs */}
-        <section className="py-20 px-8 bg-gray-50 border-t border-gray-100">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="inline-block px-4 py-2 bg-white text-gray-800 rounded-full text-sm font-semibold mb-4 border border-gray-200">
-                {isEnglish ? 'Legal Reference Library' : 'Hukuki Referans Kütüphanesi'}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
-                {isEnglish ? 'For Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin'}
-              </h2>
-              <p className="text-lg text-[#444444] max-w-2xl mx-auto">
-                {isEnglish
-                  ? 'Clear, factual guides on US business, taxes, and legal requirements. No advice—just answers.'
-                  : 'ABD işletmeciliği, vergileri ve hukuki gereksinimler hakkında açık, gerçeklere dayalı rehberler. Tavsiye yok—sadece cevaplar.'}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* Primary CTAs */}
+            <div className="flex flex-wrap gap-4">
               <Link
-                href={`/${lang}/library/llc-kurma-rehberi`}
-                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all group"
+                href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+                className="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
               >
-                <span className="text-3xl mb-4 block">🏢</span>
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                  {isEnglish ? 'LLC Formation Guide' : 'ABD\'de LLC Kurmak'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isEnglish
-                    ? 'What you need to know about forming an LLC in the US.'
-                    : 'ABD\'de LLC kurma hakkında bilmeniz gerekenler.'}
-                </p>
+                {isEnglish ? 'Explore Templates' : 'Şablonları İncele'}
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Link>
-
               <Link
-                href={`/${lang}/library/irs-vergi-gercekleri`}
-                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all group"
+                href={`/${lang}/amerika`}
+                className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors"
               >
-                <span className="text-3xl mb-4 block">📋</span>
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                  {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isEnglish
-                    ? 'W-8, W-9, 1099 forms explained in plain language.'
-                    : 'W-8, W-9, 1099 formları açık dilde açıklandı.'}
-                </p>
-              </Link>
-
-              <Link
-                href={`/${lang}/library/hukuki-yanilgilar`}
-                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all group"
-              >
-                <span className="text-3xl mb-4 block">❌</span>
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                  {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isEnglish
-                    ? 'Myths vs. facts about doing business in the US.'
-                    : 'ABD\'de iş yapma hakkında mitler ve gerçekler.'}
-                </p>
+                {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
               </Link>
             </div>
-
-            <div className="text-center">
-              <Link
-                href={`/${lang}/library`}
-                className="inline-block text-[#C9A227] font-semibold hover:text-[#B8922A] transition-colors"
-              >
-                {isEnglish ? 'Browse Full Library →' : 'Tüm Kütüphaneye Göz At →'}
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Business Starter Kit - Primary Product */}
-        <section className="py-16 px-8 bg-gradient-to-br from-amber-50 to-white border-t border-amber-100">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1">
-                <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold mb-4">
-                  {isEnglish ? 'Document Bundle' : 'Belge Paketi'}
-                </span>
-                <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
-                  {isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti'}
-                </h2>
-                <p className="text-lg text-[#444444] mb-6">
-                  {isEnglish
-                    ? '5 essential legal documents for Turkish entrepreneurs starting a business in the US. NDA, Service Agreement, Privacy Policy & more.'
-                    : 'ABD\'de iş kuran Türk girişimciler için 5 temel hukuki belge: NDA, Hizmet Sözleşmesi, Gizlilik Politikası ve daha fazlası.'}
-                </p>
-                <div className="flex flex-wrap gap-3 mb-6 text-sm text-gray-600">
-                  <span className="bg-white px-3 py-1 rounded-full border border-gray-200">📄 5 {isEnglish ? 'Documents' : 'Belge'}</span>
-                  <span className="bg-white px-3 py-1 rounded-full border border-gray-200">🇺🇸🇹🇷 {isEnglish ? 'Bilingual' : 'İki Dilli'}</span>
-                </div>
-                <Link
-                  href={`/${lang}/legal-kits/business-starter`}
-                  className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#B8922A] transition-colors"
-                >
-                  {isEnglish ? 'View Kit ($20 or Free) →' : 'Kiti Görüntüle (20$ veya Ücretsiz) →'}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Consular Section Promo */}
-        <section className="py-16 px-8 bg-red-50 border-t border-red-100">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-2 bg-white text-red-800 rounded-full text-sm font-semibold mb-4">
-              🇹🇷 {isEnglish ? 'Consular Services' : 'Konsolosluk Hizmetleri'}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
-              {isEnglish ? 'Turkish Consular Documents' : 'Türk Konsolosluk Belgeleri'}
-            </h2>
-            <p className="text-lg text-[#444444] mb-6">
-              {isEnglish
-                ? 'Free checklists for passport, ID, notary services, birth & marriage registration. In English & Turkish.'
-                : 'Pasaport, kimlik, noter hizmetleri, doğum ve evlilik kaydı için ücretsiz kontrol listeleri. İngilizce & Türkçe.'}
-            </p>
-            <Link
-              href={`/${lang}/consular-documents`}
-              className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#B8922A] transition-colors"
-            >
-              {isEnglish ? 'View Consular Checklists →' : 'Konsolosluk Kontrol Listelerini Gör →'}
-            </Link>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 px-8 bg-[#ffffff]">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-6 text-[#000000]">
-              {isEnglish ? 'Ready to get started?' : 'Başlamaya hazır mısınız?'}
-            </h2>
-            <p className="text-lg text-[#444444] mb-8">
-              {isEnglish 
-                ? 'Browse our library of professionally drafted legal templates.'
-                : 'Profesyonelce hazırlanmış yasal şablon kütüphanemize göz atın.'
-              }
-            </p>
-            <Link 
-              href={`/${lang}/contracts`}
-              className="inline-block bg-[#000000] text-[#ffffff] px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-[#333333] transition-colors"
-            >
-              {isEnglish ? 'VIEW ALL CONTRACTS' : 'TÜM SÖZLEŞMELERİ GÖRÜNTÜLE'}
-            </Link>
-          </div>
-        </section>
-      </main>
-
-      {/* Minimal Footer */}
-      <footer className="border-t border-gray-200 py-12 px-8 bg-[#ffffff]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-            <div>
-              <p className="text-2xl font-black tracking-tight mb-2 text-[#000000]">ECHOLEGAL</p>
-              <p className="text-sm text-[#666666]">
-                {isEnglish ? 'Legal Encyclopedia' : 'Hukuk Ansiklopedisi'}
-              </p>
-            </div>
-            
-            <div className="flex flex-wrap gap-6 text-sm">
-              <Link href={`/${lang}/amerika`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Coming to the US' : "ABD'ye Gelmek"}
-              </Link>
-              <Link href={`/${lang}/library`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Legal Guides' : 'Hukuki Rehberler'}
-              </Link>
-              <Link href={`/${lang}/contracts`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Contracts' : 'Sözleşmeler'}
-              </Link>
-              <Link href={`/${lang}/legal-kits`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Starter Kits' : 'Başlangıç Kitleri'}
-              </Link>
-              <Link href={`/${lang}/consular-documents`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Official Sources' : 'Resmî Kaynaklar'}
-              </Link>
-            </div>
-          </div>
-          
-          {/* Legal Disclaimer */}
-          <div className="mt-10 pt-8 border-t border-gray-100">
-            <p className="text-xs text-[#888888] leading-relaxed max-w-4xl">
-              {isEnglish
-                ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship. Laws vary by jurisdiction and individual circumstances differ. You should consult with a licensed attorney in your jurisdiction before relying on any information or documents from this site.'
-                : 'EchoLegal yalnızca genel bilgilendirme amaçlı eğitim niteliğinde hukuki bilgiler ve belge şablonları sunar. Bu sitedeki hiçbir içerik hukuki tavsiye değildir; sitenin kullanımı avukat-müvekkil ilişkisi oluşturmaz.'
-              }
-            </p>
-            <p className="text-xs text-[#888888] mt-4">
-              © 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
-            </p>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Quick Stats / Trust Signals */}
+      <section className="bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl font-bold text-gray-900">50+</p>
+              <p className="text-sm text-gray-500 mt-1">
+                {isEnglish ? 'Document Templates' : 'Belge Şablonu'}
+              </p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-gray-900">2</p>
+              <p className="text-sm text-gray-500 mt-1">
+                {isEnglish ? 'Languages' : 'Dil'}
+              </p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-gray-900">80+</p>
+              <p className="text-sm text-gray-500 mt-1">
+                {isEnglish ? 'Reference Articles' : 'Referans Makale'}
+              </p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-gray-900">100%</p>
+              <p className="text-sm text-gray-500 mt-1">
+                {isEnglish ? 'Free Access' : 'Ücretsiz Erişim'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Resources - Clean Grid */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                {isEnglish ? 'Popular Resources' : 'Popüler Kaynaklar'}
+              </h2>
+              <p className="text-gray-500 mt-2">
+                {isEnglish
+                  ? 'Most frequently accessed legal guides and templates'
+                  : 'En sık erişilen hukuki rehberler ve şablonlar'}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* LLC Formation */}
+            <ResourceCard
+              href={`/${lang}/amerika/abdde-llc-kurmak`}
+              title={isEnglish ? 'LLC Formation Guide' : 'ABD\'de LLC Kurmak'}
+              description={
+                isEnglish
+                  ? 'Complete guide to forming a Limited Liability Company in the United States. State comparison, costs, and step-by-step process.'
+                  : 'ABD\'de Limited Şirket kurma konusunda kapsamlı rehber. Eyalet karşılaştırması, maliyetler ve adım adım süreç.'
+              }
+              type={isEnglish ? 'Guide' : 'Rehber'}
+              lang={lang}
+            />
+
+            {/* Tax Forms */}
+            <ResourceCard
+              href={`/${lang}/amerika/irs-vergi-gercekleri`}
+              title={isEnglish ? 'IRS & Tax Facts' : 'IRS Vergi Gerçekleri'}
+              description={
+                isEnglish
+                  ? 'W-8, W-9, 1099 forms explained. Understanding US tax obligations for non-resident business owners.'
+                  : 'W-8, W-9, 1099 formları açıklandı. Yerleşik olmayan işletme sahipleri için ABD vergi yükümlülükleri.'
+              }
+              type={isEnglish ? 'Reference' : 'Referans'}
+              lang={lang}
+            />
+
+            {/* NDA Template */}
+            <ResourceCard
+              href={`/${lang}/contracts/nda`}
+              title={isEnglish ? 'Non-Disclosure Agreement' : 'Gizlilik Sözleşmesi'}
+              description={
+                isEnglish
+                  ? 'Professionally drafted NDA template with detailed annotations. Mutual and unilateral options available.'
+                  : 'Detaylı açıklamalarla profesyonelce hazırlanmış NDA şablonu. Karşılıklı ve tek taraflı seçenekler mevcut.'
+              }
+              type={isEnglish ? 'Template' : 'Şablon'}
+              lang={lang}
+            />
+
+            {/* Contracts Overview */}
+            <ResourceCard
+              href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`}
+              title={isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler'}
+              description={
+                isEnglish
+                  ? 'Overview of must-have contracts for doing business in the US. Service agreements, NDAs, and more.'
+                  : 'ABD\'de iş yapmak için gerekli sözleşmelerin özeti. Hizmet sözleşmeleri, NDA\'lar ve daha fazlası.'
+              }
+              type={isEnglish ? 'Guide' : 'Rehber'}
+              lang={lang}
+            />
+
+            {/* Bank Account */}
+            <ResourceCard
+              href={`/${lang}/amerika/abdde-banka-hesabi`}
+              title={isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı'}
+              description={
+                isEnglish
+                  ? 'How to open a US business bank account as a non-resident. Requirements, options, and practical steps.'
+                  : 'Yerleşik olmayan biri olarak ABD iş bankası hesabı nasıl açılır. Gereksinimler, seçenekler ve pratik adımlar.'
+              }
+              type={isEnglish ? 'Guide' : 'Rehber'}
+              lang={lang}
+            />
+
+            {/* Business Starter Kit */}
+            <ResourceCard
+              href={`/${lang}/amerika/legal-kitler/abd-business-starter-legal-kit`}
+              title={isEnglish ? 'Business Starter Kit' : 'İş Başlangıç Kiti'}
+              description={
+                isEnglish
+                  ? '6 essential legal documents bundled for Turkish entrepreneurs starting a US business. NDA, Service Agreement, and more.'
+                  : 'ABD\'de iş kuran Türk girişimciler için 6 temel hukuki belge paketi. NDA, Hizmet Sözleşmesi ve daha fazlası.'
+              }
+              type={isEnglish ? 'Kit' : 'Kit'}
+              lang={lang}
+            />
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+              className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+            >
+              {isEnglish ? 'View all templates' : 'Tüm şablonları görüntüle'} →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Categories */}
+      <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              {isEnglish ? 'Browse by Category' : 'Kategoriye Göre Göz At'}
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              {isEnglish
+                ? 'Organized legal resources covering business formation, contracts, taxes, and immigration.'
+                : 'İşletme kurulumu, sözleşmeler, vergiler ve göçmenlik konularını kapsayan düzenli hukuki kaynaklar.'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CategoryCard
+              href={`/${lang}/amerika`}
+              title={isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
+              description={isEnglish ? '15+ comprehensive guides' : '15+ kapsamlı rehber'}
+              count="15+"
+              lang={lang}
+            />
+            <CategoryCard
+              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+              title={isEnglish ? 'Templates' : 'Şablonlar'}
+              description={isEnglish ? 'Contracts & documents' : 'Sözleşmeler ve belgeler'}
+              count="50+"
+              lang={lang}
+            />
+            <CategoryCard
+              href={`/${lang}/checklists/llc-checklist`}
+              title={isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
+              description={isEnglish ? 'Step-by-step guides' : 'Adım adım rehberler'}
+              count="5+"
+              lang={lang}
+            />
+            <CategoryCard
+              href={`/${lang}/consular-documents`}
+              title={isEnglish ? 'Consular Services' : 'Konsolosluk Hizmetleri'}
+              description={isEnglish ? 'Turkish consular procedures' : 'Türk konsolosluk işlemleri'}
+              count="10+"
+              lang={lang}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* About / Mission Statement */}
+      <section className="py-16 md:py-20 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                {isEnglish ? 'About EchoLegal' : 'EchoLegal Hakkında'}
+              </h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  {isEnglish
+                    ? 'EchoLegal is a bilingual legal reference platform providing encyclopedic legal information and professionally drafted document templates in English and Turkish.'
+                    : 'EchoLegal, İngilizce ve Türkçe olarak ansiklopedik hukuki bilgiler ve profesyonelce hazırlanmış belge şablonları sunan iki dilli bir hukuk referans platformudur.'}
+                </p>
+                <p>
+                  {isEnglish
+                    ? 'Our resources are designed for Turkish entrepreneurs, professionals, and individuals navigating US legal and business requirements. All content is written with a focus on accuracy, clarity, and practical application.'
+                    : 'Kaynaklarımız, ABD\'nin hukuki ve ticari gereksinimlerini anlamaya çalışan Türk girişimciler, profesyoneller ve bireyler için tasarlanmıştır. Tüm içerikler doğruluk, açıklık ve pratik uygulama odaklı yazılmıştır.'}
+                </p>
+              </div>
+              <Link
+                href={`/${lang}/about`}
+                className="inline-flex items-center mt-6 text-gray-900 font-semibold hover:text-gray-600 transition-colors"
+              >
+                {isEnglish ? 'Learn more about us' : 'Hakkımızda daha fazla bilgi'} →
+              </Link>
+            </div>
+
+            {/* What We Provide */}
+            <div className="bg-gray-50 rounded-xl p-8">
+              <h3 className="font-semibold text-gray-900 mb-6">
+                {isEnglish ? 'What We Provide' : 'Sunduklarımız'}
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                    1
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      {isEnglish ? 'Legal Information' : 'Hukuki Bilgi'}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {isEnglish
+                        ? 'Reference-grade explanations of legal concepts, processes, and requirements.'
+                        : 'Hukuki kavramların, süreçlerin ve gereksinimlerin referans kalitesinde açıklamaları.'}
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                    2
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      {isEnglish ? 'Document Templates' : 'Belge Şablonları'}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {isEnglish
+                        ? 'Professionally drafted contracts and business documents with annotations.'
+                        : 'Açıklamalarla profesyonelce hazırlanmış sözleşmeler ve iş belgeleri.'}
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+                    3
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      {isEnglish ? 'Bilingual Support' : 'İki Dilli Destek'}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {isEnglish
+                        ? 'All content available in both English and Turkish with full parity.'
+                        : 'Tüm içerik tam eşdeğerlik ile hem İngilizce hem de Türkçe olarak mevcuttur.'}
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer Banner */}
+      <section className="bg-gray-900 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <p className="font-semibold mb-1">
+                {isEnglish ? 'Legal Information, Not Legal Advice' : 'Hukuki Bilgi, Hukuki Tavsiye Değil'}
+              </p>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                {isEnglish
+                  ? 'EchoLegal provides educational legal information for general reference purposes. This content does not constitute legal advice and does not create an attorney-client relationship. Consult a licensed attorney for advice specific to your situation.'
+                  : 'EchoLegal, genel referans amaçlı eğitici hukuki bilgiler sunar. Bu içerik hukuki tavsiye teşkil etmez ve avukat-müvekkil ilişkisi oluşturmaz. Durumunuza özel tavsiye için lisanslı bir avukata danışın.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+  )
+}
+
+// Resource Card Component
+function ResourceCard({
+  href,
+  title,
+  description,
+  type,
+  lang,
+}: {
+  href: string
+  title: string
+  description: string
+  type: string
+  lang: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="block bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 hover:shadow-md transition-all group"
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+          {type}
+        </span>
+      </div>
+      <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+        {title}
+      </h3>
+      <p className="text-sm text-gray-500 leading-relaxed">{description}</p>
+    </Link>
+  )
+}
+
+// Category Card Component
+function CategoryCard({
+  href,
+  title,
+  description,
+  count,
+  lang,
+}: {
+  href: string
+  title: string
+  description: string
+  count: string
+  lang: string
+}) {
+  return (
+    <Link
+      href={href}
+      className="block bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 hover:shadow-md transition-all text-center group"
+    >
+      <p className="text-3xl font-bold text-gray-900 mb-2">{count}</p>
+      <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
+        {title}
+      </h3>
+      <p className="text-sm text-gray-500">{description}</p>
+    </Link>
   )
 }
