@@ -2,6 +2,7 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import SearchButton from '@/components/SearchButton'
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const isEnglish = params.lang === 'en'
@@ -32,6 +33,7 @@ export default async function WhatIsNDAPage({
             <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
             <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
             <Link href={`/${lang}/encyclopedia`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}</Link>
+            <SearchButton lang={lang} />
             <Link href={`/${lang === 'en' ? 'tr' : 'en'}/encyclopedia/what-is-nda`} className="border border-black rounded-full px-3 py-1 text-sm">{isEnglish ? 'TR' : 'EN'}</Link>
           </div>
         </nav>

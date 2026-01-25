@@ -4,6 +4,7 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import SearchButton from '@/components/SearchButton'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -107,7 +108,8 @@ export default async function ContractsPage({
             <Link href={`/${lang}/support`} className="text-sm font-medium hover:opacity-60">
               {isEnglish ? 'Support' : 'Destek'}
             </Link>
-            <Link 
+            <SearchButton lang={lang} />
+            <Link
               href={`/${lang === 'en' ? 'tr' : 'en'}/contracts`}
               className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
             >

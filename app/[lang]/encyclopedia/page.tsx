@@ -1,6 +1,7 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
+import SearchButton from '@/components/SearchButton'
 
 export default async function EncyclopediaPage({
   params: { lang },
@@ -12,9 +13,18 @@ export default async function EncyclopediaPage({
 
   const articles = [
     {
+      slug: 'common-misconceptions',
+      title: isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar',
+      description: isEnglish
+        ? 'LLCs, immigration, taxes, and contracts—what people get wrong.'
+        : 'LLC, göçmenlik, vergiler ve sözleşmeler hakkında yaygın yanlışlar.',
+      readTime: '6 min',
+      available: true,
+    },
+    {
       slug: 'what-is-nda',
       title: isEnglish ? 'What is an NDA?' : 'NDA Nedir?',
-      description: isEnglish 
+      description: isEnglish
         ? 'Everything you need to know about Non-Disclosure Agreements.'
         : 'Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey.',
       readTime: '8 min',
@@ -23,7 +33,7 @@ export default async function EncyclopediaPage({
     {
       slug: 'freelancer-legal-guide',
       title: isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi',
-      description: isEnglish 
+      description: isEnglish
         ? 'Essential legal knowledge for freelancers and independent contractors.'
         : 'Serbest çalışanlar için temel hukuki bilgiler.',
       readTime: '12 min',
@@ -32,7 +42,7 @@ export default async function EncyclopediaPage({
     {
       slug: 'contractor-vs-employee',
       title: isEnglish ? 'Contractor vs Employee' : 'Yüklenici mi Çalışan mı?',
-      description: isEnglish 
+      description: isEnglish
         ? 'Key differences and why classification matters.'
         : 'Temel farklar ve sınıflandırmanın önemi.',
       readTime: '10 min',
@@ -41,7 +51,7 @@ export default async function EncyclopediaPage({
     {
       slug: 'privacy-policy-guide',
       title: isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikasına İhtiyacım Var mı?',
-      description: isEnglish 
+      description: isEnglish
         ? 'GDPR, CCPA, and KVKK requirements explained.'
         : 'GDPR, CCPA ve KVKK gereksinimleri açıklandı.',
       readTime: '8 min',
@@ -59,6 +69,7 @@ export default async function EncyclopediaPage({
             <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
             <Link href={`/${lang}/encyclopedia`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}</Link>
             <Link href={`/${lang}/support`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Support' : 'Destek'}</Link>
+            <SearchButton lang={lang} />
             <Link href={`/${lang === 'en' ? 'tr' : 'en'}/encyclopedia`} className="border border-black rounded-full px-3 py-1 text-sm">{isEnglish ? 'TR' : 'EN'}</Link>
           </div>
         </nav>

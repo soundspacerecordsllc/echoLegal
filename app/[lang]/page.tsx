@@ -1,6 +1,7 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
+import SearchButton from '@/components/SearchButton'
 
 export default async function Home({
   params: { lang },
@@ -18,7 +19,7 @@ export default async function Home({
           <Link href={`/${lang}`} className="text-2xl font-black tracking-tight text-[#000000]">
             ECHOLEGAL
           </Link>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
             <Link href={`/${lang}`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
               {isEnglish ? 'Home' : 'Ana Sayfa'}
             </Link>
@@ -28,7 +29,8 @@ export default async function Home({
             <Link href={`/${lang}/consular-documents`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
               {isEnglish ? 'Consular' : 'Konsolosluk'}
             </Link>
-            <Link 
+            <SearchButton lang={lang} />
+            <Link
               href={`/${lang === 'en' ? 'tr' : 'en'}`}
               className="flex items-center gap-2 text-sm font-semibold border-2 border-[#000000] rounded-full px-4 py-2 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
             >
