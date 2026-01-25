@@ -63,7 +63,7 @@ export default async function ConsularDocumentsPage({
             <p className="font-semibold text-gray-900 mb-2">
               {isEnglish
                 ? 'Free checklists in English & Turkish. I support EchoLegal – $20 recommended.'
-                : 'İngilizce & Türkçe ücretsiz kontrol listeleri. EchoLegal\'i destekliyorum – 20$ önerilir.'}
+                : 'İngilizce ve Türkçe ücretsiz kontrol listeleri. EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir.'}
             </p>
             <Link 
               href="#procedures"

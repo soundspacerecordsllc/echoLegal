@@ -26,7 +26,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h3 className="font-semibold text-gray-900">
-              {isEnglish ? 'US Business Starter Legal Kit' : 'ABD Business Starter Legal Kit'}
+              {isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti'}
             </h3>
             <p className="text-sm text-gray-600 mt-1">
               {isEnglish
@@ -39,7 +39,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
               href={stripeLink}
               className="px-4 py-2 bg-[#C9A227] text-white text-sm font-medium rounded-lg hover:bg-[#B8922A] transition-colors whitespace-nowrap"
             >
-              {isEnglish ? '$20 Pay' : '$20 Öde'}
+              {isEnglish ? '$20 Pay' : '20 $ Destek'}
             </a>
             <a
               href={freeDownloadLink}
@@ -59,19 +59,19 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
     <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 my-8">
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
-          {isEnglish ? 'US Business Starter Legal Kit' : 'ABD Business Starter Legal Kit'}
+          {isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti'}
         </h3>
         <p className="text-gray-600">
           {isEnglish
             ? 'Everything you need to start your US business'
-            : 'ABD işinizi başlatmak için ihtiyacınız olan her şey'}
+            : 'ABD\'deki işinizi başlatmak için ihtiyacınız olan her şey'}
         </p>
       </div>
 
       <ul className="text-sm text-gray-700 space-y-2 mb-6 max-w-md mx-auto">
         <li className="flex items-center gap-2">
           <span className="text-[#C9A227]">✓</span>
-          <span>{isEnglish ? 'LLC Operating Agreement template' : 'LLC Operating Agreement şablonu'}</span>
+          <span>{isEnglish ? 'LLC Operating Agreement template' : 'LLC İşletme Sözleşmesi şablonu'}</span>
         </li>
         <li className="flex items-center gap-2">
           <span className="text-[#C9A227]">✓</span>
@@ -88,7 +88,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
           href={stripeLink}
           className="px-6 py-3 bg-[#C9A227] text-white font-semibold rounded-lg hover:bg-[#B8922A] transition-colors text-center"
         >
-          {isEnglish ? '$20 Recommended' : '$20 Önerilen'}
+          {isEnglish ? '$20 Recommended' : '20 $ Önerilen'}
         </a>
         <a
           href={freeDownloadLink}
@@ -101,7 +101,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
 
       <p className="text-center text-xs text-gray-500 mt-4">
         <Link href={kitPageLink} className="hover:text-[#C9A227] underline">
-          {isEnglish ? 'View kit details' : 'Kit detaylarını gör'}
+          {isEnglish ? 'View kit details' : 'Kit detaylarını görüntüle'}
         </Link>
       </p>
     </div>
