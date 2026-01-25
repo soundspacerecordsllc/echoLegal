@@ -4,6 +4,10 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import { getArticleMetadata } from '@/lib/article-metadata'
+import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
+
+const ARTICLE_SLUG = 'ein-itin-ssn-farki'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -63,6 +67,9 @@ export default async function EinItinSsnPage({
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
   ]
 
+  const articleMeta = getArticleMetadata(ARTICLE_SLUG)
+  const featuredSnippet = getFeaturedSnippet(ARTICLE_SLUG)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -71,17 +78,20 @@ export default async function EinItinSsnPage({
       : 'EIN, ITIN ve SSN Farkları',
     author: {
       '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Attorney at Law',
-      description: 'New York Bar No: 5552336',
+      name: 'Zeynep Yılmaz',
+      jobTitle: 'Legal Content Director',
+      affiliation: {
+        '@type': 'Organization',
+        name: 'EchoLegal',
+      },
     },
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
       url: 'https://echo-legal.com',
     },
-    datePublished: '2026-01-25',
-    dateModified: '2026-01-25',
+    datePublished: articleMeta?.datePublished || '2025-08-20',
+    dateModified: articleMeta?.dateModified || '2026-01-25',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://echo-legal.com/${lang}/ein-itin-ssn-farki`,
@@ -197,21 +207,48 @@ export default async function EinItinSsnPage({
                   : 'EIN, ITIN ve SSN Farkları: Hangisine İhtiyacınız Var?'}
               </h1>
 
+              {/* Authority signals */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-6">
+                <span className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Zeynep Yılmaz
+                </span>
+                <span className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {isEnglish ? 'Updated: January 25, 2026' : 'Güncellendi: 25 Ocak 2026'}
+                </span>
+                <span className="flex items-center gap-1 text-green-700 bg-green-50 px-2 py-0.5 rounded-full">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {isEnglish ? 'Reviewed by a licensed attorney' : 'Lisanslı avukat tarafından incelendi'}
+                </span>
+              </div>
+
+              {/* Featured snippet block */}
+              {featuredSnippet && (
+                <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                  <p className="text-gray-800 leading-relaxed">
+                    {featuredSnippet[lang]}
+                  </p>
+                </div>
+              )}
+
               <p className="text-lg text-gray-600 leading-relaxed">
                 {isEnglish
                   ? 'The IRS uses different identification numbers for different purposes. Understanding which one applies to your situation is essential for compliance and opening business accounts.'
                   : 'IRS, farklı amaçlar için farklı kimlik numaraları kullanır. Hangisinin durumunuza uygun olduğunu anlamak, uyumluluk ve iş hesabı açmak için önemlidir.'}
               </p>
-
-              <div className="flex items-center gap-4 mt-4 text-sm text-gray-500">
-                <span>{isEnglish ? 'Last updated:' : 'Son güncelleme:'} {isEnglish ? 'January 2026' : 'Ocak 2026'}</span>
-              </div>
             </header>
 
             {/* Key Takeaway Box */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-10">
-              <h2 className="font-bold text-blue-900 mb-2">{isEnglish ? 'Quick Summary' : 'Hızlı Özet'}</h2>
-              <ul className="text-sm text-blue-800 space-y-1">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-10">
+              <h2 className="font-bold text-gray-900 mb-2">{isEnglish ? 'Quick Summary' : 'Hızlı Özet'}</h2>
+              <ul className="text-sm text-gray-700 space-y-1">
                 <li>• <strong>SSN</strong> – {isEnglish ? 'For US citizens and work-authorized individuals' : 'ABD vatandaşları ve çalışma izni olanlar için'}</li>
                 <li>• <strong>EIN</strong> – {isEnglish ? 'For businesses (LLC, Corp) — you can get this without an SSN' : 'İşletmeler için (LLC, Corp) — SSN olmadan alınabilir'}</li>
                 <li>• <strong>ITIN</strong> – {isEnglish ? 'For individuals with US tax obligations but no SSN eligibility' : 'ABD vergi yükümlülüğü olan ancak SSN alamayan bireyler için'}</li>
