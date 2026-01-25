@@ -74,20 +74,29 @@ export default function Header({ lang, dict }: HeaderProps) {
       href: `/${lang}/library`,
       dropdown: [
         {
-          label: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
-          href: `/${lang}/library/llc-kurma-rehberi`,
+          label: isEnglish ? 'LLC Formation Guide (Detailed)' : 'LLC Kurma Rehberi (Detaylı)',
+          href: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
+          description: isEnglish ? 'Step-by-step for Turkish entrepreneurs' : 'Türkler için adım adım',
         },
         {
-          label: isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri',
-          href: `/${lang}/library/irs-vergi-gercekleri`,
+          label: isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler',
+          href: `/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
+          description: isEnglish ? 'Must-have legal documents' : 'Gerekli hukuki belgeler',
         },
         {
-          label: isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hatalar',
-          href: `/${lang}/library/hukuki-yanilgilar`,
+          label: isEnglish ? 'IRS & W-8/W-9 Guide' : 'IRS ve W-8/W-9 Rehberi',
+          href: `/${lang}/irs-vergiler-ve-w8-w9-gercekleri`,
+          description: isEnglish ? 'Tax forms explained' : 'Vergi formları açıklandı',
         },
         {
-          label: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
-          href: `/${lang}/library/temel-sozlesmeler`,
+          label: isEnglish ? 'LLC vs Corporation' : 'LLC mi Corporation mı',
+          href: `/${lang}/llc-mi-corporation-mi`,
+          description: isEnglish ? 'Compare business structures' : 'İş yapılarını karşılaştırın',
+        },
+        {
+          label: isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı',
+          href: `/${lang}/abdde-banka-hesabi-acmak`,
+          description: isEnglish ? 'Opening accounts as non-resident' : 'Yabancı olarak hesap açma',
         },
       ]
     },

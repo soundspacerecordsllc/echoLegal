@@ -41,6 +41,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/library/temel-sozlesmeler',
   ]
 
+  // Standalone guide pages (new comprehensive guides)
+  const guidePages = [
+    '/abd-de-llc-kurmak-turkler-icin-adim-adim',
+    '/abdde-is-yapan-turkler-icin-sozlesmeler',
+    '/irs-vergiler-ve-w8-w9-gercekleri',
+    '/abdde-banka-hesabi-acmak',
+    '/llc-mi-corporation-mi',
+  ]
+
   // Legal kit pages
   const legalKitPages = [
     '/legal-kits',
@@ -96,6 +105,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const getPriority = (page: string, lang: string): number => {
     if (page === '') return 1.0
     if (page === '/contracts' || page === '/library' || page === '/legal-kits') return 0.9
+    // New standalone guide pages get high priority
+    if (guidePages.includes(page)) return 0.85
     if (page.startsWith('/contracts/')) return 0.8
     if (page.startsWith('/legal-kits/')) return 0.8
     if (page.startsWith('/library/')) return 0.8
@@ -119,6 +130,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allPages = [
     ...staticPages,
     ...libraryPages,
+    ...guidePages,
     ...legalKitPages,
     ...checklistPages,
     ...amerikaPages,
