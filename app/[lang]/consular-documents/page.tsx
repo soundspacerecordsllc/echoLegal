@@ -111,7 +111,7 @@ export default async function ConsularDocumentsPage({
                   {isEnglish ? procedure.titleEn : procedure.titleTr}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {isEnglish ? procedure.summaryEn : procedure.summaryTr}
+                  {isEnglish ? procedure.descriptionEn : procedure.descriptionTr}
                 </p>
                 <span className="text-[#C9A227] font-medium text-sm">
                   {isEnglish ? 'View Checklist →' : 'Kontrol Listesini Gör →'}
