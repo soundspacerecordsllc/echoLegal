@@ -103,6 +103,27 @@ export default async function LLCVisaMythPage({
             </p>
           </div>
 
+          {/* Official Source */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+              <span>🏛️</span>
+              {isEnglish ? 'Official Source' : 'Resmi Kaynak'}
+            </h3>
+            <p className="text-sm text-blue-800 mb-3">
+              {isEnglish
+                ? 'Immigration information on this page is referenced from the U.S. Citizenship and Immigration Services (USCIS), the authoritative source for US immigration policy.'
+                : 'Bu sayfadaki göçmenlik bilgileri, ABD göçmenlik politikasının yetkili kaynağı olan ABD Vatandaşlık ve Göçmenlik Hizmetleri (USCIS) referans alınarak hazırlanmıştır.'}
+            </p>
+            <a
+              href="https://www.uscis.gov"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-blue-700 font-medium hover:underline text-sm"
+            >
+              uscis.gov →
+            </a>
+          </div>
+
           {/* Disclaimer */}
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-10">
             <p className="text-sm text-amber-900 leading-relaxed">
@@ -146,22 +167,35 @@ export default async function LLCVisaMythPage({
                 <h3 className="font-semibold text-black mb-2">
                   {isEnglish ? '"I heard I can get an E-2 visa with an LLC"' : '"LLC ile E-2 vizesi alabileceğimi duydum"'}
                 </h3>
-                <p className="text-gray-700 text-sm">
+                <p className="text-gray-700 text-sm mb-2">
                   {isEnglish
                     ? 'The E-2 visa requires a substantial investment in a US business, but the business alone doesn\'t qualify you. You must also: (1) be a citizen of a treaty country, (2) make a substantial investment, (3) be coming to the US to develop and direct the business, and (4) meet many other requirements. An LLC is just one piece of a much larger puzzle.'
                     : 'E-2 vizesi bir ABD işletmesine önemli bir yatırım gerektirir, ancak tek başına işletme sizi hak kazandırmaz. Ayrıca şunları yapmalısınız: (1) bir anlaşma ülkesi vatandaşı olmak, (2) önemli bir yatırım yapmak, (3) işi geliştirmek ve yönetmek için ABD\'ye gelmek ve (4) diğer birçok gereksinimi karşılamak. LLC çok daha büyük bir yapbozun sadece bir parçasıdır.'}
                 </p>
+                <a
+                  href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/e-2-treaty-investors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 text-xs hover:underline"
+                >
+                  {isEnglish ? 'USCIS: E-2 Treaty Investors →' : 'USCIS: E-2 Yatırımcı Vizesi →'}
+                </a>
               </div>
 
               <div className="border-l-4 border-red-500 pl-4">
                 <h3 className="font-semibold text-black mb-2">
                   {isEnglish ? '"My LLC means I can work in the US"' : '"LLC\'m ABD\'de çalışabileceğim anlamına gelir"'}
                 </h3>
-                <p className="text-gray-700 text-sm">
+                <p className="text-gray-700 text-sm mb-2">
                   {isEnglish
                     ? 'Owning a US LLC does not give you work authorization. To work in the US, you need a work visa (H-1B, L-1, O-1, etc.) or other immigration status that permits employment. Operating your business remotely from outside the US is different from physically working inside the US.'
                     : 'ABD LLC\'ye sahip olmak size çalışma izni vermez. ABD\'de çalışmak için bir çalışma vizesine (H-1B, L-1, O-1, vb.) veya istihdama izin veren başka bir göçmenlik statüsüne ihtiyacınız var. İşletmenizi ABD dışından uzaktan yönetmek, ABD içinde fiziksel olarak çalışmaktan farklıdır.'}
                 </p>
+                <div className="flex flex-wrap gap-3 text-xs">
+                  <a href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">USCIS: H-1B →</a>
+                  <a href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/l-1a-intracompany-transferee-executive-or-manager" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">USCIS: L-1 →</a>
+                  <a href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/o-1-visa-individuals-with-extraordinary-ability-or-achievement" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">USCIS: O-1 →</a>
+                </div>
               </div>
 
               <div className="border-l-4 border-red-500 pl-4">
@@ -211,6 +245,21 @@ export default async function LLCVisaMythPage({
               </ul>
             </div>
           </section>
+
+          {/* Review Schedule */}
+          <div className="bg-gray-50 rounded-lg p-4 mb-10 text-sm text-gray-600">
+            <p className="mb-1">
+              <strong>{isEnglish ? 'Source:' : 'Kaynak:'}</strong>{' '}
+              <a href="https://www.uscis.gov" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">U.S. Citizenship and Immigration Services (uscis.gov)</a>
+            </p>
+            <p><strong>{isEnglish ? 'Last reviewed:' : 'Son gözden geçirme:'}</strong> {isEnglish ? 'January 2026' : 'Ocak 2026'}</p>
+            <p><strong>{isEnglish ? 'Next scheduled update:' : 'Sonraki planlanan güncelleme:'}</strong> {isEnglish ? 'April 2026' : 'Nisan 2026'}</p>
+            <p className="mt-2 text-xs text-gray-500">
+              {isEnglish
+                ? 'Immigration regulations change frequently. Always verify current requirements on uscis.gov.'
+                : 'Göçmenlik düzenlemeleri sık sık değişir. Güncel gereksinimleri her zaman uscis.gov üzerinden doğrulayın.'}
+            </p>
+          </div>
 
           {/* Product CTA */}
           <div className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-xl p-8 mb-12">

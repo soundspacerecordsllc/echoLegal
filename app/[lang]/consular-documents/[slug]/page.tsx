@@ -88,9 +88,30 @@ export default async function ProcedurePage({
         <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
 
         {/* Description */}
-        <section className="mb-12">
+        <section className="mb-8">
           <p className="text-lg text-gray-600 leading-relaxed">{description}</p>
         </section>
+
+        {/* Official Source */}
+        <div className="bg-red-50 border border-red-200 rounded-lg p-5 mb-8">
+          <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
+            <span>🏛️</span>
+            {isEnglish ? 'Official Source' : 'Resmi Kaynak'}
+          </h3>
+          <p className="text-sm text-red-800 mb-3">
+            {isEnglish
+              ? 'Consular procedures are administered by the Republic of Turkey Ministry of Foreign Affairs. Requirements may vary by consulate location.'
+              : 'Konsolosluk işlemleri T.C. Dışişleri Bakanlığı tarafından yürütülür. Gereksinimler konsolosluk lokasyonuna göre değişebilir.'}
+          </p>
+          <a
+            href="https://www.konsolosluk.gov.tr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-red-700 font-medium hover:underline text-sm"
+          >
+            konsolosluk.gov.tr →
+          </a>
+        </div>
 
         {/* Appointment Notice */}
         <div className="bg-amber-50 border-l-4 border-[#C9A227] p-6 rounded-r-lg mb-12">
@@ -142,11 +163,21 @@ export default async function ProcedurePage({
           </p>
         </div>
 
+        {/* Review Schedule */}
+        <div className="bg-gray-50 rounded-lg p-4 mb-6 text-sm text-gray-600">
+          <p className="mb-1">
+            <strong>{isEnglish ? 'Source:' : 'Kaynak:'}</strong>{' '}
+            <a href="https://www.konsolosluk.gov.tr" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline">T.C. Dışişleri Bakanlığı (konsolosluk.gov.tr)</a>
+          </p>
+          <p><strong>{isEnglish ? 'Last reviewed:' : 'Son gözden geçirme:'}</strong> {isEnglish ? 'January 2026' : 'Ocak 2026'}</p>
+          <p><strong>{isEnglish ? 'Next scheduled update:' : 'Sonraki planlanan güncelleme:'}</strong> {isEnglish ? 'April 2026' : 'Nisan 2026'}</p>
+        </div>
+
         {/* Disclaimer */}
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
           <h3 className="font-semibold mb-3">⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
           <p className="text-sm text-gray-600">
-            {isEnglish 
+            {isEnglish
               ? 'This checklist is for informational purposes only. Requirements may change. Always confirm current requirements with the Turkish Consulate General before your appointment.'
               : 'Bu kontrol listesi yalnızca bilgilendirme amaçlıdır. Gereksinimler değişebilir. Randevunuzdan önce güncel gereksinimleri T.C. Başkonsolosluğu\'ndan teyit edin.'}
           </p>
