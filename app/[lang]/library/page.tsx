@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : 'Hukuki Referans Kütüphanesi | EchoLegal',
     description: isEnglish
       ? 'Comprehensive legal reference guides for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and more.'
-      : 'ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi gerçekleri, yaygın yanılgılar ve daha fazlası.',
+      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi gerçekleri, yaygın yanılgılar ve daha fazlası.",
   }
 }
 
@@ -37,14 +37,14 @@ export default async function LibraryPage({
       title: isEnglish ? 'Business Formation' : 'Şirket Kurulumu',
       description: isEnglish
         ? 'Guides on forming business entities in the United States'
-        : 'ABD'de iş varlıkları kurma rehberleri',
+        : "ABD'de iş varlıkları kurma rehberleri",
       articles: [
         {
           slug: 'llc-kurma-rehberi',
-          title: isEnglish ? 'LLC Formation in the US: What You Need to Know' : 'ABD'de LLC Kurmak: Bilmeniz Gerekenler',
+          title: isEnglish ? 'LLC Formation in the US: What You Need to Know' : "ABD'de LLC Kurmak: Bilmeniz Gerekenler",
           description: isEnglish
             ? 'A comprehensive reference guide to understanding LLC formation in the United States.'
-            : 'ABD'de LLC kurulumunu anlamak için kapsamlı bir referans rehberi.',
+            : "ABD'de LLC kurulumunu anlamak için kapsamlı bir referans rehberi.",
           available: true,
           featured: true,
         },
@@ -86,10 +86,10 @@ export default async function LibraryPage({
       articles: [
         {
           slug: 'hukuki-yanilgilar',
-          title: isEnglish ? 'Common Legal Misconceptions' : 'ABD'de İş Yapan Türklerin Yaygın Hukuki Yanılgıları',
+          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yapan Türklerin Yaygın Hukuki Yanılgıları",
           description: isEnglish
             ? 'Debunking the most common legal myths about doing business in the US.'
-            : 'ABD'de iş yapma hakkındaki en yaygın hukuki mitleri çürütme.',
+            : "ABD'de iş yapma hakkındaki en yaygın hukuki mitleri çürütme.",
           available: true,
           featured: true,
         },
@@ -104,10 +104,10 @@ export default async function LibraryPage({
       articles: [
         {
           slug: 'temel-sozlesmeler',
-          title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : 'ABD'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler',
+          title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : "ABD'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler",
           description: isEnglish
             ? 'The contracts you need when starting a business in the United States.'
-            : 'ABD'de iş kurarken ihtiyacınız olan sözleşmeler.',
+            : "ABD'de iş kurarken ihtiyacınız olan sözleşmeler.",
           available: true,
           featured: false,
         },
@@ -239,14 +239,14 @@ export default async function LibraryPage({
               <p className="text-gray-600">
                 {isEnglish
                   ? 'Our Business Starter Kit includes 5 essential legal documents for US business.'
-                  : 'Business Starter Kit'imiz ABD işi için 5 temel hukuki belge içerir.'}
+                  : "Business Starter Kit'imiz ABD işi için 5 temel hukuki belge içerir."}
               </p>
             </div>
             <Link
               href={`/${lang}/legal-kits/business-starter`}
               className="bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors whitespace-nowrap"
             >
-              {isEnglish ? 'View Business Starter Kit →' : 'Business Starter Kit'i Görüntüle →'}
+              {isEnglish ? 'View Business Starter Kit →' : "Business Starter Kit'i Görüntüle →"}
             </Link>
           </div>
         </section>

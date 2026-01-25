@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? 'ABD Business Starter Legal Kit | Essential Documents for Turkish Entrepreneurs | EchoLegal'
-      : 'ABD Business Starter Legal Kit | ABD'de İş Kuran Türkler İçin Temel Belgeler | EchoLegal',
+      : "ABD Business Starter Legal Kit | ABD'de İş Kuran Türkler İçin Temel Belgeler | EchoLegal",
     description: isEnglish
       ? 'Essential legal document bundle for Turkish entrepreneurs starting businesses in the US. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
-      : 'ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları.',
+      : "ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları.",
   }
 }
 
@@ -76,8 +76,8 @@ export default async function BusinessStarterKitPage({
     'Tech founders launching a US-based startup',
     'Content creators with US brand partnerships',
   ] : [
-    'ABD'de iş kurmaya başlayan Türk girişimciler',
-    'ABD'li müşterilerle çalışan serbest çalışanlar ve danışmanlar',
+    "ABD'de iş kurmaya başlayan Türk girişimciler",
+    "ABD'li müşterilerle çalışan serbest çalışanlar ve danışmanlar",
     'ABD pazarında faaliyet gösteren e-ticaret satıcıları',
     'ABD merkezli startup kuran teknoloji kurucuları',
     'ABD markalarıyla ortaklık yapan içerik üreticileri',
@@ -144,7 +144,7 @@ export default async function BusinessStarterKitPage({
           <p className="text-xl text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'A curated collection of essential legal documents for Turkish entrepreneurs starting or operating a business in the United States. Five professionally drafted templates, available in both English and Turkish.'
-              : 'ABD'de iş kuran veya işleten Türk girişimciler için özenle seçilmiş temel hukuki belgeler. Hem İngilizce hem Türkçe olarak hazırlanmış beş profesyonel şablon.'}
+              : "ABD'de iş kuran veya işleten Türk girişimciler için özenle seçilmiş temel hukuki belgeler. Hem İngilizce hem Türkçe olarak hazırlanmış beş profesyonel şablon."}
           </p>
 
           <div className="flex flex-wrap gap-3 text-sm text-gray-500">
@@ -276,10 +276,10 @@ export default async function BusinessStarterKitPage({
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <h3 className="font-semibold text-black mb-1">
-                {isEnglish ? 'LLC Formation Guide' : 'ABD'de LLC Kurma Rehberi'}
+                {isEnglish ? 'LLC Formation Guide' : "ABD'de LLC Kurma Rehberi"}
               </h3>
               <p className="text-sm text-gray-600">
-                {isEnglish ? 'Understanding the basics of forming an LLC in the US.' : 'ABD'de LLC kurmanın temellerini anlayın.'}
+                {isEnglish ? 'Understanding the basics of forming an LLC in the US.' : "ABD'de LLC kurmanın temellerini anlayın."}
               </p>
             </Link>
 
@@ -303,7 +303,7 @@ export default async function BusinessStarterKitPage({
                 {isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
               </h3>
               <p className="text-sm text-gray-600">
-                {isEnglish ? 'Myths vs. facts about doing business in the US.' : 'ABD'de iş yapma hakkında efsaneler ve gerçekler.'}
+                {isEnglish ? 'Myths vs. facts about doing business in the US.' : "ABD'de iş yapma hakkında efsaneler ve gerçekler."}
               </p>
             </Link>
 

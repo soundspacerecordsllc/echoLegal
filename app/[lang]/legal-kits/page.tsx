@@ -38,7 +38,7 @@ export default async function LegalKitsPage({
       subtitle: isEnglish ? 'Essential Documents for US Business' : 'ABD İşi İçin Temel Belgeler',
       description: isEnglish
         ? '5 essential legal documents for Turkish entrepreneurs starting or operating a business in the United States. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
-        : 'ABD'de iş kuran veya işleten Türk girişimciler için 5 temel hukuki belge. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları.',
+        : "ABD'de iş kuran veya işleten Türk girişimciler için 5 temel hukuki belge. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları.",
       documents: 5,
       available: true,
       featured: true,
@@ -49,7 +49,7 @@ export default async function LegalKitsPage({
       subtitle: isEnglish ? 'Protect Your Freelance Business' : 'Serbest İşinizi Koruyun',
       description: isEnglish
         ? 'Essential contracts for freelancers working with US clients. Service Agreement, NDA, and Independent Contractor Agreement.'
-        : 'ABD'li müşterilerle çalışan serbest çalışanlar için temel sözleşmeler. Hizmet Sözleşmesi, NDA ve Bağımsız Yüklenici Sözleşmesi.',
+        : "ABD'li müşterilerle çalışan serbest çalışanlar için temel sözleşmeler. Hizmet Sözleşmesi, NDA ve Bağımsız Yüklenici Sözleşmesi.",
       documents: 3,
       available: false,
       featured: false,

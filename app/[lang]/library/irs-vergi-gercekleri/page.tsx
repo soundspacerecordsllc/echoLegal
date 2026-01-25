@@ -69,13 +69,13 @@ export default async function IRSTaxFactsPage({
         : 'Vergi Mükellefi Kimlik Numarası ve Sertifikasyon Talebi',
       whoFiles: isEnglish
         ? 'US persons (citizens, residents, and US entities like LLCs)'
-        : 'ABD'li kişiler (vatandaşlar, mukimler ve LLC gibi ABD tüzel kişileri)',
+        : "ABD'li kişiler (vatandaşlar, mukimler ve LLC gibi ABD tüzel kişileri)",
       purpose: isEnglish
         ? 'Provides your TIN (SSN or EIN) to the payer for tax reporting purposes.'
         : 'Vergi raporlama amaçları için TIN'inizi (SSN veya EIN) ödeme yapana sağlar.',
       whenNeeded: isEnglish
         ? 'When you have a US LLC or are otherwise a "US person" for tax purposes.'
-        : 'ABD LLC'niz olduğunda veya vergi açısından "ABD'li kişi" olduğunuzda.',
+        : "ABD LLC'niz olduğunda veya vergi açısından 'ABD'li kişi' olduğunuzda.",
     },
     {
       name: '1099-NEC',

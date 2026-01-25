@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? 'LLC Formation in the US: What You Need to Know | EchoLegal'
-      : 'ABD'de LLC Kurmak: Bilmeniz Gerekenler | EchoLegal',
+      : "ABD'de LLC Kurmak: Bilmeniz Gerekenler | EchoLegal",
     description: isEnglish
       ? 'A comprehensive reference guide to LLC formation in the United States for non-US entrepreneurs. State selection, formation process, tax implications, and common misconceptions.'
-      : 'ABD dışından girişimciler için ABD'de LLC kurulumu hakkında kapsamlı referans rehberi. Eyalet seçimi, kuruluş süreci, vergi etkileri ve yaygın yanılgılar.',
+      : "ABD dışından girişimciler için ABD'de LLC kurulumu hakkında kapsamlı referans rehberi. Eyalet seçimi, kuruluş süreci, vergi etkileri ve yaygın yanılgılar.",
   }
 }
 
@@ -79,13 +79,13 @@ export default async function LLCFormationGuidePage({
             <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
               {isEnglish
                 ? 'LLC Formation in the US: What You Need to Know'
-                : 'ABD'de LLC Kurmak: Bilmeniz Gerekenler'}
+                : "ABD'de LLC Kurmak: Bilmeniz Gerekenler"}
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
               {isEnglish
-                ? 'A factual reference guide explaining what an LLC is, how it's formed, and what non-US entrepreneurs should understand before starting the process.'
-                : 'LLC'nin ne olduğunu, nasıl kurulduğunu ve ABD dışından girişimcilerin sürece başlamadan önce anlaması gerekenleri açıklayan gerçeklere dayalı bir referans rehberi.'}
+                ? "A factual reference guide explaining what an LLC is, how it's formed, and what non-US entrepreneurs should understand before starting the process."
+                : "LLC'nin ne olduğunu, nasıl kurulduğunu ve ABD dışından girişimcilerin sürece başlamadan önce anlaması gerekenleri açıklayan gerçeklere dayalı bir referans rehberi."}
             </p>
 
             <div className="flex flex-wrap gap-3 text-sm text-gray-500">
@@ -134,12 +134,12 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'LLC stands for "Limited Liability Company." It is a type of business structure in the United States that combines characteristics of both corporations and partnerships.'
-                  : 'LLC, "Limited Liability Company" (Sınırlı Sorumlu Şirket) anlamına gelir. ABD'de hem şirketlerin hem de ortaklıkların özelliklerini birleştiren bir iş yapısı türüdür.'}
+                  : "LLC, \"Limited Liability Company\" (Sınırlı Sorumlu Şirket) anlamına gelir. ABD'de hem şirketlerin hem de ortaklıkların özelliklerini birleştiren bir iş yapısı türüdür."}
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'The key feature of an LLC is that it provides "limited liability" protection to its owners (called "members"). This means that the personal assets of the members are generally protected from business debts and lawsuits.'
-                  : 'LLC'nin temel özelliği, sahiplerine ("üyeler" olarak adlandırılır) "sınırlı sorumluluk" koruması sağlamasıdır. Bu, üyelerin kişisel varlıklarının genellikle iş borçları ve davalardan korunduğu anlamına gelir.'}
+                  : "LLC'nin temel özelliği, sahiplerine (\"üyeler\" olarak adlandırılır) \"sınırlı sorumluluk\" koruması sağlamasıdır. Bu, üyelerin kişisel varlıklarının genellikle iş borçları ve davalardan korunduğu anlamına gelir."}
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
                 <p className="text-sm text-blue-900">
@@ -197,7 +197,7 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'One of the first decisions when forming an LLC is choosing which state to incorporate in. Here are some general considerations:'
-                  : 'LLC kurarken ilk kararlardan biri hangi eyalette kurulacağını seçmektir. İşte bazı genel değerlendirmeler:'}
+                  : "LLC kurarken ilk kararlardan biri hangi eyalette kurulacağını seçmektir. İşte bazı genel değerlendirmeler:"}
               </p>
 
               <h3 className="text-lg font-semibold text-black mt-6 mb-3">
@@ -208,7 +208,7 @@ export default async function LLCFormationGuidePage({
                   <strong>Delaware:</strong>{' '}
                   {isEnglish
                     ? 'Known for business-friendly laws and an experienced court system (Court of Chancery). Often chosen by startups seeking venture capital.'
-                    : 'İş dostu yasaları ve deneyimli mahkeme sistemi (Court of Chancery) ile tanınır. Genellikle risk sermayesi arayan startup'lar tarafından tercih edilir.'}
+                    : "İş dostu yasaları ve deneyimli mahkeme sistemi (Court of Chancery) ile tanınır. Genellikle risk sermayesi arayan startup'lar tarafından tercih edilir."}
                 </li>
                 <li>
                   <strong>Wyoming:</strong>{' '}
@@ -220,18 +220,18 @@ export default async function LLCFormationGuidePage({
                   <strong>{isEnglish ? 'Home State:' : 'Yaşadığınız Eyalet:'}</strong>{' '}
                   {isEnglish
                     ? 'If you live in the US, forming in your home state is often simplest and may avoid foreign qualification requirements.'
-                    : 'ABD'de yaşıyorsanız, yaşadığınız eyalette kurmak genellikle en basit olanıdır ve yabancı yeterlilik gereksinimlerinden kaçınabilir.'}
+                    : "ABD'de yaşıyorsanız, yaşadığınız eyalette kurmak genellikle en basit olanıdır ve yabancı yeterlilik gereksinimlerinden kaçınabilir."}
                 </li>
               </ul>
 
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 my-6">
                 <h4 className="font-semibold text-black mb-2">
-                  {isEnglish ? 'For Non-US Residents:' : 'ABD'de Yaşamayanlar İçin:'}
+                  {isEnglish ? 'For Non-US Residents:' : "ABD'de Yaşamayanlar İçin:"}
                 </h4>
                 <p className="text-sm text-gray-700">
                   {isEnglish
-                    ? 'If you don't live in the US, the state choice is more flexible. Wyoming and Delaware are popular among international entrepreneurs for their privacy laws and straightforward processes.'
-                    : 'ABD'de yaşamıyorsanız, eyalet seçimi daha esnektir. Wyoming ve Delaware, gizlilik yasaları ve basit süreçleri nedeniyle uluslararası girişimciler arasında popülerdir.'}
+                    ? "If you don't live in the US, the state choice is more flexible. Wyoming and Delaware are popular among international entrepreneurs for their privacy laws and straightforward processes."
+                    : "ABD'de yaşamıyorsanız, eyalet seçimi daha esnektir. Wyoming ve Delaware, gizlilik yasaları ve basit süreçleri nedeniyle uluslararası girişimciler arasında popülerdir."}
                 </p>
               </div>
             </section>
@@ -289,12 +289,12 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'The tax treatment of an LLC depends on several factors, including where you live and how the LLC elects to be taxed:'
-                  : 'Bir LLC'nin vergi muamelesi, nerede yaşadığınız ve LLC'nin nasıl vergilendirilmeyi seçtiği dahil olmak üzere birçok faktöre bağlıdır:'}
+                  : "Bir LLC'nin vergi muamelesi, nerede yaşadığınız ve LLC'nin nasıl vergilendirilmeyi seçtiği dahil olmak üzere birçok faktöre bağlıdır:"}
               </p>
 
               <div className="bg-red-50 border border-red-200 rounded-lg p-5 my-6">
                 <h4 className="font-semibold text-red-800 mb-2">
-                  {isEnglish ? 'Important for Non-US Residents:' : 'ABD'de Yaşamayanlar İçin Önemli:'}
+                  {isEnglish ? 'Important for Non-US Residents:' : "ABD'de Yaşamayanlar İçin Önemli:"}
                 </h4>
                 <p className="text-sm text-red-900">
                   {isEnglish
@@ -368,8 +368,8 @@ export default async function LLCFormationGuidePage({
               </h2>
               <p className="text-gray-700 leading-relaxed mb-6">
                 {isEnglish
-                  ? 'Once your LLC is formed, you\'ll likely need certain legal documents for ongoing business operations:'
-                  : 'LLC'niz kurulduktan sonra, devam eden iş operasyonları için muhtemelen belirli hukuki belgelere ihtiyacınız olacaktır:'}
+                  ? "Once your LLC is formed, you'll likely need certain legal documents for ongoing business operations:"
+                  : "LLC'niz kurulduktan sonra, devam eden iş operasyonları için muhtemelen belirli hukuki belgelere ihtiyacınız olacaktır:"}
               </p>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -440,14 +440,14 @@ export default async function LLCFormationGuidePage({
             <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
               {isEnglish
                 ? 'Our Business Starter Kit includes 5 essential legal documents for starting a business in the US. Pay what you can.'
-                : 'Business Starter Kit'imiz ABD'de iş kurmak için 5 temel hukuki belge içerir. Gücünüz kadar ödeyin.'}
+                : "Business Starter Kit'imiz ABD'de iş kurmak için 5 temel hukuki belge içerir. Gücünüz kadar ödeyin."}
             </p>
             <div className="text-center">
               <Link
                 href={`/${lang}/legal-kits/business-starter`}
                 className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
               >
-                {isEnglish ? 'View Business Starter Kit →' : 'Business Starter Kit'i Görüntüle →'}
+                {isEnglish ? 'View Business Starter Kit →' : "Business Starter Kit'i Görüntüle →"}
               </Link>
             </div>
           </div>
