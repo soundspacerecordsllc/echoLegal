@@ -57,7 +57,7 @@ export default async function IRSTaxFactsPage({
         : 'ABD kaynaklı gelir alan ABD dışı tüzel kişiler (şirketler)',
       purpose: isEnglish
         ? 'Similar to W-8BEN but for foreign entities like your non-US company.'
-        : 'W-8BEN'e benzer ancak ABD dışı şirketiniz gibi yabancı tüzel kişiler içindir.',
+        : "W-8BEN'e benzer ancak ABD dışı şirketiniz gibi yabancı tüzel kişiler içindir.",
       whenNeeded: isEnglish
         ? 'When your foreign company receives payments from US sources.'
         : 'Yabancı şirketiniz ABD kaynaklarından ödeme aldığında.',
@@ -72,7 +72,7 @@ export default async function IRSTaxFactsPage({
         : "ABD'li kişiler (vatandaşlar, mukimler ve LLC gibi ABD tüzel kişileri)",
       purpose: isEnglish
         ? 'Provides your TIN (SSN or EIN) to the payer for tax reporting purposes.'
-        : 'Vergi raporlama amaçları için TIN'inizi (SSN veya EIN) ödeme yapana sağlar.',
+        : "Vergi raporlama amaçları için TIN'inizi (SSN veya EIN) ödeme yapana sağlar.",
       whenNeeded: isEnglish
         ? 'When you have a US LLC or are otherwise a "US person" for tax purposes.'
         : "ABD LLC'niz olduğunda veya vergi açısından 'ABD'li kişi' olduğunuzda.",

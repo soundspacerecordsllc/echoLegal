@@ -172,7 +172,7 @@ export default async function LLCFormationGuidePage({
                   <strong>{isEnglish ? 'Tax Flexibility:' : 'Vergi Esnekliği:'}</strong>{' '}
                   {isEnglish
                     ? 'LLCs can choose how they want to be taxed (as a sole proprietorship, partnership, or corporation).'
-                    : 'LLC'ler nasıl vergilendirilmek istediklerini seçebilir (tek sahiplik, ortaklık veya şirket olarak).'}
+                    : "LLC'ler nasıl vergilendirilmek istediklerini seçebilir (tek sahiplik, ortaklık veya şirket olarak)."}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Operational Flexibility:' : 'Operasyonel Esneklik:'}</strong>{' '}
@@ -270,13 +270,13 @@ export default async function LLCFormationGuidePage({
                   <strong>{isEnglish ? 'Operating Agreement:' : 'İşletme Sözleşmesi:'}</strong>{' '}
                   {isEnglish
                     ? 'While not always legally required, an Operating Agreement defines how the LLC will be run.'
-                    : 'Her zaman yasal olarak gerekli olmasa da, İşletme Sözleşmesi LLC'nin nasıl yönetileceğini tanımlar.'}
+                    : "Her zaman yasal olarak gerekli olmasa da, İşletme Sözleşmesi LLC'nin nasıl yönetileceğini tanımlar."}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'EIN (Tax ID):' : 'EIN (Vergi Kimliği):'}</strong>{' '}
                   {isEnglish
                     ? 'Apply for an Employer Identification Number from the IRS.'
-                    : 'IRS'den bir Employer Identification Number (İşveren Kimlik Numarası) başvurusunda bulunun.'}
+                    : "IRS'den bir Employer Identification Number (İşveren Kimlik Numarası) başvurusunda bulunun."}
                 </li>
               </ol>
             </section>
@@ -335,13 +335,13 @@ export default async function LLCFormationGuidePage({
                   <p className="text-gray-700 text-sm">
                     {isEnglish
                       ? 'Reality: Delaware has no state income tax for out-of-state earnings, but you may still owe federal taxes and taxes in your country of residence.'
-                      : 'Gerçek: Delaware'in eyalet dışı kazançlar için eyalet gelir vergisi yoktur, ancak yine de federal vergiler ve ikamet ettiğiniz ülkede vergiler borçlu olabilirsiniz.'}
+                      : "Gerçek: Delaware'in eyalet dışı kazançlar için eyalet gelir vergisi yoktur, ancak yine de federal vergiler ve ikamet ettiğiniz ülkede vergiler borçlu olabilirsiniz."}
                   </p>
                 </div>
 
                 <div className="border-l-4 border-red-500 pl-4">
                   <p className="font-semibold text-red-700 mb-1">
-                    {isEnglish ? 'Myth: "I can use my LLC to open any US bank account."' : 'Yanılgı: "LLC'mle herhangi bir ABD banka hesabı açabilirim."'}
+                    {isEnglish ? 'Myth: "I can use my LLC to open any US bank account."' : "Yanılgı: \"LLC'mle herhangi bir ABD banka hesabı açabilirim.\""}
                   </p>
                   <p className="text-gray-700 text-sm">
                     {isEnglish

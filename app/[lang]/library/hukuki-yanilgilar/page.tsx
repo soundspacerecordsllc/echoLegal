@@ -164,7 +164,7 @@ export default async function LegalMisconceptionsPage({
     },
   ]
 
-  const categories = [...new Set(misconceptions.map(m => m.category))]
+  const categories = Array.from(new Set(misconceptions.map(m => m.category)))
 
   return (
     <div className="min-h-screen bg-white">

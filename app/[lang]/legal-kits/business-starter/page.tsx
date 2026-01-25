@@ -157,7 +157,7 @@ export default async function BusinessStarterKitPage({
         {/* What's Included */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'What's Included' : 'Neler Dahil'}
+            {isEnglish ? "What's Included" : 'Neler Dahil'}
           </h2>
 
           <div className="space-y-4">
@@ -221,7 +221,7 @@ export default async function BusinessStarterKitPage({
 
           <p className="text-center text-gray-600 mb-8 max-w-xl mx-auto">
             {isEnglish
-              ? 'Legal knowledge should be accessible to everyone. Pay $20 if you can—it helps us maintain and expand this resource. If you can't, access for free.'
+              ? "Legal knowledge should be accessible to everyone. Pay $20 if you can—it helps us maintain and expand this resource. If you can't, access for free."
               : 'Hukuki bilgi herkes için erişilebilir olmalı. Eğer ödeyebiliyorsanız 20$ ödeyin—bu kaynağı sürdürmemize ve geliştirmemize yardımcı olur. Ödeyemiyorsanız, ücretsiz erişin.'}
           </p>
 
