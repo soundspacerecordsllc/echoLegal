@@ -104,7 +104,7 @@ export default async function ConsularDocumentsPage({
             {consularProcedures.map((procedure) => (
               <Link
                 key={procedure.slug}
-                href={`/${lang}/consular-documents/${isEnglish ? procedure.slug : procedure.slugTr}`}
+                href={`/${lang}/consular-documents/${procedure.slug}
                 className="border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-[#C9A227] transition-all group"
               >
                 <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#C9A227]">
