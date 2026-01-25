@@ -57,6 +57,11 @@ export default function Header({ lang, dict }: HeaderProps) {
           description: isEnglish ? 'E2, L1, H1B, O1 and more' : 'E2, L1, H1B, O1 ve diğerleri'
         },
         {
+          label: isEnglish ? 'DS-160 Form Guide' : 'DS-160 Formu Rehberi',
+          href: `/${lang}/ds-160-rehberi`,
+          description: isEnglish ? 'Visa application step-by-step' : 'Vize başvurusu adım adım'
+        },
+        {
           label: isEnglish ? 'LLC Formation' : 'LLC Kurulumu',
           href: `/${lang}/amerika/abdde-llc-kurmak`,
           description: isEnglish ? 'State comparison & process' : 'Eyalet karşılaştırması ve süreç'
@@ -97,6 +102,16 @@ export default function Header({ lang, dict }: HeaderProps) {
           label: isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı',
           href: `/${lang}/abdde-banka-hesabi-acmak`,
           description: isEnglish ? 'Opening accounts as non-resident' : 'Yabancı olarak hesap açma',
+        },
+        {
+          label: isEnglish ? 'Receiving US Payments' : 'ABD\'den Ödeme Alma',
+          href: `/${lang}/abd-odemeleri-alma-rehberi`,
+          description: isEnglish ? 'Stripe, PayPal, Wise guide' : 'Stripe, PayPal, Wise rehberi',
+        },
+        {
+          label: isEnglish ? 'US Sales Tax & Nexus' : 'ABD Satış Vergisi',
+          href: `/${lang}/abd-satis-vergisi-rehberi`,
+          description: isEnglish ? 'E-commerce tax obligations' : 'E-ticaret vergi yükümlülükleri',
         },
       ]
     },
