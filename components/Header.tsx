@@ -89,9 +89,19 @@ export default function Header({ lang, dict }: HeaderProps) {
           description: isEnglish ? 'Must-have legal documents' : 'Gerekli hukuki belgeler',
         },
         {
+          label: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik Rehberi',
+          href: `/${lang}/vergi-kimlik-rehberi`,
+          description: isEnglish ? 'EIN, ITIN, SSN, W-8, 1099' : 'EIN, ITIN, SSN, W-8, 1099',
+        },
+        {
           label: isEnglish ? 'IRS & W-8/W-9 Guide' : 'IRS ve W-8/W-9 Rehberi',
           href: `/${lang}/irs-vergiler-ve-w8-w9-gercekleri`,
           description: isEnglish ? 'Tax forms explained' : 'Vergi formları açıklandı',
+        },
+        {
+          label: isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları',
+          href: `/${lang}/ein-itin-ssn-farki`,
+          description: isEnglish ? 'Tax ID numbers explained' : 'Vergi kimlik numaraları',
         },
         {
           label: isEnglish ? 'LLC vs Corporation' : 'LLC mi Corporation mı',

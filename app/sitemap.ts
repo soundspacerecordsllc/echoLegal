@@ -53,6 +53,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/ds-160-rehberi',
     '/abd-odemeleri-alma-rehberi',
     '/abd-satis-vergisi-rehberi',
+    '/ein-itin-ssn-farki',
+    '/1099-vergi-belgeleri',
+    '/vergi-kimlik-rehberi',
   ]
 
   // Legal kit pages
