@@ -1,12 +1,16 @@
 {
   "nav": {
     "home": "Ana Sayfa",
+    "usImmigrationBusiness": "ABD'ye Gelmek & İş Kurmak",
+    "legalGuides": "Hukuki Rehberler",
     "contracts": "Sözleşmeler",
+    "starterKits": "Başlangıç Kitleri",
+    "officialSources": "Resmî Kaynaklar",
+    "support": "Destek",
+    "language": "Dil",
     "encyclopedia": "Ansiklopedi",
     "library": "Kütüphane",
-    "legalKits": "Hukuki Kitler",
-    "support": "Destek",
-    "language": "Dil"
+    "legalKits": "Hukuki Kitler"
   },
   "home": {
     "hero": "Hukuki bilgi herkesin olmalı.",

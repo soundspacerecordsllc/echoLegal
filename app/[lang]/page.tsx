@@ -12,28 +12,31 @@ export default async function Home({
 
   return (
     <div className="bg-[#ffffff] min-h-screen">
-      {/* Minimal Header */}
+      {/* Professional Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#ffffff] border-b border-gray-100">
         <nav className="flex justify-between items-center px-8 py-5">
           <Link href={`/${lang}`} className="text-2xl font-black tracking-tight text-[#000000]">
-            ECHOLEGAL
+            EchoLegal
           </Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}/library`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Library' : 'Kütüphane'}
+          <div className="hidden md:flex items-center gap-6">
+            <Link href={`/${lang}/amerika`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Coming to the US' : "ABD'ye Gelmek & İş Kurmak"}
             </Link>
-            <Link href={`/${lang}/contracts`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
+            <Link href={`/${lang}/library`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Legal Guides' : 'Hukuki Rehberler'}
+            </Link>
+            <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
               {isEnglish ? 'Contracts' : 'Sözleşmeler'}
             </Link>
-            <Link href={`/${lang}/legal-kits`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Kits' : 'Kitler'}
+            <Link href={`/${lang}/legal-kits`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Starter Kits' : 'Başlangıç Kitleri'}
             </Link>
-            <Link href={`/${lang}/consular-documents`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Consular' : 'Konsolosluk'}
+            <Link href={`/${lang}/consular-documents`} className="text-sm font-medium hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Official Sources' : 'Resmî Kaynaklar'}
             </Link>
             <Link
               href={`/${lang === 'en' ? 'tr' : 'en'}`}
-              className="flex items-center gap-2 text-sm font-semibold border-2 border-[#000000] rounded-full px-4 py-2 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
+              className="text-sm font-semibold border border-[#000000] rounded-full px-4 py-1.5 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
             >
               {isEnglish ? 'TR' : 'EN'}
             </Link>
@@ -317,20 +320,20 @@ export default async function Home({
             </div>
             
             <div className="flex flex-wrap gap-6 text-sm">
+              <Link href={`/${lang}/amerika`} className="hover:opacity-60 transition-opacity text-[#000000]">
+                {isEnglish ? 'Coming to the US' : "ABD'ye Gelmek"}
+              </Link>
               <Link href={`/${lang}/library`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Library' : 'Kütüphane'}
+                {isEnglish ? 'Legal Guides' : 'Hukuki Rehberler'}
               </Link>
               <Link href={`/${lang}/contracts`} className="hover:opacity-60 transition-opacity text-[#000000]">
                 {isEnglish ? 'Contracts' : 'Sözleşmeler'}
               </Link>
               <Link href={`/${lang}/legal-kits`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Kits' : 'Kitler'}
+                {isEnglish ? 'Starter Kits' : 'Başlangıç Kitleri'}
               </Link>
               <Link href={`/${lang}/consular-documents`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Consular' : 'Konsolosluk'}
-              </Link>
-              <Link href={`/${lang}/support`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Support' : 'Destek'}
+                {isEnglish ? 'Official Sources' : 'Resmî Kaynaklar'}
               </Link>
             </div>
           </div>

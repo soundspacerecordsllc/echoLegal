@@ -1,12 +1,16 @@
 {
   "nav": {
     "home": "Home",
+    "usImmigrationBusiness": "Coming to the US",
+    "legalGuides": "Legal Guides",
     "contracts": "Contracts",
+    "starterKits": "Starter Kits",
+    "officialSources": "Official Sources",
+    "support": "Support",
+    "language": "Language",
     "encyclopedia": "Encyclopedia",
     "library": "Library",
-    "legalKits": "Legal Kits",
-    "support": "Support",
-    "language": "Language"
+    "legalKits": "Legal Kits"
   },
   "home": {
     "hero": "Legal knowledge should belong to everyone.",
