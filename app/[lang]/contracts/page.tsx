@@ -129,7 +129,7 @@ export default async function ContractsPage({
         <p className="text-base text-gray-500 mb-12">
           {isEnglish
             ? 'I support EchoLegal – $20 recommended. Download for free.'
-            : 'EchoLegal\'i destekliyorum – 20$ önerilir. Ücretsiz indir.'}
+            : 'EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir; isterseniz ücretsiz indirebilirsiniz.'}
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -34,7 +34,7 @@ export default async function LegalKitsPage({
   const kits = [
     {
       slug: 'business-starter',
-      title: 'ABD Business Starter Legal Kit',
+      title: isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti',
       subtitle: isEnglish ? 'Essential Documents for US Business' : 'ABD İşi İçin Temel Belgeler',
       description: isEnglish
         ? '5 essential legal documents for Turkish entrepreneurs starting or operating a business in the United States. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
@@ -45,7 +45,7 @@ export default async function LegalKitsPage({
     },
     {
       slug: 'freelancer-essentials',
-      title: isEnglish ? 'Freelancer Essentials Kit' : 'Serbest Çalışan Temel Kit',
+      title: isEnglish ? 'Freelancer Essentials Kit' : 'Serbest Çalışan Temel Kiti',
       subtitle: isEnglish ? 'Protect Your Freelance Business' : 'Serbest İşinizi Koruyun',
       description: isEnglish
         ? 'Essential contracts for freelancers working with US clients. Service Agreement, NDA, and Independent Contractor Agreement.'
@@ -57,7 +57,7 @@ export default async function LegalKitsPage({
     {
       slug: 'ecommerce-bundle',
       title: isEnglish ? 'E-Commerce Legal Bundle' : 'E-Ticaret Hukuki Paketi',
-      subtitle: isEnglish ? 'Documents for Online Sellers' : 'Online Satıcılar İçin Belgeler',
+      subtitle: isEnglish ? 'Documents for Online Sellers' : 'Çevrimiçi Satıcılar İçin Belgeler',
       description: isEnglish
         ? 'Privacy Policy, Terms of Service, and Return Policy templates for e-commerce businesses.'
         : 'E-ticaret işletmeleri için Gizlilik Politikası, Kullanım Koşulları ve İade Politikası şablonları.',
@@ -107,7 +107,7 @@ export default async function LegalKitsPage({
           <p className="text-xl text-gray-600 max-w-2xl">
             {isEnglish
               ? 'Curated bundles of essential legal documents for specific business needs. I support EchoLegal – $20 recommended. Free access available.'
-              : 'Belirli iş ihtiyaçları için seçilmiş temel hukuki belge paketleri. EchoLegal\'i destekliyorum – 20$ önerilir. Ücretsiz erişim mevcut.'}
+              : 'Belirli iş ihtiyaçları için özenle hazırlanmış hukuki belge paketleri. EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir; isterseniz ücretsiz erişim sağlayabilirsiniz.'}
           </p>
         </div>
 

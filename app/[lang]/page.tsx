@@ -56,11 +56,11 @@ export default async function Home({
           {/* Right - Content */}
           <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-8 bg-[#ffffff]">
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-tight mb-8 text-[#000000]">
-              LEGAL<br />
-              KNOWLEDGE<br />
-              SHOULD<br />
-              BELONG TO<br />
-              EVERYONE.
+              {isEnglish ? (
+                <>LEGAL<br />KNOWLEDGE<br />SHOULD<br />BELONG TO<br />EVERYONE.</>
+              ) : (
+                <>HUKUKİ<br />BİLGİ<br />HERKESİN<br />HAKKI<br />OLMALI.</>
+              )}
             </h1>
             
             <p className="text-base md:text-lg text-[#444444] mb-3 max-w-md">
@@ -71,9 +71,9 @@ export default async function Home({
             </p>
             
             <p className="text-base md:text-lg text-[#444444] mb-8 max-w-md">
-              {isEnglish 
+              {isEnglish
                 ? 'I support EchoLegal – $20 recommended. Free access available.'
-                : 'Ödeyebileceğiniz kadar ödeyin. 20$ önerilir. Talep üzerine ücretsiz erişim mevcuttur.'
+                : 'EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir; isterseniz ücretsiz erişim sağlayabilirsiniz.'
               }
             </p>
 
@@ -238,12 +238,12 @@ export default async function Home({
                   {isEnglish ? 'Document Bundle' : 'Belge Paketi'}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
-                  ABD Business Starter Legal Kit
+                  {isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti'}
                 </h2>
                 <p className="text-lg text-[#444444] mb-6">
                   {isEnglish
                     ? '5 essential legal documents for Turkish entrepreneurs starting a business in the US. NDA, Service Agreement, Privacy Policy & more.'
-                    : 'ABD\'de iş kuran Türk girişimciler için 5 temel hukuki belge. NDA, Hizmet Sözleşmesi, Gizlilik Politikası ve daha fazlası.'}
+                    : 'ABD\'de iş kuran Türk girişimciler için 5 temel hukuki belge: NDA, Hizmet Sözleşmesi, Gizlilik Politikası ve daha fazlası.'}
                 </p>
                 <div className="flex flex-wrap gap-3 mb-6 text-sm text-gray-600">
                   <span className="bg-white px-3 py-1 rounded-full border border-gray-200">📄 5 {isEnglish ? 'Documents' : 'Belge'}</span>
@@ -338,9 +338,9 @@ export default async function Home({
           {/* Legal Disclaimer */}
           <div className="mt-10 pt-8 border-t border-gray-100">
             <p className="text-xs text-[#888888] leading-relaxed max-w-4xl">
-              {isEnglish 
+              {isEnglish
                 ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship. Laws vary by jurisdiction and individual circumstances differ. You should consult with a licensed attorney in your jurisdiction before relying on any information or documents from this site.'
-                : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanımı avukat-müvekkil ilişkisi oluşturmaz.'
+                : 'EchoLegal yalnızca genel bilgilendirme amaçlı eğitim niteliğinde hukuki bilgiler ve belge şablonları sunar. Bu sitedeki hiçbir içerik hukuki tavsiye değildir; sitenin kullanımı avukat-müvekkil ilişkisi oluşturmaz.'
               }
             </p>
             <p className="text-xs text-[#888888] mt-4">

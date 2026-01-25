@@ -146,23 +146,23 @@ export interface LegalKit {
 export const legalKits: LegalKit[] = [
   {
     slug: 'abd-business-starter-legal-kit',
-    titleTr: 'ABD Business Starter Legal Kit',
+    titleTr: 'ABD İş Başlangıç Hukuk Kiti',
     titleEn: 'US Business Starter Legal Kit',
-    descriptionTr: "ABD'de iş kurmak isteyenler için temel hukuki şablon ve rehber paketi.",
+    descriptionTr: "ABD'de iş kurmak isteyen girişimciler için temel hukuki şablon ve rehber paketi.",
     descriptionEn: 'Essential legal templates and guides for those starting a business in the US.',
     price: 20,
     includes: [
-      'LLC Operating Agreement şablonu (EN/TR)',
+      'LLC İşletme Sözleşmesi şablonu (EN/TR)',
       'NDA şablonu (EN/TR)',
-      'Independent Contractor Agreement şablonu (EN/TR)',
-      'Service Agreement şablonu (EN/TR)',
+      'Bağımsız Yüklenici Sözleşmesi şablonu (EN/TR)',
+      'Hizmet Sözleşmesi şablonu (EN/TR)',
       'EIN başvuru rehberi',
-      'Eyalet seçim karşılaştırma tablosu'
+      'Eyalet seçimi karşılaştırma tablosu'
     ],
     forWhom: [
       "ABD'de LLC kurmayı planlayan girişimciler",
-      'E-ticaret veya dijital hizmet sunacak kişiler',
-      'Freelancer olarak ABD müşterilerine hizmet verenler'
+      'E-ticaret veya dijital hizmet sunmayı düşünen kişiler',
+      "Serbest çalışan olarak ABD'li müşterilere hizmet verenler"
     ],
     notFor: [
       'Vize veya göçmenlik danışmanlığı arayanlar',
@@ -189,11 +189,11 @@ export const legalKits: LegalKit[] = [
     ],
     forWhom: [
       "ABD'ye turist vizesiyle gelmeyi planlayanlar",
-      'Öğrenci vizesi başvurusu yapacaklar',
+      'Öğrenci vizesi başvurusu yapacak olanlar',
       'İş amaçlı kısa süreli ziyaret planlayanlar'
     ],
     notFor: [
-      'Vize başvurusu yapılmasını isteyenler',
+      'Vize başvurusunun kendileri adına yapılmasını isteyenler',
       'Mülakat hazırlığı için danışmanlık arayanlar',
       'Red sonrası itiraz desteği bekleyenler'
     ],
@@ -203,25 +203,25 @@ export const legalKits: LegalKit[] = [
   },
   {
     slug: 'tr-us-legal-bridge-mini-library',
-    titleTr: 'TR-US Legal Bridge Mini Library',
+    titleTr: 'TR-US Hukuki Köprü Mini Kütüphanesi',
     titleEn: 'TR-US Legal Bridge Mini Library',
-    descriptionTr: 'Türkiye-ABD arasında iş yapanlar için kapsamlı sözleşme ve rehber kütüphanesi.',
+    descriptionTr: 'Türkiye ile ABD arasında iş yapanlar için kapsamlı sözleşme ve rehber kütüphanesi.',
     descriptionEn: 'Comprehensive contract and guide library for those doing business between Turkey and the US.',
     price: 20,
     includes: [
       'Tüm sözleşme şablonları (7 adet, EN/TR)',
-      'ABD Business Starter Kit içeriği',
+      'ABD İş Başlangıç Hukuk Kiti içeriği',
       'Göçmenlik rehberi',
       'Vergi temelleri özeti',
       'NY hukuku tercih rehberi'
     ],
     forWhom: [
-      'Türkiye-ABD arasında düzenli iş yapanlar',
+      'Türkiye ile ABD arasında düzenli iş yapanlar',
       'Her iki ülkede de şirketi olanlar',
       'Kapsamlı şablon kütüphanesi isteyenler'
     ],
     notFor: [
-      'Tek seferlik basit ihtiyaçlar için',
+      'Tek seferlik basit ihtiyaçları olanlar',
       'Hukuki temsil veya danışmanlık arayanlar',
       'Dava veya uyuşmazlık desteği isteyenler'
     ],

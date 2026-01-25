@@ -61,10 +61,10 @@ export default async function LibraryPage({
     },
     {
       id: 'tax-compliance',
-      title: isEnglish ? 'Tax & Compliance' : 'Vergi ve Uyum',
+      title: isEnglish ? 'Tax & Compliance' : 'Vergi ve Yasal Uyum',
       description: isEnglish
         ? 'Understanding US tax obligations and IRS requirements'
-        : 'ABD vergi yükümlülüklerini ve IRS gereksinimlerini anlama',
+        : 'ABD vergi yükümlülüklerini ve IRS gereksinimlerini anlamak',
       articles: [
         {
           slug: 'irs-vergi-gercekleri',
@@ -97,14 +97,14 @@ export default async function LibraryPage({
     },
     {
       id: 'contracts',
-      title: isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler',
+      title: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
       description: isEnglish
         ? 'Understanding the contracts every business needs'
-        : 'Her işletmenin ihtiyaç duyduğu sözleşmeleri anlama',
+        : 'Her işletmenin ihtiyaç duyduğu sözleşmeleri anlamak',
       articles: [
         {
           slug: 'temel-sozlesmeler',
-          title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : "ABD'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler",
+          title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : "ABD'de İş Yapan Türkler İçin Temel Sözleşmeler",
           description: isEnglish
             ? 'The contracts you need when starting a business in the United States.'
             : "ABD'de iş kurarken ihtiyacınız olan sözleşmeler.",
@@ -155,7 +155,7 @@ export default async function LibraryPage({
           <p className="text-xl text-gray-600 max-w-3xl">
             {isEnglish
               ? 'Factual, reference-only guides for Turkish entrepreneurs navigating US business and legal requirements. No advice—just clear explanations.'
-              : 'ABD iş ve hukuki gereksinimlerinde yol alan Türk girişimciler için gerçeklere dayalı, yalnızca referans rehberler. Tavsiye yok—sadece net açıklamalar.'}
+              : 'ABD\'de iş ve hukuki gereksinimlerle uğraşan Türk girişimciler için gerçeklere dayalı referans rehberleri. Tavsiye vermiyoruz; yalnızca açık ve net açıklamalar sunuyoruz.'}
           </p>
         </div>
 
@@ -239,14 +239,14 @@ export default async function LibraryPage({
               <p className="text-gray-600">
                 {isEnglish
                   ? 'Our Business Starter Kit includes 5 essential legal documents for US business.'
-                  : "Business Starter Kit'imiz ABD işi için 5 temel hukuki belge içerir."}
+                  : "ABD İş Başlangıç Hukuk Kitimiz, ABD'deki işiniz için 5 temel hukuki belge içerir."}
               </p>
             </div>
             <Link
               href={`/${lang}/legal-kits/business-starter`}
               className="bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors whitespace-nowrap"
             >
-              {isEnglish ? 'View Business Starter Kit →' : "Business Starter Kit'i Görüntüle →"}
+              {isEnglish ? 'View Business Starter Kit →' : 'Kiti Görüntüle →'}
             </Link>
           </div>
         </section>
