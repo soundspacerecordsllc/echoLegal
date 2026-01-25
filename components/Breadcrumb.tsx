@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+const SITE_URL = 'https://echo-legal.com'
+
 export interface BreadcrumbItem {
   label: string
   href?: string
@@ -13,13 +15,38 @@ interface BreadcrumbProps {
 export default function Breadcrumb({ items, lang }: BreadcrumbProps) {
   const homeLabel = lang === 'en' ? 'Home' : 'Ana Sayfa'
 
+  // Generate JSON-LD schema
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: homeLabel,
+        item: `${SITE_URL}/${lang}`,
+      },
+      ...items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: item.label,
+        ...(item.href && { item: `${SITE_URL}${item.href}` }),
+      })),
+    ],
+  }
+
   return (
-    <nav
-      className="text-sm text-gray-500 mb-8"
-      aria-label="Breadcrumb"
-      itemScope
-      itemType="https://schema.org/BreadcrumbList"
-    >
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <nav
+        className="text-sm text-gray-500 mb-8"
+        aria-label="Breadcrumb"
+        itemScope
+        itemType="https://schema.org/BreadcrumbList"
+      >
       <ol className="flex flex-wrap items-center gap-1">
         <li
           itemProp="itemListElement"
@@ -62,6 +89,7 @@ export default function Breadcrumb({ items, lang }: BreadcrumbProps) {
           </li>
         ))}
       </ol>
-    </nav>
+      </nav>
+    </>
   )
 }

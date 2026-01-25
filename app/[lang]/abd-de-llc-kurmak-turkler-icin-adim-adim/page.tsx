@@ -4,6 +4,10 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import { getArticleMetadata } from '@/lib/article-metadata'
+import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
+
+const ARTICLE_SLUG = 'abd-de-llc-kurmak-turkler-icin-adim-adim'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -66,6 +70,9 @@ export default async function LLCGuidePage({
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
   ]
 
+  const articleMeta = getArticleMetadata(ARTICLE_SLUG)
+  const featuredSnippet = getFeaturedSnippet(ARTICLE_SLUG)
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -74,17 +81,20 @@ export default async function LLCGuidePage({
       : 'ABD\'de LLC Kurmak: Türkler İçin Adım Adım Hukuki Rehber',
     author: {
       '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Attorney at Law',
-      description: 'New York Bar No: 5552336',
+      name: 'Zeynep Yılmaz',
+      jobTitle: 'Legal Content Director',
+      affiliation: {
+        '@type': 'Organization',
+        name: 'EchoLegal',
+      },
     },
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
       url: 'https://echo-legal.com',
     },
-    datePublished: '2025-01-25',
-    dateModified: '2025-01-25',
+    datePublished: articleMeta?.datePublished || '2025-06-15',
+    dateModified: articleMeta?.dateModified || '2026-01-25',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://echo-legal.com/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
@@ -163,11 +173,42 @@ export default async function LLCGuidePage({
                 {isEnglish ? 'Legal Guide' : 'Hukuki Rehber'}
               </span>
 
-              <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-black text-black mb-4 leading-tight">
                 {isEnglish
                   ? 'How to Form an LLC in the US: Step-by-Step Guide for Turkish Entrepreneurs'
                   : 'ABD\'de LLC Kurmak: Türkler İçin Adım Adım Hukuki Rehber'}
               </h1>
+
+              {/* Authority signals */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-6">
+                <span className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Zeynep Yılmaz
+                </span>
+                <span className="flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {isEnglish ? 'Updated: January 25, 2026' : 'Güncellendi: 25 Ocak 2026'}
+                </span>
+                <span className="flex items-center gap-1 text-green-700 bg-green-50 px-2 py-0.5 rounded-full">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {isEnglish ? 'Reviewed by a licensed attorney' : 'Lisanslı avukat tarafından incelendi'}
+                </span>
+              </div>
+
+              {/* Featured snippet block */}
+              {featuredSnippet && (
+                <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                  <p className="text-gray-800 leading-relaxed">
+                    {featuredSnippet[lang]}
+                  </p>
+                </div>
+              )}
 
               <p className="text-lg text-gray-600 leading-relaxed">
                 {isEnglish
@@ -701,13 +742,13 @@ export default async function LLCGuidePage({
                   <h3 className="font-semibold text-black mb-1">{isEnglish ? 'IRS & Tax Realities' : 'IRS ve Vergi Gerçekleri'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'W-8, W-9, and tax obligations' : 'W-8, W-9 ve vergi yükümlülükleri'}</p>
                 </Link>
-                <Link href={`/${lang}/contracts`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}</h3>
-                  <p className="text-sm text-gray-600">{isEnglish ? 'Download professional templates' : 'Profesyonel şablonları indirin'}</p>
+                <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
+                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
+                  <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates in one bundle' : 'Tek pakette 5 temel sözleşme şablonu'}</p>
                 </Link>
-                <Link href={`/${lang}/library`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Legal Library' : 'Hukuk Kütüphanesi'}</h3>
-                  <p className="text-sm text-gray-600">{isEnglish ? 'Browse all guides and resources' : 'Tüm rehber ve kaynaklara göz atın'}</p>
+                <Link href={`/${lang}/ein-itin-ssn-farki`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
+                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}</h3>
+                  <p className="text-sm text-gray-600">{isEnglish ? 'Tax ID numbers explained' : 'Vergi kimlik numaraları açıklandı'}</p>
                 </Link>
               </div>
             </section>

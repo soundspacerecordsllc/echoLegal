@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { templatesRegistry } from '@/lib/templates-registry'
 
 /**
  * Dynamic Sitemap Generator for EchoLegal
@@ -21,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contracts/privacy-policy',
     '/contracts/terms-of-service',
     '/contracts/influencer-agreement',
+    '/templates',
     '/consular-documents',
     '/encyclopedia',
     '/encyclopedia/what-is-nda',
@@ -29,7 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/legal/terms',
     '/legal/disclaimer',
     '/legal/cookies',
+    '/about',
+    '/about/editorial-policy',
   ]
+
+  // Get unique template slugs from registry
+  const templateSlugs = Array.from(new Set(templatesRegistry.map(t => t.slug)))
 
   // Library pages (educational content)
   const libraryPages = [
@@ -51,6 +58,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/ds-160-rehberi',
     '/abd-odemeleri-alma-rehberi',
     '/abd-satis-vergisi-rehberi',
+    '/ein-itin-ssn-farki',
+    '/1099-vergi-belgeleri',
+    '/vergi-kimlik-rehberi',
   ]
 
   // Legal kit pages
@@ -61,10 +71,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Checklist pages
   const checklistPages = [
-    '/checklists',
-    '/checklists/llc-kontrol-listesi',
-    '/checklists/w8-w9-karar-haritasi',
-    '/checklists/irs-mektup-rehberi',
+    '/checklists/llc-checklist',
+    '/checklists/bank-account-checklist',
+    '/checklists/tax-documents-checklist',
+  ]
+
+  // State-specific LLC pages
+  const stateLLCPages = [
+    '/amerika/llc-eyalet/florida',
   ]
 
   // Amerika Hub pages
@@ -107,9 +121,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Helper to determine priority
   const getPriority = (page: string, lang: string): number => {
     if (page === '') return 1.0
-    if (page === '/contracts' || page === '/library' || page === '/legal-kits') return 0.9
+    if (page === '/contracts' || page === '/library' || page === '/legal-kits' || page === '/templates') return 0.9
     // New standalone guide pages get high priority
     if (guidePages.includes(page)) return 0.85
+    if (page.startsWith('/templates/')) return 0.75
     if (page.startsWith('/contracts/')) return 0.8
     if (page.startsWith('/legal-kits/')) return 0.8
     if (page.startsWith('/library/')) return 0.8
@@ -125,7 +140,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const getChangeFreq = (page: string): 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' => {
     if (page === '') return 'weekly'
     if (page.startsWith('/legal/')) return 'yearly'
-    if (page.startsWith('/contracts') || page.startsWith('/legal-kits')) return 'monthly'
+    if (page.startsWith('/contracts') || page.startsWith('/legal-kits') || page.startsWith('/templates')) return 'monthly'
     return 'monthly'
   }
 
@@ -136,6 +151,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guidePages,
     ...legalKitPages,
     ...checklistPages,
+    ...stateLLCPages,
     ...amerikaPages,
   ]
 
@@ -158,6 +174,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
+      })
+    }
+
+    // Add template pages
+    for (const slug of templateSlugs) {
+      const page = `/templates/${slug}`
+      urls.push({
+        url: `${baseUrl}/${lang}${page}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.75,
       })
     }
   }
