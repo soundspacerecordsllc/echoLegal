@@ -192,7 +192,7 @@ export default async function IRSLetterGuidePage({
                 <span className="text-gray-500 text-sm ml-2">→</span>
               </Link>
               <Link href={`/${lang}/library/hukuki-yanilgilar`} className="block border border-gray-200 rounded-lg p-4 hover:border-gray-300 transition-colors">
-                <span className="font-medium text-black">{isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar'}</span>
+                <span className="font-medium text-black">{isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}</span>
                 <span className="text-gray-500 text-sm ml-2">→</span>
               </Link>
             </div>

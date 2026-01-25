@@ -81,7 +81,7 @@ export default async function LLCVisaMythPage({
             <p className="text-xl text-gray-600 leading-relaxed">
               {isEnglish
                 ? 'One of the most common misconceptions among international entrepreneurs: forming a US LLC does not, by itself, grant any visa or immigration benefit.'
-                : 'Uluslararası girişimciler arasındaki en yaygın yanılgılardan biri: ABD LLC kurmak tek başına herhangi bir vize veya göçmenlik avantajı sağlamaz.'}
+                : 'Uluslararası girişimciler arasındaki en sık yapılan hatalardan biri: ABD LLC kurmak tek başına herhangi bir vize veya göçmenlik avantajı sağlamaz.'}
             </p>
           </header>
 
@@ -292,7 +292,7 @@ export default async function LLCVisaMythPage({
                 <p className="text-sm text-gray-600">{isEnglish ? 'If you do decide to form an LLC' : 'LLC kurmaya karar verirseniz'}</p>
               </Link>
               <Link href={`/${lang}/library/hukuki-yanilgilar`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar'}</h3>
+                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'More myths vs. facts' : 'Daha fazla mit ve gerçek'}</p>
               </Link>
             </div>

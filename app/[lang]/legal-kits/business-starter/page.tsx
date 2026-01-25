@@ -228,10 +228,10 @@ export default async function BusinessStarterKitPage({
           <div className="space-y-4 max-w-md mx-auto">
             {/* Pay Option */}
             <a
-              href="https://buy.stripe.com/test_business_starter_kit"
+              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
               className="block w-full bg-[#C9A227] text-white text-center py-4 px-6 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-all hover:shadow-lg"
             >
-              {isEnglish ? 'Pay $20 (Recommended)' : '20$ Öde (Önerilen)'}
+              💳 {isEnglish ? 'I support EchoLegal – $20' : 'EchoLegal\'i destekliyorum – $20'}
             </a>
             <p className="text-center text-sm text-gray-500">
               {isEnglish ? 'Instant access to all 5 documents' : 'Tüm 5 belgeye anında erişim'}
@@ -239,14 +239,15 @@ export default async function BusinessStarterKitPage({
 
             {/* Free Option */}
             <div className="pt-4 border-t border-gray-200">
-              <Link
-                href={`/${lang}/contracts`}
-                className="block w-full bg-gray-100 text-gray-700 text-center py-4 px-6 rounded-lg font-semibold hover:bg-gray-200 transition-all"
+              <a
+                href="/documents/kits/abd-business-starter-kit.zip"
+                download
+                className="block w-full bg-gray-800 text-white text-center py-4 px-6 rounded-lg font-semibold hover:bg-gray-700 transition-all"
               >
-                {isEnglish ? 'Access Documents Individually (Free)' : 'Belgelere Tek Tek Eriş (Ücretsiz)'}
-              </Link>
+                📄 {isEnglish ? 'Download for free' : 'Ücretsiz indir'}
+              </a>
               <p className="text-center text-sm text-gray-500 mt-2">
-                {isEnglish ? 'Download each document from our contracts library' : 'Her belgeyi sözleşme kütüphanemizden indirin'}
+                {isEnglish ? 'ZIP bundle with all 5 documents' : '5 belgenin tamamını içeren ZIP paketi'}
               </p>
             </div>
           </div>
@@ -300,7 +301,7 @@ export default async function BusinessStarterKitPage({
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <h3 className="font-semibold text-black mb-1">
-                {isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+                {isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
               </h3>
               <p className="text-sm text-gray-600">
                 {isEnglish ? 'Myths vs. facts about doing business in the US.' : "ABD'de iş yapma hakkında efsaneler ve gerçekler."}
