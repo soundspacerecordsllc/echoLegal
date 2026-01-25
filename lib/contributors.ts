@@ -1,7 +1,7 @@
 // lib/contributors.ts
 // Contributor data model for EchoLegal
-// Foundation for future attorney contributor system
-// Currently only Zeynep is active - contributors disabled by default
+// Foundation for future contributor system
+// Editorial Team is default - individual contributors disabled by default
 
 export type ContributorRole = 'author' | 'reviewer' | 'contributor'
 
@@ -24,33 +24,34 @@ export type Contributor = {
   linkedIn?: string
   isActive: boolean
   isAttorney: boolean
+  isTeam?: boolean // true for organizational author
   jurisdictions?: string[]
 }
 
-// Canonical authority - always active
-export const ZEYNEP: Contributor = {
-  id: 'zeynep-yilmaz',
+// Canonical authority - Editorial Team (organizational author)
+export const EDITORIAL_TEAM: Contributor = {
+  id: 'editorial-team',
   name: {
-    en: 'Zeynep Yılmaz',
-    tr: 'Zeynep Yılmaz',
+    en: 'EchoLegal Editorial Team',
+    tr: 'EchoLegal Editör Ekibi',
   },
   title: {
-    en: 'Legal Content Director',
-    tr: 'Hukuki İçerik Direktörü',
+    en: 'Legal Content Team',
+    tr: 'Hukuki İçerik Ekibi',
   },
-  credentials: ['J.D.', 'LL.M.'],
+  credentials: [],
   bio: {
-    en: 'Zeynep oversees all legal content at EchoLegal, ensuring accuracy and clarity for Turkish entrepreneurs navigating US legal systems.',
-    tr: 'Zeynep, EchoLegal\'daki tüm hukuki içeriği denetler ve ABD hukuk sistemlerinde yol alan Türk girişimciler için doğruluk ve netlik sağlar.',
+    en: 'The EchoLegal Editorial Team researches and maintains legal content for Turkish entrepreneurs navigating US legal systems. All content is reviewed for accuracy.',
+    tr: 'EchoLegal Editör Ekibi, ABD hukuk sistemlerinde yol alan Türk girişimciler için hukuki içerikleri araştırır ve sürdürür. Tüm içerikler doğruluk açısından incelenir.',
   },
   isActive: true,
-  isAttorney: true,
-  jurisdictions: ['New York', 'Turkey'],
+  isAttorney: false,
+  isTeam: true,
 }
 
-// Future contributors - disabled by default
+// Future individual contributors - disabled by default
 export const contributors: Record<string, Contributor> = {
-  'zeynep-yilmaz': ZEYNEP,
+  'editorial-team': EDITORIAL_TEAM,
   // Future contributors can be added here:
   // 'attorney-name': { ... isActive: false }
 }
@@ -64,5 +65,5 @@ export function getActiveContributors(): Contributor[] {
 }
 
 export function getCanonicalAuthor(): Contributor {
-  return ZEYNEP
+  return EDITORIAL_TEAM
 }

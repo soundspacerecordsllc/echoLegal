@@ -126,9 +126,36 @@ export default function Header({ lang, dict }: HeaderProps) {
       ]
     },
     {
-      key: 'contracts',
-      label: dict.nav.contracts,
-      href: `/${lang}/contracts`,
+      key: 'templates',
+      label: isEnglish ? 'Templates' : 'Şablonlar',
+      href: `/${lang}/templates`,
+      dropdown: [
+        {
+          label: isEnglish ? 'View All Templates' : 'Tüm Şablonları Gör',
+          href: `/${lang}/templates`,
+          description: isEnglish ? 'Browse 50+ legal templates' : '50+ hukuki şablona göz atın'
+        },
+        {
+          label: isEnglish ? 'Contracts' : 'Sözleşmeler',
+          href: `/${lang}/templates#contracts`,
+          description: isEnglish ? 'NDA, Service Agreement, etc.' : 'NDA, Hizmet Sözleşmesi, vb.'
+        },
+        {
+          label: isEnglish ? 'Business Documents' : 'İş Belgeleri',
+          href: `/${lang}/templates#business`,
+          description: isEnglish ? 'Invoice, Receipt, Authorization' : 'Fatura, Makbuz, Yetki'
+        },
+        {
+          label: isEnglish ? 'Tax & IRS Forms' : 'Vergi & IRS Formları',
+          href: `/${lang}/templates#tax`,
+          description: isEnglish ? 'W-8, EIN, ITIN checklists' : 'W-8, EIN, ITIN kontrol listeleri'
+        },
+        {
+          label: isEnglish ? 'Immigration & Consular' : 'Göç & Konsolosluk',
+          href: `/${lang}/templates#immigration`,
+          description: isEnglish ? 'Visa letters, Sponsor letters' : 'Vize mektupları, Sponsor mektupları'
+        },
+      ]
     },
     {
       key: 'starterKits',
