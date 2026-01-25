@@ -48,6 +48,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/irs-vergiler-ve-w8-w9-gercekleri',
     '/abdde-banka-hesabi-acmak',
     '/llc-mi-corporation-mi',
+    '/ds-160-rehberi',
+    '/abd-odemeleri-alma-rehberi',
+    '/abd-satis-vergisi-rehberi',
   ]
 
   // Legal kit pages
