@@ -47,8 +47,8 @@
 |------|-------|--------|-------------------|
 | Legal Kits Index | `/tr/amerika/legal-kitler` | ✅ Complete | No |
 | ABD Business Starter Kit | `/tr/amerika/legal-kitler/abd-business-starter-legal-kit` | ✅ Complete | No |
-| ABD'ye Gelmeden Önce Rehberi | `/tr/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi` | ⏳ Pending | No |
-| TR-US Legal Bridge Library | `/tr/amerika/legal-kitler/tr-us-legal-bridge-mini-library` | ⏳ Pending | No |
+| ABD'ye Gelmeden Önce Rehberi | `/tr/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi` | ✅ Complete | No |
+| TR-US Legal Bridge Library | `/tr/amerika/legal-kitler/tr-us-legal-bridge-mini-library` | ✅ Complete | No |
 
 ---
 
