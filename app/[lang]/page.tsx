@@ -211,7 +211,7 @@ export default async function Home({
               >
                 <span className="text-3xl mb-4 block">❌</span>
                 <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                  {isEnglish ? 'Common Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+                  {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
                 </h3>
                 <p className="text-gray-600 text-sm">
                   {isEnglish

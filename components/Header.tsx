@@ -82,7 +82,7 @@ export default function Header({ lang, dict }: HeaderProps) {
           href: `/${lang}/library/irs-vergi-gercekleri`,
         },
         {
-          label: isEnglish ? 'Common Misconceptions' : 'Yaygın Yanılgılar',
+          label: isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hatalar',
           href: `/${lang}/library/hukuki-yanilgilar`,
         },
         {

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : 'Hukuki Referans Kütüphanesi | EchoLegal',
     description: isEnglish
       ? 'Comprehensive legal reference guides for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and more.'
-      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi gerçekleri, yaygın yanılgılar ve daha fazlası.",
+      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi gerçekleri, sık yapılan hatalar ve daha fazlası.",
   }
 }
 
@@ -82,11 +82,11 @@ export default async function LibraryPage({
       title: isEnglish ? 'Legal Truth Library' : 'Hukuki Gerçekler Kütüphanesi',
       description: isEnglish
         ? 'Common misconceptions vs. legal realities'
-        : 'Yaygın yanılgılar ve hukuki gerçekler',
+        : 'Sık yapılan hatalar ve hukuki gerçekler',
       articles: [
         {
           slug: 'hukuki-yanilgilar',
-          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yapan Türklerin Yaygın Hukuki Yanılgıları",
+          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları",
           description: isEnglish
             ? 'Debunking the most common legal myths about doing business in the US.'
             : "ABD'de iş yapma hakkındaki en yaygın hukuki mitleri çürütme.",

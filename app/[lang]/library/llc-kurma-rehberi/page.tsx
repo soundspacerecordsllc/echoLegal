@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : "ABD'de LLC Kurmak: Bilmeniz Gerekenler | EchoLegal",
     description: isEnglish
       ? 'A comprehensive reference guide to LLC formation in the United States for non-US entrepreneurs. State selection, formation process, tax implications, and common misconceptions.'
-      : "ABD dışından girişimciler için ABD'de LLC kurulumu hakkında kapsamlı referans rehberi. Eyalet seçimi, kuruluş süreci, vergi etkileri ve yaygın yanılgılar.",
+      : "ABD dışından girişimciler için ABD'de LLC kurulumu hakkında kapsamlı referans rehberi. Eyalet seçimi, kuruluş süreci, vergi etkileri ve sık yapılan hatalar.",
   }
 }
 
@@ -119,7 +119,7 @@ export default async function LLCFormationGuidePage({
               <li><a href="#state-selection" className="text-gray-600 hover:text-black">3. {isEnglish ? 'State Selection' : 'Eyalet Seçimi'}</a></li>
               <li><a href="#formation-process" className="text-gray-600 hover:text-black">4. {isEnglish ? 'Formation Process' : 'Kuruluş Süreci'}</a></li>
               <li><a href="#tax-implications" className="text-gray-600 hover:text-black">5. {isEnglish ? 'Tax Implications' : 'Vergi Etkileri'}</a></li>
-              <li><a href="#common-misconceptions" className="text-gray-600 hover:text-black">6. {isEnglish ? 'Common Misconceptions' : 'Yaygın Yanılgılar'}</a></li>
+              <li><a href="#common-misconceptions" className="text-gray-600 hover:text-black">6. {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hatalar'}</a></li>
               <li><a href="#next-steps" className="text-gray-600 hover:text-black">7. {isEnglish ? 'Documents You May Need' : 'İhtiyacınız Olabilecek Belgeler'}</a></li>
             </ul>
           </div>
@@ -313,7 +313,7 @@ export default async function LLCFormationGuidePage({
             {/* Section 6 */}
             <section id="common-misconceptions" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                6. {isEnglish ? 'Common Misconceptions' : 'Yaygın Yanılgılar'}
+                6. {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hatalar'}
               </h2>
 
               <div className="space-y-6">
@@ -356,7 +356,7 @@ export default async function LLCFormationGuidePage({
                   href={`/${lang}/library/hukuki-yanilgilar`}
                   className="inline-flex items-center text-[#C9A227] font-medium hover:text-[#B8922A]"
                 >
-                  {isEnglish ? 'Read more about common legal misconceptions →' : 'Yaygın hukuki yanılgılar hakkında daha fazla oku →'}
+                  {isEnglish ? 'Read more about common legal mistakes →' : 'Sık yapılan hukuki hatalar hakkında daha fazla oku →'}
                 </Link>
               </div>
             </section>
@@ -492,7 +492,7 @@ export default async function LLCFormationGuidePage({
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
                 <h3 className="font-semibold text-black mb-1">
-                  {isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+                  {isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
                 </h3>
                 <p className="text-sm text-gray-600">
                   {isEnglish

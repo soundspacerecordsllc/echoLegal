@@ -301,7 +301,7 @@ export default async function BusinessStarterKitPage({
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <h3 className="font-semibold text-black mb-1">
-                {isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+                {isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
               </h3>
               <p className="text-sm text-gray-600">
                 {isEnglish ? 'Myths vs. facts about doing business in the US.' : "ABD'de iş yapma hakkında efsaneler ve gerçekler."}
