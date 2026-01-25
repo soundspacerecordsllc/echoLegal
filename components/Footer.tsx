@@ -41,13 +41,26 @@ export default function Footer({ lang, dict }: FooterProps) {
             </ul>
           </div>
 
-          {/* Encyclopedia */}
+          {/* Resources */}
           <div>
-            <h4 className="font-semibold mb-4">{dict.footer.encyclopedia}</h4>
+            <h4 className="font-semibold mb-4">{lang === 'en' ? 'Resources' : 'Kaynaklar'}</h4>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
+                <Link href={`/${lang}/amerika`} className="hover:text-legal-gold transition-colors">
+                  {lang === 'en' ? 'Amerika Hub' : 'Amerika Hub'}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/amerika/legal-kitler/abd-business-starter-legal-kit`} className="hover:text-legal-gold transition-colors">
+                  {lang === 'en' ? 'Business Starter Kit' : 'Business Starter Kit'}
+                </Link>
+                <span className="block text-xs text-gray-500 mt-0.5">
+                  {lang === 'en' ? 'Self-serve templates' : 'Self-serve şablonlar'}
+                </span>
+              </li>
+              <li>
                 <Link href={`/${lang}/encyclopedia`} className="hover:text-legal-gold transition-colors">
-                  Browse Topics
+                  {lang === 'en' ? 'Encyclopedia' : 'Ansiklopedi'}
                 </Link>
               </li>
             </ul>
@@ -81,8 +94,17 @@ export default function Footer({ lang, dict }: FooterProps) {
           </div>
         </div>
 
+        {/* Scope Strip */}
+        <div className="border-t border-gray-700 pt-6 mt-8">
+          <p className="text-sm text-gray-300 mb-4">
+            {lang === 'en'
+              ? 'EchoLegal does not provide individual representation. Content is for general informational purposes.'
+              : 'EchoLegal bireysel temsil sunmaz. İçerikler genel bilgilendirme amaçlıdır.'}
+          </p>
+        </div>
+
         {/* Legal Disclaimer */}
-        <div className="border-t border-gray-700 pt-8 mt-8">
+        <div className="border-t border-gray-700 pt-6 mt-4">
           <p className="text-xs text-gray-400 leading-relaxed mb-4">
             {dict.disclaimer.global}
           </p>
