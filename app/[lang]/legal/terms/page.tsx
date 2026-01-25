@@ -74,12 +74,12 @@ export default async function TermsPage({
 
             <section>
               <h2 className="font-serif text-2xl font-bold text-legal-navy mb-4">
-                {isEnglish ? 'Pay What You Can Model' : 'Ödeyebileceğin Kadar Öde Modeli'}
+                {isEnglish ? 'Support Model' : 'Destek Modeli'}
               </h2>
               <p className="text-legal-gray">
                 {isEnglish
-                  ? 'We operate on a "pay what you can" model. Payments are voluntary contributions that help us maintain and expand our resources. All payments are non-refundable, and free downloads are available to everyone without restriction.'
-                  : '"Ödeyebileceğin kadar öde" modeli üzerinde çalışıyoruz. Ödemeler, kaynaklarımızı sürdürmemize ve genişletmemize yardımcı olan gönüllü katkılardır. Tüm ödemeler iade edilemez ve ücretsiz indirmeler herkes için kısıtlama olmaksızın mevcuttur.'
+                  ? 'EchoLegal is a public legal knowledge resource. Supporting EchoLegal ($20 recommended) helps maintain and expand these resources. All support payments are non-refundable, and free downloads are available to everyone without restriction.'
+                  : 'EchoLegal, halka açık bir hukuki bilgi kaynağıdır. EchoLegal\'i desteklemek (20$ önerilir) bu kaynakları sürdürmeye ve genişletmeye yardımcı olur. Tüm destek ödemeleri iade edilemez ve ücretsiz indirmeler herkes için kısıtlama olmaksızın mevcuttur.'
                 }
               </p>
             </section>

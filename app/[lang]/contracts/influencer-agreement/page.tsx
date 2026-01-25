@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'Free Influencer Agreement Template (English & Turkish) | EchoLegal'
       : 'Ücretsiz Influencer Sözleşmesi Şablonu (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
-      ? 'Free bilingual influencer/brand collaboration template. Pay what you can ($20 recommended) or download free. FTC compliant.'
+      ? 'Free bilingual influencer/brand collaboration template. I support EchoLegal ($20 recommended) or download free. FTC compliant.'
       : 'Ücretsiz iki dilli influencer/marka işbirliği şablonu. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin.',
   }
 }
@@ -120,7 +120,7 @@ export default async function InfluencerAgreementPage({
         {/* Download Section - Updated */}
         <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
           <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
-          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'Pay what you can. $20 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir.'}</p>
+          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'I support EchoLegal – $20 recommended.' : 'EchoLegal\'i destekliyorum – $20 önerilir.'}</p>
           
           <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
             💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}

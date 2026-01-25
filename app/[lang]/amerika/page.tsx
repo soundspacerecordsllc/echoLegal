@@ -1,23 +1,25 @@
+// app/[lang]/amerika/page.tsx
+
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
-import Breadcrumb from '@/components/Breadcrumb'
-import TrustStrip from '@/components/TrustStrip'
-import { amerikaHubPages, legalKits, getHubPagesByCategory } from '@/lib/amerika-hub'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
-
   return {
     title: isEnglish
-      ? "Coming to America & Starting a Business in the US (For Turks) | EchoLegal"
-      : "Amerika'ya Gelmek & ABD'de İş Kurmak (Türkler için) | EchoLegal",
+      ? 'US Business & Legal Guide for Turkish Entrepreneurs | EchoLegal'
+      : "ABD'de İş Yapan Türkler İçin Hukuki Rehber | EchoLegal",
     description: isEnglish
-      ? "Comprehensive legal reference for Turkish citizens coming to the US or starting a business. Immigration, LLC formation, taxes, and contracts."
-      : "ABD'ye gelen veya iş kuran Türk vatandaşları için kapsamlı hukuk referansı. Göçmenlik, LLC kurulumu, vergiler ve sözleşmeler.",
+      ? 'Comprehensive legal reference hub for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and essential documents.'
+      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans merkezi. LLC kurulumu, vergi gerçekleri, yaygın yanılgılar ve temel belgeler.",
   }
+}
+
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'tr' }]
 }
 
 export default async function AmerikaHubPage({
@@ -29,27 +31,39 @@ export default async function AmerikaHubPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
-  const immigrationPages = getHubPagesByCategory('immigration')
-  const businessPages = getHubPagesByCategory('business')
-  const taxPages = getHubPagesByCategory('tax')
-  const contractPages = getHubPagesByCategory('contracts')
-  const platformPages = getHubPagesByCategory('platform')
+  const coveredTopics = isEnglish ? [
+    'LLC formation basics and state selection',
+    'Tax framework fundamentals for non-residents',
+    'Common mistakes and practical risks',
+    'Essential business documents and contracts',
+  ] : [
+    'LLC kurulumu ve eyalet seçimi temelleri',
+    "ABD'de yerleşik olmayanlar için temel vergi çerçevesi",
+    'Sık yapılan hatalar ve pratik riskler',
+    'Temel iş belgeleri ve sözleşmeler',
+  ]
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Header */}
       <header className="border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black">EchoLegal</Link>
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <Link href={`/${lang}`} className="text-2xl font-black text-black">
+            EchoLegal
+          </Link>
           <div className="flex items-center gap-6">
             <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">
               {isEnglish ? 'Home' : 'Ana Sayfa'}
+            </Link>
+            <Link href={`/${lang}/library`} className="text-sm font-medium hover:opacity-60">
+              {isEnglish ? 'Library' : 'Kütüphane'}
             </Link>
             <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">
               {isEnglish ? 'Contracts' : 'Sözleşmeler'}
             </Link>
             <Link
               href={`/${lang === 'en' ? 'tr' : 'en'}/amerika`}
-              className="border border-black rounded-full px-3 py-1 text-sm"
+              className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
             >
               {isEnglish ? 'TR' : 'EN'}
             </Link>
@@ -57,263 +71,193 @@ export default async function AmerikaHubPage({
         </nav>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 py-12">
-        <Breadcrumb
-          lang={lang}
-          items={[
-            { label: isEnglish ? 'Amerika Hub' : 'Amerika' }
-          ]}
-        />
-
-        <TrustStrip lang={lang} />
-
-        {/* Hero Section */}
-        <div className="mb-16">
-          <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-            📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Hero */}
+        <div className="mb-12">
+          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-800 rounded-full text-sm font-semibold mb-4">
+            🇺🇸 {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
             {isEnglish
-              ? "Coming to America & Starting a Business in the US"
-              : "Amerika'ya Gelmek & ABD'de İş Kurmak"}
+              ? 'US Business & Legal Guide'
+              : "ABD'de İş Yapan Türkler İçin Rehber"}
           </h1>
 
-          <p className="text-xl text-gray-600 mb-4">
+          <p className="text-xl text-gray-600 leading-relaxed">
             {isEnglish
-              ? "A comprehensive legal reference for Turkish citizens"
-              : "Türk vatandaşları için kapsamlı hukuk referansı"}
-          </p>
-
-          <p className="text-gray-500 text-sm">
-            {isEnglish ? 'Last verified: January 2026' : 'Son doğrulama: Ocak 2026'}
+              ? 'Clear, factual guides for Turkish entrepreneurs navigating US business, taxes, and legal requirements.'
+              : 'ABD iş dünyası, vergileri ve hukuki gereksinimlerinde yol alan Türk girişimciler için açık ve gerçeklere dayalı rehberler.'}
           </p>
         </div>
 
-        {/* What This Hub Covers */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">
-            {isEnglish ? 'What This Hub Covers' : 'Bu Bölüm Neyi Kapsar'}
+        {/* Covered Topics */}
+        <section className="mb-12">
+          <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-green-900 mb-4">
+              {isEnglish ? 'What This Section Covers' : 'Kapsanan Konular'}
+            </h2>
+            <ul className="space-y-2">
+              {coveredTopics.map((topic, index) => (
+                <li key={index} className="flex items-start gap-3 text-green-800">
+                  <span className="text-green-600 mt-0.5">✓</span>
+                  <span>{topic}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Scope Note */}
+        <p className="text-sm text-gray-500 mb-12 leading-relaxed">
+          {isEnglish
+            ? 'This section provides general legal frameworks and structural information. It does not address individual cases or provide personalized legal guidance.'
+            : 'Bu bölüm, genel hukuki çerçeve ve yapısal bilgileri sunmak amacıyla hazırlanmıştır. Bireysel dosyalara veya kişiye özel hukuki yönlendirmelere girmez.'}
+        </p>
+
+        {/* Featured Guides */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-black mb-6">
+            {isEnglish ? 'Featured Guides' : 'Öne Çıkan Rehberler'}
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h3 className="font-semibold text-green-900 mb-2">
-                {isEnglish ? 'Covered' : 'Kapsanan Konular'}
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link
+              href={`/${lang}/library/llc-kurma-rehberi`}
+              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
+            >
+              <span className="text-3xl mb-3 block">🏢</span>
+              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                {isEnglish ? 'LLC Formation Guide' : "ABD'de LLC Kurmak"}
               </h3>
-              <ul className="text-sm text-green-800 space-y-1">
-                <li>• {isEnglish ? 'Visa categories and entry pathways' : 'Vize kategorileri ve giriş yolları'}</li>
-                <li>• {isEnglish ? 'LLC and Corporation formation' : 'LLC ve şirket kurulumu'}</li>
-                <li>• {isEnglish ? 'US tax basics for non-residents' : 'Yerleşik olmayanlar için ABD vergi temelleri'}</li>
-                <li>• {isEnglish ? 'Essential business contracts' : 'Temel iş sözleşmeleri'}</li>
-                <li>• {isEnglish ? 'Common misconceptions and risks' : 'Yaygın yanlış bilinenler ve riskler'}</li>
-              </ul>
-            </div>
+              <p className="text-gray-600 text-sm">
+                {isEnglish
+                  ? 'State selection, formation process, and what you need to know.'
+                  : 'Eyalet seçimi, kuruluş süreci ve bilmeniz gerekenler.'}
+              </p>
+            </Link>
 
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h3 className="font-semibold text-red-900 mb-2">
-                {isEnglish ? 'Not Covered' : 'Kapsamayan Konular'}
+            <Link
+              href={`/${lang}/library/irs-vergi-gercekleri`}
+              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
+            >
+              <span className="text-3xl mb-3 block">📋</span>
+              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
               </h3>
-              <ul className="text-sm text-red-800 space-y-1">
-                <li>• {isEnglish ? 'Individual visa applications' : 'Bireysel vize başvuruları'}</li>
-                <li>• {isEnglish ? 'Legal representation' : 'Hukuki temsil'}</li>
-                <li>• {isEnglish ? 'Case-specific advice' : 'Dosyaya özgü tavsiyeler'}</li>
-                <li>• {isEnglish ? 'Immigration consultations' : 'Göçmenlik danışmanlığı'}</li>
-                <li>• {isEnglish ? 'Tax filing services' : 'Vergi beyan hizmetleri'}</li>
-              </ul>
-            </div>
-          </div>
+              <p className="text-gray-600 text-sm">
+                {isEnglish
+                  ? 'W-8, W-9, 1099 forms explained in plain language.'
+                  : 'W-8, W-9, 1099 formları açık dilde açıklandı.'}
+              </p>
+            </Link>
 
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-600">
+            <Link
+              href={`/${lang}/library/hukuki-yanilgilar`}
+              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
+            >
+              <span className="text-3xl mb-3 block">❌</span>
+              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                {isEnglish ? 'Common Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+              </h3>
+              <p className="text-gray-600 text-sm">
+                {isEnglish
+                  ? 'Myths vs. facts about doing business in the US.'
+                  : "ABD'de iş yapma hakkında mitler ve gerçekler."}
+              </p>
+            </Link>
+
+            <Link
+              href={`/${lang}/library/llc-vize-yanilgisi`}
+              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
+            >
+              <span className="text-3xl mb-3 block">🛂</span>
+              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                {isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}
+              </h3>
+              <p className="text-gray-600 text-sm">
+                {isEnglish
+                  ? 'Understanding the immigration realities.'
+                  : 'Göçmenlik gerçeklerini anlama.'}
+              </p>
+            </Link>
+          </div>
+        </section>
+
+        {/* Quick Tools */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-black mb-6">
+            {isEnglish ? 'Quick Reference Tools' : 'Hızlı Referans Araçları'}
+          </h2>
+
+          <div className="space-y-3">
+            <Link
+              href={`/${lang}/checklists/llc-kontrol-listesi`}
+              className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <span className="font-medium text-black">
+                {isEnglish ? 'LLC Pre-Formation Checklist' : "ABD'de LLC Kurmadan Önce: Kontrol Listesi"}
+              </span>
+              <span className="text-[#C9A227]">→</span>
+            </Link>
+
+            <Link
+              href={`/${lang}/checklists/w8-w9-karar-haritasi`}
+              className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <span className="font-medium text-black">
+                {isEnglish ? 'W-8 or W-9 Decision Map' : 'W-8 mi W-9 mu? Karar Haritası'}
+              </span>
+              <span className="text-[#C9A227]">→</span>
+            </Link>
+
+            <Link
+              href={`/${lang}/checklists/irs-mektup-rehberi`}
+              className="flex items-center justify-between border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <span className="font-medium text-black">
+                {isEnglish ? 'IRS Letter Guide' : "IRS'ten Mektup Geldiyse: İlk 7 Gerçek"}
+              </span>
+              <span className="text-[#C9A227]">→</span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Editorial Resource Reference */}
+        <section className="border border-gray-200 rounded-lg p-6">
+          <p className="text-sm text-gray-700 mb-4">
             {isEnglish
-              ? 'This platform provides general legal information only. It does not provide individual representation or legal advice.'
-              : 'Bu platform yalnızca genel hukuki bilgi sunar. Bireysel temsil veya hukuki tavsiye sağlamaz.'}
-          </div>
-        </section>
-
-        {/* Immigration Section */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span>✈️</span>
-            {isEnglish ? 'Immigration & Visas' : 'Göçmenlik & Vizeler'}
-          </h2>
-          <div className="grid gap-3">
-            {immigrationPages.map(page => (
-              <Link
-                key={page.slug}
-                href={`/${lang}/amerika/${page.slug}`}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <div>
-                  <span className="font-medium text-gray-900">
-                    {isEnglish ? page.titleEn : page.titleTr}
-                  </span>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {isEnglish ? page.descriptionEn : page.descriptionTr}
-                  </p>
-                </div>
-                <span className="text-[#C9A227] text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Business Section */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span>🏢</span>
-            {isEnglish ? 'Starting a Business' : 'İş Kurmak'}
-          </h2>
-          <div className="grid gap-3">
-            {businessPages.map(page => (
-              <Link
-                key={page.slug}
-                href={`/${lang}/amerika/${page.slug}`}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <div>
-                  <span className="font-medium text-gray-900">
-                    {isEnglish ? page.titleEn : page.titleTr}
-                  </span>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {isEnglish ? page.descriptionEn : page.descriptionTr}
-                  </p>
-                </div>
-                <span className="text-[#C9A227] text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Tax Section */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span>📊</span>
-            {isEnglish ? 'Taxes' : 'Vergiler'}
-          </h2>
-          <div className="grid gap-3">
-            {taxPages.map(page => (
-              <Link
-                key={page.slug}
-                href={`/${lang}/amerika/${page.slug}`}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <div>
-                  <span className="font-medium text-gray-900">
-                    {isEnglish ? page.titleEn : page.titleTr}
-                  </span>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {isEnglish ? page.descriptionEn : page.descriptionTr}
-                  </p>
-                </div>
-                <span className="text-[#C9A227] text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Contracts Section */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span>📝</span>
-            {isEnglish ? 'Contracts' : 'Sözleşmeler'}
-          </h2>
-          <div className="grid gap-3">
-            {contractPages.map(page => (
-              <Link
-                key={page.slug}
-                href={`/${lang}/amerika/${page.slug}`}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <div>
-                  <span className="font-medium text-gray-900">
-                    {isEnglish ? page.titleEn : page.titleTr}
-                  </span>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {isEnglish ? page.descriptionEn : page.descriptionTr}
-                  </p>
-                </div>
-                <span className="text-[#C9A227] text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Legal Kits Section */}
-        <section className="mb-12 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-2">
-            {isEnglish ? 'Legal Kits' : 'Legal Kitler'}
-          </h2>
-          <p className="text-gray-600 mb-6">
-            {isEnglish
-              ? 'Curated template and guide packages. Pay what you can.'
-              : 'Derlenmiş şablon ve rehber paketleri. Ödeyebildiğiniz kadar ödeyin.'}
+              ? 'Common starter documents for US business operations:'
+              : 'ABD iş operasyonları için yaygın kullanılan başlangıç belgeleri:'}
           </p>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            {legalKits.map(kit => (
-              <Link
-                key={kit.slug}
-                href={`/${lang}/amerika/legal-kitler/${kit.slug}`}
-                className="block p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  {isEnglish ? kit.titleEn : kit.titleTr}
-                </h3>
-                <p className="text-sm text-gray-500 mb-3">
-                  {isEnglish ? kit.descriptionEn : kit.descriptionTr}
-                </p>
-                <span className="text-[#C9A227] font-medium text-sm">
-                  ${kit.price} {isEnglish ? 'recommended' : 'önerilen'} →
-                </span>
-              </Link>
-            ))}
+          <ul className="text-sm text-gray-600 mb-4 space-y-1">
+            <li>• {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</li>
+            <li>• {isEnglish ? 'NDA (Non-Disclosure Agreement)' : 'Gizlilik Sözleşmesi (NDA)'}</li>
+            <li>• {isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'}</li>
+            <li>• {isEnglish ? 'Privacy Policy & Terms of Service' : 'Gizlilik Politikası & Kullanım Koşulları'}</li>
+          </ul>
+          <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+            <Link
+              href={`/${lang}/legal-kits/business-starter`}
+              className="text-[#C9A227] font-medium hover:underline text-sm"
+            >
+              {isEnglish ? 'ABD Business Starter Legal Kit →' : 'ABD Business Starter Legal Kit →'}
+            </Link>
+            <span className="text-xs text-gray-500">
+              {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – 20$ önerilir'}
+            </span>
           </div>
         </section>
-
-        {/* Platform Info */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span>ℹ️</span>
-            {isEnglish ? 'About This Platform' : 'Platform Hakkında'}
-          </h2>
-          <div className="grid gap-3">
-            {platformPages.map(page => (
-              <Link
-                key={page.slug}
-                href={`/${lang}/amerika/${page.slug}`}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <div>
-                  <span className="font-medium text-gray-900">
-                    {isEnglish ? page.titleEn : page.titleTr}
-                  </span>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {isEnglish ? page.descriptionEn : page.descriptionTr}
-                  </p>
-                </div>
-                <span className="text-[#C9A227] text-xl">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Footer Disclaimer */}
-        <div className="border-t border-gray-200 pt-8 text-sm text-gray-500">
-          <p>
-            {isEnglish
-              ? 'This content is for general informational purposes only and does not constitute legal advice. For specific legal questions, consult a licensed attorney in your jurisdiction.'
-              : 'Bu içerik yalnızca genel bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Belirli hukuki sorular için yetki alanınızdaki lisanslı bir avukata danışın.'}
-          </p>
-        </div>
       </main>
 
-      <footer className="border-t border-gray-200 py-12 px-4">
+      {/* Footer */}
+      <footer className="border-t border-gray-200 mt-20 py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400">
-            © 2025 EchoLegal. {isEnglish
-              ? 'Prepared under supervision of NY licensed attorney (Bar #5552336).'
-              : 'NY lisanslı avukat gözetiminde hazırlanmıştır (Bar #5552336).'}
+          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
+            {dict.disclaimer.global}
+          </p>
+          <p className="text-xs text-gray-400 mt-4">
+            © 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
           </p>
         </div>
       </footer>

@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'Free Legal Contract Templates (English & Turkish) | EchoLegal' 
       : 'Ücretsiz Hukuki Sözleşme Şablonları (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
-      ? 'Download free bilingual legal templates. Pay what you can ($20 recommended) or download free. NDA, Privacy Policy, Terms of Service & more.'
-      : 'Ücretsiz iki dilli hukuki şablonlar indirin. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin. NDA, Gizlilik Politikası ve daha fazlası.',
+      ? 'Download free bilingual legal templates. I support EchoLegal ($20 recommended) or download free. NDA, Privacy Policy, Terms of Service & more.'
+      : 'Ücretsiz iki dilli hukuki şablonlar indirin. EchoLegal\'i destekliyorum (20$ önerilir) veya ücretsiz indirin. NDA, Gizlilik Politikası ve daha fazlası.',
   }
 }
 
@@ -122,15 +122,14 @@ export default async function ContractsPage({
           {isEnglish ? 'Contracts' : 'Sözleşmeler'}
         </h1>
         <p className="text-lg text-gray-600 mb-2">
-          {isEnglish 
-            ? 'Professional legal templates for everyday business needs. Pay what you can, or download for free.'
-            : 'Günlük iş ihtiyaçları için profesyonel hukuki şablonlar. Ödeyebildiğiniz kadar ödeyin veya ücretsiz indirin.'}
+          {isEnglish
+            ? 'Professional legal templates for everyday business needs.'
+            : 'Günlük iş ihtiyaçları için profesyonel hukuki şablonlar.'}
         </p>
-        {/* New subtitle line for Pay What You Can */}
         <p className="text-base text-gray-500 mb-12">
-          {isEnglish 
-            ? 'Download free, or pay what you can — $20 recommended.'
-            : 'Ücretsiz indir, ya da gücün kadar öde — önerilen 20$.'}
+          {isEnglish
+            ? 'I support EchoLegal – $20 recommended. Download for free.'
+            : 'EchoLegal\'i destekliyorum – 20$ önerilir. Ücretsiz indir.'}
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -170,7 +169,7 @@ export default async function ContractsPage({
                       href={`/${lang}/support`}
                       className="text-sm text-gray-500 hover:text-[#C9A227] transition-colors"
                     >
-                      {isEnglish ? 'Why Pay What You Can?' : "Neden 'Gücün Kadar Öde'?"}
+                      {isEnglish ? 'Why support EchoLegal?' : 'Neden EchoLegal\'i desteklemeliyim?'}
                     </Link>
                   </div>
                 </div>

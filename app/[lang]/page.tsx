@@ -18,21 +18,24 @@ export default async function Home({
           <Link href={`/${lang}`} className="text-2xl font-black tracking-tight text-[#000000]">
             ECHOLEGAL
           </Link>
-          <div className="flex items-center gap-8">
-            <Link href={`/${lang}`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
-              {isEnglish ? 'Home' : 'Ana Sayfa'}
+          <div className="flex items-center gap-6">
+            <Link href={`/${lang}/library`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Library' : 'Kütüphane'}
             </Link>
             <Link href={`/${lang}/contracts`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
               {isEnglish ? 'Contracts' : 'Sözleşmeler'}
             </Link>
+            <Link href={`/${lang}/legal-kits`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
+              {isEnglish ? 'Kits' : 'Kitler'}
+            </Link>
             <Link href={`/${lang}/consular-documents`} className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]">
               {isEnglish ? 'Consular' : 'Konsolosluk'}
             </Link>
-            <Link 
+            <Link
               href={`/${lang === 'en' ? 'tr' : 'en'}`}
               className="flex items-center gap-2 text-sm font-semibold border-2 border-[#000000] rounded-full px-4 py-2 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
             >
-              🌐 {isEnglish ? 'English' : 'Türkçe'}
+              {isEnglish ? 'TR' : 'EN'}
             </Link>
           </div>
         </nav>
@@ -69,7 +72,7 @@ export default async function Home({
             
             <p className="text-base md:text-lg text-[#444444] mb-8 max-w-md">
               {isEnglish 
-                ? 'Pay what you can. $20 recommended. Free access available by request.'
+                ? 'I support EchoLegal – $20 recommended. Free access available.'
                 : 'Ödeyebileceğiniz kadar ödeyin. 20$ önerilir. Talep üzerine ücretsiz erişim mevcuttur.'
               }
             </p>
@@ -151,21 +154,127 @@ export default async function Home({
           </div>
         </section>
 
+        {/* Legal Reference Library - Primary Money Hubs */}
+        <section className="py-20 px-8 bg-gray-50 border-t border-gray-100">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-2 bg-white text-gray-800 rounded-full text-sm font-semibold mb-4 border border-gray-200">
+                {isEnglish ? 'Legal Reference Library' : 'Hukuki Referans Kütüphanesi'}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
+                {isEnglish ? 'For Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin'}
+              </h2>
+              <p className="text-lg text-[#444444] max-w-2xl mx-auto">
+                {isEnglish
+                  ? 'Clear, factual guides on US business, taxes, and legal requirements. No advice—just answers.'
+                  : 'ABD işletmeciliği, vergileri ve hukuki gereksinimler hakkında açık, gerçeklere dayalı rehberler. Tavsiye yok—sadece cevaplar.'}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <Link
+                href={`/${lang}/library/llc-kurma-rehberi`}
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all group"
+              >
+                <span className="text-3xl mb-4 block">🏢</span>
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                  {isEnglish ? 'LLC Formation Guide' : 'ABD\'de LLC Kurmak'}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {isEnglish
+                    ? 'What you need to know about forming an LLC in the US.'
+                    : 'ABD\'de LLC kurma hakkında bilmeniz gerekenler.'}
+                </p>
+              </Link>
+
+              <Link
+                href={`/${lang}/library/irs-vergi-gercekleri`}
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all group"
+              >
+                <span className="text-3xl mb-4 block">📋</span>
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                  {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {isEnglish
+                    ? 'W-8, W-9, 1099 forms explained in plain language.'
+                    : 'W-8, W-9, 1099 formları açık dilde açıklandı.'}
+                </p>
+              </Link>
+
+              <Link
+                href={`/${lang}/library/hukuki-yanilgilar`}
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-lg transition-all group"
+              >
+                <span className="text-3xl mb-4 block">❌</span>
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+                  {isEnglish ? 'Common Misconceptions' : 'Yaygın Hukuki Yanılgılar'}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {isEnglish
+                    ? 'Myths vs. facts about doing business in the US.'
+                    : 'ABD\'de iş yapma hakkında mitler ve gerçekler.'}
+                </p>
+              </Link>
+            </div>
+
+            <div className="text-center">
+              <Link
+                href={`/${lang}/library`}
+                className="inline-block text-[#C9A227] font-semibold hover:text-[#B8922A] transition-colors"
+              >
+                {isEnglish ? 'Browse Full Library →' : 'Tüm Kütüphaneye Göz At →'}
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Business Starter Kit - Primary Product */}
+        <section className="py-16 px-8 bg-gradient-to-br from-amber-50 to-white border-t border-amber-100">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-1">
+                <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold mb-4">
+                  {isEnglish ? 'Document Bundle' : 'Belge Paketi'}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
+                  ABD Business Starter Legal Kit
+                </h2>
+                <p className="text-lg text-[#444444] mb-6">
+                  {isEnglish
+                    ? '5 essential legal documents for Turkish entrepreneurs starting a business in the US. NDA, Service Agreement, Privacy Policy & more.'
+                    : 'ABD\'de iş kuran Türk girişimciler için 5 temel hukuki belge. NDA, Hizmet Sözleşmesi, Gizlilik Politikası ve daha fazlası.'}
+                </p>
+                <div className="flex flex-wrap gap-3 mb-6 text-sm text-gray-600">
+                  <span className="bg-white px-3 py-1 rounded-full border border-gray-200">📄 5 {isEnglish ? 'Documents' : 'Belge'}</span>
+                  <span className="bg-white px-3 py-1 rounded-full border border-gray-200">🇺🇸🇹🇷 {isEnglish ? 'Bilingual' : 'İki Dilli'}</span>
+                </div>
+                <Link
+                  href={`/${lang}/legal-kits/business-starter`}
+                  className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#B8922A] transition-colors"
+                >
+                  {isEnglish ? 'View Kit ($20 or Free) →' : 'Kiti Görüntüle (20$ veya Ücretsiz) →'}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Consular Section Promo */}
         <section className="py-16 px-8 bg-red-50 border-t border-red-100">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block px-4 py-2 bg-white text-red-800 rounded-full text-sm font-semibold mb-4">
-              🇹🇷 {isEnglish ? 'New Section' : 'Yeni Bölüm'}
+              🇹🇷 {isEnglish ? 'Consular Services' : 'Konsolosluk Hizmetleri'}
             </span>
             <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
               {isEnglish ? 'Turkish Consular Documents' : 'Türk Konsolosluk Belgeleri'}
             </h2>
             <p className="text-lg text-[#444444] mb-6">
-              {isEnglish 
+              {isEnglish
                 ? 'Free checklists for passport, ID, notary services, birth & marriage registration. In English & Turkish.'
                 : 'Pasaport, kimlik, noter hizmetleri, doğum ve evlilik kaydı için ücretsiz kontrol listeleri. İngilizce & Türkçe.'}
             </p>
-            <Link 
+            <Link
               href={`/${lang}/consular-documents`}
               className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#B8922A] transition-colors"
             >
@@ -208,14 +317,17 @@ export default async function Home({
             </div>
             
             <div className="flex flex-wrap gap-6 text-sm">
+              <Link href={`/${lang}/library`} className="hover:opacity-60 transition-opacity text-[#000000]">
+                {isEnglish ? 'Library' : 'Kütüphane'}
+              </Link>
               <Link href={`/${lang}/contracts`} className="hover:opacity-60 transition-opacity text-[#000000]">
                 {isEnglish ? 'Contracts' : 'Sözleşmeler'}
               </Link>
+              <Link href={`/${lang}/legal-kits`} className="hover:opacity-60 transition-opacity text-[#000000]">
+                {isEnglish ? 'Kits' : 'Kitler'}
+              </Link>
               <Link href={`/${lang}/consular-documents`} className="hover:opacity-60 transition-opacity text-[#000000]">
                 {isEnglish ? 'Consular' : 'Konsolosluk'}
-              </Link>
-              <Link href={`/${lang}/encyclopedia`} className="hover:opacity-60 transition-opacity text-[#000000]">
-                {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
               </Link>
               <Link href={`/${lang}/support`} className="hover:opacity-60 transition-opacity text-[#000000]">
                 {isEnglish ? 'Support' : 'Destek'}

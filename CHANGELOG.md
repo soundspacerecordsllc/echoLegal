@@ -1,5 +1,15 @@
 # EchoLegal Changelog
 
+## [2026-01-25] Monetization Update: I Support EchoLegal
+
+### Changed
+- Replaced all "Pay What You Can" language with "I support EchoLegal – $20 recommended"
+- Updated editorial CTAs on high-intent pages (visa guides, LLC guides)
+- Fixed Turkish apostrophe syntax errors across contract templates
+- Maintained compliance-safe, non-sales language throughout
+
+---
+
 ## [2026-01-25] Cashflow Acceleration + Amerika Hub
 
 ### Added
@@ -64,49 +74,49 @@
 
 ---
 
-## Summary of Deliverables
+## [2.0.0] - 2026-01-25
 
-| File | Purpose |
-|------|---------|
-| `scripts/smoke-test-downloads.sh` | Automated download verification |
-| `TEST-CHECKLIST.md` | Manual QA checklist |
-| `INDEXING.md` | Search Console guide |
-| `CHANGELOG.md` | This file |
-| `app/sitemap.ts` | Dynamic sitemap |
-| `app/robots.ts` | Crawler directives |
-| `components/KitCallout.tsx` | Reusable CTA component |
+### 🚀 Major Feature: Passive Income Architecture
+
+Complete restructure of EchoLegal into a high-conversion, authority-driven legal reference platform focused on passive income generation for Turkish entrepreneurs doing business in the US.
+
+### New Sections
+
+#### Legal Reference Library (`/library`)
+- **LLC Formation Guide** (`/library/llc-kurma-rehberi`) - Comprehensive reference guide on US LLC formation
+- **IRS & Tax Facts** (`/library/irs-vergi-gercekleri`) - W-8, W-9, 1099 forms explained
+- **Common Legal Misconceptions** (`/library/hukuki-yanilgilar`) - Myth vs. reality format for US business
+- **LLC ≠ Visa** (`/library/llc-vize-yanilgisi`) - Immigration realities for business owners
+- **Essential Contracts** (`/library/temel-sozlesmeler`) - Guide to must-have business contracts
+
+#### Legal Kits (`/legal-kits`)
+- **Legal Kits Hub** (`/legal-kits`) - Curated document bundles overview
+- **ABD Business Starter Legal Kit** (`/legal-kits/business-starter`) - 5 essential documents for Turkish entrepreneurs
+
+#### Checklists & Decision Maps (`/checklists`)
+- **Checklists Hub** (`/checklists`) - Quick reference tools overview
+- **LLC Formation Checklist** (`/checklists/llc-kontrol-listesi`) - Pre-formation considerations
+- **W-8 or W-9 Decision Map** (`/checklists/w8-w9-karar-haritasi`) - Tax form selection guide
+- **IRS Letter Guide** (`/checklists/irs-mektup-rehberi`) - First 7 facts when receiving IRS correspondence
+
+### Design Principles Applied
+- **Editorial conversion patterns** - CTAs framed as "related legal resources"
+- **No sales language** - Reference-only presentation
+- **Trust signals** - "Last reviewed" and "Next update" dates on all content
+- **Compliance-first** - Clear disclaimers on every page
+- **Natural Turkish** - All content written in flowing, human Turkish (not translated)
 
 ---
 
-## Known Issues / Next Steps
+## Previous Versions
 
-1. **Stripe Links** - All kit pages use the same Stripe link. Consider creating product-specific links if tracking per-product sales.
-
-2. **Pre-arrival Guide Kit** - Currently contains a README with hub links. Consider creating actual PDF guide content.
-
-3. **LLC Operating Agreement** - Not included in kits (would need to be created as separate template).
-
-4. **English Content** - Amerika Hub content is Turkish-primary. EN versions exist but may need content review for SEO.
-
-5. **Analytics** - Consider adding conversion tracking events for:
-   - Kit page views
-   - "Pay" button clicks
-   - "Free download" clicks
-   - Successful Stripe transactions
+### [1.x.x] - Pre-existing
+- Contract templates (NDA, Service Agreement, Freelance Agreement, etc.)
+- Turkish Consular Documents section
+- Encyclopedia foundation
+- Support page
+- Legal compliance pages (Privacy, Terms, Cookies, Disclaimer)
 
 ---
 
-## Files Changed (This Session)
-
-```
-new file:   scripts/smoke-test-downloads.sh
-new file:   TEST-CHECKLIST.md
-new file:   INDEXING.md
-new file:   CHANGELOG.md
-new file:   app/sitemap.ts
-new file:   app/robots.ts
-new file:   components/KitCallout.tsx
-modified:   components/Footer.tsx
-modified:   app/[lang]/amerika/abdde-llc-kurmak/page.tsx
-modified:   app/[lang]/amerika/abdde-is-yapanlar-icin-sozlesmeler/page.tsx
-```
+*Last updated: January 25, 2026*

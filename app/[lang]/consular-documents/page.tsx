@@ -61,9 +61,9 @@ export default async function ConsularDocumentsPage({
           {/* CTA Block */}
           <div className="bg-gradient-to-r from-red-50 to-white border border-red-100 rounded-xl p-6 max-w-2xl">
             <p className="font-semibold text-gray-900 mb-2">
-              {isEnglish 
-                ? 'Free checklists in English & Turkish. Download instantly. Pay what you can.'
-                : 'İngilizce & Türkçe ücretsiz kontrol listeleri. Anında indir. Gücün kadar öde.'}
+              {isEnglish
+                ? 'Free checklists in English & Turkish. I support EchoLegal – $20 recommended.'
+                : 'İngilizce & Türkçe ücretsiz kontrol listeleri. EchoLegal\'i destekliyorum – 20$ önerilir.'}
             </p>
             <Link 
               href="#procedures"

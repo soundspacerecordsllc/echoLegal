@@ -234,7 +234,7 @@ export default async function WhatIsNDAPage({
               <h2 className="text-3xl font-bold mb-4">{isEnglish ? 'Get Your NDA Template' : 'NDA Şablonunuzu Alın'}</h2>
               <p className="text-gray-300 mb-6">
                 {isEnglish 
-                  ? 'Download our professionally drafted NDA template. Available in English and Turkish. Pay what you can – $20 recommended, free option available.'
+                  ? 'Download our professionally drafted NDA template. Available in English and Turkish. I support EchoLegal – $20 recommended. Download for free..'
                   : 'Profesyonelce hazırlanmış NDA şablonumuzu indirin. İngilizce ve Türkçe olarak mevcuttur. Ödeyebildiğiniz kadar ödeyin – $20 önerilir, ücretsiz seçenek mevcuttur.'}
               </p>
               <Link 

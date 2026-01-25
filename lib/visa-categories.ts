@@ -1,0 +1,422 @@
+// lib/visa-categories.ts
+
+export interface VisaCategory {
+  slug: string
+  code: string
+  titleEn: string
+  titleTr: string
+  shortDescEn: string
+  shortDescTr: string
+  icon: string
+  // Full content for individual pages
+  whatIsEn: string
+  whatIsTr: string
+  suitableForEn: string[]
+  suitableForTr: string[]
+  doesNotAllowEn: string[]
+  doesNotAllowTr: string[]
+  commonMistakesEn: string[]
+  commonMistakesTr: string[]
+  greenCardPathEn: { answer: 'yes' | 'no' | 'indirect'; explanation: string }
+  greenCardPathTr: { answer: 'evet' | 'hayır' | 'dolaylı'; explanation: string }
+  strategicNotesEn: string
+  strategicNotesTr: string
+  uscisUrl: string
+}
+
+export const visaCategories: VisaCategory[] = [
+  {
+    slug: 'b1-b2',
+    code: 'B-1/B-2',
+    titleEn: 'Business & Tourist Visa',
+    titleTr: 'İş ve Turist Vizesi',
+    shortDescEn: 'Temporary entry for business meetings, tourism, or medical treatment.',
+    shortDescTr: 'İş görüşmeleri, turizm veya tıbbi tedavi için geçici giriş.',
+    icon: '✈️',
+    whatIsEn: 'The B-1/B-2 visa is the most common non-immigrant visa issued by the United States. B-1 covers temporary business activities such as attending meetings, conferences, or negotiating contracts. B-2 covers tourism, visiting family, or receiving medical treatment. These are often issued as a combined B-1/B-2 visa, giving holders flexibility for both purposes.',
+    whatIsTr: 'B-1/B-2 vizesi, Amerika Birleşik Devletleri tarafından verilen en yaygın göçmen olmayan vize türüdür. B-1, toplantılara katılma, konferanslara iştirak etme veya sözleşme müzakereleri gibi geçici iş faaliyetlerini kapsar. B-2 ise turizm, aile ziyareti veya tıbbi tedavi amaçlı girişleri kapsar. Genellikle birleşik B-1/B-2 vizesi olarak düzenlenir ve sahiplerine her iki amaç için de esneklik tanır.',
+    suitableForEn: [
+      'Attending business meetings, trade fairs, or conferences',
+      'Negotiating contracts (but not executing work)',
+      'Tourism and sightseeing',
+      'Visiting family or friends',
+      'Receiving medical treatment',
+      'Participating in amateur sports or musical events (without pay)'
+    ],
+    suitableForTr: [
+      'İş toplantılarına, ticaret fuarlarına veya konferanslara katılım',
+      'Sözleşme müzakereleri (ancak iş yürütme değil)',
+      'Turizm ve gezi',
+      'Aile veya arkadaş ziyareti',
+      'Tıbbi tedavi alma',
+      'Amatör spor veya müzik etkinliklerine katılım (ücret almadan)'
+    ],
+    doesNotAllowEn: [
+      'Any form of employment or paid work in the US',
+      'Enrolling in academic courses or degree programs',
+      'Establishing permanent residence',
+      'Operating or managing a US-based business day-to-day',
+      'Receiving salary or compensation from US sources'
+    ],
+    doesNotAllowTr: [
+      'ABD\'de herhangi bir istihdam veya ücretli çalışma',
+      'Akademik derslere veya diploma programlarına kayıt',
+      'Kalıcı ikamet oluşturma',
+      'ABD merkezli bir işletmeyi günlük olarak yönetme veya işletme',
+      'ABD kaynaklarından maaş veya ücret alma'
+    ],
+    commonMistakesEn: [
+      'Overstaying the authorized period (check your I-94, not the visa sticker)',
+      'Working remotely for US clients while physically in the US on B-1/B-2',
+      'Applying with unclear purpose or insufficient ties to home country',
+      'Misrepresenting intent at the border or during interview',
+      'Assuming the visa allows repeated long stays without genuine purpose'
+    ],
+    commonMistakesTr: [
+      'İzin verilen süreyi aşma (vize etiketini değil, I-94\'ünüzü kontrol edin)',
+      'B-1/B-2 ile ABD\'deyken fiziksel olarak ABD\'de bulunurken ABD müşterileri için uzaktan çalışma',
+      'Belirsiz amaç veya anavatana yetersiz bağlarla başvuru yapma',
+      'Sınırda veya mülakat sırasında niyeti yanlış beyan etme',
+      'Vizenin gerçek bir amaç olmadan tekrarlanan uzun kalışlara izin verdiğini varsayma'
+    ],
+    greenCardPathEn: {
+      answer: 'no',
+      explanation: 'B-1/B-2 is strictly a non-immigrant visa with no direct path to permanent residence. Applying for a green card while on B status can raise concerns about original intent.'
+    },
+    greenCardPathTr: {
+      answer: 'hayır',
+      explanation: 'B-1/B-2 kesinlikle göçmen olmayan bir vizedir ve kalıcı oturma iznine doğrudan bir yol sunmaz. B statüsündeyken yeşil kart başvurusu yapmak, orijinal niyet konusunda endişelere yol açabilir.'
+    },
+    strategicNotesEn: 'The B-1/B-2 visa is best viewed as a tool for short-term, specific purposes rather than a flexible long-term presence option. US Customs and Border Protection officers have wide discretion at ports of entry and may deny entry to frequent visitors who appear to be living in the US or working without authorization.',
+    strategicNotesTr: 'B-1/B-2 vizesi, esnek uzun vadeli bir seçenek yerine kısa süreli, belirli amaçlar için bir araç olarak değerlendirilmelidir. ABD Gümrük ve Sınır Koruma yetkilileri giriş noktalarında geniş takdir yetkisine sahiptir ve ABD\'de yaşıyor gibi görünen veya izinsiz çalışan sık ziyaretçilerin girişini reddedebilir.',
+    uscisUrl: 'https://www.uscis.gov/visit-the-united-states'
+  },
+  {
+    slug: 'f1',
+    code: 'F-1',
+    titleEn: 'Student Visa',
+    titleTr: 'Öğrenci Vizesi',
+    shortDescEn: 'Full-time academic study at accredited US institutions.',
+    shortDescTr: 'Akredite ABD kurumlarında tam zamanlı akademik eğitim.',
+    icon: '🎓',
+    whatIsEn: 'The F-1 visa allows foreign nationals to pursue full-time academic study at accredited US colleges, universities, seminaries, conservatories, high schools, language training programs, or other academic institutions. Students must be enrolled in a program that results in a degree, diploma, or certificate. The F-1 status includes provisions for limited on-campus employment and practical training opportunities.',
+    whatIsTr: 'F-1 vizesi, yabancı uyruklu kişilerin ABD\'deki akredite kolejlerde, üniversitelerde, ilahiyat okullarında, konservatuarlarda, liselerde, dil eğitim programlarında veya diğer akademik kurumlarda tam zamanlı akademik eğitim almalarına izin verir. Öğrencilerin derece, diploma veya sertifika ile sonuçlanan bir programa kayıtlı olması gerekir. F-1 statüsü, sınırlı kampüs içi istihdam ve pratik eğitim fırsatları için hükümler içerir.',
+    suitableForEn: [
+      'Pursuing a degree at a US university (bachelor\'s, master\'s, doctorate)',
+      'Attending accredited language training programs',
+      'High school students in exchange or private programs',
+      'Those seeking OPT (Optional Practical Training) work experience after graduation',
+      'Individuals committed to returning home after studies'
+    ],
+    suitableForTr: [
+      'ABD üniversitesinde derece takip etme (lisans, yüksek lisans, doktora)',
+      'Akredite dil eğitim programlarına katılım',
+      'Değişim veya özel programlardaki lise öğrencileri',
+      'Mezuniyet sonrası OPT (İsteğe Bağlı Pratik Eğitim) iş deneyimi arayanlar',
+      'Eğitim sonrası ülkesine dönmeyi taahhüt eden bireyler'
+    ],
+    doesNotAllowEn: [
+      'Working off-campus without specific authorization (CPT or OPT)',
+      'Dropping below full-time enrollment without approval',
+      'Remaining in the US indefinitely after program completion',
+      'Transferring to a new school without proper SEVIS procedures',
+      'Accepting employment unrelated to field of study during OPT'
+    ],
+    doesNotAllowTr: [
+      'Özel yetkilendirme olmadan (CPT veya OPT) kampüs dışında çalışma',
+      'Onay almadan tam zamanlı kaydın altına düşme',
+      'Program tamamlandıktan sonra ABD\'de süresiz kalma',
+      'Uygun SEVIS prosedürleri olmadan yeni bir okula transfer',
+      'OPT sırasında çalışma alanıyla ilgisi olmayan istihdam kabul etme'
+    ],
+    commonMistakesEn: [
+      'Working more than 20 hours per week on-campus during school sessions',
+      'Not maintaining full-time course load without DSO approval',
+      'Failing to report address changes to the school within 10 days',
+      'Starting unauthorized employment before OPT approval',
+      'Not applying for OPT within the required timeframe'
+    ],
+    commonMistakesTr: [
+      'Okul dönemlerinde kampüs içinde haftada 20 saatten fazla çalışma',
+      'DSO onayı olmadan tam zamanlı ders yükünü sürdürmeme',
+      'Adres değişikliklerini 10 gün içinde okula bildirmeme',
+      'OPT onayı öncesi yetkisiz istihdama başlama',
+      'OPT\'ye gerekli süre içinde başvurmama'
+    ],
+    greenCardPathEn: {
+      answer: 'indirect',
+      explanation: 'F-1 itself does not lead to a green card. However, OPT or STEM OPT can lead to H-1B sponsorship, which can then lead to employer-sponsored permanent residence. This is a common pathway but requires employer willingness and petition.'
+    },
+    greenCardPathTr: {
+      answer: 'dolaylı',
+      explanation: 'F-1 kendi başına yeşil karta yol açmaz. Ancak OPT veya STEM OPT, H-1B sponsorluğuna yol açabilir ve bu da işveren sponsorluğunda kalıcı oturuma yol açabilir. Bu yaygın bir yoldur ancak işveren isteği ve dilekçe gerektirir.'
+    },
+    strategicNotesEn: 'F-1 is often the entry point for those planning a longer-term US career path. The STEM OPT extension (up to 3 years total work authorization) provides valuable time for H-1B lottery attempts. However, the path from F-1 to permanent residence is neither guaranteed nor straightforward.',
+    strategicNotesTr: 'F-1, uzun vadeli ABD kariyer yolu planlayanlar için genellikle giriş noktasıdır. STEM OPT uzantısı (toplam 3 yıla kadar çalışma izni), H-1B piyango denemeleri için değerli zaman sağlar. Ancak F-1\'den kalıcı oturuma giden yol ne garantilidir ne de basittir.',
+    uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment'
+  },
+  {
+    slug: 'h1b',
+    code: 'H-1B',
+    titleEn: 'Specialty Occupation Visa',
+    titleTr: 'Uzmanlık Meslek Vizesi',
+    shortDescEn: 'Employment in specialty occupations requiring at least a bachelor\'s degree.',
+    shortDescTr: 'En az lisans derecesi gerektiren uzmanlık mesleklerinde istihdam.',
+    icon: '💼',
+    whatIsEn: 'The H-1B visa is a non-immigrant visa that allows US employers to temporarily employ foreign workers in specialty occupations. A specialty occupation requires theoretical and practical application of a body of highly specialized knowledge and at least a bachelor\'s degree (or equivalent) in the specific specialty. The H-1B is subject to an annual cap with a lottery system, though cap-exempt employers exist.',
+    whatIsTr: 'H-1B vizesi, ABD işverenlerinin uzmanlık mesleklerinde yabancı işçileri geçici olarak istihdam etmelerine izin veren göçmen olmayan bir vizedir. Uzmanlık mesleği, yüksek düzeyde uzmanlaşmış bilgi birikiminin teorik ve pratik uygulamasını ve belirli uzmanlık alanında en az lisans derecesi (veya eşdeğeri) gerektirir. H-1B, yıllık kotaya tabidir ve piyango sistemiyle belirlenir, ancak kotadan muaf işverenler vardır.',
+    suitableForEn: [
+      'Engineers, software developers, and IT professionals',
+      'Scientists and researchers',
+      'Accountants, financial analysts, and business specialists',
+      'Architects and designers with specialized degrees',
+      'Healthcare professionals (physicians, therapists with appropriate credentials)',
+      'University professors and academic researchers'
+    ],
+    suitableForTr: [
+      'Mühendisler, yazılım geliştiriciler ve BT profesyonelleri',
+      'Bilim insanları ve araştırmacılar',
+      'Muhasebeciler, finansal analistler ve iş uzmanları',
+      'Uzman derecelere sahip mimarlar ve tasarımcılar',
+      'Sağlık profesyonelleri (uygun kimlik bilgilerine sahip doktorlar, terapistler)',
+      'Üniversite profesörleri ve akademik araştırmacılar'
+    ],
+    doesNotAllowEn: [
+      'Self-employment or freelance work without proper corporate structure',
+      'Working for any employer other than the H-1B sponsor',
+      'Changing employers without filing a new H-1B petition',
+      'Working in a position that doesn\'t match the approved petition',
+      'Remaining in the US without valid status after employment ends'
+    ],
+    doesNotAllowTr: [
+      'Uygun kurumsal yapı olmadan serbest çalışma veya freelance iş',
+      'H-1B sponsoru dışında herhangi bir işveren için çalışma',
+      'Yeni H-1B dilekçesi vermeden işveren değiştirme',
+      'Onaylanan dilekçeyle eşleşmeyen bir pozisyonda çalışma',
+      'İstihdam sona erdikten sonra geçerli statü olmadan ABD\'de kalma'
+    ],
+    commonMistakesEn: [
+      'Not understanding the H-1B lottery timeline and registration requirements',
+      'Starting work before receiving approval notice (unless using cap-gap or portability)',
+      'Failing to maintain specialty occupation requirements throughout employment',
+      'Not timely filing extensions before current H-1B period expires',
+      'Assuming H-1B automatically leads to permanent residence'
+    ],
+    commonMistakesTr: [
+      'H-1B piyango zaman çizelgesini ve kayıt gereksinimlerini anlamamak',
+      'Onay bildirimi almadan önce işe başlamak (kota açığı veya taşınabilirlik kullanılmadıkça)',
+      'İstihdam boyunca uzmanlık mesleği gereksinimlerini sürdürmemek',
+      'Mevcut H-1B süresi dolmadan önce uzatmaları zamanında dosyalamamak',
+      'H-1B\'nin otomatik olarak kalıcı oturuma yol açtığını varsaymak'
+    ],
+    greenCardPathEn: {
+      answer: 'yes',
+      explanation: 'H-1B holders are explicitly allowed "dual intent," meaning they can pursue permanent residence while maintaining H-1B status. Employer-sponsored green cards through PERM labor certification are the most common pathway. H-1B can be extended beyond 6 years while a green card is pending.'
+    },
+    greenCardPathTr: {
+      answer: 'evet',
+      explanation: 'H-1B sahiplerinin açıkça "çifte niyete" izni vardır, yani H-1B statüsünü korurken kalıcı oturum takip edebilirler. PERM işgücü sertifikasyonu yoluyla işveren sponsorluğunda yeşil kartlar en yaygın yoldur. Yeşil kart beklemedeyken H-1B 6 yılın ötesinde uzatılabilir.'
+    },
+    strategicNotesEn: 'The H-1B remains the primary work visa for professional occupations but faces significant demand exceeding supply. The lottery system means selection is not guaranteed regardless of qualifications. Multiple employers can register the same individual, and universities/research institutions are cap-exempt. Processing times and premium processing availability vary.',
+    strategicNotesTr: 'H-1B, profesyonel meslekler için birincil çalışma vizesi olmaya devam ediyor ancak arzı aşan önemli bir taleple karşı karşıya. Piyango sistemi, niteliklerden bağımsız olarak seçimin garanti olmadığı anlamına geliyor. Birden fazla işveren aynı bireyi kaydedebilir ve üniversiteler/araştırma kurumları kotadan muaftır. İşlem süreleri ve premium işleme kullanılabilirliği değişkendir.',
+    uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations'
+  },
+  {
+    slug: 'l1',
+    code: 'L-1',
+    titleEn: 'Intracompany Transfer Visa',
+    titleTr: 'Şirket İçi Transfer Vizesi',
+    shortDescEn: 'Transfer of executives, managers, or specialized knowledge employees within multinational companies.',
+    shortDescTr: 'Çok uluslu şirketler içinde yöneticilerin, müdürlerin veya özel bilgi sahibi çalışanların transferi.',
+    icon: '🏢',
+    whatIsEn: 'The L-1 visa enables multinational companies to transfer certain employees from foreign offices to US offices. L-1A is for executives and managers, while L-1B is for employees with specialized knowledge of the company\'s products, services, or procedures. The employee must have worked for the foreign company for at least one continuous year within the three years preceding the transfer.',
+    whatIsTr: 'L-1 vizesi, çok uluslu şirketlerin belirli çalışanlarını yabancı ofislerden ABD ofislerine transfer etmelerini sağlar. L-1A yöneticiler ve müdürler içindir; L-1B ise şirketin ürünleri, hizmetleri veya prosedürleri hakkında özel bilgiye sahip çalışanlar içindir. Çalışan, transferden önceki üç yıl içinde en az bir yıl sürekli olarak yabancı şirkette çalışmış olmalıdır.',
+    suitableForEn: [
+      'Executives managing major functions or divisions',
+      'Managers who supervise professional staff or manage essential functions',
+      'Employees with proprietary knowledge of company systems or processes',
+      'Companies establishing new US offices (with limitations)',
+      'Multinational corporations with qualifying relationships between entities'
+    ],
+    suitableForTr: [
+      'Ana işlevleri veya bölümleri yöneten üst düzey yöneticiler',
+      'Profesyonel personeli denetleyen veya temel işlevleri yöneten müdürler',
+      'Şirket sistemleri veya süreçleri hakkında tescilli bilgiye sahip çalışanlar',
+      'Yeni ABD ofisleri kuran şirketler (sınırlamalarla)',
+      'Birimler arasında nitelendirici ilişkilere sahip çok uluslu şirketler'
+    ],
+    doesNotAllowEn: [
+      'Working for companies outside the multinational organization',
+      'Individuals who haven\'t completed one year with the foreign company',
+      'Positions that don\'t genuinely qualify as executive, managerial, or specialized knowledge',
+      'Using L-1 as a way to staff entry-level positions',
+      'New office L-1s beyond initial limitations without demonstrating business growth'
+    ],
+    doesNotAllowTr: [
+      'Çok uluslu organizasyon dışındaki şirketler için çalışma',
+      'Yabancı şirkette bir yılı tamamlamamış bireyler',
+      'Gerçekten yönetici, müdür veya özel bilgi olarak nitelendirilmeyen pozisyonlar',
+      'L-1\'i giriş seviyesi pozisyonları doldurmak için kullanma',
+      'İş büyümesini göstermeden ilk sınırlamaların ötesinde yeni ofis L-1\'leri'
+    ],
+    commonMistakesEn: [
+      'Overstating the managerial or executive nature of the position',
+      'Insufficient documentation of the qualifying relationship between companies',
+      'New office petitions without realistic business plans showing ability to support the position',
+      'Not meeting the one-year foreign employment requirement',
+      'Confusing specialized knowledge with general industry expertise'
+    ],
+    commonMistakesTr: [
+      'Pozisyonun yönetici veya üst düzey yönetici doğasını abartma',
+      'Şirketler arasındaki nitelendirici ilişkinin yetersiz belgelenmesi',
+      'Pozisyonu destekleme kapasitesini gösteren gerçekçi iş planları olmadan yeni ofis dilekçeleri',
+      'Bir yıllık yabancı istihdam gereksinimini karşılamama',
+      'Özel bilgiyi genel sektör uzmanlığıyla karıştırma'
+    ],
+    greenCardPathEn: {
+      answer: 'yes',
+      explanation: 'L-1A holders (executives and managers) may qualify for EB-1C green cards without labor certification, making this one of the faster paths to permanent residence. L-1B holders typically go through PERM labor certification like H-1B holders.'
+    },
+    greenCardPathTr: {
+      answer: 'evet',
+      explanation: 'L-1A sahipleri (üst düzey yöneticiler ve müdürler) işgücü sertifikasyonu olmadan EB-1C yeşil kartlarına hak kazanabilir, bu da bunu kalıcı oturuma en hızlı yollardan biri yapar. L-1B sahipleri tipik olarak H-1B sahipleri gibi PERM işgücü sertifikasyonundan geçer.'
+    },
+    strategicNotesEn: 'L-1 is particularly valuable for multinational companies and their employees because it\'s not subject to annual caps like H-1B. The L-1A to EB-1C pathway is one of the most efficient routes to permanent residence for qualifying executives and managers. However, USCIS scrutiny of L-1B (specialized knowledge) petitions has increased significantly.',
+    strategicNotesTr: 'L-1, çok uluslu şirketler ve çalışanları için özellikle değerlidir çünkü H-1B gibi yıllık kotalara tabi değildir. L-1A\'dan EB-1C\'ye giden yol, nitelendirici üst düzey yöneticiler ve müdürler için kalıcı oturuma en verimli rotalardan biridir. Ancak USCIS\'in L-1B (özel bilgi) dilekçelerine yönelik incelemesi önemli ölçüde artmıştır.',
+    uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/l-1a-intracompany-transferee-executive-or-manager'
+  },
+  {
+    slug: 'e2',
+    code: 'E-2',
+    titleEn: 'Treaty Investor Visa',
+    titleTr: 'Yatırımcı Vizesi',
+    shortDescEn: 'Investment in and direction of a US business by treaty country nationals.',
+    shortDescTr: 'Anlaşma ülkesi vatandaşları tarafından ABD işletmesine yatırım ve yönetim.',
+    icon: '💰',
+    whatIsEn: 'The E-2 visa allows nationals of treaty countries to enter the United States to invest in and direct a US business. Turkey is a treaty country with the US, making Turkish citizens eligible. The investment must be "substantial" relative to the total cost of the business, and the investor must be coming to develop and direct the enterprise. The business must be real and operating, not marginal.',
+    whatIsTr: 'E-2 vizesi, anlaşma ülkelerinin vatandaşlarının ABD\'ye girerek bir ABD işletmesine yatırım yapmasına ve yönetmesine izin verir. Türkiye, ABD ile anlaşmalı bir ülkedir ve bu Türk vatandaşlarını uygun kılar. Yatırım, işletmenin toplam maliyetine göre "önemli" olmalıdır ve yatırımcı işletmeyi geliştirmek ve yönetmek için gelmelidir. İşletme gerçek ve faal olmalı, marjinal olmamalıdır.',
+    suitableForEn: [
+      'Entrepreneurs starting or acquiring a US business',
+      'Turkish nationals with substantial capital to invest',
+      'Business owners who will actively direct and develop the enterprise',
+      'Investors whose business will generate more than enough income to support their family',
+      'Those seeking renewable, long-term US presence tied to business operations'
+    ],
+    suitableForTr: [
+      'ABD işletmesi kuran veya satın alan girişimciler',
+      'Yatırım yapacak önemli sermayeye sahip Türk vatandaşları',
+      'İşletmeyi aktif olarak yönetecek ve geliştirecek işletme sahipleri',
+      'İşletmesi ailelerini desteklemek için yeterli gelirden fazlasını üretecek yatırımcılar',
+      'İş operasyonlarına bağlı yenilenebilir, uzun vadeli ABD varlığı arayanlar'
+    ],
+    doesNotAllowEn: [
+      'Passive investment without active management role',
+      'Investments in marginal enterprises (only enough to support investor)',
+      'Citizens of countries without E-2 treaty with the US',
+      'Speculative or uncommitted investments',
+      'Working for an employer outside the E-2 enterprise'
+    ],
+    doesNotAllowTr: [
+      'Aktif yönetim rolü olmadan pasif yatırım',
+      'Marjinal işletmelere yatırım (sadece yatırımcıyı desteklemeye yetecek kadar)',
+      'ABD ile E-2 anlaşması olmayan ülke vatandaşları',
+      'Spekülatif veya taahhüt edilmemiş yatırımlar',
+      'E-2 işletmesi dışında bir işveren için çalışma'
+    ],
+    commonMistakesEn: [
+      'Investing amounts too low to be considered "substantial" for the business type',
+      'Not demonstrating the investment is "at risk" (e.g., keeping funds in escrow)',
+      'Creating a business that can only marginally support the investor',
+      'Failing to show active role in directing and developing the business',
+      'Assuming E-2 automatically converts to permanent residence'
+    ],
+    commonMistakesTr: [
+      'İşletme türü için "önemli" sayılamayacak kadar düşük miktarlarda yatırım yapma',
+      'Yatırımın "risk altında" olduğunu göstermeme (örneğin, fonları emanette tutma)',
+      'Yalnızca yatırımcıyı marjinal olarak destekleyebilen bir işletme oluşturma',
+      'İşletmeyi yönetme ve geliştirmede aktif rol göstermeme',
+      'E-2\'nin otomatik olarak kalıcı oturuma dönüştüğünü varsayma'
+    ],
+    greenCardPathEn: {
+      answer: 'no',
+      explanation: 'E-2 does not directly lead to a green card. It\'s a renewable visa that can be held indefinitely but doesn\'t have dual intent provisions. E-2 holders seeking permanent residence typically need to pursue separate pathways such as employer sponsorship (if eligible), EB-5 investment, or family-based immigration.'
+    },
+    greenCardPathTr: {
+      answer: 'hayır',
+      explanation: 'E-2 doğrudan yeşil karta yol açmaz. Süresiz olarak tutulabilen yenilenebilir bir vizedir ancak çifte niyet hükümleri yoktur. Kalıcı oturum arayan E-2 sahiplerinin tipik olarak işveren sponsorluğu (uygunsa), EB-5 yatırımı veya aile temelli göçmenlik gibi ayrı yollar izlemesi gerekir.'
+    },
+    strategicNotesEn: 'E-2 is highly attractive for Turkish entrepreneurs because Turkey has a treaty with the US. The visa can be renewed indefinitely as long as the business remains viable. However, the lack of a direct green card path means long-term planning should consider other permanent residence options. The investment requirement varies by business type but generally starts around $100,000 for small businesses.',
+    strategicNotesTr: 'E-2, Türkiye\'nin ABD ile anlaşması olduğu için Türk girişimciler için son derece çekicidir. Vize, işletme ayakta kaldığı sürece süresiz olarak yenilenebilir. Ancak doğrudan yeşil kart yolunun olmaması, uzun vadeli planlamanın diğer kalıcı oturum seçeneklerini dikkate alması gerektiği anlamına gelir. Yatırım gereksinimi işletme türüne göre değişir ancak genellikle küçük işletmeler için yaklaşık 100.000$\'dan başlar.',
+    uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/e-2-treaty-investors'
+  },
+  {
+    slug: 'o1',
+    code: 'O-1',
+    titleEn: 'Extraordinary Ability Visa',
+    titleTr: 'Olağanüstü Yetenek Vizesi',
+    shortDescEn: 'Individuals with extraordinary ability or achievement in their field.',
+    shortDescTr: 'Alanlarında olağanüstü yetenek veya başarıya sahip bireyler.',
+    icon: '⭐',
+    whatIsEn: 'The O-1 visa is for individuals who possess extraordinary ability in sciences, arts, education, business, or athletics (O-1A), or who have a demonstrated record of extraordinary achievement in the motion picture or television industry (O-1B). "Extraordinary ability" means a level of expertise indicating that the person is one of the small percentage who has risen to the very top of their field.',
+    whatIsTr: 'O-1 vizesi, bilim, sanat, eğitim, iş veya spor alanlarında olağanüstü yeteneğe sahip bireyler (O-1A) veya sinema veya televizyon endüstrisinde olağanüstü başarı kaydı gösteren bireyler (O-1B) içindir. "Olağanüstü yetenek", kişinin alanının en tepesine yükselen küçük bir yüzdenin parçası olduğunu gösteren bir uzmanlık düzeyi anlamına gelir.',
+    suitableForEn: [
+      'Award-winning scientists, researchers, or academics',
+      'Recognized artists, musicians, or performers',
+      'Successful entrepreneurs with documented achievements',
+      'Published authors and journalists with significant recognition',
+      'Athletes with international competition records',
+      'Professionals with patents, significant publications, or industry awards'
+    ],
+    suitableForTr: [
+      'Ödüllü bilim insanları, araştırmacılar veya akademisyenler',
+      'Tanınmış sanatçılar, müzisyenler veya performans sanatçıları',
+      'Belgelenmiş başarılara sahip başarılı girişimciler',
+      'Önemli tanınırlığa sahip yayınlanmış yazarlar ve gazeteciler',
+      'Uluslararası yarışma kayıtlarına sahip sporcular',
+      'Patentleri, önemli yayınları veya sektör ödülleri olan profesyoneller'
+    ],
+    doesNotAllowEn: [
+      'Those who cannot demonstrate sustained national or international recognition',
+      'Individuals at normal career stages without distinguishing achievements',
+      'Working outside the area of extraordinary ability',
+      'Self-petitioning (must have a US sponsor or agent)',
+      'Using O-1 for ordinary skilled work positions'
+    ],
+    doesNotAllowTr: [
+      'Sürekli ulusal veya uluslararası tanınırlık gösteremeyenler',
+      'Ayırt edici başarılar olmadan normal kariyer aşamalarındaki bireyler',
+      'Olağanüstü yetenek alanı dışında çalışma',
+      'Kendi kendine dilekçe verme (ABD sponsoru veya temsilcisi olmalıdır)',
+      'O-1\'i sıradan vasıflı iş pozisyonları için kullanma'
+    ],
+    commonMistakesEn: [
+      'Underestimating the evidence required to prove extraordinary ability',
+      'Not obtaining proper advisory opinion letters when required',
+      'Confusing O-1 requirements with H-1B (O-1 has a higher standard)',
+      'Failing to document achievements with third-party evidence',
+      'Not explaining how evidence meets specific O-1 criteria'
+    ],
+    commonMistakesTr: [
+      'Olağanüstü yeteneği kanıtlamak için gereken kanıtları hafife alma',
+      'Gerektiğinde uygun danışma görüşü mektupları almama',
+      'O-1 gereksinimlerini H-1B ile karıştırma (O-1 daha yüksek bir standarda sahiptir)',
+      'Başarıları üçüncü taraf kanıtlarıyla belgelememe',
+      'Kanıtların belirli O-1 kriterlerini nasıl karşıladığını açıklamama'
+    ],
+    greenCardPathEn: {
+      answer: 'indirect',
+      explanation: 'O-1 has dual intent, allowing holders to pursue permanent residence. Those who qualify for O-1A often qualify for EB-1A (extraordinary ability green card) which does not require employer sponsorship or labor certification. This can be one of the faster paths to permanent residence for qualifying individuals.'
+    },
+    greenCardPathTr: {
+      answer: 'dolaylı',
+      explanation: 'O-1 çifte niyete sahiptir ve sahiplerinin kalıcı oturum takip etmesine izin verir. O-1A\'ya hak kazananlar genellikle işveren sponsorluğu veya işgücü sertifikasyonu gerektirmeyen EB-1A\'ya (olağanüstü yetenek yeşil kartı) hak kazanır. Bu, uygun bireyler için kalıcı oturuma en hızlı yollardan biri olabilir.'
+    },
+    strategicNotesEn: 'O-1 is not subject to annual caps and can be processed more quickly than H-1B. The standard is high but the definition of "extraordinary" varies by field—business and entrepreneurship achievements are increasingly recognized. Strong documentation and a well-prepared petition are essential. O-1 is often underutilized by qualified individuals who assume they don\'t meet the standard.',
+    strategicNotesTr: 'O-1 yıllık kotalara tabi değildir ve H-1B\'den daha hızlı işlenebilir. Standart yüksektir ancak "olağanüstü" tanımı alana göre değişir—iş ve girişimcilik başarıları giderek daha fazla tanınmaktadır. Güçlü belgeler ve iyi hazırlanmış bir dilekçe esastır. O-1, standardı karşılamadıklarını varsayan nitelikli bireyler tarafından genellikle yetersiz kullanılır.',
+    uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/o-1-visa-individuals-with-extraordinary-ability-or-achievement'
+  }
+]
+
+export function getVisaBySlug(slug: string): VisaCategory | undefined {
+  return visaCategories.find(v => v.slug === slug)
+}

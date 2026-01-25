@@ -3,13 +3,15 @@
     "home": "Ana Sayfa",
     "contracts": "Sözleşmeler",
     "encyclopedia": "Ansiklopedi",
+    "library": "Kütüphane",
+    "legalKits": "Hukuki Kitler",
     "support": "Destek",
     "language": "Dil"
   },
   "home": {
     "hero": "Hukuki bilgi herkesin olmalı.",
     "subtitle": "EchoLegal, İngilizce ve Türkçe olarak profesyonelce hazırlanmış sözleşmeler ve açıklamalar içeren büyüyen bir hukuk ansiklopedisidir.",
-    "pricing": "Ödeyebileceğin kadar öde. 20$ önerilir. Ücretsiz erişim mevcut.",
+    "pricing": "EchoLegal'i destekliyorum – 20$ önerilir. Ücretsiz erişim mevcut.",
     "browseLibrary": "EchoLegal Kütüphanesini İncele",
     "featuredDocuments": "Öne Çıkan Belgeler"
   },
@@ -18,11 +20,11 @@
     "whenToUse": "Bu Şablonu Ne Zaman Kullanmalı",
     "keyClauses": "Ana Maddeler Açıklaması",
     "downloadTitle": "İndirme Seçeneğinizi Seçin",
-    "downloadSubtitle": "Hukuki bilgi herkese açık olmalı. Ödeyebiliyorsan 20$ öde—bu kaynağı sürdürmemize ve genişletmemize yardımcı olur. Ödeyemiyorsan, ücretsiz indir.",
-    "canAfford": "Ödeyebilirim – 20$ Öde",
-    "cannotAfford": "Ödeyemem – Ücretsiz İndir",
-    "canAffordSub": "Önerilen katkı • Anında indirme",
-    "cannotAffordSub": "Ödeme gerekmez • Yargılama yok",
+    "downloadSubtitle": "Hukuki bilgi herkese açık olmalı. EchoLegal'i desteklemek bu kaynağı sürdürmemize ve genişletmemize yardımcı olur.",
+    "canAfford": "EchoLegal'i destekliyorum – 20$",
+    "cannotAfford": "Ücretsiz indir",
+    "canAffordSub": "Önerilen • Anında indirme",
+    "cannotAffordSub": "Tam erişim • Kısıtlama yok",
     "relatedResources": "İlgili Kaynaklar",
     "jurisdiction": "Yargı Yetkisi",
     "lastUpdated": "Son güncelleme"
