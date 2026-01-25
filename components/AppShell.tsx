@@ -2,27 +2,35 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import {
+  NAV_ITEMS,
+  resolveHref,
+  getLabel,
+  getDescription,
+  getAlternatePath,
+} from '@/lib/nav'
 
-type HeaderProps = {
-  lang: string
-  dict: any
+type AppShellProps = {
+  lang: 'en' | 'tr'
+  children: React.ReactNode
 }
 
-type DropdownItem = {
-  label: string
-  href: string
-  description?: string
+export default function AppShell({ lang, children }: AppShellProps) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <AppHeader lang={lang} />
+      <main className="flex-1">{children}</main>
+      <AppFooter lang={lang} />
+    </div>
+  )
 }
 
-type NavItem = {
-  key: string
-  label: string
-  href: string
-  dropdown?: DropdownItem[]
-}
+// ============================================================================
+// HEADER
+// ============================================================================
 
-export default function Header({ lang, dict }: HeaderProps) {
+function AppHeader({ lang }: { lang: 'en' | 'tr' }) {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
@@ -30,26 +38,16 @@ export default function Header({ lang, dict }: HeaderProps) {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   const isEnglish = lang === 'en'
-  const switchLang = lang === 'en' ? 'tr' : 'en'
-
-  // Handle path switching for language toggle
-  const currentPath = pathname.replace(`/${lang}`, '')
-  // Map Turkish-specific paths to English equivalents and vice versa
-  let switchPath = currentPath
-  if (currentPath.startsWith('/sablonlar')) {
-    switchPath = currentPath.replace('/sablonlar', '/templates')
-  } else if (currentPath.startsWith('/templates')) {
-    switchPath = currentPath.replace('/templates', '/sablonlar')
-  }
-  const switchUrl = `/${switchLang}${switchPath || ''}`
-
-  // Templates URL based on language
-  const templatesUrl = isEnglish ? `/${lang}/templates` : '/tr/sablonlar'
+  const switchLang = isEnglish ? 'tr' : 'en'
+  const switchUrl = getAlternatePath(pathname, switchLang)
 
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setActiveDropdown(null)
       }
     }
@@ -66,123 +64,18 @@ export default function Header({ lang, dict }: HeaderProps) {
       }
       if (event.key === 'Escape') {
         setSearchOpen(false)
+        setMobileMenuOpen(false)
       }
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Navigation structure with mega-menu style dropdowns
-  const navItems: NavItem[] = [
-    {
-      key: 'guides',
-      label: isEnglish ? 'Guides' : 'Rehberler',
-      href: `/${lang}/library`,
-      dropdown: [
-        {
-          label: isEnglish ? 'US Business Hub' : 'ABD İş Merkezi',
-          href: `/${lang}/amerika`,
-          description: isEnglish ? 'All US business resources' : 'Tüm ABD iş kaynakları'
-        },
-        {
-          label: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
-          href: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
-          description: isEnglish ? 'Step-by-step for Turkish entrepreneurs' : 'Türkler için adım adım',
-        },
-        {
-          label: isEnglish ? 'DS-160 Visa Form' : 'DS-160 Vize Formu',
-          href: `/${lang}/ds-160-rehberi`,
-          description: isEnglish ? 'Visa application guide' : 'Vize başvurusu rehberi'
-        },
-        {
-          label: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik Rehberi',
-          href: `/${lang}/vergi-kimlik-rehberi`,
-          description: isEnglish ? 'EIN, ITIN, SSN, W-8, 1099' : 'EIN, ITIN, SSN, W-8, 1099',
-        },
-        {
-          label: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
-          href: `/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
-          description: isEnglish ? 'Must-have legal documents' : 'Gerekli hukuki belgeler',
-        },
-        {
-          label: isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı',
-          href: `/${lang}/abdde-banka-hesabi-acmak`,
-          description: isEnglish ? 'Opening accounts as non-resident' : 'Yabancı olarak hesap açma',
-        },
-      ]
-    },
-    {
-      key: 'templates',
-      label: isEnglish ? 'Templates' : 'Şablonlar',
-      href: templatesUrl,
-      dropdown: [
-        {
-          label: isEnglish ? 'View All Templates' : 'Tüm Şablonları Gör',
-          href: templatesUrl,
-          description: isEnglish ? 'Browse 50+ legal templates' : '50+ hukuki şablona göz atın'
-        },
-        {
-          label: isEnglish ? 'Contracts' : 'Sözleşmeler',
-          href: `${templatesUrl}#contracts`,
-          description: isEnglish ? 'NDA, Service Agreement, etc.' : 'NDA, Hizmet Sözleşmesi, vb.'
-        },
-        {
-          label: isEnglish ? 'Business Documents' : 'İş Belgeleri',
-          href: `${templatesUrl}#business`,
-          description: isEnglish ? 'Invoice, Receipt, Authorization' : 'Fatura, Makbuz, Yetki'
-        },
-        {
-          label: isEnglish ? 'Tax & IRS Forms' : 'Vergi & IRS Formları',
-          href: `${templatesUrl}#tax`,
-          description: isEnglish ? 'W-8, EIN, ITIN checklists' : 'W-8, EIN, ITIN kontrol listeleri'
-        },
-        {
-          label: isEnglish ? 'Immigration Letters' : 'Göç Mektupları',
-          href: `${templatesUrl}#immigration`,
-          description: isEnglish ? 'Visa support letters' : 'Vize destek mektupları'
-        },
-      ]
-    },
-    {
-      key: 'checklists',
-      label: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-      href: `/${lang}/checklists/llc-checklist`,
-      dropdown: [
-        {
-          label: isEnglish ? 'LLC Formation Checklist' : 'LLC Kurulum Listesi',
-          href: `/${lang}/checklists/llc-checklist`,
-          description: isEnglish ? 'Step-by-step LLC setup' : 'Adım adım LLC kurulumu'
-        },
-        {
-          label: isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Listesi',
-          href: `/${lang}/checklists/bank-account-checklist`,
-          description: isEnglish ? 'Documents needed' : 'Gerekli belgeler'
-        },
-        {
-          label: isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Listesi',
-          href: `/${lang}/checklists/tax-documents-checklist`,
-          description: isEnglish ? 'IRS compliance docs' : 'IRS uyum belgeleri'
-        },
-      ]
-    },
-    {
-      key: 'kits',
-      label: isEnglish ? 'Legal Kits' : 'Hukuki Kitler',
-      href: `/${lang}/legal-kits`,
-      dropdown: [
-        {
-          label: isEnglish ? 'ABD Business Starter Kit' : 'ABD Business Starter Kit',
-          href: `/${lang}/legal-kits/business-starter`,
-          description: isEnglish ? '5 essential documents' : '5 temel belge'
-        },
-      ]
-    },
-    {
-      key: 'support',
-      label: isEnglish ? 'Support' : 'Destek',
-      href: `/${lang}/support`,
-    },
-  ]
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false)
+    setActiveDropdown(null)
+  }, [pathname])
 
   const toggleDropdown = (key: string) => {
     setActiveDropdown(activeDropdown === key ? null : key)
@@ -191,10 +84,13 @@ export default function Header({ lang, dict }: HeaderProps) {
   return (
     <>
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={dropdownRef}>
+        <nav
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          ref={dropdownRef}
+        >
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link href={`/${lang}`} className="flex items-center">
+            <Link href={`/${lang}`} className="flex items-center flex-shrink-0">
               <span className="text-2xl font-black text-black tracking-tight">
                 EchoLegal
               </span>
@@ -202,9 +98,9 @@ export default function Header({ lang, dict }: HeaderProps) {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
-              {navItems.map((item) => (
+              {NAV_ITEMS.map((item) => (
                 <div key={item.key} className="relative">
-                  {item.dropdown ? (
+                  {item.children ? (
                     <>
                       <button
                         onClick={() => toggleDropdown(item.key)}
@@ -214,46 +110,57 @@ export default function Header({ lang, dict }: HeaderProps) {
                             : 'text-gray-600 hover:text-black hover:bg-gray-50'
                         }`}
                       >
-                        {item.label}
+                        {getLabel(item, lang)}
                         <svg
-                          className={`w-4 h-4 transition-transform ${activeDropdown === item.key ? 'rotate-180' : ''}`}
+                          className={`w-4 h-4 transition-transform ${
+                            activeDropdown === item.key ? 'rotate-180' : ''
+                          }`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
                         </svg>
                       </button>
 
                       {/* Dropdown Menu */}
                       {activeDropdown === item.key && (
                         <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
-                          {/* Main link */}
+                          {/* View All link */}
                           <Link
-                            href={item.href}
+                            href={resolveHref(item.href, lang)}
                             className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 border-b border-gray-100 mb-1"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {isEnglish ? 'View All' : 'Tümünü Gör'} →
                           </Link>
-                          {item.dropdown.map((subItem, idx) => (
+                          {item.children.map((child, idx) => (
                             <Link
                               key={idx}
-                              href={subItem.href}
-                              target={subItem.href.startsWith('http') ? '_blank' : undefined}
-                              rel={subItem.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                              href={resolveHref(child.href, lang)}
+                              target={child.external ? '_blank' : undefined}
+                              rel={
+                                child.external
+                                  ? 'noopener noreferrer'
+                                  : undefined
+                              }
                               className="block px-4 py-2 hover:bg-gray-50"
                               onClick={() => setActiveDropdown(null)}
                             >
                               <span className="block text-sm font-medium text-gray-900">
-                                {subItem.label}
-                                {subItem.href.startsWith('http') && (
+                                {getLabel(child, lang)}
+                                {child.external && (
                                   <span className="ml-1 text-gray-400">↗</span>
                                 )}
                               </span>
-                              {subItem.description && (
+                              {getDescription(child, lang) && (
                                 <span className="block text-xs text-gray-500 mt-0.5">
-                                  {subItem.description}
+                                  {getDescription(child, lang)}
                                 </span>
                               )}
                             </Link>
@@ -263,10 +170,10 @@ export default function Header({ lang, dict }: HeaderProps) {
                     </>
                   ) : (
                     <Link
-                      href={item.href}
+                      href={resolveHref(item.href, lang)}
                       className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-md transition-colors"
                     >
-                      {item.label}
+                      {getLabel(item, lang)}
                     </Link>
                   )}
                 </div>
@@ -328,17 +235,40 @@ export default function Header({ lang, dict }: HeaderProps) {
                 </svg>
               </button>
 
+              {/* Language Switcher (Mobile) */}
+              <Link
+                href={switchUrl}
+                className="px-2 py-1 text-sm font-semibold border border-gray-300 rounded-full"
+              >
+                {switchLang.toUpperCase()}
+              </Link>
+
               {/* Mobile menu button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-md hover:bg-gray-100"
                 aria-label="Toggle menu"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
                   )}
                 </svg>
               </button>
@@ -348,45 +278,34 @@ export default function Header({ lang, dict }: HeaderProps) {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="lg:hidden py-4 border-t border-gray-100">
-              {navItems.map((item) => (
+              {NAV_ITEMS.map((item) => (
                 <div key={item.key} className="py-1">
                   <Link
-                    href={item.href}
+                    href={resolveHref(item.href, lang)}
                     className="block px-2 py-2 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-md"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    {item.label}
+                    {getLabel(item, lang)}
                   </Link>
-                  {item.dropdown && (
+                  {item.children && (
                     <div className="pl-4 mt-1 space-y-1">
-                      {item.dropdown.map((subItem, idx) => (
+                      {item.children.map((child, idx) => (
                         <Link
                           key={idx}
-                          href={subItem.href}
-                          target={subItem.href.startsWith('http') ? '_blank' : undefined}
-                          rel={subItem.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          href={resolveHref(child.href, lang)}
+                          target={child.external ? '_blank' : undefined}
+                          rel={
+                            child.external ? 'noopener noreferrer' : undefined
+                          }
                           className="block px-2 py-1.5 text-sm text-gray-600 hover:text-black hover:bg-gray-50 rounded-md"
-                          onClick={() => setMobileMenuOpen(false)}
                         >
-                          {subItem.label}
-                          {subItem.href.startsWith('http') && ' ↗'}
+                          {getLabel(child, lang)}
+                          {child.external && ' ↗'}
                         </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
-
-              {/* Mobile Language Switcher */}
-              <div className="pt-4 mt-4 border-t border-gray-100">
-                <Link
-                  href={switchUrl}
-                  className="inline-block px-4 py-2 text-sm font-semibold border border-gray-300 rounded-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {isEnglish ? 'Türkçe' : 'English'} ({switchLang.toUpperCase()})
-                </Link>
-              </div>
             </div>
           )}
         </nav>
@@ -394,16 +313,16 @@ export default function Header({ lang, dict }: HeaderProps) {
 
       {/* Search Modal */}
       {searchOpen && (
-        <SearchModal
-          lang={lang as 'en' | 'tr'}
-          onClose={() => setSearchOpen(false)}
-        />
+        <SearchModal lang={lang} onClose={() => setSearchOpen(false)} />
       )}
     </>
   )
 }
 
-// Search Modal Component
+// ============================================================================
+// SEARCH MODAL
+// ============================================================================
+
 function SearchModal({
   lang,
   onClose,
@@ -418,37 +337,35 @@ function SearchModal({
   const inputRef = useRef<HTMLInputElement>(null)
   const isEnglish = lang === 'en'
 
-  // Focus input on mount
   useEffect(() => {
     inputRef.current?.focus()
   }, [])
 
-  // Import and search
   useEffect(() => {
     if (!query.trim()) {
       setResults([])
       return
     }
 
-    // Dynamic import to keep bundle size down
-    import('@/lib/search-index').then(({ searchIndex, getTypeLabel, getTypeBadgeColor }) => {
-      const searchResults = searchIndex(query, {
-        lang,
-        includeOtherLang,
-        limit: 10,
-      })
-      setResults(
-        searchResults.map((item) => ({
-          ...item,
-          typeLabel: getTypeLabel(item.type, lang),
-          badgeColor: getTypeBadgeColor(item.type),
-        }))
-      )
-      setSelectedIndex(0)
-    })
+    import('@/lib/search-index').then(
+      ({ searchIndex, getTypeLabel, getTypeBadgeColor }) => {
+        const searchResults = searchIndex(query, {
+          lang,
+          includeOtherLang,
+          limit: 10,
+        })
+        setResults(
+          searchResults.map((item) => ({
+            ...item,
+            typeLabel: getTypeLabel(item.type, lang),
+            badgeColor: getTypeBadgeColor(item.type),
+          }))
+        )
+        setSelectedIndex(0)
+      }
+    )
   }, [query, lang, includeOtherLang])
 
-  // Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
@@ -466,16 +383,12 @@ function SearchModal({
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/50 transition-opacity"
         onClick={onClose}
       />
-
-      {/* Modal */}
       <div className="relative min-h-screen flex items-start justify-center pt-[15vh] px-4">
         <div className="relative w-full max-w-xl bg-white rounded-xl shadow-2xl overflow-hidden">
-          {/* Search input */}
           <div className="flex items-center border-b border-gray-200 px-4">
             <svg
               className="w-5 h-5 text-gray-400"
@@ -508,7 +421,6 @@ function SearchModal({
             </kbd>
           </div>
 
-          {/* Language toggle */}
           <div className="px-4 py-2 border-b border-gray-100 bg-gray-50">
             <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
               <input
@@ -523,7 +435,6 @@ function SearchModal({
             </label>
           </div>
 
-          {/* Results */}
           {results.length > 0 && (
             <div className="max-h-[60vh] overflow-y-auto p-2">
               {results.map((result, index) => (
@@ -532,9 +443,7 @@ function SearchModal({
                   href={result.url}
                   onClick={onClose}
                   className={`block p-3 rounded-lg transition-colors ${
-                    index === selectedIndex
-                      ? 'bg-gray-100'
-                      : 'hover:bg-gray-50'
+                    index === selectedIndex ? 'bg-gray-100' : 'hover:bg-gray-50'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-1">
@@ -561,7 +470,6 @@ function SearchModal({
             </div>
           )}
 
-          {/* No results */}
           {query && results.length === 0 && (
             <div className="p-8 text-center text-gray-500">
               {isEnglish
@@ -570,7 +478,6 @@ function SearchModal({
             </div>
           )}
 
-          {/* Empty state */}
           {!query && (
             <div className="p-6 text-center text-gray-500">
               <p className="mb-2">
@@ -586,7 +493,6 @@ function SearchModal({
             </div>
           )}
 
-          {/* Footer */}
           <div className="border-t border-gray-200 px-4 py-2 text-xs text-gray-400 flex items-center justify-between bg-gray-50">
             <span>
               <kbd className="px-1 py-0.5 bg-white rounded border">↑</kbd>{' '}
@@ -601,5 +507,137 @@ function SearchModal({
         </div>
       </div>
     </div>
+  )
+}
+
+// ============================================================================
+// FOOTER
+// ============================================================================
+
+function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
+  const isEnglish = lang === 'en'
+
+  return (
+    <footer className="border-t border-gray-200 py-12 px-4 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div>
+            <Link href={`/${lang}`} className="text-xl font-black text-black">
+              EchoLegal
+            </Link>
+            <p className="mt-2 text-sm text-gray-500">
+              {isEnglish
+                ? 'Free legal resources for Turkish entrepreneurs in the US.'
+                : 'ABD\'deki Türk girişimciler için ücretsiz hukuki kaynaklar.'}
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-3">
+              {isEnglish ? 'Quick Links' : 'Hızlı Bağlantılar'}
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href={`/${lang}/amerika`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={resolveHref('/{lang}/templates', lang)}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'Templates' : 'Şablonlar'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/legal-kits`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'Legal Kits' : 'Hukuki Kitler'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-3">
+              {isEnglish ? 'Legal' : 'Hukuki'}
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href={`/${lang}/legal/privacy`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/legal/terms`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'Terms of Service' : 'Kullanım Koşulları'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/legal/disclaimer`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'Disclaimer' : 'Sorumluluk Reddi'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-3">
+              {isEnglish ? 'Support' : 'Destek'}
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href={`/${lang}/support`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'Support Us' : 'Bizi Destekle'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${lang}/about`}
+                  className="text-gray-500 hover:text-black"
+                >
+                  {isEnglish ? 'About' : 'Hakkımızda'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="pt-8 border-t border-gray-200">
+          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
+            {isEnglish
+              ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship.'
+              : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanılması avukat-müvekkil ilişkisi oluşturmaz.'}
+          </p>
+          <p className="text-xs text-gray-400 mt-4">
+            © 2025 EchoLegal.{' '}
+            {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
+          </p>
+        </div>
+      </div>
+    </footer>
   )
 }

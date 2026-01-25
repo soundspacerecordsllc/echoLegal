@@ -1,18 +1,13 @@
 import '../globals.css'
 import type { Metadata } from 'next'
-import { i18n, Locale } from '@/i18n-config'
 import { headers } from 'next/headers'
 import { getGlobalSchemas, SITE_URL } from '@/lib/structured-data'
 import AppShell from '@/components/AppShell'
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }))
-}
-
 export const metadata: Metadata = {
-  title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
+  title: 'EchoLegal | Ücretsiz Hukuki Ansiklopedi ve Sözleşme Şablonları',
   description:
-    'Bilingual legal encyclopedia providing professionally drafted contracts and legal guides in English and Turkish. I support EchoLegal – legal knowledge for everyone.',
+    'İngilizce ve Türkçe profesyonelce hazırlanmış sözleşmeler ve hukuki rehberler sunan iki dilli hukuki ansiklopedi.',
   metadataBase: new URL('https://echo-legal.com'),
 }
 
@@ -32,25 +27,21 @@ function generateHreflangLinks(currentPath: string) {
   }
 }
 
-export default async function RootLayout({
+export default async function TurkishLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: Promise<{ lang: Locale }>
 }) {
-  const { lang } = await params
-
   // Get current pathname for dynamic hreflang
   const headersList = await headers()
-  const pathname = headersList.get('x-pathname') || `/${lang}`
+  const pathname = headersList.get('x-pathname') || '/tr'
   const hreflangs = generateHreflangLinks(pathname)
 
   // Get global structured data schemas
   const globalSchemas = getGlobalSchemas()
 
   return (
-    <html lang={lang}>
+    <html lang="tr">
       <head>
         {/* Dynamic hreflang tags */}
         <link rel="alternate" hrefLang="en" href={hreflangs.en} />
@@ -66,7 +57,7 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <AppShell lang={lang}>{children}</AppShell>
+        <AppShell lang="tr">{children}</AppShell>
       </body>
     </html>
   )

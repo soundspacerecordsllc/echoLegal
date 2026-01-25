@@ -4,22 +4,15 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Locale } from '@/i18n-config'
-import { getDictionary } from '@/get-dictionary'
 import {
   getTemplatesByLang,
   categoryLabels,
   docTypeLabels,
   jurisdictionLabels,
   getAllCategories,
-  getAllDocTypes,
-  getAllJurisdictions,
   TemplateCategory,
-  DocType,
-  Jurisdiction,
   Template,
 } from '@/lib/templates-registry'
-import Header from '@/components/Header'
-import { TemplatesGrid } from '@/components/TemplatesGrid'
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'tr' }]
@@ -65,13 +58,10 @@ export default async function TemplatesPage({
   params: Promise<{ lang: Locale }>
 }) {
   const { lang } = await params
-  const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
   const templates = getTemplatesByLang(lang)
   const categories = getAllCategories()
-  const docTypes = getAllDocTypes()
-  const jurisdictions = getAllJurisdictions()
 
   // Group templates by category for display
   const templatesByCategory = categories.reduce((acc, category) => {
@@ -117,15 +107,13 @@ export default async function TemplatesPage({
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header lang={lang} dict={dict} />
-
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Header */}
         <div className="mb-10">
           <h1 className="text-4xl font-black text-black mb-4">
@@ -273,21 +261,7 @@ export default async function TemplatesPage({
             </Link>
           </div>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
-            {isEnglish
-              ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship.'
-              : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez.'}
-          </p>
-          <p className="text-xs text-gray-400 mt-4">
-            © 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </>
   )
 }

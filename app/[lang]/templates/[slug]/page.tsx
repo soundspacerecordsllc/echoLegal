@@ -5,8 +5,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Locale } from '@/i18n-config'
-import { getDictionary } from '@/get-dictionary'
-import Header from '@/components/Header'
 import { TemplatesList } from '@/components/TemplatesGrid'
 import {
   getTemplateBySlug,
@@ -78,7 +76,6 @@ export default async function TemplateDetailPage({
   params: Promise<{ lang: Locale; slug: string }>
 }) {
   const { lang, slug } = await params
-  const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
   const template = getTemplateBySlug(slug, lang)
@@ -143,15 +140,13 @@ export default async function TemplateDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header lang={lang} dict={dict} />
-
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">
@@ -297,22 +292,8 @@ export default async function TemplateDetailPage({
             <TemplatesList templates={relatedTemplates} lang={lang} />
           </section>
         )}
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
-            {isEnglish
-              ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice.'
-              : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez.'}
-          </p>
-          <p className="text-xs text-gray-400 mt-4">
-            © 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </>
   )
 }
 
