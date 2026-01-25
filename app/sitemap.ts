@@ -29,6 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/legal/terms',
     '/legal/disclaimer',
     '/legal/cookies',
+    '/about',
+    '/about/editorial-policy',
   ]
 
   // Library pages (educational content)
