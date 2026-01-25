@@ -158,6 +158,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Add all pages for both languages
   for (const lang of languages) {
     for (const page of allPages) {
+      // Skip /templates for TR - use /sablonlar instead
+      if (lang === 'tr' && page === '/templates') continue
+
       urls.push({
         url: `${baseUrl}/${lang}${page}`,
         lastModified: now,
@@ -177,17 +180,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })
     }
 
-    // Add template pages
+    // Add template pages with language-appropriate URLs
     for (const slug of templateSlugs) {
-      const page = `/templates/${slug}`
+      const templatePath = lang === 'tr' ? `/sablonlar/${slug}` : `/templates/${slug}`
       urls.push({
-        url: `${baseUrl}/${lang}${page}`,
+        url: `${baseUrl}/${lang}${templatePath}`,
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.75,
       })
     }
   }
+
+  // Add Turkish templates index with native URL
+  urls.push({
+    url: `${baseUrl}/tr/sablonlar`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  })
 
   return urls
 }
