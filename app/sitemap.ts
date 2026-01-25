@@ -124,7 +124,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...amerikaPages,
   ]
 
-  // Add all pages for both languages with hreflang alternates
+  // Add all pages for both languages
   for (const lang of languages) {
     for (const page of allPages) {
       urls.push({
@@ -132,12 +132,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: getChangeFreq(page),
         priority: getPriority(page, lang),
-        alternates: {
-          languages: {
-            en: `${baseUrl}/en${page}`,
-            tr: `${baseUrl}/tr${page}`,
-          },
-        },
       })
     }
 
@@ -149,12 +143,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
-        alternates: {
-          languages: {
-            en: `${baseUrl}/en${page}`,
-            tr: `${baseUrl}/tr${page}`,
-          },
-        },
       })
     }
   }
