@@ -72,7 +72,7 @@ export default async function Home({
             
             <p className="text-base md:text-lg text-[#444444] mb-8 max-w-md">
               {isEnglish 
-                ? 'Pay what you can. $20 recommended. Free access available by request.'
+                ? 'I support EchoLegal – $20 recommended. Free access available.'
                 : 'Ödeyebileceğiniz kadar ödeyin. 20$ önerilir. Talep üzerine ücretsiz erişim mevcuttur.'
               }
             </p>

@@ -234,7 +234,7 @@ export default async function EssentialContractsPage({
             </h2>
             <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
               {isEnglish
-                ? 'Our Business Starter Kit includes 5 essential legal documents. Pay what you can.'
+                ? 'Our Business Starter Kit includes 5 essential legal documents. I support EchoLegal – $20 recommended.'
                 : 'Business Starter Kit\'imiz 5 temel hukuki belge içerir. Gücünüz kadar ödeyin.'}
             </p>
             <div className="text-center">

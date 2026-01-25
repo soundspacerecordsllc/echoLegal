@@ -27,8 +27,8 @@ export default async function SupportPage({
             </h2>
             <p className="text-legal-gray mb-6">
               {isEnglish
-                ? 'EchoLegal operates on a "pay what you can" model. We believe legal knowledge should be accessible to everyone, regardless of financial circumstances.'
-                : 'EchoLegal, "ödeyebileceğin kadar öde" modeli üzerine çalışır. Hukuki bilginin mali durumlardan bağımsız olarak herkesin erişimine açık olması gerektiğine inanıyoruz.'
+                ? 'EchoLegal is a public legal knowledge resource. Supporting EchoLegal helps maintain and expand this resource. Legal knowledge should be accessible to everyone.'
+                : 'EchoLegal, halka açık bir hukuki bilgi kaynağıdır. EchoLegal\'i desteklemek bu kaynağı sürdürmeye ve genişletmeye yardımcı olur. Hukuki bilgi herkesin erişimine açık olmalıdır.'
               }
             </p>
 

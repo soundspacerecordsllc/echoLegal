@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'Legal Document Kits | Curated Bundles for Specific Needs | EchoLegal'
       : 'Hukuki Belge Kitleri | Özel İhtiyaçlar İçin Seçilmiş Paketler | EchoLegal',
     description: isEnglish
-      ? 'Professionally curated legal document bundles for entrepreneurs, freelancers, and business owners. Pay what you can.'
-      : 'Girişimciler, serbest çalışanlar ve işletme sahipleri için profesyonelce hazırlanmış hukuki belge paketleri. Gücünüz kadar ödeyin.',
+      ? 'Professionally curated legal document bundles for entrepreneurs, freelancers, and business owners. I support EchoLegal – $20 recommended.'
+      : 'Girişimciler, serbest çalışanlar ve işletme sahipleri için profesyonelce hazırlanmış hukuki belge paketleri. EchoLegal\'i destekliyorum – 20$ önerilir.',
   }
 }
 
@@ -106,8 +106,8 @@ export default async function LegalKitsPage({
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl">
             {isEnglish
-              ? 'Curated bundles of essential legal documents for specific business needs. Pay what you can, or access for free.'
-              : 'Belirli iş ihtiyaçları için seçilmiş temel hukuki belge paketleri. Gücünüz kadar ödeyin veya ücretsiz erişin.'}
+              ? 'Curated bundles of essential legal documents for specific business needs. I support EchoLegal – $20 recommended. Free access available.'
+              : 'Belirli iş ihtiyaçları için seçilmiş temel hukuki belge paketleri. EchoLegal\'i destekliyorum – 20$ önerilir. Ücretsiz erişim mevcut.'}
           </p>
         </div>
 

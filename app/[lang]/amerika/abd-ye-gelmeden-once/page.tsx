@@ -553,23 +553,30 @@ export default async function PreArrivalChecklistPage({
             <p><strong>{isEnglish ? 'Next scheduled update:' : 'Sonraki planlanan güncelleme:'}</strong> {isEnglish ? 'April 2026' : 'Nisan 2026'}</p>
           </div>
 
-          {/* CTA */}
-          <section className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-xl p-8">
-            <h2 className="text-2xl font-bold text-black mb-4 text-center">
-              {isEnglish ? 'Get Your Business Documents Ready' : 'İş Belgelerinizi Hazırlayın'}
-            </h2>
-            <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
+          {/* Editorial Resource Reference */}
+          <section className="border border-gray-200 rounded-lg p-6">
+            <p className="text-sm text-gray-700 mb-4">
               {isEnglish
-                ? 'Our Business Starter Kit includes essential contracts and documents for launching your US business—Service Agreement, NDA, Independent Contractor Agreement, and more.'
-                : "Business Starter Kit'imiz ABD işinizi başlatmak için temel sözleşmeler ve belgeler içerir—Hizmet Sözleşmesi, NDA, Bağımsız Yüklenici Sözleşmesi ve daha fazlası."}
+                ? 'The most commonly used starter documents when establishing a US business:'
+                : 'ABD\'de iş kurarken pratikte en sık kullanılan başlangıç belgeleri:'}
             </p>
-            <div className="text-center">
+            <ul className="text-sm text-gray-600 mb-4 space-y-1">
+              <li>• {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</li>
+              <li>• {isEnglish ? 'NDA (Non-Disclosure Agreement)' : 'Gizlilik Sözleşmesi (NDA)'}</li>
+              <li>• {isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'}</li>
+              <li>• {isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}</li>
+              <li>• {isEnglish ? 'Terms of Service' : 'Kullanım Koşulları'}</li>
+            </ul>
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
               <Link
                 href={`/${lang}/legal-kits/business-starter`}
-                className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
+                className="text-[#C9A227] font-medium hover:underline text-sm"
               >
-                {isEnglish ? 'View Business Starter Kit →' : "Business Starter Kit'i Görüntüle →"}
+                {isEnglish ? 'ABD Business Starter Legal Kit →' : 'ABD Business Starter Legal Kit →'}
               </Link>
+              <span className="text-xs text-gray-500">
+                {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – 20$ önerilir'}
+              </span>
             </div>
           </section>
         </article>

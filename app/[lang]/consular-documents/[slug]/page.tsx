@@ -135,25 +135,25 @@ export default async function ProcedurePage({
             {isEnglish ? 'Download Checklist' : 'Kontrol Listesini İndirin'}
           </h2>
           <p className="text-center text-gray-600 mb-6">
-            {isEnglish 
-              ? 'Free printable checklist. Pay what you can to support our bilingual resources.'
-              : 'Ücretsiz yazdırılabilir kontrol listesi. İki dilli kaynaklarımızı desteklemek için gücünüz kadar ödeyin.'}
+            {isEnglish
+              ? 'Free printable checklist. Supporting EchoLegal helps maintain bilingual resources.'
+              : 'Ücretsiz yazdırılabilir kontrol listesi. EchoLegal\'i desteklemek iki dilli kaynakları sürdürmeye yardımcı olur.'}
           </p>
-          
-          <a 
-            href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01" 
+
+          <a
+            href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
             className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3"
           >
-            💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
+            💳 {isEnglish ? 'I support EchoLegal – $20' : 'EchoLegal\'i destekliyorum – $20'}
           </a>
-          
-          <a 
+
+          <a
             href={checklistUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4"
           >
-            📄 {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
+            📄 {isEnglish ? 'Download for free' : 'Ücretsiz indir'}
           </a>
 
           <p className="text-center text-sm text-gray-500">

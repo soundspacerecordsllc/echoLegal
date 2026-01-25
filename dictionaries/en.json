@@ -11,7 +11,7 @@
   "home": {
     "hero": "Legal knowledge should belong to everyone.",
     "subtitle": "EchoLegal is a growing legal encyclopedia with professionally drafted contracts and explanations in English and Turkish.",
-    "pricing": "Pay what you can. $20 recommended. Free access available.",
+    "pricing": "I support EchoLegal – $20 recommended. Free access available.",
     "browseLibrary": "Browse EchoLegal Library",
     "featuredDocuments": "Featured Documents"
   },
@@ -20,11 +20,11 @@
     "whenToUse": "When to Use This Template",
     "keyClauses": "Key Clauses Explained",
     "downloadTitle": "Choose Your Download Option",
-    "downloadSubtitle": "Legal knowledge should be accessible to everyone. Pay $20 if you can—it helps us maintain and expand this resource. If you can't, download for free.",
-    "canAfford": "I CAN Afford It – Pay $20",
-    "cannotAfford": "I CANNOT Afford It – Download Free",
-    "canAffordSub": "Recommended contribution • Instant download",
-    "cannotAffordSub": "No payment required • No judgment",
+    "downloadSubtitle": "Legal knowledge should be accessible to everyone. Supporting EchoLegal helps maintain and expand this resource.",
+    "canAfford": "I support EchoLegal – $20",
+    "cannotAfford": "Download for free",
+    "canAffordSub": "Recommended • Instant download",
+    "cannotAffordSub": "Full access • No restrictions",
     "relatedResources": "Related Resources",
     "jurisdiction": "Jurisdiction",
     "lastUpdated": "Last updated"

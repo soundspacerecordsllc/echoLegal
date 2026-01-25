@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
-  description: 'Bilingual legal encyclopedia providing professionally drafted contracts and legal guides in English and Turkish. Pay what you can - legal knowledge for everyone.',
+  description: 'Bilingual legal encyclopedia providing professionally drafted contracts and legal guides in English and Turkish. I support EchoLegal – legal knowledge for everyone.',
   metadataBase: new URL('https://echo-legal.com'),
 }
 
