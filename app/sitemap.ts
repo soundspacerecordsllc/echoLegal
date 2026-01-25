@@ -54,12 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const legalKitPages = [
     '/legal-kits',
     '/legal-kits/business-starter',
-    '/legal-kits/freelancer-essentials',
-    '/legal-kits/ecommerce-bundle',
   ]
 
   // Checklist pages
   const checklistPages = [
+    '/checklists',
     '/checklists/llc-kontrol-listesi',
     '/checklists/w8-w9-karar-haritasi',
     '/checklists/irs-mektup-rehberi',
@@ -69,6 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const amerikaPages = [
     '/amerika',
     '/amerika/abdye-gelme-yollari',
+    '/amerika/abd-ye-gelmeden-once',
     '/amerika/turist-vizesi-gercekleri',
     '/amerika/statuden-statuye-gecis-gercekleri',
     '/amerika/abdde-llc-kurmak',
