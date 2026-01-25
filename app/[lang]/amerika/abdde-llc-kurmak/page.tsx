@@ -312,7 +312,7 @@ export default async function AbddeLLCPage({
 
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
               <h3 className="font-semibold text-amber-900 mb-2">
-                {isEnglish ? '"I can avoid all taxes with a US LLC"' : '"ABD LLC'siyle tüm vergilerden kaçınabilirim"'}
+                {isEnglish ? '"I can avoid all taxes with a US LLC"' : '"ABD LLC\'siyle tüm vergilerden kaçınabilirim"'}
               </h3>
               <p className="text-sm text-amber-800">
                 {isEnglish
