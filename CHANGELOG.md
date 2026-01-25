@@ -1,6 +1,78 @@
-# CHANGELOG
+# EchoLegal Changelog
 
-All notable changes to EchoLegal will be documented in this file.
+## [2026-01-25] Monetization Update: I Support EchoLegal
+
+### Changed
+- Replaced all "Pay What You Can" language with "I support EchoLegal – $20 recommended"
+- Updated editorial CTAs on high-intent pages (visa guides, LLC guides)
+- Fixed Turkish apostrophe syntax errors across contract templates
+- Maintained compliance-safe, non-sales language throughout
+
+---
+
+## [2026-01-25] Cashflow Acceleration + Amerika Hub
+
+### Added
+
+#### Payment & Download Infrastructure
+- **Smoke Test Script** (`scripts/smoke-test-downloads.sh`)
+  - Automated verification for all 30+ downloadable files
+  - Tests DOCX, PDF, and ZIP files
+  - Returns pass/fail status with detailed output
+
+- **TEST-CHECKLIST.md**
+  - Manual QA checklist for paid ($20) and free download paths
+  - Cross-browser testing matrix
+  - Mobile responsiveness checks
+  - SEO schema validation steps
+
+#### SEO & Indexing
+- **Sitemap** (`app/sitemap.ts`)
+  - Dynamic sitemap covering 80+ pages
+  - All TR and EN routes included
+  - Priority weighting (TR Amerika pages: 0.9)
+
+- **Robots.txt** (`app/robots.ts`)
+  - Proper crawl directives
+  - Sitemap reference for search engines
+
+- **INDEXING.md**
+  - Step-by-step Google Search Console guide
+  - Priority page indexing order
+  - Troubleshooting common indexing issues
+
+#### Conversion Components
+- **KitCallout Component** (`components/KitCallout.tsx`)
+  - Reusable CTA component for kit promotion
+  - Two variants: `compact` (inline) and `full` (card)
+  - Bilingual EN/TR support
+  - Links to Stripe payment and free download
+
+#### Site-wide Updates
+- **Footer Enhancement** (`components/Footer.tsx`)
+  - Added "Resources" section with Amerika Hub links
+  - Business Starter Kit link with "Self-serve templates" subtitle
+  - Scope strip: "EchoLegal bireysel temsil sunmaz..."
+
+### Modified
+
+#### Money Page CTAs
+- **ABD'de LLC Kurmak** (`/amerika/abdde-llc-kurmak`)
+  - CTA 1: After TL;DR (above fold)
+  - CTA 2: After State Comparison (~50% scroll)
+  - CTA 3: After FAQ (full variant, end of page)
+
+- **Sözleşmeler** (`/amerika/abdde-is-yapanlar-icin-sozlesmeler`)
+  - CTA 1: After TL;DR (above fold)
+  - CTA 2: After FAQ (full variant, end of page)
+
+### Legal Kit Downloads
+- Created ZIP bundles in `/public/documents/kits/`:
+  - `abd-business-starter-kit.zip` (6 templates)
+  - `tr-us-legal-bridge-library.zip` (14 templates)
+  - `abdye-gelmeden-once-rehberi.zip` (reference guide)
+
+---
 
 ## [2.0.0] - 2026-01-25
 
@@ -20,11 +92,6 @@ Complete restructure of EchoLegal into a high-conversion, authority-driven legal
 #### Legal Kits (`/legal-kits`)
 - **Legal Kits Hub** (`/legal-kits`) - Curated document bundles overview
 - **ABD Business Starter Legal Kit** (`/legal-kits/business-starter`) - 5 essential documents for Turkish entrepreneurs
-  - NDA
-  - Service Agreement
-  - Independent Contractor Agreement
-  - Privacy Policy
-  - Terms of Service
 
 #### Checklists & Decision Maps (`/checklists`)
 - **Checklists Hub** (`/checklists`) - Quick reference tools overview
@@ -32,49 +99,12 @@ Complete restructure of EchoLegal into a high-conversion, authority-driven legal
 - **W-8 or W-9 Decision Map** (`/checklists/w8-w9-karar-haritasi`) - Tax form selection guide
 - **IRS Letter Guide** (`/checklists/irs-mektup-rehberi`) - First 7 facts when receiving IRS correspondence
 
-### Updated Pages
-
-#### Homepage (`/`)
-- Added Legal Reference Library section with 3 featured hubs
-- Added Business Starter Legal Kit promotion
-- Updated navigation with new sections (Library, Kits)
-- Updated footer with new links
-
-### Updated Components
-
-#### Navigation
-- Added Library link
-- Added Legal Kits link
-- Reorganized menu structure for money hub visibility
-
-#### Dictionaries
-- Added `library` and `legalKits` navigation translations (EN/TR)
-
 ### Design Principles Applied
 - **Editorial conversion patterns** - CTAs framed as "related legal resources"
 - **No sales language** - Reference-only presentation
 - **Trust signals** - "Last reviewed" and "Next update" dates on all content
 - **Compliance-first** - Clear disclaimers on every page
 - **Natural Turkish** - All content written in flowing, human Turkish (not translated)
-
-### Revenue Streams Created
-1. **ABD Business Starter Legal Kit** - Pay What You Can ($20 recommended)
-2. **Individual contract downloads** - Existing Pay What You Can model
-3. **Future micro-libraries** - Framework established for expansion
-
-### Technical Details
-- All new pages use Next.js 14 App Router with async server components
-- Bilingual support (EN/TR) on all new pages
-- Static generation via `generateStaticParams()`
-- Consistent metadata and SEO optimization
-
-### Content Guidelines Followed
-- ✅ Reference-only scope maintained
-- ✅ No legal advice or strategy
-- ✅ No attorney-client relationship implied
-- ✅ Clear jurisdiction notes
-- ✅ Consistent disclaimer language
-- ✅ Natural, non-bureaucratic Turkish
 
 ---
 
@@ -86,22 +116,6 @@ Complete restructure of EchoLegal into a high-conversion, authority-driven legal
 - Encyclopedia foundation
 - Support page
 - Legal compliance pages (Privacy, Terms, Cookies, Disclaimer)
-
----
-
-## Summary of Passive Income Paths
-
-| Product | Type | Monetization |
-|---------|------|--------------|
-| Business Starter Legal Kit | Document Bundle | Pay What You Can ($20) |
-| Individual Contracts | Templates | Pay What You Can ($20) |
-| Library Guides | Reference Content | Free (drives kit sales) |
-| Checklists | Micro-tools | Free (drives engagement) |
-| Consular Checklists | Free Resource | Free (authority building) |
-
-**Total new pages created:** 14
-**Total passive income products:** 2 (kit + individual contracts)
-**Revenue potential:** Scales with organic traffic - no active work required
 
 ---
 

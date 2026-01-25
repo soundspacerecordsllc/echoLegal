@@ -8,9 +8,16 @@ out/
 # TypeScript build info
 tsconfig.tsbuildinfo
 
+# Build files
+next-env.d.ts
+
+# Package lock (optional - some teams commit this)
+package-lock.json
+
 # Environment files
 .env
 .env.local
+.env.*.local
 .env.development.local
 .env.test.local
 .env.production.local
