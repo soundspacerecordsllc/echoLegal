@@ -5,6 +5,7 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import W8W9DecisionTool from '@/components/W8W9DecisionTool'
+import AuthorBox from '@/components/AuthorBox'
 
 export async function generateMetadata({
   params,
@@ -806,25 +807,8 @@ export default async function W8W9DecisionMapPage({
             </div>
           </section>
 
-          {/* Author Box */}
-          <section className="border border-gray-200 rounded-lg p-6 mb-10">
-            <h2 className="text-lg font-bold text-black mb-3">
-              {isEnglish ? 'Author' : 'Yazar'}
-            </h2>
-            <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold text-xl">
-                ZM
-              </div>
-              <div>
-                <h3 className="font-semibold text-black">Zeynep Ruziye Moore</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  {isEnglish
-                    ? 'Attorney at Law, licensed in New York (NY Bar No: 5552336). LL.M., Fordham University School of Law; LL.B., Marmara University Faculty of Law.'
-                    : 'Avukat, New York Barosu (Sicil No: 5552336). Fordham Üniversitesi Hukuk Fakültesi LL.M.; Marmara Üniversitesi Hukuk Fakültesi mezunu.'}
-                </p>
-              </div>
-            </div>
-          </section>
+          {/* Contributing Attorney */}
+          <AuthorBox lang={lang} authorId="zeynep-moore" className="mb-10" />
 
           {/* Review Date */}
           <div className="bg-gray-50 rounded-lg p-4 mb-10 text-sm text-gray-600">
