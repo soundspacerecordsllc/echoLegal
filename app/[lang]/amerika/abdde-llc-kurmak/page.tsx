@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import Breadcrumb from '@/components/Breadcrumb'
 import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
+import KitCallout from '@/components/KitCallout'
 import { getRegistryEntry } from '@/lib/amerika-content-registry'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
@@ -156,6 +157,9 @@ export default async function AbddeLLCPage({
           </ul>
         </section>
 
+        {/* CTA 1 - Above fold */}
+        <KitCallout lang={lang} variant="compact" />
+
         {/* What This Covers */}
         <section className="mb-12">
           <div className="grid md:grid-cols-2 gap-4">
@@ -243,6 +247,9 @@ export default async function AbddeLLCPage({
             </div>
           </div>
         </section>
+
+        {/* CTA 2 - Mid page */}
+        <KitCallout lang={lang} variant="compact" />
 
         {/* Formation Steps */}
         <section className="mb-12">
@@ -374,6 +381,9 @@ export default async function AbddeLLCPage({
           items={faqItems}
           title={isEnglish ? 'Frequently Asked Questions' : 'Sıkça Sorulan Sorular'}
         />
+
+        {/* CTA 3 - End of page */}
+        <KitCallout lang={lang} variant="full" />
 
         {/* Sources */}
         <section className="mb-12">

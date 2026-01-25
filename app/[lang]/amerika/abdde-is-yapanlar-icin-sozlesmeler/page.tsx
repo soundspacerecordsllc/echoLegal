@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import Breadcrumb from '@/components/Breadcrumb'
 import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
+import KitCallout from '@/components/KitCallout'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -172,6 +173,9 @@ export default async function SozlesmelerPage({
           </ul>
         </section>
 
+        {/* CTA - Above fold */}
+        <KitCallout lang={lang} variant="compact" />
+
         {/* Essential Contracts */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">
@@ -265,6 +269,9 @@ export default async function SozlesmelerPage({
           items={faqItems}
           title={isEnglish ? 'Frequently Asked Questions' : 'Sıkça Sorulan Sorular'}
         />
+
+        {/* CTA - End of page */}
+        <KitCallout lang={lang} variant="full" />
 
         {/* Related Pages */}
         <section className="bg-gray-50 rounded-xl p-6 mb-12">
