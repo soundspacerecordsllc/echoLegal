@@ -1,6 +1,5 @@
 // app/[lang]/irs-vergiler-ve-w8-w9-gercekleri/page.tsx
 
-import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
@@ -56,7 +55,6 @@ export default async function TaxGuidePage({
   params: Promise<{ lang: Locale }>
 }) {
   const { lang } = await params
-  const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
   const tocItems = [
@@ -133,25 +131,7 @@ export default async function TaxGuidePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div className="min-h-screen bg-white">
-        {/* Header */}
-        <header className="border-b border-gray-100">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <Link href={`/${lang}`} className="text-2xl font-black text-black">EchoLegal</Link>
-            <div className="flex items-center gap-6">
-              <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-              <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-              <Link href={`/${lang}/library`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Library' : 'Kütüphane'}</Link>
-              <Link
-                href={`/${lang === 'en' ? 'tr' : 'en'}/irs-vergiler-ve-w8-w9-gercekleri`}
-                className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
-              >
-                {isEnglish ? 'TR' : 'EN'}
-              </Link>
-            </div>
-          </nav>
-        </header>
-
+      <div className="bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
@@ -790,12 +770,6 @@ export default async function TaxGuidePage({
           </article>
         </main>
 
-        <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">{dict.disclaimer.global}</p>
-            <p className="text-xs text-gray-400 mt-4">© 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}</p>
-          </div>
-        </footer>
       </div>
     </>
   )
