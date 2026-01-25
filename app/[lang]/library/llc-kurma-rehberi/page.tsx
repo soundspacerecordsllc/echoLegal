@@ -118,7 +118,7 @@ export default async function LLCFormationGuidePage({
               <li><a href="#why-llc" className="text-gray-600 hover:text-black">2. {isEnglish ? 'Why Do People Form LLCs?' : 'İnsanlar Neden LLC Kurar?'}</a></li>
               <li><a href="#state-selection" className="text-gray-600 hover:text-black">3. {isEnglish ? 'State Selection' : 'Eyalet Seçimi'}</a></li>
               <li><a href="#formation-process" className="text-gray-600 hover:text-black">4. {isEnglish ? 'Formation Process' : 'Kuruluş Süreci'}</a></li>
-              <li><a href="#tax-implications" className="text-gray-600 hover:text-black">5. {isEnglish ? 'Tax Implications' : 'Vergi Etkileri'}</a></li>
+              <li><a href="#tax-implications" className="text-gray-600 hover:text-black">5. {isEnglish ? 'Tax Implications' : 'Vergisel Etkiler'}</a></li>
               <li><a href="#common-misconceptions" className="text-gray-600 hover:text-black">6. {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hatalar'}</a></li>
               <li><a href="#next-steps" className="text-gray-600 hover:text-black">7. {isEnglish ? 'Documents You May Need' : 'İhtiyacınız Olabilecek Belgeler'}</a></li>
             </ul>
@@ -284,29 +284,55 @@ export default async function LLCFormationGuidePage({
             {/* Section 5 */}
             <section id="tax-implications" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                5. {isEnglish ? 'Tax Implications' : 'Vergi Etkileri'}
+                5. {isEnglish ? 'Tax Implications' : 'Vergisel Etkiler'}
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'The tax treatment of an LLC depends on several factors, including where you live and how the LLC elects to be taxed:'
-                  : "Bir LLC'nin vergi muamelesi, nerede yaşadığınız ve LLC'nin nasıl vergilendirilmeyi seçtiği dahil olmak üzere birçok faktöre bağlıdır:"}
+                  : "Bir LLC'nin ABD vergi sistemi içindeki konumu, tek bir kurala bağlı değildir. Vergilendirme; nerede ikamet ettiğiniz, LLC'nin faaliyet yapısı ve hangi vergi statüsünün seçildiği gibi birden fazla unsura göre belirlenir."}
               </p>
 
               <div className="bg-red-50 border border-red-200 rounded-lg p-5 my-6">
                 <h4 className="font-semibold text-red-800 mb-2">
-                  {isEnglish ? 'Important for Non-US Residents:' : "ABD'de Yaşamayanlar İçin Önemli:"}
+                  {isEnglish ? 'Important for Non-US Residents:' : "ABD'de Yerleşik Olmayanlar İçin Özel Not:"}
                 </h4>
-                <p className="text-sm text-red-900">
+                <p className="text-sm text-red-900 mb-3">
                   {isEnglish
                     ? 'Tax obligations for non-US LLC owners are complex and depend on tax treaties, the type of income, and where you perform work. Consult a tax professional familiar with international tax law.'
-                    : 'ABD dışından LLC sahipleri için vergi yükümlülükleri karmaşıktır ve vergi anlaşmalarına, gelir türüne ve işi nerede yaptığınıza bağlıdır. Uluslararası vergi hukukuna aşina bir vergi uzmanına danışın.'}
+                    : 'ABD dışında yaşayan LLC sahipleri açısından vergi yükümlülükleri:'}
                 </p>
+                {!isEnglish && (
+                  <ul className="text-sm text-red-900 list-disc pl-5 space-y-1 mb-3">
+                    <li>ABD kaynaklı gelir olup olmadığına,</li>
+                    <li>Türkiye–ABD vergi anlaşmalarına,</li>
+                    <li>ve fiilî faaliyetin nerede yürütüldüğüne</li>
+                  </ul>
+                )}
+                {!isEnglish && (
+                  <p className="text-sm text-red-900">
+                    göre değişiklik gösterebilir. Bu nedenle, sınır ötesi gelir ve yapıların genel şablonlarla değil, somut çerçevede değerlendirilmesi gerekir.
+                  </p>
+                )}
               </div>
+
+              <p className="text-gray-700 leading-relaxed mb-4">
+                {isEnglish
+                  ? 'Common tax elections include being treated as a "disregarded entity" (pass-through to personal taxes), a partnership, or a corporation (S-Corp or C-Corp election).'
+                  : "ABD'de en sık karşılaşılan LLC vergilendirme seçenekleri şunlardır:"}
+              </p>
+
+              {!isEnglish && (
+                <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
+                  <li>Vergisel olarak yok sayılan yapı (disregarded entity)</li>
+                  <li>Ortaklık (partnership) olarak vergilendirme</li>
+                  <li>Şirket statüsü (C-Corp veya belirli şartlarda S-Corp)</li>
+                </ul>
+              )}
 
               <p className="text-gray-700 leading-relaxed">
                 {isEnglish
-                  ? 'Common tax elections include being treated as a "disregarded entity" (pass-through to personal taxes), a partnership, or a corporation (S-Corp or C-Corp election).'
-                  : 'Yaygın vergi seçimleri arasında "dikkate alınmayan varlık" (kişisel vergilere geçiş), ortaklık veya şirket (S-Corp veya C-Corp seçimi) olarak muamele görmek yer alır.'}
+                  ? 'Each election has different tax consequences. The choice should be evaluated not just for "less tax" but for long-term compliance and risk.'
+                  : 'Her seçeneğin vergi sonuçları farklıdır ve seçim, yalnızca "daha az vergi" değil, uzun vadeli uyum ve risk açısından değerlendirilmelidir.'}
               </p>
             </section>
 
