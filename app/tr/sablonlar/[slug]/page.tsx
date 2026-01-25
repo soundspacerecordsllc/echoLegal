@@ -4,8 +4,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getDictionary } from '@/get-dictionary'
-import Header from '@/components/Header'
 import { TemplatesList } from '@/components/TemplatesGrid'
 import {
   getTemplateBySlug,
@@ -66,7 +64,6 @@ export default async function TurkishTemplateDetailPage({
 }) {
   const { slug } = await params
   const lang = 'tr'
-  const dict = await getDictionary(lang)
 
   const template = getTemplateBySlug(slug, lang)
 
@@ -133,15 +130,13 @@ export default async function TurkishTemplateDetailPage({
   const officialSources = getOfficialSources(template)
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header lang={lang} dict={dict} />
-
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href="/tr" className="hover:text-black">
@@ -333,22 +328,8 @@ export default async function TurkishTemplateDetailPage({
             ))}
           </div>
         </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
-            HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme
-            amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web
-            sitesindeki hiçbir şey hukuki tavsiye teşkil etmez.
-          </p>
-          <p className="text-xs text-gray-400 mt-4">
-            © 2025 EchoLegal. Tüm hakları saklıdır.
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </>
   )
 }
 

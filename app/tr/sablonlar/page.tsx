@@ -3,7 +3,6 @@
 
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { getDictionary } from '@/get-dictionary'
 import {
   getTemplatesByLang,
   categoryLabels,
@@ -13,7 +12,6 @@ import {
   TemplateCategory,
   Template,
 } from '@/lib/templates-registry'
-import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'Ücretsiz Hukuki Şablon ve Belge Kütüphanesi | EchoLegal',
@@ -37,7 +35,6 @@ export const metadata: Metadata = {
 
 export default async function SablonlarPage() {
   const lang = 'tr'
-  const dict = await getDictionary(lang)
 
   const templates = getTemplatesByLang(lang)
   const categories = getAllCategories()
@@ -86,15 +83,13 @@ export default async function SablonlarPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header lang={lang} dict={dict} />
-
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Header */}
         <div className="mb-10">
           <h1 className="text-4xl font-black text-black mb-4">Şablonlar</h1>
@@ -236,21 +231,7 @@ export default async function SablonlarPage() {
             </Link>
           </div>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
-            HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme
-            amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web
-            sitesindeki hiçbir şey hukuki tavsiye teşkil etmez.
-          </p>
-          <p className="text-xs text-gray-400 mt-4">
-            © 2025 EchoLegal. Tüm hakları saklıdır.
-          </p>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </>
   )
 }

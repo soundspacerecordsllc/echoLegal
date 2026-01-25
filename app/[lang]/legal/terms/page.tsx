@@ -1,21 +1,17 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 export default async function TermsPage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
   return (
-    <>
-      <Header lang={lang} dict={dict} />
-
-      <main className="min-h-screen py-12">
+    <div className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-legal-navy mb-4">
             {dict.footer.terms}
@@ -121,9 +117,6 @@ export default async function TermsPage({
             </section>
           </div>
         </div>
-      </main>
-
-      <Footer lang={lang} dict={dict} />
-    </>
+    </div>
   )
 }
