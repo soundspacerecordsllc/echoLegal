@@ -23,8 +23,8 @@
 | Page | Route | Status | Needs Verification |
 |------|-------|--------|-------------------|
 | ABD'de LLC Kurmak | `/tr/amerika/abdde-llc-kurmak` | ✅ Complete | **YES** |
-| LLC mi Corp mu? | `/tr/amerika/llc-mi-corp-mu` | ⏳ Pending | YES |
-| ABD'de Banka Hesabı | `/tr/amerika/abdde-banka-hesabi` | ⏳ Pending | YES |
+| LLC mi Corp mu? | `/tr/amerika/llc-mi-corp-mu` | ✅ Complete | **YES** |
+| ABD'de Banka Hesabı | `/tr/amerika/abdde-banka-hesabi` | ✅ Complete | **YES** |
 
 ### Tax Section
 | Page | Route | Status | Needs Verification |
@@ -34,8 +34,8 @@
 ### Contracts Section
 | Page | Route | Status | Needs Verification |
 |------|-------|--------|-------------------|
-| ABD'de İş Yapanlar İçin Sözleşmeler | `/tr/amerika/abdde-is-yapanlar-icin-sozlesmeler` | ⏳ Pending | No |
-| NY Law Neden Tercih Edilir | `/tr/amerika/ny-law-neden-tercih-edilir` | ⏳ Pending | No |
+| ABD'de İş Yapanlar İçin Sözleşmeler | `/tr/amerika/abdde-is-yapanlar-icin-sozlesmeler` | ✅ Complete | No |
+| NY Law Neden Tercih Edilir | `/tr/amerika/ny-law-neden-tercih-edilir` | ✅ Complete | No |
 
 ### Platform Section
 | Page | Route | Status | Needs Verification |
@@ -45,6 +45,7 @@
 ### Legal Kits
 | Page | Route | Status | Needs Verification |
 |------|-------|--------|-------------------|
+| Legal Kits Index | `/tr/amerika/legal-kitler` | ✅ Complete | No |
 | ABD Business Starter Kit | `/tr/amerika/legal-kitler/abd-business-starter-legal-kit` | ✅ Complete | No |
 | ABD'ye Gelmeden Önce Rehberi | `/tr/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi` | ⏳ Pending | No |
 | TR-US Legal Bridge Library | `/tr/amerika/legal-kitler/tr-us-legal-bridge-mini-library` | ⏳ Pending | No |
