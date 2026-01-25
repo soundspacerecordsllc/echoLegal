@@ -585,6 +585,20 @@ export default async function PaymentPlatformsGuidePage({
                   <span className="font-medium text-black">{isEnglish ? 'US Bank Account Guide' : 'ABD Banka Hesabı Rehberi'}</span>
                   <span className="block text-sm text-gray-600 mt-1">{isEnglish ? 'Opening accounts as non-resident' : 'Yabancı olarak hesap açma'}</span>
                 </Link>
+                <Link
+                  href={`/${lang}/legal-kits/business-starter`}
+                  className="block p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors border border-amber-200"
+                >
+                  <span className="font-medium text-black">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</span>
+                  <span className="block text-sm text-gray-600 mt-1">{isEnglish ? '5 essential contract templates' : '5 temel sözleşme şablonu'}</span>
+                </Link>
+                <Link
+                  href={`/${lang}/ein-itin-ssn-farki`}
+                  className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  <span className="font-medium text-black">{isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}</span>
+                  <span className="block text-sm text-gray-600 mt-1">{isEnglish ? 'Tax ID numbers explained' : 'Vergi kimlik numaraları açıklandı'}</span>
+                </Link>
               </div>
             </section>
 

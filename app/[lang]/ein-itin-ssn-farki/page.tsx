@@ -711,9 +711,9 @@ export default async function EinItinSsnPage({
                   <h3 className="font-semibold text-black mb-1">{isEnglish ? '1099 & Tax Documents' : '1099 ve Vergi Belgeleri'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Understanding US tax forms' : 'ABD vergi formlarını anlama'}</p>
                 </Link>
-                <Link href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
-                  <p className="text-sm text-gray-600">{isEnglish ? 'Step-by-step LLC setup' : 'Adım adım LLC kurulumu'}</p>
+                <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
+                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
+                  <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates in one bundle' : 'Tek pakette 5 temel sözleşme şablonu'}</p>
                 </Link>
                 <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                   <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı'}</h3>

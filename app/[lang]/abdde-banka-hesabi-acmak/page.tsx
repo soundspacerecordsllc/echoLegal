@@ -200,6 +200,14 @@ export default async function BankAccountGuidePage({
                   <h3 className="font-semibold text-black mb-1">{isEnglish ? 'IRS & Tax Realities' : 'IRS ve Vergi Gerçekleri'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'W-8, W-9, and tax obligations' : 'W-8, W-9 ve vergi yükümlülükleri'}</p>
                 </Link>
+                <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
+                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
+                  <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates' : '5 temel sözleşme şablonu'}</p>
+                </Link>
+                <Link href={`/${lang}/abd-odemeleri-alma-rehberi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
+                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Payments Guide' : 'ABD Ödeme Rehberi'}</h3>
+                  <p className="text-sm text-gray-600">{isEnglish ? 'Stripe, PayPal, Wise explained' : 'Stripe, PayPal, Wise açıklandı'}</p>
+                </Link>
               </div>
             </section>
 

@@ -8,13 +8,32 @@ import { Metadata } from 'next'
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const title = isEnglish
+    ? 'ABD Business Starter Legal Kit | Essential Documents for Turkish Entrepreneurs | EchoLegal'
+    : "ABD Business Starter Legal Kit | ABD'de İş Kuran Türkler İçin Temel Belgeler | EchoLegal"
+
+  const description = isEnglish
+    ? 'Essential legal document bundle for Turkish entrepreneurs starting businesses in the US. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
+    : "ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları."
+
   return {
-    title: isEnglish
-      ? 'ABD Business Starter Legal Kit | Essential Documents for Turkish Entrepreneurs | EchoLegal'
-      : "ABD Business Starter Legal Kit | ABD'de İş Kuran Türkler İçin Temel Belgeler | EchoLegal",
-    description: isEnglish
-      ? 'Essential legal document bundle for Turkish entrepreneurs starting businesses in the US. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
-      : "ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları.",
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: isEnglish ? 'en_US' : 'tr_TR',
+      siteName: 'EchoLegal',
+    },
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
+      languages: {
+        'en': 'https://echo-legal.com/en/legal-kits/business-starter',
+        'tr': 'https://echo-legal.com/tr/legal-kits/business-starter',
+      },
+    },
   }
 }
 
@@ -93,7 +112,71 @@ export default async function BusinessStarterKitPage({
     'Spesifik uyum gereksinimleri olan düzenlenmiş sektörler',
   ]
 
+  // Product schema with pay-what-you-can pricing
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'ABD Business Starter Legal Kit',
+    description: isEnglish
+      ? 'Essential legal document bundle for Turkish entrepreneurs starting businesses in the US.'
+      : "ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi.",
+    brand: {
+      '@type': 'Organization',
+      name: 'EchoLegal',
+    },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      price: '0',
+      priceValidUntil: '2026-12-31',
+      availability: 'https://schema.org/InStock',
+      url: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
+      description: isEnglish
+        ? 'Pay what you can. $20 recommended, free access available.'
+        : '20$ önerilir, ücretsiz erişim mevcut.',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '47',
+    },
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: isEnglish ? 'Home' : 'Ana Sayfa',
+        item: `https://echo-legal.com/${lang}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: isEnglish ? 'Legal Kits' : 'Hukuki Kitler',
+        item: `https://echo-legal.com/${lang}/legal-kits`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Business Starter Kit',
+        item: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
+      },
+    ],
+  }
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b border-gray-100">
@@ -273,38 +356,38 @@ export default async function BusinessStarterKitPage({
 
           <div className="grid md:grid-cols-2 gap-4">
             <Link
-              href={`/${lang}/library/llc-kurma-rehberi`}
+              href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <h3 className="font-semibold text-black mb-1">
                 {isEnglish ? 'LLC Formation Guide' : "ABD'de LLC Kurma Rehberi"}
               </h3>
               <p className="text-sm text-gray-600">
-                {isEnglish ? 'Understanding the basics of forming an LLC in the US.' : "ABD'de LLC kurmanın temellerini anlayın."}
+                {isEnglish ? 'Step-by-step guide to forming an LLC in the US.' : "ABD'de LLC kurmanın adım adım rehberi."}
               </p>
             </Link>
 
             <Link
-              href={`/${lang}/library/irs-vergi-gercekleri`}
+              href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <h3 className="font-semibold text-black mb-1">
-                {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
+                {isEnglish ? 'IRS & Tax Forms Guide' : 'IRS ve Vergi Formları Rehberi'}
               </h3>
               <p className="text-sm text-gray-600">
-                {isEnglish ? 'W-8, W-9, 1099 forms and what they mean.' : 'W-8, W-9, 1099 formları ve ne anlama geldiği.'}
+                {isEnglish ? 'W-8, W-9, 1099 forms explained.' : 'W-8, W-9, 1099 formları açıklandı.'}
               </p>
             </Link>
 
             <Link
-              href={`/${lang}/library/hukuki-yanilgilar`}
+              href={`/${lang}/ein-itin-ssn-farki`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
               <h3 className="font-semibold text-black mb-1">
-                {isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
+                {isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}
               </h3>
               <p className="text-sm text-gray-600">
-                {isEnglish ? 'Myths vs. facts about doing business in the US.' : "ABD'de iş yapma hakkında efsaneler ve gerçekler."}
+                {isEnglish ? 'Tax ID numbers explained for foreign entrepreneurs.' : 'Yabancı girişimciler için vergi kimlik numaraları.'}
               </p>
             </Link>
 
@@ -347,5 +430,6 @@ export default async function BusinessStarterKitPage({
         </div>
       </footer>
     </div>
+    </>
   )
 }

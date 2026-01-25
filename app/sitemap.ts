@@ -66,10 +66,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Checklist pages
   const checklistPages = [
-    '/checklists',
-    '/checklists/llc-kontrol-listesi',
-    '/checklists/w8-w9-karar-haritasi',
-    '/checklists/irs-mektup-rehberi',
+    '/checklists/llc-checklist',
+    '/checklists/bank-account-checklist',
+    '/checklists/tax-documents-checklist',
+  ]
+
+  // State-specific LLC pages
+  const stateLLCPages = [
+    '/amerika/llc-eyalet/florida',
   ]
 
   // Amerika Hub pages
@@ -141,6 +145,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guidePages,
     ...legalKitPages,
     ...checklistPages,
+    ...stateLLCPages,
     ...amerikaPages,
   ]
 
