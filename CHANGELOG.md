@@ -41,6 +41,10 @@ All notable changes to this project will be documented in this file.
 1. `/contracts/service-agreement` — Full redesign
 2. `/contracts/nda` — Full redesign
 3. `/contracts/independent-contractor` — Full redesign
+4. `/contracts/freelance-agreement` — Full redesign
+5. `/contracts/influencer-agreement` — Full redesign
+6. `/contracts/privacy-policy` — Full redesign
+7. `/contracts/terms-of-service` — Full redesign
 
 ### What Did NOT Change
 

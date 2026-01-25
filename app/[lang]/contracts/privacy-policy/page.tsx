@@ -1,19 +1,29 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
-import Link from 'next/link'
 import { Metadata } from 'next'
+import {
+  ContractHero,
+  ContractPageHeader,
+  ContractPageFooter,
+  ContextCard,
+  ContentCard,
+  ContentList,
+  DownloadSection,
+  RelatedResources,
+  LegalDisclaimer,
+} from '@/components/contracts'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
-  
+
   return {
-    title: isEnglish 
-      ? 'Free Privacy Policy Template (English & Turkish) | EchoLegal'
-      : 'Ücretsiz Gizlilik Politikası Şablonu (İngilizce & Türkçe) | EchoLegal',
+    title: isEnglish
+      ? 'Privacy Policy Template | EchoLegal'
+      : 'Gizlilik Politikası Şablonu | EchoLegal',
     description: isEnglish
-      ? 'Free bilingual privacy policy template. GDPR, CCPA & KVKK compliant. Pay what you can ($20 recommended) or download free.'
-      : 'Ücretsiz iki dilli gizlilik politikası şablonu. GDPR, CCPA ve KVKK uyumlu. Gücünüz kadar ödeyin (20$ önerilir).',
+      ? 'Professional privacy policy template. GDPR, CCPA & KVKK compliant. Explain how your website or app collects, uses, and protects user data.'
+      : 'Profesyonel gizlilik politikası şablonu. GDPR, CCPA ve KVKK uyumlu. Web sitenizin veya uygulamanızın kullanıcı verilerini nasıl topladığını, kullandığını ve koruduğunu açıklayın.',
   }
 }
 
@@ -27,144 +37,181 @@ export default async function PrivacyPolicyPage({
   const isEnglish = lang === 'en'
 
   const stripePaymentLink = 'https://buy.stripe.com/dRm3cv9163Xp7wCdCnd7q02'
-  const documentUrl = isEnglish 
+  const documentUrl = isEnglish
     ? '/documents/PrivacyPolicy-EN.docx'
     : '/documents/GizlilikPolitikasi-TR.docx'
 
-  // Cross-sell related contracts
+  const content = {
+    title: isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası',
+    subtitle: isEnglish
+      ? 'A legally required document explaining how your website or app handles user data.'
+      : 'Web sitenizin veya uygulamanızın kullanıcı verilerini nasıl işlediğini açıklayan yasal olarak zorunlu bir belge.',
+    jurisdiction: isEnglish ? 'GDPR / CCPA / KVKK Compliant' : 'GDPR / CCPA / KVKK Uyumlu',
+    lastUpdated: isEnglish ? 'Updated January 2026' : 'Ocak 2026 güncellemesi',
+    breadcrumbs: [
+      { label: isEnglish ? 'Home' : 'Ana Sayfa', href: `/${lang}` },
+      { label: isEnglish ? 'Contracts' : 'Sözleşmeler', href: `/${lang}/contracts` },
+      { label: isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası' },
+    ],
+    contextText: isEnglish
+      ? 'This template covers essential privacy disclosure requirements. Customize it to reflect your actual data practices.'
+      : 'Bu şablon temel gizlilik açıklama gereksinimlerini kapsar. Gerçek veri uygulamalarınızı yansıtacak şekilde özelleştirin.',
+    whatIsTitle: isEnglish ? 'What is a Privacy Policy?' : 'Gizlilik Politikası Nedir?',
+    whatIsText: isEnglish
+      ? 'A Privacy Policy is a legal document that explains how your website or app collects, uses, stores, and protects user data. It is required by law in most jurisdictions (GDPR in Europe, CCPA in California, KVKK in Turkey) for any website that collects personal information. Transparency about data practices builds user trust and ensures regulatory compliance.'
+      : 'Gizlilik Politikası, web sitenizin veya uygulamanızın kullanıcı verilerini nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklayan yasal bir belgedir. Kişisel bilgi toplayan herhangi bir web sitesi için çoğu yargı bölgesinde (Avrupa\'da GDPR, California\'da CCPA, Türkiye\'de KVKK) yasalarca zorunludur. Veri uygulamaları hakkında şeffaflık, kullanıcı güvenini oluşturur ve mevzuat uyumunu sağlar.',
+    whenToUseTitle: isEnglish ? 'When You Need This' : 'Ne Zaman Gerekli',
+    whenToUseItems: isEnglish
+      ? [
+          'Any website that collects user data',
+          'E-commerce stores processing payments',
+          'SaaS applications with user accounts',
+          'Mobile apps accessing device data',
+          'Websites using cookies or analytics',
+          'Email newsletter sign-ups',
+        ]
+      : [
+          'Kullanıcı verisi toplayan herhangi bir web sitesi',
+          'Ödeme işleyen e-ticaret mağazaları',
+          'Kullanıcı hesapları olan SaaS uygulamaları',
+          'Cihaz verilerine erişen mobil uygulamalar',
+          'Çerez veya analitik kullanan web siteleri',
+          'E-posta bülteni kayıtları',
+        ],
+    keyClausesTitle: isEnglish ? 'Key Sections' : 'Temel Bölümler',
+    keyClauses: isEnglish
+      ? [
+          'Data Collection — What information you collect and how',
+          'Data Use — How you use the collected information',
+          'Data Sharing — Third parties who may access data',
+          'Data Storage — Where and how long data is stored',
+          'User Rights — How users can access, correct, or delete data',
+          'Cookies — Cookie policy and tracking technologies',
+        ]
+      : [
+          'Veri Toplama — Hangi bilgileri nasıl topladığınız',
+          'Veri Kullanımı — Toplanan bilgileri nasıl kullandığınız',
+          'Veri Paylaşımı — Verilere erişebilecek üçüncü taraflar',
+          'Veri Saklama — Verilerin nerede ve ne kadar süre saklandığı',
+          'Kullanıcı Hakları — Kullanıcıların verilere nasıl erişip düzeltebileceği veya silebileceği',
+          'Çerezler — Çerez politikası ve izleme teknolojileri',
+        ],
+    complianceTitle: isEnglish ? 'Compliance Requirements' : 'Uyumluluk Gereksinimleri',
+    complianceItems: isEnglish
+      ? [
+          'GDPR — European Union data protection regulation',
+          'CCPA — California Consumer Privacy Act',
+          'KVKK — Turkish Personal Data Protection Law',
+          'Cookie consent banners may be required',
+          'Regular policy updates as practices change',
+        ]
+      : [
+          'GDPR — Avrupa Birliği veri koruma düzenlemesi',
+          'CCPA — California Tüketici Gizlilik Yasası',
+          'KVKK — Türkiye Kişisel Verilerin Korunması Kanunu',
+          'Çerez onay banner\'ları gerekebilir',
+          'Uygulamalar değiştikçe düzenli politika güncellemeleri',
+        ],
+    disclaimer: isEnglish
+      ? 'This template is for informational purposes only and does not constitute legal advice. Privacy laws vary by jurisdiction and change frequently. Consult a licensed attorney before use.'
+      : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Gizlilik yasaları yargı yetkisine göre değişir ve sık sık güncellenir. Kullanmadan önce lisanslı bir avukata danışın.',
+    downloadTitle: isEnglish ? 'Download Template' : 'Şablonu İndirin',
+    downloadSubtitle: isEnglish
+      ? 'Pay what you can. $20 recommended.'
+      : 'Gücünüz kadar ödeyin. 20$ önerilir.',
+    paidLabel: isEnglish ? 'Support EchoLegal — $20' : 'EchoLegal\'i Destekle — $20',
+    freeLabel: isEnglish ? 'Download Free' : 'Ücretsiz İndir',
+    supportText: isEnglish
+      ? 'Your support helps maintain free access and ongoing updates.'
+      : 'Desteğiniz ücretsiz erişimi ve sürekli güncellemeleri sağlamaya yardımcı olur.',
+    relatedTitle: isEnglish ? 'Related Documents' : 'İlgili Belgeler',
+    relatedSubtitle: isEnglish
+      ? 'Commonly used alongside Privacy Policies'
+      : 'Gizlilik Politikalarıyla birlikte sıkça kullanılan',
+    footerDisclaimer: isEnglish
+      ? 'EchoLegal provides educational legal information and templates. Nothing on this website constitutes legal advice. Prepared under the supervision of a New York licensed attorney (NY Bar #5552336).'
+      : 'EchoLegal eğitici hukuki bilgiler ve şablonlar sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez. New York lisanslı avukat gözetiminde hazırlanmıştır (NY Bar #5552336).',
+  }
+
   const relatedContracts = [
     {
       slug: 'terms-of-service',
       title: isEnglish ? 'Terms of Service' : 'Kullanım Koşulları',
+      description: isEnglish ? 'Define user agreement terms' : 'Kullanıcı sözleşmesi koşullarını tanımlayın',
     },
     {
       slug: 'nda',
       title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
+      description: isEnglish ? 'Protect confidential information' : 'Gizli bilgileri koruyun',
+    },
+    {
+      slug: 'service-agreement',
+      title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
+      description: isEnglish ? 'Define service terms' : 'Hizmet koşullarını tanımlayın',
     },
   ]
 
   return (
     <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black">EchoLegal</Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-            <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-            <Link href={`/${lang === 'en' ? 'tr' : 'en'}/contracts/privacy-policy`} className="border border-black rounded-full px-3 py-1 text-sm">{isEnglish ? 'TR' : 'EN'}</Link>
-          </div>
-        </nav>
-      </header>
+      <ContractPageHeader
+        lang={lang}
+        switchLangUrl={`/${lang === 'en' ? 'tr' : 'en'}/contracts/privacy-policy`}
+      />
 
-      <main className="max-w-4xl mx-auto px-4 py-12">
-        <nav className="text-sm text-gray-500 mb-8">
-          <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-          {' → '}
-          <Link href={`/${lang}/contracts`} className="hover:text-black">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-          {' → '}
-          <span className="text-black font-medium">{isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}</span>
-        </nav>
+      <ContractHero
+        lang={lang}
+        title={content.title}
+        subtitle={content.subtitle}
+        jurisdiction={content.jurisdiction}
+        lastUpdated={content.lastUpdated}
+        breadcrumbs={content.breadcrumbs}
+      />
 
-        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: GDPR / CCPA / KVKK Compliant' : 'Yargı Yetkisi: GDPR / CCPA / KVKK Uyumlu'}
-        </span>
+      <main className="max-w-3xl mx-auto px-6 py-12">
+        <ContextCard>
+          {content.contextText}
+        </ContextCard>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
-          {isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu'}
-        </h1>
-
-        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Document?' : 'Bu Belge Nedir?'}</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            {isEnglish 
-              ? 'A Privacy Policy is a legal document that explains how your website or app collects, uses, stores, and protects user data. It is required by law in most jurisdictions (GDPR in Europe, CCPA in California, KVKK in Turkey) for any website that collects personal information.'
-              : 'Gizlilik Politikası, web sitenizin veya uygulamanızın kullanıcı verilerini nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklayan yasal bir belgedir. Kişisel bilgi toplayan herhangi bir web sitesi için çoğu yargı bölgesinde (Avrupa\'da GDPR, California\'da CCPA, Türkiye\'de KVKK) yasalarca zorunludur.'}
+        <ContentCard title={content.whatIsTitle}>
+          <p className="text-base leading-7">
+            {content.whatIsText}
           </p>
-        </section>
+        </ContentCard>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'When You Need This' : 'Ne Zaman Gerekli'}</h2>
-          <ul className="space-y-3">
-            {(isEnglish ? [
-              'Any website that collects user data',
-              'E-commerce stores',
-              'SaaS applications',
-              'Mobile apps',
-              'Websites using cookies or analytics',
-              'Email newsletter sign-ups'
-            ] : [
-              'Kullanıcı verisi toplayan herhangi bir web sitesi',
-              'E-ticaret mağazaları',
-              'SaaS uygulamaları',
-              'Mobil uygulamalar',
-              'Çerez veya analitik kullanan web siteleri',
-              'E-posta bülteni kayıtları'
-            ]).map((item, i) => (
-              <li key={i} className="flex items-start">
-                <span className="text-[#C9A227] mr-3">✓</span>
-                <span className="text-gray-600">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <ContentCard title={content.whenToUseTitle}>
+          <ContentList items={content.whenToUseItems} variant="check" />
+        </ContentCard>
 
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
-          <h3 className="font-semibold mb-3">⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
-          <p className="text-sm text-gray-600">
-            {isEnglish 
-              ? 'This template is for informational purposes only and does not constitute legal advice. Consult a licensed attorney before use.'
-              : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Kullanmadan önce lisanslı bir avukata danışın.'}
-          </p>
-        </div>
+        <ContentCard title={content.keyClausesTitle}>
+          <ContentList items={content.keyClauses} variant="bullet" />
+        </ContentCard>
 
-        {/* Download Section - Updated */}
-        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
-          <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
-          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'Pay what you can. $20 recommended. Includes Terms of Service!' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir. Kullanım Koşulları dahil!'}</p>
-          
-          <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
-            💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
-          </a>
-          
-          <a href={documentUrl} download className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4">
-            📄 {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
-          </a>
+        <ContentCard title={content.complianceTitle} variant="highlight">
+          <ContentList items={content.complianceItems} variant="check" />
+        </ContentCard>
 
-          {/* Microcopy */}
-          <p className="text-center text-sm text-gray-500">
-            {isEnglish 
-              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
-              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
-          </p>
-        </div>
+        <LegalDisclaimer text={content.disclaimer} />
 
-        {/* Cross-sell: People also download */}
-        <section className="bg-gray-50 rounded-xl p-6 mb-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">
-            {isEnglish ? 'People Also Download' : 'Bunlar da İndiriliyor'}
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {relatedContracts.map((contract) => (
-              <Link
-                key={contract.slug}
-                href={`/${lang}/contracts/${contract.slug}`}
-                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
-              >
-                <span className="font-medium text-gray-800">{contract.title}</span>
-                <span className="text-[#C9A227]">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <DownloadSection
+          lang={lang}
+          title={content.downloadTitle}
+          subtitle={content.downloadSubtitle}
+          paidLabel={content.paidLabel}
+          freeLabel={content.freeLabel}
+          supportText={content.supportText}
+          stripeLink={stripePaymentLink}
+          documentUrl={documentUrl}
+        />
+
+        <RelatedResources
+          lang={lang}
+          title={content.relatedTitle}
+          subtitle={content.relatedSubtitle}
+          resources={relatedContracts}
+        />
       </main>
 
-      <footer className="border-t border-gray-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400">© 2025 EchoLegal. Prepared under supervision of NY licensed attorney (Bar #5552336).</p>
-        </div>
-      </footer>
+      <ContractPageFooter disclaimerText={content.footerDisclaimer} />
     </div>
   )
 }
