@@ -44,18 +44,7 @@ export default async function NDAPage({
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black">EchoLegal</Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-            <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-            <Link href={`/${lang === 'en' ? 'tr' : 'en'}/contracts/nda`} className="border border-black rounded-full px-3 py-1 text-sm">{isEnglish ? 'TR' : 'EN'}</Link>
-          </div>
-        </nav>
-      </header>
-
+    <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -157,12 +146,6 @@ export default async function NDAPage({
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-gray-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400">© 2025 EchoLegal. Prepared under supervision of NY licensed attorney (Bar #5552336).</p>
-        </div>
-      </footer>
     </div>
   )
 }

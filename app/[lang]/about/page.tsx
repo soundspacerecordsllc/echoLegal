@@ -57,25 +57,7 @@ export default async function AboutPage({
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black text-black">EchoLegal</Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-            <Link href={`/${lang}/library`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Library' : 'Kütüphane'}</Link>
-            <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-            <Link
-              href={`/${lang === 'en' ? 'tr' : 'en'}/about`}
-              className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
-            >
-              {isEnglish ? 'TR' : 'EN'}
-            </Link>
-          </div>
-        </nav>
-      </header>
-
+    <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumb items={breadcrumbItems} lang={lang} />
 
@@ -282,15 +264,6 @@ export default async function AboutPage({
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-200 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-sm text-gray-500">
-            © 2026 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
-          </p>
-        </div>
-      </footer>
     </div>
   )
 }
