@@ -38,6 +38,10 @@ export type Template = {
   downloadUrl?: string
   isSample?: boolean
   relatedIds?: string[]
+  // Contributor attribution (links to contributors.ts)
+  authorId?: string // Primary author contributor ID
+  reviewerId?: string // Legal reviewer contributor ID
+  lastReviewedAt?: string // Date of last legal review
 }
 
 // Category labels for UI
@@ -967,4 +971,32 @@ export function getAllDocTypes(): DocType[] {
 
 export function getAllJurisdictions(): Jurisdiction[] {
   return Object.keys(jurisdictionLabels) as Jurisdiction[]
+}
+
+// Contributor attribution helpers
+// Default author for all existing templates (before contributor system)
+export const DEFAULT_AUTHOR_ID = 'zeynep-moore'
+export const DEFAULT_REVIEWER_ID = 'zeynep-moore'
+
+export function getTemplateAuthorId(template: Template): string {
+  return template.authorId || DEFAULT_AUTHOR_ID
+}
+
+export function getTemplateReviewerId(template: Template): string | undefined {
+  return template.reviewerId || DEFAULT_REVIEWER_ID
+}
+
+export function getTemplatesByAuthor(authorId: string): Template[] {
+  return templatesRegistry.filter(
+    t => t.authorId === authorId || (!t.authorId && authorId === DEFAULT_AUTHOR_ID)
+  )
+}
+
+export function getTemplatesByJurisdiction(
+  jurisdiction: Jurisdiction,
+  lang?: 'en' | 'tr'
+): Template[] {
+  return templatesRegistry.filter(
+    t => t.jurisdiction === jurisdiction && (lang ? t.lang === lang : true)
+  )
 }
