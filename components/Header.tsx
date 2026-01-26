@@ -72,42 +72,27 @@ export default function Header({ lang, dict }: HeaderProps) {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Navigation structure with mega-menu style dropdowns
+  // Navigation structure - simplified and clear hierarchy
   const navItems: NavItem[] = [
     {
-      key: 'guides',
-      label: isEnglish ? 'Guides' : 'Rehberler',
+      key: 'library',
+      label: isEnglish ? 'Library' : 'Kütüphane',
       href: `/${lang}/library`,
       dropdown: [
         {
+          label: isEnglish ? 'Reference Guides' : 'Referans Rehberleri',
+          href: `/${lang}/library`,
+          description: isEnglish ? 'In-depth legal explanations' : 'Derinlemesine hukuki açıklamalar'
+        },
+        {
           label: isEnglish ? 'US Business Hub' : 'ABD İş Merkezi',
           href: `/${lang}/amerika`,
-          description: isEnglish ? 'All US business resources' : 'Tüm ABD iş kaynakları'
+          description: isEnglish ? 'Complete US business resource' : 'Kapsamlı ABD iş kaynağı'
         },
         {
-          label: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
-          href: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
-          description: isEnglish ? 'Step-by-step for Turkish entrepreneurs' : 'Türkler için adım adım',
-        },
-        {
-          label: isEnglish ? 'DS-160 Visa Form' : 'DS-160 Vize Formu',
-          href: `/${lang}/ds-160-rehberi`,
-          description: isEnglish ? 'Visa application guide' : 'Vize başvurusu rehberi'
-        },
-        {
-          label: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik Rehberi',
-          href: `/${lang}/vergi-kimlik-rehberi`,
-          description: isEnglish ? 'EIN, ITIN, SSN, W-8, 1099' : 'EIN, ITIN, SSN, W-8, 1099',
-        },
-        {
-          label: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
-          href: `/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
-          description: isEnglish ? 'Must-have legal documents' : 'Gerekli hukuki belgeler',
-        },
-        {
-          label: isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı',
-          href: `/${lang}/abdde-banka-hesabi-acmak`,
-          description: isEnglish ? 'Opening accounts as non-resident' : 'Yabancı olarak hesap açma',
+          label: isEnglish ? 'Encyclopedia' : 'Ansiklopedi',
+          href: `/${lang}/encyclopedia`,
+          description: isEnglish ? 'Legal concepts explained' : 'Hukuki kavramlar açıklandı'
         },
       ]
     },
@@ -117,51 +102,36 @@ export default function Header({ lang, dict }: HeaderProps) {
       href: templatesUrl,
       dropdown: [
         {
-          label: isEnglish ? 'View All Templates' : 'Tüm Şablonları Gör',
+          label: isEnglish ? 'All Templates' : 'Tüm Şablonlar',
           href: templatesUrl,
-          description: isEnglish ? 'Browse 50+ legal templates' : '50+ hukuki şablona göz atın'
+          description: isEnglish ? '50+ legal documents' : '50+ hukuki belge'
         },
         {
           label: isEnglish ? 'Contracts' : 'Sözleşmeler',
-          href: `${templatesUrl}#contracts`,
-          description: isEnglish ? 'NDA, Service Agreement, etc.' : 'NDA, Hizmet Sözleşmesi, vb.'
-        },
-        {
-          label: isEnglish ? 'Business Documents' : 'İş Belgeleri',
-          href: `${templatesUrl}#business`,
-          description: isEnglish ? 'Invoice, Receipt, Authorization' : 'Fatura, Makbuz, Yetki'
-        },
-        {
-          label: isEnglish ? 'Tax & IRS Forms' : 'Vergi & IRS Formları',
-          href: `${templatesUrl}#tax`,
-          description: isEnglish ? 'W-8, EIN, ITIN checklists' : 'W-8, EIN, ITIN kontrol listeleri'
-        },
-        {
-          label: isEnglish ? 'Immigration Letters' : 'Göç Mektupları',
-          href: `${templatesUrl}#immigration`,
-          description: isEnglish ? 'Visa support letters' : 'Vize destek mektupları'
+          href: `/${lang}/contracts`,
+          description: isEnglish ? 'NDA, Service, Freelance' : 'NDA, Hizmet, Serbest Çalışan'
         },
       ]
     },
     {
       key: 'checklists',
       label: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-      href: `/${lang}/checklists/llc-checklist`,
+      href: `/${lang}/checklists`,
       dropdown: [
         {
-          label: isEnglish ? 'LLC Formation Checklist' : 'LLC Kurulum Listesi',
+          label: isEnglish ? 'All Checklists' : 'Tüm Listeler',
+          href: `/${lang}/checklists`,
+          description: isEnglish ? 'Quick reference tools' : 'Hızlı referans araçları'
+        },
+        {
+          label: isEnglish ? 'LLC Formation' : 'LLC Kurulumu',
           href: `/${lang}/checklists/llc-checklist`,
-          description: isEnglish ? 'Step-by-step LLC setup' : 'Adım adım LLC kurulumu'
+          description: isEnglish ? 'Pre-formation checklist' : 'Kuruluş öncesi kontrol listesi'
         },
         {
-          label: isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Listesi',
-          href: `/${lang}/checklists/bank-account-checklist`,
-          description: isEnglish ? 'Documents needed' : 'Gerekli belgeler'
-        },
-        {
-          label: isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Listesi',
-          href: `/${lang}/checklists/tax-documents-checklist`,
-          description: isEnglish ? 'IRS compliance docs' : 'IRS uyum belgeleri'
+          label: isEnglish ? 'W-8 / W-9 Decision' : 'W-8 / W-9 Kararı',
+          href: `/${lang}/checklists/w8-w9-karar-haritasi`,
+          description: isEnglish ? 'Which form do you need?' : 'Hangi form gerekli?'
         },
       ]
     },
@@ -169,13 +139,6 @@ export default function Header({ lang, dict }: HeaderProps) {
       key: 'kits',
       label: isEnglish ? 'Legal Kits' : 'Hukuki Kitler',
       href: `/${lang}/legal-kits`,
-      dropdown: [
-        {
-          label: isEnglish ? 'ABD Business Starter Kit' : 'ABD Business Starter Kit',
-          href: `/${lang}/legal-kits/business-starter`,
-          description: isEnglish ? '5 essential documents' : '5 temel belge'
-        },
-      ]
     },
     {
       key: 'support',

@@ -72,124 +72,90 @@ export default async function LegalKitsPage({
 
   return (
     <div className="bg-white">
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero */}
-        <div className="mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {isEnglish ? 'Legal Document Kits' : 'Hukuki Belge Kitleri'}
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            {isEnglish
-              ? 'Curated bundles of legal documents for specific use cases. Each kit contains professionally drafted templates with annotations and usage guidance.'
-              : 'Belirli kullanım durumları için hazırlanmış hukuki belge paketleri. Her kit, açıklamalar ve kullanım rehberiyle profesyonelce hazırlanmış şablonlar içerir.'}
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <header className="mb-12">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+            {isEnglish ? 'Bundles' : 'Paketler'}
           </p>
-        </div>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4">
+            {isEnglish ? 'Legal Kits' : 'Hukuki Kitler'}
+          </h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'Curated collections of legal documents for specific use cases. Each kit contains professionally drafted templates with annotations.'
+              : 'Belirli kullanım durumları için hazırlanmış hukuki belge koleksiyonları. Her kit, açıklamalarla profesyonelce hazırlanmış şablonlar içerir.'}
+          </p>
+        </header>
 
-        {/* Featured Kit */}
-        {kits.filter(k => k.featured && k.available).map((kit) => (
-          <div key={kit.slug} className="mb-12 bg-gray-50 border border-gray-200 rounded-lg p-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-block px-3 py-1 bg-gray-900 text-white rounded text-xs font-medium">
-                    {isEnglish ? 'Featured' : 'Öne Çıkan'}
-                  </span>
-                  <span className="text-xs text-gray-500">
-                    {kit.jurisdiction}
-                  </span>
-                </div>
-                <h2 className="text-2xl font-semibold text-gray-900 mb-2">{kit.title}</h2>
-                <p className="text-gray-600 mb-4">{kit.description}</p>
-                <div className="flex flex-wrap gap-3 text-sm text-gray-500">
-                  <span className="px-3 py-1 rounded border border-gray-200 bg-white">
-                    {kit.documents} {isEnglish ? 'documents' : 'belge'}
-                  </span>
-                  <span className="px-3 py-1 rounded border border-gray-200 bg-white">
-                    {isEnglish ? 'EN / TR' : 'İngilizce / Türkçe'}
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3">
-                <Link
-                  href={`/${lang}/legal-kits/${kit.slug}`}
-                  className="bg-gray-900 text-white text-center px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-                >
-                  {isEnglish ? 'View Kit →' : 'Kiti Görüntüle →'}
-                </Link>
-                <p className="text-xs text-gray-500 text-center">
-                  {isEnglish ? 'Free access available' : 'Ücretsiz erişim mevcut'}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* All Kits Grid */}
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">
-          {isEnglish ? 'All Kits' : 'Tüm Kitler'}
-        </h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Kits List */}
+        <div className="divide-y divide-gray-200">
           {kits.map((kit) => (
-            <div
-              key={kit.slug}
-              className={`border rounded-lg p-6 ${
-                kit.available
-                  ? 'border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all'
-                  : 'border-gray-100 bg-gray-50'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
-                  kit.available
-                    ? 'bg-green-50 text-green-700'
-                    : 'bg-gray-100 text-gray-500'
-                }`}>
-                  {kit.available
-                    ? (isEnglish ? 'Available' : 'Mevcut')
-                    : (isEnglish ? 'Coming Soon' : 'Yakında')}
-                </span>
-                <span className="text-xs text-gray-400">{kit.jurisdiction}</span>
-              </div>
-
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">{kit.title}</h3>
-              <p className="text-sm text-gray-500 mb-3">{kit.subtitle}</p>
-              <p className="text-gray-600 text-sm mb-4 line-clamp-2">{kit.description}</p>
-
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <span className="text-sm text-gray-500">
-                  {kit.documents} {isEnglish ? 'documents' : 'belge'}
-                </span>
-
-                {kit.available ? (
-                  <Link
-                    href={`/${lang}/legal-kits/${kit.slug}`}
-                    className="text-gray-900 font-medium hover:text-gray-600 transition-colors text-sm"
-                  >
-                    {isEnglish ? 'View →' : 'Görüntüle →'}
-                  </Link>
-                ) : (
-                  <span className="text-gray-400 text-sm">{isEnglish ? 'Coming Soon' : 'Yakında'}</span>
-                )}
-              </div>
+            <div key={kit.slug} className="py-8">
+              {kit.available ? (
+                <Link href={`/${lang}/legal-kits/${kit.slug}`} className="block group">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h2 className="text-xl font-serif font-semibold text-gray-900 group-hover:text-gray-600 transition-colors mb-1">
+                        {kit.title}
+                      </h2>
+                      <p className="text-sm text-gray-500 mb-3">{kit.subtitle}</p>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-3">{kit.description}</p>
+                      <div className="flex items-center gap-4 text-sm text-gray-400">
+                        <span>{kit.documents} {isEnglish ? 'documents' : 'belge'}</span>
+                        <span>·</span>
+                        <span>{kit.jurisdiction}</span>
+                      </div>
+                    </div>
+                    <span className="text-gray-400 group-hover:text-gray-600 transition-colors flex-shrink-0 mt-1">
+                      →
+                    </span>
+                  </div>
+                </Link>
+              ) : (
+                <div className="opacity-60">
+                  <h2 className="text-xl font-serif font-semibold text-gray-700 mb-1">
+                    {kit.title}
+                    <span className="ml-2 text-sm font-normal text-gray-400">
+                      {isEnglish ? '(Coming)' : '(Yakında)'}
+                    </span>
+                  </h2>
+                  <p className="text-sm text-gray-500 mb-3">{kit.subtitle}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{kit.description}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
 
-        {/* Browse Individual Documents */}
-        <section className="mt-16 text-center">
-          <p className="text-gray-600 mb-4">
-            {isEnglish
-              ? 'Looking for individual documents? Browse our full template library.'
-              : 'Tek tek belge mi arıyorsunuz? Tam şablon kütüphanemize göz atın.'}
-          </p>
-          <Link
-            href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
-            className="text-gray-900 font-medium hover:text-gray-600 transition-colors"
-          >
-            {isEnglish ? 'Browse all templates →' : 'Tüm şablonlara göz at →'}
-          </Link>
-        </section>
+        {/* Related Resources */}
+        <nav className="mt-12 pt-8 border-t border-gray-200">
+          <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-4">
+            {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'All Templates →' : 'Tüm Şablonlar →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/contracts`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Contracts →' : 'Sözleşmeler →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/checklists`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Checklists →' : 'Kontrol Listeleri →'}
+            </Link>
+          </div>
+        </nav>
       </main>
     </div>
   )
