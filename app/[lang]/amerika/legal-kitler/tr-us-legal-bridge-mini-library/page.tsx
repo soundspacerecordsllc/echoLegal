@@ -33,28 +33,7 @@ export default async function TRUSBridgeLibraryPage({
   const stripePaymentLink = kit?.stripeLink || 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black">EchoLegal</Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">
-              {isEnglish ? 'Home' : 'Ana Sayfa'}
-            </Link>
-            <Link href={`/${lang}/amerika`} className="text-sm font-medium hover:opacity-60">
-              {isEnglish ? 'Amerika Hub' : 'Amerika'}
-            </Link>
-            <Link
-              href={`/${lang === 'en' ? 'tr' : 'en'}/amerika/legal-kitler/tr-us-legal-bridge-mini-library`}
-              className="border border-black rounded-full px-3 py-1 text-sm"
-            >
-              {isEnglish ? 'TR' : 'EN'}
-            </Link>
-          </div>
-        </nav>
-      </header>
-
-      <main className="max-w-4xl mx-auto px-4 py-12">
+    <main className="max-w-4xl mx-auto px-4 py-12">
         <Breadcrumb
           lang={lang}
           items={[
@@ -366,16 +345,5 @@ export default async function TRUSBridgeLibraryPage({
           </p>
         </div>
       </main>
-
-      <footer className="border-t border-gray-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400">
-            © 2025 EchoLegal. {isEnglish
-              ? 'Prepared under supervision of NY licensed attorney (Bar #5552336).'
-              : 'NY lisanslı avukat gözetiminde hazırlanmıştır (Bar #5552336).'}
-          </p>
-        </div>
-      </footer>
-    </div>
   )
 }

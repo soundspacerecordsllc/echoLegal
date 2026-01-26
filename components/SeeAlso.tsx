@@ -228,3 +228,132 @@ export function RelatedContent({
     />
   )
 }
+
+/**
+ * RelatedResources - Big-law grade related content section
+ *
+ * Displays related resources at the end of articles with professional styling
+ * matching Westlaw/Lexis patterns.
+ */
+export function RelatedResources({
+  lang,
+  items,
+  title,
+  className = '',
+}: {
+  lang: 'en' | 'tr'
+  items: RelatedItem[]
+  title?: string
+  className?: string
+}) {
+  const isEnglish = lang === 'en'
+  const defaultTitle = isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'
+
+  if (items.length === 0) return null
+
+  return (
+    <section className={`border-t border-gray-200 pt-8 ${className}`}>
+      {/* Section Header */}
+      <div className="flex items-center gap-2 mb-6">
+        <div className="w-1 h-5 bg-gray-900" />
+        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          {title || defaultTitle}
+        </h2>
+      </div>
+
+      {/* Resource Grid */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {items.map((item, idx) => (
+          <Link
+            key={idx}
+            href={item.href}
+            className="group flex items-start gap-4 p-4 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all bg-white"
+          >
+            {/* Number indicator */}
+            <span className="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-sm font-medium flex-shrink-0 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+              {idx + 1}
+            </span>
+
+            {/* Content */}
+            <div className="min-w-0">
+              <h3 className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
+                {item.title}
+              </h3>
+              {item.description && (
+                <p className="text-sm text-gray-500 mt-0.5">{item.description}</p>
+              )}
+            </div>
+
+            {/* Arrow */}
+            <svg
+              className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5 group-hover:text-gray-600 transition-colors"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </Link>
+        ))}
+      </div>
+
+      {/* Browse All Link */}
+      <div className="mt-6 text-center">
+        <Link
+          href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+          className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          {isEnglish ? 'Browse all resources' : 'Tüm kaynaklara göz at'} →
+        </Link>
+      </div>
+    </section>
+  )
+}
+
+/**
+ * QuickLinks - Compact quick navigation links
+ *
+ * For use in sidebars or article headers
+ */
+export function QuickLinks({
+  lang,
+  items,
+  title,
+  className = '',
+}: {
+  lang: 'en' | 'tr'
+  items: RelatedItem[]
+  title?: string
+  className?: string
+}) {
+  const isEnglish = lang === 'en'
+  const defaultTitle = isEnglish ? 'Quick Links' : 'Hızlı Bağlantılar'
+
+  if (items.length === 0) return null
+
+  return (
+    <nav className={`${className}`} aria-label={title || defaultTitle}>
+      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+        {title || defaultTitle}
+      </h3>
+      <ul className="space-y-1.5">
+        {items.map((item, idx) => (
+          <li key={idx}>
+            <Link
+              href={item.href}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-2"
+            >
+              <span className="text-gray-300">›</span>
+              {item.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
