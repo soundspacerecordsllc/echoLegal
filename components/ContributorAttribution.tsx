@@ -3,11 +3,17 @@
 // Designed for institutional credibility, not personal marketing
 
 import { Contributor, getContributor, ZEYNEP_MOORE, EDITORIAL_TEAM } from '@/lib/contributors'
+import { LanguageCode } from '@/lib/jurisdictions'
+
+// Languages with full support for contributor content
+type SupportedLang = 'en' | 'tr'
+const getSupportedLang = (lang: LanguageCode | SupportedLang): SupportedLang =>
+  lang === 'tr' ? 'tr' : 'en'
 
 type ContributorAttributionProps = {
   contributorId?: string
   contributor?: Contributor
-  lang: 'en' | 'tr'
+  lang: LanguageCode | SupportedLang
   variant?: 'full' | 'compact' | 'inline'
   showJurisdiction?: boolean
   showCredentials?: boolean
@@ -23,7 +29,9 @@ export default function ContributorAttribution({
   showCredentials = true,
   className = '',
 }: ContributorAttributionProps) {
-  const isEnglish = lang === 'en'
+  // Normalize language to a supported one (fallback to English)
+  const supportedLang = getSupportedLang(lang)
+  const isEnglish = supportedLang === 'en'
 
   // Get contributor from ID or props
   const contributor = propContributor || (contributorId ? getContributor(contributorId) : undefined)
@@ -39,11 +47,11 @@ export default function ContributorAttribution({
   if (variant === 'inline') {
     return (
       <div className={`text-sm text-gray-600 ${className}`}>
-        <span className="font-medium">{contributor.name[lang]}</span>
+        <span className="font-medium">{contributor.name[supportedLang]}</span>
         {contributor.isAttorney && primaryBarAdmission && (
           <span className="text-gray-400">
             {' '}
-            · {contributor.designation[lang]}, {primaryBarAdmission.jurisdictionName}
+            · {contributor.designation[supportedLang]}, {primaryBarAdmission.jurisdictionName}
           </span>
         )}
       </div>
@@ -61,10 +69,10 @@ export default function ContributorAttribution({
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-semibold text-gray-900">{contributor.name[lang]}</span>
+            <span className="font-semibold text-gray-900">{contributor.name[supportedLang]}</span>
             {contributor.isAttorney && (
               <span className="px-2 py-0.5 bg-gray-200 text-gray-600 text-xs rounded">
-                {contributor.designation[lang]}
+                {contributor.designation[supportedLang]}
               </span>
             )}
           </div>
@@ -90,8 +98,8 @@ export default function ContributorAttribution({
 
         <div className="min-w-0 flex-1">
           {/* Name and designation */}
-          <h3 className="font-bold text-gray-900 text-lg">{contributor.name[lang]}</h3>
-          <p className="text-sm text-gray-600">{contributor.title[lang]}</p>
+          <h3 className="font-bold text-gray-900 text-lg">{contributor.name[supportedLang]}</h3>
+          <p className="text-sm text-gray-600">{contributor.title[supportedLang]}</p>
 
           {/* Bar admissions */}
           {contributor.isAttorney && contributor.barAdmissions.length > 0 && (
@@ -149,7 +157,7 @@ export default function ContributorAttribution({
           {isEnglish ? 'Role at EchoLegal' : 'EchoLegal\'daki Rolü'}
         </h4>
         <p className="text-sm text-gray-600 leading-relaxed">
-          {contributor.institutionalRole[lang]}
+          {contributor.institutionalRole[supportedLang]}
         </p>
       </div>
 
@@ -157,7 +165,7 @@ export default function ContributorAttribution({
       {showJurisdiction && contributor.jurisdictionalNote && (
         <div className="pt-4 mt-4 border-t border-gray-200">
           <p className="text-xs text-gray-500 leading-relaxed">
-            {contributor.jurisdictionalNote[lang]}
+            {contributor.jurisdictionalNote[supportedLang]}
           </p>
         </div>
       )}

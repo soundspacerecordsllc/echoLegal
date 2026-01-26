@@ -4,6 +4,11 @@
 
 import { JurisdictionCode, LanguageCode, isValidJurisdiction, isValidLanguage } from './jurisdictions'
 
+// Helper to get supported language for text lookups (fallback to English)
+type SupportedTextLang = 'en' | 'tr'
+const getSupportedTextLang = (lang: LanguageCode): SupportedTextLang =>
+  lang === 'tr' ? 'tr' : 'en'
+
 // ============================================
 // CONTENT TYPES
 // ============================================
@@ -447,5 +452,6 @@ export function getDefaultDisclaimers(contentType: ContentType): DisclaimerType[
 export function getDisclaimerText(type: DisclaimerType, lang: LanguageCode): string {
   const disclaimer = STANDARD_DISCLAIMERS[type === 'no-attorney-client' ? 'noAttorneyClient' : type]
   if (!disclaimer) return ''
-  return disclaimer.text[lang] || disclaimer.text.en
+  const supportedLang = getSupportedTextLang(lang)
+  return disclaimer.text[supportedLang] || disclaimer.text.en
 }

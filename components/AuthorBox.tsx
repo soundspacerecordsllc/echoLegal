@@ -88,12 +88,12 @@ function AuthorBoxFull({
             {author.isAttorney && (
               <p className="text-sm text-gray-600 mt-1">
                 {author.designation[lang]}
-                {author.barAdmission && (
+                {author.barAdmissions && author.barAdmissions.length > 0 && (
                   <span className="text-gray-400">
                     {' '}&middot;{' '}
                     {isEnglish
-                      ? `Admitted in ${author.barAdmission.jurisdiction}`
-                      : `${author.barAdmission.jurisdiction} Barosu`
+                      ? `Admitted in ${author.barAdmissions[0].jurisdictionName}`
+                      : `${author.barAdmissions[0].jurisdictionName} Barosu`
                     }
                   </span>
                 )}
@@ -125,20 +125,22 @@ function AuthorBoxFull({
           )}
 
           {/* Bar Admission (formal display) */}
-          {author.barAdmission && (
+          {author.barAdmissions && author.barAdmissions.length > 0 && (
             <div className="mb-4">
               <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
                 {isEnglish ? 'Bar Admission' : 'Baro Kaydı'}
               </h4>
-              <p className="text-sm text-gray-600">
-                {isEnglish
-                  ? `State of ${author.barAdmission.jurisdiction}`
-                  : `${author.barAdmission.jurisdiction} Eyaleti`
-                }
-                <span className="text-gray-400 ml-2">
-                  {isEnglish ? 'Registration No.' : 'Sicil No.'} {author.barAdmission.number}
-                </span>
-              </p>
+              {author.barAdmissions.map((admission, idx) => (
+                <p key={idx} className="text-sm text-gray-600">
+                  {isEnglish
+                    ? `${admission.jurisdictionName}`
+                    : `${admission.jurisdictionName}`
+                  }
+                  <span className="text-gray-400 ml-2">
+                    {isEnglish ? 'Registration No.' : 'Sicil No.'} {admission.number}
+                  </span>
+                </p>
+              ))}
             </div>
           )}
 
@@ -181,12 +183,12 @@ function AuthorBoxCompact({
           {author.name[lang]}
         </p>
         <p className="text-xs text-gray-500 truncate">
-          {author.isAttorney && author.barAdmission ? (
+          {author.isAttorney && author.barAdmissions && author.barAdmissions.length > 0 ? (
             <>
               {author.designation[lang]}
               <span className="text-gray-400">
                 {' '}&middot;{' '}
-                {author.barAdmission.jurisdiction}
+                {author.barAdmissions[0].jurisdictionName}
               </span>
             </>
           ) : (
@@ -230,12 +232,12 @@ export function AuthorByline({
       </span>
 
       {/* Bar badge */}
-      {showBar && author.isAttorney && author.barAdmission && (
+      {showBar && author.isAttorney && author.barAdmissions && author.barAdmissions.length > 0 && (
         <span className="flex items-center gap-1.5 text-blue-700">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
-          {author.barAdmission.jurisdiction} Bar #{author.barAdmission.number}
+          {author.barAdmissions[0].jurisdictionName} Bar #{author.barAdmissions[0].number}
         </span>
       )}
     </div>
@@ -264,8 +266,8 @@ export function getAuthorSchema(authorId?: string) {
     jobTitle: author.designation.en,
   }
 
-  if (author.barAdmission) {
-    schema.credential = `${author.barAdmission.jurisdiction} Bar #${author.barAdmission.number}`
+  if (author.barAdmissions && author.barAdmissions.length > 0) {
+    schema.credential = author.barAdmissions.map(a => `${a.jurisdictionName} Bar #${a.number}`).join('; ')
   }
 
   if (author.education && author.education.length > 0) {

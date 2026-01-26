@@ -26,6 +26,11 @@ import {
 } from '@/lib/templates-registry'
 import { LanguageCode } from '@/lib/jurisdictions'
 
+// Helper to get supported language for labels (fallback to English)
+type SupportedLang = 'en' | 'tr'
+const getSupportedLang = (lang: LanguageCode): SupportedLang =>
+  lang === 'tr' ? 'tr' : 'en'
+
 // ============================================
 // TYPES
 // ============================================
@@ -57,6 +62,7 @@ export default function ContractDiscovery({
 }: ContractDiscoveryProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const supportedLang = getSupportedLang(lang)
   const isEnglish = lang === 'en'
 
   // Initialize filters from URL params or props
@@ -214,7 +220,7 @@ export default function ContractDiscovery({
               <option value="">{isEnglish ? 'All Categories' : 'Tüm Kategoriler'}</option>
               {availableCategories.map(cat => (
                 <option key={cat} value={cat}>
-                  {categoryLabels[cat][lang]}
+                  {categoryLabels[cat][supportedLang]}
                 </option>
               ))}
             </select>
@@ -234,7 +240,7 @@ export default function ContractDiscovery({
               <option value="">{isEnglish ? 'All Types' : 'Tüm Türler'}</option>
               {availableDocTypes.map(type => (
                 <option key={type} value={type}>
-                  {docTypeLabels[type][lang]}
+                  {docTypeLabels[type][supportedLang]}
                 </option>
               ))}
             </select>
@@ -254,7 +260,7 @@ export default function ContractDiscovery({
               <option value="">{isEnglish ? 'All Jurisdictions' : 'Tüm Yetki Alanları'}</option>
               {availableJurisdictions.map(jur => (
                 <option key={jur} value={jur}>
-                  {jurisdictionLabels[jur][lang]}
+                  {jurisdictionLabels[jur][supportedLang]}
                 </option>
               ))}
             </select>
@@ -274,7 +280,7 @@ export default function ContractDiscovery({
               <option value="">{isEnglish ? 'All Use Cases' : 'Tüm Kullanım Amaçları'}</option>
               {availableUseCases.map(uc => (
                 <option key={uc} value={uc}>
-                  {useCaseLabels[uc][lang]}
+                  {useCaseLabels[uc][supportedLang]}
                 </option>
               ))}
             </select>
@@ -287,25 +293,25 @@ export default function ContractDiscovery({
             <div className="flex flex-wrap gap-2">
               {filters.category && (
                 <span className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full flex items-center gap-1">
-                  {categoryLabels[filters.category][lang]}
+                  {categoryLabels[filters.category][supportedLang]}
                   <button onClick={() => updateFilter('category', '')} className="hover:text-blue-900">×</button>
                 </span>
               )}
               {filters.docType && (
                 <span className="px-2 py-1 bg-green-50 text-green-700 text-xs rounded-full flex items-center gap-1">
-                  {docTypeLabels[filters.docType][lang]}
+                  {docTypeLabels[filters.docType][supportedLang]}
                   <button onClick={() => updateFilter('docType', '')} className="hover:text-green-900">×</button>
                 </span>
               )}
               {filters.jurisdiction && (
                 <span className="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded-full flex items-center gap-1">
-                  {jurisdictionLabels[filters.jurisdiction][lang]}
+                  {jurisdictionLabels[filters.jurisdiction][supportedLang]}
                   <button onClick={() => updateFilter('jurisdiction', '')} className="hover:text-purple-900">×</button>
                 </span>
               )}
               {filters.useCase && (
                 <span className="px-2 py-1 bg-amber-50 text-amber-700 text-xs rounded-full flex items-center gap-1">
-                  {useCaseLabels[filters.useCase][lang]}
+                  {useCaseLabels[filters.useCase][supportedLang]}
                   <button onClick={() => updateFilter('useCase', '')} className="hover:text-amber-900">×</button>
                 </span>
               )}
@@ -371,6 +377,7 @@ function DocumentRow({
   lang: LanguageCode
   templatesPath: string
 }) {
+  const supportedLang = getSupportedLang(lang)
   return (
     <Link
       href={`${templatesPath}/${template.slug}`}
@@ -382,20 +389,20 @@ function DocumentRow({
           {/* Metadata badges */}
           <div className="flex flex-wrap gap-2 mb-2">
             <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">
-              {docTypeLabels[template.docType][lang]}
+              {docTypeLabels[template.docType][supportedLang]}
             </span>
             {template.jurisdiction !== 'General' && (
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700">
-                {jurisdictionLabels[template.jurisdiction][lang]}
+                {jurisdictionLabels[template.jurisdiction][supportedLang]}
               </span>
             )}
             {template.isSample && (
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-50 text-amber-700">
-                {lang === 'en' ? 'Sample' : 'Örnek'}
+                {supportedLang === 'en' ? 'Sample' : 'Örnek'}
               </span>
             )}
             <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-50 text-gray-500">
-              {categoryLabels[template.category][lang]}
+              {categoryLabels[template.category][supportedLang]}
             </span>
           </div>
 
@@ -414,7 +421,7 @@ function DocumentRow({
             <div className="flex flex-wrap gap-1 mt-2">
               {template.useCases.slice(0, 3).map((uc) => (
                 <span key={uc} className="text-xs text-gray-400">
-                  {useCaseLabels[uc][lang]}
+                  {useCaseLabels[uc][supportedLang]}
                   {template.useCases!.indexOf(uc) < Math.min(template.useCases!.length - 1, 2) ? ' · ' : ''}
                 </span>
               ))}

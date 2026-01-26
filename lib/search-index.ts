@@ -2,12 +2,18 @@
 // Unified search index for site-wide search functionality
 
 import { templatesRegistry, Template, categoryLabels } from './templates-registry'
+import { LanguageCode } from './jurisdictions'
+
+// Helper to get supported language for category labels (fallback to English)
+type SupportedLang = 'en' | 'tr'
+const getSupportedLang = (lang: LanguageCode): SupportedLang =>
+  lang === 'tr' ? 'tr' : 'en'
 
 export type SearchItemType = 'template' | 'guide' | 'checklist' | 'kit' | 'page'
 
 export type SearchItem = {
   id: string
-  lang: 'en' | 'tr'
+  lang: LanguageCode
   title: string
   description: string
   url: string
@@ -443,7 +449,7 @@ function getTemplateSearchItems(): SearchItem[] {
         ? `/tr/sablonlar/${template.slug}`
         : `/en/templates/${template.slug}`,
     type: 'template' as SearchItemType,
-    category: categoryLabels[template.category][template.lang],
+    category: categoryLabels[template.category][getSupportedLang(template.lang)],
     tags: template.tags,
     updatedAt: template.updatedAt,
   }))

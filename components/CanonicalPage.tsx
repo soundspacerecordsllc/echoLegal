@@ -142,8 +142,8 @@ export default function CanonicalPage({
     })
   }
 
-  // Get content type label
-  const contentTypeLabels: Record<ContentType, { en: string; tr: string }> = {
+  // Get content type label (with fallback to English for unsupported languages)
+  const contentTypeLabels: Record<ContentType, Record<string, string>> = {
     Article: { en: 'Article', tr: 'Makale' },
     Contract: { en: 'Contract', tr: 'Sözleşme' },
     Kit: { en: 'Document Kit', tr: 'Belge Kiti' },
@@ -154,6 +154,9 @@ export default function CanonicalPage({
     Sample: { en: 'Sample', tr: 'Örnek' },
     Policy: { en: 'Policy', tr: 'Politika' },
   }
+  const getContentTypeLabel = (type: ContentType): string => {
+    return contentTypeLabels[type][lang] || contentTypeLabels[type]['en']
+  }
 
   return (
     <article className={`max-w-4xl mx-auto ${className}`}>
@@ -162,7 +165,7 @@ export default function CanonicalPage({
         {/* Content type badge */}
         <div className="flex items-center gap-2 mb-4">
           <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">
-            {contentTypeLabels[contentType][lang]}
+            {getContentTypeLabel(contentType)}
           </span>
         </div>
 
@@ -361,7 +364,7 @@ export default function CanonicalPage({
                 <span className="font-medium text-gray-900">{item.title}</span>
                 {item.type && (
                   <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded">
-                    {contentTypeLabels[item.type][lang]}
+                    {getContentTypeLabel(item.type)}
                   </span>
                 )}
               </Link>
