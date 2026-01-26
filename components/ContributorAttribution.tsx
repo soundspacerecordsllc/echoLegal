@@ -32,15 +32,18 @@ export default function ContributorAttribution({
     return null
   }
 
+  // Get primary bar admission (first verified one, or first one)
+  const primaryBarAdmission = contributor.barAdmissions?.find(b => b.isVerified) || contributor.barAdmissions?.[0]
+
   // Inline variant - minimal attribution for compact spaces
   if (variant === 'inline') {
     return (
       <div className={`text-sm text-gray-600 ${className}`}>
         <span className="font-medium">{contributor.name[lang]}</span>
-        {contributor.isAttorney && contributor.barAdmission && (
+        {contributor.isAttorney && primaryBarAdmission && (
           <span className="text-gray-400">
             {' '}
-            · {contributor.designation[lang]}, {contributor.barAdmission.jurisdiction}
+            · {contributor.designation[lang]}, {primaryBarAdmission.jurisdictionName}
           </span>
         )}
       </div>
@@ -65,9 +68,9 @@ export default function ContributorAttribution({
               </span>
             )}
           </div>
-          {contributor.barAdmission && (
+          {primaryBarAdmission && (
             <p className="text-xs text-gray-500 mt-0.5">
-              {contributor.barAdmission.jurisdiction} Bar No. {contributor.barAdmission.number}
+              {primaryBarAdmission.jurisdictionName} Bar No. {primaryBarAdmission.number}
             </p>
           )}
         </div>
@@ -90,12 +93,19 @@ export default function ContributorAttribution({
           <h3 className="font-bold text-gray-900 text-lg">{contributor.name[lang]}</h3>
           <p className="text-sm text-gray-600">{contributor.title[lang]}</p>
 
-          {/* Bar admission */}
-          {contributor.isAttorney && contributor.barAdmission && (
-            <p className="text-xs text-gray-500 mt-1">
-              {contributor.barAdmission.jurisdiction} Bar No. {contributor.barAdmission.number}
-              {contributor.barAdmission.year && ` (${contributor.barAdmission.year})`}
-            </p>
+          {/* Bar admissions */}
+          {contributor.isAttorney && contributor.barAdmissions.length > 0 && (
+            <div className="mt-1 space-y-0.5">
+              {contributor.barAdmissions.map((admission, idx) => (
+                <p key={idx} className="text-xs text-gray-500">
+                  {admission.jurisdictionName} Bar No. {admission.number}
+                  {admission.year && ` (${admission.year})`}
+                  {admission.isVerified && (
+                    <span className="ml-1 text-green-600" title="Verified">✓</span>
+                  )}
+                </p>
+              ))}
+            </div>
           )}
         </div>
       </div>
@@ -199,12 +209,17 @@ export function EditorialTeamAttribution({
 // Section for articles showing reviewer info
 export function ArticleReviewerSection({
   lang,
+  reviewerId,
+  lastReviewedAt,
   className = '',
 }: {
   lang: 'en' | 'tr'
+  reviewerId?: string
+  lastReviewedAt?: string
   className?: string
 }) {
   const isEnglish = lang === 'en'
+  const reviewer = reviewerId ? getContributor(reviewerId) : ZEYNEP_MOORE
 
   return (
     <section className={`border-t border-gray-200 pt-8 mt-12 ${className}`}>
@@ -215,8 +230,23 @@ export function ArticleReviewerSection({
         {isEnglish
           ? 'This content has been reviewed for accuracy by a licensed attorney.'
           : 'Bu içerik, lisanslı bir avukat tarafından doğruluk açısından incelenmiştir.'}
+        {lastReviewedAt && (
+          <span className="text-gray-400">
+            {' '}
+            {isEnglish ? 'Last reviewed:' : 'Son inceleme:'}{' '}
+            {new Date(lastReviewedAt).toLocaleDateString(isEnglish ? 'en-US' : 'tr-TR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
+        )}
       </p>
-      <PrimaryAuthorAttribution lang={lang} variant="compact" />
+      <ContributorAttribution
+        contributor={reviewer}
+        lang={lang}
+        variant="compact"
+      />
     </section>
   )
 }

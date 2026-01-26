@@ -681,3 +681,165 @@ export function getAvailableLanguagesForJurisdiction(code: JurisdictionCode): La
   if (!jurisdiction) return []
   return jurisdiction.languages.filter(lang => languages[lang]?.isActive)
 }
+
+// ============================================
+// NORMALIZATION & VALIDATION
+// ============================================
+
+// Alias mapping for legacy or variant codes
+const jurisdictionAliases: Record<string, JurisdictionCode> = {
+  'USA': 'US',
+  'United States': 'US',
+  'America': 'US',
+  'Turkey': 'TR',
+  'Türkiye': 'TR',
+  'New York': 'US-NY',
+  'NY': 'US-NY',
+  'Delaware': 'US-DE',
+  'Wyoming': 'US-WY',
+  'California': 'US-CA',
+  'Texas': 'US-TX',
+  'Florida': 'US-FL',
+  'General': 'GENERAL',
+  'International': 'INTL',
+  // Legacy template registry values
+  'US/TR': 'US', // Maps to US with TR as additional language
+}
+
+/**
+ * Normalize a jurisdiction input to a canonical JurisdictionCode.
+ * Returns undefined if the input cannot be normalized.
+ */
+export function normalizeJurisdiction(input: string): JurisdictionCode | undefined {
+  if (!input) return undefined
+
+  // Direct match
+  const upperInput = input.toUpperCase()
+  if (upperInput in jurisdictions) {
+    return upperInput as JurisdictionCode
+  }
+
+  // Alias match
+  if (input in jurisdictionAliases) {
+    return jurisdictionAliases[input]
+  }
+
+  // Check for state codes with US- prefix
+  if (upperInput.startsWith('US-') && upperInput in jurisdictions) {
+    return upperInput as JurisdictionCode
+  }
+
+  return undefined
+}
+
+/**
+ * Validate that a jurisdiction code exists in the registry.
+ * Throws an error in development, returns false in production.
+ */
+export function isValidJurisdiction(code: string): code is JurisdictionCode {
+  return code in jurisdictions
+}
+
+/**
+ * Assert that a jurisdiction code is valid.
+ * Use during development/build to catch invalid codes.
+ */
+export function assertValidJurisdiction(code: string, context?: string): asserts code is JurisdictionCode {
+  if (!isValidJurisdiction(code)) {
+    const message = `Invalid jurisdiction code: "${code}"${context ? ` in ${context}` : ''}`
+    if (process.env.NODE_ENV === 'development') {
+      throw new Error(message)
+    } else {
+      console.error(message)
+    }
+  }
+}
+
+/**
+ * Get the parent jurisdiction for a nested jurisdiction (e.g., US for US-NY).
+ */
+export function getParentJurisdiction(code: JurisdictionCode): Jurisdiction | undefined {
+  const jurisdiction = jurisdictions[code]
+  if (!jurisdiction?.parent) return undefined
+  return jurisdictions[jurisdiction.parent]
+}
+
+/**
+ * Check if a jurisdiction is a child of another (e.g., US-NY is child of US).
+ */
+export function isChildOf(childCode: JurisdictionCode, parentCode: JurisdictionCode): boolean {
+  const child = jurisdictions[childCode]
+  if (!child?.parent) return false
+  if (child.parent === parentCode) return true
+  // Recursive check for nested hierarchies
+  return isChildOf(child.parent, parentCode)
+}
+
+/**
+ * Get all jurisdiction codes that apply to content (self + parents).
+ * E.g., for US-NY returns ['US-NY', 'US']
+ */
+export function getApplicableJurisdictions(code: JurisdictionCode): JurisdictionCode[] {
+  const result: JurisdictionCode[] = [code]
+  const jurisdiction = jurisdictions[code]
+  if (jurisdiction?.parent) {
+    result.push(...getApplicableJurisdictions(jurisdiction.parent))
+  }
+  return result
+}
+
+// ============================================
+// LANGUAGE NORMALIZATION
+// ============================================
+
+const languageAliases: Record<string, LanguageCode> = {
+  'english': 'en',
+  'turkish': 'tr',
+  'türkçe': 'tr',
+  'german': 'de',
+  'deutsch': 'de',
+  'french': 'fr',
+  'français': 'fr',
+}
+
+/**
+ * Normalize a language input to a canonical LanguageCode.
+ */
+export function normalizeLanguage(input: string): LanguageCode | undefined {
+  if (!input) return undefined
+
+  const lowerInput = input.toLowerCase()
+
+  // Direct match
+  if (lowerInput in languages) {
+    return lowerInput as LanguageCode
+  }
+
+  // Alias match
+  if (lowerInput in languageAliases) {
+    return languageAliases[lowerInput]
+  }
+
+  return undefined
+}
+
+/**
+ * Validate that a language code exists in the registry.
+ */
+export function isValidLanguage(code: string): code is LanguageCode {
+  return code in languages
+}
+
+/**
+ * Assert that a language code is valid.
+ */
+export function assertValidLanguage(code: string, context?: string): asserts code is LanguageCode {
+  if (!isValidLanguage(code)) {
+    const message = `Invalid language code: "${code}"${context ? ` in ${context}` : ''}`
+    if (process.env.NODE_ENV === 'development') {
+      throw new Error(message)
+    } else {
+      console.error(message)
+    }
+  }
+}
