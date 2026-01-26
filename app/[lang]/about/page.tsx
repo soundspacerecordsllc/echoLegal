@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'Neden EchoLegal? | Misyonumuz ve Yaklaşımımız'
 
   const description = isEnglish
-    ? 'Learn about EchoLegal\'s mission to provide accessible, high-quality legal information for Turkish entrepreneurs. Our encyclopedic approach, editorial standards, and pay-what-you-can model.'
-    : 'EchoLegal\'ın Türk girişimcilere erişilebilir, kaliteli hukuki bilgi sunma misyonunu öğrenin. Ansiklopedik yaklaşımımız, editöryal standartlarımız ve destekle model.'
+    ? 'Learn about EchoLegal\'s mission to democratize legal knowledge worldwide. Our encyclopedic approach, editorial standards, and pay-what-you-can model. Currently serving US and Turkish law.'
+    : 'EchoLegal\'ın hukuki bilgiyi dünya genelinde demokratikleştirme misyonunu öğrenin. Ansiklopedik yaklaşımımız, editöryal standartlarımız ve destekle modelimiz. Şu anda ABD ve Türk hukuku.'
 
   return {
     title,
@@ -86,8 +86,8 @@ export default async function AboutPage({
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
             {isEnglish
-              ? 'A legal encyclopedia built for Turkish entrepreneurs navigating the US legal system.'
-              : 'ABD hukuk sisteminde yol alan Türk girişimciler için oluşturulmuş bir hukuk ansiklopedisi.'}
+              ? 'A global legal encyclopedia providing free, high-quality legal knowledge for individuals and businesses worldwide.'
+              : 'Dünya genelinde bireyler ve işletmeler için ücretsiz, yüksek kaliteli hukuki bilgi sağlayan global bir hukuk ansiklopedisi.'}
           </p>
         </div>
 
@@ -99,13 +99,32 @@ export default async function AboutPage({
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 mb-4">
               {isEnglish
-                ? 'EchoLegal exists to democratize legal knowledge. We believe that understanding your legal rights and obligations shouldn\'t require expensive consultations for every basic question.'
-                : 'EchoLegal, hukuki bilgiyi demokratikleştirmek için var. Her temel soru için pahalı danışmanlıklara ihtiyaç duymadan hukuki hak ve yükümlülüklerinizi anlamanız gerektiğine inanıyoruz.'}
+                ? 'EchoLegal exists to democratize legal knowledge. We believe that understanding your legal rights and obligations shouldn\'t require expensive consultations for every basic question. Our goal is to build a global, multilingual legal encyclopedia that serves individuals and businesses everywhere.'
+                : 'EchoLegal, hukuki bilgiyi demokratikleştirmek için var. Her temel soru için pahalı danışmanlıklara ihtiyaç duymadan hukuki hak ve yükümlülüklerinizi anlamanız gerektiğine inanıyoruz. Amacımız, her yerdeki bireyler ve işletmelere hizmet veren global, çok dilli bir hukuk ansiklopedisi oluşturmaktır.'}
+            </p>
+          </div>
+        </section>
+
+        {/* Current Focus Section */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-black mb-6">
+            {isEnglish ? 'Current Focus' : 'Mevcut Odak'}
+          </h2>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <p className="text-gray-700 mb-4">
+              {isEnglish
+                ? 'We are building EchoLegal one jurisdiction at a time. Our initial focus is United States business and legal requirements, with all content available in both English and Turkish.'
+                : 'EchoLegal\'ı tek tek yargı alanlarına göre oluşturuyoruz. İlk odak noktamız ABD iş ve hukuki gereksinimleridir ve tüm içerik hem İngilizce hem de Türkçe olarak mevcuttur.'}
             </p>
             <p className="text-gray-700 mb-4">
               {isEnglish
-                ? 'Our focus is specifically on the intersection of Turkish and American legal systems — immigration pathways, business formation, tax obligations, and contract requirements for Turkish entrepreneurs doing business in or with the United States.'
-                : 'Odak noktamız özellikle Türk ve Amerikan hukuk sistemlerinin kesişim noktasıdır — ABD\'de veya ABD ile iş yapan Türk girişimciler için göçmenlik yolları, şirket kurulumu, vergi yükümlülükleri ve sözleşme gereksinimleri.'}
+                ? 'Topics currently covered include: US business formation (LLC, Corporation), tax compliance (EIN, ITIN, W-8, W-9, 1099), essential contracts, and visa-related documentation.'
+                : 'Şu anda kapsanan konular: ABD şirket kurulumu (LLC, Corporation), vergi uyumu (EIN, ITIN, W-8, W-9, 1099), temel sözleşmeler ve vize ile ilgili belgeler.'}
+            </p>
+            <p className="text-sm text-blue-800">
+              {isEnglish
+                ? 'We welcome contributions from licensed attorneys in other jurisdictions who share our mission. Contact us to learn about contributing.'
+                : 'Misyonumuzu paylaşan diğer yargı alanlarındaki lisanslı avukatlardan katkıları memnuniyetle karşılıyoruz. Katkıda bulunma hakkında bilgi almak için bizimle iletişime geçin.'}
             </p>
           </div>
         </section>
@@ -141,12 +160,12 @@ export default async function AboutPage({
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="text-2xl mb-3">🌍</div>
               <h3 className="font-semibold text-black mb-2">
-                {isEnglish ? 'Truly Bilingual' : 'Gerçekten İki Dilli'}
+                {isEnglish ? 'Multilingual by Design' : 'Tasarımı İtibarıyla Çok Dilli'}
               </h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? 'Not machine-translated. Our Turkish content is written by native speakers who understand the nuances of legal terminology in both languages.'
-                  : 'Makine çevirisi değil. Türkçe içeriğimiz, her iki dilde de hukuki terminolojinin inceliklerini anlayan anadili Türkçe olan kişiler tarafından yazılmaktadır.'}
+                  ? 'Not machine-translated. Content is written by native speakers who understand the nuances of legal terminology. Currently available in English and Turkish, with more languages planned.'
+                  : 'Makine çevirisi değil. İçerik, hukuki terminolojinin inceliklerini anlayan anadili konuşan kişiler tarafından yazılmaktadır. Şu anda İngilizce ve Türkçe olarak mevcut, daha fazla dil planlanmaktadır.'}
               </p>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
@@ -211,8 +230,8 @@ export default async function AboutPage({
                 <p className="text-sm text-gray-600 mb-2">Attorney at Law • New York Bar No: 5552336</p>
                 <p className="text-sm text-gray-700">
                   {isEnglish
-                    ? 'All legal content on EchoLegal is reviewed for accuracy by a licensed attorney with expertise in US immigration and business law, particularly as it relates to Turkish nationals.'
-                    : 'EchoLegal\'daki tüm hukuki içerik, özellikle Türk vatandaşlarıyla ilgili olarak ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
+                    ? 'All legal content on EchoLegal is reviewed for accuracy by a licensed attorney with expertise in US immigration and business law.'
+                    : 'EchoLegal\'daki tüm hukuki içerik, ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
                 </p>
               </div>
             </div>

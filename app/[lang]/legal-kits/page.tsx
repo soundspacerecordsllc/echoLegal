@@ -37,8 +37,8 @@ export default async function LegalKitsPage({
       title: isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti',
       subtitle: isEnglish ? 'Essential Documents for US Business' : 'ABD İşi İçin Temel Belgeler',
       description: isEnglish
-        ? '5 essential legal documents for Turkish entrepreneurs starting or operating a business in the United States. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
-        : "ABD'de iş kuran veya işleten Türk girişimciler için 5 temel hukuki belge. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları.",
+        ? '5 essential legal documents for starting or operating a business in the United States. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service. Available in English and Turkish.'
+        : "ABD'de iş kurmak veya işletmek için 5 temel hukuki belge. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları. İngilizce ve Türkçe olarak mevcuttur.",
       documents: 5,
       available: true,
       featured: true,

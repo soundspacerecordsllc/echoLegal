@@ -64,8 +64,8 @@ export const NAV_ITEMS: NavItem[] = [
         labelEn: 'LLC Formation Guide',
         labelTr: 'LLC Kurma Rehberi',
         href: '/{lang}/abd-de-llc-kurmak-turkler-icin-adim-adim',
-        descriptionEn: 'Step-by-step for Turkish entrepreneurs',
-        descriptionTr: 'Türkler için adım adım',
+        descriptionEn: 'Step-by-step US business formation',
+        descriptionTr: 'ABD şirket kurulumu adım adım',
       },
       {
         labelEn: 'DS-160 Visa Form',

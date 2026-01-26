@@ -87,7 +87,7 @@ export default function Header({ lang, dict }: HeaderProps) {
         {
           label: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
           href: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
-          description: isEnglish ? 'Step-by-step for Turkish entrepreneurs' : 'Türkler için adım adım',
+          description: isEnglish ? 'Step-by-step US business formation' : 'ABD şirket kurulumu adım adım',
         },
         {
           label: isEnglish ? 'DS-160 Visa Form' : 'DS-160 Vize Formu',

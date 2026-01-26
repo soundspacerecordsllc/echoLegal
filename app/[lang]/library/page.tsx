@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'Legal Reference Library | EchoLegal'
       : 'Hukuki Referans Kütüphanesi | EchoLegal',
     description: isEnglish
-      ? 'Comprehensive legal reference guides for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and more.'
-      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi gerçekleri, sık yapılan hatalar ve daha fazlası.",
+      ? 'Comprehensive legal reference guides for doing business in the United States. LLC formation, tax compliance, common misconceptions, and more. Available in English and Turkish.'
+      : "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi uyumu, sık yapılan hatalar ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur.",
   }
 }
 
@@ -86,7 +86,7 @@ export default async function LibraryPage({
       articles: [
         {
           slug: 'hukuki-yanilgilar',
-          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları",
+          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yaparken Sık Yapılan Hukuki Hatalar",
           description: isEnglish
             ? 'Debunking the most common legal myths about doing business in the US.'
             : "ABD'de iş yapma hakkındaki en yaygın hukuki mitleri çürütme.",
@@ -104,7 +104,7 @@ export default async function LibraryPage({
       articles: [
         {
           slug: 'temel-sozlesmeler',
-          title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : "ABD'de İş Yapan Türkler İçin Temel Sözleşmeler",
+          title: isEnglish ? 'Essential Contracts for US Business' : "ABD'de İş Yapmak İçin Temel Sözleşmeler",
           description: isEnglish
             ? 'The contracts you need when starting a business in the United States.'
             : "ABD'de iş kurarken ihtiyacınız olan sözleşmeler.",
@@ -154,8 +154,8 @@ export default async function LibraryPage({
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl">
             {isEnglish
-              ? 'Factual, reference-only guides for Turkish entrepreneurs navigating US business and legal requirements. No advice—just clear explanations.'
-              : 'ABD\'de iş ve hukuki gereksinimlerle uğraşan Türk girişimciler için gerçeklere dayalı referans rehberleri. Tavsiye vermiyoruz; yalnızca açık ve net açıklamalar sunuyoruz.'}
+              ? 'Factual, reference-only guides for navigating US business and legal requirements. No advice—just clear explanations. Available in English and Turkish.'
+              : 'ABD\'de iş ve hukuki gereksinimlerde yol gösteren, gerçeklere dayalı referans rehberleri. Tavsiye vermiyoruz; yalnızca açık ve net açıklamalar sunuyoruz. İngilizce ve Türkçe olarak mevcuttur.'}
           </p>
         </div>
 

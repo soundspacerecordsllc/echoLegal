@@ -144,12 +144,12 @@ export default async function Home({
                 {isEnglish ? 'Legal Reference Library' : 'Hukuki Referans Kütüphanesi'}
               </span>
               <h2 className="text-3xl md:text-4xl font-black mb-4 text-[#000000]">
-                {isEnglish ? 'For Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin'}
+                {isEnglish ? 'Doing Business in the United States' : 'ABD\'de İş Yapmak'}
               </h2>
               <p className="text-lg text-[#444444] max-w-2xl mx-auto">
                 {isEnglish
-                  ? 'Clear, factual guides on US business, taxes, and legal requirements. No advice—just answers.'
-                  : 'ABD işletmeciliği, vergileri ve hukuki gereksinimler hakkında açık, gerçeklere dayalı rehberler. Tavsiye yok—sadece cevaplar.'}
+                  ? 'Clear, factual guides on US business formation, taxes, and legal requirements. Currently available in English and Turkish.'
+                  : 'ABD şirket kurulumu, vergileri ve hukuki gereksinimler hakkında açık, gerçeklere dayalı rehberler. Şu anda İngilizce ve Türkçe olarak sunulmaktadır.'}
               </p>
             </div>
 
@@ -224,8 +224,8 @@ export default async function Home({
                 </h2>
                 <p className="text-lg text-[#444444] mb-6">
                   {isEnglish
-                    ? '5 essential legal documents for Turkish entrepreneurs starting a business in the US. NDA, Service Agreement, Privacy Policy & more.'
-                    : 'ABD\'de iş kuran Türk girişimciler için 5 temel hukuki belge: NDA, Hizmet Sözleşmesi, Gizlilik Politikası ve daha fazlası.'}
+                    ? '5 essential legal documents for starting a business in the US. NDA, Service Agreement, Privacy Policy & more. Available in English and Turkish.'
+                    : 'ABD\'de iş kurmak için 5 temel hukuki belge: NDA, Hizmet Sözleşmesi, Gizlilik Politikası ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur.'}
                 </p>
                 <div className="flex flex-wrap gap-3 mb-6 text-sm text-gray-600">
                   <span className="bg-white px-3 py-1 rounded-full border border-gray-200">📄 5 {isEnglish ? 'Documents' : 'Belge'}</span>

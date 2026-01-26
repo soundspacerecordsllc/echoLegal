@@ -10,12 +10,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const isEnglish = lang === 'en'
 
   const title = isEnglish
-    ? 'ABD Business Starter Legal Kit | Essential Documents for Turkish Entrepreneurs | EchoLegal'
-    : "ABD Business Starter Legal Kit | ABD'de İş Kuran Türkler İçin Temel Belgeler | EchoLegal"
+    ? 'US Business Starter Legal Kit | Essential Documents for US Business | EchoLegal'
+    : "ABD Business Starter Legal Kit | ABD'de İş Kurmak İçin Temel Belgeler | EchoLegal"
 
   const description = isEnglish
-    ? 'Essential legal document bundle for Turkish entrepreneurs starting businesses in the US. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service.'
-    : "ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları."
+    ? 'Essential legal document bundle for starting a business in the US. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service. Available in English and Turkish.'
+    : "ABD'de iş kurmak için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları. İngilizce ve Türkçe olarak mevcuttur."
 
   return {
     title,
@@ -89,17 +89,17 @@ export default async function BusinessStarterKitPage({
   ]
 
   const whoIsThisFor = isEnglish ? [
-    'Turkish entrepreneurs starting a business in the US',
+    'International entrepreneurs starting a business in the US',
     'Freelancers and consultants working with US clients',
     'E-commerce sellers operating in the US market',
     'Tech founders launching a US-based startup',
-    'Content creators with US brand partnerships',
+    'Anyone needing bilingual (EN/TR) legal documents',
   ] : [
-    "ABD'de iş kurmaya başlayan Türk girişimciler",
+    "ABD'de iş kurmaya başlayan uluslararası girişimciler",
     "ABD'li müşterilerle çalışan serbest çalışanlar ve danışmanlar",
     'ABD pazarında faaliyet gösteren e-ticaret satıcıları',
     'ABD merkezli startup kuran teknoloji kurucuları',
-    'ABD markalarıyla ortaklık yapan içerik üreticileri',
+    'İki dilli (EN/TR) hukuki belgelere ihtiyaç duyan herkes',
   ]
 
   const whoIsThisNotFor = isEnglish ? [
@@ -116,10 +116,10 @@ export default async function BusinessStarterKitPage({
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'ABD Business Starter Legal Kit',
+    name: 'US Business Starter Legal Kit',
     description: isEnglish
-      ? 'Essential legal document bundle for Turkish entrepreneurs starting businesses in the US.'
-      : "ABD'de iş kurmaya başlayan Türk girişimciler için temel hukuki belge paketi.",
+      ? 'Essential legal document bundle for starting a business in the US. Available in English and Turkish.'
+      : "ABD'de iş kurmak için temel hukuki belge paketi. İngilizce ve Türkçe olarak mevcuttur.",
     brand: {
       '@type': 'Organization',
       name: 'EchoLegal',
@@ -226,8 +226,8 @@ export default async function BusinessStarterKitPage({
 
           <p className="text-xl text-gray-600 leading-relaxed mb-6">
             {isEnglish
-              ? 'A curated collection of essential legal documents for Turkish entrepreneurs starting or operating a business in the United States. Five professionally drafted templates, available in both English and Turkish.'
-              : "ABD'de iş kuran veya işleten Türk girişimciler için özenle seçilmiş temel hukuki belgeler. Hem İngilizce hem Türkçe olarak hazırlanmış beş profesyonel şablon."}
+              ? 'A curated collection of essential legal documents for starting or operating a business in the United States. Five professionally drafted templates, available in both English and Turkish.'
+              : "ABD'de iş kurmak veya işletmek için özenle seçilmiş temel hukuki belgeler. Hem İngilizce hem Türkçe olarak hazırlanmış beş profesyonel şablon."}
           </p>
 
           <div className="flex flex-wrap gap-3 text-sm text-gray-500">

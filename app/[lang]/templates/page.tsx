@@ -31,8 +31,8 @@ export async function generateMetadata({
       ? 'Free Legal Templates & Document Library | EchoLegal'
       : 'Ücretsiz Hukuki Şablon ve Belge Kütüphanesi | EchoLegal',
     description: isEnglish
-      ? 'Browse 50+ free legal templates: contracts, business forms, immigration letters, tax checklists. Bilingual (EN/TR) for Turkish entrepreneurs.'
-      : 'Sözleşmeler, iş formları, göç mektupları, vergi kontrol listeleri dahil 50+ ücretsiz hukuki şablon. Türk girişimciler için iki dilli (EN/TR).',
+      ? 'Browse 50+ free legal templates: contracts, business forms, immigration letters, tax checklists. Available in English and Turkish.'
+      : 'Sözleşmeler, iş formları, göç mektupları, vergi kontrol listeleri dahil 50+ ücretsiz hukuki şablon. İngilizce ve Türkçe olarak mevcuttur.',
     alternates: {
       canonical: `https://echo-legal.com/${lang}/templates`,
       languages: {
@@ -121,8 +121,8 @@ export default async function TemplatesPage({
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl">
             {isEnglish
-              ? `Browse ${templates.length}+ free legal templates. Contracts, forms, letters, checklists, and document samples for Turkish entrepreneurs.`
-              : `${templates.length}+ ücretsiz hukuki şablon. Türk girişimciler için sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge örnekleri.`}
+              ? `Browse ${templates.length}+ free legal templates. Contracts, forms, letters, checklists, and document samples for US business. Available in English and Turkish.`
+              : `${templates.length}+ ücretsiz hukuki şablon. ABD iş dünyası için sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge örnekleri. İngilizce ve Türkçe olarak mevcuttur.`}
           </p>
         </div>
 
