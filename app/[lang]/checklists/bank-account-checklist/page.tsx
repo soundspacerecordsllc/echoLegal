@@ -1,6 +1,5 @@
 // app/[lang]/checklists/bank-account-checklist/page.tsx
 
-import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
@@ -47,7 +46,6 @@ export default async function BankAccountChecklistPage({
   params: Promise<{ lang: Locale }>
 }) {
   const { lang } = await params
-  const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
   const prerequisiteChecklist = isEnglish ? [
@@ -186,25 +184,7 @@ export default async function BankAccountChecklistPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <div className="min-h-screen bg-white">
-        {/* Header */}
-        <header className="border-b border-gray-100">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <Link href={`/${lang}`} className="text-2xl font-black text-black">EchoLegal</Link>
-            <div className="flex items-center gap-6">
-              <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-              <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Bank Guide' : 'Banka Rehberi'}</Link>
-              <Link
-                href={`/${lang === 'en' ? 'tr' : 'en'}/checklists/bank-account-checklist`}
-                className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
-              >
-                {isEnglish ? 'TR' : 'EN'}
-              </Link>
-            </div>
-          </nav>
-        </header>
-
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
             <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -343,14 +323,6 @@ export default async function BankAccountChecklistPage({
                 : 'Bu kontrol listesi yalnızca bilgilendirme amaçlıdır; mali tavsiye niteliği taşımaz. Banka gereksinimleri sık sık değişir. Güncel gereksinimleri doğrudan finans kurumuyla doğrulayın.'}
             </p>
           </div>
-        </main>
-
-        <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">{dict.disclaimer.global}</p>
-            <p className="text-xs text-gray-400 mt-4">© 2026 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}</p>
-          </div>
-        </footer>
       </div>
     </>
   )

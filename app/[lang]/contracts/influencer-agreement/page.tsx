@@ -6,9 +6,9 @@ import { Metadata } from 'next'
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
-  
+
   return {
-    title: isEnglish 
+    title: isEnglish
       ? 'Free Influencer Agreement Template (English & Turkish) | EchoLegal'
       : 'Ücretsiz Influencer Sözleşmesi Şablonu (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
@@ -27,7 +27,7 @@ export default async function InfluencerAgreementPage({
   const isEnglish = lang === 'en'
 
   const stripePaymentLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
-  const documentUrl = isEnglish 
+  const documentUrl = isEnglish
     ? '/documents/InfluencerAgreement-Modern-EN.docx'
     : '/documents/InfluencerSozlesmesi-Modern-TR.docx'
 
@@ -44,18 +44,7 @@ export default async function InfluencerAgreementPage({
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black">EchoLegal</Link>
-          <div className="flex items-center gap-6">
-            <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-            <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-            <Link href={`/${lang === 'en' ? 'tr' : 'en'}/contracts/influencer-agreement`} className="border border-black rounded-full px-3 py-1 text-sm">{isEnglish ? 'TR' : 'EN'}</Link>
-          </div>
-        </nav>
-      </header>
-
+    <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -78,7 +67,7 @@ export default async function InfluencerAgreementPage({
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Agreement?' : 'Bu Sözleşme Nedir?'}</h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            {isEnglish 
+            {isEnglish
               ? 'An Influencer Agreement is a contract between a content creator and a brand that outlines the terms of a sponsored collaboration. It covers deliverables, compensation, content rights, FTC disclosure requirements, exclusivity, and more.'
               : 'Influencer Sözleşmesi, bir içerik üreticisi ile marka arasında sponsorlu işbirliğinin şartlarını belirleyen bir sözleşmedir. Teslimatları, ücreti, içerik haklarını, reklam beyanı gereksinimlerini ve münhasırlığı kapsar.'}
           </p>
@@ -111,7 +100,7 @@ export default async function InfluencerAgreementPage({
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
           <h3 className="font-semibold mb-3">⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
           <p className="text-sm text-gray-600">
-            {isEnglish 
+            {isEnglish
               ? 'This template is for informational purposes only and does not constitute legal advice. Consult a licensed attorney before use.'
               : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Kullanmadan önce lisanslı bir avukata danışın.'}
           </p>
@@ -121,18 +110,18 @@ export default async function InfluencerAgreementPage({
         <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
           <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
           <p className="text-center text-gray-600 mb-6">{isEnglish ? 'I support EchoLegal – $20 recommended.' : 'EchoLegal\'i destekliyorum – $20 önerilir.'}</p>
-          
+
           <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
             💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
           </a>
-          
+
           <a href={documentUrl} download className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4">
             📄 {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
           </a>
 
           {/* Microcopy */}
           <p className="text-center text-sm text-gray-500">
-            {isEnglish 
+            {isEnglish
               ? 'Most users choose $20 to support ongoing updates and bilingual access.'
               : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
           </p>
@@ -157,12 +146,6 @@ export default async function InfluencerAgreementPage({
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-gray-200 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs text-gray-400">© 2025 EchoLegal. Prepared under supervision of NY licensed attorney (Bar #5552336).</p>
-        </div>
-      </footer>
     </div>
   )
 }

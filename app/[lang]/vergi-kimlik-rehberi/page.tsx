@@ -202,220 +202,193 @@ export default async function TaxIdHubPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div className="min-h-screen bg-white">
-        {/* Header */}
-        <header className="border-b border-gray-100">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <Link href={`/${lang}`} className="text-2xl font-black text-black">EchoLegal</Link>
-            <div className="flex items-center gap-6">
-              <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-              <Link href={`/${lang}/amerika`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Immigration' : 'Göçmenlik'}</Link>
-              <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
-              <Link
-                href={`/${lang === 'en' ? 'tr' : 'en'}/vergi-kimlik-rehberi`}
-                className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
-              >
-                {isEnglish ? 'TR' : 'EN'}
-              </Link>
-            </div>
-          </nav>
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Breadcrumb */}
+        <nav className="text-sm text-gray-500 mb-8">
+          <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
+          <span className="mx-2">→</span>
+          <span className="text-black">{isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi'}</span>
+        </nav>
+
+        {/* Hero */}
+        <header className="mb-12">
+          <span className="inline-block px-3 py-1 bg-green-50 text-green-800 rounded-full text-sm font-medium mb-4">
+            {isEnglish ? 'Tax & Identification Hub' : 'Vergi ve Kimlik Merkezi'}
+          </span>
+
+          <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+            {isEnglish
+              ? 'US Tax & Identification Guide'
+              : 'ABD Vergi ve Kimlik Rehberi'}
+          </h1>
+
+          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+            {isEnglish
+              ? 'Everything you need to know about US tax obligations, identification numbers, and compliance requirements for Turkish entrepreneurs doing business with or in the United States.'
+              : 'ABD\'de veya ABD ile iş yapan Türk girişimciler için ABD vergi yükümlülükleri, kimlik numaraları ve uyumluluk gereksinimleri hakkında bilmeniz gereken her şey.'}
+          </p>
         </header>
 
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Breadcrumb */}
-          <nav className="text-sm text-gray-500 mb-8">
-            <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-            <span className="mx-2">→</span>
-            <span className="text-black">{isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi'}</span>
-          </nav>
-
-          {/* Hero */}
-          <header className="mb-12">
-            <span className="inline-block px-3 py-1 bg-green-50 text-green-800 rounded-full text-sm font-medium mb-4">
-              {isEnglish ? 'Tax & Identification Hub' : 'Vergi ve Kimlik Merkezi'}
-            </span>
-
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
-              {isEnglish
-                ? 'US Tax & Identification Guide'
-                : 'ABD Vergi ve Kimlik Rehberi'}
-            </h1>
-
-            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
-              {isEnglish
-                ? 'Everything you need to know about US tax obligations, identification numbers, and compliance requirements for Turkish entrepreneurs doing business with or in the United States.'
-                : 'ABD\'de veya ABD ile iş yapan Türk girişimciler için ABD vergi yükümlülükleri, kimlik numaraları ve uyumluluk gereksinimleri hakkında bilmeniz gereken her şey.'}
-            </p>
-          </header>
-
-          {/* Quick Start */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-12">
-            <h2 className="font-bold text-blue-900 mb-3">{isEnglish ? 'Quick Start: Most Common Questions' : 'Hızlı Başlangıç: En Yaygın Sorular'}</h2>
-            <ul className="space-y-2 text-blue-800 text-sm">
-              <li>
-                <span className="font-medium">→</span>{' '}
-                {isEnglish ? 'My US client wants a W-9 but I\'m in Turkey:' : 'ABD\'li müşterim W-9 istiyor ama Türkiye\'deyim:'}{' '}
-                <Link href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`} className="underline hover:text-blue-900">
-                  {isEnglish ? 'Read W-8/W-9 Guide' : 'W-8/W-9 Rehberini Oku'}
-                </Link>
-              </li>
-              <li>
-                <span className="font-medium">→</span>{' '}
-                {isEnglish ? 'I formed a US LLC — what tax ID do I need?' : 'ABD LLC kurdum — hangi vergi kimliğine ihtiyacım var?'}{' '}
-                <Link href={`/${lang}/ein-itin-ssn-farki`} className="underline hover:text-blue-900">
-                  {isEnglish ? 'Read EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}
-                </Link>
-              </li>
-              <li>
-                <span className="font-medium">→</span>{' '}
-                {isEnglish ? 'I sell online to US customers — do I owe sales tax?' : 'ABD müşterilerine online satış yapıyorum — satış vergisi borcum var mı?'}{' '}
-                <Link href={`/${lang}/abd-satis-vergisi-rehberi`} className="underline hover:text-blue-900">
-                  {isEnglish ? 'Read Sales Tax Guide' : 'Satış Vergisi Rehberini Oku'}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Content Sections */}
-          <div className="space-y-12">
-            {/* Tax IDs */}
-            <section>
-              <h2 className="text-xl font-bold text-black mb-2">{sections.taxIds.title}</h2>
-              <p className="text-gray-600 mb-4">{sections.taxIds.description}</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {sections.taxIds.items.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-black">{item.title}</h3>
-                      {item.badge && (
-                        <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">{item.badge}</span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-600">{item.description}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-
-            {/* Tax Forms */}
-            <section>
-              <h2 className="text-xl font-bold text-black mb-2">{sections.taxForms.title}</h2>
-              <p className="text-gray-600 mb-4">{sections.taxForms.description}</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {sections.taxForms.items.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-black">{item.title}</h3>
-                      {item.badge && (
-                        <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">{item.badge}</span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-600">{item.description}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-
-            {/* Tax Obligations */}
-            <section>
-              <h2 className="text-xl font-bold text-black mb-2">{sections.taxObligations.title}</h2>
-              <p className="text-gray-600 mb-4">{sections.taxObligations.description}</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {sections.taxObligations.items.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-black">{item.title}</h3>
-                      {item.badge && (
-                        <span className="text-xs px-2 py-1 bg-amber-100 text-amber-700 rounded-full">{item.badge}</span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-600">{item.description}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-
-            {/* Payments */}
-            <section>
-              <h2 className="text-xl font-bold text-black mb-2">{sections.payments.title}</h2>
-              <p className="text-gray-600 mb-4">{sections.payments.description}</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {sections.payments.items.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-semibold text-black">{item.title}</h3>
-                      {item.badge && (
-                        <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">{item.badge}</span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-600">{item.description}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          </div>
-
-          {/* Related Resources */}
-          <section className="mt-16 pt-8 border-t border-gray-200">
-            <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Hubs' : 'İlgili Merkezler'}</h2>
-            <div className="grid md:grid-cols-3 gap-4">
-              <Link
-                href={`/${lang}/amerika`}
-                className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-              >
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'US visa pathways and requirements' : 'ABD vize yolları ve gereksinimleri'}</p>
+        {/* Quick Start */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-12">
+          <h2 className="font-bold text-blue-900 mb-3">{isEnglish ? 'Quick Start: Most Common Questions' : 'Hızlı Başlangıç: En Yaygın Sorular'}</h2>
+          <ul className="space-y-2 text-blue-800 text-sm">
+            <li>
+              <span className="font-medium">→</span>{' '}
+              {isEnglish ? 'My US client wants a W-9 but I\'m in Turkey:' : 'ABD\'li müşterim W-9 istiyor ama Türkiye\'deyim:'}{' '}
+              <Link href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`} className="underline hover:text-blue-900">
+                {isEnglish ? 'Read W-8/W-9 Guide' : 'W-8/W-9 Rehberini Oku'}
               </Link>
-              <Link
-                href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`}
-                className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-              >
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation' : 'LLC Kurulumu'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'Step-by-step US LLC guide' : 'Adım adım ABD LLC rehberi'}</p>
+            </li>
+            <li>
+              <span className="font-medium">→</span>{' '}
+              {isEnglish ? 'I formed a US LLC — what tax ID do I need?' : 'ABD LLC kurdum — hangi vergi kimliğine ihtiyacım var?'}{' '}
+              <Link href={`/${lang}/ein-itin-ssn-farki`} className="underline hover:text-blue-900">
+                {isEnglish ? 'Read EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}
               </Link>
-              <Link
-                href={`/${lang}/contracts`}
-                className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
-              >
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'Professional legal documents' : 'Profesyonel hukuki belgeler'}</p>
+            </li>
+            <li>
+              <span className="font-medium">→</span>{' '}
+              {isEnglish ? 'I sell online to US customers — do I owe sales tax?' : 'ABD müşterilerine online satış yapıyorum — satış vergisi borcum var mı?'}{' '}
+              <Link href={`/${lang}/abd-satis-vergisi-rehberi`} className="underline hover:text-blue-900">
+                {isEnglish ? 'Read Sales Tax Guide' : 'Satış Vergisi Rehberini Oku'}
               </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Content Sections */}
+        <div className="space-y-12">
+          {/* Tax IDs */}
+          <section>
+            <h2 className="text-xl font-bold text-black mb-2">{sections.taxIds.title}</h2>
+            <p className="text-gray-600 mb-4">{sections.taxIds.description}</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {sections.taxIds.items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-semibold text-black">{item.title}</h3>
+                    {item.badge && (
+                      <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">{item.badge}</span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
 
-          {/* Disclaimer */}
-          <div className="mt-12 bg-gray-100 rounded-lg p-5">
-            <p className="text-xs text-gray-600 leading-relaxed">
-              {isEnglish
-                ? 'This content is for informational purposes only and does not constitute tax, legal, or financial advice. Tax laws are complex and change frequently. Always consult a qualified CPA, tax attorney, or enrolled agent for advice specific to your situation. EchoLegal is not a law firm, accounting firm, or tax advisory service.'
-                : 'Bu içerik yalnızca bilgilendirme amaçlıdır; vergi, hukuki veya mali danışmanlık teşkil etmez. Vergi yasaları karmaşıktır ve sık sık değişir. Kendi durumunuza özgü tavsiye için mutlaka uzman bir mali müşavir veya vergi avukatına danışın. EchoLegal bir hukuk bürosu, muhasebe firması veya vergi danışmanlık hizmeti değildir.'}
-            </p>
-          </div>
-        </main>
+          {/* Tax Forms */}
+          <section>
+            <h2 className="text-xl font-bold text-black mb-2">{sections.taxForms.title}</h2>
+            <p className="text-gray-600 mb-4">{sections.taxForms.description}</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {sections.taxForms.items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-semibold text-black">{item.title}</h3>
+                    {item.badge && (
+                      <span className="text-xs px-2 py-1 bg-green-100 text-green-700 rounded-full">{item.badge}</span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
-        <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">{dict.disclaimer.global}</p>
-            <p className="text-xs text-gray-400 mt-4">© 2026 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}</p>
+          {/* Tax Obligations */}
+          <section>
+            <h2 className="text-xl font-bold text-black mb-2">{sections.taxObligations.title}</h2>
+            <p className="text-gray-600 mb-4">{sections.taxObligations.description}</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {sections.taxObligations.items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-semibold text-black">{item.title}</h3>
+                    {item.badge && (
+                      <span className="text-xs px-2 py-1 bg-amber-100 text-amber-700 rounded-full">{item.badge}</span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Payments */}
+          <section>
+            <h2 className="text-xl font-bold text-black mb-2">{sections.payments.title}</h2>
+            <p className="text-gray-600 mb-4">{sections.payments.description}</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {sections.payments.items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={item.href}
+                  className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="font-semibold text-black">{item.title}</h3>
+                    {item.badge && (
+                      <span className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-full">{item.badge}</span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600">{item.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Related Resources */}
+        <section className="mt-16 pt-8 border-t border-gray-200">
+          <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Hubs' : 'İlgili Merkezler'}</h2>
+          <div className="grid md:grid-cols-3 gap-4">
+            <Link
+              href={`/${lang}/amerika`}
+              className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}</h3>
+              <p className="text-sm text-gray-600">{isEnglish ? 'US visa pathways and requirements' : 'ABD vize yolları ve gereksinimleri'}</p>
+            </Link>
+            <Link
+              href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`}
+              className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation' : 'LLC Kurulumu'}</h3>
+              <p className="text-sm text-gray-600">{isEnglish ? 'Step-by-step US LLC guide' : 'Adım adım ABD LLC rehberi'}</p>
+            </Link>
+            <Link
+              href={`/${lang}/contracts`}
+              className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}</h3>
+              <p className="text-sm text-gray-600">{isEnglish ? 'Professional legal documents' : 'Profesyonel hukuki belgeler'}</p>
+            </Link>
           </div>
-        </footer>
-      </div>
+        </section>
+
+        {/* Disclaimer */}
+        <div className="mt-12 bg-gray-100 rounded-lg p-5">
+          <p className="text-xs text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'This content is for informational purposes only and does not constitute tax, legal, or financial advice. Tax laws are complex and change frequently. Always consult a qualified CPA, tax attorney, or enrolled agent for advice specific to your situation. EchoLegal is not a law firm, accounting firm, or tax advisory service.'
+              : 'Bu içerik yalnızca bilgilendirme amaçlıdır; vergi, hukuki veya mali danışmanlık teşkil etmez. Vergi yasaları karmaşıktır ve sık sık değişir. Kendi durumunuza özgü tavsiye için mutlaka uzman bir mali müşavir veya vergi avukatına danışın. EchoLegal bir hukuk bürosu, muhasebe firması veya vergi danışmanlık hizmeti değildir.'}
+          </p>
+        </div>
+      </main>
     </>
   )
 }
