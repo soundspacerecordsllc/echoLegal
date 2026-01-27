@@ -185,16 +185,18 @@ export default async function AboutPage({
           </h2>
           <div className="bg-gray-50 rounded-lg p-6">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-2xl">
-                ⚖️
+              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-medium">
+                ZM
               </div>
               <div>
                 <h3 className="font-bold text-black">Zeynep Ruziye Moore</h3>
-                <p className="text-sm text-gray-600 mb-2">Attorney at Law • New York Bar No: 5552336</p>
+                <p className="text-sm text-gray-600 mb-2">
+                  {isEnglish ? 'Editor-in-Chief' : 'Genel Yayın Yönetmeni'}
+                </p>
                 <p className="text-sm text-gray-700">
                   {isEnglish
-                    ? 'All legal content on EchoLegal is reviewed for accuracy by a licensed attorney with expertise in US immigration and business law, particularly as it relates to Turkish nationals.'
-                    : 'EchoLegal\'daki tüm hukuki içerik, özellikle Türk vatandaşlarıyla ilgili olarak ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
+                    ? 'Oversees editorial standards and legal accuracy for all EchoLegal content. Licensed attorney with expertise in US-Turkey cross-border legal matters.'
+                    : 'Tüm EchoLegal içeriklerinin editöryal standartlarını ve hukuki doğruluğunu denetler. ABD-Türkiye sınır ötesi hukuki konularda uzmanlığa sahip lisanslı avukat.'}
                 </p>
               </div>
             </div>
