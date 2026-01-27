@@ -28,7 +28,7 @@ export default async function TermsPage({
               <p className="text-legal-gray">
                 {isEnglish
                   ? 'By accessing and using EchoLegal, you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use our website.'
-                  : 'EchoLegal\'a erişerek ve kullanarak, bu Kullanım Koşullarına bağlı olmayı kabul etmiş olursunuz. Bu koşulları kabul etmiyorsanız, lütfen web sitemizi kullanmayın.'
+                  : 'EchoLegal\'a erişmeniz ve siteyi kullanmanız, işbu Kullanım Koşulları\'nı kabul ettiğiniz anlamına gelir. Bu koşulları kabul etmiyorsanız siteyi kullanmayınız.'
                 }
               </p>
             </section>
@@ -40,7 +40,7 @@ export default async function TermsPage({
               <p className="text-legal-gray mb-4">
                 {isEnglish
                   ? 'All content on EchoLegal, including document templates and educational materials, is provided for informational and educational purposes only. You may:'
-                  : 'EchoLegal\'daki belge şablonları ve eğitim materyalleri dahil tüm içerik, yalnızca bilgilendirme ve eğitim amaçlı sunulmaktadır. Şunları yapabilirsiniz:'
+                  : 'EchoLegal\'da yer alan belge şablonları ve eğitim materyalleri dahil tüm içerik, yalnızca bilgilendirme ve eğitim amacıyla sunulmaktadır. Kullanıcılar:'
                 }
               </p>
               <ul className="list-disc pl-6 text-legal-gray space-y-2">

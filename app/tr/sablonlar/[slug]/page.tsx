@@ -181,7 +181,7 @@ export default async function TurkishTemplateDetailPage({
         {/* Link to legacy contract page if exists */}
         {hasContractPage && (
           <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-            <p className="text-sm text-amber-800">Bu şablon indirilebilir.</p>
+            <p className="text-sm text-amber-800">Bu şablonun indirilebilir sürümü mevcuttur.</p>
             <Link
               href={`/tr/contracts/${slug}`}
               className="inline-flex items-center mt-2 text-sm font-semibold text-amber-700 hover:text-amber-900"
@@ -251,9 +251,9 @@ export default async function TurkishTemplateDetailPage({
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
           <h3 className="font-semibold mb-2">⚖️ Hukuki Sorumluluk Reddi</h3>
           <p className="text-sm text-gray-600">
-            Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil
-            etmez. Gerçek hukuki konularda kullanmadan önce lisanslı bir avukata
-            danışın.
+            Bu şablon yalnızca bilgilendirme amacıyla sunulmaktadır; hukuki
+            danışmanlık yerine geçmez. Somut bir hukuki mesele için kullanmadan
+            önce lisanslı bir avukata danışmanız önerilir.
           </p>
         </div>
 
@@ -345,131 +345,131 @@ function getTemplateContent(template: Template): {
   > = {
     contract: {
       whatIsIt:
-        'Sözleşme, iki veya daha fazla taraf arasında hukuk tarafından uygulanabilir karşılıklı yükümlülükler yaratan yasal olarak bağlayıcı bir anlaşmadır.',
+        'Sözleşme, iki veya daha fazla taraf arasında hukuken bağlayıcı yükümlülükler doğuran yazılı anlaşmadır.',
       whenToUse: [
-        'İş ilişkilerine girerken',
-        'Çalışma kapsamını tanımlarken',
-        'Ödeme koşullarını belirlerken',
-        'Fikri mülkiyeti korurken',
+        'Yeni bir iş ilişkisine başlarken',
+        'İş kapsamını ve sınırlarını netleştirirken',
+        'Ödeme koşullarını yazılı olarak belirlerken',
+        'Fikri mülkiyet haklarını güvence altına alırken',
       ],
       keyElements: [
-        'İlgili taraflar',
-        'Anlaşma kapsamı',
-        'Şartlar ve koşullar',
+        'Taraf bilgileri',
+        'Sözleşme konusu ve kapsamı',
+        'Hak ve yükümlülükler',
         'Ödeme koşulları',
-        'Fesih maddeleri',
-        'Uyuşmazlık çözümü',
+        'Fesih hükümleri',
+        'Uyuşmazlık çözüm yöntemi',
       ],
     },
     letter: {
       whatIsIt:
-        'Hukuki, iş veya resmi bağlamlarda profesyonel yazışmalar için resmi mektup şablonu.',
+        'Hukuki, ticari veya resmi amaçlarla kullanılan biçimsel mektup şablonu.',
       whenToUse: [
-        'Resmi iletişimler',
-        'Resmi talepler',
-        'Bildirimler ve ihtarlar',
-        'Profesyonel yazışmalar',
+        'Kurumsal veya resmi yazışmalarda',
+        'Resmi talep veya bildirim iletirken',
+        'İhtar veya fesih bildirimi gönderirken',
+        'Kurumlar arası iletişimde',
       ],
       keyElements: [
-        'Uygun başlık ve tarih',
-        'Alıcı bilgileri',
-        'Net konu satırı',
-        'Profesyonel içerik',
-        'Uygun kapanış',
+        'Tarih ve başlık bilgisi',
+        'Muhatap bilgileri',
+        'Konu ve amaç',
+        'Hukuki veya ticari içerik',
+        'İmza ve kapanış',
       ],
     },
     checklist: {
       whatIsIt:
-        'Gerekli tüm adımları tamamlamanızı veya gerekli tüm belgeleri toplamanızı sağlamak için yapılandırılmış kontrol listesi.',
+        'Başvuru veya işlem sürecinde gerekli adımları ve belgeleri takip etmek için hazırlanmış kontrol listesi.',
       whenToUse: [
-        'Başvuruları hazırlarken',
-        'Gerekli belgeleri toplarken',
-        'Çok adımlı süreçleri takip ederken',
-        'Uyumluluğu sağlarken',
+        'Başvuru dosyası hazırlarken',
+        'Gerekli evrakları bir araya getirirken',
+        'Birden fazla aşamadan oluşan süreçlerde',
+        'Yasal uyum gereksinimlerini karşılarken',
       ],
       keyElements: [
-        'Net eylem maddeleri',
-        'Gerekli belgeler listesi',
-        'Son tarih hatırlatıcıları',
-        'Durum takibi',
+        'Yapılacak işlem maddeleri',
+        'Gerekli belge listesi',
+        'Son tarih ve vade bilgisi',
+        'Tamamlanma durumu takibi',
       ],
     },
     template: {
       whatIsIt:
-        'Özel ihtiyaçlarınız için özelleştirebileceğiniz önceden biçimlendirilmiş belge şablonu.',
+        'Kendi ihtiyaçlarınıza göre uyarlayabileceğiniz, hazır formatta belge şablonu.',
       whenToUse: [
-        'Profesyonel bir formatla başlarken',
-        'Tutarlılık sağlarken',
-        'Biçimlendirmede zaman kazanırken',
-        'En iyi uygulamaları takip ederken',
+        'Profesyonel bir belge taslağına hızlıca ulaşmak istediğinizde',
+        'Belgeler arasında biçim tutarlılığı sağlarken',
+        'Sıfırdan hazırlamak yerine mevcut yapıyı düzenlerken',
+        'Sektör standartlarına uygun belge oluştururken',
       ],
       keyElements: [
-        'Standart biçimlendirme',
-        'Yer tutucu metin',
-        'Özelleştirilebilir bölümler',
-        'Kullanım talimatları',
+        'Standart belge biçimi',
+        'Doldurulacak alanlar',
+        'Düzenlenebilir bölümler',
+        'Kullanım açıklamaları',
       ],
     },
     guide: {
       whatIsIt:
-        'Temel kavramları, gereksinimleri ve en iyi uygulamaları açıklayan eğitici rehber.',
+        'İlgili konunun temel kavramlarını, yasal gereksinimlerini ve uygulamaya yönelik bilgileri açıklayan rehber.',
       whenToUse: [
-        'Bir konu hakkında öğrenirken',
-        'Gereksinimleri anlarken',
-        'Yaklaşımınızı planlarken',
-        'Bilinçli kararlar verirken',
+        'Bir hukuki konuyu araştırırken',
+        'Yasal gereksinimleri kavramak istediğinizde',
+        'Süreç planlaması yaparken',
+        'Karar vermeden önce bilgi edinirken',
       ],
       keyElements: [
-        'Net açıklamalar',
-        'Adım adım rehberlik',
-        'Pratik örnekler',
-        'En iyi uygulamalar',
+        'Açık ve anlaşılır tanımlar',
+        'Aşama aşama rehberlik',
+        'Uygulamaya dönük örnekler',
+        'Dikkat edilmesi gereken hususlar',
       ],
     },
     sample: {
       whatIsIt:
-        'Belirli bir belge türünün formatını ve içeriğini gösteren örnek belge.',
+        'Belirli bir belge türünün biçimini ve içeriğini somut olarak gösteren örnek.',
       whenToUse: [
-        'Belge formatını anlarken',
-        'Gerçek örnekleri görürken',
-        'Nelerin dahil edilmesi gerektiğini öğrenirken',
-        'Kendi belgeleriniz için referans',
+        'Belgenin olması gereken biçimini görmek istediğinizde',
+        'Gerçeğe yakın bir örnek üzerinden inceleme yaparken',
+        'Hangi bilgilerin yer alması gerektiğini öğrenirken',
+        'Kendi belgenizi hazırlarken referans olarak',
       ],
       keyElements: [
-        'Gerçekçi örnek',
-        'Uygun biçimlendirme',
-        'Tüm gerekli bölümler',
-        'Ek açıklamalar veya notlar',
+        'Gerçeğe uygun örnek içerik',
+        'Doğru biçimlendirme',
+        'Gerekli tüm bölümler',
+        'Açıklayıcı notlar',
       ],
     },
     form: {
-      whatIsIt: 'Belirli amaçlar için doldurulacak alanları olan form şablonu.',
+      whatIsIt: 'Belirli bir işlem veya başvuru için doldurulması gereken alanlara sahip form şablonu.',
       whenToUse: [
-        'Bilgi toplarken',
-        'Veri girişini standartlaştırırken',
-        'Eksiksizliği sağlarken',
-        'Resmi başvurular',
+        'Yapılandırılmış bilgi toplarken',
+        'Bilgi girişini standart hale getirirken',
+        'Eksik bilgi riskini en aza indirirken',
+        'Resmi başvuru ve kayıt işlemlerinde',
       ],
       keyElements: [
-        'Net alan etiketleri',
-        'Mantıksal organizasyon',
+        'Açık alan tanımları',
+        'Mantıklı sıralama',
         'Zorunlu ve isteğe bağlı alanlar',
-        'Talimatlar',
+        'Doldurma talimatları',
       ],
     },
     petition: {
-      whatIsIt: 'Resmi amaçlar için resmi dilekçe veya talep belgesi.',
+      whatIsIt: 'Resmi makam veya kuruma yönelik yazılı talep ya da dilekçe belgesi.',
       whenToUse: [
-        'Resmi talepler yaparken',
-        'Resmi başvurular',
-        'Hukuki süreçler',
-        'Devlet başvuruları',
+        'Resmi kuruma başvuru yaparken',
+        'Hak veya hizmet talebinde bulunurken',
+        'Hukuki süreç başlatırken',
+        'Kamu kurum ve kuruluşlarına başvururken',
       ],
       keyElements: [
-        'Uygun hitap',
-        'Net talep ifadesi',
-        'Destekleyici detaylar',
-        'Gerekli imzalar',
+        'Muhatap makam bilgisi',
+        'Açık ve net talep ifadesi',
+        'Gerekçe ve destekleyici bilgiler',
+        'İmza ve tarih',
       ],
     },
   }

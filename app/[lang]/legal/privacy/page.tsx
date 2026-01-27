@@ -26,7 +26,7 @@ export default async function PrivacyPage({
               <p className="text-legal-gray mb-4">
                 {isEnglish
                   ? 'EchoLegal collects minimal information necessary to provide our services. When you visit our website, we may collect:'
-                  : 'EchoLegal, hizmetlerimizi sunmak için gereken minimum bilgiyi toplar. Web sitemizi ziyaret ettiğinizde şunları toplayabiliriz:'
+                  : 'EchoLegal, hizmetlerini sunabilmek için yalnızca gerekli olan asgari bilgiyi toplar. Sitemizi ziyaret ettiğinizde aşağıdaki veriler toplanabilir:'
                 }
               </p>
               <ul className="list-disc pl-6 text-legal-gray space-y-2">
@@ -43,7 +43,7 @@ export default async function PrivacyPage({
               <p className="text-legal-gray mb-4">
                 {isEnglish
                   ? 'We use collected information to:'
-                  : 'Toplanan bilgileri şu amaçlarla kullanıyoruz:'
+                  : 'Toplanan veriler aşağıdaki amaçlarla kullanılmaktadır:'
                 }
               </p>
               <ul className="list-disc pl-6 text-legal-gray space-y-2">
@@ -60,7 +60,7 @@ export default async function PrivacyPage({
               <p className="text-legal-gray">
                 {isEnglish
                   ? 'When you make a payment, transactions are processed securely through Stripe. We do not store your credit card information. Please review Stripe\'s privacy policy for information about how they handle your payment data.'
-                  : 'Ödeme yaptığınızda, işlemler Stripe aracılığıyla güvenli bir şekilde işlenir. Kredi kartı bilgilerinizi saklamıyoruz. Stripe\'ın ödeme verilerinizi nasıl işlediği hakkında bilgi için lütfen Stripe gizlilik politikasını inceleyin.'
+                  : 'Ödeme işlemleri Stripe altyapısı üzerinden güvenli biçimde gerçekleştirilir. Kredi kartı bilgileriniz tarafımızca saklanmaz. Stripe\'ın ödeme verilerini nasıl işlediğine dair ayrıntılar için Stripe gizlilik politikasına başvurabilirsiniz.'
                 }
               </p>
             </section>
@@ -72,7 +72,7 @@ export default async function PrivacyPage({
               <p className="text-legal-gray">
                 {isEnglish
                   ? 'You have the right to access, correct, or delete your personal information. To exercise these rights or for any privacy-related questions, please contact us at support@echo-legal.com.'
-                  : 'Kişisel bilgilerinize erişme, düzeltme veya silme hakkına sahipsiniz. Bu hakları kullanmak veya gizlilikle ilgili sorularınız için lütfen support@echo-legal.com adresinden bize ulaşın.'
+                  : 'Kişisel verilerinize erişim, düzeltme veya silme talep etme hakkınız saklıdır. Bu haklarınızı kullanmak ya da kişisel verilerin korunmasına ilişkin soru sormak için support@echo-legal.com adresine başvurabilirsiniz.'
                 }
               </p>
             </section>
@@ -84,7 +84,7 @@ export default async function PrivacyPage({
               <p className="text-legal-gray">
                 {isEnglish
                   ? 'If you have questions about this Privacy Policy, please contact us at support@echo-legal.com.'
-                  : 'Bu Gizlilik Politikası hakkında sorularınız varsa, lütfen support@echo-legal.com adresinden bize ulaşın.'
+                  : 'Bu Gizlilik Politikası hakkındaki sorularınız için support@echo-legal.com adresinden bizimle iletişime geçebilirsiniz.'
                 }
               </p>
             </section>

@@ -8,10 +8,10 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   return {
     title: isEnglish
       ? 'Contractor vs Employee: Complete Classification Guide | EchoLegal'
-      : 'Yüklenici mi Çalışan mı: Kapsamlı Sınıflandırma Rehberi | EchoLegal',
+      : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi | EchoLegal',
     description: isEnglish
       ? 'Understand the critical differences between contractors and employees. Learn IRS tests, legal factors, misclassification risks, and how to properly classify workers.'
-      : 'Yükleniciler ve çalışanlar arasındaki kritik farkları anlayın. IRS testlerini, yasal faktörleri, yanlış sınıflandırma risklerini ve çalışanları doğru sınıflandırmayı öğrenin.',
+      : 'Bağımsız yüklenici ile işçi arasındaki temel farklar. IRS testleri, hukuki kriterler, hatalı sınıflandırma riskleri ve doğru statü belirleme yöntemleri.',
   }
 }
 
@@ -31,19 +31,19 @@ export default async function ContractorVsEmployeePage({
         {' → '}
         <Link href={`/${lang}/encyclopedia`} className="hover:text-black">{isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}</Link>
         {' → '}
-        <span className="text-black font-medium">{isEnglish ? 'Contractor vs Employee' : 'Yüklenici mi Çalışan mı'}</span>
+        <span className="text-black font-medium">{isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi'}</span>
       </nav>
 
       {/* Article Header */}
       <article>
         <h1 className="text-4xl md:text-5xl font-black mb-4">
-          {isEnglish ? 'Contractor vs Employee' : 'Yüklenici mi Çalışan mı?'}
+          {isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi?'}
         </h1>
 
         <p className="text-xl text-gray-600 mb-6">
           {isEnglish
             ? 'The definitive guide to worker classification: understand the legal tests, avoid costly misclassification penalties, and structure your working relationships correctly.'
-            : 'İşçi sınıflandırması için kesin rehber: yasal testleri anlayın, maliyetli yanlış sınıflandırma cezalarından kaçının ve çalışma ilişkilerinizi doğru yapılandırın.'}
+            : 'İşçi statüsü belirleme rehberi: Hukuki testleri kavrayın, ağır yanlış sınıflandırma yaptırımlarından korunun ve çalışma ilişkilerinizi doğru kurun.'}
         </p>
 
         <div className="flex items-center gap-4 text-sm text-gray-500 mb-12">
@@ -58,7 +58,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-red-800">
             {isEnglish
               ? 'Misclassifying an employee as an independent contractor can result in back taxes, penalties of up to 40% of unpaid employment taxes, lawsuits for unpaid benefits, and even criminal prosecution. Both businesses hiring workers and individuals working as contractors need to understand these rules.'
-              : 'Bir çalışanı bağımsız yüklenici olarak yanlış sınıflandırmak, geriye dönük vergiler, ödenmemiş istihdam vergilerinin %40\'ına kadar cezalar, ödenmemiş haklar için davalar ve hatta cezai kovuşturma ile sonuçlanabilir. Hem işçi çalıştıran işletmelerin hem de yüklenici olarak çalışan bireylerin bu kuralları anlaması gerekir.'}
+              : 'Bir işçiyi bağımsız yüklenici olarak hatalı sınıflandırmak ciddi sonuçlar doğurabilir: geriye dönük vergi borcu, ödenmemiş istihdam vergilerinin %40\'ına varan cezalar, hak talepleri davaları ve hatta cezai soruşturma. Bu kuralları hem işveren hem de yüklenici konumundaki kişilerin bilmesi zorunludur.'}
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export default async function ContractorVsEmployeePage({
         <div className="bg-gray-50 rounded-lg p-6 mb-12">
           <h2 className="font-bold mb-4">{isEnglish ? 'Table of Contents' : 'İçindekiler'}</h2>
           <ul className="space-y-2">
-            <li><a href="#overview" className="text-[#C9A227] hover:underline">{isEnglish ? '1. Overview: Employee vs Contractor' : '1. Genel Bakış: Çalışan vs Yüklenici'}</a></li>
+            <li><a href="#overview" className="text-[#C9A227] hover:underline">{isEnglish ? '1. Overview: Employee vs Contractor' : '1. Genel Bakış: İşçi ve Yüklenici Ayrımı'}</a></li>
             <li><a href="#irs-test" className="text-[#C9A227] hover:underline">{isEnglish ? '2. The IRS 3-Factor Test' : '2. IRS 3-Faktör Testi'}</a></li>
             <li><a href="#abc-test" className="text-[#C9A227] hover:underline">{isEnglish ? '3. The ABC Test (California & Beyond)' : '3. ABC Testi (Kaliforniya ve Ötesi)'}</a></li>
             <li><a href="#economic-reality" className="text-[#C9A227] hover:underline">{isEnglish ? '4. Economic Reality Test (DOL)' : '4. Ekonomik Gerçeklik Testi (DOL)'}</a></li>
@@ -79,40 +79,40 @@ export default async function ContractorVsEmployeePage({
 
         {/* Section 1: Overview */}
         <section id="overview" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">{isEnglish ? '1. Overview: Employee vs Contractor' : '1. Genel Bakış: Çalışan vs Yüklenici'}</h2>
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? '1. Overview: Employee vs Contractor' : '1. Genel Bakış: İşçi ve Yüklenici Ayrımı'}</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'The distinction between an employee and an independent contractor isn\'t just about job titles or what a contract says—it\'s determined by the actual nature of the working relationship. What you call the worker doesn\'t matter; what matters is how the work is actually performed.'
-              : 'Bir çalışan ile bağımsız yüklenici arasındaki ayrım sadece iş unvanları veya sözleşmenin ne dediğiyle ilgili değildir—çalışma ilişkisinin gerçek doğasıyla belirlenir. İşçiye ne dediğiniz önemli değildir; önemli olan işin gerçekte nasıl yapıldığıdır.'}
+              : 'İşçi ile bağımsız yüklenici arasındaki fark, iş unvanına ya da sözleşmede yazılana göre değil, fiili çalışma ilişkisinin niteliğine göre belirlenir. Kişiye hangi sıfatı verdiğiniz değil, işin pratikte nasıl yürütüldüğü belirleyicidir.'}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="border-2 border-blue-200 rounded-lg p-6 bg-blue-50">
-              <h3 className="text-xl font-semibold mb-4 text-blue-900">{isEnglish ? 'Employee' : 'Çalışan'}</h3>
+              <h3 className="text-xl font-semibold mb-4 text-blue-900">{isEnglish ? 'Employee' : 'İşçi (Çalışan)'}</h3>
               <ul className="space-y-2 text-blue-800">
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Works under employer\'s control and direction' : 'İşverenin kontrolü ve yönlendirmesi altında çalışır'}</span>
+                  <span>{isEnglish ? 'Works under employer\'s control and direction' : 'İşverenin emir ve talimatları doğrultusunda çalışır'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Set hours and workplace' : 'Belirlenen saatler ve işyeri'}</span>
+                  <span>{isEnglish ? 'Set hours and workplace' : 'Çalışma saatleri ve yeri işverence belirlenir'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Uses employer\'s tools and equipment' : 'İşverenin araç ve ekipmanlarını kullanır'}</span>
+                  <span>{isEnglish ? 'Uses employer\'s tools and equipment' : 'İşverenin araç ve gereçlerini kullanır'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Receives benefits (health, retirement, etc.)' : 'Haklar alır (sağlık, emeklilik, vb.)'}</span>
+                  <span>{isEnglish ? 'Receives benefits (health, retirement, etc.)' : 'Sosyal haklardan yararlanır (sağlık, emeklilik vb.)'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Taxes withheld by employer' : 'Vergiler işveren tarafından kesilir'}</span>
+                  <span>{isEnglish ? 'Taxes withheld by employer' : 'Vergi kesintisi işverence yapılır'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Protected by labor laws' : 'İş kanunları tarafından korunur'}</span>
+                  <span>{isEnglish ? 'Protected by labor laws' : 'İş mevzuatı kapsamında koruma altındadır'}</span>
                 </li>
               </ul>
             </div>
@@ -122,27 +122,27 @@ export default async function ContractorVsEmployeePage({
               <ul className="space-y-2 text-green-800">
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Controls how, when, and where work is done' : 'İşin nasıl, ne zaman ve nerede yapılacağını kontrol eder'}</span>
+                  <span>{isEnglish ? 'Controls how, when, and where work is done' : 'İşin nasıl, ne zaman ve nerede yapılacağına kendisi karar verir'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Sets own schedule and location' : 'Kendi programını ve yerini belirler'}</span>
+                  <span>{isEnglish ? 'Sets own schedule and location' : 'Çalışma takvimini ve mekanını kendisi belirler'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Uses own tools and equipment' : 'Kendi araç ve ekipmanlarını kullanır'}</span>
+                  <span>{isEnglish ? 'Uses own tools and equipment' : 'Kendi araç ve gereçlerini kullanır'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'No benefits from client' : 'Müşteriden hak almaz'}</span>
+                  <span>{isEnglish ? 'No benefits from client' : 'Müşteriden sosyal hak talep edemez'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Pays own taxes (self-employment)' : 'Kendi vergilerini öder (serbest meslek)'}</span>
+                  <span>{isEnglish ? 'Pays own taxes (self-employment)' : 'Vergisini kendisi öder (serbest meslek)'}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
-                  <span>{isEnglish ? 'Works for multiple clients' : 'Birden fazla müşteri için çalışır'}</span>
+                  <span>{isEnglish ? 'Works for multiple clients' : 'Birden fazla müşteriye hizmet verir'}</span>
                 </li>
               </ul>
             </div>
@@ -155,7 +155,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'The IRS uses a "common law" test that examines the degree of control and independence in the relationship. It focuses on three categories of factors:'
-              : 'IRS, ilişkideki kontrol ve bağımsızlık derecesini inceleyen bir "ortak hukuk" testi kullanır. Üç faktör kategorisine odaklanır:'}
+              : 'IRS, taraflar arasındaki kontrol ve bağımsızlık derecesini değerlendiren bir "common law" testi uygular. Bu test üç ana faktör grubunu inceler:'}
           </p>
 
           <div className="space-y-6">
@@ -167,15 +167,15 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 mb-4">
                 {isEnglish
                   ? 'Does the company control or have the right to control what the worker does and how they do it?'
-                  : 'Şirket, işçinin ne yaptığını ve nasıl yaptığını kontrol ediyor mu veya kontrol etme hakkına sahip mi?'}
+                  : 'Şirket, işçinin ne yaptığını ve nasıl yaptığını fiilen kontrol ediyor mu ya da buna hakkı var mı?'}
               </p>
               <div className="bg-gray-50 rounded p-4">
                 <p className="font-semibold mb-2">{isEnglish ? 'Key Questions:' : 'Önemli Sorular:'}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• {isEnglish ? 'Does the company dictate when, where, and how work is done?' : 'Şirket işin ne zaman, nerede ve nasıl yapılacağını dikte ediyor mu?'}</li>
-                  <li>• {isEnglish ? 'Does the company provide training on methods?' : 'Şirket yöntemler hakkında eğitim veriyor mu?'}</li>
-                  <li>• {isEnglish ? 'Is there a sequence in which work must be performed?' : 'İşin yapılması gereken bir sıra var mı?'}</li>
-                  <li>• {isEnglish ? 'Does the company evaluate HOW work is done vs just results?' : 'Şirket işin NASIL yapıldığını mı değerlendiriyor yoksa sadece sonuçları mı?'}</li>
+                  <li>• {isEnglish ? 'Does the company dictate when, where, and how work is done?' : 'Şirket işin zamanını, yerini ve yöntemini belirliyor mu?'}</li>
+                  <li>• {isEnglish ? 'Does the company provide training on methods?' : 'Şirket çalışma yöntemleri konusunda eğitim veriyor mu?'}</li>
+                  <li>• {isEnglish ? 'Is there a sequence in which work must be performed?' : 'İşin belirli bir sırayla yapılması isteniyor mu?'}</li>
+                  <li>• {isEnglish ? 'Does the company evaluate HOW work is done vs just results?' : 'Şirket yalnızca sonucu mu yoksa işin NASIL yapıldığını mı denetliyor?'}</li>
                 </ul>
               </div>
             </div>
@@ -188,16 +188,16 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 mb-4">
                 {isEnglish
                   ? 'Does the business direct or control the financial and business aspects of the worker\'s job?'
-                  : 'İşletme, işçinin işinin finansal ve ticari yönlerini yönlendiriyor veya kontrol ediyor mu?'}
+                  : 'İşletme, işçinin mali ve ticari faaliyetlerini yönlendiriyor veya denetliyor mu?'}
               </p>
               <div className="bg-gray-50 rounded p-4">
                 <p className="font-semibold mb-2">{isEnglish ? 'Key Questions:' : 'Önemli Sorular:'}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• {isEnglish ? 'Does the worker have unreimbursed business expenses?' : 'İşçinin karşılanmayan iş giderleri var mı?'}</li>
-                  <li>• {isEnglish ? 'Does the worker invest in their own equipment/facilities?' : 'İşçi kendi ekipman/tesislerine yatırım yapıyor mu?'}</li>
-                  <li>• {isEnglish ? 'Does the worker make their services available to the market?' : 'İşçi hizmetlerini piyasaya sunuyor mu?'}</li>
-                  <li>• {isEnglish ? 'How is the worker paid (hourly vs project vs commission)?' : 'İşçiye nasıl ödeme yapılıyor (saatlik vs proje vs komisyon)?'}</li>
-                  <li>• {isEnglish ? 'Can the worker realize profit or loss?' : 'İşçi kar veya zarar edebilir mi?'}</li>
+                  <li>• {isEnglish ? 'Does the worker have unreimbursed business expenses?' : 'İşçinin tazmin edilmeyen iş giderleri var mı?'}</li>
+                  <li>• {isEnglish ? 'Does the worker invest in their own equipment/facilities?' : 'İşçi kendi ekipman veya tesisine yatırım yapıyor mu?'}</li>
+                  <li>• {isEnglish ? 'Does the worker make their services available to the market?' : 'İşçi hizmetlerini açık piyasada sunuyor mu?'}</li>
+                  <li>• {isEnglish ? 'How is the worker paid (hourly vs project vs commission)?' : 'Ödeme nasıl yapılıyor (saatlik mi, proje bazlı mı, komisyon mu)?'}</li>
+                  <li>• {isEnglish ? 'Can the worker realize profit or loss?' : 'İşçi kâr veya zarar edebilecek konumda mı?'}</li>
                 </ul>
               </div>
             </div>
@@ -215,10 +215,10 @@ export default async function ContractorVsEmployeePage({
               <div className="bg-gray-50 rounded p-4">
                 <p className="font-semibold mb-2">{isEnglish ? 'Key Questions:' : 'Önemli Sorular:'}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• {isEnglish ? 'Are there written contracts describing the relationship?' : 'İlişkiyi tanımlayan yazılı sözleşmeler var mı?'}</li>
-                  <li>• {isEnglish ? 'Does the worker receive benefits (insurance, pension, vacation)?' : 'İşçi haklar alıyor mu (sigorta, emeklilik, tatil)?'}</li>
-                  <li>• {isEnglish ? 'Is the relationship expected to be permanent or for a project?' : 'İlişkinin kalıcı mı yoksa proje bazlı mı olması bekleniyor?'}</li>
-                  <li>• {isEnglish ? 'Is the work a key aspect of the regular business?' : 'İş, normal işletmenin önemli bir yönü mü?'}</li>
+                  <li>• {isEnglish ? 'Are there written contracts describing the relationship?' : 'İlişkiyi düzenleyen yazılı bir sözleşme var mı?'}</li>
+                  <li>• {isEnglish ? 'Does the worker receive benefits (insurance, pension, vacation)?' : 'İşçi sosyal haklardan yararlanıyor mu (sigorta, emeklilik, izin)?'}</li>
+                  <li>• {isEnglish ? 'Is the relationship expected to be permanent or for a project?' : 'İlişki süresiz mi yoksa belirli bir projeye mi bağlı?'}</li>
+                  <li>• {isEnglish ? 'Is the work a key aspect of the regular business?' : 'Yapılan iş, işletmenin esas faaliyet alanının parçası mı?'}</li>
                 </ul>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-blue-800">
               {isEnglish
                 ? 'No single factor is determinative. The IRS looks at the entire relationship. You can request an IRS determination using Form SS-8, but this can take 6+ months and may trigger an audit.'
-                : 'Hiçbir tek faktör belirleyici değildir. IRS tüm ilişkiye bakar. Form SS-8 kullanarak IRS belirleme talep edebilirsiniz, ancak bu 6+ ay sürebilir ve denetime yol açabilir.'}
+                : 'Tek bir faktör belirleyici değildir; IRS ilişkinin bütününü değerlendirir. SS-8 Formu ile IRS\'ten statü tespiti talep edebilirsiniz; ancak bu süreç altı ayı aşabilir ve vergi denetimi başlatabilir.'}
             </p>
           </div>
         </section>
@@ -240,7 +240,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-4">
             {isEnglish
               ? 'California\'s AB5 law (and similar laws in other states like New Jersey, Massachusetts, and Illinois) uses the stricter ABC Test. Under this test, a worker is presumed to be an employee unless ALL THREE conditions are met:'
-              : 'Kaliforniya\'nın AB5 yasası (ve New Jersey, Massachusetts ve Illinois gibi diğer eyaletlerdeki benzer yasalar) daha katı ABC Testini kullanır. Bu test kapsamında, ÜÇ koşulun TÜMÜ karşılanmadıkça işçinin çalışan olduğu varsayılır:'}
+              : 'Kaliforniya\'nın AB5 yasası (ve New Jersey, Massachusetts, Illinois gibi eyaletlerdeki benzerleri) daha katı olan ABC Testini uygular. Bu teste göre, aşağıdaki ÜÇ koşulun TAMAMI sağlanmadıkça kişi işçi sayılır:'}
           </p>
 
           <div className="space-y-4">
@@ -252,7 +252,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-700">
                 {isEnglish
                   ? 'The worker is free from the control and direction of the hiring entity in performing the work, both under the contract and in fact.'
-                  : 'İşçi, hem sözleşme kapsamında hem de fiilen işin yapılmasında işe alan kuruluşun kontrolü ve yönlendirmesinden bağımsızdır.'}
+                  : 'İşçi, hem sözleşme gereği hem de fiilen, işi veren tarafın kontrol ve yönlendirmesinden bağımsız biçimde çalışmalıdır.'}
               </p>
             </div>
 
@@ -264,12 +264,12 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-700">
                 {isEnglish
                   ? 'The worker performs work that is outside the usual course of the hiring entity\'s business.'
-                  : 'İşçi, işe alan kuruluşun olağan iş seyrinin dışında iş yapar.'}
+                  : 'İşçinin yaptığı iş, işi veren kuruluşun olağan faaliyet alanının dışında kalmalıdır.'}
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 {isEnglish
                   ? 'Example: A plumber hired by a retail store = contractor. A plumber hired by a plumbing company = likely employee.'
-                  : 'Örnek: Bir perakende mağazası tarafından kiralanan tesisatçı = yüklenici. Bir tesisatçı şirketi tarafından kiralanan tesisatçı = muhtemelen çalışan.'}
+                  : 'Örnek: Perakende mağazanın tuttuğu tesisatçı = yüklenici. Tesisat şirketinin istihdam ettiği tesisatçı = büyük olasılıkla işçi.'}
               </p>
             </div>
 
@@ -281,12 +281,12 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-700">
                 {isEnglish
                   ? 'The worker is customarily engaged in an independently established trade, occupation, or business of the same nature as the work performed.'
-                  : 'İşçi, genellikle yapılan işle aynı nitelikteki bağımsız olarak kurulmuş bir ticaret, meslek veya işle meşguldür.'}
+                  : 'İşçi, yaptığı işle aynı nitelikteki bağımsız bir ticari faaliyet, meslek veya işletmeyi fiilen sürdürüyor olmalıdır.'}
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 {isEnglish
                   ? 'Evidence: Business license, own website, multiple clients, advertising services publicly'
-                  : 'Kanıt: İşletme ruhsatı, kendi web sitesi, birden fazla müşteri, hizmetlerin kamuya duyurulması'}
+                  : 'Kanıt olabilecekler: İşletme ruhsatı, kendi web sitesi, birden fazla müşteri, hizmetlerin kamuya açık tanıtımı'}
               </p>
             </div>
           </div>
@@ -296,7 +296,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-red-800">
               {isEnglish
                 ? 'Many businesses fail the ABC test on prong B. If a software company hires a freelance developer to write code, that\'s arguably within their "usual course of business." This has made contractor relationships much harder in ABC test states.'
-                : 'Birçok işletme ABC testinde B şartında başarısız olur. Bir yazılım şirketi kod yazması için serbest çalışan bir geliştirici kiralarsa, bu tartışmalı olarak "olağan iş seyri" içindedir. Bu, ABC testi eyaletlerinde yüklenici ilişkilerini çok daha zorlaştırmıştır.'}
+                : 'Pek çok işletme ABC testinin B koşulunu sağlayamaz. Örneğin bir yazılım şirketi, kod yazdırmak için serbest geliştirici tutarsa, bu iş şirketin "olağan faaliyet alanı" içinde kalır. Bu durum, ABC testi uygulayan eyaletlerde yüklenici ilişkisi kurmayı belirgin şekilde zorlaştırmıştır.'}
             </p>
           </div>
 
@@ -317,7 +317,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-4">
             {isEnglish
               ? 'The Department of Labor uses the Economic Reality Test for determining worker classification under the Fair Labor Standards Act (FLSA). This test focuses on whether the worker is economically dependent on the employer.'
-              : 'Çalışma Bakanlığı, Adil Çalışma Standartları Yasası (FLSA) kapsamında işçi sınıflandırmasını belirlemek için Ekonomik Gerçeklik Testini kullanır. Bu test, işçinin işverene ekonomik olarak bağımlı olup olmadığına odaklanır.'}
+              : 'ABD Çalışma Bakanlığı (DOL), Adil Çalışma Standartları Yasası (FLSA) kapsamında statü belirlemek için Ekonomik Gerçeklik Testini uygular. Bu testte esas soru, işçinin ekonomik açıdan işverene bağımlı olup olmadığıdır.'}
           </p>
 
           <div className="space-y-4">
@@ -329,12 +329,12 @@ export default async function ContractorVsEmployeePage({
               { factor: 'Integral to Business', desc: 'Is the work integral to the employer\'s business?' },
               { factor: 'Skill and Initiative', desc: 'Does the worker use specialized skills and business-like initiative?' }
             ] : [
-              { factor: 'Kar veya Zarar Fırsatı', desc: 'İşçinin yönetim becerisi kar veya zararını etkileyebilir mi?' },
-              { factor: 'Yatırım', desc: 'İşçi ekipman, malzeme veya yardımcılara yatırım yapıyor mu?' },
-              { factor: 'İlişkinin Kalıcılığı', desc: 'Çalışma ilişkisi belirsiz/sürekli mi yoksa proje bazlı mı?' },
-              { factor: 'Kontrolün Niteliği ve Derecesi', desc: 'İşveren iş üzerinde ne kadar kontrol uyguluyor?' },
-              { factor: 'İşletme İçin Ayrılmaz', desc: 'İş, işverenin işletmesi için ayrılmaz mı?' },
-              { factor: 'Beceri ve İnisiyatif', desc: 'İşçi uzmanlaşmış beceriler ve iş benzeri inisiyatif kullanıyor mu?' }
+              { factor: 'Kâr veya Zarar İmkanı', desc: 'İşçinin yönetsel kararları, kâr veya zarar sonucunu etkiler mi?' },
+              { factor: 'Yatırım', desc: 'İşçi ekipman, malzeme veya yardımcı personele yatırım yapıyor mu?' },
+              { factor: 'İlişkinin Sürekliliği', desc: 'Çalışma ilişkisi belirsiz süreli mi yoksa proje bazlı mı?' },
+              { factor: 'Kontrolün Niteliği ve Kapsamı', desc: 'İşveren, iş üzerinde ne düzeyde kontrol uyguluyor?' },
+              { factor: 'İşletme Faaliyetiyle Bütünlük', desc: 'Yapılan iş, işverenin esas faaliyetinin ayrılmaz parçası mı?' },
+              { factor: 'Beceri ve Girişimcilik', desc: 'İşçi, uzmanlık gerektiren beceriler ve ticari girişimcilik sergiliyor mu?' }
             ]).map((item, i) => (
               <div key={i} className="flex items-start border-l-4 border-gray-300 pl-4">
                 <span className="font-semibold text-[#C9A227] mr-2">{i + 1}.</span>
@@ -351,7 +351,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-blue-800">
               {isEnglish
                 ? 'The ultimate question is: Is this worker economically dependent on the employer (employee) or in business for themselves (contractor)? No single factor is decisive—the totality of circumstances matters.'
-                : 'Temel soru şudur: Bu işçi işverene ekonomik olarak mı bağımlı (çalışan) yoksa kendi işini mi yapıyor (yüklenici)? Hiçbir tek faktör belirleyici değildir—koşulların bütünü önemlidir.'}
+                : 'Nihai soru şudur: Bu kişi ekonomik olarak işverene mi bağımlıdır (işçi), yoksa kendi adına mı faaliyet göstermektedir (yüklenici)? Tek bir faktör belirleyici değildir; koşulların bütünü esas alınır.'}
             </p>
           </div>
         </section>
@@ -365,7 +365,7 @@ export default async function ContractorVsEmployeePage({
               <thead>
                 <tr className="bg-gray-100">
                   <th className="border border-gray-200 p-3 text-left">{isEnglish ? 'Factor' : 'Faktör'}</th>
-                  <th className="border border-gray-200 p-3 text-left bg-blue-50">{isEnglish ? 'Employee' : 'Çalışan'}</th>
+                  <th className="border border-gray-200 p-3 text-left bg-blue-50">{isEnglish ? 'Employee' : 'İşçi'}</th>
                   <th className="border border-gray-200 p-3 text-left bg-green-50">{isEnglish ? 'Contractor' : 'Yüklenici'}</th>
                 </tr>
               </thead>
@@ -382,16 +382,16 @@ export default async function ContractorVsEmployeePage({
                   { factor: 'Exclusivity', employee: 'Often exclusive', contractor: 'Multiple clients' },
                   { factor: 'Direction', employee: 'Told how to work', contractor: 'Controls methods' },
                 ] : [
-                  { factor: 'Program', employee: 'İşveren tarafından belirlenir', contractor: 'Kendi saatlerini belirler' },
-                  { factor: 'Konum', employee: 'İşverenin yerinde çalışır', contractor: 'Her yerde çalışır' },
-                  { factor: 'Araçlar', employee: 'İşveren sağlar', contractor: 'Kendi sağlar' },
-                  { factor: 'Eğitim', employee: 'Eğitim alır', contractor: 'Zaten yetenekli' },
-                  { factor: 'Ödeme', employee: 'Düzenli maaş/saatlik', contractor: 'Proje/fatura başına' },
-                  { factor: 'Vergiler', employee: 'İşveren tarafından kesilir', contractor: 'Kendi öder (1099)' },
-                  { factor: 'Haklar', employee: 'Alabilir', contractor: 'Müşteriden yok' },
-                  { factor: 'Fesih', employee: 'Kovulabilir', contractor: 'Sözleşme biter' },
-                  { factor: 'Münhasırlık', employee: 'Genellikle münhasır', contractor: 'Birden fazla müşteri' },
-                  { factor: 'Yönlendirme', employee: 'Nasıl çalışacağı söylenir', contractor: 'Yöntemleri kontrol eder' },
+                  { factor: 'Çalışma Saati', employee: 'İşverence belirlenir', contractor: 'Kendi belirler' },
+                  { factor: 'Çalışma Yeri', employee: 'İşverenin tesisinde', contractor: 'İstediği yerde' },
+                  { factor: 'Araç-Gereç', employee: 'İşveren sağlar', contractor: 'Kendisi sağlar' },
+                  { factor: 'Eğitim', employee: 'İşverence verilir', contractor: 'Mevcut uzmanlığı kullanır' },
+                  { factor: 'Ödeme', employee: 'Düzenli maaş veya saatlik', contractor: 'Proje bazlı / fatura ile' },
+                  { factor: 'Vergi', employee: 'İşverence kesilir', contractor: 'Kendisi öder (1099)' },
+                  { factor: 'Sosyal Haklar', employee: 'Hak sahibi olabilir', contractor: 'Müşteriden talep edemez' },
+                  { factor: 'Sona Erme', employee: 'İşten çıkarılabilir', contractor: 'Sözleşme ile sona erer' },
+                  { factor: 'Münhasırlık', employee: 'Genellikle tek işveren', contractor: 'Birden fazla müşteriye hizmet verir' },
+                  { factor: 'Yönlendirme', employee: 'Çalışma yöntemi işverence belirlenir', contractor: 'Yöntemini kendisi seçer' },
                 ]).map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="border border-gray-200 p-3 font-medium">{row.factor}</td>
@@ -406,11 +406,11 @@ export default async function ContractorVsEmployeePage({
 
         {/* Section 6: Misclassification */}
         <section id="misclassification" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">{isEnglish ? '6. Misclassification Consequences' : '6. Yanlış Sınıflandırma Sonuçları'}</h2>
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? '6. Misclassification Consequences' : '6. Hatalı Sınıflandırmanın Sonuçları'}</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'Misclassifying employees as contractors carries serious legal and financial penalties for businesses. Workers may also have claims for unpaid benefits and protections.'
-              : 'Çalışanları yüklenici olarak yanlış sınıflandırmanın işletmeler için ciddi hukuki ve mali cezaları vardır. İşçilerin ödenmemiş haklar ve korumalar için talepleri de olabilir.'}
+              : 'İşçileri yüklenici olarak hatalı sınıflandırmanın işletmeler açısından ağır hukuki ve mali yaptırımları vardır. İşçiler de eksik kalan hak ve korumaları talep edebilir.'}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -421,35 +421,35 @@ export default async function ContractorVsEmployeePage({
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Back Taxes:' : 'Geriye Dönük Vergiler:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'All unpaid employment taxes (Social Security, Medicare, unemployment)' : 'Tüm ödenmemiş istihdam vergileri (Sosyal Güvenlik, Medicare, işsizlik)'}</span>
+                    <span className="text-sm block">{isEnglish ? 'All unpaid employment taxes (Social Security, Medicare, unemployment)' : 'Eksik yatırılan tüm istihdam vergileri (Sosyal Güvenlik, Medicare, işsizlik sigortası)'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Penalties:' : 'Cezalar:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Up to 40% of unpaid taxes, plus interest' : 'Ödenmemiş vergilerin %40\'ına kadar, artı faiz'}</span>
+                    <span className="text-sm block">{isEnglish ? 'Up to 40% of unpaid taxes, plus interest' : 'Eksik vergilerin %40\'ına varan para cezası ve faiz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Unpaid Benefits:' : 'Ödenmemiş Haklar:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Health insurance, retirement, paid leave owed' : 'Sağlık sigortası, emeklilik, borçlu ücretli izin'}</span>
+                    <span className="text-sm block">{isEnglish ? 'Health insurance, retirement, paid leave owed' : 'Sağlık sigortası, emeklilik ve ücretli izin borçları'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Overtime & Minimum Wage:' : 'Fazla Mesai ve Asgari Ücret:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'FLSA violations with liquidated damages (2x)' : 'Tazminatlı FLSA ihlalleri (2x)'}</span>
+                    <span className="text-sm block">{isEnglish ? 'FLSA violations with liquidated damages (2x)' : 'FLSA ihlali halinde iki katına kadar tazminat'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Criminal Liability:' : 'Cezai Sorumluluk:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Willful violations can lead to prosecution' : 'Kasten ihlaller kovuşturmaya yol açabilir'}</span>
+                    <span className="text-sm block">{isEnglish ? 'Willful violations can lead to prosecution' : 'Kasıtlı ihlaller cezai kovuşturma konusu olabilir'}</span>
                   </div>
                 </li>
               </ul>
@@ -461,29 +461,29 @@ export default async function ContractorVsEmployeePage({
                 <li className="flex items-start">
                   <span className="text-orange-600 mr-2">!</span>
                   <div>
-                    <strong>{isEnglish ? 'No Employer Tax Match:' : 'İşveren Vergi Eşleşmesi Yok:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'You pay full 15.3% self-employment tax' : 'Tam %15,3 serbest meslek vergisi ödersiniz'}</span>
+                    <strong>{isEnglish ? 'No Employer Tax Match:' : 'İşveren Vergi Katkısı Yok:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'You pay full 15.3% self-employment tax' : 'Serbest meslek vergisinin tamamını (%15,3) siz ödersiniz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-orange-600 mr-2">!</span>
                   <div>
-                    <strong>{isEnglish ? 'No Benefits:' : 'Hak Yok:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'No health insurance, retirement, PTO' : 'Sağlık sigortası, emeklilik, PTO yok'}</span>
+                    <strong>{isEnglish ? 'No Benefits:' : 'Sosyal Hak Yok:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'No health insurance, retirement, PTO' : 'Sağlık sigortası, emeklilik veya ücretli izin hakkı bulunmaz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-orange-600 mr-2">!</span>
                   <div>
-                    <strong>{isEnglish ? 'No Worker Protections:' : 'İşçi Korumaları Yok:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'No unemployment, workers\' comp, FMLA' : 'İşsizlik, işçi tazminatı, FMLA yok'}</span>
+                    <strong>{isEnglish ? 'No Worker Protections:' : 'İş Mevzuatı Koruması Yok:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'No unemployment, workers\' comp, FMLA' : 'İşsizlik sigortası, iş kazası tazminatı ve FMLA korumasından yararlanamaz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-600 mr-2">✓</span>
                   <div>
-                    <strong>{isEnglish ? 'You May Have Claims:' : 'Talepleriniz Olabilir:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Can file complaints with DOL, state agencies, or sue for back pay/benefits' : 'DOL, eyalet kurumlarına şikayette bulunabilir veya geri ödeme/haklar için dava açabilirsiniz'}</span>
+                    <strong>{isEnglish ? 'You May Have Claims:' : 'Hak Talebi Yolunuz Açık:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'Can file complaints with DOL, state agencies, or sue for back pay/benefits' : 'DOL veya eyalet kurumlarına başvurabilir ya da birikmiş ücret ve haklar için dava açabilirsiniz'}</span>
                   </div>
                 </li>
               </ul>
@@ -491,19 +491,19 @@ export default async function ContractorVsEmployeePage({
           </div>
 
           <div className="bg-gray-100 rounded-lg p-6 my-6">
-            <h3 className="font-semibold mb-3">{isEnglish ? 'Real-World Penalties' : 'Gerçek Dünya Cezaları'}</h3>
+            <h3 className="font-semibold mb-3">{isEnglish ? 'Real-World Penalties' : 'Uygulamadaki Yaptırımlar'}</h3>
             <div className="space-y-3 text-sm">
               <div className="flex justify-between border-b border-gray-300 pb-2">
-                <span>{isEnglish ? 'Failure to withhold taxes' : 'Vergi kesintisi yapmama'}</span>
+                <span>{isEnglish ? 'Failure to withhold taxes' : 'Vergi kesintisi yapılmaması'}</span>
                 <span className="font-semibold">{isEnglish ? '1.5% of wages + 40% of FICA' : 'Ücretlerin %1,5 + FICA\'nın %40\'ı'}</span>
               </div>
               <div className="flex justify-between border-b border-gray-300 pb-2">
-                <span>{isEnglish ? 'Failure to file W-2s' : 'W-2 dosyalamamak'}</span>
+                <span>{isEnglish ? 'Failure to file W-2s' : 'W-2 formlarının bildirilmemesi'}</span>
                 <span className="font-semibold">$50-$280 {isEnglish ? 'per form' : 'form başına'}</span>
               </div>
               <div className="flex justify-between border-b border-gray-300 pb-2">
                 <span>{isEnglish ? 'FLSA overtime violations' : 'FLSA fazla mesai ihlalleri'}</span>
-                <span className="font-semibold">{isEnglish ? '2x back pay + attorney fees' : '2x geri ödeme + avukatlık ücreti'}</span>
+                <span className="font-semibold">{isEnglish ? '2x back pay + attorney fees' : '2 kat geriye dönük ödeme + avukatlık ücreti'}</span>
               </div>
               <div className="flex justify-between">
                 <span>{isEnglish ? 'State penalties (CA example)' : 'Eyalet cezaları (CA örneği)'}</span>
@@ -519,7 +519,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-4">
             {isEnglish
               ? 'Worker classification rules vary significantly by country. When working across borders, both businesses and workers need to understand local requirements.'
-              : 'İşçi sınıflandırma kuralları ülkeden ülkeye önemli ölçüde farklılık gösterir. Sınır ötesi çalışırken, hem işletmelerin hem de işçilerin yerel gereksinimleri anlaması gerekir.'}
+              : 'İşçi sınıflandırma kuralları ülkeden ülkeye büyük farklılıklar gösterir. Uluslararası faaliyet gösteren hem işletmelerin hem de çalışanların, ilgili ülkenin yerel düzenlemelerini bilmesi gerekir.'}
           </p>
 
           <div className="space-y-4">
@@ -528,7 +528,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'Turkey uses a "subordination" test focusing on whether the worker is under the employer\'s authority and instruction. Turkish law strongly presumes employment relationships, and misclassification can result in back social security contributions plus penalties.'
-                  : 'Türkiye, işçinin işverenin otoritesi ve talimatı altında olup olmadığına odaklanan bir "bağımlılık" testi kullanır. Türk hukuku güçlü bir şekilde istihdam ilişkilerini varsayar ve yanlış sınıflandırma, geriye dönük sosyal güvenlik katkıları artı cezalarla sonuçlanabilir.'}
+                  : 'Türk hukukunda belirleyici kriter "bağımlılık" unsurudur: İşçi, işverenin emir ve talimatlarına tabi midir? Türk iş mevzuatı, şüphe halinde iş ilişkisinin varlığını esas alır. Hatalı sınıflandırma durumunda geriye dönük SGK primleri ve idari para cezaları gündeme gelir.'}
               </p>
             </div>
 
@@ -537,7 +537,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'EU member states have varying tests but generally favor employee classification. The proposed Platform Work Directive would create presumption of employment for platform workers, shifting burden to platforms to prove contractor status.'
-                  : 'AB üye devletlerinin farklı testleri vardır ancak genellikle çalışan sınıflandırmasını tercih ederler. Önerilen Platform Çalışma Direktifi, platform çalışanları için istihdam karinesi oluşturacak ve yüklenici statüsünü kanıtlama yükünü platformlara yükleyecektir.'}
+                  : 'AB üye devletleri farklı testler uygular; ancak genel eğilim, kişiyi işçi olarak sınıflandırmaktan yanadır. Hazırlanan Platform Çalışma Direktifi, platform çalışanları için iş ilişkisi karinesi öngörmekte ve yüklenici statüsünü ispat yükünü platforma yüklemektedir.'}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'UK has three categories: employee, worker, and self-employed. The "worker" status provides some protections (minimum wage, paid leave) without full employment rights. IR35 rules require companies to determine contractor status for tax purposes.'
-                  : 'İngiltere\'nin üç kategorisi vardır: çalışan, işçi ve serbest meslek. "İşçi" statüsü, tam istihdam hakları olmaksızın bazı korumalar (asgari ücret, ücretli izin) sağlar. IR35 kuralları, şirketlerin vergi amaçlı yüklenici statüsünü belirlemesini gerektirir.'}
+                  : 'Birleşik Krallık hukukunda üç kategori bulunur: çalışan (employee), işçi (worker) ve serbest meslek erbabı. "Worker" statüsü, tam istihdam haklarına sahip olmaksızın asgari ücret ve ücretli izin gibi bazı korumaları kapsar. IR35 düzenlemeleri, şirketlerin vergisel açıdan yüklenici statüsünü tespit etmesini zorunlu kılar.'}
               </p>
             </div>
           </div>
@@ -556,7 +556,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-yellow-800">
               {isEnglish
                 ? 'If you hire contractors in other countries, you must comply with THAT country\'s classification rules, not just US rules. Many companies use Employer of Record (EOR) services to manage international compliance.'
-                : 'Diğer ülkelerde yüklenici işe alıyorsanız, sadece ABD kurallarına değil, O ülkenin sınıflandırma kurallarına uymanız gerekir. Birçok şirket uluslararası uyumu yönetmek için Employer of Record (EOR) hizmetlerini kullanır.'}
+                : 'Başka ülkelerde yüklenici çalıştırıyorsanız, yalnızca ABD kurallarına değil, ilgili ülkenin sınıflandırma düzenlemelerine de uymanız gerekir. Pek çok şirket, uluslararası uyumu sağlamak için kayıtlı işveren (EOR) hizmetlerinden yararlanmaktadır.'}
             </p>
           </div>
         </section>
@@ -581,16 +581,16 @@ export default async function ContractorVsEmployeePage({
                   'Issue 1099s, not W-2s',
                   'Document the business purpose for contractor vs employee decision'
                 ] : [
-                  'Yüklenici ilişkisini belirten açık yazılı sözleşmeler kullanın',
-                  'İşin NASIL yapıldığını kontrol etmeyin—sonuçlara odaklanın',
-                  'Yüklenicilerin başkaları için çalışmasına izin verin',
-                  'Eğitim vermeyin (yetenekli yükleniciler işe alın)',
-                  'Yüklenicilerin kendi saatlerini ve işyerini belirlemesine izin verin',
-                  'Saatlik/maaş değil, proje/kilometre taşına göre ödeme yapın',
-                  'Yüklenicilerin kendi araçlarını sağlamasını isteyin',
-                  'Çalışan hakları sunmayın',
-                  'W-2 değil, 1099 düzenleyin',
-                  'Yüklenici vs çalışan kararı için iş amacını belgeleyin'
+                  'Yüklenici ilişkisini açıkça belirten yazılı sözleşme düzenleyin',
+                  'İşin NASIL yapıldığını değil, sonucunu denetleyin',
+                  'Yüklenicinin başka müşterilerle çalışmasına engel olmayın',
+                  'Eğitim vermeyin; gerekli uzmanlığa sahip kişilerle çalışın',
+                  'Yüklenicinin çalışma saatlerini ve mekanını kendisinin belirlemesine izin verin',
+                  'Maaş veya saatlik ücret yerine proje ya da aşama bazlı ödeme yapın',
+                  'Yüklenicinin kendi araç-gereçlerini kullanmasını sağlayın',
+                  'İşçilere sağlanan sosyal hakları sunmayın',
+                  'W-2 değil, 1099 formu düzenleyin',
+                  'Yüklenici tercihinin ticari gerekçesini yazılı olarak belgeleyin'
                 ]).map((item, i) => (
                   <li key={i} className="flex items-start">
                     <span className="text-green-600 mr-2">✓</span>
