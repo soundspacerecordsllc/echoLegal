@@ -528,7 +528,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'Turkey uses a "subordination" test focusing on whether the worker is under the employer\'s authority and instruction. Turkish law strongly presumes employment relationships, and misclassification can result in back social security contributions plus penalties.'
-                  : 'Türkiye, işçinin işverenin otoritesi ve talimatı altında olup olmadığına odaklanan bir "bağımlılık" testi kullanır. Türk hukuku güçlü bir şekilde istihdam ilişkilerini varsayar ve yanlış sınıflandırma, geriye dönük sosyal güvenlik katkıları artı cezalarla sonuçlanabilir.'}
+                  : 'Türk hukukunda belirleyici kriter "bağımlılık" unsurudur: İşçi, işverenin emir ve talimatlarına tabi midir? Türk iş mevzuatı, şüphe halinde iş ilişkisinin varlığını esas alır. Hatalı sınıflandırma durumunda geriye dönük SGK primleri ve idari para cezaları gündeme gelir.'}
               </p>
             </div>
 
@@ -537,7 +537,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'EU member states have varying tests but generally favor employee classification. The proposed Platform Work Directive would create presumption of employment for platform workers, shifting burden to platforms to prove contractor status.'
-                  : 'AB üye devletlerinin farklı testleri vardır ancak genellikle çalışan sınıflandırmasını tercih ederler. Önerilen Platform Çalışma Direktifi, platform çalışanları için istihdam karinesi oluşturacak ve yüklenici statüsünü kanıtlama yükünü platformlara yükleyecektir.'}
+                  : 'AB üye devletleri farklı testler uygular; ancak genel eğilim, kişiyi işçi olarak sınıflandırmaktan yanadır. Hazırlanan Platform Çalışma Direktifi, platform çalışanları için iş ilişkisi karinesi öngörmekte ve yüklenici statüsünü ispat yükünü platforma yüklemektedir.'}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'UK has three categories: employee, worker, and self-employed. The "worker" status provides some protections (minimum wage, paid leave) without full employment rights. IR35 rules require companies to determine contractor status for tax purposes.'
-                  : 'İngiltere\'nin üç kategorisi vardır: çalışan, işçi ve serbest meslek. "İşçi" statüsü, tam istihdam hakları olmaksızın bazı korumalar (asgari ücret, ücretli izin) sağlar. IR35 kuralları, şirketlerin vergi amaçlı yüklenici statüsünü belirlemesini gerektirir.'}
+                  : 'Birleşik Krallık hukukunda üç kategori bulunur: çalışan (employee), işçi (worker) ve serbest meslek erbabı. "Worker" statüsü, tam istihdam haklarına sahip olmaksızın asgari ücret ve ücretli izin gibi bazı korumaları kapsar. IR35 düzenlemeleri, şirketlerin vergisel açıdan yüklenici statüsünü tespit etmesini zorunlu kılar.'}
               </p>
             </div>
           </div>
@@ -556,7 +556,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-yellow-800">
               {isEnglish
                 ? 'If you hire contractors in other countries, you must comply with THAT country\'s classification rules, not just US rules. Many companies use Employer of Record (EOR) services to manage international compliance.'
-                : 'Diğer ülkelerde yüklenici işe alıyorsanız, sadece ABD kurallarına değil, O ülkenin sınıflandırma kurallarına uymanız gerekir. Birçok şirket uluslararası uyumu yönetmek için Employer of Record (EOR) hizmetlerini kullanır.'}
+                : 'Başka ülkelerde yüklenici çalıştırıyorsanız, yalnızca ABD kurallarına değil, ilgili ülkenin sınıflandırma düzenlemelerine de uymanız gerekir. Pek çok şirket, uluslararası uyumu sağlamak için kayıtlı işveren (EOR) hizmetlerinden yararlanmaktadır.'}
             </p>
           </div>
         </section>
@@ -581,16 +581,16 @@ export default async function ContractorVsEmployeePage({
                   'Issue 1099s, not W-2s',
                   'Document the business purpose for contractor vs employee decision'
                 ] : [
-                  'Yüklenici ilişkisini belirten açık yazılı sözleşmeler kullanın',
-                  'İşin NASIL yapıldığını kontrol etmeyin—sonuçlara odaklanın',
-                  'Yüklenicilerin başkaları için çalışmasına izin verin',
-                  'Eğitim vermeyin (yetenekli yükleniciler işe alın)',
-                  'Yüklenicilerin kendi saatlerini ve işyerini belirlemesine izin verin',
-                  'Saatlik/maaş değil, proje/kilometre taşına göre ödeme yapın',
-                  'Yüklenicilerin kendi araçlarını sağlamasını isteyin',
-                  'Çalışan hakları sunmayın',
-                  'W-2 değil, 1099 düzenleyin',
-                  'Yüklenici vs çalışan kararı için iş amacını belgeleyin'
+                  'Yüklenici ilişkisini açıkça belirten yazılı sözleşme düzenleyin',
+                  'İşin NASIL yapıldığını değil, sonucunu denetleyin',
+                  'Yüklenicinin başka müşterilerle çalışmasına engel olmayın',
+                  'Eğitim vermeyin; gerekli uzmanlığa sahip kişilerle çalışın',
+                  'Yüklenicinin çalışma saatlerini ve mekanını kendisinin belirlemesine izin verin',
+                  'Maaş veya saatlik ücret yerine proje ya da aşama bazlı ödeme yapın',
+                  'Yüklenicinin kendi araç-gereçlerini kullanmasını sağlayın',
+                  'İşçilere sağlanan sosyal hakları sunmayın',
+                  'W-2 değil, 1099 formu düzenleyin',
+                  'Yüklenici tercihinin ticari gerekçesini yazılı olarak belgeleyin'
                 ]).map((item, i) => (
                   <li key={i} className="flex items-start">
                     <span className="text-green-600 mr-2">✓</span>

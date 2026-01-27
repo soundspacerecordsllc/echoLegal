@@ -79,16 +79,16 @@ export default async function IRSTaxFactsPage({
       name: '1099-NEC',
       fullName: isEnglish
         ? 'Nonemployee Compensation'
-        : 'Çalışan Olmayan Tazminat',
+        : 'Bağımsız Yüklenici Ödemeleri',
       whoFiles: isEnglish
         ? 'Payers report payments; recipients receive copies'
         : 'Ödeme yapanlar ödemeleri bildirir; alıcılar kopya alır',
       purpose: isEnglish
         ? 'Reports payments of $600 or more to non-employees (contractors).'
-        : '600$ veya daha fazla çalışan olmayanlara (yüklenicilere) yapılan ödemeleri bildirir.',
+        : 'Bağımsız yüklenicilere yapılan 600 ABD doları ve üzeri ödemeleri IRS\'ye bildirir.',
       whenNeeded: isEnglish
         ? 'You\'ll receive this if you\'re paid as a US contractor. Used for tax filing.'
-        : 'ABD yüklenicisi olarak ödeme alırsanız bunu alırsınız. Vergi beyannamesi için kullanılır.',
+        : 'ABD\'de yüklenici olarak ödeme aldığınızda bu formu alırsınız. Vergi beyannamesi hazırlarken kullanılır.',
     },
     {
       name: '1099-MISC',
@@ -100,7 +100,7 @@ export default async function IRSTaxFactsPage({
         : 'Ödeme yapanlar çeşitli ödeme türlerini bildirir',
       purpose: isEnglish
         ? 'Reports other types of income like rents, royalties, prizes, etc.'
-        : 'Kira, telif hakkı, ödüller vb. gibi diğer gelir türlerini bildirir.',
+        : 'Kira, telif ücreti, ikramiye gibi çeşitli gelir türlerini bildirir.',
       whenNeeded: isEnglish
         ? 'When you receive these types of payments from US sources.'
         : 'ABD kaynaklarından bu tür ödemeler aldığınızda.',
@@ -134,7 +134,7 @@ export default async function IRSTaxFactsPage({
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
               {isEnglish
                 ? 'A plain-language guide to understanding US tax forms. W-8, W-9, 1099 forms explained for non-US entrepreneurs working with American businesses.'
-                : 'ABD vergi formlarını anlamak için açık dilde bir rehber. Amerikan işletmeleriyle çalışan ABD dışından girişimciler için W-8, W-9, 1099 formları açıklandı.'}
+                : 'ABD vergi formlarını sade bir dille ele alan başvuru rehberi. ABD şirketleriyle çalışan yabancı girişimciler için W-8, W-9 ve 1099 formları açıklanmıştır.'}
             </p>
 
             <div className="flex flex-wrap gap-3 text-sm text-gray-500">
@@ -153,7 +153,7 @@ export default async function IRSTaxFactsPage({
               <strong>{isEnglish ? 'Disclaimer:' : 'Uyarı:'}</strong>{' '}
               {isEnglish
                 ? 'This guide provides general information for educational purposes only. Tax laws are complex and change frequently. This is not tax advice. Consult a qualified tax professional for your specific situation.'
-                : 'Bu rehber yalnızca eğitim amaçlı genel bilgi sağlar. Vergi yasaları karmaşıktır ve sık sık değişir. Bu vergi tavsiyesi değildir. Özel durumunuz için kalifiye bir vergi uzmanına danışın.'}
+                : 'Bu rehber yalnızca genel bilgilendirme amacıyla hazırlanmıştır. Vergi mevzuatı karmaşık olup sık değişikliğe uğrar. Burada yer alan bilgiler vergi tavsiyesi niteliği taşımaz. Kendi durumunuza özgü değerlendirme için uzman bir vergi danışmanına başvurun.'}
             </p>
           </div>
 
@@ -267,7 +267,7 @@ export default async function IRSTaxFactsPage({
                 <p className="text-gray-700 text-sm">
                   {isEnglish
                     ? 'If you\'re not a US person (citizen, resident, or US entity), you should provide a W-8BEN (for individuals) or W-8BEN-E (for entities) instead. Politely explain that as a non-US person/entity, the appropriate form is W-8.'
-                    : 'ABD\'li bir kişi (vatandaş, mukim veya ABD tüzel kişisi) değilseniz, bunun yerine W-8BEN (bireyler için) veya W-8BEN-E (tüzel kişiler için) sağlamalısınız. ABD dışından bir kişi/tüzel kişi olarak uygun formun W-8 olduğunu kibarca açıklayın.'}
+                    : 'ABD mukimi, vatandaşı veya ABD tüzel kişisi değilseniz W-9 yerine W-8BEN (bireyler için) veya W-8BEN-E (tüzel kişiler için) sunmalısınız. Karşı tarafa, ABD dışından bir kişi veya kuruluş olarak doğru formun W-8 olduğunu nazikçe belirtin.'}
                 </p>
               </div>
 
