@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : "ABD'ye Gelmeden Önce Yapılması Gerekenler | EchoLegal",
     description: isEnglish
       ? 'Essential legal preparation checklist for Turkish entrepreneurs before arriving in the United States. Business formation, tax compliance, banking, and documentation.'
-      : "Türk girişimciler için ABD'ye gelmeden önce yapılması gereken hukuki hazırlık kontrol listesi. Şirket kurulumu, vergi uyumu, bankacılık ve belgeler.",
+      : "Türk girişimcilerin ABD'ye gelmeden önce tamamlaması gereken hukuki hazırlıklar. Şirket kurulumu, vergi uyumu, bankacılık ve belge düzeni.",
   }
 }
 
@@ -58,7 +58,7 @@ export default async function PreArrivalChecklistPage({
             <p className="text-xl text-gray-600 leading-relaxed">
               {isEnglish
                 ? 'A practical checklist for Turkish entrepreneurs preparing to do business in the United States. Know the legal landscape before you arrive.'
-                : "ABD'de iş yapmaya hazırlanan Türk girişimciler için pratik bir kontrol listesi. Gelmeden önce hukuki ortamı bilin."}
+                : "ABD'de iş kurmayı planlayan Türk girişimciler için pratik bir kontrol listesi. Yola çıkmadan önce hukuki zemini tanıyın."}
             </p>
           </header>
 
@@ -77,7 +77,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-gray-700 text-sm">
                   {isEnglish
                     ? 'Each visa category has specific limitations on what activities are permitted. A B-1/B-2 visa allows meetings and negotiations but not employment. An E-2 requires substantial investment and active management. Know your visa\'s boundaries before making commitments.'
-                    : 'Her vize kategorisi, izin verilen faaliyetler konusunda belirli sınırlamalara sahiptir. B-1/B-2 vizesi toplantılara ve müzakerelere izin verir ancak istihdama izin vermez. E-2, önemli yatırım ve aktif yönetim gerektirir. Taahhütlerde bulunmadan önce vizenizin sınırlarını bilin.'}
+                    : 'Her vize kategorisinin izin verdiği faaliyetler sınırlıdır. B-1/B-2 vizesiyle toplantı ve müzakere yapabilirsiniz ancak çalışamazsınız. E-2 vizesi ise ciddi bir yatırım ve aktif yönetim katılımı gerektirir. Herhangi bir taahhütte bulunmadan önce vizenizin kapsamını net olarak bilin.'}
                 </p>
               </div>
 
@@ -88,7 +88,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-gray-700 text-sm">
                   {isEnglish
                     ? 'Stating one purpose at the border while intending another can result in entry denial, visa revocation, or future immigration bars. CBP officers are trained to identify inconsistencies. If you\'re entering to explore business opportunities, say so—don\'t claim tourism while carrying business documents.'
-                    : 'Sınırda bir amaç belirtirken başka bir amaç gütmek, giriş reddi, vize iptali veya gelecekte göçmenlik yasaklarıyla sonuçlanabilir. CBP yetkilileri tutarsızlıkları tespit etmek için eğitilmiştir. İş fırsatlarını araştırmak için giriyorsanız, bunu söyleyin—iş belgeleri taşırken turizm iddia etmeyin.'}
+                    : 'Sınırda belirttiğiniz amaçla gerçek niyetiniz örtüşmezse giriş reddi, vize iptali ve hatta ileriye dönük giriş yasağı gündeme gelebilir. CBP memurları bu tür tutarsızlıkları saptamak konusunda deneyimlidir. İş fırsatlarını araştırmak amacıyla geliyorsanız bunu açıkça ifade edin; yanınızda iş belgeleri varken turist olduğunuzu söylemeyin.'}
                 </p>
               </div>
 

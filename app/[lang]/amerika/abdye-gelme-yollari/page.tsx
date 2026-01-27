@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : "ABD'ye Gelme Yolları: Türk Vatandaşları İçin Vize Rehberi | EchoLegal",
     description: isEnglish
       ? 'Comprehensive guide to US non-immigrant visa categories for Turkish nationals. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 visas explained with official USCIS references.'
-      : "Türk vatandaşları için ABD göçmen olmayan vize kategorilerine kapsamlı rehber. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 vizeleri resmi USCIS referanslarıyla açıklanmıştır.",
+      : "Türk vatandaşlarına yönelik ABD geçici vize kategorilerinin kapsamlı rehberi. B-1/B-2, F-1, H-1B, L-1, E-2 ve O-1 vizeleri resmi USCIS kaynaklarıyla ele alınmaktadır.",
   }
 }
 
@@ -58,7 +58,7 @@ export default async function VisaPathwaysPage({
           <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
             {isEnglish
               ? 'A comprehensive reference to non-immigrant visa categories relevant to Turkish nationals. Each category has specific requirements, limitations, and pathways.'
-              : 'Türk vatandaşlarıyla ilgili göçmen olmayan vize kategorilerine kapsamlı bir referans. Her kategori, kendine özgü gereksinimler, sınırlamalar ve yollara sahiptir.'}
+              : 'Türk vatandaşlarını ilgilendiren geçici (non-immigrant) vize kategorilerinin kapsamlı bir özeti. Her kategorinin kendine özgü şartları, sınırları ve izlediği yol farklıdır.'}
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default async function VisaPathwaysPage({
           <p className="text-sm text-blue-800 mb-3">
             {isEnglish
               ? 'Information on this page is referenced from U.S. Citizenship and Immigration Services (USCIS) and the U.S. Department of State. Always verify current requirements on official government websites.'
-              : 'Bu sayfadaki bilgiler ABD Vatandaşlık ve Göçmenlik Hizmetleri (USCIS) ve ABD Dışişleri Bakanlığı referans alınarak hazırlanmıştır. Güncel gereksinimleri her zaman resmi devlet web sitelerinden doğrulayın.'}
+              : 'Bu sayfadaki bilgiler USCIS (ABD Vatandaşlık ve Göçmenlik Hizmetleri) ile ABD Dışişleri Bakanlığı kaynaklarına dayanmaktadır. Güncel koşulları mutlaka resmi kurumların sitelerinden teyit edin.'}
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
             <a
@@ -99,14 +99,14 @@ export default async function VisaPathwaysPage({
             <strong>{isEnglish ? 'Important:' : 'Önemli:'}</strong>{' '}
             {isEnglish
               ? 'This page provides general legal information only, not immigration advice. Immigration law is complex and individual circumstances vary significantly. Consult a licensed immigration attorney for guidance on your specific situation.'
-              : 'Bu sayfa yalnızca genel hukuki bilgi sağlar, göçmenlik tavsiyesi değildir. Göçmenlik hukuku karmaşıktır ve bireysel koşullar önemli ölçüde farklılık gösterir. Özel durumunuz için lisanslı bir göçmenlik avukatına danışın.'}
+              : 'Bu sayfa yalnızca genel bilgi amaçlıdır; göçmenlik danışmanlığı yerine geçmez. Göçmenlik hukuku karmaşıktır ve her başvuranın koşulları birbirinden farklıdır. Kendi durumunuz için mutlaka lisanslı bir göçmenlik avukatına başvurun.'}
           </p>
         </div>
 
         {/* Visa Categories Grid */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Non-Immigrant Visa Categories' : 'Göçmen Olmayan Vize Kategorileri'}
+            {isEnglish ? 'Non-Immigrant Visa Categories' : 'Geçici (Non-Immigrant) Vize Kategorileri'}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -149,12 +149,12 @@ export default async function VisaPathwaysPage({
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-3">
-                {isEnglish ? 'Non-Immigrant vs. Immigrant' : 'Göçmen Olmayan vs. Göçmen'}
+                {isEnglish ? 'Non-Immigrant vs. Immigrant' : 'Geçici Vize ile Göçmen Vizesi Farkı'}
               </h3>
               <p className="text-sm text-gray-700">
                 {isEnglish
                   ? 'Non-immigrant visas are for temporary stays with a specific purpose. Immigrant visas (green cards) are for permanent residence. Most non-immigrant visas require demonstrating intent to return home.'
-                  : 'Göçmen olmayan vizeler, belirli bir amaçla geçici kalışlar içindir. Göçmen vizeler (yeşil kartlar) kalıcı oturum içindir. Çoğu göçmen olmayan vize, eve dönme niyetinin gösterilmesini gerektirir.'}
+                  : 'Geçici vizeler belirli bir amaçla sınırlı süreli kalış hakkı tanır. Göçmen vizeleri (yeşil kart) ise kalıcı oturum içindir. Geçici vize sahiplerinin çoğundan ülkelerine dönme niyetini kanıtlaması beklenir.'}
               </p>
             </div>
 
@@ -165,7 +165,7 @@ export default async function VisaPathwaysPage({
               <p className="text-sm text-gray-700">
                 {isEnglish
                   ? 'Some visas (H-1B, L-1, O-1) allow "dual intent"—you can maintain the visa while pursuing permanent residence. Others (B, F) do not, and applying for a green card may affect your status.'
-                  : 'Bazı vizeler (H-1B, L-1, O-1) "çifte niyete" izin verir—kalıcı oturum takip ederken vizeyi koruyabilirsiniz. Diğerleri (B, F) izin vermez ve yeşil kart başvurusu statünüzü etkileyebilir.'}
+                  : 'H-1B, L-1 ve O-1 gibi bazı vizeler "çifte niyet" ilkesini kabul eder; yani kalıcı oturum başvurusu yaparken mevcut vize statünüzü koruyabilirsiniz. B ve F gibi vizelerde ise bu mümkün değildir ve yeşil kart başvurusu statünüzü tehlikeye atabilir.'}
               </p>
             </div>
 
@@ -176,7 +176,7 @@ export default async function VisaPathwaysPage({
               <p className="text-sm text-gray-700">
                 {isEnglish
                   ? 'A visa is for entry; status is what allows you to remain. Your visa can expire while you\'re in the US legally. Check your I-94 for your authorized stay period, not your visa sticker.'
-                  : 'Vize giriş içindir; statü kalmanıza izin veren şeydir. ABD\'de yasal olarak bulunurken vizenizin süresi dolabilir. İzin verilen kalış süreniz için vize etiketinizi değil, I-94\'ünüzü kontrol edin.'}
+                  : 'Vize ABD\'ye girişinizi sağlar; statü ise kalma hakkınızı belirler. ABD\'de yasal olarak bulunurken vize süreniz dolabilir. Kalış sürenizi vize etiketinden değil, I-94 belgenizden takip edin.'}
               </p>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default async function VisaPathwaysPage({
             <p className="text-sm text-red-800 mb-4">
               {isEnglish
                 ? 'Turkey has an E-2 Treaty Investor agreement with the United States, making Turkish citizens eligible for E-2 visas. This is a significant advantage for entrepreneurs, as many countries do not have this treaty relationship.'
-                : 'Türkiye\'nin Amerika Birleşik Devletleri ile E-2 Yatırımcı Anlaşması vardır ve bu, Türk vatandaşlarını E-2 vizelerine uygun kılar. Bu, girişimciler için önemli bir avantajdır çünkü birçok ülkenin böyle bir anlaşma ilişkisi yoktur.'}
+                : 'Türkiye ile ABD arasında E-2 Yatırımcı Anlaşması bulunmaktadır. Bu anlaşma sayesinde Türk vatandaşları E-2 vizesine başvurabilir. Pek çok ülkenin bu imkana sahip olmadığı düşünüldüğünde, girişimciler açısından kayda değer bir avantajdır.'}
             </p>
             <Link
               href={`/${lang}/amerika/vizeler/e2`}
@@ -215,7 +215,7 @@ export default async function VisaPathwaysPage({
           <p className="mt-2 text-xs text-gray-500">
             {isEnglish
               ? 'Immigration regulations change frequently. Always verify current requirements on official government websites.'
-              : 'Göçmenlik düzenlemeleri sık sık değişir. Güncel gereksinimleri her zaman resmi devlet web sitelerinden doğrulayın.'}
+              : 'Göçmenlik düzenlemeleri sık değişir. Güncel koşulları mutlaka resmi kurumların sitelerinden teyit edin.'}
           </p>
         </div>
 
@@ -241,7 +241,7 @@ export default async function VisaPathwaysPage({
           <p className="text-sm text-gray-700 mb-4">
             {isEnglish
               ? 'Documents commonly associated with this topic:'
-              : 'Bu konuyla ilgili yaygın kullanılan başlangıç belgeleri:'}
+              : 'Bu konuyla bağlantılı olarak sıklıkla ihtiyaç duyulan belgeler:'}
           </p>
           <ul className="text-sm text-gray-600 mb-4 space-y-1">
             <li>• {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</li>
@@ -256,7 +256,7 @@ export default async function VisaPathwaysPage({
               {isEnglish ? 'ABD Business Starter Legal Kit →' : 'ABD Business Starter Legal Kit →'}
             </Link>
             <span className="text-xs text-gray-500">
-              {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – 20$ önerilir'}
+              {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – önerilen tutar 20 $'}
             </span>
           </div>
         </section>

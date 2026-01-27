@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? 'Legal Reference Library | EchoLegal'
-      : 'Hukuki Referans Kütüphanesi | EchoLegal',
+      : 'Hukuki Başvuru Kaynakları | EchoLegal',
     description: isEnglish
       ? 'Comprehensive legal reference guides for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and more.'
-      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi gerçekleri, sık yapılan hatalar ve daha fazlası.",
+      : "ABD'de faaliyet gösteren Türk girişimcilere yönelik kapsamlı hukuki başvuru rehberleri. LLC kurulumu, vergi mevzuatı, yaygın yanılgılar ve daha fazlası.",
   }
 }
 
@@ -37,14 +37,14 @@ export default async function LibraryPage({
       title: isEnglish ? 'Business Formation' : 'Şirket Kurulumu',
       description: isEnglish
         ? 'Guides on forming business entities in the United States'
-        : "ABD'de iş varlıkları kurma rehberleri",
+        : "ABD'de ticari yapı oluşturmaya ilişkin rehberler",
       articles: [
         {
           slug: 'llc-kurma-rehberi',
           title: isEnglish ? 'LLC Formation in the US: What You Need to Know' : "ABD'de LLC Kurmak: Bilmeniz Gerekenler",
           description: isEnglish
             ? 'A comprehensive reference guide to understanding LLC formation in the United States.'
-            : "ABD'de LLC kurulumunu anlamak için kapsamlı bir referans rehberi.",
+            : "ABD'de LLC kurulum sürecine dair kapsamlı bir başvuru rehberi.",
           available: true,
           featured: true,
         },
@@ -53,7 +53,7 @@ export default async function LibraryPage({
           title: isEnglish ? 'LLC ≠ Visa: Immigration Realities' : 'LLC Kurmak Vize Vermez: Göçmenlik Gerçekleri',
           description: isEnglish
             ? 'Understanding the relationship between business formation and US immigration law.'
-            : 'Şirket kurulumu ile ABD göçmenlik hukuku arasındaki ilişkiyi anlama.',
+            : 'Şirket kuruluşu ile ABD göçmenlik hukuku arasındaki ilişki.',
           available: true,
           featured: false,
         },
@@ -64,14 +64,14 @@ export default async function LibraryPage({
       title: isEnglish ? 'Tax & Compliance' : 'Vergi ve Yasal Uyum',
       description: isEnglish
         ? 'Understanding US tax obligations and IRS requirements'
-        : 'ABD vergi yükümlülüklerini ve IRS gereksinimlerini anlamak',
+        : 'ABD vergi yükümlülükleri ve IRS gereklilikleri hakkında bilgi',
       articles: [
         {
           slug: 'irs-vergi-gercekleri',
           title: isEnglish ? 'IRS, Taxes & Form Realities' : 'IRS, Vergi ve Form Gerçekleri',
           description: isEnglish
             ? 'W-8, W-9, 1099 forms explained. What they mean and when you need them.'
-            : 'W-8, W-9, 1099 formları açıklandı. Ne anlama geldiği ve ne zaman ihtiyacınız olduğu.',
+            : 'W-8, W-9, 1099 formları nedir, ne zaman gerekir ve ne anlama gelir?',
           available: true,
           featured: true,
         },
@@ -82,14 +82,14 @@ export default async function LibraryPage({
       title: isEnglish ? 'Legal Truth Library' : 'Hukuki Gerçekler Kütüphanesi',
       description: isEnglish
         ? 'Common misconceptions vs. legal realities'
-        : 'Sık yapılan hatalar ve hukuki gerçekler',
+        : 'Yaygın yanılgılar ve hukuki gerçekler',
       articles: [
         {
           slug: 'hukuki-yanilgilar',
-          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları",
+          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Kuran Türklerin Sık Düştüğü Hukuki Yanılgılar",
           description: isEnglish
             ? 'Debunking the most common legal myths about doing business in the US.'
-            : "ABD'de iş yapma hakkındaki en yaygın hukuki mitleri çürütme.",
+            : "ABD'de iş yapmaya dair en yaygın hukuki yanılgıları gerçeklerle karşılaştırıyoruz.",
           available: true,
           featured: true,
         },
@@ -100,14 +100,14 @@ export default async function LibraryPage({
       title: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
       description: isEnglish
         ? 'Understanding the contracts every business needs'
-        : 'Her işletmenin ihtiyaç duyduğu sözleşmeleri anlamak',
+        : 'Her işletme için vazgeçilmez sözleşme türleri',
       articles: [
         {
           slug: 'temel-sozlesmeler',
           title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : "ABD'de İş Yapan Türkler İçin Temel Sözleşmeler",
           description: isEnglish
             ? 'The contracts you need when starting a business in the United States.'
-            : "ABD'de iş kurarken ihtiyacınız olan sözleşmeler.",
+            : "ABD'de iş kurarken hazırlamanız gereken sözleşmeler.",
           available: true,
           featured: false,
         },
@@ -129,7 +129,7 @@ export default async function LibraryPage({
           <p className="text-lg text-gray-600 leading-relaxed">
             {isEnglish
               ? 'In-depth reference guides explaining US business and legal concepts. Written for accuracy and clarity, not as advice.'
-              : 'ABD iş ve hukuk kavramlarını açıklayan derinlemesine referans rehberleri. Tavsiye olarak değil, doğruluk ve netlik için yazılmıştır.'}
+              : 'ABD iş hukuku ve ticari yapılara ilişkin ayrıntılı başvuru rehberleri. Hukuki tavsiye niteliğinde değildir; doğruluk ve anlaşılırlık esas alınarak hazırlanmıştır.'}
           </p>
         </header>
 

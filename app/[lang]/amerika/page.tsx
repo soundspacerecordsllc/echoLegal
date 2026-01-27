@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? 'US Business & Legal Guide for Turkish Entrepreneurs | EchoLegal'
-      : "ABD'de İş Yapan Türkler İçin Hukuki Rehber | EchoLegal",
+      : "Türk Girişimciler İçin ABD Hukuk Rehberi | EchoLegal",
     description: isEnglish
       ? 'Comprehensive legal reference hub for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and essential documents.'
-      : "ABD'de iş yapan Türk girişimciler için kapsamlı hukuki referans merkezi. LLC kurulumu, vergi gerçekleri, sık yapılan hatalar ve temel belgeler.",
+      : "ABD'de iş kurmak isteyen Türk girişimcilere yönelik kapsamlı hukuki başvuru kaynağı. LLC kurulumu, vergi esasları, yaygın yanılgılar ve temel belgeler.",
   }
 }
 
@@ -37,10 +37,10 @@ export default async function AmerikaHubPage({
     'Common mistakes and practical risks',
     'Essential business documents and contracts',
   ] : [
-    'LLC kurulumu ve eyalet seçimi temelleri',
-    "ABD'de yerleşik olmayanlar için temel vergi çerçevesi",
+    'LLC kurulumu ve eyalet seçiminin esasları',
+    'ABD mukimi olmayanlar için vergi çerçevesi',
     'Sık yapılan hatalar ve pratik riskler',
-    'Temel iş belgeleri ve sözleşmeler',
+    'Temel ticari belgeler ve sözleşmeler',
   ]
 
   return (
@@ -49,19 +49,19 @@ export default async function AmerikaHubPage({
         {/* Hero */}
         <div className="mb-12">
           <span className="inline-block px-4 py-2 bg-blue-50 text-blue-800 rounded-full text-sm font-semibold mb-4">
-            🇺🇸 {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
+            🇺🇸 {isEnglish ? 'US Business Hub' : 'ABD Ticaret Rehberi'}
           </span>
 
           <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
             {isEnglish
               ? 'US Business & Legal Guide'
-              : "ABD'de İş Yapan Türkler İçin Rehber"}
+              : "Türk Girişimciler İçin ABD Hukuk Rehberi"}
           </h1>
 
           <p className="text-xl text-gray-600 leading-relaxed">
             {isEnglish
               ? 'Clear, factual guides for Turkish entrepreneurs navigating US business, taxes, and legal requirements.'
-              : 'ABD iş dünyası, vergileri ve hukuki gereksinimlerinde yol alan Türk girişimciler için açık ve gerçeklere dayalı rehberler.'}
+              : 'ABD\'de iş kurmak, vergi yükümlülüklerini anlamak ve hukuki gereklilikleri karşılamak isteyen Türk girişimcilere yönelik net ve olgulara dayalı rehberler.'}
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default async function AmerikaHubPage({
         <p className="text-sm text-gray-500 mb-12 leading-relaxed">
           {isEnglish
             ? 'This section provides general legal frameworks and structural information. It does not address individual cases or provide personalized legal guidance.'
-            : 'Bu bölüm, genel hukuki çerçeve ve yapısal bilgileri sunmak amacıyla hazırlanmıştır. Bireysel dosyalara veya kişiye özel hukuki yönlendirmelere girmez.'}
+            : 'Bu bölüm genel hukuki çerçeveyi ve yapısal bilgileri aktarır. Bireysel dosyalara veya kişiye özel hukuki yönlendirmeye yer vermez.'}
         </p>
 
         {/* Featured Guides */}
@@ -122,7 +122,7 @@ export default async function AmerikaHubPage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'W-8, W-9, 1099 forms explained in plain language.'
-                  : 'W-8, W-9, 1099 formları açık dilde açıklandı.'}
+                  : 'W-8, W-9 ve 1099 formlarının anlaşılır özeti.'}
               </p>
             </Link>
 
@@ -137,7 +137,7 @@ export default async function AmerikaHubPage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'Myths vs. facts about doing business in the US.'
-                  : "ABD'de iş yapma hakkında mitler ve gerçekler."}
+                  : "ABD'de iş yapma konusunda doğru bilinen yanlışlar."}
               </p>
             </Link>
 
@@ -152,7 +152,7 @@ export default async function AmerikaHubPage({
               <p className="text-gray-600 text-sm">
                 {isEnglish
                   ? 'Understanding the immigration realities.'
-                  : 'Göçmenlik gerçeklerini anlama.'}
+                  : 'LLC ile vize arasındaki ilişkinin gerçek yüzü.'}
               </p>
             </Link>
           </div>
@@ -202,7 +202,7 @@ export default async function AmerikaHubPage({
           <p className="text-sm text-gray-700 mb-4">
             {isEnglish
               ? 'Common starter documents for US business operations:'
-              : 'ABD iş operasyonları için yaygın kullanılan başlangıç belgeleri:'}
+              : 'ABD\'de ticari faaliyete başlarken sıklıkla ihtiyaç duyulan belgeler:'}
           </p>
           <ul className="text-sm text-gray-600 mb-4 space-y-1">
             <li>• {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</li>
@@ -215,10 +215,10 @@ export default async function AmerikaHubPage({
               href={`/${lang}/legal-kits/business-starter`}
               className="text-[#C9A227] font-medium hover:underline text-sm"
             >
-              {isEnglish ? 'US Business Starter Legal Kit →' : 'ABD İş Başlangıç Hukuk Kiti →'}
+              {isEnglish ? 'US Business Starter Legal Kit →' : 'ABD Ticaret Başlangıç Hukuk Paketi →'}
             </Link>
             <span className="text-xs text-gray-500">
-              {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'e destek olun – 20 $ önerilir'}
+              {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'e destek olun – önerilen tutar 20 $'}
             </span>
           </div>
         </section>

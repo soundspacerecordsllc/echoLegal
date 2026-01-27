@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Ana Sayfa",
-    "usImmigrationBusiness": "ABD İş",
+    "usImmigrationBusiness": "ABD İş Hukuku",
     "legalGuides": "Rehberler",
     "contracts": "Sözleşmeler",
     "starterKits": "Kitler",
@@ -13,54 +13,54 @@
     "legalKits": "Hukuki Kitler"
   },
   "home": {
-    "hero": "Hukuki bilgi herkesin hakkı olmalı.",
-    "subtitle": "İngilizce ve Türkçe belge şablonları ve referans rehberleri içeren iki dilli hukuki bilgi kaynağı.",
-    "pricing": "Belgeler: 20$ katkı veya ücretsiz erişim.",
-    "browseLibrary": "Kütüphaneye Göz At",
-    "featuredDocuments": "Referans Belgeler"
+    "hero": "Hukuki bilgiye herkes erişebilmeli.",
+    "subtitle": "İngilizce ve Türkçe hazırlanmış belge şablonları ile hukuki referans rehberlerinden oluşan iki dilli kaynak.",
+    "pricing": "Belgeler: 20 $ katkı payı veya ücretsiz erişim.",
+    "browseLibrary": "Kütüphaneyi İncele",
+    "featuredDocuments": "Öne Çıkan Belgeler"
   },
   "contract": {
     "whatIs": "Tanım",
     "whenToUse": "Kullanım Alanları",
     "keyClauses": "Temel Hükümler",
-    "downloadTitle": "Belge Erişimi",
-    "downloadSubtitle": "Aşağıdan bir erişim seçeneği seçin.",
-    "canAfford": "Katkı (20$)",
-    "cannotAfford": "Ücretsiz erişim",
-    "canAffordSub": "Bakımı destekler",
-    "cannotAffordSub": "Tam belge erişimi",
-    "relatedResources": "İlgili",
+    "downloadTitle": "Belgeye Erişim",
+    "downloadSubtitle": "Erişim yönteminizi seçin.",
+    "canAfford": "Katkı Payı (20 $)",
+    "cannotAfford": "Ücretsiz Erişim",
+    "canAffordSub": "Platformun sürdürülmesine destek olur",
+    "cannotAffordSub": "Belgenin tamamına erişim",
+    "relatedResources": "İlgili Kaynaklar",
     "jurisdiction": "Yargı Alanı",
-    "lastUpdated": "Güncelleme"
+    "lastUpdated": "Son Güncelleme"
   },
   "disclaimer": {
     "title": "Hukuki Uyarı",
-    "noAdvice": "Eğitim Amaçlı: Bu belge bilgilendirme ve eğitim amaçlıdır. Hukuki tavsiye niteliği taşımaz. Hukuki rehberlik için lisanslı bir avukata danışın.",
-    "noRelationship": "Avukat-Müvekkil İlişkisi Yok: Bu belgenin kullanımı avukat-müvekkil ilişkisi oluşturmaz.",
-    "jurisdictionWarning": "Yargı Alanı Farklılığı: Hukuki gereklilikler yargı alanına göre değişir. Bu belge belirli yargı alanları için değişiklik gerektirebilir.",
-    "warranty": "Garanti Yok: Bu belge hiçbir garanti olmaksızın sunulmaktadır.",
-    "global": "EchoLegal yalnızca eğitim amaçlı hukuki bilgi ve belge şablonları sunar. Bu içerik hukuki tavsiye niteliği taşımaz ve avukat-müvekkil ilişkisi oluşturmaz. Hukuki gereklilikler yargı alanına göre değişir. Bu sitedeki herhangi bir bilgiye dayanarak hareket etmeden önce lisanslı bir avukata danışın."
+    "noAdvice": "Eğitim Amaçlıdır: Bu belge yalnızca bilgilendirme amacı taşır; hukuki tavsiye niteliğinde değildir. Somut hukuki yönlendirme için lisanslı bir avukata başvurun.",
+    "noRelationship": "Avukat-Müvekkil İlişkisi Doğurmaz: Bu belgenin kullanılması avukat-müvekkil ilişkisi oluşturmaz.",
+    "jurisdictionWarning": "Yargı Alanı Farklılığı: Hukuki yükümlülükler yargı alanına göre değişiklik gösterir. Belge, bulunduğunuz yargı alanına uyarlanmayı gerektirebilir.",
+    "warranty": "Garanti Verilmez: Bu belge olduğu hâliyle sunulmaktadır; herhangi bir garanti içermez.",
+    "global": "EchoLegal yalnızca eğitim amaçlı hukuki bilgi ve belge şablonları sunar. Bu içerik hukuki tavsiye niteliğinde değildir ve avukat-müvekkil ilişkisi doğurmaz. Hukuki yükümlülükler yargı alanına göre farklılık gösterir. Herhangi bir işlem yapmadan önce lisanslı bir avukata danışmanız önerilir."
   },
   "footer": {
-    "tagline": "Hukuki Referans",
+    "tagline": "Hukuki Referans Kaynağı",
     "copyright": "© 2026 EchoLegal",
     "contracts": "Sözleşmeler",
     "encyclopedia": "Ansiklopedi",
     "about": "Hakkında",
-    "legal": "Yasal",
+    "legal": "Yasal Bilgiler",
     "privacyPolicy": "Gizlilik",
     "cookiePolicy": "Çerezler",
-    "terms": "Koşullar",
+    "terms": "Kullanım Koşulları",
     "disclaimer": "Sorumluluk Reddi"
   },
   "modal": {
     "freeDownloadTitle": "Belge Erişim Koşulları",
-    "acknowledgeBefore": "Aşağıdakileri kabul edin:",
-    "point1": "Bu belge eğitim amaçlıdır",
-    "point2": "Bu hukuki tavsiye değildir",
-    "point3": "Hukuki kullanımdan önce avukata danışın",
-    "point4": "Garanti sağlanmamaktadır",
-    "acknowledgeCheckbox": "Bu koşulları kabul ediyorum",
+    "acknowledgeBefore": "Devam etmeden önce aşağıdaki hususları kabul edin:",
+    "point1": "Bu belge yalnızca eğitim amaçlıdır",
+    "point2": "Hukuki tavsiye niteliği taşımaz",
+    "point3": "Hukuki amaçla kullanmadan önce avukata danışın",
+    "point4": "Herhangi bir garanti verilmemektedir",
+    "acknowledgeCheckbox": "Bu koşulları okudum ve kabul ediyorum",
     "download": "İndir",
     "close": "Kapat"
   }

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : "ABD'de LLC Kurmak: Bilmeniz Gerekenler | EchoLegal",
     description: isEnglish
       ? 'A comprehensive reference guide to LLC formation in the United States for non-US entrepreneurs. State selection, formation process, tax implications, and common misconceptions.'
-      : "ABD dışından girişimciler için ABD'de LLC kurulumu hakkında kapsamlı referans rehberi. Eyalet seçimi, kuruluş süreci, vergi etkileri ve sık yapılan hatalar.",
+      : "ABD dışından girişimcilere yönelik LLC kurulum rehberi. Eyalet seçimi, kuruluş süreci, vergisel sonuçlar ve yaygın yanılgılar.",
   }
 }
 
@@ -56,7 +56,7 @@ export default async function LLCFormationGuidePage({
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
               {isEnglish
                 ? "A factual reference guide explaining what an LLC is, how it's formed, and what non-US entrepreneurs should understand before starting the process."
-                : "LLC'nin ne olduğunu, nasıl kurulduğunu ve ABD dışından girişimcilerin sürece başlamadan önce anlaması gerekenleri açıklayan gerçeklere dayalı bir referans rehberi."}
+                : "LLC nedir, nasıl kurulur ve ABD dışından girişimcilerin bu sürece başlamadan önce bilmesi gereken temel noktalar nelerdir? Bu rehber bu soruları yanıtlıyor."}
             </p>
 
             <div className="flex flex-wrap gap-3 text-sm text-gray-500">
