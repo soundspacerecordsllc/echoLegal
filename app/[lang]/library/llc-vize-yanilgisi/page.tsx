@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       : 'LLC Kurmak Vize Vermez: İş Sahipleri İçin Göçmenlik Gerçekleri | EchoLegal',
     description: isEnglish
       ? 'Understanding the relationship between US business formation and immigration. Why forming an LLC does not grant visa or immigration benefits.'
-      : 'ABD şirket kurulumu ile göçmenlik arasındaki ilişkiyi anlama. LLC kurmanın neden vize veya göçmenlik avantajı sağlamadığı.',
+      : 'ABD\'de şirket kuruluşu ile göçmenlik hukuku arasındaki ilişki. LLC kurmanın neden vize ya da oturma hakkı sağlamadığını açıklıyoruz.',
   }
 }
 
@@ -55,7 +55,7 @@ export default async function LLCVisaMythPage({
             <p className="text-xl text-gray-600 leading-relaxed">
               {isEnglish
                 ? 'One of the most common misconceptions among international entrepreneurs: forming a US LLC does not, by itself, grant any visa or immigration benefit.'
-                : 'Uluslararası girişimciler arasındaki en sık yapılan hatalardan biri: ABD LLC kurmak tek başına herhangi bir vize veya göçmenlik avantajı sağlamaz.'}
+                : 'Yabancı girişimciler arasında en yaygın yanılgılardan biri budur: ABD\'de LLC kurmak, tek başına herhangi bir vize veya göçmenlik hakkı doğurmaz.'}
             </p>
           </header>
 
@@ -63,7 +63,7 @@ export default async function LLCVisaMythPage({
           <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-10">
             <h2 className="font-bold text-red-800 mb-3 flex items-center gap-2">
               <span className="text-2xl">⚠️</span>
-              {isEnglish ? 'Critical Understanding' : 'Kritik Anlayış'}
+              {isEnglish ? 'Critical Understanding' : 'Dikkat Edilmesi Gereken Temel Nokta'}
             </h2>
             <p className="text-red-900 font-medium text-lg mb-3">
               {isEnglish
@@ -73,7 +73,7 @@ export default async function LLCVisaMythPage({
             <p className="text-red-800">
               {isEnglish
                 ? 'An LLC is a business structure. A visa is an immigration status. One does not lead to the other automatically.'
-                : 'LLC bir iş yapısıdır. Vize bir göçmenlik statüsüdür. Biri otomatik olarak diğerine yol açmaz.'}
+                : 'LLC bir ticari yapıdır. Vize ise bir göçmenlik statüsüdür. Biri diğerini otomatik olarak doğurmaz.'}
             </p>
           </div>
 
@@ -104,19 +104,19 @@ export default async function LLCVisaMythPage({
               <strong>{isEnglish ? 'Important:' : 'Önemli:'}</strong>{' '}
               {isEnglish
                 ? 'This is general information only, not immigration advice. Immigration law is complex and changes frequently. Consult a licensed immigration attorney for your specific situation.'
-                : 'Bu yalnızca genel bilgidir, göçmenlik tavsiyesi değildir. Göçmenlik hukuku karmaşıktır ve sık sık değişir. Özel durumunuz için lisanslı bir göçmenlik avukatına danışın.'}
+                : 'Bu sayfa yalnızca genel bilgilendirme amaçlıdır; göçmenlik tavsiyesi niteliği taşımaz. Göçmenlik mevzuatı karmaşık ve değişkendir. Kendi durumunuz için mutlaka lisanslı bir göçmenlik avukatından hukuki destek alın.'}
             </p>
           </div>
 
           {/* Main Content */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-black mb-6">
-              {isEnglish ? 'What an LLC Actually Does' : 'LLC Gerçekte Ne Yapar'}
+              {isEnglish ? 'What an LLC Actually Does' : 'LLC Aslında Ne Sağlar'}
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
               {isEnglish
                 ? 'An LLC (Limited Liability Company) is a business structure that:'
-                : 'LLC (Sınırlı Sorumlu Şirket) şunları yapan bir iş yapısıdır:'}
+                : 'LLC (Limited Liability Company), aşağıdaki işlevleri yerine getiren bir ticari yapıdır:'}
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
               <li>{isEnglish ? 'Provides limited liability protection for business owners' : 'İşletme sahipleri için sınırlı sorumluluk koruması sağlar'}</li>

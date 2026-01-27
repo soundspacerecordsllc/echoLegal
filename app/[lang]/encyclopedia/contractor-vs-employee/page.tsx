@@ -193,11 +193,11 @@ export default async function ContractorVsEmployeePage({
               <div className="bg-gray-50 rounded p-4">
                 <p className="font-semibold mb-2">{isEnglish ? 'Key Questions:' : 'Önemli Sorular:'}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• {isEnglish ? 'Does the worker have unreimbursed business expenses?' : 'İşçinin karşılanmayan iş giderleri var mı?'}</li>
-                  <li>• {isEnglish ? 'Does the worker invest in their own equipment/facilities?' : 'İşçi kendi ekipman/tesislerine yatırım yapıyor mu?'}</li>
-                  <li>• {isEnglish ? 'Does the worker make their services available to the market?' : 'İşçi hizmetlerini piyasaya sunuyor mu?'}</li>
-                  <li>• {isEnglish ? 'How is the worker paid (hourly vs project vs commission)?' : 'İşçiye nasıl ödeme yapılıyor (saatlik vs proje vs komisyon)?'}</li>
-                  <li>• {isEnglish ? 'Can the worker realize profit or loss?' : 'İşçi kar veya zarar edebilir mi?'}</li>
+                  <li>• {isEnglish ? 'Does the worker have unreimbursed business expenses?' : 'İşçinin tazmin edilmeyen iş giderleri var mı?'}</li>
+                  <li>• {isEnglish ? 'Does the worker invest in their own equipment/facilities?' : 'İşçi kendi ekipman veya tesisine yatırım yapıyor mu?'}</li>
+                  <li>• {isEnglish ? 'Does the worker make their services available to the market?' : 'İşçi hizmetlerini açık piyasada sunuyor mu?'}</li>
+                  <li>• {isEnglish ? 'How is the worker paid (hourly vs project vs commission)?' : 'Ödeme nasıl yapılıyor (saatlik mi, proje bazlı mı, komisyon mu)?'}</li>
+                  <li>• {isEnglish ? 'Can the worker realize profit or loss?' : 'İşçi kâr veya zarar edebilecek konumda mı?'}</li>
                 </ul>
               </div>
             </div>
@@ -215,10 +215,10 @@ export default async function ContractorVsEmployeePage({
               <div className="bg-gray-50 rounded p-4">
                 <p className="font-semibold mb-2">{isEnglish ? 'Key Questions:' : 'Önemli Sorular:'}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• {isEnglish ? 'Are there written contracts describing the relationship?' : 'İlişkiyi tanımlayan yazılı sözleşmeler var mı?'}</li>
-                  <li>• {isEnglish ? 'Does the worker receive benefits (insurance, pension, vacation)?' : 'İşçi haklar alıyor mu (sigorta, emeklilik, tatil)?'}</li>
-                  <li>• {isEnglish ? 'Is the relationship expected to be permanent or for a project?' : 'İlişkinin kalıcı mı yoksa proje bazlı mı olması bekleniyor?'}</li>
-                  <li>• {isEnglish ? 'Is the work a key aspect of the regular business?' : 'İş, normal işletmenin önemli bir yönü mü?'}</li>
+                  <li>• {isEnglish ? 'Are there written contracts describing the relationship?' : 'İlişkiyi düzenleyen yazılı bir sözleşme var mı?'}</li>
+                  <li>• {isEnglish ? 'Does the worker receive benefits (insurance, pension, vacation)?' : 'İşçi sosyal haklardan yararlanıyor mu (sigorta, emeklilik, izin)?'}</li>
+                  <li>• {isEnglish ? 'Is the relationship expected to be permanent or for a project?' : 'İlişki süresiz mi yoksa belirli bir projeye mi bağlı?'}</li>
+                  <li>• {isEnglish ? 'Is the work a key aspect of the regular business?' : 'Yapılan iş, işletmenin esas faaliyet alanının parçası mı?'}</li>
                 </ul>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-blue-800">
               {isEnglish
                 ? 'No single factor is determinative. The IRS looks at the entire relationship. You can request an IRS determination using Form SS-8, but this can take 6+ months and may trigger an audit.'
-                : 'Hiçbir tek faktör belirleyici değildir. IRS tüm ilişkiye bakar. Form SS-8 kullanarak IRS belirleme talep edebilirsiniz, ancak bu 6+ ay sürebilir ve denetime yol açabilir.'}
+                : 'Tek bir faktör belirleyici değildir; IRS ilişkinin bütününü değerlendirir. SS-8 Formu ile IRS\'ten statü tespiti talep edebilirsiniz; ancak bu süreç altı ayı aşabilir ve vergi denetimi başlatabilir.'}
             </p>
           </div>
         </section>
@@ -240,7 +240,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-4">
             {isEnglish
               ? 'California\'s AB5 law (and similar laws in other states like New Jersey, Massachusetts, and Illinois) uses the stricter ABC Test. Under this test, a worker is presumed to be an employee unless ALL THREE conditions are met:'
-              : 'Kaliforniya\'nın AB5 yasası (ve New Jersey, Massachusetts ve Illinois gibi diğer eyaletlerdeki benzer yasalar) daha katı ABC Testini kullanır. Bu test kapsamında, ÜÇ koşulun TÜMÜ karşılanmadıkça işçinin çalışan olduğu varsayılır:'}
+              : 'Kaliforniya\'nın AB5 yasası (ve New Jersey, Massachusetts, Illinois gibi eyaletlerdeki benzerleri) daha katı olan ABC Testini uygular. Bu teste göre, aşağıdaki ÜÇ koşulun TAMAMI sağlanmadıkça kişi işçi sayılır:'}
           </p>
 
           <div className="space-y-4">
@@ -252,7 +252,7 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-700">
                 {isEnglish
                   ? 'The worker is free from the control and direction of the hiring entity in performing the work, both under the contract and in fact.'
-                  : 'İşçi, hem sözleşme kapsamında hem de fiilen işin yapılmasında işe alan kuruluşun kontrolü ve yönlendirmesinden bağımsızdır.'}
+                  : 'İşçi, hem sözleşme gereği hem de fiilen, işi veren tarafın kontrol ve yönlendirmesinden bağımsız biçimde çalışmalıdır.'}
               </p>
             </div>
 
@@ -264,12 +264,12 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-700">
                 {isEnglish
                   ? 'The worker performs work that is outside the usual course of the hiring entity\'s business.'
-                  : 'İşçi, işe alan kuruluşun olağan iş seyrinin dışında iş yapar.'}
+                  : 'İşçinin yaptığı iş, işi veren kuruluşun olağan faaliyet alanının dışında kalmalıdır.'}
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 {isEnglish
                   ? 'Example: A plumber hired by a retail store = contractor. A plumber hired by a plumbing company = likely employee.'
-                  : 'Örnek: Bir perakende mağazası tarafından kiralanan tesisatçı = yüklenici. Bir tesisatçı şirketi tarafından kiralanan tesisatçı = muhtemelen çalışan.'}
+                  : 'Örnek: Perakende mağazanın tuttuğu tesisatçı = yüklenici. Tesisat şirketinin istihdam ettiği tesisatçı = büyük olasılıkla işçi.'}
               </p>
             </div>
 
@@ -281,12 +281,12 @@ export default async function ContractorVsEmployeePage({
               <p className="text-gray-700">
                 {isEnglish
                   ? 'The worker is customarily engaged in an independently established trade, occupation, or business of the same nature as the work performed.'
-                  : 'İşçi, genellikle yapılan işle aynı nitelikteki bağımsız olarak kurulmuş bir ticaret, meslek veya işle meşguldür.'}
+                  : 'İşçi, yaptığı işle aynı nitelikteki bağımsız bir ticari faaliyet, meslek veya işletmeyi fiilen sürdürüyor olmalıdır.'}
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 {isEnglish
                   ? 'Evidence: Business license, own website, multiple clients, advertising services publicly'
-                  : 'Kanıt: İşletme ruhsatı, kendi web sitesi, birden fazla müşteri, hizmetlerin kamuya duyurulması'}
+                  : 'Kanıt olabilecekler: İşletme ruhsatı, kendi web sitesi, birden fazla müşteri, hizmetlerin kamuya açık tanıtımı'}
               </p>
             </div>
           </div>
@@ -296,7 +296,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-red-800">
               {isEnglish
                 ? 'Many businesses fail the ABC test on prong B. If a software company hires a freelance developer to write code, that\'s arguably within their "usual course of business." This has made contractor relationships much harder in ABC test states.'
-                : 'Birçok işletme ABC testinde B şartında başarısız olur. Bir yazılım şirketi kod yazması için serbest çalışan bir geliştirici kiralarsa, bu tartışmalı olarak "olağan iş seyri" içindedir. Bu, ABC testi eyaletlerinde yüklenici ilişkilerini çok daha zorlaştırmıştır.'}
+                : 'Pek çok işletme ABC testinin B koşulunu sağlayamaz. Örneğin bir yazılım şirketi, kod yazdırmak için serbest geliştirici tutarsa, bu iş şirketin "olağan faaliyet alanı" içinde kalır. Bu durum, ABC testi uygulayan eyaletlerde yüklenici ilişkisi kurmayı belirgin şekilde zorlaştırmıştır.'}
             </p>
           </div>
 
@@ -317,7 +317,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-4">
             {isEnglish
               ? 'The Department of Labor uses the Economic Reality Test for determining worker classification under the Fair Labor Standards Act (FLSA). This test focuses on whether the worker is economically dependent on the employer.'
-              : 'Çalışma Bakanlığı, Adil Çalışma Standartları Yasası (FLSA) kapsamında işçi sınıflandırmasını belirlemek için Ekonomik Gerçeklik Testini kullanır. Bu test, işçinin işverene ekonomik olarak bağımlı olup olmadığına odaklanır.'}
+              : 'ABD Çalışma Bakanlığı (DOL), Adil Çalışma Standartları Yasası (FLSA) kapsamında statü belirlemek için Ekonomik Gerçeklik Testini uygular. Bu testte esas soru, işçinin ekonomik açıdan işverene bağımlı olup olmadığıdır.'}
           </p>
 
           <div className="space-y-4">
@@ -329,12 +329,12 @@ export default async function ContractorVsEmployeePage({
               { factor: 'Integral to Business', desc: 'Is the work integral to the employer\'s business?' },
               { factor: 'Skill and Initiative', desc: 'Does the worker use specialized skills and business-like initiative?' }
             ] : [
-              { factor: 'Kar veya Zarar Fırsatı', desc: 'İşçinin yönetim becerisi kar veya zararını etkileyebilir mi?' },
-              { factor: 'Yatırım', desc: 'İşçi ekipman, malzeme veya yardımcılara yatırım yapıyor mu?' },
-              { factor: 'İlişkinin Kalıcılığı', desc: 'Çalışma ilişkisi belirsiz/sürekli mi yoksa proje bazlı mı?' },
-              { factor: 'Kontrolün Niteliği ve Derecesi', desc: 'İşveren iş üzerinde ne kadar kontrol uyguluyor?' },
-              { factor: 'İşletme İçin Ayrılmaz', desc: 'İş, işverenin işletmesi için ayrılmaz mı?' },
-              { factor: 'Beceri ve İnisiyatif', desc: 'İşçi uzmanlaşmış beceriler ve iş benzeri inisiyatif kullanıyor mu?' }
+              { factor: 'Kâr veya Zarar İmkanı', desc: 'İşçinin yönetsel kararları, kâr veya zarar sonucunu etkiler mi?' },
+              { factor: 'Yatırım', desc: 'İşçi ekipman, malzeme veya yardımcı personele yatırım yapıyor mu?' },
+              { factor: 'İlişkinin Sürekliliği', desc: 'Çalışma ilişkisi belirsiz süreli mi yoksa proje bazlı mı?' },
+              { factor: 'Kontrolün Niteliği ve Kapsamı', desc: 'İşveren, iş üzerinde ne düzeyde kontrol uyguluyor?' },
+              { factor: 'İşletme Faaliyetiyle Bütünlük', desc: 'Yapılan iş, işverenin esas faaliyetinin ayrılmaz parçası mı?' },
+              { factor: 'Beceri ve Girişimcilik', desc: 'İşçi, uzmanlık gerektiren beceriler ve ticari girişimcilik sergiliyor mu?' }
             ]).map((item, i) => (
               <div key={i} className="flex items-start border-l-4 border-gray-300 pl-4">
                 <span className="font-semibold text-[#C9A227] mr-2">{i + 1}.</span>

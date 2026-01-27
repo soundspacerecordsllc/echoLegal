@@ -161,10 +161,10 @@ export const visaCategories: VisaCategory[] = [
     titleEn: 'Specialty Occupation Visa',
     titleTr: 'Uzmanlık Meslek Vizesi',
     shortDescEn: 'Employment in specialty occupations requiring at least a bachelor\'s degree.',
-    shortDescTr: 'En az lisans derecesi gerektiren uzmanlık mesleklerinde istihdam.',
+    shortDescTr: 'Asgari lisans diploması gerektiren uzmanlık alanlarında çalışma izni.',
     icon: '💼',
     whatIsEn: 'The H-1B visa is a non-immigrant visa that allows US employers to temporarily employ foreign workers in specialty occupations. A specialty occupation requires theoretical and practical application of a body of highly specialized knowledge and at least a bachelor\'s degree (or equivalent) in the specific specialty. The H-1B is subject to an annual cap with a lottery system, though cap-exempt employers exist.',
-    whatIsTr: 'H-1B vizesi, ABD işverenlerinin uzmanlık mesleklerinde yabancı işçileri geçici olarak istihdam etmelerine izin veren göçmen olmayan bir vizedir. Uzmanlık mesleği, yüksek düzeyde uzmanlaşmış bilgi birikiminin teorik ve pratik uygulamasını ve belirli uzmanlık alanında en az lisans derecesi (veya eşdeğeri) gerektirir. H-1B, yıllık kotaya tabidir ve piyango sistemiyle belirlenir, ancak kotadan muaf işverenler vardır.',
+    whatIsTr: 'H-1B, ABD işverenlerinin uzmanlık gerektiren pozisyonlarda yabancı uyruklu çalışanları geçici olarak istihdam etmesini sağlayan göçmen olmayan bir vizedir. Uzmanlık mesleği kavramı; ileri düzey teorik ve uygulamalı bilgi birikimi ile ilgili alanda en az lisans derecesi (veya dengi) şartını içerir. H-1B yıllık kontenjan sınırlamasına tabidir ve başvurular çekiliş (lottery) yoluyla değerlendirilir; ancak üniversiteler ve araştırma kuruluşları gibi bazı işverenler bu kotadan muaftır.',
     suitableForEn: [
       'Engineers, software developers, and IT professionals',
       'Scientists and researchers',
@@ -174,12 +174,12 @@ export const visaCategories: VisaCategory[] = [
       'University professors and academic researchers'
     ],
     suitableForTr: [
-      'Mühendisler, yazılım geliştiriciler ve BT profesyonelleri',
+      'Mühendisler, yazılım geliştiriciler ve bilgi teknolojileri uzmanları',
       'Bilim insanları ve araştırmacılar',
-      'Muhasebeciler, finansal analistler ve iş uzmanları',
-      'Uzman derecelere sahip mimarlar ve tasarımcılar',
-      'Sağlık profesyonelleri (uygun kimlik bilgilerine sahip doktorlar, terapistler)',
-      'Üniversite profesörleri ve akademik araştırmacılar'
+      'Muhasebeciler, finans analistleri ve iş dünyası uzmanları',
+      'İlgili alanda uzmanlık derecesine sahip mimarlar ve tasarımcılar',
+      'Gerekli mesleki yeterliliğe sahip doktorlar ve terapistler',
+      'Üniversite öğretim üyeleri ve akademik araştırmacılar'
     ],
     doesNotAllowEn: [
       'Self-employment or freelance work without proper corporate structure',
@@ -189,11 +189,11 @@ export const visaCategories: VisaCategory[] = [
       'Remaining in the US without valid status after employment ends'
     ],
     doesNotAllowTr: [
-      'Uygun kurumsal yapı olmadan serbest çalışma veya freelance iş',
-      'H-1B sponsoru dışında herhangi bir işveren için çalışma',
-      'Yeni H-1B dilekçesi vermeden işveren değiştirme',
-      'Onaylanan dilekçeyle eşleşmeyen bir pozisyonda çalışma',
-      'İstihdam sona erdikten sonra geçerli statü olmadan ABD\'de kalma'
+      'Uygun şirket yapısı kurulmadan serbest meslek veya bağımsız çalışma',
+      'H-1B sponsoru dışındaki bir işveren bünyesinde çalışma',
+      'Yeni bir H-1B dilekçesi sunulmadan işveren değişikliği',
+      'Onaylanan dilekçedeki pozisyondan farklı bir görevde çalışma',
+      'İş ilişkisi sona erdikten sonra geçerli statü olmaksızın ABD\'de kalma'
     ],
     commonMistakesEn: [
       'Not understanding the H-1B lottery timeline and registration requirements',
@@ -203,11 +203,11 @@ export const visaCategories: VisaCategory[] = [
       'Assuming H-1B automatically leads to permanent residence'
     ],
     commonMistakesTr: [
-      'H-1B piyango zaman çizelgesini ve kayıt gereksinimlerini anlamamak',
-      'Onay bildirimi almadan önce işe başlamak (kota açığı veya taşınabilirlik kullanılmadıkça)',
-      'İstihdam boyunca uzmanlık mesleği gereksinimlerini sürdürmemek',
-      'Mevcut H-1B süresi dolmadan önce uzatmaları zamanında dosyalamamak',
-      'H-1B\'nin otomatik olarak kalıcı oturuma yol açtığını varsaymak'
+      'H-1B çekiliş takvimini ve kayıt koşullarını yeterince takip etmemek',
+      'Onay bildirimi alınmadan işe başlamak (cap-gap veya portability istisnası yoksa)',
+      'Çalışma süresince uzmanlık mesleği niteliklerinin korunmaması',
+      'Mevcut H-1B süresinin bitiminden önce uzatma başvurusunun zamanında yapılmaması',
+      'H-1B\'nin kendiliğinden kalıcı oturma iznine dönüşeceğinin varsayılması'
     ],
     greenCardPathEn: {
       answer: 'yes',
@@ -215,10 +215,10 @@ export const visaCategories: VisaCategory[] = [
     },
     greenCardPathTr: {
       answer: 'evet',
-      explanation: 'H-1B sahiplerinin açıkça "çifte niyete" izni vardır, yani H-1B statüsünü korurken kalıcı oturum takip edebilirler. PERM işgücü sertifikasyonu yoluyla işveren sponsorluğunda yeşil kartlar en yaygın yoldur. Yeşil kart beklemedeyken H-1B 6 yılın ötesinde uzatılabilir.'
+      explanation: 'H-1B sahipleri hukuken "çifte niyet" (dual intent) hakkına sahiptir; yani H-1B statüsünü sürdürürken aynı anda kalıcı oturum başvurusu yapabilirler. En yaygın yol, PERM iş gücü sertifikasyonu aracılığıyla işveren sponsorluğunda yeşil kart başvurusudur. Yeşil kart süreci devam ettiği sürece H-1B altı yıllık sürenin ötesine uzatılabilir.'
     },
     strategicNotesEn: 'The H-1B remains the primary work visa for professional occupations but faces significant demand exceeding supply. The lottery system means selection is not guaranteed regardless of qualifications. Multiple employers can register the same individual, and universities/research institutions are cap-exempt. Processing times and premium processing availability vary.',
-    strategicNotesTr: 'H-1B, profesyonel meslekler için birincil çalışma vizesi olmaya devam ediyor ancak arzı aşan önemli bir taleple karşı karşıya. Piyango sistemi, niteliklerden bağımsız olarak seçimin garanti olmadığı anlamına geliyor. Birden fazla işveren aynı bireyi kaydedebilir ve üniversiteler/araştırma kurumları kotadan muaftır. İşlem süreleri ve premium işleme kullanılabilirliği değişkendir.',
+    strategicNotesTr: 'H-1B, nitelikli profesyoneller için ABD\'nin temel çalışma vizesi olmaya devam etmektedir; ancak talep kontenjandan çok daha yüksektir. Çekiliş sistemi nedeniyle adayın nitelikleri ne olursa olsun seçilme garantisi yoktur. Aynı kişi birden fazla işveren tarafından sisteme kaydettirilebilir. Üniversiteler ve araştırma kuruluşları kontenjan dışı tutulmuştur. İşlem süreleri ve öncelikli (premium) işlem imkanı döneme göre değişkenlik gösterir.',
     uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations'
   },
   {
@@ -227,10 +227,10 @@ export const visaCategories: VisaCategory[] = [
     titleEn: 'Intracompany Transfer Visa',
     titleTr: 'Şirket İçi Transfer Vizesi',
     shortDescEn: 'Transfer of executives, managers, or specialized knowledge employees within multinational companies.',
-    shortDescTr: 'Çok uluslu şirketler içinde yöneticilerin, müdürlerin veya özel bilgi sahibi çalışanların transferi.',
+    shortDescTr: 'Çok uluslu şirketlerde üst düzey yönetici, müdür veya özel bilgiye sahip personelin ABD ofisine transferi.',
     icon: '🏢',
     whatIsEn: 'The L-1 visa enables multinational companies to transfer certain employees from foreign offices to US offices. L-1A is for executives and managers, while L-1B is for employees with specialized knowledge of the company\'s products, services, or procedures. The employee must have worked for the foreign company for at least one continuous year within the three years preceding the transfer.',
-    whatIsTr: 'L-1 vizesi, çok uluslu şirketlerin belirli çalışanlarını yabancı ofislerden ABD ofislerine transfer etmelerini sağlar. L-1A yöneticiler ve müdürler içindir; L-1B ise şirketin ürünleri, hizmetleri veya prosedürleri hakkında özel bilgiye sahip çalışanlar içindir. Çalışan, transferden önceki üç yıl içinde en az bir yıl sürekli olarak yabancı şirkette çalışmış olmalıdır.',
+    whatIsTr: 'L-1 vizesi, çok uluslu kuruluşların belirli çalışanlarını yurt dışı ofislerinden ABD ofislerine nakletmesine imkan tanır. L-1A üst düzey yöneticiler ve müdürler için; L-1B ise şirketin ürün, hizmet veya iç süreçleri hakkında özel bilgi birikimine sahip çalışanlar için öngörülmüştür. Adayın, transfer tarihinden önceki üç yıl içinde en az bir yıl kesintisiz olarak ilgili yabancı şirkette çalışmış olması şarttır.',
     suitableForEn: [
       'Executives managing major functions or divisions',
       'Managers who supervise professional staff or manage essential functions',
@@ -239,11 +239,11 @@ export const visaCategories: VisaCategory[] = [
       'Multinational corporations with qualifying relationships between entities'
     ],
     suitableForTr: [
-      'Ana işlevleri veya bölümleri yöneten üst düzey yöneticiler',
-      'Profesyonel personeli denetleyen veya temel işlevleri yöneten müdürler',
-      'Şirket sistemleri veya süreçleri hakkında tescilli bilgiye sahip çalışanlar',
-      'Yeni ABD ofisleri kuran şirketler (sınırlamalarla)',
-      'Birimler arasında nitelendirici ilişkilere sahip çok uluslu şirketler'
+      'Şirketin temel işlev veya bölümlerini yöneten üst düzey yöneticiler',
+      'Profesyonel kadroyu denetleyen ya da kritik fonksiyonları idare eden müdürler',
+      'Şirketin sistem veya süreçleri hakkında kendine özgü bilgi birikimine sahip personel',
+      'ABD\'de yeni ofis açmak isteyen şirketler (belirli sınırlamalar dahilinde)',
+      'Birimler arasında hukuken geçerli bağlantılara sahip çok uluslu kuruluşlar'
     ],
     doesNotAllowEn: [
       'Working for companies outside the multinational organization',
@@ -253,11 +253,11 @@ export const visaCategories: VisaCategory[] = [
       'New office L-1s beyond initial limitations without demonstrating business growth'
     ],
     doesNotAllowTr: [
-      'Çok uluslu organizasyon dışındaki şirketler için çalışma',
-      'Yabancı şirkette bir yılı tamamlamamış bireyler',
-      'Gerçekten yönetici, müdür veya özel bilgi olarak nitelendirilmeyen pozisyonlar',
-      'L-1\'i giriş seviyesi pozisyonları doldurmak için kullanma',
-      'İş büyümesini göstermeden ilk sınırlamaların ötesinde yeni ofis L-1\'leri'
+      'Çok uluslu yapı dışındaki şirketlerde çalışma',
+      'Yurt dışı şirkette bir yıllık sürekli çalışma şartını karşılamayan adaylar',
+      'Gerçek anlamda yönetici, müdür veya özel bilgi niteliği taşımayan pozisyonlar',
+      'L-1\'in giriş seviyesi kadro ihtiyacını karşılamak amacıyla kullanılması',
+      'Ticari büyüme kanıtlanmadan yeni ofis L-1 başvurusunun başlangıç koşullarının ötesine taşınması'
     ],
     commonMistakesEn: [
       'Overstating the managerial or executive nature of the position',
@@ -267,11 +267,11 @@ export const visaCategories: VisaCategory[] = [
       'Confusing specialized knowledge with general industry expertise'
     ],
     commonMistakesTr: [
-      'Pozisyonun yönetici veya üst düzey yönetici doğasını abartma',
-      'Şirketler arasındaki nitelendirici ilişkinin yetersiz belgelenmesi',
-      'Pozisyonu destekleme kapasitesini gösteren gerçekçi iş planları olmadan yeni ofis dilekçeleri',
-      'Bir yıllık yabancı istihdam gereksinimini karşılamama',
-      'Özel bilgiyi genel sektör uzmanlığıyla karıştırma'
+      'Pozisyonun yöneticilik veya üst düzey niteliğinin olduğundan fazla gösterilmesi',
+      'Şirketler arası hukuki ilişkinin yeterli belgeyle desteklenmemesi',
+      'Pozisyonu sürdürebilecek kapasiteyi gösteren gerçekçi bir iş planı olmadan yeni ofis dilekçesi sunulması',
+      'Bir yıllık yurt dışı çalışma koşulunun sağlanamaması',
+      'Şirkete özgü bilgi (specialized knowledge) ile genel sektör deneyiminin birbirine karıştırılması'
     ],
     greenCardPathEn: {
       answer: 'yes',
@@ -279,10 +279,10 @@ export const visaCategories: VisaCategory[] = [
     },
     greenCardPathTr: {
       answer: 'evet',
-      explanation: 'L-1A sahipleri (üst düzey yöneticiler ve müdürler) işgücü sertifikasyonu olmadan EB-1C yeşil kartlarına hak kazanabilir, bu da bunu kalıcı oturuma en hızlı yollardan biri yapar. L-1B sahipleri tipik olarak H-1B sahipleri gibi PERM işgücü sertifikasyonundan geçer.'
+      explanation: 'L-1A sahipleri (üst düzey yöneticiler ve müdürler), iş gücü sertifikasyonuna gerek kalmaksızın EB-1C kategorisinde yeşil kart başvurusu yapabilir. Bu, kalıcı oturma iznine ulaşmanın en hızlı yollarından biridir. L-1B sahipleri ise genellikle H-1B sahipleri gibi PERM iş gücü sertifikasyonu sürecinden geçmek durumundadır.'
     },
     strategicNotesEn: 'L-1 is particularly valuable for multinational companies and their employees because it\'s not subject to annual caps like H-1B. The L-1A to EB-1C pathway is one of the most efficient routes to permanent residence for qualifying executives and managers. However, USCIS scrutiny of L-1B (specialized knowledge) petitions has increased significantly.',
-    strategicNotesTr: 'L-1, çok uluslu şirketler ve çalışanları için özellikle değerlidir çünkü H-1B gibi yıllık kotalara tabi değildir. L-1A\'dan EB-1C\'ye giden yol, nitelendirici üst düzey yöneticiler ve müdürler için kalıcı oturuma en verimli rotalardan biridir. Ancak USCIS\'in L-1B (özel bilgi) dilekçelerine yönelik incelemesi önemli ölçüde artmıştır.',
+    strategicNotesTr: 'L-1, çok uluslu şirketler ve çalışanları açısından stratejik öneme sahiptir; zira H-1B\'den farklı olarak yıllık kontenjan sınırlamasına tabi değildir. L-1A\'dan EB-1C\'ye uzanan süreç, uygun nitelikteki yöneticiler için kalıcı oturma iznine giden en etkin rotalardan biridir. Ancak USCIS\'in L-1B (özel bilgi) dilekçelerine yönelik denetimi son yıllarda belirgin biçimde sıkılaşmıştır.',
     uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/l-1a-intracompany-transferee-executive-or-manager'
   },
   {

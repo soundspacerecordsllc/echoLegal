@@ -192,7 +192,7 @@ export default async function StatuGecisPage({
         {/* Common Misconceptions */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">
-            {isEnglish ? 'Common Misconceptions and Risks' : 'Yaygın Yanlış Varsayımlar ve Riskler'}
+            {isEnglish ? 'Common Misconceptions and Risks' : 'Sık Karşılaşılan Yanılgılar ve Riskler'}
           </h2>
 
           <div className="space-y-4">
@@ -203,7 +203,7 @@ export default async function StatuGecisPage({
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "Extensions are not guaranteed. USCIS evaluates each request. Multiple extensions, especially without strong justification, become increasingly difficult to obtain."
-                  : "Uzatmalar garanti değildir. USCIS her talebi değerlendirir. Birden fazla uzatma, özellikle güçlü gerekçe olmadan, giderek daha zor elde edilir."}
+                  : "Uzatma hakkı otomatik değildir. USCIS her talebi ayrı ayrı değerlendirir. Güçlü gerekçe sunulmadan yapılan birden fazla uzatma talebi, giderek daha zor kabul görür."}
               </p>
             </div>
 
@@ -214,18 +214,18 @@ export default async function StatuGecisPage({
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "A pending change of status application generally doesn't extend your current status or authorize work. If your I-94 expires while pending, you may start accruing unlawful presence."
-                  : "Bekleyen bir statü değişikliği başvurusu genellikle mevcut statünüzü uzatmaz veya çalışmaya izin vermez. Beklerken I-94'ünüz dolarsa, yasadışı varlık biriktirmeye başlayabilirsiniz."}
+                  : "Bekleyen bir statü değişikliği başvurusu kural olarak mevcut statünüzü uzatmaz ve çalışma izni vermez. Başvurunuz sonuçlanmadan I-94 süreniz dolarsa, hukuka aykırı kalış süresi işlemeye başlayabilir."}
               </p>
             </div>
 
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
               <h3 className="font-semibold text-amber-900 mb-2">
-                {isEnglish ? '"I can fix overstay later"' : '"Süre aşımını sonra düzeltebilirim"'}
+                {isEnglish ? '"I can fix overstay later"' : '"Süre aşımını sonra hallederim"'}
               </h3>
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "Overstaying 180 days or more triggers a 3-year bar. One year or more triggers a 10-year bar. These bars apply when you leave and try to return. Certain waivers exist but are not easy to obtain."
-                  : "180 gün veya daha fazla süre aşımı 3 yıllık yasak tetikler. Bir yıl veya daha fazlası 10 yıllık yasak tetikler. Bu yasaklar ayrıldığınızda ve geri dönmeye çalıştığınızda uygulanır. Belirli muafiyetler vardır ancak elde edilmesi kolay değildir."}
+                  : "180 gün ve üzeri süre aşımı 3 yıllık giriş yasağını, bir yıl ve üzeri ise 10 yıllık giriş yasağını tetikler. Bu yasaklar ülkeden ayrılıp geri dönmeye çalıştığınızda devreye girer. Muafiyet mekanizmaları mevcuttur ancak elde edilmesi kolay değildir."}
               </p>
             </div>
           </div>

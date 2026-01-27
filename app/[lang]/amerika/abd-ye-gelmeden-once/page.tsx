@@ -186,26 +186,26 @@ export default async function PreArrivalChecklistPage({
                     <strong>EIN:</strong>{' '}
                     {isEnglish
                       ? 'Employer Identification Number from IRS. Required for bank accounts and tax filings. Can be obtained without SSN using Form SS-4.'
-                      : "IRS'ten Employer Identification Number. Banka hesapları ve vergi beyannameleri için gereklidir. SSN olmadan Form SS-4 kullanılarak alınabilir."}
+                      : "IRS tarafından verilen İşveren Kimlik Numarası. Banka hesabı açılışı ve vergi beyannameleri için gereklidir. SSN'niz olmasa bile SS-4 formu ile başvurabilirsiniz."}
                   </li>
                   <li>
                     <strong>Registered Agent:</strong>{' '}
                     {isEnglish
                       ? 'Required in most states. Must have a physical address in the state of formation to receive legal documents.'
-                      : 'Çoğu eyalette gereklidir. Hukuki belgeleri almak için kuruluş eyaletinde fiziksel bir adrese sahip olmalıdır.'}
+                      : 'Çoğu eyalette zorunludur. Resmi yazışmaları ve mahkeme tebligatlarını almak üzere kuruluş eyaletinde fiziki bir adresi bulunmalıdır.'}
                   </li>
                   <li>
                     <strong>{isEnglish ? 'Business Address:' : 'İş Adresi:'}</strong>{' '}
                     {isEnglish
                       ? 'Virtual addresses work for mail but may not be accepted by all banks or state agencies.'
-                      : 'Sanal adresler posta için çalışır ancak tüm bankalar veya devlet kurumları tarafından kabul edilmeyebilir.'}
+                      : 'Sanal adresler posta alımı için işe yarar; ancak bazı bankalar ve resmi kurumlar tarafından kabul edilmeyebilir.'}
                   </li>
                 </ul>
               </div>
 
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-5">
                 <h3 className="font-semibold text-amber-900 mb-2">
-                  {isEnglish ? 'Bank Account Expectations (Myth vs. Reality)' : 'Banka Hesabı Beklentileri (Mit vs. Gerçek)'}
+                  {isEnglish ? 'Bank Account Expectations (Myth vs. Reality)' : 'Banka Hesabı Beklentileri (Beklenen ve Gerçek)'}
                 </h3>
                 <p className="text-sm text-amber-800">
                   {isEnglish
@@ -423,7 +423,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-sm text-amber-800">
                   {isEnglish
                     ? 'Verbal agreements, handshake deals, and "we trust each other" approaches work until they don\'t. Disputes with US parties without written contracts mean US courts applying default rules that may not favor you. Legal fees for litigation far exceed the cost of proper documentation upfront.'
-                    : 'Sözlü anlaşmalar, el sıkışma anlaşmaları ve "birbirimize güveniyoruz" yaklaşımları çalışır—ta ki çalışmayana kadar. Yazılı sözleşmeler olmadan ABD taraflarıyla anlaşmazlıklar, size avantaj sağlamayabilecek varsayılan kuralları uygulayan ABD mahkemeleri anlamına gelir. Dava için hukuki ücretler, önceden uygun belgeleme maliyetinin çok üzerindedir.'}
+                    : 'Sözlü anlaşmalar, el sıkışmayla kurulan güven ve "aramızda sorun olmaz" yaklaşımı bir noktaya kadar işler. Ancak yazılı sözleşmeniz yoksa, bir uyuşmazlıkta ABD mahkemeleri kendi varsayılan kurallarını uygular ve bu kurallar sizin lehinize olmayabilir. Dava masrafları, baştan doğru düzenlenmiş bir sözleşmenin maliyetiyle kıyaslanamayacak kadar yüksektir.'}
                 </p>
               </div>
             </div>
@@ -451,43 +451,43 @@ export default async function PreArrivalChecklistPage({
                   <span className="text-red-600 font-bold">1.</span>
                   {isEnglish
                     ? 'Believing LLC formation leads to visa eligibility'
-                    : 'LLC kurmanın vize uygunluğuna yol açtığına inanmak'}
+                    : 'LLC kurmanın vize almayı kolaylaştıracağını sanmak'}
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-600 font-bold">2.</span>
                   {isEnglish
                     ? 'Working while in the US on a tourist visa'
-                    : 'Turist vizesiyle ABD\'deyken çalışmak'}
+                    : 'Turist vizesiyle ABD\'de fiilen çalışmak'}
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-600 font-bold">3.</span>
                   {isEnglish
                     ? 'Ignoring state-level tax and compliance requirements'
-                    : 'Eyalet düzeyindeki vergi ve uyumluluk gereksinimlerini görmezden gelmek'}
+                    : 'Eyalet bazındaki vergi ve uyum yükümlülüklerini gözardı etmek'}
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-600 font-bold">4.</span>
                   {isEnglish
                     ? 'Using personal accounts for business transactions'
-                    : 'İş işlemleri için kişisel hesapları kullanmak'}
+                    : 'Ticari işlemler için kişisel banka hesaplarını kullanmak'}
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-600 font-bold">5.</span>
                   {isEnglish
                     ? 'Relying on internet forums instead of qualified professionals'
-                    : 'Nitelikli profesyoneller yerine internet forumlarına güvenmek'}
+                    : 'Uzman desteği almak yerine internet forumlarındaki bilgilere güvenmek'}
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-600 font-bold">6.</span>
                   {isEnglish
                     ? 'Underestimating the complexity of US immigration law'
-                    : 'ABD göçmenlik hukukunun karmaşıklığını hafife almak'}
+                    : 'ABD göçmenlik hukukunun ne kadar karmaşık olduğunu küçümsemek'}
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-600 font-bold">7.</span>
                   {isEnglish
                     ? 'Not keeping proper records of business activities and fund movements'
-                    : 'İş faaliyetleri ve fon hareketlerinin uygun kayıtlarını tutmamak'}
+                    : 'Ticari faaliyetlerin ve fon hareketlerinin düzenli kaydını tutmamak'}
                 </li>
               </ul>
             </div>
@@ -499,7 +499,7 @@ export default async function PreArrivalChecklistPage({
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? 'YouTube videos, Turkish entrepreneur forums, and social media groups often contain outdated, oversimplified, or simply incorrect information about US immigration and business law. What worked for someone else may not work for you. What was true in 2020 may not be true today. Always verify with official sources and qualified professionals.'
-                  : 'YouTube videoları, Türk girişimci forumları ve sosyal medya grupları genellikle ABD göçmenlik ve iş hukuku hakkında güncel olmayan, aşırı basitleştirilmiş veya sadece yanlış bilgiler içerir. Başkası için işe yarayan sizin için işe yaramayabilir. 2020\'de doğru olan bugün doğru olmayabilir. Her zaman resmi kaynaklardan ve nitelikli profesyonellerden doğrulayın.'}
+                  : 'YouTube videoları, Türk girişimci forumları ve sosyal medya gruplarında ABD göçmenlik ve iş hukuku hakkında eskimiş, aşırı sadeleştirilmiş ya da doğrudan yanlış bilgiye sıkça rastlanır. Bir başkasının deneyimi sizin durumunuza uymayabilir; 2020\'de geçerli olan kural bugün geçerli olmayabilir. Bilgiyi mutlaka resmi kaynaklardan ve yetkin profesyonellerden teyit edin.'}
               </p>
             </div>
           </section>
@@ -515,7 +515,7 @@ export default async function PreArrivalChecklistPage({
               <p className="text-sm text-gray-700 leading-relaxed">
                 {isEnglish
                   ? 'This content provides general legal information only and does not constitute legal, tax, or immigration advice. Laws and regulations change frequently, and individual circumstances vary significantly. The information presented is for educational purposes and should not be relied upon for decision-making without consultation with qualified professionals licensed in the relevant jurisdiction. EchoLegal does not create an attorney-client relationship through this content.'
-                  : 'Bu içerik yalnızca genel hukuki bilgi sağlar ve hukuki, vergisel veya göçmenlik danışmanlığı teşkil etmez. Yasalar ve düzenlemeler sık sık değişir ve bireysel koşullar önemli ölçüde farklılık gösterir. Sunulan bilgiler eğitim amaçlıdır ve ilgili yargı yetkisinde lisanslı nitelikli profesyonellerle istişare yapılmadan karar verme için güvenilmemelidir. EchoLegal, bu içerik aracılığıyla avukat-müvekkil ilişkisi oluşturmaz.'}
+                  : 'Bu içerik yalnızca genel bilgilendirme amacı taşır; hukuki, vergisel veya göçmenlik danışmanlığı niteliğinde değildir. Mevzuat sık değişir ve her kişinin koşulları farklıdır. Buradaki bilgiler karar alma sürecinizde tek başına dayanak olarak kullanılmamalı; ilgili alanda lisanslı bir uzmana danışılmalıdır. EchoLegal, bu içerik aracılığıyla avukat-müvekkil ilişkisi kurmamaktadır.'}
               </p>
             </div>
           </section>
@@ -531,7 +531,7 @@ export default async function PreArrivalChecklistPage({
             <p className="text-sm text-gray-700 mb-4">
               {isEnglish
                 ? 'The most commonly used starter documents when establishing a US business:'
-                : 'ABD\'de iş kurarken pratikte en sık kullanılan başlangıç belgeleri:'}
+                : 'ABD\'de ticari faaliyete başlarken en sık ihtiyaç duyulan belgeler:'}
             </p>
             <ul className="text-sm text-gray-600 mb-4 space-y-1">
               <li>• {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</li>
@@ -548,7 +548,7 @@ export default async function PreArrivalChecklistPage({
                 {isEnglish ? 'ABD Business Starter Legal Kit →' : 'ABD Business Starter Legal Kit →'}
               </Link>
               <span className="text-xs text-gray-500">
-                {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – 20$ önerilir'}
+                {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – önerilen tutar 20 $'}
               </span>
             </div>
           </section>

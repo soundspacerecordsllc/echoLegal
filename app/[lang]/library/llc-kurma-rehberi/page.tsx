@@ -343,7 +343,7 @@ export default async function LLCFormationGuidePage({
                   <p className="text-gray-700 text-sm">
                     {isEnglish
                       ? 'Reality: Many traditional US banks require in-person visits or have strict requirements for non-resident account holders.'
-                      : 'Gerçek: Birçok geleneksel ABD bankası yüz yüze ziyaret gerektirir veya yerleşik olmayan hesap sahipleri için katı gereksinimleri vardır.'}
+                      : 'Gerçek: Pek çok geleneksel ABD bankası şubede yüz yüze başvuru talep eder. ABD mukimi olmayan hesap sahipleri için katı kimlik doğrulama prosedürleri uygulanır.'}
                   </p>
                 </div>
               </div>
@@ -366,7 +366,7 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-6">
                 {isEnglish
                   ? "Once your LLC is formed, you'll likely need certain legal documents for ongoing business operations:"
-                  : "LLC'niz kurulduktan sonra, devam eden iş operasyonları için muhtemelen belirli hukuki belgelere ihtiyacınız olacaktır:"}
+                  : "LLC kurulduktan sonra, ticari faaliyetlerinizi sürdürebilmek için bazı hukuki belgelere ihtiyaç duyarsınız:"}
               </p>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -380,7 +380,7 @@ export default async function LLCFormationGuidePage({
                   <p className="text-sm text-gray-600">
                     {isEnglish
                       ? 'Protect confidential information when discussing business opportunities.'
-                      : 'İş fırsatlarını görüşürken gizli bilgileri koruyun.'}
+                      : 'İş görüşmelerinde paylaşılan gizli bilgilerin korunmasını sağlar.'}
                   </p>
                 </Link>
 
@@ -394,7 +394,7 @@ export default async function LLCFormationGuidePage({
                   <p className="text-sm text-gray-600">
                     {isEnglish
                       ? 'Define terms for client work, payment, and deliverables.'
-                      : 'Müşteri işi, ödeme ve teslimatlar için koşulları tanımlayın.'}
+                      : 'İş kapsamını, ödeme şartlarını ve teslim koşullarını belirler.'}
                   </p>
                 </Link>
 
@@ -408,7 +408,7 @@ export default async function LLCFormationGuidePage({
                   <p className="text-sm text-gray-600">
                     {isEnglish
                       ? 'Establish terms when hiring contractors.'
-                      : 'Yüklenici çalıştırırken koşulları belirleyin.'}
+                      : 'Bağımsız yüklenici ile çalışma şartlarını düzenler.'}
                   </p>
                 </Link>
 
@@ -422,7 +422,7 @@ export default async function LLCFormationGuidePage({
                   <p className="text-sm text-gray-600">
                     {isEnglish
                       ? 'Required for websites and apps that collect user data.'
-                      : 'Kullanıcı verisi toplayan web siteleri ve uygulamalar için gerekli.'}
+                      : 'Kullanıcı verisi toplayan web siteleri ve uygulamalar için zorunludur.'}
                   </p>
                 </Link>
               </div>
@@ -437,7 +437,7 @@ export default async function LLCFormationGuidePage({
             <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
               {isEnglish
                 ? 'Our Business Starter Kit includes 5 essential legal documents for starting a business in the US. I support EchoLegal – $20 recommended.'
-                : "Business Starter Kit'imiz ABD'de iş kurmak için 5 temel hukuki belge içerir. Gücünüz kadar ödeyin."}
+                : "Business Starter Kit, ABD'de iş kurmak için gereken 5 temel hukuki belgeyi içerir. Bütçenize göre ödeme yapabilirsiniz."}
             </p>
             <div className="text-center">
               <Link
@@ -466,7 +466,7 @@ export default async function LLCFormationGuidePage({
                 <p className="text-sm text-gray-600">
                   {isEnglish
                     ? 'Understanding W-8, W-9, and 1099 forms.'
-                    : 'W-8, W-9 ve 1099 formlarını anlama.'}
+                    : 'W-8, W-9 ve 1099 formlarına genel bakış.'}
                 </p>
               </Link>
 
@@ -480,7 +480,7 @@ export default async function LLCFormationGuidePage({
                 <p className="text-sm text-gray-600">
                   {isEnglish
                     ? 'Understanding the immigration realities.'
-                    : 'Göçmenlik gerçeklerini anlama.'}
+                    : 'Göçmenlik hukukunun gerçekleri.'}
                 </p>
               </Link>
 
@@ -494,7 +494,7 @@ export default async function LLCFormationGuidePage({
                 <p className="text-sm text-gray-600">
                   {isEnglish
                     ? 'Myths vs. facts about US business.'
-                    : 'ABD işi hakkında mitler ve gerçekler.'}
+                    : 'ABD iş hukuku hakkında doğru bilinen yanlışlar.'}
                 </p>
               </Link>
 
@@ -508,7 +508,7 @@ export default async function LLCFormationGuidePage({
                 <p className="text-sm text-gray-600">
                   {isEnglish
                     ? 'Contracts every US business needs.'
-                    : 'Her ABD işinin ihtiyaç duyduğu sözleşmeler.'}
+                    : 'ABD\'de faaliyet gösteren her işletmenin ihtiyaç duyacağı sözleşmeler.'}
                 </p>
               </Link>
             </div>
