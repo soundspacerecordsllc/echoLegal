@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "LLC vs Corporation - Choosing Your US Business Structure | EchoLegal"
-      : "LLC mi Corp mu? - ABD İş Yapısı Seçimi | EchoLegal",
+      : "LLC mi Corporation mu? - ABD'de Doğru İş Yapısını Seçmek | EchoLegal",
     description: isEnglish
       ? "Compare LLC and Corporation structures for your US business. Tax implications, liability protection, investor expectations, and when each makes sense."
-      : "ABD işletmeniz için LLC ve Corporation yapılarını karşılaştırın. Vergi etkileri, sorumluluk koruması, yatırımcı beklentileri ve her birinin ne zaman mantıklı olduğu.",
+      : "ABD işletmeniz için LLC ve Corporation yapılarının karşılaştırması. Vergisel sonuçlar, sorumluluk koruması, yatırımcı beklentileri ve hangi yapının ne zaman uygun olduğu.",
   }
 }
 

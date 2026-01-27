@@ -355,10 +355,10 @@ export const visaCategories: VisaCategory[] = [
     titleEn: 'Extraordinary Ability Visa',
     titleTr: 'Olağanüstü Yetenek Vizesi',
     shortDescEn: 'Individuals with extraordinary ability or achievement in their field.',
-    shortDescTr: 'Alanlarında olağanüstü yetenek veya başarıya sahip bireyler.',
+    shortDescTr: 'Kendi alanında olağanüstü yetenek veya başarıya sahip profesyoneller.',
     icon: '⭐',
     whatIsEn: 'The O-1 visa is for individuals who possess extraordinary ability in sciences, arts, education, business, or athletics (O-1A), or who have a demonstrated record of extraordinary achievement in the motion picture or television industry (O-1B). "Extraordinary ability" means a level of expertise indicating that the person is one of the small percentage who has risen to the very top of their field.',
-    whatIsTr: 'O-1 vizesi, bilim, sanat, eğitim, iş veya spor alanlarında olağanüstü yeteneğe sahip bireyler (O-1A) veya sinema veya televizyon endüstrisinde olağanüstü başarı kaydı gösteren bireyler (O-1B) içindir. "Olağanüstü yetenek", kişinin alanının en tepesine yükselen küçük bir yüzdenin parçası olduğunu gösteren bir uzmanlık düzeyi anlamına gelir.',
+    whatIsTr: 'O-1 vizesi; bilim, sanat, eğitim, iş dünyası veya spor alanlarında olağanüstü yeteneğe sahip kişilere (O-1A) ya da sinema ve televizyon sektöründe istisnai başarı geçmişi bulunan kişilere (O-1B) yöneliktir. "Olağanüstü yetenek" ifadesi, kişinin kendi alanında en üst düzeye ulaşmış dar bir kesime dahil olduğunu ortaya koyan bir uzmanlık seviyesini tanımlar.',
     suitableForEn: [
       'Award-winning scientists, researchers, or academics',
       'Recognized artists, musicians, or performers',
@@ -368,12 +368,12 @@ export const visaCategories: VisaCategory[] = [
       'Professionals with patents, significant publications, or industry awards'
     ],
     suitableForTr: [
-      'Ödüllü bilim insanları, araştırmacılar veya akademisyenler',
-      'Tanınmış sanatçılar, müzisyenler veya performans sanatçıları',
-      'Belgelenmiş başarılara sahip başarılı girişimciler',
-      'Önemli tanınırlığa sahip yayınlanmış yazarlar ve gazeteciler',
-      'Uluslararası yarışma kayıtlarına sahip sporcular',
-      'Patentleri, önemli yayınları veya sektör ödülleri olan profesyoneller'
+      'Ödül sahibi bilim insanları, araştırmacılar ve akademisyenler',
+      'Ulusal veya uluslararası düzeyde tanınan sanatçılar, müzisyenler ve sahne sanatçıları',
+      'Somut ve belgelenebilir başarılara sahip girişimciler',
+      'Kayda değer tanınırlık kazanmış yazar ve gazeteciler',
+      'Uluslararası yarışmalarda dereceye girmiş sporcular',
+      'Patent, nitelikli yayın veya sektör ödülüne sahip profesyoneller'
     ],
     doesNotAllowEn: [
       'Those who cannot demonstrate sustained national or international recognition',
@@ -383,11 +383,11 @@ export const visaCategories: VisaCategory[] = [
       'Using O-1 for ordinary skilled work positions'
     ],
     doesNotAllowTr: [
-      'Sürekli ulusal veya uluslararası tanınırlık gösteremeyenler',
-      'Ayırt edici başarılar olmadan normal kariyer aşamalarındaki bireyler',
-      'Olağanüstü yetenek alanı dışında çalışma',
-      'Kendi kendine dilekçe verme (ABD sponsoru veya temsilcisi olmalıdır)',
-      'O-1\'i sıradan vasıflı iş pozisyonları için kullanma'
+      'Süregelen ulusal veya uluslararası tanınırlık ortaya koyamayanlar',
+      'Sıra dışı bir başarısı bulunmayan, kariyer yolunun olağan aşamasındaki kişiler',
+      'Olağanüstü yetenek alanı dışında bir pozisyonda çalışma',
+      'Kendi adına dilekçe verme (ABD\'de bir sponsor veya temsilci zorunludur)',
+      'O-1\'in standart nitelikli iş pozisyonları için kullanılması'
     ],
     commonMistakesEn: [
       'Underestimating the evidence required to prove extraordinary ability',
@@ -397,11 +397,11 @@ export const visaCategories: VisaCategory[] = [
       'Not explaining how evidence meets specific O-1 criteria'
     ],
     commonMistakesTr: [
-      'Olağanüstü yeteneği kanıtlamak için gereken kanıtları hafife alma',
-      'Gerektiğinde uygun danışma görüşü mektupları almama',
-      'O-1 gereksinimlerini H-1B ile karıştırma (O-1 daha yüksek bir standarda sahiptir)',
-      'Başarıları üçüncü taraf kanıtlarıyla belgelememe',
-      'Kanıtların belirli O-1 kriterlerini nasıl karşıladığını açıklamama'
+      'Olağanüstü yeteneğin ispatı için gereken kanıt düzeyinin küçümsenmesi',
+      'Gerekli hallerde uzman görüş mektuplarının (advisory opinion) temin edilmemesi',
+      'O-1 koşullarının H-1B ile karıştırılması (O-1 çok daha yüksek bir eşik gerektirir)',
+      'Başarıların bağımsız üçüncü taraf kaynaklarıyla desteklenmemesi',
+      'Sunulan kanıtların hangi O-1 kriterini karşıladığının açıkça ortaya konmaması'
     ],
     greenCardPathEn: {
       answer: 'indirect',
@@ -409,10 +409,10 @@ export const visaCategories: VisaCategory[] = [
     },
     greenCardPathTr: {
       answer: 'dolaylı',
-      explanation: 'O-1 çifte niyete sahiptir ve sahiplerinin kalıcı oturum takip etmesine izin verir. O-1A\'ya hak kazananlar genellikle işveren sponsorluğu veya işgücü sertifikasyonu gerektirmeyen EB-1A\'ya (olağanüstü yetenek yeşil kartı) hak kazanır. Bu, uygun bireyler için kalıcı oturuma en hızlı yollardan biri olabilir.'
+      explanation: 'O-1 çifte niyet hakkı tanır; sahipleri H-1B statüsündeymiş gibi kalıcı oturum başvurusu yapabilir. O-1A\'ya hak kazanan kişiler çoğu zaman EB-1A (olağanüstü yetenek yeşil kartı) için de uygundur; bu kategori işveren sponsorluğu veya iş gücü sertifikasyonu gerektirmez. Koşulları karşılayan bireyler için kalıcı oturma iznine en kısa yollardan biri olabilir.'
     },
     strategicNotesEn: 'O-1 is not subject to annual caps and can be processed more quickly than H-1B. The standard is high but the definition of "extraordinary" varies by field—business and entrepreneurship achievements are increasingly recognized. Strong documentation and a well-prepared petition are essential. O-1 is often underutilized by qualified individuals who assume they don\'t meet the standard.',
-    strategicNotesTr: 'O-1 yıllık kotalara tabi değildir ve H-1B\'den daha hızlı işlenebilir. Standart yüksektir ancak "olağanüstü" tanımı alana göre değişir—iş ve girişimcilik başarıları giderek daha fazla tanınmaktadır. Güçlü belgeler ve iyi hazırlanmış bir dilekçe esastır. O-1, standardı karşılamadıklarını varsayan nitelikli bireyler tarafından genellikle yetersiz kullanılır.',
+    strategicNotesTr: 'O-1 yıllık kontenjana tabi değildir ve H-1B\'ye kıyasla daha hızlı sonuçlanabilir. Eşik yüksek olmakla birlikte "olağanüstü" kavramının kapsamı alandan alana farklılık gösterir; iş dünyası ve girişimcilik başarıları da giderek daha fazla kabul görmektedir. Sağlam belgeleme ve titizlikle hazırlanmış bir dilekçe kritik öneme sahiptir. O-1, gerekli düzeye ulaşamayacağını düşünen nitelikli adaylar tarafından yeterince değerlendirilmeyen bir kategoridir.',
     uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/o-1-visa-individuals-with-extraordinary-ability-or-achievement'
   }
 ]

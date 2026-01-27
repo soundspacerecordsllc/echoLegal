@@ -243,7 +243,7 @@ export default async function LLCVisaMythPage({
             <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
               {isEnglish
                 ? 'If you decide to form an LLC, you\'ll need proper business documents. Our starter kit includes essential contracts.'
-                : 'LLC kurmaya karar verirseniz, uygun iş belgelerine ihtiyacınız olacak. Başlangıç kitimiz temel sözleşmeleri içerir.'}
+                : 'LLC kurmaya karar verdiğinizde, ticari faaliyetleriniz için gerekli hukuki belgelere ihtiyacınız olacak. Başlangıç kitimiz temel sözleşmeleri içerir.'}
             </p>
             <div className="text-center">
               <Link

@@ -461,29 +461,29 @@ export default async function ContractorVsEmployeePage({
                 <li className="flex items-start">
                   <span className="text-orange-600 mr-2">!</span>
                   <div>
-                    <strong>{isEnglish ? 'No Employer Tax Match:' : 'İşveren Vergi Eşleşmesi Yok:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'You pay full 15.3% self-employment tax' : 'Tam %15,3 serbest meslek vergisi ödersiniz'}</span>
+                    <strong>{isEnglish ? 'No Employer Tax Match:' : 'İşveren Vergi Katkısı Yok:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'You pay full 15.3% self-employment tax' : 'Serbest meslek vergisinin tamamını (%15,3) siz ödersiniz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-orange-600 mr-2">!</span>
                   <div>
-                    <strong>{isEnglish ? 'No Benefits:' : 'Hak Yok:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'No health insurance, retirement, PTO' : 'Sağlık sigortası, emeklilik, PTO yok'}</span>
+                    <strong>{isEnglish ? 'No Benefits:' : 'Sosyal Hak Yok:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'No health insurance, retirement, PTO' : 'Sağlık sigortası, emeklilik veya ücretli izin hakkı bulunmaz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-orange-600 mr-2">!</span>
                   <div>
-                    <strong>{isEnglish ? 'No Worker Protections:' : 'İşçi Korumaları Yok:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'No unemployment, workers\' comp, FMLA' : 'İşsizlik, işçi tazminatı, FMLA yok'}</span>
+                    <strong>{isEnglish ? 'No Worker Protections:' : 'İş Mevzuatı Koruması Yok:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'No unemployment, workers\' comp, FMLA' : 'İşsizlik sigortası, iş kazası tazminatı ve FMLA korumasından yararlanamaz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-600 mr-2">✓</span>
                   <div>
-                    <strong>{isEnglish ? 'You May Have Claims:' : 'Talepleriniz Olabilir:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Can file complaints with DOL, state agencies, or sue for back pay/benefits' : 'DOL, eyalet kurumlarına şikayette bulunabilir veya geri ödeme/haklar için dava açabilirsiniz'}</span>
+                    <strong>{isEnglish ? 'You May Have Claims:' : 'Hak Talebi Yolunuz Açık:'}</strong>
+                    <span className="text-sm block">{isEnglish ? 'Can file complaints with DOL, state agencies, or sue for back pay/benefits' : 'DOL veya eyalet kurumlarına başvurabilir ya da birikmiş ücret ve haklar için dava açabilirsiniz'}</span>
                   </div>
                 </li>
               </ul>
@@ -491,19 +491,19 @@ export default async function ContractorVsEmployeePage({
           </div>
 
           <div className="bg-gray-100 rounded-lg p-6 my-6">
-            <h3 className="font-semibold mb-3">{isEnglish ? 'Real-World Penalties' : 'Gerçek Dünya Cezaları'}</h3>
+            <h3 className="font-semibold mb-3">{isEnglish ? 'Real-World Penalties' : 'Uygulamadaki Yaptırımlar'}</h3>
             <div className="space-y-3 text-sm">
               <div className="flex justify-between border-b border-gray-300 pb-2">
-                <span>{isEnglish ? 'Failure to withhold taxes' : 'Vergi kesintisi yapmama'}</span>
+                <span>{isEnglish ? 'Failure to withhold taxes' : 'Vergi kesintisi yapılmaması'}</span>
                 <span className="font-semibold">{isEnglish ? '1.5% of wages + 40% of FICA' : 'Ücretlerin %1,5 + FICA\'nın %40\'ı'}</span>
               </div>
               <div className="flex justify-between border-b border-gray-300 pb-2">
-                <span>{isEnglish ? 'Failure to file W-2s' : 'W-2 dosyalamamak'}</span>
+                <span>{isEnglish ? 'Failure to file W-2s' : 'W-2 formlarının bildirilmemesi'}</span>
                 <span className="font-semibold">$50-$280 {isEnglish ? 'per form' : 'form başına'}</span>
               </div>
               <div className="flex justify-between border-b border-gray-300 pb-2">
                 <span>{isEnglish ? 'FLSA overtime violations' : 'FLSA fazla mesai ihlalleri'}</span>
-                <span className="font-semibold">{isEnglish ? '2x back pay + attorney fees' : '2x geri ödeme + avukatlık ücreti'}</span>
+                <span className="font-semibold">{isEnglish ? '2x back pay + attorney fees' : '2 kat geriye dönük ödeme + avukatlık ücreti'}</span>
               </div>
               <div className="flex justify-between">
                 <span>{isEnglish ? 'State penalties (CA example)' : 'Eyalet cezaları (CA örneği)'}</span>
@@ -519,7 +519,7 @@ export default async function ContractorVsEmployeePage({
           <p className="text-gray-600 leading-relaxed mb-4">
             {isEnglish
               ? 'Worker classification rules vary significantly by country. When working across borders, both businesses and workers need to understand local requirements.'
-              : 'İşçi sınıflandırma kuralları ülkeden ülkeye önemli ölçüde farklılık gösterir. Sınır ötesi çalışırken, hem işletmelerin hem de işçilerin yerel gereksinimleri anlaması gerekir.'}
+              : 'İşçi sınıflandırma kuralları ülkeden ülkeye büyük farklılıklar gösterir. Uluslararası faaliyet gösteren hem işletmelerin hem de çalışanların, ilgili ülkenin yerel düzenlemelerini bilmesi gerekir.'}
           </p>
 
           <div className="space-y-4">
