@@ -77,7 +77,7 @@ export default async function EinItinSsnPage({
     author: {
       '@type': 'Person',
       name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Contributing Attorney',
+      jobTitle: 'Licensed in New York',
       affiliation: {
         '@type': 'Organization',
         name: 'EchoLegal',

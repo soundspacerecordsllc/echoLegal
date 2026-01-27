@@ -35,19 +35,12 @@ export const authorSchema = {
   '@type': 'Person',
   '@id': `${SITE_URL}/#author`,
   name: 'Zeynep Ruziye Moore',
-  jobTitle: 'Attorney at Law',
-  description: 'New York Bar No: 5552336',
+  jobTitle: 'Licensed in New York',
   affiliation: {
     '@type': 'Organization',
     name: 'EchoLegal',
     url: SITE_URL,
   },
-  knowsAbout: [
-    'US Immigration Law',
-    'Corporate Law',
-    'Contract Law',
-    'Turkish-American Legal Relations',
-  ],
 }
 
 // WebSite Schema with SearchAction
