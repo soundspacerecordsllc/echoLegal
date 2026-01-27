@@ -27,7 +27,7 @@ export default async function EncyclopediaPage({
         ? 'Essential legal knowledge for freelancers and independent contractors.'
         : 'Serbest çalışanlar için temel hukuki bilgiler.',
       readTime: '12 min',
-      available: false,
+      available: true,
     },
     {
       slug: 'contractor-vs-employee',
@@ -36,7 +36,7 @@ export default async function EncyclopediaPage({
         ? 'Key differences and why classification matters.'
         : 'Temel farklar ve sınıflandırmanın önemi.',
       readTime: '10 min',
-      available: false,
+      available: true,
     },
     {
       slug: 'privacy-policy-guide',
@@ -45,7 +45,7 @@ export default async function EncyclopediaPage({
         ? 'GDPR, CCPA, and KVKK requirements explained.'
         : 'GDPR, CCPA ve KVKK gereksinimleri açıklandı.',
       readTime: '8 min',
-      available: false,
+      available: true,
     },
   ]
 
