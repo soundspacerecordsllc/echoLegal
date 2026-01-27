@@ -1,0 +1,426 @@
+{
+  "version": "1.0",
+  "generated": "2026-01-25T06:39:38.392Z",
+  "totalItems": 22,
+  "items": [
+    {
+      "id": "contract-nda",
+      "url": "/contracts/nda",
+      "titleEn": "Non-Disclosure Agreement (NDA)",
+      "titleTr": "Gizlilik Sözleşmesi (NDA)",
+      "descriptionEn": "Protect confidential business information in partnerships and negotiations.",
+      "descriptionTr": "Ortaklıklarda ve müzakerelerde gizli iş bilgilerini koruyun.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey",
+      "keywords": [
+        "nda",
+        "confidentiality",
+        "gizlilik",
+        "non-disclosure",
+        "trade secret",
+        "ticari sır"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "contract-service-agreement",
+      "url": "/contracts/service-agreement",
+      "titleEn": "Service Agreement",
+      "titleTr": "Hizmet Sözleşmesi",
+      "descriptionEn": "Professional contract for service providers and clients. Define scope, payment, and deliverables.",
+      "descriptionTr": "Hizmet sağlayıcılar ve müşteriler için profesyonel sözleşme. Kapsam, ödeme ve teslimatları tanımlayın.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey",
+      "keywords": [
+        "service",
+        "hizmet",
+        "provider",
+        "client",
+        "scope",
+        "payment"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "contract-freelance-agreement",
+      "url": "/contracts/freelance-agreement",
+      "titleEn": "Freelance Service Agreement",
+      "titleTr": "Serbest Çalışan Hizmet Sözleşmesi",
+      "descriptionEn": "Professional contract for freelancers and their clients.",
+      "descriptionTr": "Serbest çalışanlar ve müşterileri için profesyonel sözleşme.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey",
+      "keywords": [
+        "freelance",
+        "serbest",
+        "freelancer",
+        "contractor",
+        "gig"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "contract-independent-contractor",
+      "url": "/contracts/independent-contractor",
+      "titleEn": "Independent Contractor Agreement",
+      "titleTr": "Bağımsız Yüklenici Sözleşmesi",
+      "descriptionEn": "Establish clear terms for contractor relationships. Avoid misclassification issues.",
+      "descriptionTr": "Yüklenici ilişkileri için net şartlar belirleyin. Yanlış sınıflandırma sorunlarından kaçının.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey",
+      "keywords": [
+        "contractor",
+        "yüklenici",
+        "independent",
+        "bağımsız",
+        "1099",
+        "IRS",
+        "misclassification"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "contract-influencer-agreement",
+      "url": "/contracts/influencer-agreement",
+      "titleEn": "Influencer / Brand Agreement",
+      "titleTr": "Influencer / Marka Sözleşmesi",
+      "descriptionEn": "Collaboration agreement between content creators and brands.",
+      "descriptionTr": "İçerik üreticileri ve markalar arasında işbirliği sözleşmesi.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey",
+      "keywords": [
+        "influencer",
+        "brand",
+        "marka",
+        "social media",
+        "sosyal medya",
+        "collaboration"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "contract-privacy-policy",
+      "url": "/contracts/privacy-policy",
+      "titleEn": "Privacy Policy",
+      "titleTr": "Gizlilik Politikası",
+      "descriptionEn": "GDPR and CCPA compliant privacy policy for websites and apps.",
+      "descriptionTr": "Web siteleri ve uygulamalar için KVKK uyumlu gizlilik politikası.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey/EU",
+      "keywords": [
+        "privacy",
+        "gizlilik",
+        "GDPR",
+        "CCPA",
+        "KVKK",
+        "data protection",
+        "veri koruma"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "contract-terms-of-service",
+      "url": "/contracts/terms-of-service",
+      "titleEn": "Terms of Service",
+      "titleTr": "Kullanım Koşulları",
+      "descriptionEn": "Terms and conditions for websites, apps, and online services.",
+      "descriptionTr": "Web siteleri, uygulamalar ve online hizmetler için kullanım şartları.",
+      "category": "contract",
+      "jurisdiction": "US/Turkey",
+      "keywords": [
+        "terms",
+        "koşullar",
+        "conditions",
+        "website",
+        "app",
+        "uygulama"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "encyclopedia-common-misconceptions",
+      "url": "/encyclopedia/common-misconceptions",
+      "titleEn": "Common Legal Misconceptions",
+      "titleTr": "Yaygın Yanlış Varsayımlar",
+      "descriptionEn": "LLCs, immigration, taxes, and contracts—what people get wrong.",
+      "descriptionTr": "LLC, göçmenlik, vergiler ve sözleşmeler hakkında yaygın yanlışlar.",
+      "category": "article",
+      "jurisdiction": null,
+      "keywords": [
+        "LLC",
+        "visa",
+        "vize",
+        "immigration",
+        "göçmenlik",
+        "tax",
+        "vergi",
+        "Delaware",
+        "misconception"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "encyclopedia-what-is-nda",
+      "url": "/encyclopedia/what-is-nda",
+      "titleEn": "What is an NDA?",
+      "titleTr": "NDA Nedir?",
+      "descriptionEn": "Everything you need to know about Non-Disclosure Agreements.",
+      "descriptionTr": "Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey.",
+      "category": "article",
+      "jurisdiction": null,
+      "keywords": [
+        "nda",
+        "confidentiality",
+        "gizlilik",
+        "agreement",
+        "sözleşme",
+        "types",
+        "clauses"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-pasaport",
+      "url": "/consular-documents/pasaport",
+      "titleEn": "Passport Services",
+      "titleTr": "Pasaport İşlemleri",
+      "descriptionEn": "New passport application, renewal, and lost passport procedures.",
+      "descriptionTr": "Yeni pasaport başvurusu, yenileme ve kayıp pasaport işlemleri.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "passport",
+        "pasaport",
+        "renewal",
+        "yenileme",
+        "consulate",
+        "konsolosluk"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-tc-kimlik",
+      "url": "/consular-documents/tc-kimlik",
+      "titleEn": "Turkish ID Card",
+      "titleTr": "T.C. Kimlik Kartı",
+      "descriptionEn": "Turkish ID card application and renewal at consulates.",
+      "descriptionTr": "Konsolosluklarda T.C. kimlik kartı başvurusu ve yenileme.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "kimlik",
+        "ID",
+        "Turkish",
+        "Türk",
+        "nüfus",
+        "population"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-vekaletname",
+      "url": "/consular-documents/vekaletname",
+      "titleEn": "Power of Attorney (Notary)",
+      "titleTr": "Vekaletname (Noter)",
+      "descriptionEn": "Notarized power of attorney for legal and financial matters in Turkey.",
+      "descriptionTr": "Türkiye'deki hukuki ve mali işlemler için noter onaylı vekaletname.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "vekaletname",
+        "power of attorney",
+        "noter",
+        "notary",
+        "vekil"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-dogum-tescili",
+      "url": "/consular-documents/dogum-tescili",
+      "titleEn": "Birth Registration",
+      "titleTr": "Doğum Tescili",
+      "descriptionEn": "Register a birth with Turkish authorities through the consulate.",
+      "descriptionTr": "Konsolosluk aracılığıyla Türk makamlarına doğum kaydı.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "birth",
+        "doğum",
+        "registration",
+        "tescil",
+        "baby",
+        "bebek",
+        "nüfus"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-evlilik-tescili",
+      "url": "/consular-documents/evlilik-tescili",
+      "titleEn": "Marriage Registration",
+      "titleTr": "Evlilik Tescili",
+      "descriptionEn": "Register your marriage with Turkish authorities.",
+      "descriptionTr": "Evliliğinizi Türk makamlarına kaydetme.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "marriage",
+        "evlilik",
+        "wedding",
+        "düğün",
+        "registration",
+        "tescil"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-olum-tescili",
+      "url": "/consular-documents/olum-tescili",
+      "titleEn": "Death Registration",
+      "titleTr": "Ölüm Tescili",
+      "descriptionEn": "Register a death with Turkish authorities.",
+      "descriptionTr": "Vefatı Türk makamlarına kaydetme.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "death",
+        "ölüm",
+        "vefat",
+        "registration",
+        "tescil"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-nufus-kayit",
+      "url": "/consular-documents/nufus-kayit",
+      "titleEn": "Population Registry",
+      "titleTr": "Nüfus Kayıt Örneği",
+      "descriptionEn": "Obtain certified population registry records.",
+      "descriptionTr": "Onaylı nüfus kayıt örneği alma.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "nüfus",
+        "population",
+        "registry",
+        "kayıt",
+        "certificate",
+        "belge"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "consular-belge-onay",
+      "url": "/consular-documents/belge-onay",
+      "titleEn": "Document Certification",
+      "titleTr": "Belge Onayı",
+      "descriptionEn": "Apostille and document certification services.",
+      "descriptionTr": "Apostil ve belge onay hizmetleri.",
+      "category": "consular",
+      "jurisdiction": "Turkey",
+      "keywords": [
+        "apostille",
+        "certification",
+        "onay",
+        "document",
+        "belge",
+        "tasdik"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "page-home",
+      "url": "/",
+      "titleEn": "Home",
+      "titleTr": "Ana Sayfa",
+      "descriptionEn": "Legal knowledge should belong to everyone. Bilingual legal encyclopedia.",
+      "descriptionTr": "Hukuki bilgi herkesin olmalı. İki dilli hukuk ansiklopedisi.",
+      "category": "page",
+      "jurisdiction": null,
+      "keywords": [
+        "home",
+        "ana sayfa",
+        "echolegal",
+        "legal",
+        "hukuk"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "page-contracts",
+      "url": "/contracts",
+      "titleEn": "Contracts Library",
+      "titleTr": "Sözleşmeler Kütüphanesi",
+      "descriptionEn": "Professional legal templates for everyday business needs.",
+      "descriptionTr": "Günlük iş ihtiyaçları için profesyonel hukuki şablonlar.",
+      "category": "page",
+      "jurisdiction": null,
+      "keywords": [
+        "contracts",
+        "sözleşmeler",
+        "templates",
+        "şablonlar",
+        "library"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "page-encyclopedia",
+      "url": "/encyclopedia",
+      "titleEn": "Legal Encyclopedia",
+      "titleTr": "Hukuk Ansiklopedisi",
+      "descriptionEn": "Comprehensive guides on business law, employment, and intellectual property.",
+      "descriptionTr": "İş hukuku, istihdam ve fikri mülkiyet hakkında kapsamlı rehberler.",
+      "category": "page",
+      "jurisdiction": null,
+      "keywords": [
+        "encyclopedia",
+        "ansiklopedi",
+        "guides",
+        "rehber",
+        "articles"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "page-consular-documents",
+      "url": "/consular-documents",
+      "titleEn": "Turkish Consular Documents",
+      "titleTr": "Türk Konsolosluk Belgeleri",
+      "descriptionEn": "Free checklists for passport, ID, notary services, and more.",
+      "descriptionTr": "Pasaport, kimlik, noter hizmetleri için ücretsiz kontrol listeleri.",
+      "category": "page",
+      "jurisdiction": null,
+      "keywords": [
+        "consular",
+        "konsolosluk",
+        "Turkish",
+        "Türk",
+        "checklist",
+        "kontrol listesi"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    },
+    {
+      "id": "page-support",
+      "url": "/support",
+      "titleEn": "Support",
+      "titleTr": "Destek",
+      "descriptionEn": "Frequently asked questions and how to get help.",
+      "descriptionTr": "Sık sorulan sorular ve yardım alma.",
+      "category": "page",
+      "jurisdiction": null,
+      "keywords": [
+        "support",
+        "destek",
+        "help",
+        "yardım",
+        "FAQ",
+        "contact"
+      ],
+      "lastVerified": "2026-01-25T06:39:38.392Z"
+    }
+  ]
+}
