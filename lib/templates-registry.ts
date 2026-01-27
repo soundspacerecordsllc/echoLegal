@@ -396,7 +396,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'visa-appointment-cover-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/VisaAppointmentCoverLetter-EN.docx',
   },
   {
     id: 'sponsor-letter-en',
@@ -408,7 +409,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'sponsor-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/SponsorLetter-EN.docx',
   },
   {
     id: 'affidavit-support-outline-en',
@@ -420,7 +422,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'affidavit-support-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/AffidavitOfSupportOutline-EN.docx',
   },
   {
     id: 'travel-consent-letter-en',
@@ -432,7 +435,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'travel-consent-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/ChildTravelConsentLetter-EN.docx',
   },
   {
     id: 'consulate-appointment-request-en',
@@ -444,7 +448,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US/TR',
     docType: 'letter',
     slug: 'consulate-appointment-request',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/ConsulateAppointmentRequest-EN.docx',
   },
 
   // Turkish immigration
@@ -458,7 +463,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'visa-appointment-cover-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/VizeRandevuKapakYazisi-TR.docx',
   },
   {
     id: 'sponsor-letter-tr',
@@ -470,7 +476,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'sponsor-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/SponsorMektubu-TR.docx',
   },
   {
     id: 'affidavit-support-outline-tr',
@@ -482,7 +489,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'affidavit-support-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/MaliDestekBeyani-TR.docx',
   },
   {
     id: 'travel-consent-letter-tr',
@@ -494,7 +502,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'travel-consent-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/CocukSeyahatIzinMektubu-TR.docx',
   },
   {
     id: 'consulate-appointment-request-tr',
@@ -506,7 +515,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US/TR',
     docType: 'letter',
     slug: 'consulate-appointment-request',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/KonsoloslukRandevuTalebi-TR.docx',
   },
 
   // ===== PERSONAL DOCS / SAMPLES =====
