@@ -142,6 +142,11 @@ export default function Header({ lang, dict }: HeaderProps) {
       href: `/${lang}/legal-kits`,
     },
     {
+      key: 'updates',
+      label: isEnglish ? 'Legal Updates' : 'Güncellemeler',
+      href: `/${lang}/updates`,
+    },
+    {
       key: 'support',
       label: isEnglish ? 'Support' : 'Destek',
       href: `/${lang}/support`,
