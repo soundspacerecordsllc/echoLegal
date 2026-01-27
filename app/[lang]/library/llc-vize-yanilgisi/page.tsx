@@ -119,15 +119,15 @@ export default async function LLCVisaMythPage({
                 : 'LLC (Limited Liability Company), aşağıdaki işlevleri yerine getiren bir ticari yapıdır:'}
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
-              <li>{isEnglish ? 'Provides limited liability protection for business owners' : 'İşletme sahipleri için sınırlı sorumluluk koruması sağlar'}</li>
-              <li>{isEnglish ? 'Allows you to conduct business in the US' : 'ABD\'de iş yapmanıza izin verir'}</li>
-              <li>{isEnglish ? 'Enables opening US bank accounts (with proper documentation)' : 'ABD banka hesapları açmanızı sağlar (uygun belgelerle)'}</li>
-              <li>{isEnglish ? 'Creates a legal entity separate from you personally' : 'Sizden kişisel olarak ayrı bir tüzel kişilik oluşturur'}</li>
+              <li>{isEnglish ? 'Provides limited liability protection for business owners' : 'İşletme sahiplerine sınırlı sorumluluk güvencesi tanır'}</li>
+              <li>{isEnglish ? 'Allows you to conduct business in the US' : 'ABD\'de ticari faaliyet yürütmenizi mümkün kılar'}</li>
+              <li>{isEnglish ? 'Enables opening US bank accounts (with proper documentation)' : 'Gerekli belgelerle ABD\'de banka hesabı açabilmenizi sağlar'}</li>
+              <li>{isEnglish ? 'Creates a legal entity separate from you personally' : 'Şahsınızdan ayrı bir tüzel kişilik oluşturur'}</li>
             </ul>
             <p className="text-gray-700 leading-relaxed">
               {isEnglish
                 ? 'What it does NOT do: grant you the right to live in, work in, or travel to the United States.'
-                : 'Yapmadığı şey: ABD\'de yaşama, çalışma veya ABD\'ye seyahat etme hakkı vermek.'}
+                : 'LLC\'nin sağlamadığı şey: ABD\'de yaşama, çalışma veya ülkeye giriş hakkı.'}
             </p>
           </section>
 
@@ -144,7 +144,7 @@ export default async function LLCVisaMythPage({
                 <p className="text-gray-700 text-sm mb-2">
                   {isEnglish
                     ? 'The E-2 visa requires a substantial investment in a US business, but the business alone doesn\'t qualify you. You must also: (1) be a citizen of a treaty country, (2) make a substantial investment, (3) be coming to the US to develop and direct the business, and (4) meet many other requirements. An LLC is just one piece of a much larger puzzle.'
-                    : 'E-2 vizesi bir ABD işletmesine önemli bir yatırım gerektirir, ancak tek başına işletme sizi hak kazandırmaz. Ayrıca şunları yapmalısınız: (1) bir anlaşma ülkesi vatandaşı olmak, (2) önemli bir yatırım yapmak, (3) işi geliştirmek ve yönetmek için ABD\'ye gelmek ve (4) diğer birçok gereksinimi karşılamak. LLC çok daha büyük bir yapbozun sadece bir parçasıdır.'}
+                    : 'E-2 vizesi bir ABD işletmesine ciddi miktarda yatırım yapılmasını gerektirir; ancak salt işletme sahibi olmak vize hakkı doğurmaz. Ayrıca: (1) ABD ile yatırım anlaşması bulunan bir ülkenin vatandaşı olmalısınız, (2) kayda değer bir yatırım yapmalısınız, (3) işletmeyi bizzat yönetmek üzere ABD\'ye gelmelisiniz ve (4) çok sayıda ek koşulu karşılamalısınız. LLC, bu sürecin yalnızca bir parçasıdır.'}
                 </p>
                 <a
                   href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/e-2-treaty-investors"
@@ -163,7 +163,7 @@ export default async function LLCVisaMythPage({
                 <p className="text-gray-700 text-sm mb-2">
                   {isEnglish
                     ? 'Owning a US LLC does not give you work authorization. To work in the US, you need a work visa (H-1B, L-1, O-1, etc.) or other immigration status that permits employment. Operating your business remotely from outside the US is different from physically working inside the US.'
-                    : 'ABD LLC\'ye sahip olmak size çalışma izni vermez. ABD\'de çalışmak için bir çalışma vizesine (H-1B, L-1, O-1, vb.) veya istihdama izin veren başka bir göçmenlik statüsüne ihtiyacınız var. İşletmenizi ABD dışından uzaktan yönetmek, ABD içinde fiziksel olarak çalışmaktan farklıdır.'}
+                    : 'ABD\'de kurulu bir LLC\'ye sahip olmak, size çalışma izni vermez. ABD\'de fiilen çalışabilmek için çalışma vizesi (H-1B, L-1, O-1 vb.) ya da çalışmaya izin veren başka bir göçmenlik statüsü gerekir. İşletmenizi ABD dışından uzaktan yönetmek ile ABD sınırları içinde fiziken çalışmak farklı hukuki durumlardır.'}
                 </p>
                 <div className="flex flex-wrap gap-3 text-xs">
                   <a href="https://www.uscis.gov/working-in-the-united-states/temporary-workers/h-1b-specialty-occupations" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">USCIS: H-1B →</a>
@@ -179,7 +179,7 @@ export default async function LLCVisaMythPage({
                 <p className="text-gray-700 text-sm">
                   {isEnglish
                     ? 'You can have US clients and receive payments from US companies while remaining in your home country, without a US visa or LLC. Many international freelancers and businesses work with US clients remotely without any US immigration status.'
-                    : 'Kendi ülkenizde kalırken, ABD vizesi veya LLC olmadan ABD müşterileriniz olabilir ve ABD şirketlerinden ödeme alabilirsiniz. Birçok uluslararası serbest çalışan ve işletme, herhangi bir ABD göçmenlik statüsü olmadan ABD müşterileriyle uzaktan çalışır.'}
+                    : 'Kendi ülkenizde kalarak, ABD vizesi veya LLC olmaksızın ABD\'li müşterilerle çalışabilir ve ödeme alabilirsiniz. Dünya genelinde pek çok serbest çalışan ve işletme, herhangi bir ABD göçmenlik statüsüne sahip olmadan ABD müşterilerine uzaktan hizmet vermektedir.'}
                 </p>
               </div>
             </div>
@@ -195,9 +195,9 @@ export default async function LLCVisaMythPage({
                 <li className="flex items-start gap-3">
                   <span className="text-xl">📋</span>
                   <span>
-                    <strong>{isEnglish ? 'LLC = Business structure' : 'LLC = İş yapısı'}</strong>
+                    <strong>{isEnglish ? 'LLC = Business structure' : 'LLC = Ticari yapı'}</strong>
                     <br />
-                    <span className="text-sm text-gray-600">{isEnglish ? 'A way to organize your business' : 'İşinizi organize etmenin bir yolu'}</span>
+                    <span className="text-sm text-gray-600">{isEnglish ? 'A way to organize your business' : 'İşletmenizi hukuken yapılandırmanın bir yolu'}</span>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -231,7 +231,7 @@ export default async function LLCVisaMythPage({
             <p className="mt-2 text-xs text-gray-500">
               {isEnglish
                 ? 'Immigration regulations change frequently. Always verify current requirements on uscis.gov.'
-                : 'Göçmenlik düzenlemeleri sık sık değişir. Güncel gereksinimleri her zaman uscis.gov üzerinden doğrulayın.'}
+                : 'Göçmenlik mevzuatı sık değişir. Güncel koşulları her zaman uscis.gov üzerinden teyit edin.'}
             </p>
           </div>
 

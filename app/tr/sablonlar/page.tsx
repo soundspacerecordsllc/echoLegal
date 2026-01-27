@@ -94,9 +94,9 @@ export default async function SablonlarPage() {
         <div className="mb-10">
           <h1 className="text-4xl font-black text-black mb-4">Şablonlar</h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            {templates.length}+ ücretsiz hukuki şablon. Türk girişimciler için
-            sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge
-            örnekleri.
+            Türk girişimcilere yönelik {templates.length}+ ücretsiz hukuki şablon.
+            Sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge
+            örnekleri bu sayfada yer almaktadır.
           </p>
         </div>
 
@@ -204,11 +204,11 @@ export default async function SablonlarPage() {
         <div className="mt-16 p-8 bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-xl">
           <div className="max-w-2xl">
             <h2 className="text-xl font-bold text-gray-900 mb-2">
-              Bu şablonları faydalı buldunuz mu?
+              EchoLegal&apos;i destekleyin
             </h2>
             <p className="text-gray-700 mb-4">
-              EchoLegal kullanımı ücretsizdir. Bu kaynaklar size zaman veya para
-              kazandırıyorsa, çalışmalarımızı desteklemeyi düşünün.
+              Tüm şablonlar ücretsiz olarak sunulmaktadır. Bu kaynaklar işinize
+              yaradıysa, platformun sürdürülmesine katkıda bulunabilirsiniz.
             </p>
             <Link
               href="/tr/support"

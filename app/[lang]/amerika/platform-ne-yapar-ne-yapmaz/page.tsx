@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "What This Platform Does and Does Not Do | EchoLegal"
-      : "Platform Ne Yapar Ne Yapmaz | EchoLegal",
+      : "Platformun Kapsamı ve Sınırları | EchoLegal",
     description: isEnglish
       ? "Clear explanation of EchoLegal's scope, limitations, and what you can expect from this legal reference platform."
-      : "EchoLegal'in kapsamı, sınırları ve bu hukuk referans platformundan ne bekleyebileceğinizin açık açıklaması.",
+      : "EchoLegal'in kapsamı, sınırları ve bu hukuk referans platformundan neler bekleyebileceğiniz hakkında açık bilgilendirme.",
   }
 }
 
@@ -32,14 +32,14 @@ export default async function PlatformPage({
           lang={lang}
           items={[
             { label: isEnglish ? 'Amerika Hub' : 'Amerika', href: `/${lang}/amerika` },
-            { label: isEnglish ? 'What This Platform Does' : 'Platform Ne Yapar Ne Yapmaz' }
+            { label: isEnglish ? 'What This Platform Does' : 'Platformun Kapsamı ve Sınırları' }
           ]}
         />
 
         <TrustStrip lang={lang} />
 
         <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
-          {isEnglish ? "What This Platform Does and Does Not Do" : "Platform Ne Yapar Ne Yapmaz"}
+          {isEnglish ? "What This Platform Does and Does Not Do" : "Platformun Kapsamı ve Sınırları"}
         </h1>
 
         <p className="text-sm text-gray-500 mb-8">
@@ -51,14 +51,14 @@ export default async function PlatformPage({
           <p className="text-lg text-gray-700 leading-relaxed">
             {isEnglish
               ? "EchoLegal is a legal reference and template platform. It provides general legal information and self-serve document templates. It does not provide individual legal representation, consultation, or case-specific advice."
-              : "EchoLegal bir hukuk referans ve şablon platformudur. Genel hukuki bilgi ve self-servis belge şablonları sağlar. Bireysel hukuki temsil, danışmanlık veya dosyaya özgü tavsiye sağlamaz."}
+              : "EchoLegal, bir hukuk referans ve şablon platformudur. Genel hukuki bilgi ile kullanıcıların kendi başına yararlanabileceği belge şablonları sunar. Bireysel hukuki temsil, danışmanlık veya somut bir dosyaya yönelik tavsiye vermez."}
           </p>
         </section>
 
         {/* What We Do */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">
-            {isEnglish ? 'What This Platform Provides' : 'Bu Platform Ne Sağlar'}
+            {isEnglish ? 'What This Platform Provides' : 'Platformun Sunduğu Hizmetler'}
           </h2>
 
           <div className="space-y-4">
@@ -71,7 +71,7 @@ export default async function PlatformPage({
                 <p className="text-sm text-green-800">
                   {isEnglish
                     ? "Educational content about legal concepts, processes, and requirements. Written in plain language for understanding, not advice."
-                    : "Hukuki kavramlar, süreçler ve gereksinimler hakkında eğitim içeriği. Tavsiye için değil, anlayış için sade bir dille yazılmıştır."}
+                    : "Hukuki kavramlar, süreçler ve yükümlülükler hakkında bilgilendirici içerik. Hukuki tavsiye vermek amacıyla değil, konuyu anlaşılır kılmak amacıyla sade bir dille kaleme alınmıştır."}
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default async function PlatformPage({
                 <p className="text-sm text-green-800">
                   {isEnglish
                     ? "Bilingual contract templates (NDA, Service Agreement, etc.) for self-serve use. Templates require customization for your specific situation."
-                    : "Self-servis kullanım için iki dilli sözleşme şablonları (NDA, Hizmet Sözleşmesi vb.). Şablonlar özel durumunuz için özelleştirme gerektirir."}
+                    : "Kullanıcıların doğrudan yararlanabileceği iki dilli sözleşme şablonları (NDA, Hizmet Sözleşmesi vb.). Şablonlar, somut durumunuza göre uyarlanmalıdır."}
                 </p>
               </div>
             </div>
@@ -94,12 +94,12 @@ export default async function PlatformPage({
               <span className="text-green-600 text-xl">✓</span>
               <div>
                 <h3 className="font-semibold text-green-900">
-                  {isEnglish ? 'Procedural Checklists' : 'Prosedürel Kontrol Listeleri'}
+                  {isEnglish ? 'Procedural Checklists' : 'Süreç Kontrol Listeleri'}
                 </h3>
                 <p className="text-sm text-green-800">
                   {isEnglish
                     ? "General checklists for common procedures (consular services, business formation steps). Not a substitute for official requirements."
-                    : "Yaygın prosedürler için genel kontrol listeleri (konsolosluk hizmetleri, iş kurulum adımları). Resmi gereksinimlerin yerini tutmaz."}
+                    : "Yaygın işlemler için genel kontrol listeleri (konsolosluk hizmetleri, şirket kuruluş adımları). Resmî gerekliliklerin yerini almaz."}
                 </p>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default async function PlatformPage({
                 <p className="text-sm text-green-800">
                   {isEnglish
                     ? "Content available in both English and Turkish for Turkish citizens navigating US legal systems."
-                    : "ABD hukuk sistemlerinde yolunu bulmaya çalışan Türk vatandaşları için hem İngilizce hem de Türkçe içerik."}
+                    : "ABD hukuk sistemini anlamak isteyen Türk vatandaşlarına yönelik, Türkçe ve İngilizce olarak sunulan içerik."}
                 </p>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default async function PlatformPage({
         {/* What We Don't Do */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">
-            {isEnglish ? 'What This Platform Does NOT Provide' : 'Bu Platform Ne SAĞLAMAZ'}
+            {isEnglish ? 'What This Platform Does NOT Provide' : 'Platformun Sunmadığı Hizmetler'}
           </h2>
 
           <div className="space-y-4">
@@ -136,7 +136,7 @@ export default async function PlatformPage({
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? "No attorney-client relationship is formed through this platform. We do not represent individuals in any legal matter."
-                    : "Bu platform aracılığıyla avukat-müvekkil ilişkisi kurulmaz. Herhangi bir hukuki konuda bireyleri temsil etmiyoruz."}
+                    : "Bu platform üzerinden avukat-müvekkil ilişkisi kurulmaz. Hiçbir hukuki konuda bireysel temsil hizmeti verilmez."}
                 </p>
               </div>
             </div>
@@ -145,12 +145,12 @@ export default async function PlatformPage({
               <span className="text-red-600 text-xl">✗</span>
               <div>
                 <h3 className="font-semibold text-red-900">
-                  {isEnglish ? 'Case-Specific Advice' : 'Dosyaya Özgü Tavsiye'}
+                  {isEnglish ? 'Case-Specific Advice' : 'Somut Dosyaya Yönelik Tavsiye'}
                 </h3>
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? "We cannot evaluate your specific situation or tell you what to do. General information is not a substitute for individual legal advice."
-                    : "Özel durumunuzu değerlendiremez veya ne yapmanız gerektiğini söyleyemeyiz. Genel bilgi, bireysel hukuki tavsiyenin yerini tutmaz."}
+                    : "Bireysel durumunuzu değerlendirmemiz veya ne yapmanız gerektiğini söylememiz mümkün değildir. Genel bilgi, kişiye özel hukuki danışmanlığın yerini tutamaz."}
                 </p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default async function PlatformPage({
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? "We do not offer consultations, case reviews, or take on clients. This is a reference platform only."
-                    : "Danışmanlık, dosya incelemesi sunmuyor veya müvekkil kabul etmiyoruz. Bu yalnızca bir referans platformudur."}
+                    : "Danışmanlık görüşmesi, dosya incelemesi veya müvekkil kabulü yapılmaz. Bu platform yalnızca referans amaçlıdır."}
                 </p>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default async function PlatformPage({
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? "We do not prepare visa applications, represent clients before USCIS, or provide immigration consultations."
-                    : "Vize başvuruları hazırlamıyor, USCIS önünde müvekkilleri temsil etmiyor veya göçmenlik danışmanlığı sağlamıyoruz."}
+                    : "Vize başvurusu hazırlanmaz, USCIS nezdinde temsil yapılmaz ve göçmenlik danışmanlığı verilmez."}
                 </p>
               </div>
             </div>
@@ -187,12 +187,12 @@ export default async function PlatformPage({
               <span className="text-red-600 text-xl">✗</span>
               <div>
                 <h3 className="font-semibold text-red-900">
-                  {isEnglish ? 'Tax Filing Services' : 'Vergi Beyan Hizmetleri'}
+                  {isEnglish ? 'Tax Filing Services' : 'Vergi Beyanname Hizmetleri'}
                 </h3>
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? "We provide general tax information only. We do not prepare tax returns or provide tax planning advice."
-                    : "Yalnızca genel vergi bilgisi sağlıyoruz. Vergi beyannamesi hazırlamıyor veya vergi planlama tavsiyesi vermiyoruz."}
+                    : "Yalnızca genel vergi bilgisi sunulmaktadır. Vergi beyannamesi hazırlama veya vergi planlaması danışmanlığı hizmeti verilmez."}
                 </p>
               </div>
             </div>
@@ -202,19 +202,19 @@ export default async function PlatformPage({
         {/* How to Use This Platform */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">
-            {isEnglish ? 'How to Use This Platform' : 'Bu Platformu Nasıl Kullanmalı'}
+            {isEnglish ? 'How to Use This Platform' : 'Bu Platform Nasıl Kullanılmalı'}
           </h2>
 
           <div className="prose max-w-none text-gray-600 space-y-4">
             <p>
               {isEnglish
                 ? "Use this platform to educate yourself about legal concepts and processes. The information here can help you understand what questions to ask, what procedures exist, and what documents you might need."
-                : "Bu platformu hukuki kavramlar ve süreçler hakkında kendinizi eğitmek için kullanın. Buradaki bilgiler hangi soruları sormanız gerektiğini, hangi prosedürlerin var olduğunu ve hangi belgelere ihtiyacınız olabileceğini anlamanıza yardımcı olabilir."}
+                : "Bu platformu, hukuki kavramları ve süreçleri öğrenmek amacıyla kullanabilirsiniz. Buradaki bilgiler, hangi soruları sormanız gerektiğini, hangi prosedürlerin mevcut olduğunu ve hangi belgelere ihtiyaç duyabileceğinizi anlamanıza yardımcı olur."}
             </p>
             <p>
               {isEnglish
                 ? "For matters that affect your legal rights, business decisions, or immigration status, consult with a licensed attorney who can evaluate your specific circumstances."
-                : "Hukuki haklarınızı, iş kararlarınızı veya göçmenlik statünüzü etkileyen konular için, özel koşullarınızı değerlendirebilecek lisanslı bir avukata danışın."}
+                : "Hukuki haklarınızı, ticari kararlarınızı veya göçmenlik statünüzü doğrudan etkileyen konularda, bireysel koşullarınızı değerlendirebilecek lisanslı bir avukata başvurmanızı öneriyoruz."}
             </p>
           </div>
         </section>
@@ -229,12 +229,12 @@ export default async function PlatformPage({
             <p className="text-gray-700 mb-4">
               {isEnglish
                 ? "EchoLegal content is prepared under the supervision of Zeynep Ruziye Moore, licensed in New York."
-                : "EchoLegal içeriği, New York lisanslı Zeynep Ruziye Moore gözetiminde hazırlanmaktadır."}
+                : "EchoLegal içeriği, New York Barosu'na kayıtlı Zeynep Ruziye Moore gözetiminde hazırlanmaktadır."}
             </p>
             <p className="text-gray-700">
               {isEnglish
                 ? "This platform exists because reliable, bilingual legal information is difficult to find. The goal is to help people understand legal frameworks before they act - not to replace professional advice when it's needed."
-                : "Bu platform, güvenilir, iki dilli hukuki bilginin bulunmasının zor olması nedeniyle var. Amaç, insanların harekete geçmeden önce hukuki çerçeveleri anlamalarına yardımcı olmaktır - ihtiyaç duyulduğunda profesyonel tavsiyenin yerini almak değil."}
+                : "Bu platform, güvenilir ve iki dilli hukuki bilgiye erişimin güç olduğu bir ihtiyaçtan doğmuştur. Amacımız, kişilerin harekete geçmeden önce hukuki çerçeveyi kavramalarına katkı sağlamaktır; profesyonel hukuki danışmanlığın yerini almak değil."}
             </p>
           </div>
         </section>
@@ -277,7 +277,7 @@ export default async function PlatformPage({
               className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
             >
               <span className="font-medium text-gray-800">
-                {isEnglish ? 'Full Legal Disclaimer' : 'Tam Hukuki Sorumluluk Reddi'}
+                {isEnglish ? 'Full Legal Disclaimer' : 'Hukuki Sorumluluk Reddi Beyanı'}
               </span>
               <span className="text-[#C9A227]">→</span>
             </Link>
@@ -289,7 +289,7 @@ export default async function PlatformPage({
           <p>
             {isEnglish
               ? 'This content is for general informational purposes only and does not constitute legal advice.'
-              : 'Bu içerik yalnızca genel bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez.'}
+              : 'Bu içerik yalnızca genel bilgilendirme amacıyla hazırlanmış olup hukuki danışmanlık niteliği taşımaz.'}
           </p>
         </div>
     </main>

@@ -148,10 +148,10 @@ export default async function AbddeLLCPage({
                 {isEnglish ? 'This Page Covers' : 'Bu Sayfa Kapsar'}
               </h3>
               <ul className="text-sm text-green-800 space-y-1">
-                <li>• {isEnglish ? 'LLC formation basics' : 'LLC kurulum temelleri'}</li>
-                <li>• {isEnglish ? 'State selection factors' : 'Eyalet seçim faktörleri'}</li>
-                <li>• {isEnglish ? 'Registered agent requirements' : 'Registered agent gereksinimleri'}</li>
-                <li>• {isEnglish ? 'Ongoing compliance overview' : 'Sürekli uyum genel bakışı'}</li>
+                <li>• {isEnglish ? 'LLC formation basics' : 'LLC kurulumunun temelleri'}</li>
+                <li>• {isEnglish ? 'State selection factors' : 'Eyalet seçiminde belirleyici unsurlar'}</li>
+                <li>• {isEnglish ? 'Registered agent requirements' : 'Registered agent zorunluluğu'}</li>
+                <li>• {isEnglish ? 'Ongoing compliance overview' : 'Devam eden uyum yükümlülüklerine genel bakış'}</li>
               </ul>
             </div>
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -159,10 +159,10 @@ export default async function AbddeLLCPage({
                 {isEnglish ? 'This Page Does Not Cover' : 'Bu Sayfa Kapsamaz'}
               </h3>
               <ul className="text-sm text-red-800 space-y-1">
-                <li>• {isEnglish ? 'Specific state-by-state procedures' : 'Eyalet bazında özel prosedürler'}</li>
-                <li>• {isEnglish ? 'Tax planning advice' : 'Vergi planlama tavsiyeleri'}</li>
-                <li>• {isEnglish ? 'Formation service recommendations' : 'Kuruluş hizmeti önerileri'}</li>
-                <li>• {isEnglish ? 'Individual business structure advice' : 'Bireysel iş yapısı tavsiyeleri'}</li>
+                <li>• {isEnglish ? 'Specific state-by-state procedures' : 'Eyalet bazında detaylı prosedürler'}</li>
+                <li>• {isEnglish ? 'Tax planning advice' : 'Vergi planlaması danışmanlığı'}</li>
+                <li>• {isEnglish ? 'Formation service recommendations' : 'Kuruluş hizmeti tavsiyeleri'}</li>
+                <li>• {isEnglish ? 'Individual business structure advice' : 'Kişiye özel iş yapısı danışmanlığı'}</li>
               </ul>
             </div>
           </div>
@@ -178,7 +178,7 @@ export default async function AbddeLLCPage({
             <p>
               {isEnglish
                 ? "A Limited Liability Company (LLC) is a business structure that combines the liability protection of a corporation with the tax flexibility of a partnership. Members (owners) are generally not personally liable for business debts and obligations."
-                : "Limited Liability Company (LLC), bir şirketin sorumluluk korumasını ortaklığın vergi esnekliğiyle birleştiren bir iş yapısıdır. Üyeler (sahipler) genellikle iş borçları ve yükümlülüklerinden kişisel olarak sorumlu değildir."}
+                : "LLC (Limited Liability Company), şirketlerin sunduğu sınırlı sorumluluk korumasını ortaklıkların vergisel esnekliğiyle bir araya getiren bir işletme yapısıdır. Üyeler (sahipler), kural olarak işletme borç ve yükümlülüklerinden şahsen sorumlu tutulmaz."}
             </p>
           </div>
         </section>
@@ -195,10 +195,10 @@ export default async function AbddeLLCPage({
               <div className="text-sm text-gray-600 space-y-2">
                 <p><strong>{isEnglish ? 'Advantages:' : 'Avantajlar:'}</strong> {isEnglish
                   ? "Established Court of Chancery, extensive case law, business-friendly statutes, privacy protections."
-                  : "Yerleşik Court of Chancery, geniş içtihat, iş dostu yasalar, gizlilik korumaları."}</p>
+                  : "Köklü Court of Chancery mahkemesi, zengin içtihat birikimi, iş dünyasına elverişli mevzuat ve gizlilik korumaları."}</p>
                 <p><strong>{isEnglish ? 'Considerations:' : 'Dikkat Edilecekler:'}</strong> {isEnglish
                   ? "Annual franchise tax ($300 minimum), requires registered agent, may need to register as foreign LLC in other states where you do business."
-                  : "Yıllık franchise vergisi (minimum $300), registered agent gerektirir, iş yaptığınız diğer eyaletlerde yabancı LLC olarak kayıt gerekebilir."}</p>
+                  : "Yıllık franchise vergisi (asgari 300 $), registered agent zorunluluğu, fiilen iş yaptığınız diğer eyaletlerde yabancı LLC kaydı gerekebilir."}</p>
               </div>
             </div>
 
@@ -207,10 +207,10 @@ export default async function AbddeLLCPage({
               <div className="text-sm text-gray-600 space-y-2">
                 <p><strong>{isEnglish ? 'Advantages:' : 'Avantajlar:'}</strong> {isEnglish
                   ? "No state income tax, low annual fees ($60), strong asset protection, privacy protections."
-                  : "Eyalet gelir vergisi yok, düşük yıllık ücretler ($60), güçlü varlık koruması, gizlilik korumaları."}</p>
+                  : "Eyalet gelir vergisi yok, düşük yıllık harçlar (60 $), güçlü varlık koruması ve gizlilik güvenceleri."}</p>
                 <p><strong>{isEnglish ? 'Considerations:' : 'Dikkat Edilecekler:'}</strong> {isEnglish
                   ? "Less established case law than Delaware, still may need foreign LLC registration elsewhere."
-                  : "Delaware'den daha az yerleşik içtihat, başka yerlerde yabancı LLC kaydı gerekebilir."}</p>
+                  : "Delaware kadar köklü bir içtihat birikimi yoktur; diğer eyaletlerde yabancı LLC kaydı yine gerekebilir."}</p>
               </div>
             </div>
 
@@ -219,10 +219,10 @@ export default async function AbddeLLCPage({
               <div className="text-sm text-gray-600 space-y-2">
                 <p><strong>{isEnglish ? 'Advantages:' : 'Avantajlar:'}</strong> {isEnglish
                   ? "If you have physical presence or do business in a specific state, forming there avoids foreign LLC registration requirements."
-                  : "Belirli bir eyalette fiziksel varlığınız varsa veya iş yapıyorsanız, orada kurmak yabancı LLC kayıt gereksinimlerini önler."}</p>
+                  : "Belirli bir eyalette fiziksel varlığınız varsa veya fiilen orada iş yapıyorsanız, LLC'yi o eyalette kurmak yabancı LLC tescili yükümlülüğünü ortadan kaldırır."}</p>
                 <p><strong>{isEnglish ? 'Considerations:' : 'Dikkat Edilecekler:'}</strong> {isEnglish
                   ? "State-specific rules, fees, and tax implications vary significantly."
-                  : "Eyalete özgü kurallar, ücretler ve vergi etkileri önemli ölçüde değişir."}</p>
+                  : "Eyalete özgü kurallar, harçlar ve vergisel sonuçlar önemli farklılıklar gösterir."}</p>
               </div>
             </div>
           </div>

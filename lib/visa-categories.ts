@@ -289,12 +289,12 @@ export const visaCategories: VisaCategory[] = [
     slug: 'e2',
     code: 'E-2',
     titleEn: 'Treaty Investor Visa',
-    titleTr: 'Yatırımcı Vizesi',
+    titleTr: 'Anlaşmalı Ülke Yatırımcı Vizesi',
     shortDescEn: 'Investment in and direction of a US business by treaty country nationals.',
-    shortDescTr: 'Anlaşma ülkesi vatandaşları tarafından ABD işletmesine yatırım ve yönetim.',
+    shortDescTr: 'Anlaşmalı ülke vatandaşlarının ABD\'de işletme kurması, yatırım yapması ve yönetmesi.',
     icon: '💰',
     whatIsEn: 'The E-2 visa allows nationals of treaty countries to enter the United States to invest in and direct a US business. Turkey is a treaty country with the US, making Turkish citizens eligible. The investment must be "substantial" relative to the total cost of the business, and the investor must be coming to develop and direct the enterprise. The business must be real and operating, not marginal.',
-    whatIsTr: 'E-2 vizesi, anlaşma ülkelerinin vatandaşlarının ABD\'ye girerek bir ABD işletmesine yatırım yapmasına ve yönetmesine izin verir. Türkiye, ABD ile anlaşmalı bir ülkedir ve bu Türk vatandaşlarını uygun kılar. Yatırım, işletmenin toplam maliyetine göre "önemli" olmalıdır ve yatırımcı işletmeyi geliştirmek ve yönetmek için gelmelidir. İşletme gerçek ve faal olmalı, marjinal olmamalıdır.',
+    whatIsTr: 'E-2 vizesi, ABD ile yatırım anlaşması bulunan ülkelerin vatandaşlarına ABD\'de işletme kurup yönetme imkanı tanır. Türkiye bu anlaşmaya taraf olduğundan Türk vatandaşları E-2\'ye başvurabilir. Yatırımın, işletmenin niteliğine oranla "esaslı" (substantial) kabul edilecek düzeyde olması gerekir. Yatırımcının işletmeyi bizzat geliştirmek ve yönetmek amacıyla gelmesi şarttır. İşletme gerçek, faal ve yalnızca yatırımcının geçimini sağlamaktan öte bir ekonomik katkıya sahip olmalıdır.',
     suitableForEn: [
       'Entrepreneurs starting or acquiring a US business',
       'Turkish nationals with substantial capital to invest',
@@ -303,11 +303,11 @@ export const visaCategories: VisaCategory[] = [
       'Those seeking renewable, long-term US presence tied to business operations'
     ],
     suitableForTr: [
-      'ABD işletmesi kuran veya satın alan girişimciler',
-      'Yatırım yapacak önemli sermayeye sahip Türk vatandaşları',
-      'İşletmeyi aktif olarak yönetecek ve geliştirecek işletme sahipleri',
-      'İşletmesi ailelerini desteklemek için yeterli gelirden fazlasını üretecek yatırımcılar',
-      'İş operasyonlarına bağlı yenilenebilir, uzun vadeli ABD varlığı arayanlar'
+      'ABD\'de işletme kurmayı veya mevcut bir işletmeyi devralmayı planlayan girişimciler',
+      'Esaslı yatırım yapabilecek sermayeye sahip Türk vatandaşları',
+      'İşletmeyi bizzat yönetecek ve geliştirecek işletme sahipleri',
+      'İşletmesi ailesinin geçiminin ötesinde ekonomik değer yaratacak yatırımcılar',
+      'İş faaliyetlerine bağlı olarak yenilenebilir ve uzun vadeli ABD ikameti arayanlar'
     ],
     doesNotAllowEn: [
       'Passive investment without active management role',
@@ -317,11 +317,11 @@ export const visaCategories: VisaCategory[] = [
       'Working for an employer outside the E-2 enterprise'
     ],
     doesNotAllowTr: [
-      'Aktif yönetim rolü olmadan pasif yatırım',
-      'Marjinal işletmelere yatırım (sadece yatırımcıyı desteklemeye yetecek kadar)',
-      'ABD ile E-2 anlaşması olmayan ülke vatandaşları',
-      'Spekülatif veya taahhüt edilmemiş yatırımlar',
-      'E-2 işletmesi dışında bir işveren için çalışma'
+      'Aktif yönetim sorumluluğu üstlenilmeksizin yapılan pasif yatırım',
+      'Yalnızca yatırımcının kendi geçimini karşılayacak düzeyde marjinal işletmeler',
+      'ABD ile E-2 anlaşması bulunmayan ülkelerin vatandaşları',
+      'Spekülatif nitelikte veya fiilen taahhüt edilmemiş yatırımlar',
+      'E-2 kapsamındaki işletme dışında bir işveren adına çalışma'
     ],
     commonMistakesEn: [
       'Investing amounts too low to be considered "substantial" for the business type',
@@ -331,11 +331,11 @@ export const visaCategories: VisaCategory[] = [
       'Assuming E-2 automatically converts to permanent residence'
     ],
     commonMistakesTr: [
-      'İşletme türü için "önemli" sayılamayacak kadar düşük miktarlarda yatırım yapma',
-      'Yatırımın "risk altında" olduğunu göstermeme (örneğin, fonları emanette tutma)',
-      'Yalnızca yatırımcıyı marjinal olarak destekleyebilen bir işletme oluşturma',
-      'İşletmeyi yönetme ve geliştirmede aktif rol göstermeme',
-      'E-2\'nin otomatik olarak kalıcı oturuma dönüştüğünü varsayma'
+      'İşletmenin türüne göre "esaslı" kabul edilemeyecek düşük tutarlarda yatırım yapılması',
+      'Yatırımın fiilen "risk altında" olduğunun kanıtlanamaması (ör. fonların emanet hesapta tutulması)',
+      'Yalnızca yatırımcının kendi geçimini sağlayabilecek marjinal bir işletme kurulması',
+      'İşletmenin yönetim ve geliştirilmesinde aktif rol üstlenildiğinin gösterilememesi',
+      'E-2\'nin otomatik olarak kalıcı oturma iznine dönüşeceğinin varsayılması'
     ],
     greenCardPathEn: {
       answer: 'no',
@@ -343,10 +343,10 @@ export const visaCategories: VisaCategory[] = [
     },
     greenCardPathTr: {
       answer: 'hayır',
-      explanation: 'E-2 doğrudan yeşil karta yol açmaz. Süresiz olarak tutulabilen yenilenebilir bir vizedir ancak çifte niyet hükümleri yoktur. Kalıcı oturum arayan E-2 sahiplerinin tipik olarak işveren sponsorluğu (uygunsa), EB-5 yatırımı veya aile temelli göçmenlik gibi ayrı yollar izlemesi gerekir.'
+      explanation: 'E-2 doğrudan yeşil karta geçiş imkanı sunmaz. İşletme faal kaldığı sürece süresiz yenilenebilen bir vize olmakla birlikte çifte niyet (dual intent) hükmü içermez. Kalıcı oturum hedefleyen E-2 sahiplerinin işveren sponsorluğu, EB-5 yatırımcı vizesi veya aile temelli göçmenlik gibi ayrı bir yol izlemesi gerekir.'
     },
     strategicNotesEn: 'E-2 is highly attractive for Turkish entrepreneurs because Turkey has a treaty with the US. The visa can be renewed indefinitely as long as the business remains viable. However, the lack of a direct green card path means long-term planning should consider other permanent residence options. The investment requirement varies by business type but generally starts around $100,000 for small businesses.',
-    strategicNotesTr: 'E-2, Türkiye\'nin ABD ile anlaşması olduğu için Türk girişimciler için son derece çekicidir. Vize, işletme ayakta kaldığı sürece süresiz olarak yenilenebilir. Ancak doğrudan yeşil kart yolunun olmaması, uzun vadeli planlamanın diğer kalıcı oturum seçeneklerini dikkate alması gerektiği anlamına gelir. Yatırım gereksinimi işletme türüne göre değişir ancak genellikle küçük işletmeler için yaklaşık 100.000$\'dan başlar.',
+    strategicNotesTr: 'Türkiye\'nin ABD ile E-2 anlaşmasına taraf olması, Türk girişimciler için bu vizeyi özellikle erişilebilir kılmaktadır. İşletme faaliyetini sürdürdükçe vize süresiz olarak yenilenebilir. Ancak doğrudan yeşil kart yolu bulunmadığından, uzun vadeli planlama yapılırken kalıcı oturum için alternatif stratejiler de göz önünde tutulmalıdır. Yatırım tutarı işletmenin niteliğine göre değişmekle birlikte küçük ölçekli işletmelerde yaklaşık 100.000 dolardan başlamaktadır.',
     uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/temporary-workers/e-2-treaty-investors'
   },
   {

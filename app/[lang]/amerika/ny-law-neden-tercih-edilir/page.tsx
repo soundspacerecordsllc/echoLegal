@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "Why Choose New York Law - Governing Law Selection | EchoLegal"
-      : "NY Law Neden Tercih Edilir - Governing Law Seçimi | EchoLegal",
+      : "New York Hukuku Neden Tercih Edilir – Uygulanacak Hukuk Seçimi | EchoLegal",
     description: isEnglish
       ? "Why New York law is preferred for international commercial contracts. Choice of law considerations and when NY law makes sense."
-      : "Uluslararası ticari sözleşmeler için New York hukukunun neden tercih edildiği. Hukuk seçimi değerlendirmeleri ve NY hukukunun ne zaman mantıklı olduğu.",
+      : "Uluslararası ticari sözleşmelerde New York hukukunun neden tercih edildiği. Hukuk seçimi değerlendirmeleri ve NY hukukunun hangi durumlarda uygun olduğu.",
   }
 }
 
@@ -33,39 +33,39 @@ export default async function NYLawPage({
 
   const faqItems = [
     {
-      question: isEnglish ? "Can I choose New York law even if neither party is in New York?" : "Tarafların hiçbiri New York'ta olmasa bile New York hukukunu seçebilir miyim?",
+      question: isEnglish ? "Can I choose New York law even if neither party is in New York?" : "Tarafların hiçbiri New York'ta bulunmasa bile New York hukukunu seçebilir miyim?",
       answer: isEnglish
         ? "Yes, under NY General Obligations Law § 5-1401, parties can choose NY law for contracts involving at least $250,000. This makes NY law accessible for significant commercial transactions regardless of party location."
-        : "Evet, NY Genel Yükümlülükler Yasası § 5-1401 kapsamında, taraflar en az 250.000 dolar içeren sözleşmeler için NY hukukunu seçebilir. Bu, tarafların konumundan bağımsız olarak önemli ticari işlemler için NY hukukunu erişilebilir kılar."
+        : "Evet. NY Genel Yükümlülükler Yasası (General Obligations Law) § 5-1401 uyarınca, toplam değeri en az 250.000 dolar olan sözleşmelerde taraflar NY hukukunu seçebilir. Bu düzenleme sayesinde, tarafların fiziksel konumundan bağımsız olarak büyük ölçekli ticari işlemlerde NY hukuku uygulanabilir."
     },
     {
-      question: isEnglish ? "What is the difference between New York and Delaware law?" : "New York ve Delaware hukuku arasındaki fark nedir?",
+      question: isEnglish ? "What is the difference between New York and Delaware law?" : "New York hukuku ile Delaware hukuku arasındaki fark nedir?",
       answer: isEnglish
         ? "Both are well-developed. Delaware is particularly known for corporate law (the Court of Chancery). NY is broader and often chosen for commercial contracts, financing transactions, and international deals."
-        : "Her ikisi de iyi gelişmiştir. Delaware özellikle şirket hukuku (Court of Chancery) ile tanınır. NY daha geniştir ve genellikle ticari sözleşmeler, finansman işlemleri ve uluslararası anlaşmalar için seçilir."
+        : "Her iki hukuk düzeni de köklü bir birikime sahiptir. Delaware, özellikle şirketler hukuku alanında (Court of Chancery sayesinde) öne çıkar. New York ise daha geniş kapsamlıdır ve ticari sözleşmeler, finansman işlemleri ile uluslararası anlaşmalarda sıklıkla tercih edilir."
     },
     {
-      question: isEnglish ? "Does choosing NY law mean I have to sue in NY courts?" : "NY hukukunu seçmek NY mahkemelerinde dava açmam gerektiği anlamına mı gelir?",
+      question: isEnglish ? "Does choosing NY law mean I have to sue in NY courts?" : "NY hukukunu seçmek, davamı NY mahkemelerinde açmam gerektiği anlamına mı gelir?",
       answer: isEnglish
         ? "Not necessarily. Governing law and dispute forum are separate. You can choose NY law to govern the contract while specifying arbitration or a different court for disputes. However, choosing NY courts (forum selection) often accompanies NY law choice."
-        : "Mutlaka değil. Yürürlükteki hukuk ve uyuşmazlık forumu ayrıdır. Uyuşmazlıklar için tahkim veya farklı bir mahkeme belirtirken sözleşmeyi yönetmek için NY hukukunu seçebilirsiniz. Ancak, NY mahkemelerini seçmek (forum seçimi) genellikle NY hukuku seçimine eşlik eder."
+        : "Hayır, mutlaka değil. Uygulanacak hukuk ile uyuşmazlık forumu birbirinden ayrı kavramlardır. Sözleşmeye NY hukukunun uygulanmasını kararlaştırırken, uyuşmazlıkların tahkim yoluyla veya başka bir mahkemede çözülmesini öngörebilirsiniz. Ancak uygulamada, NY hukuku seçimi genellikle NY mahkemelerinin yetkili forum olarak belirlenmesiyle birlikte yapılır."
     },
     {
-      question: isEnglish ? "Is English required for NY law contracts?" : "NY hukuku sözleşmeleri için İngilizce gerekli mi?",
+      question: isEnglish ? "Is English required for NY law contracts?" : "NY hukukuna tâbi sözleşmelerin İngilizce hazırlanması zorunlu mu?",
       answer: isEnglish
         ? "No legal requirement, but practical considerations favor English. NY courts operate in English, and most NY commercial law precedents and practice are in English. Bilingual contracts can specify which version controls."
-        : "Yasal bir gereklilik yok, ancak pratik değerlendirmeler İngilizce'yi destekler. NY mahkemeleri İngilizce çalışır ve çoğu NY ticaret hukuku emsal ve uygulaması İngilizce'dir. İki dilli sözleşmeler hangi versiyonun geçerli olduğunu belirtebilir."
+        : "Yasal bir zorunluluk yoktur; ancak uygulamada İngilizce tercih edilir. NY mahkemeleri İngilizce çalışır ve NY ticaret hukukundaki içtihatlar ile yerleşik uygulama büyük ölçüde İngilizce'dir. İki dilli sözleşmelerde, uyuşmazlık hâlinde hangi dil versiyonunun esas alınacağı açıkça belirtilmelidir."
     },
     {
-      question: isEnglish ? "What about consumer contracts or employment agreements?" : "Tüketici sözleşmeleri veya iş sözleşmeleri ne olacak?",
+      question: isEnglish ? "What about consumer contracts or employment agreements?" : "Tüketici sözleşmeleri veya iş sözleşmeleri için durum nedir?",
       answer: isEnglish
         ? "Choice of law has limitations. For consumer and employment contracts, mandatory protections of the consumer/employee's home jurisdiction often apply regardless of contractual choice. NY law choice works best for B2B commercial contracts."
-        : "Hukuk seçiminin sınırlamaları var. Tüketici ve iş sözleşmeleri için, tüketici/çalışanın kendi yargı alanının zorunlu korumaları genellikle sözleşme seçiminden bağımsız olarak uygulanır. NY hukuku seçimi B2B ticari sözleşmeler için en iyi şekilde çalışır."
+        : "Hukuk seçimi bu alanlarda sınırlı etkiye sahiptir. Tüketici ve iş sözleşmelerinde, tüketicinin veya çalışanın bulunduğu ülkenin emredici koruma hükümleri, sözleşmedeki hukuk seçiminden bağımsız olarak uygulanır. NY hukuku seçimi, en iyi sonucu ticari (B2B) sözleşmelerde verir."
     }
   ]
 
   const relatedPages = [
-    { slug: 'abdde-is-yapanlar-icin-sozlesmeler', title: isEnglish ? 'Contracts for US Business' : "ABD'de İş Yapanlar İçin Sözleşmeler" },
+    { slug: 'abdde-is-yapanlar-icin-sozlesmeler', title: isEnglish ? 'Contracts for US Business' : "ABD'de Ticari Faaliyet İçin Sözleşmeler" },
     { slug: 'abdde-llc-kurmak', title: isEnglish ? 'Forming an LLC in the US' : "ABD'de LLC Kurmak" },
   ]
 
@@ -75,18 +75,18 @@ export default async function NYLawPage({
           lang={lang}
           items={[
             { label: isEnglish ? 'Amerika Hub' : 'Amerika', href: `/${lang}/amerika` },
-            { label: isEnglish ? 'Why Choose New York Law' : 'NY Law Neden Tercih Edilir' }
+            { label: isEnglish ? 'Why Choose New York Law' : 'New York Hukuku Neden Tercih Edilir' }
           ]}
         />
 
         <TrustStrip lang={lang} />
 
         <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: New York' : 'Yargı Yetkisi: New York'}
+          📍 {isEnglish ? 'Jurisdiction: New York' : 'Kapsam: New York'}
         </span>
 
         <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
-          {isEnglish ? "Why Choose New York Law" : "NY Law Neden Tercih Edilir"}
+          {isEnglish ? "Why Choose New York Law" : "New York Hukuku Neden Tercih Edilir"}
         </h1>
 
         <p className="text-sm text-gray-500 mb-8">
@@ -99,19 +99,19 @@ export default async function NYLawPage({
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
               ? "New York has well-developed commercial law with extensive case precedents"
-              : "New York'un kapsamlı dava emsal kararlarıyla iyi gelişmiş ticaret hukuku var"}</li>
+              : "New York, zengin içtihat birikimiyle köklü bir ticaret hukuku geleneğine sahiptir"}</li>
             <li>• {isEnglish
               ? "NY GOL § 5-1401 allows parties to choose NY law for contracts ≥$250K"
-              : "NY GOL § 5-1401, tarafların ≥250K dolar sözleşmeler için NY hukukunu seçmesine izin verir"}</li>
+              : "NY GOL § 5-1401, toplam değeri 250.000 dolar ve üzerindeki sözleşmelerde tarafların NY hukukunu seçmesine olanak tanır"}</li>
             <li>• {isEnglish
               ? "International commercial contracts often specify NY law for predictability"
-              : "Uluslararası ticari sözleşmeler genellikle öngörülebilirlik için NY hukukunu belirtir"}</li>
+              : "Uluslararası ticari sözleşmelerde, sonuçların öngörülebilirliği nedeniyle NY hukuku sıklıkla tercih edilir"}</li>
             <li>• {isEnglish
               ? "Governing law and dispute forum are separate choices"
-              : "Yürürlükteki hukuk ve uyuşmazlık forumu ayrı seçimlerdir"}</li>
+              : "Uygulanacak hukuk ile uyuşmazlık forumu birbirinden bağımsız olarak belirlenebilir"}</li>
             <li>• {isEnglish
               ? "Not ideal for consumer/employment contracts due to mandatory local protections"
-              : "Zorunlu yerel korumalar nedeniyle tüketici/iş sözleşmeleri için ideal değil"}</li>
+              : "Emredici yerel koruma hükümleri nedeniyle tüketici ve iş sözleşmeleri için uygun değildir"}</li>
           </ul>
         </section>
 
@@ -123,29 +123,29 @@ export default async function NYLawPage({
 
           <div className="space-y-4">
             <div className="border border-gray-200 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">{isEnglish ? 'Developed Case Law' : 'Gelişmiş İçtihat'}</h3>
+              <h3 className="font-semibold mb-2">{isEnglish ? 'Developed Case Law' : 'Köklü İçtihat Birikimi'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "NY courts have decided thousands of commercial disputes, creating extensive precedents. This means more predictable outcomes and clearer interpretations of contract terms."
-                  : "NY mahkemeleri binlerce ticari uyuşmazlığı karara bağlayarak kapsamlı emsal kararlar oluşturmuştur. Bu, daha öngörülebilir sonuçlar ve sözleşme koşullarının daha net yorumları anlamına gelir."}
+                  : "NY mahkemeleri binlerce ticari uyuşmazlığı karara bağlamış ve geniş bir içtihat birikimi oluşturmuştur. Bu durum, sözleşme hükümlerinin nasıl yorumlanacağı konusunda daha yüksek öngörülebilirlik ve netlik sağlar."}
               </p>
             </div>
 
             <div className="border border-gray-200 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">{isEnglish ? 'Commercial Division' : 'Ticaret Bölümü'}</h3>
+              <h3 className="font-semibold mb-2">{isEnglish ? 'Commercial Division' : 'Ticaret Mahkemesi (Commercial Division)'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "NY Supreme Court has specialized Commercial Division courts with judges experienced in complex business disputes. Cases are handled more efficiently than general dockets."
-                  : "NY Yüksek Mahkemesi, karmaşık iş uyuşmazlıklarında deneyimli hakimlerle uzmanlaşmış Ticaret Bölümü mahkemelerine sahiptir. Davalar genel dosyalardan daha verimli şekilde yürütülür."}
+                  : "NY Yüksek Mahkemesi bünyesindeki Commercial Division, karmaşık ticari uyuşmazlıklarda uzmanlaşmış hakimlerden oluşur. Davalar, genel mahkemelere kıyasla çok daha hızlı ve etkin biçimde yürütülür."}
               </p>
             </div>
 
             <div className="border border-gray-200 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">{isEnglish ? 'Party Autonomy' : 'Taraf Özerkliği'}</h3>
+              <h3 className="font-semibold mb-2">{isEnglish ? 'Party Autonomy' : 'Sözleşme Özgürlüğü'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "NY law respects freedom of contract. Courts generally enforce terms as written without excessive paternalism, which sophisticated business parties often prefer."
-                  : "NY hukuku sözleşme özgürlüğüne saygı gösterir. Mahkemeler genellikle aşırı paternalizm olmadan koşulları yazıldığı gibi uygular, bu da sofistike iş taraflarının genellikle tercih ettiği bir durumdur."}
+                  : "NY hukuku, sözleşme özgürlüğü ilkesine büyük önem verir. Mahkemeler, hükümleri kural olarak yazıldığı şekliyle uygular ve tarafların iradelerine gereksiz müdahaleden kaçınır. Bu yaklaşım, deneyimli ticari aktörler tarafından sıklıkla tercih edilir."}
               </p>
             </div>
 
@@ -154,7 +154,7 @@ export default async function NYLawPage({
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "NY law is familiar to international parties and their counsel. Major financing, M&A, and cross-border transactions routinely use NY law, creating network effects."
-                  : "NY hukuku uluslararası taraflara ve danışmanlarına aşinadır. Büyük finansman, M&A ve sınır ötesi işlemler rutin olarak NY hukukunu kullanır ve ağ etkileri yaratır."}
+                  : "NY hukuku, uluslararası taraflar ve danışmanları tarafından iyi bilinir. Büyük ölçekli finansman, M&A ve sınır ötesi işlemlerde NY hukukunun yaygın kullanımı, bir tür standart hâline gelmesini sağlamıştır."}
               </p>
             </div>
           </div>
@@ -170,17 +170,17 @@ export default async function NYLawPage({
             <p className="text-blue-800 mb-4">
               {isEnglish
                 ? "New York General Obligations Law § 5-1401 provides:"
-                : "New York Genel Yükümlülükler Yasası § 5-1401 şunları sağlar:"}
+                : "New York Genel Yükümlülükler Yasası (General Obligations Law) § 5-1401 şu hükmü içerir:"}
             </p>
             <blockquote className="border-l-4 border-blue-400 pl-4 italic text-blue-900">
               {isEnglish
                 ? "The parties to any contract...may agree that the law of this state shall govern their rights and duties in whole or in part, whether or not such contract...bears a reasonable relation to this state."
-                : "Herhangi bir sözleşmenin tarafları... bu devletin hukukunun, sözleşmenin bu devletle makul bir ilişkisi olup olmadığına bakılmaksızın, haklarını ve görevlerini tamamen veya kısmen yöneteceğini kabul edebilir."}
+                : "Herhangi bir sözleşmenin tarafları, söz konusu sözleşmenin bu eyaletle makul bir bağlantısı bulunup bulunmadığına bakılmaksızın, hak ve yükümlülüklerinin tamamının veya bir kısmının bu eyalet hukukuna tâbi olacağını kararlaştırabilir."}
             </blockquote>
             <p className="text-sm text-blue-700 mt-4">
               {isEnglish
                 ? "This applies to contracts involving $250,000 or more in aggregate value."
-                : "Bu, toplam değeri 250.000 dolar veya daha fazla olan sözleşmeler için geçerlidir."}
+                : "Bu hüküm, toplam değeri 250.000 dolar veya üzerinde olan sözleşmelere uygulanır."}
             </p>
           </div>
         </section>
@@ -188,7 +188,7 @@ export default async function NYLawPage({
         {/* When NOT to Choose NY Law */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">
-            {isEnglish ? 'When NY Law May Not Be Ideal' : 'NY Hukuku Ne Zaman İdeal Olmayabilir'}
+            {isEnglish ? 'When NY Law May Not Be Ideal' : 'NY Hukukunun Uygun Olmayabileceği Durumlar'}
           </h2>
 
           <div className="space-y-4">
@@ -199,7 +199,7 @@ export default async function NYLawPage({
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "Many jurisdictions have mandatory consumer protection laws that apply regardless of choice of law. A NY law clause won't override consumer protections in the consumer's home jurisdiction."
-                  : "Birçok yargı alanı, hukuk seçiminden bağımsız olarak uygulanan zorunlu tüketici koruma yasalarına sahiptir. NY hukuku maddesi, tüketicinin kendi yargı alanındaki tüketici korumalarını geçersiz kılmaz."}
+                  : "Pek çok ülke, hukuk seçimine bakılmaksızın uygulanan emredici tüketici koruma düzenlemelerine sahiptir. Sözleşmedeki NY hukuku maddesi, tüketicinin kendi ülkesindeki koruma hükümlerini geçersiz kılamaz."}
               </p>
             </div>
 
@@ -210,18 +210,18 @@ export default async function NYLawPage({
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "Employment law has strong local mandatory rules. Even with NY law choice, local labor laws where the employee works typically apply to key protections."
-                  : "İş hukukunun güçlü yerel zorunlu kuralları vardır. NY hukuku seçimiyle bile, çalışanın çalıştığı yerdeki yerel iş yasaları genellikle temel korumalara uygulanır."}
+                  : "İş hukuku alanında güçlü emredici yerel kurallar mevcuttur. Sözleşmede NY hukuku seçilmiş olsa dahi, çalışanın fiilen çalıştığı yerin iş mevzuatı temel koruma hükümleri bakımından genellikle uygulanır."}
               </p>
             </div>
 
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
               <h3 className="font-semibold text-amber-900 mb-2">
-                {isEnglish ? 'Small Contracts' : 'Küçük Sözleşmeler'}
+                {isEnglish ? 'Small Contracts' : 'Düşük Tutarlı Sözleşmeler'}
               </h3>
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "For contracts under $250,000, the special NY rule doesn't apply and courts may apply the law with the most significant relationship to the transaction."
-                  : "250.000 doların altındaki sözleşmeler için özel NY kuralı uygulanmaz ve mahkemeler işlemle en önemli ilişkiye sahip hukuku uygulayabilir."}
+                  : "Toplam değeri 250.000 doların altındaki sözleşmelerde § 5-1401 hükmü uygulanmaz. Bu durumda mahkemeler, işlemle en yakın ilişkiye sahip hukuk düzenini uygulayabilir."}
               </p>
             </div>
           </div>
@@ -282,7 +282,7 @@ export default async function NYLawPage({
           <p>
             {isEnglish
               ? 'This content is for general informational purposes only and does not constitute legal advice.'
-              : 'Bu içerik yalnızca genel bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez.'}
+              : 'Bu içerik yalnızca genel bilgilendirme amacıyla hazırlanmış olup hukuki danışmanlık niteliği taşımaz.'}
           </p>
         </div>
     </main>

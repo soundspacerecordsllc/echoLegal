@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "Contracts for Doing Business in the US | EchoLegal"
-      : "ABD'de İş Yapanlar İçin Sözleşmeler | EchoLegal",
+      : "ABD'de Ticari Faaliyet İçin Gerekli Sözleşmeler | EchoLegal",
     description: isEnglish
       ? "Essential contracts for US business operations. NDAs, service agreements, independent contractor agreements, and governing law selection."
-      : "ABD iş operasyonları için temel sözleşmeler. NDA'lar, hizmet sözleşmeleri, bağımsız yüklenici sözleşmeleri ve governing law seçimi.",
+      : "ABD'de ticari faaliyet yürütenler için temel sözleşme türleri. NDA, hizmet sözleşmesi, bağımsız yüklenici sözleşmesi ve uygulanacak hukuk seçimi.",
   }
 }
 
@@ -32,34 +32,34 @@ export default async function SozlesmelerPage({
 
   const faqItems = [
     {
-      question: isEnglish ? "Do I need contracts in English even if I work with Turkish clients?" : "Türk müşterilerle çalışsam bile İngilizce sözleşmelere ihtiyacım var mı?",
+      question: isEnglish ? "Do I need contracts in English even if I work with Turkish clients?" : "Türk müşterilerimle çalışırken bile sözleşmelerimi İngilizce hazırlamam gerekir mi?",
       answer: isEnglish
         ? "If your LLC is US-based and you want US law to govern, English contracts with clear choice of law provisions are advisable. Bilingual versions can provide clarity for all parties."
-        : "LLC'niz ABD merkezliyse ve ABD hukukunun yönetmesini istiyorsanız, açık hukuk seçimi hükümleri olan İngilizce sözleşmeler tavsiye edilir. İki dilli versiyonlar tüm taraflar için netlik sağlayabilir."
+        : "LLC'niz ABD merkezliyse ve sözleşmeye ABD hukukunun uygulanmasını istiyorsanız, açık bir hukuk seçimi maddesi içeren İngilizce sözleşmeler hazırlamanız önerilir. İki dilli versiyonlar hazırlamak, tüm taraflar açısından netlik sağlar."
     },
     {
-      question: isEnglish ? "What is a governing law clause?" : "Governing law (yürürlükteki hukuk) maddesi nedir?",
+      question: isEnglish ? "What is a governing law clause?" : "Governing law (uygulanacak hukuk) maddesi nedir?",
       answer: isEnglish
         ? "A governing law clause specifies which jurisdiction's laws will interpret and govern the contract. For US-based businesses, New York or Delaware law are common choices due to their well-developed commercial law."
-        : "Governing law maddesi, hangi yargı alanının yasalarının sözleşmeyi yorumlayacağını ve yöneteceğini belirtir. ABD merkezli işletmeler için, iyi gelişmiş ticaret hukuku nedeniyle New York veya Delaware hukuku yaygın seçimlerdir."
+        : "Governing law maddesi, sözleşmenin hangi hukuk düzenine tâbi olacağını ve bu çerçevede nasıl yorumlanacağını belirler. ABD merkezli işletmeler, köklü ticaret hukuku birikimi nedeniyle genellikle New York veya Delaware hukukunu tercih eder."
     },
     {
-      question: isEnglish ? "Should I use arbitration or court litigation?" : "Tahkim mi yoksa mahkeme davası mı kullanmalıyım?",
+      question: isEnglish ? "Should I use arbitration or court litigation?" : "Tahkim mi yoksa mahkeme yargılaması mı tercih etmeliyim?",
       answer: isEnglish
         ? "Arbitration is often faster and more private but can be expensive. Court litigation provides more formal procedures and appeal rights. For international disputes, arbitration with a recognized institution (AAA, ICC) is often preferred for enforceability."
-        : "Tahkim genellikle daha hızlı ve daha özeldir ancak pahalı olabilir. Mahkeme davası daha resmi prosedürler ve temyiz hakları sağlar. Uluslararası uyuşmazlıklar için, tanınmış bir kurumla (AAA, ICC) tahkim genellikle uygulanabilirlik için tercih edilir."
+        : "Tahkim genellikle daha hızlı ve gizlidir; ancak maliyeti yüksek olabilir. Mahkeme yargılaması ise daha resmi usul güvenceleri ve temyiz hakkı sunar. Uluslararası uyuşmazlıklarda, kararların tenfiz edilebilirliği açısından tanınmış kurumlar (AAA, ICC) nezdinde tahkim sıklıkla tercih edilir."
     },
     {
-      question: isEnglish ? "What makes a contract enforceable in the US?" : "Bir sözleşmeyi ABD'de uygulanabilir kılan nedir?",
+      question: isEnglish ? "What makes a contract enforceable in the US?" : "ABD hukukuna göre bir sözleşmenin geçerli ve uygulanabilir olması için ne gerekir?",
       answer: isEnglish
         ? "Basic requirements: offer, acceptance, consideration (exchange of value), capacity, and legality. Written contracts are preferred for evidence. Some contracts (real estate, agreements lasting over a year) must be written under the Statute of Frauds."
-        : "Temel gereksinimler: teklif, kabul, karşılık (değer değişimi), ehliyet ve yasallık. Kanıt için yazılı sözleşmeler tercih edilir. Bazı sözleşmeler (gayrimenkul, bir yıldan fazla süren anlaşmalar) Dolandırıcılık Yasası kapsamında yazılı olmalıdır."
+        : "Temel unsurlar: icap, kabul, karşılık (ivaz), ehliyet ve hukuka uygunluk. İspat kolaylığı açısından yazılı sözleşme tercih edilir. Bazı sözleşmelerin (gayrimenkul işlemleri, süresi bir yılı aşan anlaşmalar gibi) Statute of Frauds kuralı gereğince yazılı yapılması zorunludur."
     },
     {
-      question: isEnglish ? "Do I need a lawyer to draft contracts?" : "Sözleşmeleri hazırlamak için avukata ihtiyacım var mı?",
+      question: isEnglish ? "Do I need a lawyer to draft contracts?" : "Sözleşme hazırlamak için avukata ihtiyacım var mı?",
       answer: isEnglish
         ? "Templates can work for straightforward situations. For significant deals, complex terms, or when the other party has legal representation, professional review is advisable. The cost of legal review is often less than the cost of a poorly drafted contract."
-        : "Şablonlar basit durumlar için işe yarayabilir. Önemli anlaşmalar, karmaşık koşullar veya karşı tarafın hukuki temsili olduğunda, profesyonel inceleme tavsiye edilir. Hukuki incelemenin maliyeti genellikle kötü hazırlanmış bir sözleşmenin maliyetinden daha azdır."
+        : "Basit işlemler için şablonlar yeterli olabilir. Ancak önemli tutarlı anlaşmalarda, karmaşık hükümlerde veya karşı tarafın avukatla temsil edildiği durumlarda profesyonel hukuki inceleme şiddetle tavsiye edilir. Bir avukatın inceleme maliyeti, kötü hazırlanmış bir sözleşmenin doğuracağı zararın yanında genellikle düşük kalır."
     }
   ]
 
@@ -69,40 +69,40 @@ export default async function SozlesmelerPage({
       title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
       desc: isEnglish
         ? 'Protects confidential information shared between parties. Essential before discussing business ideas, partnerships, or proprietary information.'
-        : 'Taraflar arasında paylaşılan gizli bilgileri korur. İş fikirlerini, ortaklıkları veya özel bilgileri tartışmadan önce gereklidir.'
+        : 'Taraflar arasında paylaşılan gizli bilgilerin korunmasını sağlar. İş fikirleri, ortaklık görüşmeleri veya ticari sır niteliğindeki bilgilerin paylaşılmasından önce mutlaka imzalanmalıdır.'
     },
     {
       slug: 'service-agreement',
       title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
       desc: isEnglish
         ? 'Defines scope, payment, timeline, and terms for providing services. Foundation of client relationships.'
-        : 'Hizmet sunumu için kapsam, ödeme, zaman çizelgesi ve koşulları tanımlar. Müşteri ilişkilerinin temeli.'
+        : 'Sunulacak hizmetin kapsamını, ödeme koşullarını, takvimini ve genel şartlarını düzenler. Müşteri ilişkilerinin hukuki temelini oluşturur.'
     },
     {
       slug: 'independent-contractor',
       title: isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
       desc: isEnglish
         ? 'For hiring contractors (not employees). Crucial for establishing proper worker classification and IP ownership.'
-        : 'Yüklenicileri (çalışan değil) işe almak için. Uygun işçi sınıflandırması ve fikri mülkiyet sahipliği oluşturmak için kritik.'
+        : 'Çalışan değil yüklenici olarak hizmet alımında kullanılır. İşçi sınıflandırmasının doğru yapılması ve fikri mülkiyet haklarının belirlenmesi açısından kritik öneme sahiptir.'
     },
     {
       slug: 'freelance-agreement',
       title: isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
       desc: isEnglish
         ? 'Tailored for freelance professionals. Covers project scope, revisions, payment terms, and ownership of work product.'
-        : 'Serbest çalışan profesyoneller için özelleştirilmiş. Proje kapsamı, revizyonlar, ödeme koşulları ve iş ürünü sahipliğini kapsar.'
+        : 'Serbest çalışan profesyonellere özel olarak düzenlenmiştir. Proje kapsamı, revizyon hakları, ödeme koşulları ve ortaya çıkan eserin mülkiyetini düzenler.'
     },
     {
       slug: 'influencer-agreement',
       title: isEnglish ? 'Influencer Agreement' : 'Influencer Sözleşmesi',
       desc: isEnglish
         ? 'For brand collaborations and sponsored content. Includes FTC disclosure requirements, content rights, and exclusivity terms.'
-        : 'Marka işbirlikleri ve sponsorlu içerik için. FTC ifşa gereksinimleri, içerik hakları ve münhasırlık koşullarını içerir.'
+        : 'Marka iş birlikleri ve sponsorlu içerik üretimi için hazırlanmıştır. FTC bilgilendirme yükümlülükleri, içerik hakları ve münhasırlık koşullarını kapsar.'
     }
   ]
 
   const relatedPages = [
-    { slug: 'ny-law-neden-tercih-edilir', title: isEnglish ? 'Why Choose New York Law' : 'NY Law Neden Tercih Edilir' },
+    { slug: 'ny-law-neden-tercih-edilir', title: isEnglish ? 'Why Choose New York Law' : 'New York Hukuku Neden Tercih Edilir' },
     { slug: 'abdde-llc-kurmak', title: isEnglish ? 'Forming an LLC in the US' : "ABD'de LLC Kurmak" },
   ]
 
@@ -112,18 +112,18 @@ export default async function SozlesmelerPage({
           lang={lang}
           items={[
             { label: isEnglish ? 'Amerika Hub' : 'Amerika', href: `/${lang}/amerika` },
-            { label: isEnglish ? 'Contracts for US Business' : "ABD'de İş Yapanlar İçin Sözleşmeler" }
+            { label: isEnglish ? 'Contracts for US Business' : "ABD'de Ticari Faaliyet İçin Sözleşmeler" }
           ]}
         />
 
         <TrustStrip lang={lang} />
 
         <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: United States / New York' : 'Yargı Yetkisi: ABD / New York'}
+          📍 {isEnglish ? 'Jurisdiction: United States / New York' : 'Kapsam: ABD / New York'}
         </span>
 
         <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
-          {isEnglish ? "Contracts for Doing Business in the US" : "ABD'de İş Yapanlar İçin Sözleşmeler"}
+          {isEnglish ? "Contracts for Doing Business in the US" : "ABD'de Ticari Faaliyet İçin Gerekli Sözleşmeler"}
         </h1>
 
         <p className="text-sm text-gray-500 mb-8">
@@ -136,19 +136,19 @@ export default async function SozlesmelerPage({
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
               ? "Written contracts are essential for US business operations"
-              : "Yazılı sözleşmeler ABD iş operasyonları için gereklidir"}</li>
+              : "ABD'de ticari faaliyet yürütmek için yazılı sözleşme şarttır"}</li>
             <li>• {isEnglish
               ? "Governing law clause determines which state's law applies"
-              : "Governing law maddesi hangi eyalet hukukunun geçerli olduğunu belirler"}</li>
+              : "Governing law maddesi, sözleşmeye hangi eyalet hukukunun uygulanacağını belirler"}</li>
             <li>• {isEnglish
               ? "New York law is commonly chosen for commercial contracts"
-              : "New York hukuku ticari sözleşmeler için yaygın olarak seçilir"}</li>
+              : "Ticari sözleşmelerde New York hukuku yaygın olarak tercih edilir"}</li>
             <li>• {isEnglish
               ? "NDAs should precede any confidential discussions"
-              : "NDA'lar herhangi bir gizli tartışmadan önce gelmelidir"}</li>
+              : "Gizli bilgi paylaşımından önce mutlaka NDA imzalanmalıdır"}</li>
             <li>• {isEnglish
               ? "Contractor vs employee classification has significant legal implications"
-              : "Yüklenici vs çalışan sınıflandırmasının önemli hukuki etkileri vardır"}</li>
+              : "Yüklenici ile çalışan ayrımının doğru yapılmaması ciddi hukuki sonuçlar doğurabilir"}</li>
           </ul>
         </section>
 
@@ -197,11 +197,11 @@ export default async function SozlesmelerPage({
 
           <div className="space-y-4">
             <div className="border border-gray-200 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">{isEnglish ? 'Governing Law' : 'Yürürlükteki Hukuk'}</h3>
+              <h3 className="font-semibold mb-2">{isEnglish ? 'Governing Law' : 'Uygulanacak Hukuk'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "Specifies which state's laws will govern the contract. New York and Delaware are popular choices for commercial contracts."
-                  : "Hangi eyalet yasalarının sözleşmeyi yöneteceğini belirtir. New York ve Delaware ticari sözleşmeler için popüler seçimlerdir."}
+                  : "Sözleşmenin hangi eyalet hukukuna tâbi olacağını belirler. Ticari sözleşmelerde New York ve Delaware hukuku en sık tercih edilen seçeneklerdir."}
               </p>
             </div>
 
@@ -210,7 +210,7 @@ export default async function SozlesmelerPage({
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "How disputes will be resolved - litigation, arbitration, or mediation. Consider enforceability across borders for international parties."
-                  : "Uyuşmazlıkların nasıl çözüleceği - dava, tahkim veya arabuluculuk. Uluslararası taraflar için sınırlar ötesi uygulanabilirliği düşünün."}
+                  : "Uyuşmazlıkların hangi yolla çözüleceğini düzenler: mahkeme yargılaması, tahkim veya arabuluculuk. Uluslararası taraflar söz konusu olduğunda, verilen kararın sınır ötesi tenfiz edilebilirliği ayrıca değerlendirilmelidir."}
               </p>
             </div>
 
@@ -219,7 +219,7 @@ export default async function SozlesmelerPage({
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "Who owns work product, pre-existing IP, and derivative works. Critical for creative and technical services."
-                  : "İş ürününü, önceden var olan fikri mülkiyeti ve türev eserleri kimin sahip olduğu. Yaratıcı ve teknik hizmetler için kritik."}
+                  : "Ortaya çıkan eserin, mevcut fikri mülkiyetin ve türev çalışmaların kime ait olacağını düzenler. Yaratıcı ve teknik hizmet ilişkilerinde bu madde büyük önem taşır."}
               </p>
             </div>
 
@@ -228,7 +228,7 @@ export default async function SozlesmelerPage({
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "Caps on damages and exclusions of certain damage types. Important for managing business risk."
-                  : "Tazminat üst sınırları ve belirli tazminat türlerinin istisnaları. İş riskini yönetmek için önemli."}
+                  : "Tazminat tutarına üst sınır getirilmesini ve belirli zarar türlerinin kapsam dışı bırakılmasını düzenler. Ticari riskin yönetimi açısından temel bir hükümdür."}
               </p>
             </div>
 
@@ -237,7 +237,7 @@ export default async function SozlesmelerPage({
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "How either party can end the agreement, notice requirements, and what happens to ongoing obligations."
-                  : "Her iki tarafın anlaşmayı nasıl sonlandırabileceği, bildirim gereksinimleri ve devam eden yükümlülüklere ne olacağı."}
+                  : "Taraflardan her birinin sözleşmeyi hangi koşullarda ve nasıl feshedebileceğini, bildirim sürelerini ve fesih sonrasında devam eden yükümlülüklerin akıbetini düzenler."}
               </p>
             </div>
           </div>
@@ -276,7 +276,7 @@ export default async function SozlesmelerPage({
           <p>
             {isEnglish
               ? 'This content is for general informational purposes only. Templates should be reviewed and customized for your specific situation.'
-              : 'Bu içerik yalnızca genel bilgilendirme amaçlıdır. Şablonlar özel durumunuz için gözden geçirilmeli ve özelleştirilmelidir.'}
+              : 'Bu içerik yalnızca genel bilgilendirme amacıyla sunulmaktadır. Şablonlar, somut durumunuza uygun biçimde gözden geçirilmeli ve uyarlanmalıdır.'}
           </p>
         </div>
     </main>

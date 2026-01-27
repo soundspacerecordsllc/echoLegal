@@ -7,7 +7,7 @@ import AppShell from '@/components/AppShell'
 export const metadata: Metadata = {
   title: 'EchoLegal | Ücretsiz Hukuki Ansiklopedi ve Sözleşme Şablonları',
   description:
-    'İngilizce ve Türkçe profesyonelce hazırlanmış sözleşmeler ve hukuki rehberler sunan iki dilli hukuki ansiklopedi.',
+    'İngilizce ve Türkçe hazırlanmış sözleşme şablonları, hukuki rehberler ve ansiklopedi maddeleri. Türk girişimciler ve serbest çalışanlar için.',
   metadataBase: new URL('https://echo-legal.com'),
 }
 

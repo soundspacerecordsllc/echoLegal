@@ -351,7 +351,7 @@ export default async function ContractorVsEmployeePage({
             <p className="text-blue-800">
               {isEnglish
                 ? 'The ultimate question is: Is this worker economically dependent on the employer (employee) or in business for themselves (contractor)? No single factor is decisive—the totality of circumstances matters.'
-                : 'Temel soru şudur: Bu işçi işverene ekonomik olarak mı bağımlı (çalışan) yoksa kendi işini mi yapıyor (yüklenici)? Hiçbir tek faktör belirleyici değildir—koşulların bütünü önemlidir.'}
+                : 'Nihai soru şudur: Bu kişi ekonomik olarak işverene mi bağımlıdır (işçi), yoksa kendi adına mı faaliyet göstermektedir (yüklenici)? Tek bir faktör belirleyici değildir; koşulların bütünü esas alınır.'}
             </p>
           </div>
         </section>
@@ -365,7 +365,7 @@ export default async function ContractorVsEmployeePage({
               <thead>
                 <tr className="bg-gray-100">
                   <th className="border border-gray-200 p-3 text-left">{isEnglish ? 'Factor' : 'Faktör'}</th>
-                  <th className="border border-gray-200 p-3 text-left bg-blue-50">{isEnglish ? 'Employee' : 'Çalışan'}</th>
+                  <th className="border border-gray-200 p-3 text-left bg-blue-50">{isEnglish ? 'Employee' : 'İşçi'}</th>
                   <th className="border border-gray-200 p-3 text-left bg-green-50">{isEnglish ? 'Contractor' : 'Yüklenici'}</th>
                 </tr>
               </thead>
@@ -382,16 +382,16 @@ export default async function ContractorVsEmployeePage({
                   { factor: 'Exclusivity', employee: 'Often exclusive', contractor: 'Multiple clients' },
                   { factor: 'Direction', employee: 'Told how to work', contractor: 'Controls methods' },
                 ] : [
-                  { factor: 'Program', employee: 'İşveren tarafından belirlenir', contractor: 'Kendi saatlerini belirler' },
-                  { factor: 'Konum', employee: 'İşverenin yerinde çalışır', contractor: 'Her yerde çalışır' },
-                  { factor: 'Araçlar', employee: 'İşveren sağlar', contractor: 'Kendi sağlar' },
-                  { factor: 'Eğitim', employee: 'Eğitim alır', contractor: 'Zaten yetenekli' },
-                  { factor: 'Ödeme', employee: 'Düzenli maaş/saatlik', contractor: 'Proje/fatura başına' },
-                  { factor: 'Vergiler', employee: 'İşveren tarafından kesilir', contractor: 'Kendi öder (1099)' },
-                  { factor: 'Haklar', employee: 'Alabilir', contractor: 'Müşteriden yok' },
-                  { factor: 'Fesih', employee: 'Kovulabilir', contractor: 'Sözleşme biter' },
-                  { factor: 'Münhasırlık', employee: 'Genellikle münhasır', contractor: 'Birden fazla müşteri' },
-                  { factor: 'Yönlendirme', employee: 'Nasıl çalışacağı söylenir', contractor: 'Yöntemleri kontrol eder' },
+                  { factor: 'Çalışma Saati', employee: 'İşverence belirlenir', contractor: 'Kendi belirler' },
+                  { factor: 'Çalışma Yeri', employee: 'İşverenin tesisinde', contractor: 'İstediği yerde' },
+                  { factor: 'Araç-Gereç', employee: 'İşveren sağlar', contractor: 'Kendisi sağlar' },
+                  { factor: 'Eğitim', employee: 'İşverence verilir', contractor: 'Mevcut uzmanlığı kullanır' },
+                  { factor: 'Ödeme', employee: 'Düzenli maaş veya saatlik', contractor: 'Proje bazlı / fatura ile' },
+                  { factor: 'Vergi', employee: 'İşverence kesilir', contractor: 'Kendisi öder (1099)' },
+                  { factor: 'Sosyal Haklar', employee: 'Hak sahibi olabilir', contractor: 'Müşteriden talep edemez' },
+                  { factor: 'Sona Erme', employee: 'İşten çıkarılabilir', contractor: 'Sözleşme ile sona erer' },
+                  { factor: 'Münhasırlık', employee: 'Genellikle tek işveren', contractor: 'Birden fazla müşteriye hizmet verir' },
+                  { factor: 'Yönlendirme', employee: 'Çalışma yöntemi işverence belirlenir', contractor: 'Yöntemini kendisi seçer' },
                 ]).map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="border border-gray-200 p-3 font-medium">{row.factor}</td>
@@ -406,11 +406,11 @@ export default async function ContractorVsEmployeePage({
 
         {/* Section 6: Misclassification */}
         <section id="misclassification" className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">{isEnglish ? '6. Misclassification Consequences' : '6. Yanlış Sınıflandırma Sonuçları'}</h2>
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? '6. Misclassification Consequences' : '6. Hatalı Sınıflandırmanın Sonuçları'}</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'Misclassifying employees as contractors carries serious legal and financial penalties for businesses. Workers may also have claims for unpaid benefits and protections.'
-              : 'Çalışanları yüklenici olarak yanlış sınıflandırmanın işletmeler için ciddi hukuki ve mali cezaları vardır. İşçilerin ödenmemiş haklar ve korumalar için talepleri de olabilir.'}
+              : 'İşçileri yüklenici olarak hatalı sınıflandırmanın işletmeler açısından ağır hukuki ve mali yaptırımları vardır. İşçiler de eksik kalan hak ve korumaları talep edebilir.'}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -421,35 +421,35 @@ export default async function ContractorVsEmployeePage({
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Back Taxes:' : 'Geriye Dönük Vergiler:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'All unpaid employment taxes (Social Security, Medicare, unemployment)' : 'Tüm ödenmemiş istihdam vergileri (Sosyal Güvenlik, Medicare, işsizlik)'}</span>
+                    <span className="text-sm block">{isEnglish ? 'All unpaid employment taxes (Social Security, Medicare, unemployment)' : 'Eksik yatırılan tüm istihdam vergileri (Sosyal Güvenlik, Medicare, işsizlik sigortası)'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Penalties:' : 'Cezalar:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Up to 40% of unpaid taxes, plus interest' : 'Ödenmemiş vergilerin %40\'ına kadar, artı faiz'}</span>
+                    <span className="text-sm block">{isEnglish ? 'Up to 40% of unpaid taxes, plus interest' : 'Eksik vergilerin %40\'ına varan para cezası ve faiz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Unpaid Benefits:' : 'Ödenmemiş Haklar:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Health insurance, retirement, paid leave owed' : 'Sağlık sigortası, emeklilik, borçlu ücretli izin'}</span>
+                    <span className="text-sm block">{isEnglish ? 'Health insurance, retirement, paid leave owed' : 'Sağlık sigortası, emeklilik ve ücretli izin borçları'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Overtime & Minimum Wage:' : 'Fazla Mesai ve Asgari Ücret:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'FLSA violations with liquidated damages (2x)' : 'Tazminatlı FLSA ihlalleri (2x)'}</span>
+                    <span className="text-sm block">{isEnglish ? 'FLSA violations with liquidated damages (2x)' : 'FLSA ihlali halinde iki katına kadar tazminat'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <span className="text-red-600 mr-2">✗</span>
                   <div>
                     <strong>{isEnglish ? 'Criminal Liability:' : 'Cezai Sorumluluk:'}</strong>
-                    <span className="text-sm block">{isEnglish ? 'Willful violations can lead to prosecution' : 'Kasten ihlaller kovuşturmaya yol açabilir'}</span>
+                    <span className="text-sm block">{isEnglish ? 'Willful violations can lead to prosecution' : 'Kasıtlı ihlaller cezai kovuşturma konusu olabilir'}</span>
                   </div>
                 </li>
               </ul>
