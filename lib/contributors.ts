@@ -61,21 +61,21 @@ export const ZEYNEP_MOORE: Contributor = {
     tr: 'Zeynep Ruziye Moore',
   },
   designation: {
-    en: 'Attorney at Law',
-    tr: 'Avukat',
+    en: 'Editor-in-Chief',
+    tr: 'Genel Yayın Yönetmeni',
   },
   title: {
-    en: 'Contributing Attorney & Editorial Authority',
-    tr: 'Katkıda Bulunan Avukat ve Editöryal Otorite',
+    en: 'Editor-in-Chief',
+    tr: 'Genel Yayın Yönetmeni',
   },
   institutionalRole: {
-    en: 'Contributing Attorney and Editorial Authority for EchoLegal. Responsible for legal accuracy review and editorial oversight of US-Turkey cross-border legal content.',
-    tr: 'EchoLegal için Katkıda Bulunan Avukat ve Editöryal Otorite. ABD-Türkiye sınır ötesi hukuki içeriklerin hukuki doğruluk incelemesi ve editöryal gözetiminden sorumludur.',
+    en: 'Oversees editorial standards and legal accuracy for all EchoLegal content.',
+    tr: 'Tüm EchoLegal içeriklerinin editöryal standartlarını ve hukuki doğruluğunu denetler.',
   },
   credentials: ['J.D.', 'LL.M.', 'LL.B.'],
   barAdmission: {
     jurisdiction: 'New York',
-    number: '5552336',
+    number: '',
   },
   education: [
     {
