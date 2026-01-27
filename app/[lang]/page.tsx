@@ -48,12 +48,6 @@ export default async function Home({
             }
           </p>
 
-          <p className="text-sm text-gray-500 mb-8 max-w-md">
-            {isEnglish
-              ? 'Structured for clarity, accuracy, and long-term reference use.'
-              : 'Açıklık, doğruluk ve uzun vadeli referans kullanımı için yapılandırılmıştır.'
-            }
-          </p>
 
           {/* Search Bar */}
           <div className="mb-8 max-w-md">
