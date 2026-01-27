@@ -188,47 +188,42 @@ export default async function TemplateDetailPage({
           {isEnglish ? 'Last Updated:' : 'Son Güncelleme:'} {template.updatedAt}
         </p>
 
-        {/* Download button for templates with downloadUrl */}
-        {template.downloadUrl && (
-          <div className="mb-8 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-            <h3 className="font-semibold text-lg mb-2">
-              {isEnglish ? 'Download Template' : 'Şablonu İndir'}
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
+        {/* Download Section */}
+        {(template.downloadUrl || hasContractPage) && (
+          <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+            <h2 className="text-3xl font-bold text-center mb-4">
+              {isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}
+            </h2>
+            <p className="text-center text-gray-600 mb-6">
               {isEnglish
-                ? 'Download this template as a Word document (.docx) that you can customize for your needs.'
-                : 'Bu şablonu ihtiyaçlarınıza göre özelleştirebileceğiniz bir Word belgesi (.docx) olarak indirin.'}
+                ? 'I support EchoLegal – $20 recommended.'
+                : "EchoLegal'i destekliyorum – $20 önerilir."}
             </p>
-            <a
-              href={template.downloadUrl}
-              download
-              className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              {isEnglish ? 'Download .docx' : '.docx İndir'}
-            </a>
-          </div>
-        )}
 
-        {/* Link to legacy contract page if exists and no direct download */}
-        {hasContractPage && !template.downloadUrl && (
-          <div className="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-            <p className="text-sm text-amber-800">
-              {isEnglish
-                ? 'This template is available for download.'
-                : 'Bu şablon indirilebilir.'}
-            </p>
-            <Link
-              href={`/${lang}/contracts/${slug}`}
-              className="inline-flex items-center mt-2 text-sm font-semibold text-amber-700 hover:text-amber-900"
+            <a
+              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+              className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
             >
-              {isEnglish ? 'View & Download Template' : 'Şablonu Görüntüle ve İndir'}
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+              {isEnglish
+                ? 'I CAN Afford It — $20 (Recommended)'
+                : 'Ödeyebilirim — $20 (Önerilen)'}
+            </a>
+
+            <a
+              href={template.downloadUrl || `/${lang}/contracts/${slug}`}
+              {...(template.downloadUrl ? { download: true } : {})}
+              className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors mb-4"
+            >
+              {isEnglish
+                ? 'I CANNOT Afford It — Download Free'
+                : 'Ödeyemiyorum — Ücretsiz İndir'}
+            </a>
+
+            <p className="text-center text-sm text-gray-500">
+              {isEnglish
+                ? 'Most users choose $20 to support ongoing updates and bilingual access.'
+                : 'Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.'}
+            </p>
           </div>
         )}
 
