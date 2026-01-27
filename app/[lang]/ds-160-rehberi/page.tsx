@@ -630,7 +630,7 @@ export default async function DS160GuidePage({
                   <p className="font-medium text-red-700 mb-2">✗ {isEnglish ? 'Don\'t' : 'Yapmayın'}</p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
                     <li>{isEnglish ? 'Wear glasses' : 'Gözlük takma'}</li>
-                    <li>{isEnglish ? 'Wear head coverings (except religious)' : 'Baş örtüsü takma (dini hariç)'}</li>
+                    <li>{isEnglish ? 'Wear hats or headwear (religious head coverings are allowed)' : 'Şapka veya başlık takma (dini başörtüsüne izin verilir)'}</li>
                     <li>{isEnglish ? 'Smile with teeth showing' : 'Dişler görünecek şekilde gülümse'}</li>
                     <li>{isEnglish ? 'Use filters or editing' : 'Filtre veya düzenleme kullan'}</li>
                   </ul>
