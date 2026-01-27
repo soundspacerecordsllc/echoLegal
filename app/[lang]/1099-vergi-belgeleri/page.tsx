@@ -72,8 +72,7 @@ export default async function TaxDocumentsPage({
     author: {
       '@type': 'Person',
       name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Attorney at Law',
-      description: 'New York Bar No: 5552336',
+      jobTitle: 'Licensed in New York',
     },
     publisher: {
       '@type': 'Organization',

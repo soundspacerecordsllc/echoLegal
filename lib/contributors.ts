@@ -61,46 +61,35 @@ export const ZEYNEP_MOORE: Contributor = {
     tr: 'Zeynep Ruziye Moore',
   },
   designation: {
-    en: 'Editor-in-Chief',
-    tr: 'Genel Yayın Yönetmeni',
+    en: 'Licensed in New York',
+    tr: 'New York Lisanslı',
   },
   title: {
-    en: 'Editor-in-Chief',
-    tr: 'Genel Yayın Yönetmeni',
+    en: 'Licensed in New York',
+    tr: 'New York Lisanslı',
   },
   institutionalRole: {
     en: 'Oversees editorial standards and legal accuracy for all EchoLegal content.',
     tr: 'Tüm EchoLegal içeriklerinin editöryal standartlarını ve hukuki doğruluğunu denetler.',
   },
-  credentials: ['J.D.', 'LL.M.', 'LL.B.'],
+  credentials: [],
   barAdmission: {
     jurisdiction: 'New York',
     number: '',
   },
-  education: [
-    {
-      degree: 'LL.M.',
-      institution: 'Fordham University School of Law',
-      location: 'New York, NY',
-    },
-    {
-      degree: 'LL.B.',
-      institution: 'Marmara University Faculty of Law',
-      location: 'Istanbul, Turkey',
-    },
-  ],
+  education: [],
   bio: {
-    en: 'Zeynep Ruziye Moore is an attorney admitted to practice in the State of New York. She holds an LL.M. from Fordham University School of Law and an LL.B. from Marmara University Faculty of Law. Her practice and scholarship focus on cross-border transactions, corporate formation, and regulatory compliance matters affecting Turkish nationals and businesses operating in the United States.',
-    tr: 'Zeynep Ruziye Moore, New York Eyaleti\'nde avukatlık yapmaya yetkili bir hukukçudur. Fordham Üniversitesi Hukuk Fakültesi\'nden LL.M. ve Marmara Üniversitesi Hukuk Fakültesi\'nden LL.B. derecelerine sahiptir. Uygulama ve akademik çalışmaları, Amerika Birleşik Devletleri\'nde faaliyet gösteren Türk vatandaşları ve işletmelerini etkileyen sınır ötesi işlemler, şirket kuruluşu ve mevzuata uygunluk konularına odaklanmaktadır.',
+    en: 'Zeynep Ruziye Moore is licensed to practice law in the State of New York.',
+    tr: 'Zeynep Ruziye Moore, New York Eyaleti\'nde avukatlık yapmaya yetkilidir.',
   },
   jurisdictionalNote: {
-    en: 'Admitted to practice in New York. This content is provided for general informational purposes and does not constitute legal advice. No attorney-client relationship is formed through use of this platform.',
-    tr: 'New York\'ta avukatlık yapmaya yetkilidir. Bu içerik genel bilgilendirme amaçlıdır ve hukuki danışmanlık teşkil etmez. Bu platformun kullanımı ile avukat-müvekkil ilişkisi kurulmaz.',
+    en: 'Licensed in New York. This content is provided for general informational purposes and does not constitute legal advice.',
+    tr: 'New York lisanslı. Bu içerik genel bilgilendirme amaçlıdır ve hukuki danışmanlık teşkil etmez.',
   },
   initials: 'ZM',
   isActive: true,
   isAttorney: true,
-  jurisdictions: ['New York', 'Federal'],
+  jurisdictions: ['New York'],
 }
 
 // Editorial Team (organizational author)

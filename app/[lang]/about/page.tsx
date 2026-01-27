@@ -190,13 +190,8 @@ export default async function AboutPage({
               </div>
               <div>
                 <h3 className="font-bold text-black">Zeynep Ruziye Moore</h3>
-                <p className="text-sm text-gray-600 mb-2">
-                  {isEnglish ? 'Editor-in-Chief' : 'Genel Yayın Yönetmeni'}
-                </p>
-                <p className="text-sm text-gray-700">
-                  {isEnglish
-                    ? 'Oversees editorial standards and legal accuracy for all EchoLegal content. Licensed attorney with expertise in US-Turkey cross-border legal matters.'
-                    : 'Tüm EchoLegal içeriklerinin editöryal standartlarını ve hukuki doğruluğunu denetler. ABD-Türkiye sınır ötesi hukuki konularda uzmanlığa sahip lisanslı avukat.'}
+                <p className="text-sm text-gray-600">
+                  {isEnglish ? 'Licensed in New York' : 'New York Lisanslı'}
                 </p>
               </div>
             </div>

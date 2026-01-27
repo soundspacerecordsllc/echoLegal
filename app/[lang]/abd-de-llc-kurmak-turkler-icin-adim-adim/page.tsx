@@ -82,7 +82,7 @@ export default async function LLCGuidePage({
     author: {
       '@type': 'Person',
       name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Contributing Attorney',
+      jobTitle: 'Licensed in New York',
       affiliation: {
         '@type': 'Organization',
         name: 'EchoLegal',
@@ -745,9 +745,7 @@ export default async function LLCGuidePage({
                 <div>
                   <h3 className="font-semibold text-black">Zeynep Ruziye Moore</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEnglish
-                      ? 'Attorney at Law, licensed in New York (NY Bar No: 5552336). LL.M., Fordham University School of Law; LL.B., Marmara University Faculty of Law.'
-                      : 'Avukat, New York Barosu (Sicil No: 5552336). Fordham Üniversitesi Hukuk Fakültesi LL.M.; Marmara Üniversitesi Hukuk Fakültesi mezunu.'}
+                    {isEnglish ? 'Licensed in New York' : 'New York Lisanslı'}
                   </p>
                 </div>
               </div>
