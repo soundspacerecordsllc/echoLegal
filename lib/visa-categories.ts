@@ -31,10 +31,10 @@ export const visaCategories: VisaCategory[] = [
     titleEn: 'Business & Tourist Visa',
     titleTr: 'İş ve Turist Vizesi',
     shortDescEn: 'Temporary entry for business meetings, tourism, or medical treatment.',
-    shortDescTr: 'İş görüşmeleri, turizm veya tıbbi tedavi için geçici giriş.',
+    shortDescTr: 'İş toplantıları, turizm veya tedavi amacıyla ABD\'ye geçici giriş imkanı tanır.',
     icon: '✈️',
     whatIsEn: 'The B-1/B-2 visa is the most common non-immigrant visa issued by the United States. B-1 covers temporary business activities such as attending meetings, conferences, or negotiating contracts. B-2 covers tourism, visiting family, or receiving medical treatment. These are often issued as a combined B-1/B-2 visa, giving holders flexibility for both purposes.',
-    whatIsTr: 'B-1/B-2 vizesi, Amerika Birleşik Devletleri tarafından verilen en yaygın göçmen olmayan vize türüdür. B-1, toplantılara katılma, konferanslara iştirak etme veya sözleşme müzakereleri gibi geçici iş faaliyetlerini kapsar. B-2 ise turizm, aile ziyareti veya tıbbi tedavi amaçlı girişleri kapsar. Genellikle birleşik B-1/B-2 vizesi olarak düzenlenir ve sahiplerine her iki amaç için de esneklik tanır.',
+    whatIsTr: 'B-1/B-2, ABD\'nin en yaygın göçmen olmayan (non-immigrant) vize kategorisidir. B-1 vizesi; iş toplantıları, konferanslar ve sözleşme müzakereleri gibi geçici ticari faaliyetlere yöneliktir. B-2 vizesi ise turizm, aile ziyareti ve tıbbi tedavi amaçlı girişleri kapsar. Uygulamada bu iki vize genellikle birleşik B-1/B-2 olarak düzenlenir; böylece hamili her iki amaçla da ABD\'ye girebilir.',
     suitableForEn: [
       'Attending business meetings, trade fairs, or conferences',
       'Negotiating contracts (but not executing work)',
@@ -44,12 +44,12 @@ export const visaCategories: VisaCategory[] = [
       'Participating in amateur sports or musical events (without pay)'
     ],
     suitableForTr: [
-      'İş toplantılarına, ticaret fuarlarına veya konferanslara katılım',
-      'Sözleşme müzakereleri (ancak iş yürütme değil)',
-      'Turizm ve gezi',
+      'İş toplantıları, ticaret fuarları veya konferanslara katılım',
+      'Sözleşme müzakereleri (fiili iş yürütme hariç)',
+      'Turizm ve gezi amaçlı seyahat',
       'Aile veya arkadaş ziyareti',
-      'Tıbbi tedavi alma',
-      'Amatör spor veya müzik etkinliklerine katılım (ücret almadan)'
+      'Tıbbi tedavi amacıyla giriş',
+      'Amatör spor veya müzik etkinliklerine katılım (ücret almaksızın)'
     ],
     doesNotAllowEn: [
       'Any form of employment or paid work in the US',
@@ -59,11 +59,11 @@ export const visaCategories: VisaCategory[] = [
       'Receiving salary or compensation from US sources'
     ],
     doesNotAllowTr: [
-      'ABD\'de herhangi bir istihdam veya ücretli çalışma',
-      'Akademik derslere veya diploma programlarına kayıt',
-      'Kalıcı ikamet oluşturma',
-      'ABD merkezli bir işletmeyi günlük olarak yönetme veya işletme',
-      'ABD kaynaklarından maaş veya ücret alma'
+      'ABD\'de her türlü istihdam veya ücretli çalışma',
+      'Akademik ders veya diploma programlarına kayıt',
+      'Kalıcı ikamet tesis etme',
+      'ABD merkezli bir işletmenin günlük yönetimi',
+      'ABD kaynaklarından maaş veya herhangi bir ücret tahsili'
     ],
     commonMistakesEn: [
       'Overstaying the authorized period (check your I-94, not the visa sticker)',
@@ -73,11 +73,11 @@ export const visaCategories: VisaCategory[] = [
       'Assuming the visa allows repeated long stays without genuine purpose'
     ],
     commonMistakesTr: [
-      'İzin verilen süreyi aşma (vize etiketini değil, I-94\'ünüzü kontrol edin)',
-      'B-1/B-2 ile ABD\'deyken fiziksel olarak ABD\'de bulunurken ABD müşterileri için uzaktan çalışma',
-      'Belirsiz amaç veya anavatana yetersiz bağlarla başvuru yapma',
-      'Sınırda veya mülakat sırasında niyeti yanlış beyan etme',
-      'Vizenin gerçek bir amaç olmadan tekrarlanan uzun kalışlara izin verdiğini varsayma'
+      'Kalış süresinin aşılması (vize etiketine değil, I-94 kaydına bakılmalıdır)',
+      'B-1/B-2 statüsüyle ABD\'de bulunurken ABD müşterilerine uzaktan çalışma yapılması',
+      'Ziyaret amacının belirsiz bırakılması veya ülkeyle güçlü bağ gösterilememesi',
+      'Sınır geçişinde ya da mülakatta gerçek niyetin gizlenmesi veya yanlış beyanı',
+      'Vizenin somut bir gerekçe olmaksızın tekrarlayan uzun kalışlara imkan verdiğinin sanılması'
     ],
     greenCardPathEn: {
       answer: 'no',
@@ -85,10 +85,10 @@ export const visaCategories: VisaCategory[] = [
     },
     greenCardPathTr: {
       answer: 'hayır',
-      explanation: 'B-1/B-2 kesinlikle göçmen olmayan bir vizedir ve kalıcı oturma iznine doğrudan bir yol sunmaz. B statüsündeyken yeşil kart başvurusu yapmak, orijinal niyet konusunda endişelere yol açabilir.'
+      explanation: 'B-1/B-2 yalnızca geçici giriş amacıyla düzenlenen bir vizedir; kalıcı oturma iznine doğrudan bir geçiş yolu yoktur. B statüsündeyken yeşil kart başvurusu yapılması, ilk girişteki gerçek niyetin sorgulanmasına neden olabilir.'
     },
     strategicNotesEn: 'The B-1/B-2 visa is best viewed as a tool for short-term, specific purposes rather than a flexible long-term presence option. US Customs and Border Protection officers have wide discretion at ports of entry and may deny entry to frequent visitors who appear to be living in the US or working without authorization.',
-    strategicNotesTr: 'B-1/B-2 vizesi, esnek uzun vadeli bir seçenek yerine kısa süreli, belirli amaçlar için bir araç olarak değerlendirilmelidir. ABD Gümrük ve Sınır Koruma yetkilileri giriş noktalarında geniş takdir yetkisine sahiptir ve ABD\'de yaşıyor gibi görünen veya izinsiz çalışan sık ziyaretçilerin girişini reddedebilir.',
+    strategicNotesTr: 'B-1/B-2, uzun süreli veya esnek bir ABD varlığı aracı olarak değil, kısa süreli ve belirli bir amaca yönelik bir vize olarak değerlendirilmelidir. ABD Gümrük ve Sınır Koruma (CBP) yetkilileri giriş noktalarında geniş takdir yetkisine sahiptir. Sık seyahat eden ve ABD\'de fiilen ikamet ettiği veya izinsiz çalıştığı izlenimi veren ziyaretçilerin girişi reddedilebilir.',
     uscisUrl: 'https://www.uscis.gov/visit-the-united-states'
   },
   {
@@ -97,10 +97,10 @@ export const visaCategories: VisaCategory[] = [
     titleEn: 'Student Visa',
     titleTr: 'Öğrenci Vizesi',
     shortDescEn: 'Full-time academic study at accredited US institutions.',
-    shortDescTr: 'Akredite ABD kurumlarında tam zamanlı akademik eğitim.',
+    shortDescTr: 'ABD\'deki akredite eğitim kurumlarında tam zamanlı akademik öğrenim.',
     icon: '🎓',
     whatIsEn: 'The F-1 visa allows foreign nationals to pursue full-time academic study at accredited US colleges, universities, seminaries, conservatories, high schools, language training programs, or other academic institutions. Students must be enrolled in a program that results in a degree, diploma, or certificate. The F-1 status includes provisions for limited on-campus employment and practical training opportunities.',
-    whatIsTr: 'F-1 vizesi, yabancı uyruklu kişilerin ABD\'deki akredite kolejlerde, üniversitelerde, ilahiyat okullarında, konservatuarlarda, liselerde, dil eğitim programlarında veya diğer akademik kurumlarda tam zamanlı akademik eğitim almalarına izin verir. Öğrencilerin derece, diploma veya sertifika ile sonuçlanan bir programa kayıtlı olması gerekir. F-1 statüsü, sınırlı kampüs içi istihdam ve pratik eğitim fırsatları için hükümler içerir.',
+    whatIsTr: 'F-1 vizesi, yabancı uyruklu kişilerin ABD\'deki akredite kolejler, üniversiteler, konservatuarlar, liseler ve dil eğitim programları gibi akademik kurumlarda tam zamanlı öğrenim görmesine olanak tanır. Kayıtlı olunan programın derece, diploma veya sertifika ile sonuçlanması zorunludur. F-1 statüsü çerçevesinde sınırlı kampüs içi çalışma ve pratik eğitim (OPT/CPT) imkanları da mevcuttur.',
     suitableForEn: [
       'Pursuing a degree at a US university (bachelor\'s, master\'s, doctorate)',
       'Attending accredited language training programs',
@@ -109,11 +109,11 @@ export const visaCategories: VisaCategory[] = [
       'Individuals committed to returning home after studies'
     ],
     suitableForTr: [
-      'ABD üniversitesinde derece takip etme (lisans, yüksek lisans, doktora)',
-      'Akredite dil eğitim programlarına katılım',
-      'Değişim veya özel programlardaki lise öğrencileri',
-      'Mezuniyet sonrası OPT (İsteğe Bağlı Pratik Eğitim) iş deneyimi arayanlar',
-      'Eğitim sonrası ülkesine dönmeyi taahhüt eden bireyler'
+      'ABD üniversitesinde lisans, yüksek lisans veya doktora yapacak öğrenciler',
+      'Akredite dil eğitim programlarına katılacak kişiler',
+      'Değişim veya özel programlarla gelen lise öğrencileri',
+      'Mezuniyet sonrası OPT kapsamında iş deneyimi edinmek isteyenler',
+      'Eğitim tamamlandığında ülkesine dönme niyetinde olan kişiler'
     ],
     doesNotAllowEn: [
       'Working off-campus without specific authorization (CPT or OPT)',
@@ -123,11 +123,11 @@ export const visaCategories: VisaCategory[] = [
       'Accepting employment unrelated to field of study during OPT'
     ],
     doesNotAllowTr: [
-      'Özel yetkilendirme olmadan (CPT veya OPT) kampüs dışında çalışma',
-      'Onay almadan tam zamanlı kaydın altına düşme',
-      'Program tamamlandıktan sonra ABD\'de süresiz kalma',
-      'Uygun SEVIS prosedürleri olmadan yeni bir okula transfer',
-      'OPT sırasında çalışma alanıyla ilgisi olmayan istihdam kabul etme'
+      'CPT veya OPT izni olmaksızın kampüs dışında çalışma',
+      'Onay almadan tam zamanlı ders yükünün altına düşme',
+      'Program sona erdikten sonra ABD\'de süresiz kalma',
+      'SEVIS prosedürleri tamamlanmadan okul transferi',
+      'OPT döneminde eğitim alanıyla ilgisiz bir işte çalışma'
     ],
     commonMistakesEn: [
       'Working more than 20 hours per week on-campus during school sessions',
@@ -137,11 +137,11 @@ export const visaCategories: VisaCategory[] = [
       'Not applying for OPT within the required timeframe'
     ],
     commonMistakesTr: [
-      'Okul dönemlerinde kampüs içinde haftada 20 saatten fazla çalışma',
-      'DSO onayı olmadan tam zamanlı ders yükünü sürdürmeme',
-      'Adres değişikliklerini 10 gün içinde okula bildirmeme',
-      'OPT onayı öncesi yetkisiz istihdama başlama',
-      'OPT\'ye gerekli süre içinde başvurmama'
+      'Ders döneminde kampüs içinde haftalık 20 saati aşan çalışma',
+      'DSO onayı alınmadan tam zamanlı ders yükünün korunamaması',
+      'Adres değişikliğinin 10 gün içinde okula bildirilmemesi',
+      'OPT onayı gelmeden çalışmaya başlanması',
+      'OPT başvurusunun belirlenen süre içinde yapılmaması'
     ],
     greenCardPathEn: {
       answer: 'indirect',
@@ -149,10 +149,10 @@ export const visaCategories: VisaCategory[] = [
     },
     greenCardPathTr: {
       answer: 'dolaylı',
-      explanation: 'F-1 kendi başına yeşil karta yol açmaz. Ancak OPT veya STEM OPT, H-1B sponsorluğuna yol açabilir ve bu da işveren sponsorluğunda kalıcı oturuma yol açabilir. Bu yaygın bir yoldur ancak işveren isteği ve dilekçe gerektirir.'
+      explanation: 'F-1 vizesi tek başına kalıcı oturma iznine yol açmaz. Ancak OPT veya STEM OPT aracılığıyla H-1B sponsorluğu elde edilebilir; bu da işveren destekli yeşil kart sürecini başlatabilir. Sık başvurulan bir yol olmakla birlikte işverenin sponsorluk iradesine ve dilekçe sürecine bağlıdır.'
     },
     strategicNotesEn: 'F-1 is often the entry point for those planning a longer-term US career path. The STEM OPT extension (up to 3 years total work authorization) provides valuable time for H-1B lottery attempts. However, the path from F-1 to permanent residence is neither guaranteed nor straightforward.',
-    strategicNotesTr: 'F-1, uzun vadeli ABD kariyer yolu planlayanlar için genellikle giriş noktasıdır. STEM OPT uzantısı (toplam 3 yıla kadar çalışma izni), H-1B piyango denemeleri için değerli zaman sağlar. Ancak F-1\'den kalıcı oturuma giden yol ne garantilidir ne de basittir.',
+    strategicNotesTr: 'F-1, ABD\'de uzun vadeli kariyer hedefleyenler için sıklıkla ilk adımdır. STEM OPT uzatması toplam üç yıla kadar çalışma izni sağladığından, H-1B çekilişlerine katılım için kritik bir zaman aralığı yaratır. Bununla birlikte F-1\'den kalıcı oturma iznine giden süreç ne garantili ne de doğrusaldır.',
     uscisUrl: 'https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment'
   },
   {

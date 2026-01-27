@@ -281,7 +281,7 @@ export default async function TuristVizesiPage({
         {/* Checklist */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">
-            {isEnglish ? 'Self-Assessment Checklist' : 'Öz Değerlendirme Kontrol Listesi'}
+            {isEnglish ? 'Self-Assessment Checklist' : 'Kendi Kendinize Değerlendirme'}
           </h2>
 
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
@@ -296,14 +296,14 @@ export default async function TuristVizesiPage({
                 'Can you articulate your plans specifically, not vaguely?',
                 'Would an objective observer believe you intend to return?'
               ] : [
-                "ABD'yi özellikle neden ziyaret etmeniz gerektiğini açıkça açıklayabilir misiniz?",
-                'Ülkenize dönmenizi gerektiren ne var?',
-                'Varlığınızı gerektiren istikrarlı bir işiniz veya işletmeniz var mı?',
-                'Sizi ülkenize bağlayan hangi aile veya mülk bağları var?',
-                'Önceki uluslararası seyahatlerinizde vize koşullarına uydunuz mu?',
-                'Mali durumunuz belirtilen amacınızla tutarlı mı?',
-                'Planlarınızı belirsiz değil, spesifik olarak ifade edebilir misiniz?',
-                'Objektif bir gözlemci dönme niyetinize inanır mı?'
+                "ABD'yi neden ziyaret etmeniz gerektiğini net biçimde açıklayabiliyor musunuz?",
+                'Sizi ülkenize geri dönmeye zorlayan somut nedenler neler?',
+                'Bulunmanızı gerektiren düzenli bir işiniz veya işletmeniz var mı?',
+                'Sizi ülkenize bağlayan aile ilişkileri veya taşınmaz varlıklar neler?',
+                'Önceki yurt dışı seyahatlerinizde vize koşullarına uydunuz mu?',
+                'Mali durumunuz beyan ettiğiniz ziyaret amacıyla örtüşüyor mu?',
+                'Planlarınızı genel ifadeler yerine somut olarak anlatabilir misiniz?',
+                'Tarafsız bir gözlemci, geri döneceğinize ikna olur mu?'
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="text-[#C9A227] mt-1">☐</span>

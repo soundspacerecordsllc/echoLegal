@@ -75,7 +75,7 @@ export default async function LLCFormationGuidePage({
               <strong>{isEnglish ? 'Note:' : 'Not:'}</strong>{' '}
               {isEnglish
                 ? 'This guide provides general information for educational purposes only. It does not constitute legal, tax, or immigration advice. Laws and requirements change frequently. Consult with licensed professionals before making decisions.'
-                : 'Bu rehber yalnızca eğitim amaçlı genel bilgi sağlar. Hukuki, vergi veya göçmenlik tavsiyesi niteliği taşımaz. Yasalar ve gereksinimler sık sık değişir. Karar vermeden önce lisanslı profesyonellere danışın.'}
+                : 'Bu rehber yalnızca genel bilgilendirme amacıyla hazırlanmıştır. Hukuki, vergisel veya göçmenlik tavsiyesi niteliği taşımaz. Mevzuat ve uygulamalar değişkenlik gösterebilir. Herhangi bir karar almadan önce konunun uzmanına danışmanızı tavsiye ederiz.'}
             </p>
           </div>
 
@@ -105,19 +105,19 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'LLC stands for "Limited Liability Company." It is a type of business structure in the United States that combines characteristics of both corporations and partnerships.'
-                  : "LLC, \"Limited Liability Company\" (Sınırlı Sorumlu Şirket) anlamına gelir. ABD'de hem şirketlerin hem de ortaklıkların özelliklerini birleştiren bir iş yapısı türüdür."}
+                  : "LLC, \"Limited Liability Company\" ifadesinin kısaltmasıdır; Türkçe karşılığı \"Sınırlı Sorumlu Şirket\" olarak ifade edilebilir. ABD hukukunda, hem anonim şirketin hem de adi ortaklığın belirli özelliklerini bünyesinde barındıran esnek bir ticari yapıdır."}
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'The key feature of an LLC is that it provides "limited liability" protection to its owners (called "members"). This means that the personal assets of the members are generally protected from business debts and lawsuits.'
-                  : "LLC'nin temel özelliği, sahiplerine (\"üyeler\" olarak adlandırılır) \"sınırlı sorumluluk\" koruması sağlamasıdır. Bu, üyelerin kişisel varlıklarının genellikle iş borçları ve davalardan korunduğu anlamına gelir."}
+                  : "LLC'nin en belirgin özelliği, sahiplerine (\"member\" / üye) sınırlı sorumluluk güvencesi tanımasıdır. Üyelerin kişisel mal varlıkları, kural olarak, şirketin borç ve davalarından ayrı tutulur."}
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
                 <p className="text-sm text-blue-900">
                   <strong>{isEnglish ? 'Key Point:' : 'Önemli Nokta:'}</strong>{' '}
                   {isEnglish
                     ? 'An LLC is formed at the state level, not the federal level. Each state has its own LLC laws and requirements.'
-                    : 'LLC, federal düzeyde değil, eyalet düzeyinde kurulur. Her eyaletin kendi LLC yasaları ve gereksinimleri vardır.'}
+                    : 'LLC, federal düzeyde değil eyalet düzeyinde kurulur. Her eyaletin kendine özgü LLC mevzuatı ve şartları bulunur.'}
                 </p>
               </div>
             </section>
@@ -130,32 +130,32 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'There are several reasons why entrepreneurs choose to form an LLC:'
-                  : 'Girişimcilerin LLC kurmayı seçmesinin birkaç nedeni vardır:'}
+                  : 'Girişimcilerin LLC tercih etmesinin başlıca nedenleri şunlardır:'}
               </p>
               <ul className="list-disc pl-6 space-y-3 text-gray-700">
                 <li>
                   <strong>{isEnglish ? 'Limited Liability:' : 'Sınırlı Sorumluluk:'}</strong>{' '}
                   {isEnglish
                     ? 'Personal assets are generally protected from business obligations.'
-                    : 'Kişisel varlıklar genellikle iş yükümlülüklerinden korunur.'}
+                    : 'Kişisel mal varlığı, şirketin borçlarından kural olarak ayrı tutulur.'}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Tax Flexibility:' : 'Vergi Esnekliği:'}</strong>{' '}
                   {isEnglish
                     ? 'LLCs can choose how they want to be taxed (as a sole proprietorship, partnership, or corporation).'
-                    : "LLC'ler nasıl vergilendirilmek istediklerini seçebilir (tek sahiplik, ortaklık veya şirket olarak)."}
+                    : "LLC'ler vergilendirilme biçimlerini seçebilir: şahıs işletmesi, ortaklık veya şirket statüsü gibi."}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Operational Flexibility:' : 'Operasyonel Esneklik:'}</strong>{' '}
                   {isEnglish
                     ? 'Less formal requirements compared to corporations (no board of directors required, for example).'
-                    : 'Şirketlere kıyasla daha az resmi gereksinim (örneğin, yönetim kurulu gerekmez).'}
+                    : 'Anonim şirketlere kıyasla daha az formalite gerektirir; örneğin yönetim kurulu zorunluluğu yoktur.'}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Credibility:' : 'Güvenilirlik:'}</strong>{' '}
                   {isEnglish
                     ? 'Having a formal business structure may increase credibility with clients and partners.'
-                    : 'Resmi bir iş yapısına sahip olmak, müşteriler ve ortaklar nezdinde güvenilirliği artırabilir.'}
+                    : 'Tescilli bir ticari yapıya sahip olmak, müşteri ve iş ortakları nezdinde güven oluşturabilir.'}
                 </li>
               </ul>
             </section>
@@ -168,7 +168,7 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'One of the first decisions when forming an LLC is choosing which state to incorporate in. Here are some general considerations:'
-                  : "LLC kurarken ilk kararlardan biri hangi eyalette kurulacağını seçmektir. İşte bazı genel değerlendirmeler:"}
+                  : "LLC kuruluşunda verilecek ilk kararlardan biri eyalet seçimidir. Göz önünde bulundurulması gereken başlıca hususlar şunlardır:"}
               </p>
 
               <h3 className="text-lg font-semibold text-black mt-6 mb-3">
@@ -179,30 +179,30 @@ export default async function LLCFormationGuidePage({
                   <strong>Delaware:</strong>{' '}
                   {isEnglish
                     ? 'Known for business-friendly laws and an experienced court system (Court of Chancery). Often chosen by startups seeking venture capital.'
-                    : "İş dostu yasaları ve deneyimli mahkeme sistemi (Court of Chancery) ile tanınır. Genellikle risk sermayesi arayan startup'lar tarafından tercih edilir."}
+                    : "İş hukukuna elverişli mevzuatı ve köklü ticaret mahkemesi (Court of Chancery) ile bilinir. Özellikle risk sermayesi hedefleyen girişimler tarafından tercih edilir."}
                 </li>
                 <li>
                   <strong>Wyoming:</strong>{' '}
                   {isEnglish
                     ? 'No state income tax, strong privacy protections, and low annual fees.'
-                    : 'Eyalet gelir vergisi yok, güçlü gizlilik korumaları ve düşük yıllık ücretler.'}
+                    : 'Eyalet gelir vergisi bulunmaz. Güçlü gizlilik düzenlemeleri ve düşük yıllık harçlar sunar.'}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Home State:' : 'Yaşadığınız Eyalet:'}</strong>{' '}
                   {isEnglish
                     ? 'If you live in the US, forming in your home state is often simplest and may avoid foreign qualification requirements.'
-                    : "ABD'de yaşıyorsanız, yaşadığınız eyalette kurmak genellikle en basit olanıdır ve yabancı yeterlilik gereksinimlerinden kaçınabilir."}
+                    : "ABD'de ikamet ediyorsanız, bulunduğunuz eyalette kuruluş yapmak genellikle en pratik yoldur ve başka eyaletlerde ek tescil yükümlülüğü doğmasını önler."}
                 </li>
               </ul>
 
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 my-6">
                 <h4 className="font-semibold text-black mb-2">
-                  {isEnglish ? 'For Non-US Residents:' : "ABD'de Yaşamayanlar İçin:"}
+                  {isEnglish ? 'For Non-US Residents:' : "ABD Dışında İkamet Edenler İçin:"}
                 </h4>
                 <p className="text-sm text-gray-700">
                   {isEnglish
                     ? "If you don't live in the US, the state choice is more flexible. Wyoming and Delaware are popular among international entrepreneurs for their privacy laws and straightforward processes."
-                    : "ABD'de yaşamıyorsanız, eyalet seçimi daha esnektir. Wyoming ve Delaware, gizlilik yasaları ve basit süreçleri nedeniyle uluslararası girişimciler arasında popülerdir."}
+                    : "ABD'de ikamet etmiyorsanız eyalet seçiminde daha geniş bir hareket alanınız vardır. Wyoming ve Delaware, gizlilik düzenlemeleri ve sade kuruluş süreçleri nedeniyle yabancı girişimciler arasında sıkça tercih edilir."}
                 </p>
               </div>
             </section>
@@ -215,7 +215,7 @@ export default async function LLCFormationGuidePage({
               <p className="text-gray-700 leading-relaxed mb-4">
                 {isEnglish
                   ? 'While the exact process varies by state, the general steps for forming an LLC are:'
-                  : 'Tam süreç eyalete göre değişse de, LLC kurmanın genel adımları şunlardır:'}
+                  : 'Süreç eyaletten eyalete farklılık gösterse de genel adımlar şöyledir:'}
               </p>
 
               <ol className="list-decimal pl-6 space-y-4 text-gray-700">
@@ -229,25 +229,25 @@ export default async function LLCFormationGuidePage({
                   <strong>{isEnglish ? 'Registered Agent:' : 'Kayıtlı Temsilci:'}</strong>{' '}
                   {isEnglish
                     ? 'You need a registered agent with a physical address in the state to receive legal documents.'
-                    : 'Yasal belgeleri almak için eyalette fiziksel adresi olan bir kayıtlı temsilciye ihtiyacınız var.'}
+                    : 'Resmi tebligatları teslim alması için kuruluş eyaletinde fiziki adresi bulunan bir kayıtlı temsilci (registered agent) atamanız gerekir.'}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Articles of Organization:' : 'Kuruluş Belgesi:'}</strong>{' '}
                   {isEnglish
                     ? 'File the formation documents (usually called Articles of Organization) with the state.'
-                    : 'Kuruluş belgelerini (genellikle Articles of Organization olarak adlandırılır) eyalete dosyalayın.'}
+                    : 'Kuruluş belgesini (Articles of Organization) ilgili eyalet makamına sunun.'}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'Operating Agreement:' : 'İşletme Sözleşmesi:'}</strong>{' '}
                   {isEnglish
                     ? 'While not always legally required, an Operating Agreement defines how the LLC will be run.'
-                    : "Her zaman yasal olarak gerekli olmasa da, İşletme Sözleşmesi LLC'nin nasıl yönetileceğini tanımlar."}
+                    : "Her eyalette zorunlu olmasa da İşletme Sözleşmesi, LLC'nin yönetim yapısını ve üyelerin hak ile yükümlülüklerini düzenler."}
                 </li>
                 <li>
                   <strong>{isEnglish ? 'EIN (Tax ID):' : 'EIN (Vergi Kimliği):'}</strong>{' '}
                   {isEnglish
                     ? 'Apply for an Employer Identification Number from the IRS.'
-                    : "IRS'den bir Employer Identification Number (İşveren Kimlik Numarası) başvurusunda bulunun."}
+                    : "IRS'ye Employer Identification Number (İşveren Kimlik Numarası) başvurusu yapın."}
                 </li>
               </ol>
             </section>
@@ -332,7 +332,7 @@ export default async function LLCFormationGuidePage({
                   <p className="text-gray-700 text-sm">
                     {isEnglish
                       ? 'Reality: Delaware has no state income tax for out-of-state earnings, but you may still owe federal taxes and taxes in your country of residence.'
-                      : "Gerçek: Delaware'in eyalet dışı kazançlar için eyalet gelir vergisi yoktur, ancak yine de federal vergiler ve ikamet ettiğiniz ülkede vergiler borçlu olabilirsiniz."}
+                      : "Gerçek: Delaware, eyalet dışından elde edilen gelirler üzerinden eyalet gelir vergisi almaz. Ancak federal vergi yükümlülüğünüz ve ikamet ettiğiniz ülkedeki vergi borcunuz devam edebilir."}
                   </p>
                 </div>
 

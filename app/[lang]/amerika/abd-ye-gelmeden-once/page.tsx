@@ -99,7 +99,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-gray-700 text-sm">
                   {isEnglish
                     ? 'Forming an LLC while on a tourist visa is technically possible—an LLC is just a business structure. But this doesn\'t grant work authorization. You cannot manage day-to-day operations, receive US-source salary, or be physically present as an employee. The LLC exists; your right to work in it may not.'
-                    : 'Turist vizesiyle LLC kurmak teknik olarak mümkündür—LLC sadece bir iş yapısıdır. Ancak bu, çalışma izni vermez. Günlük operasyonları yönetemez, ABD kaynaklı maaş alamaz veya çalışan olarak fiziksel olarak bulunamazsınız. LLC var olur; içinde çalışma hakkınız olmayabilir.'}
+                    : 'Turist vizesiyle LLC kurmak teknik olarak mümkündür; LLC nihayetinde bir ticari yapıdır. Ancak bu size çalışma izni vermez. Günlük işleri yönetemez, ABD kaynaklı maaş alamaz ve fiziken çalışan sıfatıyla bulunamazsınız. Şirket kağıt üzerinde var olur, ama içinde çalışma hakkınız olmayabilir.'}
                 </p>
               </div>
             </div>
@@ -128,19 +128,19 @@ export default async function PreArrivalChecklistPage({
                     <span className="text-green-600">✓</span>
                     {isEnglish
                       ? 'You have US clients requiring a US business entity for payment'
-                      : 'Ödeme için ABD işletme varlığı gerektiren ABD müşterileriniz var'}
+                      : 'ABD\'deki müşterileriniz ödeme yapabilmek için ABD tüzel kişiliği talep ediyor'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600">✓</span>
                     {isEnglish
                       ? 'You need a US bank account for operational purposes'
-                      : 'Operasyonel amaçlar için ABD banka hesabına ihtiyacınız var'}
+                      : 'İş akışınız için ABD\'de bir banka hesabına ihtiyacınız var'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600">✓</span>
                     {isEnglish
                       ? 'You want liability separation between personal and business assets'
-                      : 'Kişisel ve iş varlıkları arasında sorumluluk ayrımı istiyorsunuz'}
+                      : 'Kişisel varlıklarınızı ticari sorumluluklardan ayırmak istiyorsunuz'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-600">✓</span>
@@ -172,7 +172,7 @@ export default async function PreArrivalChecklistPage({
                     <span className="text-red-600">✗</span>
                     {isEnglish
                       ? 'You\'re forming it "just in case" without understanding compliance obligations'
-                      : 'Uyumluluk yükümlülüklerini anlamadan "her ihtimale karşı" kuruyorsunuz'}
+                      : 'Getirdiği yükümlülükleri bilmeden sırf "her ihtimale karşı" kuruyorsunuz'}
                   </li>
                 </ul>
               </div>
@@ -210,7 +210,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-sm text-amber-800">
                   {isEnglish
                     ? 'Many non-residents assume they can easily open a US business bank account remotely. Reality: Traditional banks often require in-person verification, SSN/ITIN, and substantial documentation. Fintech alternatives (Mercury, Relay) have different requirements but may have limitations on certain transactions.'
-                    : 'Birçok yerleşik olmayan kişi, uzaktan kolayca ABD iş banka hesabı açabileceklerini varsayar. Gerçek: Geleneksel bankalar genellikle yüz yüze doğrulama, SSN/ITIN ve kapsamlı belgeler gerektirir. Fintech alternatifleri (Mercury, Relay) farklı gereksinimlere sahiptir ancak belirli işlemlerde sınırlamaları olabilir.'}
+                    : 'ABD mukimi olmayan pek çok kişi, uzaktan kolayca ABD ticari banka hesabı açabileceğini düşünür. Oysa geleneksel bankalar çoğunlukla yüz yüze kimlik doğrulaması, SSN veya ITIN ve kapsamlı evrak ister. Mercury veya Relay gibi fintech alternatifleri farklı şartlar sunar, ancak bunların da bazı işlem türlerinde kısıtlamaları olabilir.'}
                 </p>
               </div>
             </div>
@@ -232,17 +232,17 @@ export default async function PreArrivalChecklistPage({
             <div className="space-y-4">
               <div className="border border-gray-200 rounded-lg p-5">
                 <h3 className="font-semibold text-black mb-3">
-                  {isEnglish ? 'Basic Tax Framework for Non-Residents' : 'Yerleşik Olmayanların Temel Vergi Çerçevesi'}
+                  {isEnglish ? 'Basic Tax Framework for Non-Residents' : 'ABD Mukimi Olmayanlar İçin Temel Vergi Çerçevesi'}
                 </h3>
                 <p className="text-sm text-gray-700 mb-3">
                   {isEnglish
                     ? 'US tax obligations depend on your residency status (for tax purposes), business structure, and income sources. Non-resident aliens with US-source income may have withholding requirements. LLCs have different tax treatment based on election and member count.'
-                    : 'ABD vergi yükümlülükleri, (vergi amaçlı) ikamet durumunuza, iş yapınıza ve gelir kaynaklarınıza bağlıdır. ABD kaynaklı geliri olan yerleşik olmayan yabancıların stopaj gereksinimleri olabilir. LLC\'lerin seçim ve üye sayısına göre farklı vergi muameleleri vardır.'}
+                    : 'ABD vergi yükümlülükleriniz; vergisel ikamet durumunuza, şirket yapınıza ve gelir kaynağınıza göre belirlenir. ABD kaynaklı geliri bulunan yabancı uyrukluların stopaj yükümlülüğü doğabilir. LLC\'lerin vergisel muamelesi, seçilen vergi statüsüne ve üye sayısına göre değişir.'}
                 </p>
                 <p className="text-sm text-gray-600">
                   {isEnglish
                     ? 'Key forms to know: W-8BEN (for non-residents), W-9 (for US persons), 1099 (income reporting), 5472 (foreign-owned LLC disclosure).'
-                    : "Bilinmesi gereken temel formlar: W-8BEN (yerleşik olmayanlar için), W-9 (ABD kişileri için), 1099 (gelir raporlama), 5472 (yabancı sahipli LLC beyanı)."}
+                    : "Bilmeniz gereken başlıca formlar: W-8BEN (ABD mukimi olmayanlar için), W-9 (ABD mukimleri için), 1099 (gelir bildirimi), 5472 (yabancı ortaklı LLC bildirimi)."}
                 </p>
               </div>
 
@@ -255,13 +255,13 @@ export default async function PreArrivalChecklistPage({
                     <strong>SSN (Social Security Number):</strong>{' '}
                     {isEnglish
                       ? 'Issued to US citizens, permanent residents, and those authorized to work. Required for employment.'
-                      : 'ABD vatandaşlarına, kalıcı oturma izni sahiplerine ve çalışma yetkisi olanlara verilir. İstihdam için gereklidir.'}
+                      : 'ABD vatandaşlarına, kalıcı oturma izni sahiplerine ve çalışma izni bulunanlara verilir. Çalışma hakkı için zorunludur.'}
                   </li>
                   <li>
                     <strong>ITIN (Individual Taxpayer Identification Number):</strong>{' '}
                     {isEnglish
                       ? 'For individuals who need to file US taxes but are not eligible for SSN. Does not authorize work.'
-                      : 'ABD vergisi beyan etmesi gereken ancak SSN almaya uygun olmayan bireyler içindir. Çalışmaya yetki vermez.'}
+                      : 'ABD\'de vergi beyannamesi vermesi gereken ancak SSN almaya hakkı olmayan kişilere verilir. Çalışma izni sağlamaz.'}
                   </li>
                 </ul>
               </div>
@@ -273,7 +273,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? 'Incorrect tax elections, missed filings, or improper classification can result in penalties, back taxes, and complications with future visa applications. The IRS shares information with immigration authorities in certain circumstances.'
-                    : 'Yanlış vergi seçimleri, kaçırılan beyannameler veya uygunsuz sınıflandırma cezalara, geriye dönük vergilere ve gelecekteki vize başvurularında komplikasyonlara yol açabilir. IRS belirli durumlarda göçmenlik yetkilileriyle bilgi paylaşır.'}
+                    : 'Hatalı vergi statüsü seçimi, verilmeyen beyannameler veya yanlış sınıflandırma; para cezasına, geriye dönük vergi tarhiyatına ve ilerideki vize başvurularınızda ciddi sorunlara neden olabilir. IRS, belirli durumlarda göçmenlik makamlarıyla bilgi paylaşmaktadır.'}
                 </p>
               </div>
             </div>
@@ -302,19 +302,19 @@ export default async function PreArrivalChecklistPage({
                     <span className="text-gray-400">•</span>
                     {isEnglish
                       ? 'Traditional banks (Chase, Bank of America, Wells Fargo) typically require in-person visit, often with visa documentation'
-                      : 'Geleneksel bankalar (Chase, Bank of America, Wells Fargo) genellikle vize belgeleriyle yüz yüze ziyaret gerektirir'}
+                      : 'Chase, Bank of America, Wells Fargo gibi geleneksel bankalar genellikle vize belgelerinizle birlikte yüz yüze başvuru ister'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-gray-400">•</span>
                     {isEnglish
                       ? 'Some banks accept only certain visa types or require minimum deposits'
-                      : 'Bazı bankalar yalnızca belirli vize türlerini kabul eder veya minimum depozito gerektirir'}
+                      : 'Bazı bankalar yalnızca belirli vize türlerini kabul eder ya da asgari bakiye şartı koyar'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-gray-400">•</span>
                     {isEnglish
                       ? 'Business accounts have different requirements than personal accounts'
-                      : 'İşletme hesapları kişisel hesaplardan farklı gereksinimlere sahiptir'}
+                      : 'Ticari hesap açma koşulları bireysel hesaplardan farklıdır'}
                   </li>
                 </ul>
               </div>
@@ -328,25 +328,25 @@ export default async function PreArrivalChecklistPage({
                     <span className="text-amber-500">⚠</span>
                     {isEnglish
                       ? 'May have restrictions on certain business types or transaction volumes'
-                      : 'Belirli iş türleri veya işlem hacimleri üzerinde kısıtlamaları olabilir'}
+                      : 'Belirli faaliyet türleri veya işlem hacimleri bakımından kısıtlamalar içerebilir'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-500">⚠</span>
                     {isEnglish
                       ? 'Account freezes can occur with limited recourse'
-                      : 'Sınırlı başvuru yolu ile hesap dondurmaları olabilir'}
+                      : 'Hesap dondurma riski vardır ve itiraz imkanları sınırlı olabilir'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-500">⚠</span>
                     {isEnglish
                       ? 'Not all accept non-resident owners without US presence'
-                      : 'Hepsi ABD varlığı olmadan yerleşik olmayan sahipleri kabul etmez'}
+                      : 'Tamamı, ABD\'de fiziki varlığı olmayan yabancı sahipleri kabul etmez'}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-500">⚠</span>
                     {isEnglish
                       ? 'Integration with Turkish banking may have delays or fees'
-                      : 'Türk bankacılığı ile entegrasyon gecikmelere veya ücretlere sahip olabilir'}
+                      : 'Türkiye\'deki bankalarla entegrasyonda gecikmeler veya ek masraflar söz konusu olabilir'}
                   </li>
                 </ul>
               </div>
@@ -358,7 +358,7 @@ export default async function PreArrivalChecklistPage({
                 <p className="text-sm text-red-800">
                   {isEnglish
                     ? 'Large or frequent transfers between Turkey and the US may trigger reporting requirements or compliance reviews. Both countries have anti-money laundering regulations. Document the business purpose of significant transfers. Unexplained fund movements can complicate both tax and immigration matters.'
-                    : 'Türkiye ve ABD arasındaki büyük veya sık transferler raporlama gereksinimlerini veya uyumluluk incelemelerini tetikleyebilir. Her iki ülkenin de kara para aklama karşıtı düzenlemeleri vardır. Önemli transferlerin iş amacını belgeleyin. Açıklanamayan fon hareketleri hem vergi hem de göçmenlik konularını karmaşıklaştırabilir.'}
+                    : 'Türkiye ile ABD arasındaki yüksek tutarlı veya sık tekrarlanan transferler, raporlama yükümlülüklerini ya da uyum denetimlerini tetikleyebilir. Her iki ülkede de kara para aklamayla mücadele düzenlemeleri mevcuttur. Büyük tutarlı transferlerin ticari gerekçesini mutlaka belgeleyin. Kaynağı açıklanamayan fon hareketleri, hem vergi hem de göçmenlik süreçlerinizi ciddi şekilde zorlaştırabilir.'}
                 </p>
               </div>
             </div>
@@ -374,7 +374,7 @@ export default async function PreArrivalChecklistPage({
             <div className="space-y-4">
               <div className="bg-gray-50 rounded-lg p-5">
                 <h3 className="font-semibold text-black mb-3">
-                  {isEnglish ? 'Documents to Prepare Before Arrival' : 'ABD\'ye Gelmeden Hazır Olması Gereken Belgeler'}
+                  {isEnglish ? 'Documents to Prepare Before Arrival' : 'ABD\'ye Gelmeden Önce Hazırlamanız Gereken Belgeler'}
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
@@ -383,7 +383,7 @@ export default async function PreArrivalChecklistPage({
                       <strong>{isEnglish ? 'Service Agreement:' : 'Hizmet Sözleşmesi:'}</strong>{' '}
                       {isEnglish
                         ? 'If you\'ll be providing services to US clients'
-                        : 'ABD müşterilerine hizmet verecekseniz'}
+                        : 'ABD\'deki müşterilere hizmet sunacaksanız'}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -401,7 +401,7 @@ export default async function PreArrivalChecklistPage({
                       <strong>{isEnglish ? 'NDA (Non-Disclosure Agreement):' : 'Gizlilik Sözleşmesi (NDA):'}</strong>{' '}
                       {isEnglish
                         ? 'For protecting business discussions and proprietary information'
-                        : 'İş görüşmelerini ve tescilli bilgileri korumak için'}
+                        : 'İş görüşmelerinde ve ticari sır niteliğindeki bilgilerin korunmasında'}
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
