@@ -117,110 +117,86 @@ export default async function LibraryPage({
 
   return (
     <div className="bg-white">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-black text-black mb-4">
-            {isEnglish ? 'Legal Reference Library' : 'Hukuki Referans Kütüphanesi'}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            {isEnglish
-              ? 'Factual, reference-only guides for Turkish entrepreneurs navigating US business and legal requirements. No advice—just clear explanations.'
-              : 'ABD\'de iş ve hukuki gereksinimlerle uğraşan Türk girişimciler için gerçeklere dayalı referans rehberleri. Tavsiye vermiyoruz; yalnızca açık ve net açıklamalar sunuyoruz.'}
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <header className="mb-12">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+            {isEnglish ? 'Reference' : 'Referans'}
           </p>
-        </div>
-
-        {/* Featured Articles */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Featured Guides' : 'Öne Çıkan Rehberler'}
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {categories.flatMap(cat => cat.articles.filter(a => a.featured && a.available)).map((article) => (
-              <Link
-                key={article.slug}
-                href={`/${lang}/library/${article.slug}`}
-                className="group border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all"
-              >
-                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                  {article.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{article.description}</p>
-                <span className="inline-block mt-4 text-sm font-medium text-[#C9A227]">
-                  {isEnglish ? 'Read Guide →' : 'Rehberi Oku →'}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4">
+            {isEnglish ? 'Library' : 'Kütüphane'}
+          </h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'In-depth reference guides explaining US business and legal concepts. Written for accuracy and clarity, not as advice.'
+              : 'ABD iş ve hukuk kavramlarını açıklayan derinlemesine referans rehberleri. Tavsiye olarak değil, doğruluk ve netlik için yazılmıştır.'}
+          </p>
+        </header>
 
         {/* Categories */}
         {categories.map((category) => (
           <section key={category.id} className="mb-12">
-            <div className="border-b border-gray-200 pb-4 mb-6">
-              <h2 className="text-xl font-bold text-black">{category.title}</h2>
-              <p className="text-gray-500 text-sm">{category.description}</p>
-            </div>
+            <h2 className="text-lg font-serif font-semibold text-gray-900 mb-2">{category.title}</h2>
+            <p className="text-sm text-gray-500 mb-6">{category.description}</p>
 
-            <div className="space-y-4">
+            <div className="divide-y divide-gray-100">
               {category.articles.map((article) => (
-                <div
-                  key={article.slug}
-                  className={`border rounded-lg p-5 ${
-                    article.available
-                      ? 'border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all'
-                      : 'border-gray-100 bg-gray-50'
-                  }`}
-                >
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-semibold text-black">{article.title}</h3>
-                        {!article.available && (
-                          <span className="px-2 py-0.5 bg-gray-200 text-gray-500 rounded text-xs">
-                            {isEnglish ? 'Coming Soon' : 'Yakında'}
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-gray-600 text-sm">{article.description}</p>
+                <div key={article.slug} className="py-4">
+                  {article.available ? (
+                    <Link
+                      href={`/${lang}/library/${article.slug}`}
+                      className="block group"
+                    >
+                      <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors mb-1">
+                        {article.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">{article.description}</p>
+                    </Link>
+                  ) : (
+                    <div className="opacity-60">
+                      <h3 className="font-medium text-gray-700 mb-1">
+                        {article.title}
+                        <span className="ml-2 text-xs text-gray-400">
+                          {isEnglish ? '(Coming)' : '(Yakında)'}
+                        </span>
+                      </h3>
+                      <p className="text-sm text-gray-500">{article.description}</p>
                     </div>
-                    {article.available && (
-                      <Link
-                        href={`/${lang}/library/${article.slug}`}
-                        className="text-sm text-[#C9A227] font-medium hover:text-[#B8922A] whitespace-nowrap ml-4"
-                      >
-                        {isEnglish ? 'Read →' : 'Oku →'}
-                      </Link>
-                    )}
-                  </div>
+                  )}
                 </div>
               ))}
             </div>
           </section>
         ))}
 
-        {/* Product CTA */}
-        <section className="mt-16 bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-xl p-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="text-2xl font-bold text-black mb-2">
-                {isEnglish ? 'Need the Essential Documents?' : 'Temel Belgelere mi İhtiyacınız Var?'}
-              </h2>
-              <p className="text-gray-600">
-                {isEnglish
-                  ? 'Our Business Starter Kit includes 5 essential legal documents for US business.'
-                  : "ABD İş Başlangıç Hukuk Kitimiz, ABD'deki işiniz için 5 temel hukuki belge içerir."}
-              </p>
-            </div>
+        {/* Related Resources */}
+        <nav className="mt-12 pt-8 border-t border-gray-200">
+          <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-4">
+            {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+          </h3>
+          <div className="flex flex-wrap gap-3">
             <Link
-              href={`/${lang}/legal-kits/business-starter`}
-              className="bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors whitespace-nowrap"
+              href={`/${lang}/amerika`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
             >
-              {isEnglish ? 'View Business Starter Kit →' : 'Kiti Görüntüle →'}
+              {isEnglish ? 'US Business Hub →' : 'ABD İş Merkezi →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/checklists`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Checklists →' : 'Kontrol Listeleri →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/legal-kits`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Legal Kits →' : 'Hukuki Kitler →'}
             </Link>
           </div>
-        </section>
+        </nav>
       </main>
     </div>
   )

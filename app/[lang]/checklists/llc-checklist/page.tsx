@@ -208,129 +208,141 @@ export default async function LLCChecklistPage({
       />
 
       <div className="bg-white">
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
-            <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-            <span className="mx-2">→</span>
-            <span className="text-black">{isEnglish ? 'LLC Formation Checklist' : 'LLC Kurma Kontrol Listesi'}</span>
+            <Link href={`/${lang}`} className="hover:text-gray-900">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
+            <span className="mx-2 text-gray-300">/</span>
+            <Link href={`/${lang}/checklists`} className="hover:text-gray-900">{isEnglish ? 'Checklists' : 'Kontrol Listeleri'}</Link>
+            <span className="mx-2 text-gray-300">/</span>
+            <span className="text-gray-900">{isEnglish ? 'LLC Formation' : 'LLC Kurulumu'}</span>
           </nav>
 
-          {/* Hero */}
-          <div className="mb-10">
-            <span className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-4">
-              {isEnglish ? 'Free Checklist' : 'Ücretsiz Kontrol Listesi'}
-            </span>
-
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-4 leading-tight">
-              {isEnglish ? 'US LLC Formation Checklist' : "ABD'de LLC Kurmadan Önce Kontrol Listesi"}
+          {/* Header */}
+          <header className="mb-12 pb-8 border-b border-gray-200">
+            <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+              {isEnglish ? 'Checklist' : 'Kontrol Listesi'}
+            </p>
+            <h1 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4">
+              {isEnglish ? 'US LLC Formation' : 'ABD LLC Kurulumu'}
             </h1>
-
             <p className="text-lg text-gray-600 leading-relaxed">
               {isEnglish
-                ? 'Everything you need to prepare before, during, and after forming your US LLC. Print this page or use it as a reference.'
-                : 'ABD LLC\'nizi kurmadan önce, kurarken ve kurduktan sonra hazırlamanız gereken her şey. Bu sayfayı yazdırın veya referans olarak kullanın.'}
+                ? 'A structured preparation checklist for forming a Limited Liability Company in the United States. Covers pre-formation planning, required documents, and post-formation obligations.'
+                : 'Amerika Birleşik Devletleri\'nde Limited Şirket kurmak için yapılandırılmış bir hazırlık listesi. Kuruluş öncesi planlama, gerekli belgeler ve kuruluş sonrası yükümlülükleri kapsar.'}
             </p>
-          </div>
+          </header>
 
           {/* Pre-Formation Checklist */}
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center text-sm font-bold">1</span>
-              {isEnglish ? 'Before Formation' : 'Kuruluş Öncesi'}
+          <section className="mb-12">
+            <h2 className="text-xl font-serif font-semibold text-gray-900 mb-6">
+              {isEnglish ? 'I. Pre-Formation Planning' : 'I. Kuruluş Öncesi Planlama'}
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-1">
               {preFormationChecklist.map((item, index) => (
-                <label key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer">
-                  <input type="checkbox" className="mt-1 w-5 h-5 rounded border-gray-300" />
-                  <span className="text-gray-700">{item.item}</span>
+                <label key={index} className="flex items-start gap-4 py-3 border-b border-gray-100 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="mt-0.5 w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                  />
+                  <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{item.item}</span>
                 </label>
               ))}
             </div>
           </section>
 
           {/* Documents Checklist */}
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-100 text-amber-800 rounded-full flex items-center justify-center text-sm font-bold">2</span>
-              {isEnglish ? 'Required Documents' : 'Gerekli Belgeler'}
+          <section className="mb-12">
+            <h2 className="text-xl font-serif font-semibold text-gray-900 mb-6">
+              {isEnglish ? 'II. Required Documents' : 'II. Gerekli Belgeler'}
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-1">
               {documentChecklist.map((item, index) => (
-                <label key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer">
-                  <input type="checkbox" className="mt-1 w-5 h-5 rounded border-gray-300" />
-                  <span className="text-gray-700">{item.item}</span>
+                <label key={index} className="flex items-start gap-4 py-3 border-b border-gray-100 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="mt-0.5 w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                  />
+                  <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{item.item}</span>
                 </label>
               ))}
             </div>
           </section>
 
           {/* Post-Formation Checklist */}
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
-              <span className="w-8 h-8 bg-green-100 text-green-800 rounded-full flex items-center justify-center text-sm font-bold">3</span>
-              {isEnglish ? 'After Formation' : 'Kuruluş Sonrası'}
+          <section className="mb-12">
+            <h2 className="text-xl font-serif font-semibold text-gray-900 mb-6">
+              {isEnglish ? 'III. Post-Formation Steps' : 'III. Kuruluş Sonrası Adımlar'}
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-1">
               {postFormationChecklist.map((item, index) => (
-                <label key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer">
-                  <input type="checkbox" className="mt-1 w-5 h-5 rounded border-gray-300" />
-                  <span className="text-gray-700">{item.item}</span>
+                <label key={index} className="flex items-start gap-4 py-3 border-b border-gray-100 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="mt-0.5 w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                  />
+                  <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{item.item}</span>
                 </label>
               ))}
             </div>
           </section>
 
           {/* FAQ */}
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-black mb-4">
-              {isEnglish ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}
+          <section className="mb-12 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-serif font-semibold text-gray-900 mb-6">
+              {isEnglish ? 'Common Questions' : 'Sık Sorulan Sorular'}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {faqItems.map((faq, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-gray-50 px-5 py-4">
-                    <h3 className="font-semibold text-black">{faq.q}</h3>
-                  </div>
-                  <div className="px-5 py-4">
-                    <p className="text-gray-700 text-sm">{faq.a}</p>
-                  </div>
+                <div key={index}>
+                  <h3 className="font-medium text-gray-900 mb-2">{faq.q}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* Related Resources */}
-          <section className="mb-10">
-            <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
+          <section className="mb-12 pt-8 border-t border-gray-200">
+            <h2 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-4">
+              {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+            </h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <Link href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'Complete step-by-step guide' : 'Tam adım adım rehber'}</p>
+              <Link href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`} className="block py-3 group">
+                <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                  {isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}
+                </h3>
+                <p className="text-sm text-gray-500">{isEnglish ? 'Detailed reference guide' : 'Detaylı referans rehberi'}</p>
               </Link>
-              <Link href={`/${lang}/ein-itin-ssn-farki`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'Tax ID numbers explained' : 'Vergi kimlik numaraları açıklandı'}</p>
+              <Link href={`/${lang}/ein-itin-ssn-farki`} className="block py-3 group">
+                <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                  {isEnglish ? 'EIN, ITIN, SSN Explained' : 'EIN, ITIN, SSN Açıklaması'}
+                </h3>
+                <p className="text-sm text-gray-500">{isEnglish ? 'Tax identification numbers' : 'Vergi kimlik numaraları'}</p>
               </Link>
-              <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates' : '5 temel sözleşme şablonu'}</p>
+              <Link href={`/${lang}/checklists/bank-account-checklist`} className="block py-3 group">
+                <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                  {isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Listesi'}
+                </h3>
+                <p className="text-sm text-gray-500">{isEnglish ? 'Opening your business account' : 'İş hesabı açma'}</p>
               </Link>
-              <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'Opening your business account' : 'İş banka hesabı açma'}</p>
+              <Link href={`/${lang}/legal-kits/business-starter`} className="block py-3 group">
+                <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                  {isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}
+                </h3>
+                <p className="text-sm text-gray-500">{isEnglish ? 'Essential document templates' : 'Temel belge şablonları'}</p>
               </Link>
             </div>
           </section>
 
           {/* Disclaimer */}
-          <div className="bg-gray-100 rounded-lg p-5">
-            <p className="text-xs text-gray-600 leading-relaxed">
+          <aside className="pt-8 border-t border-gray-200">
+            <p className="text-xs text-gray-500 leading-relaxed">
               {isEnglish
-                ? 'This checklist is for informational purposes only and does not constitute legal advice. Requirements vary by state and individual circumstances. Consult qualified professionals for your specific situation.'
-                : 'Bu kontrol listesi yalnızca bilgilendirme amaçlıdır; hukuki tavsiye niteliği taşımaz. Gereksinimler eyalete ve bireysel durumlara göre değişir. Kendi durumunuz için uzman profesyonellere danışın.'}
+                ? 'This checklist is provided for informational and reference purposes only. It does not constitute legal, tax, or professional advice. Requirements vary by state, jurisdiction, and individual circumstances. Always verify current requirements with relevant state authorities and consult qualified professionals for guidance specific to your situation.'
+                : 'Bu kontrol listesi yalnızca bilgilendirme ve referans amaçlıdır. Hukuki, vergi veya profesyonel tavsiye niteliği taşımaz. Gereksinimler eyalete, yargı alanına ve bireysel durumlara göre değişir. Güncel gereksinimleri her zaman ilgili eyalet yetkilileriyle doğrulayın ve durumunuza özel rehberlik için nitelikli profesyonellere danışın.'}
             </p>
-          </div>
+          </aside>
         </main>
       </div>
     </>

@@ -113,34 +113,32 @@ export default async function TemplatesPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Page Header */}
-        <div className="mb-10">
-          <h1 className="text-4xl font-black text-black mb-4">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <header className="mb-12">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+            {isEnglish ? 'Document Library' : 'Belge Kütüphanesi'}
+          </p>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4">
             {isEnglish ? 'Templates' : 'Şablonlar'}
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="text-lg text-gray-600 leading-relaxed">
             {isEnglish
-              ? `Browse ${templates.length}+ free legal templates. Contracts, forms, letters, checklists, and document samples for Turkish entrepreneurs.`
-              : `${templates.length}+ ücretsiz hukuki şablon. Türk girişimciler için sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge örnekleri.`}
+              ? `${templates.length}+ legal document templates. Professionally drafted contracts, forms, and reference documents.`
+              : `${templates.length}+ hukuki belge şablonu. Profesyonelce hazırlanmış sözleşmeler, formlar ve referans belgeleri.`}
           </p>
-        </div>
+        </header>
 
-        {/* Search prompt */}
-        <div className="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
-          <p className="text-sm text-gray-600">
-            <span className="font-medium text-gray-900">
-              {isEnglish ? 'Tip:' : 'İpucu:'}
-            </span>{' '}
-            {isEnglish
-              ? 'Press Ctrl+K (or ⌘+K on Mac) anytime to search all templates and guides.'
-              : 'Tüm şablon ve rehberlerde arama yapmak için istediğiniz zaman Ctrl+K (veya Mac\'te ⌘+K) tuşlarına basın.'}
-          </p>
+        {/* Search hint */}
+        <div className="mb-10 text-sm text-gray-500">
+          {isEnglish
+            ? 'Press ⌘K to search all templates and guides.'
+            : 'Tüm şablon ve rehberlerde aramak için ⌘K tuşuna basın.'}
         </div>
 
         {/* Category Quick Links */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2">
+        <nav className="mb-12 pb-8 border-b border-gray-200">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             {categories.map((category) => {
               const count = templatesByCategory[category]?.length || 0
               if (count === 0) return null
@@ -148,119 +146,83 @@ export default async function TemplatesPage({
                 <a
                   key={category}
                   href={`#${category}`}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:border-gray-400 hover:bg-gray-50 transition-colors"
+                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
                 >
-                  {categoryLabels[category][lang]}
-                  <span className="text-gray-400 text-xs">({count})</span>
+                  {categoryLabels[category][lang]} ({count})
                 </a>
               )
             })}
           </div>
-        </div>
+        </nav>
 
         {/* Templates by Category */}
         {Object.entries(templatesByCategory).map(([category, categoryTemplates]) => (
           <section key={category} id={category} className="mb-12 scroll-mt-20">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-black">
-                {categoryLabels[category as TemplateCategory][lang]}
-              </h2>
-              <span className="text-sm text-gray-500">
-                {categoryTemplates.length} {isEnglish ? 'templates' : 'şablon'}
-              </span>
-            </div>
+            <h2 className="text-lg font-serif font-semibold text-gray-900 mb-6">
+              {categoryLabels[category as TemplateCategory][lang]}
+            </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="divide-y divide-gray-100">
               {categoryTemplates.map((template) => (
                 <Link
                   key={template.id}
                   href={`/${lang}/templates/${template.slug}`}
-                  className="group block p-5 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-md transition-all"
+                  className="block py-4 group"
                 >
-                  {/* Doc type & jurisdiction badges */}
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                          {template.title}
+                        </h3>
+                        {template.jurisdiction !== 'General' && (
+                          <span className="text-xs text-gray-400">
+                            {jurisdictionLabels[template.jurisdiction][lang]}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-gray-500 line-clamp-1">
+                        {template.shortDescription}
+                      </p>
+                    </div>
+                    <span className="text-xs text-gray-400 flex-shrink-0 mt-1">
                       {docTypeLabels[template.docType][lang]}
                     </span>
-                    {template.jurisdiction !== 'General' && (
-                      <span className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded">
-                        {jurisdictionLabels[template.jurisdiction][lang]}
-                      </span>
-                    )}
-                    {template.isSample && (
-                      <span className="px-2 py-0.5 bg-amber-50 text-amber-700 text-xs rounded">
-                        {isEnglish ? 'Sample' : 'Örnek'}
-                      </span>
-                    )}
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black mb-2">
-                    {template.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {template.shortDescription}
-                  </p>
-
-                  {/* View link */}
-                  <span className="mt-4 inline-flex items-center text-sm font-medium text-gray-500 group-hover:text-black transition-colors">
-                    {isEnglish ? 'View Template' : 'Şablonu Görüntüle'}
-                    <svg
-                      className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </span>
                 </Link>
               ))}
             </div>
           </section>
         ))}
 
-        {/* Support CTA */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-xl">
-          <div className="max-w-2xl">
-            <h2 className="text-xl font-bold text-gray-900 mb-2">
-              {isEnglish
-                ? 'Find these templates useful?'
-                : 'Bu şablonları faydalı buldunuz mu?'}
-            </h2>
-            <p className="text-gray-700 mb-4">
-              {isEnglish
-                ? 'EchoLegal is free to use. If these resources save you time or money, consider supporting our work.'
-                : 'EchoLegal kullanımı ücretsizdir. Bu kaynaklar size zaman veya para kazandırıyorsa, çalışmalarımızı desteklemeyi düşünün.'}
-            </p>
+        {/* Related Resources */}
+        <nav className="mt-12 pt-8 border-t border-gray-200">
+          <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-4">
+            {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+          </h3>
+          <div className="flex flex-wrap gap-3">
             <Link
-              href={`/${lang}/support`}
-              className="inline-flex items-center px-5 py-2.5 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors"
+              href={`/${lang}/contracts`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
             >
-              {isEnglish ? 'Support EchoLegal' : 'EchoLegal\'i Destekle'}
-              <svg
-                className="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+              {isEnglish ? 'Contracts →' : 'Sözleşmeler →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/legal-kits`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Legal Kits →' : 'Hukuki Kitler →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/checklists`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Checklists →' : 'Kontrol Listeleri →'}
             </Link>
           </div>
-        </div>
+        </nav>
       </div>
     </>
   )

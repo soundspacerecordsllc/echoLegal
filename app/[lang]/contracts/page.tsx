@@ -88,70 +88,88 @@ export default async function ContractsPage({
 
   return (
     <div className="bg-white">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-black text-black mb-4">
-          {isEnglish ? 'Contracts' : 'Sözleşmeler'}
-        </h1>
-        <p className="text-lg text-gray-600 mb-2">
-          {isEnglish
-            ? 'Professional legal templates for everyday business needs.'
-            : 'Günlük iş ihtiyaçları için profesyonel hukuki şablonlar.'}
-        </p>
-        <p className="text-base text-gray-500 mb-12">
-          {isEnglish
-            ? 'I support EchoLegal – $20 recommended. Download for free.'
-            : 'EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir; isterseniz ücretsiz indirebilirsiniz.'}
-        </p>
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <header className="mb-12">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+            {isEnglish ? 'Templates' : 'Şablonlar'}
+          </p>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4">
+            {isEnglish ? 'Contracts' : 'Sözleşmeler'}
+          </h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'Professionally drafted contract templates for common business relationships. Available in English and Turkish.'
+              : 'Yaygın iş ilişkileri için profesyonelce hazırlanmış sözleşme şablonları. İngilizce ve Türkçe olarak mevcuttur.'}
+          </p>
+        </header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Contracts List */}
+        <div className="divide-y divide-gray-200">
           {contracts.map((contract) => (
-            <div 
-              key={contract.slug}
-              className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-            >
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${
-                contract.available 
-                  ? 'bg-green-100 text-green-800' 
-                  : 'bg-gray-100 text-gray-600'
-              }`}>
-                {contract.available 
-                  ? (isEnglish ? 'Available' : 'Mevcut') 
-                  : (isEnglish ? 'Coming Soon' : 'Yakında')}
-              </span>
-              
-              <h2 className="text-xl font-bold text-black mb-2">
-                {contract.title}
-              </h2>
-              
-              <p className="text-gray-600 mb-4">
-                {contract.description}
-              </p>
-              
+            <div key={contract.slug} className="py-6">
               {contract.available ? (
-                <div className="space-y-2">
-                  <Link
-                    href={`/${lang}/contracts/${contract.slug}`}
-                    className="inline-block bg-[#C9A227] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
-                  >
-                    {isEnglish ? 'View & Download →' : 'Görüntüle & İndir →'}
-                  </Link>
-                  <div>
-                    <Link
-                      href={`/${lang}/support`}
-                      className="text-sm text-gray-500 hover:text-[#C9A227] transition-colors"
-                    >
-                      {isEnglish ? 'Why support EchoLegal?' : 'Neden EchoLegal\'i desteklemeliyim?'}
-                    </Link>
+                <Link
+                  href={`/${lang}/contracts/${contract.slug}`}
+                  className="block group"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h2 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors mb-1">
+                        {contract.title}
+                      </h2>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {contract.description}
+                      </p>
+                    </div>
+                    <span className="text-gray-400 group-hover:text-gray-600 transition-colors flex-shrink-0 mt-1">
+                      →
+                    </span>
                   </div>
-                </div>
+                </Link>
               ) : (
-                <span className="inline-block bg-gray-200 text-gray-500 px-6 py-3 rounded-lg font-semibold cursor-not-allowed">
-                  {isEnglish ? 'Coming Soon' : 'Yakında'}
-                </span>
+                <div className="opacity-60">
+                  <h2 className="font-medium text-gray-700 mb-1">
+                    {contract.title}
+                    <span className="ml-2 text-sm text-gray-400">
+                      {isEnglish ? '(Coming)' : '(Yakında)'}
+                    </span>
+                  </h2>
+                  <p className="text-sm text-gray-500">{contract.description}</p>
+                </div>
               )}
             </div>
           ))}
         </div>
+
+        {/* Related Resources */}
+        <nav className="mt-12 pt-8 border-t border-gray-200">
+          <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-4">
+            {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'All Templates →' : 'Tüm Şablonlar →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/legal-kits`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Legal Kits →' : 'Hukuki Kitler →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={`/${lang}/library`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Reference Library →' : 'Referans Kütüphanesi →'}
+            </Link>
+          </div>
+        </nav>
       </main>
     </div>
   )

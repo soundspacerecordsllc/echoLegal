@@ -33,115 +33,132 @@ export default async function ChecklistsPage({
 
   const checklists = [
     {
-      slug: 'llc-kontrol-listesi',
-      title: isEnglish ? 'Before Forming a US LLC: Checklist' : 'ABD\'de LLC Kurmadan Önce: Kontrol Listesi',
+      slug: 'llc-checklist',
+      title: isEnglish ? 'US LLC Formation Checklist' : 'ABD LLC Kurulum Kontrol Listesi',
       description: isEnglish
-        ? 'Key questions to consider before starting the LLC formation process.'
-        : 'LLC kurulum sürecini başlatmadan önce düşünülmesi gereken temel sorular.',
-      items: 8,
+        ? 'Complete preparation checklist: state selection, documents, costs, and post-formation steps.'
+        : 'Tam hazırlık listesi: eyalet seçimi, belgeler, maliyetler ve kuruluş sonrası adımlar.',
+      items: 21,
       available: true,
     },
     {
       slug: 'w8-w9-karar-haritasi',
-      title: isEnglish ? 'W-8 or W-9? Quick Decision Map' : 'W-8 mi W-9 mu? Kısa Karar Haritası',
+      title: isEnglish ? 'W-8 vs W-9 Decision Guide' : 'W-8 / W-9 Karar Rehberi',
       description: isEnglish
-        ? 'A simple decision tree to determine which tax form you need.'
-        : 'Hangi vergi formuna ihtiyacınız olduğunu belirlemek için basit bir karar ağacı.',
+        ? 'Determine which IRS tax form applies to your situation.'
+        : 'Durumunuza hangi IRS vergi formunun uygulandığını belirleyin.',
       items: 5,
       available: true,
     },
     {
       slug: 'irs-mektup-rehberi',
-      title: isEnglish ? 'IRS Letter Received: First 7 Facts' : 'IRS\'ten Mektup Geldiyse: İlk 7 Gerçek',
+      title: isEnglish ? 'IRS Correspondence Guide' : 'IRS Yazışma Rehberi',
       description: isEnglish
-        ? 'What to understand when you receive a letter from the IRS.'
-        : 'IRS\'ten mektup aldığınızda anlamanız gerekenler.',
+        ? 'Understanding and responding to IRS letters and notices.'
+        : 'IRS mektuplarını ve bildirimlerini anlama ve yanıtlama.',
       items: 7,
+      available: true,
+    },
+    {
+      slug: 'bank-account-checklist',
+      title: isEnglish ? 'US Business Bank Account Checklist' : 'ABD İş Bankası Hesabı Listesi',
+      description: isEnglish
+        ? 'Documents and requirements for opening a US business bank account.'
+        : 'ABD iş bankası hesabı açmak için belgeler ve gereksinimler.',
+      items: 10,
+      available: true,
+    },
+    {
+      slug: 'tax-documents-checklist',
+      title: isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Listesi',
+      description: isEnglish
+        ? 'Essential IRS forms and compliance documents for foreign entrepreneurs.'
+        : 'Yabancı girişimciler için gerekli IRS formları ve uyum belgeleri.',
+      items: 8,
       available: true,
     },
   ]
 
   return (
     <div className="bg-white">
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero */}
-        <div className="mb-12">
-          <span className="inline-block px-3 py-1 bg-green-50 text-green-800 rounded-full text-sm font-medium mb-4">
-            {isEnglish ? 'Quick Reference Tools' : 'Hızlı Referans Araçları'}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-black mb-4">
-            {isEnglish ? 'Checklists & Decision Maps' : 'Kontrol Listeleri ve Karar Haritaları'}
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <header className="mb-12">
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
+            {isEnglish ? 'Reference Tools' : 'Referans Araçları'}
+          </p>
+          <h1 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-4">
+            {isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="text-lg text-gray-600 leading-relaxed">
             {isEnglish
-              ? 'Simple reference tools to help clarify common legal questions. Not advice—just organized facts.'
-              : 'Yaygın hukuki soruları netleştirmeye yardımcı basit referans araçları. Tavsiye değil—sadece düzenlenmiş gerçekler.'}
+              ? 'Structured reference lists for common legal and business procedures. Use these to verify completeness—not as a substitute for professional guidance.'
+              : 'Yaygın hukuki ve iş prosedürleri için yapılandırılmış referans listeleri. Bunları tamlığı doğrulamak için kullanın—profesyonel rehberliğin yerine değil.'}
           </p>
-        </div>
+        </header>
 
-        {/* Important Notice */}
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 mb-10">
-          <h3 className="font-semibold text-amber-800 mb-2">
-            {isEnglish ? 'What These Are' : 'Bunlar Nedir'}
-          </h3>
-          <p className="text-sm text-amber-900">
-            {isEnglish
-              ? 'These checklists are reference tools that organize common information. They do not provide legal, tax, or immigration advice. Your situation may have factors not covered here. Consult licensed professionals before making decisions.'
-              : 'Bu kontrol listeleri yaygın bilgileri düzenleyen referans araçlarıdır. Hukuki, vergi veya göçmenlik tavsiyesi sağlamazlar. Durumunuzda burada ele alınmayan faktörler olabilir. Karar vermeden önce lisanslı profesyonellere danışın.'}
-          </p>
-        </div>
-
-        {/* Checklists Grid */}
-        <div className="space-y-6">
+        {/* Checklists List */}
+        <div className="divide-y divide-gray-200">
           {checklists.map((checklist) => (
             <Link
               key={checklist.slug}
               href={`/${lang}/checklists/${checklist.slug}`}
-              className="block border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-md transition-all group"
+              className="block py-6 group"
             >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <h2 className="text-xl font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-lg font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
                     {checklist.title}
                   </h2>
-                  <p className="text-gray-600 mb-3">{checklist.description}</p>
-                  <span className="text-sm text-gray-500">
-                    {checklist.items} {isEnglish ? 'points' : 'madde'}
-                  </span>
+                  <p className="text-gray-500 mt-1 text-sm leading-relaxed">
+                    {checklist.description}
+                  </p>
                 </div>
-                <span className="text-[#C9A227] font-medium ml-4">
-                  {isEnglish ? 'View →' : 'Görüntüle →'}
+                <span className="text-gray-400 group-hover:text-gray-600 transition-colors flex-shrink-0 mt-1">
+                  →
                 </span>
               </div>
             </Link>
           ))}
         </div>
 
-        {/* Product CTA */}
-        <div className="mt-12 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-8">
-          <h2 className="text-xl font-bold text-black mb-4">
-            {isEnglish ? 'Need the Full Picture?' : 'Tam Resme mi İhtiyacınız Var?'}
-          </h2>
-          <p className="text-gray-600 mb-6">
+        {/* Notice */}
+        <aside className="mt-12 pt-8 border-t border-gray-200">
+          <p className="text-sm text-gray-500 leading-relaxed">
             {isEnglish
-              ? 'Our comprehensive guides provide detailed explanations of these topics.'
-              : 'Kapsamlı rehberlerimiz bu konuların ayrıntılı açıklamalarını sağlar.'}
+              ? 'These checklists compile commonly required items based on general practice. Requirements vary by jurisdiction, institution, and circumstance. Verify all items with relevant authorities and consult licensed professionals for your specific situation.'
+              : 'Bu kontrol listeleri, genel uygulamaya dayalı olarak yaygın olarak gerekli öğeleri derler. Gereksinimler yargı alanına, kuruma ve duruma göre değişir. Tüm öğeleri ilgili makamlarla doğrulayın ve özel durumunuz için lisanslı profesyonellere danışın.'}
           </p>
-          <div className="flex flex-wrap gap-4">
+        </aside>
+
+        {/* Related Resources */}
+        <nav className="mt-12 pt-8 border-t border-gray-200">
+          <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-4">
+            {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+          </h3>
+          <div className="flex flex-wrap gap-3">
             <Link
               href={`/${lang}/library`}
-              className="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
             >
-              {isEnglish ? 'Browse Library →' : 'Kütüphaneye Göz At →'}
+              {isEnglish ? 'Reference Library →' : 'Referans Kütüphanesi →'}
             </Link>
+            <span className="text-gray-300">·</span>
             <Link
-              href={`/${lang}/legal-kits/business-starter`}
-              className="inline-block bg-[#C9A227] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
+              href={`/${lang}/legal-kits`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
             >
-              {isEnglish ? 'Business Starter Kit →' : 'Business Starter Kit →'}
+              {isEnglish ? 'Legal Kits →' : 'Hukuki Kitler →'}
+            </Link>
+            <span className="text-gray-300">·</span>
+            <Link
+              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Templates →' : 'Şablonlar →'}
             </Link>
           </div>
-        </div>
+        </nav>
       </main>
     </div>
   )
