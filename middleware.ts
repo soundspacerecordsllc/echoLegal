@@ -2,53 +2,110 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { i18n } from './i18n-config'
 
+const LOCALE_COOKIE = 'ECHOLEGAL_LOCALE'
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
+
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
+
+  // Skip static files and API routes
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.includes('.') ||
+    pathname === '/favicon.ico'
+  ) {
+    return NextResponse.next()
+  }
 
   // Check if the pathname already has a locale
   const pathnameHasLocale = i18n.locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
-  if (pathnameHasLocale) return
+  if (pathnameHasLocale) {
+    // Extract locale from pathname and set cookie for future visits
+    const currentLocale = pathname.split('/')[1]
+    const response = NextResponse.next()
 
-  // Redirect if there is no locale
+    // Set x-pathname header for dynamic hreflang generation in layout
+    response.headers.set('x-pathname', pathname)
+
+    // Only set cookie if it doesn't match current locale
+    const existingCookie = request.cookies.get(LOCALE_COOKIE)?.value
+    if (existingCookie !== currentLocale) {
+      response.cookies.set(LOCALE_COOKIE, currentLocale, {
+        maxAge: COOKIE_MAX_AGE,
+        path: '/',
+        sameSite: 'lax',
+      })
+    }
+
+    return response
+  }
+
+  // No locale in path - determine where to redirect
   const locale = getLocale(request)
-  request.nextUrl.pathname = `/${locale}${pathname}`
-  
-  return NextResponse.redirect(request.nextUrl)
+  const url = request.nextUrl.clone()
+  url.pathname = `/${locale}${pathname}`
+
+  // Check if this is a first-time visitor (no cookie)
+  const hasVisitedBefore = request.cookies.has(LOCALE_COOKIE)
+
+  // Use 302 (temporary) for first visit, allowing search engines to index both versions
+  const response = NextResponse.redirect(url, hasVisitedBefore ? 307 : 302)
+
+  // Set cookie for future visits
+  response.cookies.set(LOCALE_COOKIE, locale, {
+    maxAge: COOKIE_MAX_AGE,
+    path: '/',
+    sameSite: 'lax',
+  })
+
+  return response
 }
 
 function getLocale(request: NextRequest): string {
-  // Check if user has a saved preference in cookies
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value
-  if (cookieLocale && i18n.locales.includes(cookieLocale as any)) {
+  // Priority 1: Check saved preference in cookies
+  const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value
+  if (cookieLocale && i18n.locales.includes(cookieLocale as typeof i18n.locales[number])) {
     return cookieLocale
   }
 
-  // Check Accept-Language header
+  // Priority 2: Check Accept-Language header with quality values
   const acceptLanguage = request.headers.get('accept-language')
   if (acceptLanguage) {
-    const languages = acceptLanguage.split(',').map(lang => lang.split(';')[0].trim())
-    
-    for (const lang of languages) {
-      // Check for exact match
-      if (i18n.locales.includes(lang as any)) {
-        return lang
+    const languages = acceptLanguage
+      .split(',')
+      .map(lang => {
+        const [code, q = 'q=1'] = lang.trim().split(';')
+        return {
+          code: code.trim(),
+          quality: parseFloat(q.replace('q=', '')) || 1,
+        }
+      })
+      .sort((a, b) => b.quality - a.quality)
+
+    for (const { code } of languages) {
+      // Check for exact match (e.g., 'tr')
+      if (i18n.locales.includes(code as typeof i18n.locales[number])) {
+        return code
       }
-      
+
       // Check for language prefix (e.g., 'tr-TR' -> 'tr')
-      const langPrefix = lang.split('-')[0]
-      if (i18n.locales.includes(langPrefix as any)) {
+      const langPrefix = code.split('-')[0].toLowerCase()
+      if (i18n.locales.includes(langPrefix as typeof i18n.locales[number])) {
         return langPrefix
       }
     }
   }
 
+  // Priority 3: Default locale
   return i18n.defaultLocale
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)'],
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)',
+  ],
 }

@@ -1,21 +1,17 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 
 export default async function TermsPage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
   return (
-    <>
-      <Header lang={lang} dict={dict} />
-
-      <main className="min-h-screen py-12">
+    <div className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-legal-navy mb-4">
             {dict.footer.terms}
@@ -74,12 +70,12 @@ export default async function TermsPage({
 
             <section>
               <h2 className="font-serif text-2xl font-bold text-legal-navy mb-4">
-                {isEnglish ? 'Pay What You Can Model' : 'Ödeyebileceğin Kadar Öde Modeli'}
+                {isEnglish ? 'Support Model' : 'Destek Modeli'}
               </h2>
               <p className="text-legal-gray">
                 {isEnglish
-                  ? 'We operate on a "pay what you can" model. Payments are voluntary contributions that help us maintain and expand our resources. All payments are non-refundable, and free downloads are available to everyone without restriction.'
-                  : '"Ödeyebileceğin kadar öde" modeli üzerinde çalışıyoruz. Ödemeler, kaynaklarımızı sürdürmemize ve genişletmemize yardımcı olan gönüllü katkılardır. Tüm ödemeler iade edilemez ve ücretsiz indirmeler herkes için kısıtlama olmaksızın mevcuttur.'
+                  ? 'EchoLegal is a public legal knowledge resource. Supporting EchoLegal ($20 recommended) helps maintain and expand these resources. All support payments are non-refundable, and free downloads are available to everyone without restriction.'
+                  : 'EchoLegal, halka açık bir hukuki bilgi kaynağıdır. EchoLegal\'i desteklemek (20$ önerilir) bu kaynakları sürdürmeye ve genişletmeye yardımcı olur. Tüm destek ödemeleri iade edilemez ve ücretsiz indirmeler herkes için kısıtlama olmaksızın mevcuttur.'
                 }
               </p>
             </section>
@@ -121,9 +117,6 @@ export default async function TermsPage({
             </section>
           </div>
         </div>
-      </main>
-
-      <Footer lang={lang} dict={dict} />
-    </>
+    </div>
   )
 }

@@ -1,29 +1,19 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
+import Link from 'next/link'
 import { Metadata } from 'next'
-import {
-  ContractHero,
-  ContractPageHeader,
-  ContractPageFooter,
-  ContextCard,
-  ContentCard,
-  ContentList,
-  DownloadSection,
-  RelatedResources,
-  LegalDisclaimer,
-} from '@/components/contracts'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
-
+  
   return {
-    title: isEnglish
-      ? 'Non-Disclosure Agreement (NDA) Template | EchoLegal'
-      : 'Gizlilik Sözleşmesi (NDA) Şablonu | EchoLegal',
+    title: isEnglish 
+      ? 'Free Non-Disclosure Agreement (NDA) Template (English & Turkish) | EchoLegal'
+      : 'Ücretsiz Gizlilik Sözleşmesi (NDA) Şablonu (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
-      ? 'Professional NDA template in English and Turkish. Protect confidential business information in partnerships and negotiations.'
-      : 'Profesyonel NDA şablonu. Ortaklıklarda ve müzakerelerde gizli iş bilgilerini koruyun.',
+      ? 'Free bilingual NDA template. I support EchoLegal ($20 recommended) or download free. Protect confidential business information.'
+      : 'Ücretsiz iki dilli NDA şablonu. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin. Gizli iş bilgilerinizi koruyun.',
   }
 }
 
@@ -37,177 +27,125 @@ export default async function NDAPage({
   const isEnglish = lang === 'en'
 
   const stripePaymentLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
-  const documentUrl = isEnglish
+  const documentUrl = isEnglish 
     ? '/documents/NDA-EN.docx'
     : '/documents/GizlilikSozlesmesi-TR.docx'
 
-  const content = {
-    title: isEnglish ? 'Non-Disclosure Agreement' : 'Gizlilik Sözleşmesi',
-    subtitle: isEnglish
-      ? 'A legally binding contract to protect confidential information shared between parties.'
-      : 'Taraflar arasında paylaşılan gizli bilgileri korumak için yasal olarak bağlayıcı bir sözleşme.',
-    jurisdiction: isEnglish ? 'United States / Turkey' : 'ABD / Türkiye',
-    lastUpdated: isEnglish ? 'Updated January 2026' : 'Ocak 2026 güncellemesi',
-    breadcrumbs: [
-      { label: isEnglish ? 'Home' : 'Ana Sayfa', href: `/${lang}` },
-      { label: isEnglish ? 'Contracts' : 'Sözleşmeler', href: `/${lang}/contracts` },
-      { label: 'NDA' },
-    ],
-    contextText: isEnglish
-      ? 'This template creates legal consequences for breaching confidentiality. It is not a substitute for legal advice specific to your situation.'
-      : 'Bu şablon gizlilik ihlali için yasal sonuçlar oluşturur. Durumunuza özel hukuki tavsiyenin yerini tutmaz.',
-    whatIsTitle: isEnglish ? 'What is an NDA?' : 'NDA Nedir?',
-    whatIsText: isEnglish
-      ? 'A Non-Disclosure Agreement (NDA) is a legally binding contract that establishes a confidential relationship between parties. The party or parties signing the agreement commit to keeping sensitive information private and not disclosing it to unauthorized third parties. NDAs protect trade secrets, business strategies, client lists, proprietary technology, and other confidential information.'
-      : 'Gizlilik Sözleşmesi (NDA), taraflar arasında gizli bir ilişki kuran yasal olarak bağlayıcı bir sözleşmedir. Sözleşmeyi imzalayan taraf veya taraflar, hassas bilgileri gizli tutmayı ve yetkisiz üçüncü taraflara ifşa etmemeyi taahhüt eder. NDA\'lar ticari sırları, iş stratejilerini, müşteri listelerini, tescilli teknolojiyi ve diğer gizli bilgileri korur.',
-    whenToUseTitle: isEnglish ? 'When to Use' : 'Ne Zaman Kullanılır',
-    whenToUseItems: isEnglish
-      ? [
-          'Sharing business plans with potential investors',
-          'Hiring employees or contractors with access to sensitive data',
-          'Entering business partnerships or joint ventures',
-          'Discussing merger or acquisition opportunities',
-          'Working with vendors who need proprietary information',
-          'Licensing your technology or intellectual property',
-        ]
-      : [
-          'Potansiyel yatırımcılarla iş planları paylaşırken',
-          'Hassas verilere erişimi olan çalışanlar veya yükleniciler işe alırken',
-          'İş ortaklıkları veya ortak girişimlere girerken',
-          'Birleşme veya satın alma fırsatlarını görüşürken',
-          'Özel bilgilere ihtiyaç duyan satıcılarla çalışırken',
-          'Teknolojinizi veya fikri mülkiyetinizi lisanslarken',
-        ],
-    keyClausesTitle: isEnglish ? 'Key Clauses' : 'Temel Maddeler',
-    keyClauses: isEnglish
-      ? [
-          'Definition of Confidential Information — What is protected',
-          'Obligations of Receiving Party — How information must be handled',
-          'Exclusions — Information not covered (public knowledge, etc.)',
-          'Time Period — Duration of confidentiality obligations',
-          'Return of Information — What happens when the relationship ends',
-          'Remedies for Breach — Consequences of violation',
-        ]
-      : [
-          'Gizli Bilgi Tanımı — Neyin korunduğu',
-          'Alıcı Tarafın Yükümlülükleri — Bilginin nasıl işlenmesi gerektiği',
-          'İstisnalar — Kapsam dışı bilgiler (kamuya açık bilgi vb.)',
-          'Süre — Gizlilik yükümlülüklerinin süresi',
-          'Bilgilerin İadesi — İlişki sona erdiğinde ne olacağı',
-          'İhlal Çözümleri — İhlalin sonuçları',
-        ],
-    typesTitle: isEnglish ? 'Types of NDAs' : 'NDA Türleri',
-    typesItems: isEnglish
-      ? [
-          'Unilateral (One-Way) — Only one party discloses information',
-          'Mutual (Two-Way) — Both parties share confidential information',
-          'Multilateral — Three or more parties are involved',
-        ]
-      : [
-          'Tek Taraflı — Yalnızca bir taraf bilgi açıklar',
-          'Karşılıklı (İki Taraflı) — Her iki taraf da gizli bilgi paylaşır',
-          'Çok Taraflı — Üç veya daha fazla taraf dahildir',
-        ],
-    disclaimer: isEnglish
-      ? 'This template is for informational purposes only and does not constitute legal advice. Laws vary by jurisdiction. Consult a licensed attorney before use.'
-      : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Yasalar yargı yetkisine göre değişir. Kullanmadan önce lisanslı bir avukata danışın.',
-    downloadTitle: isEnglish ? 'Download Template' : 'Şablonu İndirin',
-    downloadSubtitle: isEnglish
-      ? 'Pay what you can. $20 recommended.'
-      : 'Gücünüz kadar ödeyin. 20$ önerilir.',
-    paidLabel: isEnglish ? 'Support EchoLegal — $20' : 'EchoLegal\'i Destekle — $20',
-    freeLabel: isEnglish ? 'Download Free' : 'Ücretsiz İndir',
-    supportText: isEnglish
-      ? 'Your support helps maintain free access and ongoing updates.'
-      : 'Desteğiniz ücretsiz erişimi ve sürekli güncellemeleri sağlamaya yardımcı olur.',
-    relatedTitle: isEnglish ? 'Related Contracts' : 'İlgili Sözleşmeler',
-    relatedSubtitle: isEnglish
-      ? 'Commonly used alongside NDAs'
-      : 'NDA\'larla birlikte sıkça kullanılan',
-    footerDisclaimer: isEnglish
-      ? 'EchoLegal provides educational legal information and templates. Nothing on this website constitutes legal advice. Prepared under the supervision of a New York licensed attorney (NY Bar #5552336).'
-      : 'EchoLegal eğitici hukuki bilgiler ve şablonlar sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez. New York lisanslı avukat gözetiminde hazırlanmıştır (NY Bar #5552336).',
-  }
-
+  // Cross-sell related contracts
   const relatedContracts = [
     {
-      slug: 'service-agreement',
-      title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
-      description: isEnglish ? 'Define service terms' : 'Hizmet koşullarını tanımlayın',
+      slug: 'freelance-agreement',
+      title: isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
     },
     {
       slug: 'independent-contractor',
       title: isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
-      description: isEnglish ? 'Formalize contractor relationships' : 'Yüklenici ilişkilerini resmileştirin',
-    },
-    {
-      slug: 'freelance-agreement',
-      title: isEnglish ? 'Freelance Agreement' : 'Serbest Çalışan Sözleşmesi',
-      description: isEnglish ? 'For freelance engagements' : 'Serbest çalışma ilişkileri için',
     },
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      <ContractPageHeader
-        lang={lang}
-        switchLangUrl={`/${lang === 'en' ? 'tr' : 'en'}/contracts/nda`}
-      />
+    <div className="bg-white">
+      <main className="max-w-4xl mx-auto px-4 py-12">
+        <nav className="text-sm text-gray-500 mb-8">
+          <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
+          {' → '}
+          <Link href={`/${lang}/contracts`} className="hover:text-black">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
+          {' → '}
+          <span className="text-black font-medium">NDA</span>
+        </nav>
 
-      <ContractHero
-        lang={lang}
-        title={content.title}
-        subtitle={content.subtitle}
-        jurisdiction={content.jurisdiction}
-        lastUpdated={content.lastUpdated}
-        breadcrumbs={content.breadcrumbs}
-      />
+        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
+          📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
+        </span>
 
-      <main className="max-w-3xl mx-auto px-6 py-12">
-        <ContextCard>
-          {content.contextText}
-        </ContextCard>
+        <h1 className="text-4xl md:text-5xl font-black mb-4">
+          {isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)'}
+        </h1>
 
-        <ContentCard title={content.whatIsTitle}>
-          <p className="text-base leading-7">
-            {content.whatIsText}
+        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Agreement?' : 'Bu Sözleşme Nedir?'}</h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {isEnglish 
+              ? 'A Non-Disclosure Agreement (NDA) is a legally binding contract that establishes a confidential relationship between parties. It protects sensitive business information, trade secrets, and proprietary data from being disclosed to unauthorized third parties.'
+              : 'Gizlilik Sözleşmesi (NDA), taraflar arasında gizli bir ilişki kuran yasal olarak bağlayıcı bir sözleşmedir. Hassas iş bilgilerini, ticari sırları ve özel verileri yetkisiz üçüncü taraflara ifşa edilmekten korur.'}
           </p>
-        </ContentCard>
+        </section>
 
-        <ContentCard title={content.whenToUseTitle}>
-          <ContentList items={content.whenToUseItems} variant="check" />
-        </ContentCard>
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'When to Use' : 'Ne Zaman Kullanılır'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Sharing business plans with potential investors',
+              'Hiring employees or contractors with access to sensitive data',
+              'Entering business partnerships or joint ventures',
+              'Discussing merger or acquisition opportunities',
+              'Working with vendors who need proprietary information'
+            ] : [
+              'Potansiyel yatırımcılarla iş planları paylaşırken',
+              'Hassas verilere erişimi olan çalışanlar veya yükleniciler işe alırken',
+              'İş ortaklıkları veya ortak girişimlere girerken',
+              'Birleşme veya satın alma fırsatlarını görüşürken',
+              'Özel bilgilere ihtiyaç duyan satıcılarla çalışırken'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <ContentCard title={content.keyClausesTitle}>
-          <ContentList items={content.keyClauses} variant="bullet" />
-        </ContentCard>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
+          <h3 className="font-semibold mb-3">⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
+          <p className="text-sm text-gray-600">
+            {isEnglish 
+              ? 'This template is for informational purposes only and does not constitute legal advice. Consult a licensed attorney before use.'
+              : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Kullanmadan önce lisanslı bir avukata danışın.'}
+          </p>
+        </div>
 
-        <ContentCard title={content.typesTitle} variant="highlight">
-          <ContentList items={content.typesItems} variant="number" />
-        </ContentCard>
+        {/* Download Section - Updated */}
+        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+          <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
+          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'I support EchoLegal – $20 recommended.' : 'EchoLegal\'i destekliyorum – $20 önerilir.'}</p>
+          
+          <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
+            💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
+          </a>
+          
+          <a href={documentUrl} download className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4">
+            📄 {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
+          </a>
 
-        <LegalDisclaimer text={content.disclaimer} />
+          {/* Microcopy */}
+          <p className="text-center text-sm text-gray-500">
+            {isEnglish 
+              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
+              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
+          </p>
+        </div>
 
-        <DownloadSection
-          lang={lang}
-          title={content.downloadTitle}
-          subtitle={content.downloadSubtitle}
-          paidLabel={content.paidLabel}
-          freeLabel={content.freeLabel}
-          supportText={content.supportText}
-          stripeLink={stripePaymentLink}
-          documentUrl={documentUrl}
-        />
-
-        <RelatedResources
-          lang={lang}
-          title={content.relatedTitle}
-          subtitle={content.relatedSubtitle}
-          resources={relatedContracts}
-        />
+        {/* Cross-sell: People also download */}
+        <section className="bg-gray-50 rounded-xl p-6 mb-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            {isEnglish ? 'People Also Download' : 'Bunlar da İndiriliyor'}
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {relatedContracts.map((contract) => (
+              <Link
+                key={contract.slug}
+                href={`/${lang}/contracts/${contract.slug}`}
+                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
+              >
+                <span className="font-medium text-gray-800">{contract.title}</span>
+                <span className="text-[#C9A227]">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
-
-      <ContractPageFooter disclaimerText={content.footerDisclaimer} />
     </div>
   )
 }

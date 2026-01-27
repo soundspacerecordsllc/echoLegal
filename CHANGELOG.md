@@ -1,95 +1,122 @@
-# Changelog
+# EchoLegal Changelog
 
-All notable changes to this project will be documented in this file.
+## [2026-01-25] Monetization Update: I Support EchoLegal
 
-## [2026-01-25] — Visual Design System Upgrade
-
-### Visual Changes
-
-**New Design System Components** (`/components/contracts/`)
-- `ContractHero` — Clean hero section with title, subtitle, jurisdiction, and breadcrumbs
-- `ContractPageHeader` — Sticky navigation with search integration
-- `ContractPageFooter` — Minimal footer with legal disclaimer
-- `ContextCard` — Subtle left-bordered card for context-setting text
-- `ContentCard` — Rounded card sections for major content blocks
-- `ContentList` — Flexible list component (check, bullet, number variants)
-- `DownloadSection` — Non-pushy CTA with clean button styling
-- `RelatedResources` — Grid layout for related contracts
-- `LegalDisclaimer` — Compact disclaimer styling
-
-**Typography & Layout Improvements**
-- Increased body text line-height for better readability
-- Cleaner H1/H2/H3 hierarchy with `tracking-tight`
-- Meta text (dates, jurisdiction) now visually secondary
-- Max content width reduced to `max-w-3xl` for optimal reading
-- Generous whitespace between sections
-
-**Color & Visual Language**
-- Removed bright colors and gradients
-- Single subtle accent color (amber-50) for highlight cards
-- White/off-white/light gray palette throughout
-- Subtle borders (gray-100, gray-200) instead of heavy outlines
-
-**CTA Integration**
-- Removed "I CAN/CANNOT Afford" language
-- CTAs now read as: "Support EchoLegal — $20" / "Download Free"
-- Non-pushy presentation as informational options
-- Related contracts presented as "commonly used alongside"
-
-### Pages Updated
-
-1. `/contracts/service-agreement` — Full redesign
-2. `/contracts/nda` — Full redesign
-3. `/contracts/independent-contractor` — Full redesign
-4. `/contracts/freelance-agreement` — Full redesign
-5. `/contracts/influencer-agreement` — Full redesign
-6. `/contracts/privacy-policy` — Full redesign
-7. `/contracts/terms-of-service` — Full redesign
-
-### What Did NOT Change
-
-- **Legal content**: All legal text, descriptions, and explanations remain identical
-- **Document URLs**: Download links unchanged
-- **Payment links**: Stripe links unchanged
-- **Jurisdictions**: All jurisdiction information preserved
-- **Disclaimers**: Legal disclaimer text preserved (styling only changed)
+### Changed
+- Replaced all "Pay What You Can" language with "I support EchoLegal – $20 recommended"
+- Updated editorial CTAs on high-intent pages (visa guides, LLC guides)
+- Fixed Turkish apostrophe syntax errors across contract templates
+- Maintained compliance-safe, non-sales language throughout
 
 ---
 
-## [2026-01-25] — Turkish Misconceptions Page & Site Search
+## [2026-01-25] Cashflow Acceleration + Amerika Hub
 
-### New Features
+### Added
 
-**Turkish "Yaygın Yanlış Varsayımlar" Encyclopedia Page**
-- New page at `/encyclopedia/common-misconceptions`
-- Covers LLC/immigration, Delaware incorporation, taxes, contracts, NDAs
-- Improved Turkish text with modern, natural language
-- Clear myth/fact format for each misconception
+#### Payment & Download Infrastructure
+- **Smoke Test Script** (`scripts/smoke-test-downloads.sh`)
+  - Automated verification for all 30+ downloadable files
+  - Tests DOCX, PDF, and ZIP files
+  - Returns pass/fail status with detailed output
 
-**Site-Wide Search**
-- SearchModal component with command-palette style UI
-- SearchButton with Cmd+K keyboard shortcut
-- Keyboard navigation (arrows, Enter, ESC)
-- Bilingual search (EN/TR) with category labels
-- "No results" state with suggested links
+- **TEST-CHECKLIST.md**
+  - Manual QA checklist for paid ($20) and free download paths
+  - Cross-browser testing matrix
+  - Mobile responsiveness checks
+  - SEO schema validation steps
 
-**Search Index**
-- Build script at `/scripts/build-search-index.js`
-- Generates `/public/search-index.json` at build time
-- Indexes contracts, encyclopedia, consular docs, pages
-- Includes keywords, jurisdiction, lastVerified fields
+#### SEO & Indexing
+- **Sitemap** (`app/sitemap.ts`)
+  - Dynamic sitemap covering 80+ pages
+  - All TR and EN routes included
+  - Priority weighting (TR Amerika pages: 0.9)
 
-### Files Added
+- **Robots.txt** (`app/robots.ts`)
+  - Proper crawl directives
+  - Sitemap reference for search engines
 
-- `/app/[lang]/encyclopedia/common-misconceptions/page.tsx`
-- `/components/SearchModal.tsx`
-- `/components/SearchButton.tsx`
-- `/scripts/build-search-index.js`
-- `/public/search-index.json`
-- `/components/contracts/*` (9 new components)
+- **INDEXING.md**
+  - Step-by-step Google Search Console guide
+  - Priority page indexing order
+  - Troubleshooting common indexing issues
 
-### Technical
+#### Conversion Components
+- **KitCallout Component** (`components/KitCallout.tsx`)
+  - Reusable CTA component for kit promotion
+  - Two variants: `compact` (inline) and `full` (card)
+  - Bilingual EN/TR support
+  - Links to Stripe payment and free download
 
-- Added `build:search` npm script
-- Updated `build` to run search index generation first
-- Added `.gitignore` for `node_modules/` and `.next/`
+#### Site-wide Updates
+- **Footer Enhancement** (`components/Footer.tsx`)
+  - Added "Resources" section with Amerika Hub links
+  - Business Starter Kit link with "Self-serve templates" subtitle
+  - Scope strip: "EchoLegal bireysel temsil sunmaz..."
+
+### Modified
+
+#### Money Page CTAs
+- **ABD'de LLC Kurmak** (`/amerika/abdde-llc-kurmak`)
+  - CTA 1: After TL;DR (above fold)
+  - CTA 2: After State Comparison (~50% scroll)
+  - CTA 3: After FAQ (full variant, end of page)
+
+- **Sözleşmeler** (`/amerika/abdde-is-yapanlar-icin-sozlesmeler`)
+  - CTA 1: After TL;DR (above fold)
+  - CTA 2: After FAQ (full variant, end of page)
+
+### Legal Kit Downloads
+- Created ZIP bundles in `/public/documents/kits/`:
+  - `abd-business-starter-kit.zip` (6 templates)
+  - `tr-us-legal-bridge-library.zip` (14 templates)
+  - `abdye-gelmeden-once-rehberi.zip` (reference guide)
+
+---
+
+## [2.0.0] - 2026-01-25
+
+### 🚀 Major Feature: Passive Income Architecture
+
+Complete restructure of EchoLegal into a high-conversion, authority-driven legal reference platform focused on passive income generation for Turkish entrepreneurs doing business in the US.
+
+### New Sections
+
+#### Legal Reference Library (`/library`)
+- **LLC Formation Guide** (`/library/llc-kurma-rehberi`) - Comprehensive reference guide on US LLC formation
+- **IRS & Tax Facts** (`/library/irs-vergi-gercekleri`) - W-8, W-9, 1099 forms explained
+- **Common Legal Misconceptions** (`/library/hukuki-yanilgilar`) - Myth vs. reality format for US business
+- **LLC ≠ Visa** (`/library/llc-vize-yanilgisi`) - Immigration realities for business owners
+- **Essential Contracts** (`/library/temel-sozlesmeler`) - Guide to must-have business contracts
+
+#### Legal Kits (`/legal-kits`)
+- **Legal Kits Hub** (`/legal-kits`) - Curated document bundles overview
+- **ABD Business Starter Legal Kit** (`/legal-kits/business-starter`) - 5 essential documents for Turkish entrepreneurs
+
+#### Checklists & Decision Maps (`/checklists`)
+- **Checklists Hub** (`/checklists`) - Quick reference tools overview
+- **LLC Formation Checklist** (`/checklists/llc-kontrol-listesi`) - Pre-formation considerations
+- **W-8 or W-9 Decision Map** (`/checklists/w8-w9-karar-haritasi`) - Tax form selection guide
+- **IRS Letter Guide** (`/checklists/irs-mektup-rehberi`) - First 7 facts when receiving IRS correspondence
+
+### Design Principles Applied
+- **Editorial conversion patterns** - CTAs framed as "related legal resources"
+- **No sales language** - Reference-only presentation
+- **Trust signals** - "Last reviewed" and "Next update" dates on all content
+- **Compliance-first** - Clear disclaimers on every page
+- **Natural Turkish** - All content written in flowing, human Turkish (not translated)
+
+---
+
+## Previous Versions
+
+### [1.x.x] - Pre-existing
+- Contract templates (NDA, Service Agreement, Freelance Agreement, etc.)
+- Turkish Consular Documents section
+- Encyclopedia foundation
+- Support page
+- Legal compliance pages (Privacy, Terms, Cookies, Disclaimer)
+
+---
+
+*Last updated: January 25, 2026*

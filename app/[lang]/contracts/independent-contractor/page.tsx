@@ -1,17 +1,7 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
+import Link from 'next/link'
 import { Metadata } from 'next'
-import {
-  ContractHero,
-  ContractPageHeader,
-  ContractPageFooter,
-  ContextCard,
-  ContentCard,
-  ContentList,
-  DownloadSection,
-  RelatedResources,
-  LegalDisclaimer,
-} from '@/components/contracts'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -19,11 +9,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
 
   return {
     title: isEnglish
-      ? 'Independent Contractor Agreement Template | EchoLegal'
-      : 'Bağımsız Yüklenici Sözleşmesi Şablonu | EchoLegal',
+      ? 'Free Independent Contractor Agreement Template (English & Turkish) | EchoLegal'
+      : 'Ücretsiz Bağımsız Yüklenici Sözleşmesi Şablonu (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
-      ? 'Professional independent contractor agreement in English and Turkish. Avoid misclassification issues and define clear contractor terms.'
-      : 'Profesyonel bağımsız yüklenici sözleşmesi. Yanlış sınıflandırma sorunlarından kaçının ve net yüklenici koşulları belirleyin.',
+      ? 'Free bilingual contractor agreement template. I support EchoLegal ($20 recommended) or download free. Avoid misclassification issues.'
+      : 'Ücretsiz iki dilli yüklenici sözleşmesi. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin.',
   }
 }
 
@@ -41,177 +31,121 @@ export default async function IndependentContractorPage({
     ? '/documents/IndependentContractorAgreement-EN.docx'
     : '/documents/BagimsizYukleniciSozlesmesi-TR.docx'
 
-  const content = {
-    title: isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
-    subtitle: isEnglish
-      ? 'A formal contract establishing the relationship between a business and an independent contractor.'
-      : 'Bir işletme ile bağımsız yüklenici arasındaki ilişkiyi kuran resmi bir sözleşme.',
-    jurisdiction: isEnglish ? 'United States / Turkey' : 'ABD / Türkiye',
-    lastUpdated: isEnglish ? 'Updated January 2026' : 'Ocak 2026 güncellemesi',
-    breadcrumbs: [
-      { label: isEnglish ? 'Home' : 'Ana Sayfa', href: `/${lang}` },
-      { label: isEnglish ? 'Contracts' : 'Sözleşmeler', href: `/${lang}/contracts` },
-      { label: isEnglish ? 'Independent Contractor' : 'Bağımsız Yüklenici' },
-    ],
-    contextText: isEnglish
-      ? 'This template clarifies that the contractor is not an employee. It is not a substitute for legal advice specific to your situation.'
-      : 'Bu şablon yüklenicinin çalışan olmadığını açıklar. Durumunuza özel hukuki tavsiyenin yerini tutmaz.',
-    whatIsTitle: isEnglish ? 'What is an Independent Contractor Agreement?' : 'Bağımsız Yüklenici Sözleşmesi Nedir?',
-    whatIsText: isEnglish
-      ? 'An Independent Contractor Agreement establishes a formal relationship between a business and a contractor. It clarifies that the contractor is not an employee, defines the scope of work, payment terms, intellectual property rights, and helps protect both parties from misclassification issues. Proper documentation is essential for tax and legal compliance.'
-      : 'Bağımsız Yüklenici Sözleşmesi, bir işletme ile yüklenici arasında resmi bir ilişki kurar. Yüklenicinin çalışan olmadığını açıklar, iş kapsamını, ödeme koşullarını, fikri mülkiyet haklarını tanımlar ve her iki tarafı da yanlış sınıflandırma sorunlarından korur. Doğru belgeleme, vergi ve hukuki uyumluluk için gereklidir.',
-    whenToUseTitle: isEnglish ? 'When to Use' : 'Ne Zaman Kullanılır',
-    whenToUseItems: isEnglish
-      ? [
-          'Hiring contractors or consultants',
-          'Outsourcing specific projects',
-          'Engaging freelancers for ongoing work',
-          'Protecting against IRS/tax misclassification',
-          'Defining intellectual property ownership',
-          'Establishing clear payment terms',
-        ]
-      : [
-          'Yüklenici veya danışman işe alırken',
-          'Belirli projeleri dışarıya verirken',
-          'Devam eden işler için serbest çalışanlarla çalışırken',
-          'SGK/vergi yanlış sınıflandırmasına karşı koruma',
-          'Fikri mülkiyet sahipliğini tanımlarken',
-          'Net ödeme koşulları belirlerken',
-        ],
-    keyClausesTitle: isEnglish ? 'Key Clauses' : 'Temel Maddeler',
-    keyClauses: isEnglish
-      ? [
-          'Scope of Work — Detailed description of services',
-          'Compensation — Payment structure and schedule',
-          'Independent Contractor Status — Not an employee',
-          'Intellectual Property — Ownership of work product',
-          'Confidentiality — Protection of business information',
-          'Termination — How the relationship can end',
-        ]
-      : [
-          'İş Kapsamı — Hizmetlerin detaylı tanımı',
-          'Ücretlendirme — Ödeme yapısı ve takvimi',
-          'Bağımsız Yüklenici Statüsü — Çalışan değil',
-          'Fikri Mülkiyet — İş ürününün sahipliği',
-          'Gizlilik — İş bilgilerinin korunması',
-          'Fesih — İlişkinin nasıl sona erebileceği',
-        ],
-    misclassificationTitle: isEnglish ? 'Avoiding Misclassification' : 'Yanlış Sınıflandırmadan Kaçınma',
-    misclassificationItems: isEnglish
-      ? [
-          'Contractor controls how and when work is performed',
-          'Contractor provides own tools and equipment',
-          'Contractor can work for other clients',
-          'Relationship is project-based, not ongoing employment',
-          'Contractor invoices for services rendered',
-        ]
-      : [
-          'Yüklenici işin nasıl ve ne zaman yapılacağını kontrol eder',
-          'Yüklenici kendi araç ve ekipmanını sağlar',
-          'Yüklenici diğer müşteriler için çalışabilir',
-          'İlişki proje bazlıdır, sürekli istihdam değil',
-          'Yüklenici verilen hizmetler için fatura keser',
-        ],
-    disclaimer: isEnglish
-      ? 'This template is for informational purposes only and does not constitute legal advice. Laws vary by jurisdiction. Consult a licensed attorney before use.'
-      : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Yasalar yargı yetkisine göre değişir. Kullanmadan önce lisanslı bir avukata danışın.',
-    downloadTitle: isEnglish ? 'Download Template' : 'Şablonu İndirin',
-    downloadSubtitle: isEnglish
-      ? 'Pay what you can. $20 recommended.'
-      : 'Gücünüz kadar ödeyin. 20$ önerilir.',
-    paidLabel: isEnglish ? 'Support EchoLegal — $20' : 'EchoLegal\'i Destekle — $20',
-    freeLabel: isEnglish ? 'Download Free' : 'Ücretsiz İndir',
-    supportText: isEnglish
-      ? 'Your support helps maintain free access and ongoing updates.'
-      : 'Desteğiniz ücretsiz erişimi ve sürekli güncellemeleri sağlamaya yardımcı olur.',
-    relatedTitle: isEnglish ? 'Related Contracts' : 'İlgili Sözleşmeler',
-    relatedSubtitle: isEnglish
-      ? 'Commonly used with contractor agreements'
-      : 'Yüklenici sözleşmeleriyle birlikte sıkça kullanılan',
-    footerDisclaimer: isEnglish
-      ? 'EchoLegal provides educational legal information and templates. Nothing on this website constitutes legal advice. Prepared under the supervision of a New York licensed attorney (NY Bar #5552336).'
-      : 'EchoLegal eğitici hukuki bilgiler ve şablonlar sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez. New York lisanslı avukat gözetiminde hazırlanmıştır (NY Bar #5552336).',
-  }
-
+  // Cross-sell related contracts
   const relatedContracts = [
+    {
+      slug: 'freelance-agreement',
+      title: isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
+    },
     {
       slug: 'nda',
       title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
-      description: isEnglish ? 'Protect confidential information' : 'Gizli bilgileri koruyun',
-    },
-    {
-      slug: 'freelance-agreement',
-      title: isEnglish ? 'Freelance Agreement' : 'Serbest Çalışan Sözleşmesi',
-      description: isEnglish ? 'For freelance engagements' : 'Serbest çalışma ilişkileri için',
-    },
-    {
-      slug: 'service-agreement',
-      title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
-      description: isEnglish ? 'Define service terms' : 'Hizmet koşullarını tanımlayın',
     },
   ]
 
   return (
-    <div className="min-h-screen bg-white">
-      <ContractPageHeader
-        lang={lang}
-        switchLangUrl={`/${lang === 'en' ? 'tr' : 'en'}/contracts/independent-contractor`}
-      />
+    <div className="bg-white">
+      <main className="max-w-4xl mx-auto px-4 py-12">
+        <nav className="text-sm text-gray-500 mb-8">
+          <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
+          {' → '}
+          <Link href={`/${lang}/contracts`} className="hover:text-black">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
+          {' → '}
+          <span className="text-black font-medium">{isEnglish ? 'Independent Contractor' : 'Bağımsız Yüklenici'}</span>
+        </nav>
 
-      <ContractHero
-        lang={lang}
-        title={content.title}
-        subtitle={content.subtitle}
-        jurisdiction={content.jurisdiction}
-        lastUpdated={content.lastUpdated}
-        breadcrumbs={content.breadcrumbs}
-      />
+        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
+          📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
+        </span>
 
-      <main className="max-w-3xl mx-auto px-6 py-12">
-        <ContextCard>
-          {content.contextText}
-        </ContextCard>
+        <h1 className="text-4xl md:text-5xl font-black mb-4">
+          {isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'}
+        </h1>
 
-        <ContentCard title={content.whatIsTitle}>
-          <p className="text-base leading-7">
-            {content.whatIsText}
+        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Agreement?' : 'Bu Sözleşme Nedir?'}</h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'An Independent Contractor Agreement establishes a formal relationship between a business and a contractor. It clarifies that the contractor is not an employee, defines the scope of work, payment terms, intellectual property rights, and helps protect both parties from misclassification issues.'
+              : 'Bağımsız Yüklenici Sözleşmesi, bir işletme ile yüklenici arasında resmi bir ilişki kurar. Yüklenicinin çalışan olmadığını açıklar, iş kapsamını, ödeme koşullarını, fikri mülkiyet haklarını tanımlar ve her iki tarafı da yanlış sınıflandırma sorunlarından korur.'}
           </p>
-        </ContentCard>
+        </section>
 
-        <ContentCard title={content.whenToUseTitle}>
-          <ContentList items={content.whenToUseItems} variant="check" />
-        </ContentCard>
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'When to Use' : 'Ne Zaman Kullanılır'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Hiring contractors or consultants',
+              'Outsourcing specific projects',
+              'Engaging freelancers for ongoing work',
+              'Protecting against IRS misclassification',
+              'Defining intellectual property ownership'
+            ] : [
+              'Yüklenici veya danışman işe alırken',
+              'Belirli projeleri dışarıya verirken',
+              'Devam eden işler için serbest çalışanlarla çalışırken',
+              'SGK/vergi yanlış sınıflandırmasına karşı koruma',
+              'Fikri mülkiyet sahipliğini tanımlarken'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <ContentCard title={content.keyClausesTitle}>
-          <ContentList items={content.keyClauses} variant="bullet" />
-        </ContentCard>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
+          <h3 className="font-semibold mb-3">⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
+          <p className="text-sm text-gray-600">
+            {isEnglish
+              ? 'This template is for informational purposes only and does not constitute legal advice. Consult a licensed attorney before use.'
+              : 'Bu şablon yalnızca bilgilendirme amaçlıdır ve hukuki tavsiye teşkil etmez. Kullanmadan önce lisanslı bir avukata danışın.'}
+          </p>
+        </div>
 
-        <ContentCard title={content.misclassificationTitle} variant="highlight">
-          <ContentList items={content.misclassificationItems} variant="check" />
-        </ContentCard>
+        {/* Download Section - Updated */}
+        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+          <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
+          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'I support EchoLegal – $20 recommended.' : 'EchoLegal\'i destekliyorum – $20 önerilir.'}</p>
 
-        <LegalDisclaimer text={content.disclaimer} />
+          <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
+            💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
+          </a>
 
-        <DownloadSection
-          lang={lang}
-          title={content.downloadTitle}
-          subtitle={content.downloadSubtitle}
-          paidLabel={content.paidLabel}
-          freeLabel={content.freeLabel}
-          supportText={content.supportText}
-          stripeLink={stripePaymentLink}
-          documentUrl={documentUrl}
-        />
+          <a href={documentUrl} download className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4">
+            📄 {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
+          </a>
 
-        <RelatedResources
-          lang={lang}
-          title={content.relatedTitle}
-          subtitle={content.relatedSubtitle}
-          resources={relatedContracts}
-        />
+          {/* Microcopy */}
+          <p className="text-center text-sm text-gray-500">
+            {isEnglish
+              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
+              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
+          </p>
+        </div>
+
+        {/* Cross-sell: People also download */}
+        <section className="bg-gray-50 rounded-xl p-6 mb-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            {isEnglish ? 'People Also Download' : 'Bunlar da İndiriliyor'}
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {relatedContracts.map((contract) => (
+              <Link
+                key={contract.slug}
+                href={`/${lang}/contracts/${contract.slug}`}
+                className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
+              >
+                <span className="font-medium text-gray-800">{contract.title}</span>
+                <span className="text-[#C9A227]">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
-
-      <ContractPageFooter disclaimerText={content.footerDisclaimer} />
     </div>
   )
 }
