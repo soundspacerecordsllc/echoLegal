@@ -455,11 +455,6 @@ function HeaderSearch({
           `}
           aria-label={isEnglish ? 'Search' : 'Ara'}
         />
-        {!isMobile && (
-          <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-gray-400 hidden xl:block pointer-events-none">
-            ⌘K
-          </span>
-        )}
       </div>
 
       {/* Results Dropdown (Inline, No Modal) */}
@@ -538,8 +533,8 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
             </Link>
             <p className="mt-2 text-sm text-gray-500">
               {isEnglish
-                ? 'Free legal resources for Turkish entrepreneurs in the US.'
-                : 'ABD\'deki Türk girişimciler için ücretsiz hukuki kaynaklar.'}
+                ? 'A global legal encyclopedia.'
+                : 'Küresel hukuk ansiklopedisi.'}
             </p>
           </div>
 
@@ -643,8 +638,7 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
               : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanılması avukat-müvekkil ilişkisi oluşturmaz.'}
           </p>
           <p className="text-xs text-gray-400 mt-4">
-            © 2025 EchoLegal.{' '}
-            {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
+            © 2026 EchoLegal
           </p>
         </div>
       </div>
