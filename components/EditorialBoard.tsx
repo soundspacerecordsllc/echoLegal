@@ -110,11 +110,11 @@ function EditorialBoardFull({
             <p className="text-sm text-gray-600">
               {isEnglish ? 'Reviewing Attorney' : 'İnceleme Avukatı'}
             </p>
-            {author.barAdmission && (
+            {author.barAdmissions && author.barAdmissions.length > 0 && (
               <p className="text-xs text-gray-500 mt-1">
                 {isEnglish
-                  ? `Admitted in ${author.barAdmission.jurisdiction}`
-                  : `${author.barAdmission.jurisdiction} Barosu`}
+                  ? `Admitted in ${author.barAdmissions[0].jurisdictionName}`
+                  : `${author.barAdmissions[0].jurisdictionName} Barosu`}
               </p>
             )}
           </div>
@@ -251,9 +251,9 @@ function EditorialBoardInline({
         </svg>
         {isEnglish ? 'Reviewed by' : 'İnceleyen'}:{' '}
         <span className="font-medium text-gray-900">{author.name[lang]}</span>
-        {author.barAdmission && (
+        {author.barAdmissions && author.barAdmissions.length > 0 && (
           <span className="text-xs text-gray-400">
-            ({author.barAdmission.jurisdiction} Bar)
+            ({author.barAdmissions[0].jurisdictionName} Bar)
           </span>
         )}
       </span>

@@ -10,6 +10,7 @@ import {
   getDescription,
   getAlternatePath,
 } from '@/lib/nav'
+import { LanguageCode } from '@/lib/jurisdictions'
 
 type AppShellProps = {
   lang: 'en' | 'tr'
@@ -296,7 +297,7 @@ type SearchResult = {
   url: string
   category: string
   type: 'template' | 'guide' | 'checklist' | 'kit' | 'page'
-  lang: 'en' | 'tr'
+  lang: LanguageCode
 }
 
 function HeaderSearch({

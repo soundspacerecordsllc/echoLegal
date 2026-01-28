@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'Legal Reference Library | EchoLegal'
       : 'Hukuki Başvuru Kaynakları | EchoLegal',
     description: isEnglish
-      ? 'Comprehensive legal reference guides for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and more.'
-      : "ABD'de faaliyet gösteren Türk girişimcilere yönelik kapsamlı hukuki başvuru rehberleri. LLC kurulumu, vergi mevzuatı, yaygın yanılgılar ve daha fazlası.",
+      ? 'Comprehensive legal reference guides for doing business in the United States. LLC formation, tax compliance, common misconceptions, and more. Available in English and Turkish.'
+      : "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi uyumu, sık yapılan hatalar ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur.",
   }
 }
 
@@ -89,7 +89,7 @@ export default async function LibraryPage({
       articles: [
         {
           slug: 'hukuki-yanilgilar',
-          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Kuran Türklerin Sık Düştüğü Hukuki Yanılgılar",
+          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yaparken Sık Yapılan Hukuki Hatalar",
           description: isEnglish
             ? 'Debunking the most common legal myths about doing business in the US.'
             : "ABD'de iş yapmaya dair en yaygın hukuki yanılgıları gerçeklerle karşılaştırıyoruz.",
@@ -108,7 +108,7 @@ export default async function LibraryPage({
       articles: [
         {
           slug: 'temel-sozlesmeler',
-          title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : "ABD'de İş Yapan Türkler İçin Temel Sözleşmeler",
+          title: isEnglish ? 'Essential Contracts for US Business' : "ABD'de İş Yapmak İçin Temel Sözleşmeler",
           description: isEnglish
             ? 'The contracts you need when starting a business in the United States.'
             : "ABD'de iş kurarken hazırlamanız gereken sözleşmeler.",

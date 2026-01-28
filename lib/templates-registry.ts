@@ -24,6 +24,18 @@ export type DocType =
 
 export type Jurisdiction = 'US' | 'TR' | 'US/TR' | 'General'
 
+export type UseCase =
+  | 'freelancer'
+  | 'startup'
+  | 'remote-worker'
+  | 'digital-nomad'
+  | 'consultant'
+  | 'content-creator'
+  | 'investor'
+  | 'e-commerce'
+  | 'immigration'
+  | 'general'
+
 export type Template = {
   id: string
   lang: 'en' | 'tr'
@@ -38,6 +50,7 @@ export type Template = {
   downloadUrl?: string
   isSample?: boolean
   relatedIds?: string[]
+  useCases?: UseCase[]
 }
 
 // Category labels for UI
@@ -68,6 +81,19 @@ export const jurisdictionLabels: Record<Jurisdiction, { en: string; tr: string }
   TR: { en: 'Turkey', tr: 'Türkiye' },
   'US/TR': { en: 'US & Turkey', tr: 'ABD & Türkiye' },
   General: { en: 'General', tr: 'Genel' },
+}
+
+export const useCaseLabels: Record<UseCase, { en: string; tr: string }> = {
+  freelancer: { en: 'Freelancers', tr: 'Serbest Çalışanlar' },
+  startup: { en: 'Startups', tr: 'Startup\'lar' },
+  'remote-worker': { en: 'Remote Workers', tr: 'Uzaktan Çalışanlar' },
+  'digital-nomad': { en: 'Digital Nomads', tr: 'Dijital Göçebeler' },
+  consultant: { en: 'Consultants', tr: 'Danışmanlar' },
+  'content-creator': { en: 'Content Creators', tr: 'İçerik Üreticileri' },
+  investor: { en: 'Investors', tr: 'Yatırımcılar' },
+  'e-commerce': { en: 'E-Commerce', tr: 'E-Ticaret' },
+  immigration: { en: 'Immigration', tr: 'Göçmenlik' },
+  general: { en: 'General', tr: 'Genel' },
 }
 
 // Templates Registry
@@ -932,22 +958,21 @@ export function getTemplateById(id: string): Template | undefined {
 
 export function searchTemplates(
   query: string,
-  lang: 'en' | 'tr',
+  lang: string,
   options?: {
     category?: TemplateCategory
     docType?: DocType
     jurisdiction?: Jurisdiction
+    useCase?: UseCase
     includeBothLangs?: boolean
   }
 ): Template[] {
   const normalizedQuery = query.toLowerCase().trim()
-  if (!normalizedQuery) {
-    return getTemplatesByLang(lang)
-  }
+  const normalizedLang = normalizeTemplateLang(lang)
 
   return templatesRegistry.filter(t => {
     // Language filter
-    if (!options?.includeBothLangs && t.lang !== lang) return false
+    if (!options?.includeBothLangs && t.lang !== normalizedLang) return false
 
     // Category filter
     if (options?.category && t.category !== options.category) return false
@@ -957,6 +982,12 @@ export function searchTemplates(
 
     // Jurisdiction filter
     if (options?.jurisdiction && t.jurisdiction !== options.jurisdiction) return false
+
+    // UseCase filter
+    if (options?.useCase && (!t.useCases || !t.useCases.includes(options.useCase))) return false
+
+    // If no query, return all that match filters
+    if (!normalizedQuery) return true
 
     // Search in title, description, and tags
     const searchableText = [
@@ -989,4 +1020,63 @@ export function getAllDocTypes(): DocType[] {
 
 export function getAllJurisdictions(): Jurisdiction[] {
   return Object.keys(jurisdictionLabels) as Jurisdiction[]
+}
+
+export function getAllUseCases(): UseCase[] {
+  return Object.keys(useCaseLabels) as UseCase[]
+}
+
+// Helper to normalize language codes to supported template languages
+type TemplateLang = 'en' | 'tr'
+function normalizeTemplateLang(lang: string): TemplateLang {
+  return lang === 'tr' ? 'tr' : 'en'
+}
+
+/**
+ * Get all published (visible) templates for a language.
+ */
+export function getPublishedTemplates(lang: string): Template[] {
+  const normalizedLang = normalizeTemplateLang(lang)
+  return templatesRegistry.filter(t => t.lang === normalizedLang)
+}
+
+/**
+ * Get categories that have at least one template in the given language.
+ */
+export function getAvailableCategories(lang: string): TemplateCategory[] {
+  const templates = getPublishedTemplates(lang)
+  const categories = new Set(templates.map(t => t.category))
+  return Array.from(categories)
+}
+
+/**
+ * Get doc types that have at least one template in the given language.
+ */
+export function getAvailableDocTypes(lang: string): DocType[] {
+  const templates = getPublishedTemplates(lang)
+  const docTypes = new Set(templates.map(t => t.docType))
+  return Array.from(docTypes)
+}
+
+/**
+ * Get jurisdictions that have at least one template in the given language.
+ */
+export function getAvailableJurisdictions(lang: string): Jurisdiction[] {
+  const templates = getPublishedTemplates(lang)
+  const jurisdictions = new Set(templates.map(t => t.jurisdiction))
+  return Array.from(jurisdictions)
+}
+
+/**
+ * Get use cases that have at least one template in the given language.
+ */
+export function getAvailableUseCases(lang: string): UseCase[] {
+  const templates = getPublishedTemplates(lang)
+  const useCases = new Set<UseCase>()
+  templates.forEach(t => {
+    if (t.useCases) {
+      t.useCases.forEach(uc => useCases.add(uc))
+    }
+  })
+  return Array.from(useCases)
 }

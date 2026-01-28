@@ -91,9 +91,29 @@ export default function Header({ lang, dict }: HeaderProps) {
           description: isEnglish ? 'Doing business in America' : 'Amerika\'da iş yapmak'
         },
         {
-          label: isEnglish ? 'Encyclopedia' : 'Ansiklopedi',
-          href: `/${lang}/encyclopedia`,
-          description: isEnglish ? 'Legal terms defined' : 'Hukuki terimler'
+          label: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
+          href: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
+          description: isEnglish ? 'Step-by-step US business formation' : 'ABD şirket kurulumu adım adım',
+        },
+        {
+          label: isEnglish ? 'DS-160 Visa Form' : 'DS-160 Vize Formu',
+          href: `/${lang}/ds-160-rehberi`,
+          description: isEnglish ? 'Visa application guide' : 'Vize başvurusu rehberi'
+        },
+        {
+          label: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik Rehberi',
+          href: `/${lang}/vergi-kimlik-rehberi`,
+          description: isEnglish ? 'EIN, ITIN, SSN, W-8, 1099' : 'EIN, ITIN, SSN, W-8, 1099',
+        },
+        {
+          label: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
+          href: `/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
+          description: isEnglish ? 'Must-have legal documents' : 'Gerekli hukuki belgeler',
+        },
+        {
+          label: isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı',
+          href: `/${lang}/abdde-banka-hesabi-acmak`,
+          description: isEnglish ? 'Opening accounts as non-resident' : 'Yabancı olarak hesap açma',
         },
       ]
     },

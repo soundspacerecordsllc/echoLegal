@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import { LanguageCode } from '@/lib/jurisdictions'
 
 type SearchResult = {
   id: string
@@ -10,7 +11,7 @@ type SearchResult = {
   url: string
   category: string
   type: 'template' | 'guide' | 'checklist' | 'kit' | 'page'
-  lang: 'en' | 'tr'
+  lang: LanguageCode
 }
 
 type HomeSearchProps = {
