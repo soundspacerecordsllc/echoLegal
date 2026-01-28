@@ -782,7 +782,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US/TR',
     docType: 'checklist',
     slug: 'tax-treaty-claim-checklist',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TaxTreatyChecklist-EN.docx',
   },
 
   // Turkish tax
@@ -856,7 +857,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US/TR',
     docType: 'checklist',
     slug: 'tax-treaty-claim-checklist',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/VergiAnlasmasiKontrolListesi-TR.docx',
   },
 
   // ===== LETTERS & NOTICES =====
