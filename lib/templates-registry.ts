@@ -572,7 +572,7 @@ export const templatesRegistry: Template[] = [
     docType: 'guide',
     slug: 'power-of-attorney-outline',
     updatedAt: '2026-01-28',
-    downloadUrl: '/documents/PowerOfAttorney-Outline-EN.docx',
+    downloadUrl: '/documents/PowerOfAttorney-Sample-EN.docx',
   },
   {
     id: 'residency-proof-letter-en',
@@ -654,7 +654,7 @@ export const templatesRegistry: Template[] = [
     docType: 'guide',
     slug: 'power-of-attorney-outline',
     updatedAt: '2026-01-28',
-    downloadUrl: '/documents/Vekaletname-Anahat-TR.docx',
+    downloadUrl: '/documents/Vekaletname-Sample-TR.docx',
   },
   {
     id: 'residency-proof-letter-tr',
