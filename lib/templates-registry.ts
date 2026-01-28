@@ -531,7 +531,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'TR',
     docType: 'sample',
     slug: 'nufus-cuzdani-example',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TurkishIDCard-ExampleGuide-EN.docx',
     isSample: true,
   },
   {
@@ -544,7 +545,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'guide',
     slug: 'power-of-attorney-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/PowerOfAttorney-Outline-EN.docx',
   },
   {
     id: 'residency-proof-letter-en',
@@ -556,7 +558,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'residency-proof-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ProofOfResidencyLetter-EN.docx',
   },
   {
     id: 'translation-certification-en',
@@ -568,7 +571,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'template',
     slug: 'translation-certification',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TranslationCertification-EN.docx',
   },
   {
     id: 'apostille-request-sample-en',
@@ -580,7 +584,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'sample',
     slug: 'apostille-request-guide',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ApostilleRequest-Guide-EN.docx',
     isSample: true,
   },
   {
@@ -593,7 +598,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'name-change-affidavit',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/NameChangeAffidavit-Outline-EN.docx',
   },
 
   // Turkish personal
@@ -607,7 +613,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'TR',
     docType: 'sample',
     slug: 'nufus-cuzdani-example',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/NufusCuzdani-OrnekRehber-TR.docx',
     isSample: true,
   },
   {
@@ -620,7 +627,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'guide',
     slug: 'power-of-attorney-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/Vekaletname-Anahat-TR.docx',
   },
   {
     id: 'residency-proof-letter-tr',
@@ -632,7 +640,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'residency-proof-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/IkametgahBelgesi-Mektup-TR.docx',
   },
   {
     id: 'translation-certification-tr',
@@ -644,7 +653,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'template',
     slug: 'translation-certification',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TercumeSertifikasi-Beyan-TR.docx',
   },
   {
     id: 'apostille-request-sample-tr',
@@ -656,7 +666,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'sample',
     slug: 'apostille-request-guide',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ApostilTalebi-Rehber-TR.docx',
     isSample: true,
   },
   {
@@ -669,7 +680,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'name-change-affidavit',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/IsimDegisikligiBeyanı-Anahat-TR.docx',
   },
 
   // ===== TAX & IRS =====
