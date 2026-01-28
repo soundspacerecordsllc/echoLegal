@@ -189,41 +189,60 @@ export default async function TemplateDetailPage({
         </p>
 
         {/* Download Section */}
-        <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
-          <h2 className="text-3xl font-bold text-center mb-4">
-            {isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}
-          </h2>
-          <p className="text-center text-gray-600 mb-6">
-            {isEnglish
-              ? 'I support EchoLegal – $20 recommended.'
-              : "EchoLegal'i destekliyorum – $20 önerilir."}
-          </p>
+        {(template.downloadUrl || hasContractPage) ? (
+          <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+            <h2 className="text-3xl font-bold text-center mb-4">
+              {isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}
+            </h2>
+            <p className="text-center text-gray-600 mb-6">
+              {isEnglish
+                ? 'I support EchoLegal – $20 recommended.'
+                : "EchoLegal'i destekliyorum – $20 önerilir."}
+            </p>
 
-          <a
-            href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
-            className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
-          >
-            {isEnglish
-              ? 'I CAN Afford It — $20 (Recommended)'
-              : 'Ödeyebilirim — $20 (Önerilen)'}
-          </a>
+            <a
+              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+              className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
+            >
+              {isEnglish
+                ? 'I CAN Afford It — $20 (Recommended)'
+                : 'Ödeyebilirim — $20 (Önerilen)'}
+            </a>
 
-          <a
-            href={template.downloadUrl || (hasContractPage ? `/${lang}/contracts/${slug}` : template.downloadUrl)}
-            {...(template.downloadUrl ? { download: true } : {})}
-            className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors mb-4"
-          >
-            {isEnglish
-              ? 'I CANNOT Afford It — Download Free'
-              : 'Ödeyemiyorum — Ücretsiz İndir'}
-          </a>
+            <a
+              href={template.downloadUrl || `/${lang}/contracts/${slug}`}
+              {...(template.downloadUrl ? { download: true } : {})}
+              className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors mb-4"
+            >
+              {isEnglish
+                ? 'I CANNOT Afford It — Download Free'
+                : 'Ödeyemiyorum — Ücretsiz İndir'}
+            </a>
 
-          <p className="text-center text-sm text-gray-500">
-            {isEnglish
-              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
-              : 'Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.'}
-          </p>
-        </div>
+            <p className="text-center text-sm text-gray-500">
+              {isEnglish
+                ? 'Most users choose $20 to support ongoing updates and bilingual access.'
+                : 'Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.'}
+            </p>
+          </div>
+        ) : (
+          <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+            <h2 className="text-2xl font-bold text-center mb-4">
+              {isEnglish ? 'Template Coming Soon' : 'Şablon Yakında'}
+            </h2>
+            <p className="text-center text-gray-600 mb-6">
+              {isEnglish
+                ? 'This downloadable template is being prepared. Check back soon or contact us for updates.'
+                : 'Bu indirilebilir şablon hazırlanıyor. Yakında tekrar kontrol edin veya güncellemeler için bize ulaşın.'}
+            </p>
+            <a
+              href={`/${lang}/support`}
+              className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors"
+            >
+              {isEnglish ? 'Contact Us for Updates' : 'Güncellemeler İçin Bize Ulaşın'}
+            </a>
+          </div>
+        )}
 
         {/* Template content */}
         <div className="prose prose-gray max-w-none mb-12">
