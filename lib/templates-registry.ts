@@ -1,13 +1,6 @@
 // lib/templates-registry.ts
-// Canonical document registry for EchoLegal
-// Single source of truth for all contracts, templates, forms, letters, and documents
-// Migrated to support content-schema.ts canonical structure
-
-import { JurisdictionCode, LanguageCode } from './jurisdictions'
-
-// ============================================
-// TYPE DEFINITIONS
-// ============================================
+// Config-driven templates registry for EchoLegal
+// Supports contracts, forms, letters, samples, and document examples
 
 export type TemplateCategory =
   | 'contracts'
@@ -29,69 +22,38 @@ export type DocType =
   | 'template'
   | 'guide'
 
-// Legacy jurisdiction type for backward compatibility
 export type Jurisdiction = 'US' | 'TR' | 'US/TR' | 'General'
-
-export type ContentStatus = 'draft' | 'review' | 'published' | 'archived'
 
 export type UseCase =
   | 'freelancer'
   | 'startup'
-  | 'ecommerce'
-  | 'employer'
-  | 'tax'
+  | 'remote-worker'
+  | 'digital-nomad'
+  | 'consultant'
+  | 'content-creator'
+  | 'investor'
+  | 'e-commerce'
   | 'immigration'
-  | 'personal'
   | 'general'
 
 export type Template = {
-  // Identity
   id: string
-  lang: LanguageCode
-  slug: string
-
-  // Content
+  lang: 'en' | 'tr'
   title: string
   shortDescription: string
   category: TemplateCategory
   tags: string[]
+  jurisdiction: Jurisdiction
   docType: DocType
-
-  // Scope
-  jurisdiction: Jurisdiction // Legacy field for backward compatibility
-  jurisdictions?: JurisdictionCode[] // Canonical jurisdiction codes
-  useCases?: UseCase[]
-
-  // Status
-  status?: ContentStatus
+  slug: string
   updatedAt: string
-  createdAt?: string
-
-  // Files
   downloadUrl?: string
-  fileLinks?: {
-    format: 'docx' | 'pdf' | 'gdoc' | 'md'
-    lang: LanguageCode
-    url: string
-  }[]
-
-  // Flags
   isSample?: boolean
-  requiresCustomization?: boolean
-
-  // Relations
   relatedIds?: string[]
-
-  // Contributor attribution
-  authorId?: string
-  reviewerId?: string
-  lastReviewedAt?: string
+  useCases?: UseCase[]
 }
 
-// ============================================
-// UI LABELS
-// ============================================
-
+// Category labels for UI
 export const categoryLabels: Record<TemplateCategory, { en: string; tr: string }> = {
   contracts: { en: 'Contracts', tr: 'Sözleşmeler' },
   business: { en: 'Business', tr: 'İş Belgeleri' },
@@ -122,41 +84,21 @@ export const jurisdictionLabels: Record<Jurisdiction, { en: string; tr: string }
 }
 
 export const useCaseLabels: Record<UseCase, { en: string; tr: string }> = {
-  freelancer: { en: 'Freelancer / Consultant', tr: 'Serbest Çalışan / Danışman' },
-  startup: { en: 'Startup Founder', tr: 'Startup Kurucusu' },
-  ecommerce: { en: 'E-Commerce Seller', tr: 'E-Ticaret Satıcısı' },
-  employer: { en: 'Employer / Hiring', tr: 'İşveren / İşe Alım' },
-  tax: { en: 'Tax Compliance', tr: 'Vergi Uyumu' },
-  immigration: { en: 'Immigration / Visa', tr: 'Göçmenlik / Vize' },
-  personal: { en: 'Personal Documents', tr: 'Kişisel Belgeler' },
-  general: { en: 'General Use', tr: 'Genel Kullanım' },
+  freelancer: { en: 'Freelancers', tr: 'Serbest Çalışanlar' },
+  startup: { en: 'Startups', tr: 'Startup\'lar' },
+  'remote-worker': { en: 'Remote Workers', tr: 'Uzaktan Çalışanlar' },
+  'digital-nomad': { en: 'Digital Nomads', tr: 'Dijital Göçebeler' },
+  consultant: { en: 'Consultants', tr: 'Danışmanlar' },
+  'content-creator': { en: 'Content Creators', tr: 'İçerik Üreticileri' },
+  investor: { en: 'Investors', tr: 'Yatırımcılar' },
+  'e-commerce': { en: 'E-Commerce', tr: 'E-Ticaret' },
+  immigration: { en: 'Immigration', tr: 'Göçmenlik' },
+  general: { en: 'General', tr: 'Genel' },
 }
 
-export const statusLabels: Record<ContentStatus, { en: string; tr: string }> = {
-  draft: { en: 'Draft', tr: 'Taslak' },
-  review: { en: 'Under Review', tr: 'İncelemede' },
-  published: { en: 'Published', tr: 'Yayınlandı' },
-  archived: { en: 'Archived', tr: 'Arşivlendi' },
-}
-
-// Use case tag mapping for filtering
-export const useCaseTagMap: Record<UseCase, string[]> = {
-  freelancer: ['freelance', 'contractor', 'client', 'service', 'independent', 'serbest', 'musteri'],
-  startup: ['startup', 'founder', 'llc', 'formation', 'business', 'nda', 'kurulus', 'is'],
-  ecommerce: ['ecommerce', 'privacy', 'terms', 'website', 'saas', 'app', 'online'],
-  employer: ['contractor', 'hiring', 'employee', 'hr', 'policy', 'calisan', 'ik'],
-  tax: ['tax', 'irs', 'w8', 'w9', '1099', 'ein', 'itin', 'vergi'],
-  immigration: ['visa', 'immigration', 'sponsor', 'consulate', 'travel', 'vize', 'konsolosluk'],
-  personal: ['personal', 'identity', 'affidavit', 'residency', 'translation', 'kimlik'],
-  general: [],
-}
-
-// ============================================
-// TEMPLATES REGISTRY - ALL EXISTING CONTENT PRESERVED
-// ============================================
-
+// Templates Registry
 export const templatesRegistry: Template[] = [
-  // ===== CONTRACTS =====
+  // ===== CONTRACTS (existing + new) =====
   // English contracts
   {
     id: 'nda-en',
@@ -166,15 +108,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['nda', 'confidentiality', 'business', 'partnership', 'startup'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['startup', 'freelancer', 'employer'],
     docType: 'contract',
     slug: 'nda',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-en', 'independent-contractor-en'],
   },
   {
@@ -185,15 +121,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['service', 'client', 'scope', 'payment', 'deliverables', 'freelance'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup'],
     docType: 'contract',
     slug: 'service-agreement',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['independent-contractor-en', 'nda-en'],
   },
   {
@@ -204,15 +134,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['contractor', 'freelancer', 'hiring', '1099', 'independent'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['employer', 'startup'],
     docType: 'contract',
     slug: 'independent-contractor',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-en', 'nda-en'],
   },
   {
@@ -223,15 +147,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['privacy', 'gdpr', 'ccpa', 'website', 'app', 'data'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['ecommerce', 'startup'],
     docType: 'template',
     slug: 'privacy-policy',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['terms-of-service-en'],
   },
   {
@@ -242,15 +160,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['terms', 'conditions', 'website', 'app', 'saas', 'tos'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['ecommerce', 'startup'],
     docType: 'template',
     slug: 'terms-of-service',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['privacy-policy-en'],
   },
   {
@@ -261,15 +173,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['freelance', 'remote', 'client', 'project', 'scope'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer'],
     docType: 'contract',
     slug: 'freelance-agreement',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-en', 'independent-contractor-en'],
   },
   {
@@ -280,15 +186,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['influencer', 'brand', 'sponsorship', 'social-media', 'content'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup'],
     docType: 'contract',
     slug: 'influencer-agreement',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-en'],
   },
 
@@ -297,114 +197,78 @@ export const templatesRegistry: Template[] = [
     id: 'nda-tr',
     lang: 'tr',
     title: 'Gizlilik Sözleşmesi (NDA)',
-    shortDescription: 'İş fırsatlarını veya ortaklıkları görüşürken gizli bilgileri koruyun.',
+    shortDescription: 'İş görüşmeleri ve ortaklık müzakerelerinde gizli bilgilerin korunmasına yönelik sözleşme.',
     category: 'contracts',
     tags: ['nda', 'gizlilik', 'is', 'ortaklik', 'startup'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['startup', 'freelancer', 'employer'],
     docType: 'contract',
     slug: 'nda',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-tr', 'independent-contractor-tr'],
   },
   {
     id: 'service-agreement-tr',
     lang: 'tr',
     title: 'Hizmet Sözleşmesi',
-    shortDescription: 'Müşteri işleri için kapsam, ödeme koşulları ve teslim edilecekleri tanımlayın.',
+    shortDescription: 'Müşteri ilişkilerinde iş kapsamı, ödeme koşulları ve teslim yükümlülüklerini düzenleyen sözleşme.',
     category: 'contracts',
     tags: ['hizmet', 'musteri', 'kapsam', 'odeme', 'teslim', 'serbest'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup'],
     docType: 'contract',
     slug: 'service-agreement',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['independent-contractor-tr', 'nda-tr'],
   },
   {
     id: 'independent-contractor-tr',
     lang: 'tr',
     title: 'Bağımsız Yüklenici Sözleşmesi',
-    shortDescription: 'Serbest çalışan veya yüklenici çalıştırırken net koşullar belirleyin.',
+    shortDescription: 'Serbest çalışan veya yüklenici ile iş ilişkisinin koşullarını belirleyen sözleşme.',
     category: 'contracts',
     tags: ['yuklenici', 'serbest', 'calisan', '1099', 'bagimsiz'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['employer', 'startup'],
     docType: 'contract',
     slug: 'independent-contractor',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-tr', 'nda-tr'],
   },
   {
     id: 'privacy-policy-tr',
     lang: 'tr',
     title: 'Gizlilik Politikası',
-    shortDescription: 'Web siteniz veya uygulamanız için KVKK uyumlu gizlilik politikası.',
+    shortDescription: 'Web sitesi veya uygulama için KVKK ve GDPR uyumlu kişisel verilerin korunması politikası.',
     category: 'contracts',
     tags: ['gizlilik', 'kvkk', 'website', 'uygulama', 'veri'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['ecommerce', 'startup'],
     docType: 'template',
     slug: 'privacy-policy',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['terms-of-service-tr'],
   },
   {
     id: 'terms-of-service-tr',
     lang: 'tr',
     title: 'Kullanım Koşulları',
-    shortDescription: 'Web siteleri, uygulamalar ve çevrimiçi hizmetler için kullanım şartları.',
+    shortDescription: 'Web sitesi, uygulama ve dijital hizmetler için kullanıcı hak ve yükümlülüklerini düzenleyen koşullar.',
     category: 'contracts',
     tags: ['kosullar', 'sartlar', 'website', 'uygulama', 'saas'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['ecommerce', 'startup'],
     docType: 'template',
     slug: 'terms-of-service',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['privacy-policy-tr'],
   },
   {
     id: 'freelance-agreement-tr',
     lang: 'tr',
     title: 'Freelance Sözleşmesi',
-    shortDescription: 'ABD müşterileriyle serbest çalışma için sözleşme şablonu.',
+    shortDescription: 'ABD merkezli müşterilerle uzaktan serbest çalışma ilişkisini düzenleyen sözleşme.',
     category: 'contracts',
     tags: ['freelance', 'uzaktan', 'musteri', 'proje', 'kapsam'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer'],
     docType: 'contract',
     slug: 'freelance-agreement',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-tr', 'independent-contractor-tr'],
   },
   {
@@ -415,15 +279,9 @@ export const templatesRegistry: Template[] = [
     category: 'contracts',
     tags: ['influencer', 'marka', 'sponsorluk', 'sosyal-medya', 'icerik'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup'],
     docType: 'contract',
     slug: 'influencer-agreement',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
     relatedIds: ['service-agreement-tr'],
   },
 
@@ -437,15 +295,9 @@ export const templatesRegistry: Template[] = [
     category: 'business',
     tags: ['invoice', 'billing', 'payment', 'client', 'freelance'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup'],
     docType: 'template',
     slug: 'invoice-template',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'receipt-template-en',
@@ -455,15 +307,9 @@ export const templatesRegistry: Template[] = [
     category: 'business',
     tags: ['receipt', 'payment', 'confirmation', 'record'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['freelancer', 'startup', 'general'],
     docType: 'template',
     slug: 'receipt-template',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'authorization-letter-en',
@@ -473,15 +319,9 @@ export const templatesRegistry: Template[] = [
     category: 'business',
     tags: ['authorization', 'proxy', 'representative', 'agent'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'general'],
     docType: 'letter',
     slug: 'authorization-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'company-policy-notice-en',
@@ -491,15 +331,9 @@ export const templatesRegistry: Template[] = [
     category: 'business',
     tags: ['policy', 'notice', 'employee', 'hr', 'company'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['employer', 'startup'],
     docType: 'template',
     slug: 'company-policy-notice',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'operating-agreement-outline-en',
@@ -509,15 +343,9 @@ export const templatesRegistry: Template[] = [
     category: 'business',
     tags: ['llc', 'operating-agreement', 'formation', 'single-member'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['startup'],
     docType: 'guide',
     slug: 'operating-agreement-outline',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
 
   // Turkish business
@@ -525,19 +353,13 @@ export const templatesRegistry: Template[] = [
     id: 'invoice-template-tr',
     lang: 'tr',
     title: 'Fatura Şablonu',
-    shortDescription: 'ABD müşterilerini faturalandırmak için profesyonel fatura şablonu.',
+    shortDescription: 'ABD merkezli müşterilere yönelik profesyonel fatura şablonu.',
     category: 'business',
     tags: ['fatura', 'faturalandirma', 'odeme', 'musteri', 'serbest'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup'],
     docType: 'template',
     slug: 'invoice-template',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'receipt-template-tr',
@@ -547,69 +369,45 @@ export const templatesRegistry: Template[] = [
     category: 'business',
     tags: ['makbuz', 'odeme', 'onay', 'kayit'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['freelancer', 'startup', 'general'],
     docType: 'template',
     slug: 'receipt-template',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'authorization-letter-tr',
     lang: 'tr',
     title: 'Yetki Mektubu',
-    shortDescription: 'Birinin sizin adınıza hareket etmesine yetki veren mektup.',
+    shortDescription: 'Bir kişiye sizin adınıza işlem yapma yetkisi veren resmi yetkilendirme mektubu.',
     category: 'business',
     tags: ['yetki', 'vekalet', 'temsilci', 'vekil'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'general'],
     docType: 'letter',
     slug: 'authorization-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'company-policy-notice-tr',
     lang: 'tr',
     title: 'Şirket Politikası Bildirim Şablonu',
-    shortDescription: 'Çalışanlara veya yüklenicilere politika güncellemelerini iletmek için şablon.',
+    shortDescription: 'Şirket içi politika değişikliklerini çalışan ve yüklenicilere bildirmek için kullanılan şablon.',
     category: 'business',
     tags: ['politika', 'bildirim', 'calisan', 'ik', 'sirket'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['employer', 'startup'],
     docType: 'template',
     slug: 'company-policy-notice',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'operating-agreement-outline-tr',
     lang: 'tr',
     title: 'LLC Operating Agreement Anahat',
-    shortDescription: 'Tek üyeli LLC işletme sözleşmesi için temel bölümler ve dikkat edilecekler.',
+    shortDescription: 'Tek üyeli LLC için Operating Agreement hazırlarken ele alınması gereken temel bölümler ve hususlar.',
     category: 'business',
     tags: ['llc', 'isletme-sozlesmesi', 'kurulus', 'tek-uyeli'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['startup'],
     docType: 'guide',
     slug: 'operating-agreement-outline',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
 
   // ===== IMMIGRATION & CONSULAR =====
@@ -622,15 +420,10 @@ export const templatesRegistry: Template[] = [
     category: 'immigration',
     tags: ['visa', 'appointment', 'consulate', 'cover-letter', 'interview'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['immigration'],
     docType: 'letter',
     slug: 'visa-appointment-cover-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/VisaAppointmentCoverLetter-EN.docx',
   },
   {
     id: 'sponsor-letter-en',
@@ -640,15 +433,10 @@ export const templatesRegistry: Template[] = [
     category: 'immigration',
     tags: ['sponsor', 'visa', 'support', 'invitation', 'host'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['immigration'],
     docType: 'letter',
     slug: 'sponsor-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/SponsorLetter-EN.docx',
   },
   {
     id: 'affidavit-support-outline-en',
@@ -658,15 +446,10 @@ export const templatesRegistry: Template[] = [
     category: 'immigration',
     tags: ['affidavit', 'support', 'financial', 'i-134', 'sponsor'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['immigration'],
     docType: 'guide',
     slug: 'affidavit-support-outline',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/AffidavitOfSupportOutline-EN.docx',
   },
   {
     id: 'travel-consent-letter-en',
@@ -676,15 +459,10 @@ export const templatesRegistry: Template[] = [
     category: 'immigration',
     tags: ['travel', 'consent', 'minor', 'child', 'parental'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'immigration'],
     docType: 'letter',
     slug: 'travel-consent-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/ChildTravelConsentLetter-EN.docx',
   },
   {
     id: 'consulate-appointment-request-en',
@@ -694,15 +472,10 @@ export const templatesRegistry: Template[] = [
     category: 'immigration',
     tags: ['consulate', 'appointment', 'request', 'services'],
     jurisdiction: 'US/TR',
-    jurisdictions: ['US', 'TR'],
-    useCases: ['immigration'],
     docType: 'letter',
     slug: 'consulate-appointment-request',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/ConsulateAppointmentRequest-EN.docx',
   },
 
   // Turkish immigration
@@ -710,91 +483,66 @@ export const templatesRegistry: Template[] = [
     id: 'visa-appointment-cover-tr',
     lang: 'tr',
     title: 'Vize Randevu Kapak Yazısı',
-    shortDescription: 'ABD vize mülakat randevuları için kapak yazısı şablonu.',
+    shortDescription: 'ABD vize mülakatı randevusu için hazırlanmış kapak yazısı şablonu.',
     category: 'immigration',
     tags: ['vize', 'randevu', 'konsolosluk', 'kapak-yazisi', 'mulakat'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['immigration'],
     docType: 'letter',
     slug: 'visa-appointment-cover-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/VizeRandevuKapakYazisi-TR.docx',
   },
   {
     id: 'sponsor-letter-tr',
     lang: 'tr',
     title: 'Sponsor Mektubu Şablonu',
-    shortDescription: 'ABD sponsorundan vize başvuruları için destek mektubu.',
+    shortDescription: 'ABD\'deki davetçi veya sponsor tarafından vize başvurusuna destek amacıyla düzenlenen mektup.',
     category: 'immigration',
     tags: ['sponsor', 'vize', 'destek', 'davet', 'ev-sahibi'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['immigration'],
     docType: 'letter',
     slug: 'sponsor-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/SponsorMektubu-TR.docx',
   },
   {
     id: 'affidavit-support-outline-tr',
     lang: 'tr',
     title: 'Mali Destek Beyanı Anahat',
-    shortDescription: 'Mali destek beyanı için temel unsurlar.',
+    shortDescription: 'Mali destek taahhüdü (Affidavit of Support) hazırlamak için gereken temel unsurlar.',
     category: 'immigration',
     tags: ['beyan', 'destek', 'mali', 'i-134', 'sponsor'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['immigration'],
     docType: 'guide',
     slug: 'affidavit-support-outline',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/MaliDestekBeyani-TR.docx',
   },
   {
     id: 'travel-consent-letter-tr',
     lang: 'tr',
     title: 'Çocuk Seyahat İzin Mektubu',
-    shortDescription: 'Uluslararası seyahat eden küçükler için ebeveyn izin mektubu.',
+    shortDescription: 'Reşit olmayan çocuğun yurt dışı seyahati için ebeveyn muvafakat mektubu.',
     category: 'immigration',
     tags: ['seyahat', 'izin', 'kucuk', 'cocuk', 'ebeveyn'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'immigration'],
     docType: 'letter',
     slug: 'travel-consent-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/CocukSeyahatIzinMektubu-TR.docx',
   },
   {
     id: 'consulate-appointment-request-tr',
     lang: 'tr',
     title: 'Konsolosluk Randevu Talebi',
-    shortDescription: 'Konsolosluk hizmetleri veya randevuları talep etmek için şablon.',
+    shortDescription: 'Konsolosluktan hizmet veya randevu talep etmek amacıyla kullanılan yazı şablonu.',
     category: 'immigration',
     tags: ['konsolosluk', 'randevu', 'talep', 'hizmetler'],
     jurisdiction: 'US/TR',
-    jurisdictions: ['US', 'TR'],
-    useCases: ['immigration'],
     docType: 'letter',
     slug: 'consulate-appointment-request',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-27',
+    downloadUrl: '/documents/KonsoloslukRandevuTalebi-TR.docx',
   },
 
   // ===== PERSONAL DOCS / SAMPLES =====
@@ -807,16 +555,11 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['nufus-cuzdani', 'turkish-id', 'identity', 'document', 'example'],
     jurisdiction: 'TR',
-    jurisdictions: ['TR'],
-    useCases: ['personal', 'immigration'],
     docType: 'sample',
     slug: 'nufus-cuzdani-example',
-    status: 'published',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TurkishIDCard-ExampleGuide-EN.docx',
     isSample: true,
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'power-of-attorney-outline-en',
@@ -826,15 +569,10 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['power-of-attorney', 'poa', 'legal', 'authorization', 'proxy'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal'],
     docType: 'guide',
     slug: 'power-of-attorney-outline',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/PowerOfAttorney-Outline-EN.docx',
   },
   {
     id: 'residency-proof-letter-en',
@@ -844,15 +582,10 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['residency', 'proof', 'address', 'verification', 'letter'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal'],
     docType: 'letter',
     slug: 'residency-proof-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ProofOfResidencyLetter-EN.docx',
   },
   {
     id: 'translation-certification-en',
@@ -862,15 +595,10 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['translation', 'certification', 'certified', 'document', 'official'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'immigration'],
     docType: 'template',
     slug: 'translation-certification',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TranslationCertification-EN.docx',
   },
   {
     id: 'apostille-request-sample-en',
@@ -880,16 +608,11 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['apostille', 'hague', 'legalization', 'document', 'official'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'immigration'],
     docType: 'sample',
     slug: 'apostille-request-guide',
-    status: 'published',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ApostilleRequest-Guide-EN.docx',
     isSample: true,
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'name-change-affidavit-en',
@@ -899,15 +622,10 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['name-change', 'affidavit', 'legal', 'identity'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['personal'],
     docType: 'guide',
     slug: 'name-change-affidavit',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/NameChangeAffidavit-Outline-EN.docx',
   },
 
   // Turkish personal
@@ -919,34 +637,24 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['nufus-cuzdani', 'kimlik', 'belge', 'ornek'],
     jurisdiction: 'TR',
-    jurisdictions: ['TR'],
-    useCases: ['personal', 'immigration'],
     docType: 'sample',
     slug: 'nufus-cuzdani-example',
-    status: 'published',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/NufusCuzdani-OrnekRehber-TR.docx',
     isSample: true,
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'power-of-attorney-outline-tr',
     lang: 'tr',
     title: 'Vekaletname Anahat',
-    shortDescription: 'Genel vekaletname belgesi için temel unsurlar ve dikkat edilecekler.',
+    shortDescription: 'Genel vekaletname düzenlerken dikkate alınması gereken başlıca unsurlar ve hükümler.',
     category: 'personal',
     tags: ['vekaletname', 'vekalet', 'hukuki', 'yetki', 'vekil'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal'],
     docType: 'guide',
     slug: 'power-of-attorney-outline',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/Vekaletname-Anahat-TR.docx',
   },
   {
     id: 'residency-proof-letter-tr',
@@ -956,15 +664,10 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['ikametgah', 'belge', 'adres', 'dogrulama', 'mektup'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal'],
     docType: 'letter',
     slug: 'residency-proof-letter',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/IkametgahBelgesi-Mektup-TR.docx',
   },
   {
     id: 'translation-certification-tr',
@@ -974,34 +677,24 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['tercume', 'sertifika', 'onayli', 'belge', 'resmi'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'immigration'],
     docType: 'template',
     slug: 'translation-certification',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TercumeSertifikasi-Beyan-TR.docx',
   },
   {
     id: 'apostille-request-sample-tr',
     lang: 'tr',
     title: 'Apostil Talebi - Referans Rehberi',
-    shortDescription: 'Apostil gereksinimleri ve talep sürecini anlama.',
+    shortDescription: 'Apostil şartları ve başvuru sürecine ilişkin rehber.',
     category: 'personal',
     tags: ['apostil', 'lahey', 'tasdik', 'belge', 'resmi'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['personal', 'immigration'],
     docType: 'sample',
     slug: 'apostille-request-guide',
-    status: 'published',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ApostilTalebi-Rehber-TR.docx',
     isSample: true,
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'name-change-affidavit-tr',
@@ -1011,15 +704,10 @@ export const templatesRegistry: Template[] = [
     category: 'personal',
     tags: ['isim-degisikligi', 'beyan', 'hukuki', 'kimlik'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['personal'],
     docType: 'guide',
     slug: 'name-change-affidavit',
-    status: 'published',
-    updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/IsimDegisikligiBeyanı-Anahat-TR.docx',
   },
 
   // ===== TAX & IRS =====
@@ -1032,15 +720,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['w8', 'w8ben', 'irs', 'tax', 'withholding', 'checklist'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'freelancer'],
     docType: 'checklist',
     slug: 'w8-attachment-checklist',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'ein-request-cover-letter-en',
@@ -1050,15 +732,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['ein', 'ss-4', 'irs', 'tax-id', 'application'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'startup'],
     docType: 'letter',
     slug: 'ein-request-cover-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'vendor-onboarding-form-en',
@@ -1068,15 +744,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['vendor', 'onboarding', 'contractor', 'w9', 'w8'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['employer', 'tax'],
     docType: 'form',
     slug: 'vendor-onboarding-form',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'itin-application-guide-en',
@@ -1086,15 +756,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['itin', 'w-7', 'irs', 'tax-id', 'application'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'freelancer'],
     docType: 'checklist',
     slug: 'itin-application-guide',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: '1099-response-letter-en',
@@ -1104,15 +768,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['1099', 'tax', 'irs', 'response', 'inquiry'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'freelancer'],
     docType: 'letter',
     slug: '1099-response-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'tax-treaty-claim-checklist-en',
@@ -1122,15 +780,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['tax-treaty', 'turkey', 'benefits', 'withholding', 'w8'],
     jurisdiction: 'US/TR',
-    jurisdictions: ['US', 'TR'],
-    useCases: ['tax'],
     docType: 'checklist',
     slug: 'tax-treaty-claim-checklist',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
 
   // Turkish tax
@@ -1138,37 +790,25 @@ export const templatesRegistry: Template[] = [
     id: 'w8-attachment-checklist-tr',
     lang: 'tr',
     title: 'W-8BEN Ekleri Kontrol Listesi',
-    shortDescription: 'W-8BEN formlarını gönderirken eklenecek belgelerin kontrol listesi.',
+    shortDescription: 'W-8BEN formu ile birlikte sunulması gereken belgelerin kontrol listesi.',
     category: 'tax',
     tags: ['w8', 'w8ben', 'irs', 'vergi', 'stopaj', 'kontrol-listesi'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'freelancer'],
     docType: 'checklist',
     slug: 'w8-attachment-checklist',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'ein-request-cover-letter-tr',
     lang: 'tr',
     title: 'EIN Başvuru Kapak Yazısı',
-    shortDescription: 'EIN başvurularını posta veya faks ile göndermek için kapak yazısı şablonu.',
+    shortDescription: 'EIN başvurusunu posta veya faks yoluyla IRS\'e iletirken kullanılacak kapak yazısı.',
     category: 'tax',
     tags: ['ein', 'ss-4', 'irs', 'vergi-kimlik', 'basvuru'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'startup'],
     docType: 'letter',
     slug: 'ein-request-cover-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'vendor-onboarding-form-tr',
@@ -1178,15 +818,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['tedarikci', 'kayit', 'yuklenici', 'w9', 'w8'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['employer', 'tax'],
     docType: 'form',
     slug: 'vendor-onboarding-form',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'itin-application-guide-tr',
@@ -1196,33 +830,21 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['itin', 'w-7', 'irs', 'vergi-kimlik', 'basvuru'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'freelancer'],
     docType: 'checklist',
     slug: 'itin-application-guide',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: '1099-response-letter-tr',
     lang: 'tr',
     title: '1099 Sorgu Yanıt Mektubu',
-    shortDescription: 'Müşterilerin 1099 bilgi taleplerine yanıt vermek için şablon.',
+    shortDescription: 'Müşterilerden gelen 1099 bilgi taleplerine yazılı yanıt vermek için kullanılan şablon.',
     category: 'tax',
     tags: ['1099', 'vergi', 'irs', 'yanit', 'sorgu'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['tax', 'freelancer'],
     docType: 'letter',
     slug: '1099-response-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'tax-treaty-claim-checklist-tr',
@@ -1232,15 +854,9 @@ export const templatesRegistry: Template[] = [
     category: 'tax',
     tags: ['vergi-anlasmasi', 'turkiye', 'avantajlar', 'stopaj', 'w8'],
     jurisdiction: 'US/TR',
-    jurisdictions: ['US', 'TR'],
-    useCases: ['tax'],
     docType: 'checklist',
     slug: 'tax-treaty-claim-checklist',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
 
   // ===== LETTERS & NOTICES =====
@@ -1253,15 +869,9 @@ export const templatesRegistry: Template[] = [
     category: 'letters',
     tags: ['demand', 'payment', 'breach', 'collection', 'notice'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup', 'general'],
     docType: 'letter',
     slug: 'demand-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'termination-notice-en',
@@ -1271,15 +881,9 @@ export const templatesRegistry: Template[] = [
     category: 'letters',
     tags: ['termination', 'contract', 'notice', 'end', 'agreement'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['freelancer', 'employer', 'general'],
     docType: 'letter',
     slug: 'termination-notice',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'cease-desist-en',
@@ -1289,15 +893,9 @@ export const templatesRegistry: Template[] = [
     category: 'letters',
     tags: ['cease-desist', 'infringement', 'stop', 'legal', 'warning'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['startup', 'general'],
     docType: 'guide',
     slug: 'cease-desist-outline',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
 
   // Turkish letters
@@ -1305,79 +903,52 @@ export const templatesRegistry: Template[] = [
     id: 'demand-letter-tr',
     lang: 'tr',
     title: 'İhtar Mektubu Şablonu',
-    shortDescription: 'Ödeme veya sözleşme ifası için resmi ihtar mektubu.',
+    shortDescription: 'Alacak tahsili veya sözleşmenin ifası talebiyle gönderilen resmi ihtar mektubu.',
     category: 'letters',
     tags: ['ihtar', 'odeme', 'ihlal', 'tahsilat', 'bildirim'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['freelancer', 'startup', 'general'],
     docType: 'letter',
     slug: 'demand-letter',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'termination-notice-tr',
     lang: 'tr',
     title: 'Sözleşme Fesih Bildirimi',
-    shortDescription: 'Bir sözleşme veya anlaşmayı feshetmek için bildirim şablonu.',
+    shortDescription: 'Mevcut bir sözleşmeyi sona erdirmek amacıyla karşı tarafa gönderilen fesih bildirimi.',
     category: 'letters',
     tags: ['fesih', 'sozlesme', 'bildirim', 'son', 'anlasma'],
     jurisdiction: 'General',
-    jurisdictions: ['GENERAL'],
-    useCases: ['freelancer', 'employer', 'general'],
     docType: 'letter',
     slug: 'termination-notice',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
   {
     id: 'cease-desist-tr',
     lang: 'tr',
     title: 'İhlali Durdurma Mektubu Anahat',
-    shortDescription: 'İhlali durdurma mektubu için temel unsurlar.',
+    shortDescription: 'Hak ihlalinin durdurulmasını talep eden resmi uyarı mektubunun temel unsurları.',
     category: 'letters',
     tags: ['durdurma', 'ihlal', 'dur', 'hukuki', 'uyari'],
     jurisdiction: 'US',
-    jurisdictions: ['US'],
-    useCases: ['startup', 'general'],
     docType: 'guide',
     slug: 'cease-desist-outline',
-    status: 'published',
     updatedAt: '2026-01-25',
-    authorId: 'zeynep-moore',
-    reviewerId: 'zeynep-moore',
-    lastReviewedAt: '2026-01-25',
   },
 ]
 
-// ============================================
-// HELPER FUNCTIONS
-// ============================================
-
-export function getTemplatesByLang(lang: LanguageCode): Template[] {
+// Helper functions
+export function getTemplatesByLang(lang: 'en' | 'tr'): Template[] {
   return templatesRegistry.filter(t => t.lang === lang)
 }
 
-export function getPublishedTemplates(lang?: LanguageCode): Template[] {
-  return templatesRegistry.filter(
-    t => t.status === 'published' && (lang ? t.lang === lang : true)
-  )
-}
-
-export function getTemplatesByCategory(category: TemplateCategory, lang?: LanguageCode): Template[] {
+export function getTemplatesByCategory(category: TemplateCategory, lang?: 'en' | 'tr'): Template[] {
   return templatesRegistry.filter(t =>
     t.category === category && (lang ? t.lang === lang : true)
   )
 }
 
-export function getTemplateBySlug(slug: string, lang: LanguageCode): Template | undefined {
+export function getTemplateBySlug(slug: string, lang: 'en' | 'tr'): Template | undefined {
   return templatesRegistry.find(t => t.slug === slug && t.lang === lang)
 }
 
@@ -1385,15 +956,9 @@ export function getTemplateById(id: string): Template | undefined {
   return templatesRegistry.find(t => t.id === id)
 }
 
-export function getTemplatesByUseCase(useCase: UseCase, lang?: LanguageCode): Template[] {
-  return templatesRegistry.filter(t =>
-    t.useCases?.includes(useCase) && (lang ? t.lang === lang : true)
-  )
-}
-
 export function searchTemplates(
   query: string,
-  lang: LanguageCode,
+  lang: string,
   options?: {
     category?: TemplateCategory
     docType?: DocType
@@ -1403,16 +968,11 @@ export function searchTemplates(
   }
 ): Template[] {
   const normalizedQuery = query.toLowerCase().trim()
-  if (!normalizedQuery) {
-    return getTemplatesByLang(lang)
-  }
+  const normalizedLang = normalizeTemplateLang(lang)
 
   return templatesRegistry.filter(t => {
     // Language filter
-    if (!options?.includeBothLangs && t.lang !== lang) return false
-
-    // Status filter - only show published
-    if (t.status !== 'published') return false
+    if (!options?.includeBothLangs && t.lang !== normalizedLang) return false
 
     // Category filter
     if (options?.category && t.category !== options.category) return false
@@ -1423,8 +983,11 @@ export function searchTemplates(
     // Jurisdiction filter
     if (options?.jurisdiction && t.jurisdiction !== options.jurisdiction) return false
 
-    // Use case filter
-    if (options?.useCase && !t.useCases?.includes(options.useCase)) return false
+    // UseCase filter
+    if (options?.useCase && (!t.useCases || !t.useCases.includes(options.useCase))) return false
+
+    // If no query, return all that match filters
+    if (!normalizedQuery) return true
 
     // Search in title, description, and tags
     const searchableText = [
@@ -1442,15 +1005,10 @@ export function getRelatedTemplates(template: Template, limit = 4): Template[] {
     .filter(t =>
       t.id !== template.id &&
       t.lang === template.lang &&
-      t.status === 'published' &&
       (t.category === template.category || t.tags.some(tag => template.tags.includes(tag)))
     )
     .slice(0, limit)
 }
-
-// ============================================
-// METADATA HELPERS
-// ============================================
 
 export function getAllCategories(): TemplateCategory[] {
   return Object.keys(categoryLabels) as TemplateCategory[]
@@ -1468,94 +1026,57 @@ export function getAllUseCases(): UseCase[] {
   return Object.keys(useCaseLabels) as UseCase[]
 }
 
-// Get unique values from registry for dynamic filters
-export function getAvailableCategories(lang: LanguageCode): TemplateCategory[] {
-  const categories = new Set<TemplateCategory>()
-  templatesRegistry
-    .filter(t => t.lang === lang && t.status === 'published')
-    .forEach(t => categories.add(t.category))
+// Helper to normalize language codes to supported template languages
+type TemplateLang = 'en' | 'tr'
+function normalizeTemplateLang(lang: string): TemplateLang {
+  return lang === 'tr' ? 'tr' : 'en'
+}
+
+/**
+ * Get all published (visible) templates for a language.
+ */
+export function getPublishedTemplates(lang: string): Template[] {
+  const normalizedLang = normalizeTemplateLang(lang)
+  return templatesRegistry.filter(t => t.lang === normalizedLang)
+}
+
+/**
+ * Get categories that have at least one template in the given language.
+ */
+export function getAvailableCategories(lang: string): TemplateCategory[] {
+  const templates = getPublishedTemplates(lang)
+  const categories = new Set(templates.map(t => t.category))
   return Array.from(categories)
 }
 
-export function getAvailableDocTypes(lang: LanguageCode): DocType[] {
-  const types = new Set<DocType>()
-  templatesRegistry
-    .filter(t => t.lang === lang && t.status === 'published')
-    .forEach(t => types.add(t.docType))
-  return Array.from(types)
+/**
+ * Get doc types that have at least one template in the given language.
+ */
+export function getAvailableDocTypes(lang: string): DocType[] {
+  const templates = getPublishedTemplates(lang)
+  const docTypes = new Set(templates.map(t => t.docType))
+  return Array.from(docTypes)
 }
 
-export function getAvailableJurisdictions(lang: LanguageCode): Jurisdiction[] {
-  const jurisdictions = new Set<Jurisdiction>()
-  templatesRegistry
-    .filter(t => t.lang === lang && t.status === 'published')
-    .forEach(t => jurisdictions.add(t.jurisdiction))
+/**
+ * Get jurisdictions that have at least one template in the given language.
+ */
+export function getAvailableJurisdictions(lang: string): Jurisdiction[] {
+  const templates = getPublishedTemplates(lang)
+  const jurisdictions = new Set(templates.map(t => t.jurisdiction))
   return Array.from(jurisdictions)
 }
 
-export function getAvailableUseCases(lang: LanguageCode): UseCase[] {
+/**
+ * Get use cases that have at least one template in the given language.
+ */
+export function getAvailableUseCases(lang: string): UseCase[] {
+  const templates = getPublishedTemplates(lang)
   const useCases = new Set<UseCase>()
-  templatesRegistry
-    .filter(t => t.lang === lang && t.status === 'published')
-    .forEach(t => t.useCases?.forEach(uc => useCases.add(uc)))
+  templates.forEach(t => {
+    if (t.useCases) {
+      t.useCases.forEach(uc => useCases.add(uc))
+    }
+  })
   return Array.from(useCases)
-}
-
-// ============================================
-// CONTRIBUTOR ATTRIBUTION
-// ============================================
-
-export const DEFAULT_AUTHOR_ID = 'zeynep-moore'
-export const DEFAULT_REVIEWER_ID = 'zeynep-moore'
-
-export function getTemplateAuthorId(template: Template): string {
-  return template.authorId || DEFAULT_AUTHOR_ID
-}
-
-export function getTemplateReviewerId(template: Template): string | undefined {
-  return template.reviewerId || DEFAULT_REVIEWER_ID
-}
-
-export function getTemplatesByAuthor(authorId: string): Template[] {
-  return templatesRegistry.filter(
-    t => t.authorId === authorId || (!t.authorId && authorId === DEFAULT_AUTHOR_ID)
-  )
-}
-
-export function getTemplatesByJurisdiction(
-  jurisdiction: Jurisdiction,
-  lang?: LanguageCode
-): Template[] {
-  return templatesRegistry.filter(
-    t => t.jurisdiction === jurisdiction && (lang ? t.lang === lang : true)
-  )
-}
-
-// ============================================
-// STATISTICS
-// ============================================
-
-export function getRegistryStats(lang?: LanguageCode) {
-  const filtered = lang
-    ? templatesRegistry.filter(t => t.lang === lang)
-    : templatesRegistry
-
-  const published = filtered.filter(t => t.status === 'published')
-
-  return {
-    total: filtered.length,
-    published: published.length,
-    byCategory: getAllCategories().reduce((acc, cat) => {
-      acc[cat] = published.filter(t => t.category === cat).length
-      return acc
-    }, {} as Record<TemplateCategory, number>),
-    byDocType: getAllDocTypes().reduce((acc, type) => {
-      acc[type] = published.filter(t => t.docType === type).length
-      return acc
-    }, {} as Record<DocType, number>),
-    byJurisdiction: getAllJurisdictions().reduce((acc, jur) => {
-      acc[jur] = published.filter(t => t.jurisdiction === jur).length
-      return acc
-    }, {} as Record<Jurisdiction, number>),
-  }
 }

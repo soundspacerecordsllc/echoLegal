@@ -72,17 +72,23 @@ export default function Header({ lang, dict }: HeaderProps) {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Navigation structure with mega-menu style dropdowns
+  // Navigation structure - clear mental models
+  // Library = Learn (educational) | Templates = Get Documents | Checklists = Verify Steps
   const navItems: NavItem[] = [
     {
-      key: 'guides',
-      label: isEnglish ? 'Guides' : 'Rehberler',
+      key: 'library',
+      label: isEnglish ? 'Library' : 'Kütüphane',
       href: `/${lang}/library`,
       dropdown: [
         {
+          label: isEnglish ? 'Browse Guides' : 'Rehberlere Göz At',
+          href: `/${lang}/library`,
+          description: isEnglish ? 'Reference articles' : 'Referans makaleler'
+        },
+        {
           label: isEnglish ? 'US Business Hub' : 'ABD İş Merkezi',
           href: `/${lang}/amerika`,
-          description: isEnglish ? 'All US business resources' : 'Tüm ABD iş kaynakları'
+          description: isEnglish ? 'Doing business in America' : 'Amerika\'da iş yapmak'
         },
         {
           label: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
@@ -117,51 +123,36 @@ export default function Header({ lang, dict }: HeaderProps) {
       href: templatesUrl,
       dropdown: [
         {
-          label: isEnglish ? 'View All Templates' : 'Tüm Şablonları Gör',
+          label: isEnglish ? 'Template Library' : 'Şablon Kütüphanesi',
           href: templatesUrl,
-          description: isEnglish ? 'Browse 50+ legal templates' : '50+ hukuki şablona göz atın'
+          description: isEnglish ? '50+ documents' : '50+ belge'
         },
         {
           label: isEnglish ? 'Contracts' : 'Sözleşmeler',
-          href: `${templatesUrl}#contracts`,
-          description: isEnglish ? 'NDA, Service Agreement, etc.' : 'NDA, Hizmet Sözleşmesi, vb.'
-        },
-        {
-          label: isEnglish ? 'Business Documents' : 'İş Belgeleri',
-          href: `${templatesUrl}#business`,
-          description: isEnglish ? 'Invoice, Receipt, Authorization' : 'Fatura, Makbuz, Yetki'
-        },
-        {
-          label: isEnglish ? 'Tax & IRS Forms' : 'Vergi & IRS Formları',
-          href: `${templatesUrl}#tax`,
-          description: isEnglish ? 'W-8, EIN, ITIN checklists' : 'W-8, EIN, ITIN kontrol listeleri'
-        },
-        {
-          label: isEnglish ? 'Immigration Letters' : 'Göç Mektupları',
-          href: `${templatesUrl}#immigration`,
-          description: isEnglish ? 'Visa support letters' : 'Vize destek mektupları'
+          href: `/${lang}/contracts`,
+          description: isEnglish ? 'NDA, service, freelance' : 'NDA, hizmet, serbest'
         },
       ]
     },
     {
       key: 'checklists',
       label: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-      href: `/${lang}/checklists/llc-checklist`,
+      href: `/${lang}/checklists`,
       dropdown: [
         {
-          label: isEnglish ? 'LLC Formation Checklist' : 'LLC Kurulum Listesi',
+          label: isEnglish ? 'All Checklists' : 'Tüm Listeler',
+          href: `/${lang}/checklists`,
+          description: isEnglish ? 'Step-by-step verification' : 'Adım adım doğrulama'
+        },
+        {
+          label: isEnglish ? 'LLC Formation' : 'LLC Kurulumu',
           href: `/${lang}/checklists/llc-checklist`,
-          description: isEnglish ? 'Step-by-step LLC setup' : 'Adım adım LLC kurulumu'
+          description: isEnglish ? 'Pre-formation steps' : 'Kuruluş öncesi adımlar'
         },
         {
-          label: isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Listesi',
-          href: `/${lang}/checklists/bank-account-checklist`,
-          description: isEnglish ? 'Documents needed' : 'Gerekli belgeler'
-        },
-        {
-          label: isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Listesi',
-          href: `/${lang}/checklists/tax-documents-checklist`,
-          description: isEnglish ? 'IRS compliance docs' : 'IRS uyum belgeleri'
+          label: isEnglish ? 'W-8 / W-9 Decision' : 'W-8 / W-9 Kararı',
+          href: `/${lang}/checklists/w8-w9-karar-haritasi`,
+          description: isEnglish ? 'Tax form selector' : 'Vergi formu seçimi'
         },
       ]
     },
@@ -169,13 +160,11 @@ export default function Header({ lang, dict }: HeaderProps) {
       key: 'kits',
       label: isEnglish ? 'Legal Kits' : 'Hukuki Kitler',
       href: `/${lang}/legal-kits`,
-      dropdown: [
-        {
-          label: isEnglish ? 'ABD Business Starter Kit' : 'ABD Business Starter Kit',
-          href: `/${lang}/legal-kits/business-starter`,
-          description: isEnglish ? '5 essential documents' : '5 temel belge'
-        },
-      ]
+    },
+    {
+      key: 'updates',
+      label: isEnglish ? 'Legal Updates' : 'Güncellemeler',
+      href: `/${lang}/updates`,
     },
     {
       key: 'support',
@@ -208,15 +197,15 @@ export default function Header({ lang, dict }: HeaderProps) {
                     <>
                       <button
                         onClick={() => toggleDropdown(item.key)}
-                        className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 rounded-md ${
+                        className={`px-3 py-2 text-[13px] font-medium transition-colors flex items-center gap-1 ${
                           activeDropdown === item.key
-                            ? 'text-black bg-gray-100'
-                            : 'text-gray-600 hover:text-black hover:bg-gray-50'
+                            ? 'text-gray-900'
+                            : 'text-gray-600 hover:text-gray-900'
                         }`}
                       >
                         {item.label}
                         <svg
-                          className={`w-4 h-4 transition-transform ${activeDropdown === item.key ? 'rotate-180' : ''}`}
+                          className={`w-3.5 h-3.5 transition-transform text-gray-400 ${activeDropdown === item.key ? 'rotate-180' : ''}`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -225,34 +214,26 @@ export default function Header({ lang, dict }: HeaderProps) {
                         </svg>
                       </button>
 
-                      {/* Dropdown Menu */}
+                      {/* Dropdown Menu - refined, calm, decisive */}
                       {activeDropdown === item.key && (
-                        <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
-                          {/* Main link */}
-                          <Link
-                            href={item.href}
-                            className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 border-b border-gray-100 mb-1"
-                            onClick={() => setActiveDropdown(null)}
-                          >
-                            {isEnglish ? 'View All' : 'Tümünü Gör'} →
-                          </Link>
+                        <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-100 rounded-md shadow-sm py-1.5 z-50">
                           {item.dropdown.map((subItem, idx) => (
                             <Link
                               key={idx}
                               href={subItem.href}
                               target={subItem.href.startsWith('http') ? '_blank' : undefined}
                               rel={subItem.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                              className="block px-4 py-2 hover:bg-gray-50"
+                              className="block px-4 py-2.5 hover:bg-gray-50 transition-colors"
                               onClick={() => setActiveDropdown(null)}
                             >
-                              <span className="block text-sm font-medium text-gray-900">
+                              <span className="block text-[13px] font-medium text-gray-900 leading-tight">
                                 {subItem.label}
                                 {subItem.href.startsWith('http') && (
                                   <span className="ml-1 text-gray-400">↗</span>
                                 )}
                               </span>
                               {subItem.description && (
-                                <span className="block text-xs text-gray-500 mt-0.5">
+                                <span className="block text-xs text-gray-500 mt-0.5 leading-relaxed">
                                   {subItem.description}
                                 </span>
                               )}
@@ -264,7 +245,7 @@ export default function Header({ lang, dict }: HeaderProps) {
                   ) : (
                     <Link
                       href={item.href}
-                      className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-md transition-colors"
+                      className="px-3 py-2 text-[13px] font-medium text-gray-600 hover:text-gray-900 transition-colors"
                     >
                       {item.label}
                     </Link>

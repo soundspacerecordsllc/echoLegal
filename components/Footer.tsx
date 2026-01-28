@@ -7,60 +7,80 @@ type FooterProps = {
 
 export default function Footer({ lang, dict }: FooterProps) {
   const currentYear = new Date().getFullYear()
+  const isEnglish = lang === 'en'
+  const templatesUrl = isEnglish ? `/${lang}/templates` : '/tr/sablonlar'
 
   return (
-    <footer className="bg-legal-navy text-white mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
+    <footer className="bg-gray-900 text-white mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {/* Library */}
           <div>
-            <h3 className="font-serif text-xl font-bold mb-4">EchoLegal</h3>
-            <p className="text-gray-300 text-sm">{dict.footer.tagline}</p>
-            <p className="text-gray-400 text-xs mt-2">Updated January 2026</p>
-          </div>
-
-          {/* Contracts */}
-          <div>
-            <h4 className="font-semibold mb-4">{dict.footer.contracts}</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
+            <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+              {isEnglish ? 'Library' : 'Kütüphane'}
+            </h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link href={`/${lang}/contracts/nda`} className="hover:text-legal-gold transition-colors">
-                  Non-Disclosure Agreement
+                <Link href={`/${lang}/library`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Reference Guides' : 'Referans Rehberleri'}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/contracts/service-agreement`} className="hover:text-legal-gold transition-colors">
-                  Service Agreement
+                <Link href={`/${lang}/amerika`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/contracts`} className="hover:text-legal-gold transition-colors">
-                  View All →
+                <Link href={`/${lang}/encyclopedia`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Templates */}
           <div>
-            <h4 className="font-semibold mb-4">{lang === 'en' ? 'Resources' : 'Kaynaklar'}</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
+            <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+              {isEnglish ? 'Templates' : 'Şablonlar'}
+            </h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link href={`/${lang}/amerika`} className="hover:text-legal-gold transition-colors">
-                  {lang === 'en' ? 'Amerika Hub' : 'Amerika Hub'}
+                <Link href={templatesUrl} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'All Templates' : 'Tüm Şablonlar'}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/amerika/legal-kitler/abd-business-starter-legal-kit`} className="hover:text-legal-gold transition-colors">
-                  {lang === 'en' ? 'Business Starter Kit' : 'Business Starter Kit'}
+                <Link href={`/${lang}/contracts`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Contracts' : 'Sözleşmeler'}
                 </Link>
-                <span className="block text-xs text-gray-500 mt-0.5">
-                  {lang === 'en' ? 'Self-serve templates' : 'Self-serve şablonlar'}
-                </span>
               </li>
               <li>
-                <Link href={`/${lang}/encyclopedia`} className="hover:text-legal-gold transition-colors">
-                  {lang === 'en' ? 'Encyclopedia' : 'Ansiklopedi'}
+                <Link href={`/${lang}/legal-kits`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Legal Kits' : 'Hukuki Kitler'}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Tools */}
+          <div>
+            <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+              {isEnglish ? 'Tools' : 'Araçlar'}
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href={`/${lang}/checklists`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/checklists/w8-w9-karar-haritasi`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'W-8 / W-9 Guide' : 'W-8 / W-9 Rehberi'}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/support`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Support' : 'Destek'}
                 </Link>
               </li>
             </ul>
@@ -68,25 +88,22 @@ export default function Footer({ lang, dict }: FooterProps) {
 
           {/* Legal */}
           <div>
-            <h4 className="font-semibold mb-4">{dict.footer.legal}</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
+            <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
+              {dict.footer.legal}
+            </h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link href={`/${lang}/legal/privacy`} className="hover:text-legal-gold transition-colors">
+                <Link href={`/${lang}/legal/privacy`} className="text-gray-300 hover:text-white transition-colors">
                   {dict.footer.privacyPolicy}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/legal/cookies`} className="hover:text-legal-gold transition-colors">
-                  {dict.footer.cookiePolicy}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${lang}/legal/terms`} className="hover:text-legal-gold transition-colors">
+                <Link href={`/${lang}/legal/terms`} className="text-gray-300 hover:text-white transition-colors">
                   {dict.footer.terms}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/legal/disclaimer`} className="hover:text-legal-gold transition-colors">
+                <Link href={`/${lang}/legal/disclaimer`} className="text-gray-300 hover:text-white transition-colors">
                   {dict.footer.disclaimer}
                 </Link>
               </li>
@@ -94,22 +111,20 @@ export default function Footer({ lang, dict }: FooterProps) {
           </div>
         </div>
 
-        {/* Scope Strip */}
-        <div className="border-t border-gray-700 pt-6 mt-8">
-          <p className="text-sm text-gray-300 mb-4">
-            {lang === 'en'
-              ? 'EchoLegal does not provide individual representation. Content is for general informational purposes.'
-              : 'EchoLegal bireysel temsil sunmaz. İçerikler genel bilgilendirme amaçlıdır.'}
-          </p>
-        </div>
+        {/* Bottom section */}
+        <div className="pt-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <p className="text-lg font-serif font-semibold text-white mb-1">EchoLegal</p>
+              <p className="text-sm text-gray-400">{dict.footer.tagline}</p>
+            </div>
+            <p className="text-sm text-gray-500">
+              {dict.footer.copyright}
+            </p>
+          </div>
 
-        {/* Legal Disclaimer */}
-        <div className="border-t border-gray-700 pt-6 mt-4">
-          <p className="text-xs text-gray-400 leading-relaxed mb-4">
+          <p className="mt-6 text-xs text-gray-500 leading-relaxed max-w-3xl">
             {dict.disclaimer.global}
-          </p>
-          <p className="text-sm text-gray-400">
-            {dict.footer.copyright}
           </p>
         </div>
       </div>

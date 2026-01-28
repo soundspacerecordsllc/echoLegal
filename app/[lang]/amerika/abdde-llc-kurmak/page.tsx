@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "Forming an LLC in the US - Delaware, Wyoming & State Selection | EchoLegal"
-      : "ABD'de LLC Kurmak - Delaware, Wyoming & Eyalet Seçimi | EchoLegal",
+      : "ABD'de LLC Kurmak - Delaware, Wyoming ve Eyalet Seçimi | EchoLegal",
     description: isEnglish
       ? "How to form an LLC in the United States as a foreign national. State selection, registered agents, EIN, and ongoing compliance requirements."
-      : "Yabancı uyruklu olarak ABD'de LLC nasıl kurulur. Eyalet seçimi, registered agent, EIN ve sürekli uyum gereksinimleri.",
+      : "Yabancı uyruklu olarak ABD'de LLC kurulumu. Eyalet seçimi, registered agent, EIN ve devam eden uyum yükümlülükleri.",
   }
 }
 
@@ -37,49 +37,49 @@ export default async function AbddeLLCPage({
       question: isEnglish ? "Can a non-US resident form a US LLC?" : "ABD'de ikamet etmeyen biri ABD LLC'si kurabilir mi?",
       answer: isEnglish
         ? "Yes. US LLCs can be formed by non-residents without a visa or physical presence. However, LLC formation alone does not provide any immigration status or work authorization."
-        : "Evet. ABD LLC'leri vize veya fiziksel varlık olmadan ABD'de ikamet etmeyenler tarafından kurulabilir. Ancak, LLC kurulumu tek başına herhangi bir göçmenlik statüsü veya çalışma izni sağlamaz."
+        : "Evet. ABD dışında yaşayan kişiler, vize veya fiziksel bulunma şartı aranmaksızın ABD LLC'si kurabilir. Ancak LLC kurmak tek başına herhangi bir göçmenlik statüsü veya çalışma izni sağlamaz."
     },
     {
-      question: isEnglish ? "Why do people choose Delaware or Wyoming?" : "İnsanlar neden Delaware veya Wyoming'i seçiyor?",
+      question: isEnglish ? "Why do people choose Delaware or Wyoming?" : "Delaware veya Wyoming neden tercih ediliyor?",
       answer: isEnglish
         ? "Delaware has established business courts and case law. Wyoming has no state income tax and strong privacy protections. Neither is universally 'better' - the choice depends on your specific situation."
-        : "Delaware'in yerleşik iş mahkemeleri ve içtihatları var. Wyoming'in eyalet gelir vergisi yok ve güçlü gizlilik korumaları var. Hiçbiri evrensel olarak 'daha iyi' değil - seçim özel durumunuza bağlı."
+        : "Delaware köklü iş mahkemeleri ve zengin içtihadıyla öne çıkar. Wyoming ise eyalet gelir vergisi almaz ve güçlü gizlilik korumaları sunar. Hiçbiri her koşulda 'daha iyi' değildir; seçim tamamen sizin durumunuza bağlıdır."
     },
     {
       question: isEnglish ? "Do I need a US address to form an LLC?" : "LLC kurmak için ABD adresine ihtiyacım var mı?",
       answer: isEnglish
         ? "You need a registered agent with a physical address in the state of formation. This can be a professional registered agent service. Your personal address can be outside the US."
-        : "Kuruluş eyaletinde fiziksel adresi olan bir registered agent'a ihtiyacınız var. Bu profesyonel bir registered agent hizmeti olabilir. Kişisel adresiniz ABD dışında olabilir."
+        : "Kuruluş eyaletinde fiziksel adresi bulunan bir registered agent atamanız gerekir. Bu hizmeti profesyonel bir registered agent firmasından alabilirsiniz. Kişisel adresinizin ABD'de olması gerekmez."
     },
     {
-      question: isEnglish ? "What is an EIN and do I need one?" : "EIN nedir ve ihtiyacım var mı?",
+      question: isEnglish ? "What is an EIN and do I need one?" : "EIN nedir ve almam gerekir mi?",
       answer: isEnglish
         ? "An Employer Identification Number (EIN) is like a tax ID for your business. You need one to open a US bank account and file taxes. Foreign owners can obtain an EIN."
-        : "İşveren Kimlik Numarası (EIN), işletmeniz için vergi kimliği gibidir. ABD banka hesabı açmak ve vergi beyannamesi vermek için bir taneye ihtiyacınız var. Yabancı sahipler EIN alabilir."
+        : "EIN (Employer Identification Number), işletmenize verilen federal vergi kimlik numarasıdır. ABD'de banka hesabı açmak ve vergi beyannamesi vermek için gereklidir. Yabancı uyruklu sahipler de EIN alabilir."
     },
     {
-      question: isEnglish ? "Does forming an LLC give me a visa?" : "LLC kurmak bana vize verir mi?",
+      question: isEnglish ? "Does forming an LLC give me a visa?" : "LLC kurmak bana vize sağlar mı?",
       answer: isEnglish
         ? "No. LLC formation has no connection to immigration status. You cannot 'sponsor yourself' for a work visa through your own LLC without meeting specific visa category requirements."
-        : "Hayır. LLC kurulumunun göçmenlik statüsüyle bağlantısı yok. Belirli vize kategorisi gereksinimlerini karşılamadan kendi LLC'niz aracılığıyla 'kendinize sponsor olamazsınız'."
+        : "Hayır. LLC kurulumunun göçmenlik statüsüyle hiçbir bağlantısı yoktur. Belirli vize kategorisi şartlarını karşılamadan kendi LLC'niz aracılığıyla kendinize vize sponsorluğu yapamazsınız."
     },
     {
-      question: isEnglish ? "What are the ongoing requirements after formation?" : "Kurulumdan sonra sürekli gereksinimler neler?",
+      question: isEnglish ? "What are the ongoing requirements after formation?" : "Kurulumdan sonra hangi yükümlülükler devam eder?",
       answer: isEnglish
         ? "Requirements vary by state but typically include: annual report filings, franchise taxes (varies by state), maintaining a registered agent, and proper record-keeping. Federal tax filings are also required."
-        : "Gereksinimler eyalete göre değişir ancak genellikle şunları içerir: yıllık rapor dosyalamaları, franchise vergileri (eyalete göre değişir), registered agent'ı sürdürme ve uygun kayıt tutma. Federal vergi beyannameleri de gereklidir."
+        : "Yükümlülükler eyalete göre değişmekle birlikte genellikle şunları kapsar: yıllık rapor bildirimi, franchise vergisi (eyalete göre farklılık gösterir), registered agent'ın sürdürülmesi ve düzenli kayıt tutulması. Federal vergi beyannameleri de zorunludur."
     },
     {
-      question: isEnglish ? "Single-member or multi-member LLC?" : "Tek üyeli mi çok üyeli LLC mi?",
+      question: isEnglish ? "Single-member or multi-member LLC?" : "Tek üyeli mi, çok üyeli LLC mi?",
       answer: isEnglish
         ? "A single-member LLC is taxed as a 'disregarded entity' by default (pass-through). Multi-member LLCs are taxed as partnerships. Both can elect corporate taxation. The choice affects tax treatment significantly."
-        : "Tek üyeli LLC varsayılan olarak 'dikkate alınmayan kuruluş' olarak vergilendirilir (geçişli). Çok üyeli LLC'ler ortaklık olarak vergilendirilir. Her ikisi de kurumsal vergilendirmeyi seçebilir. Seçim vergi muamelesini önemli ölçüde etkiler."
+        : "Tek üyeli LLC, varsayılan olarak vergi açısından 'yok sayılan kuruluş' (disregarded entity) kabul edilir ve gelir doğrudan sahibine geçer. Çok üyeli LLC'ler ortaklık olarak vergilendirilir. Her iki yapı da kurumsal vergilendirmeyi tercih edebilir. Bu seçim vergi yükümlülüklerinizi doğrudan etkiler."
     },
     {
-      question: isEnglish ? "Do I need an Operating Agreement?" : "Operating Agreement'a ihtiyacım var mı?",
+      question: isEnglish ? "Do I need an Operating Agreement?" : "Operating Agreement gerekli mi?",
       answer: isEnglish
         ? "While not always legally required, an Operating Agreement is essential for: defining ownership, establishing management rules, protecting limited liability status, and opening bank accounts."
-        : "Her zaman yasal olarak zorunlu olmasa da, Operating Agreement şunlar için gereklidir: mülkiyeti tanımlama, yönetim kurallarını oluşturma, sınırlı sorumluluk statüsünü koruma ve banka hesabı açma."
+        : "Her eyalette yasal zorunluluk olmasa da Operating Agreement pratikte vazgeçilmezdir: ortaklık paylarını belirler, yönetim kurallarını oluşturur, sınırlı sorumluluk korumasını güçlendirir ve banka hesabı açılışında istenir."
     }
   ]
 
@@ -121,19 +121,19 @@ export default async function AbddeLLCPage({
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
               ? "Non-US residents can form US LLCs without visa or physical presence"
-              : "ABD'de ikamet etmeyenler vize veya fiziksel varlık olmadan ABD LLC'si kurabilir"}</li>
+              : "ABD dışında yaşayanlar, vize veya fiziksel bulunma şartı olmaksızın LLC kurabilir"}</li>
             <li>• {isEnglish
               ? "LLC formation does NOT provide any immigration status or visa"
-              : "LLC kurulumu herhangi bir göçmenlik statüsü veya vize SAĞLAMAZ"}</li>
+              : "LLC kurmak herhangi bir göçmenlik statüsü veya vize SAĞLAMAZ"}</li>
             <li>• {isEnglish
               ? "State selection (Delaware, Wyoming, etc.) depends on your specific needs"
-              : "Eyalet seçimi (Delaware, Wyoming vb.) özel ihtiyaçlarınıza bağlıdır"}</li>
+              : "Eyalet seçimi (Delaware, Wyoming vb.) ihtiyaçlarınıza göre şekillenir"}</li>
             <li>• {isEnglish
               ? "You need a registered agent and EIN for basic operations"
-              : "Temel işlemler için registered agent ve EIN'e ihtiyacınız var"}</li>
+              : "Temel işlemler için registered agent ve EIN zorunludur"}</li>
             <li>• {isEnglish
               ? "Ongoing compliance (annual reports, taxes) is required"
-              : "Sürekli uyum (yıllık raporlar, vergiler) gereklidir"}</li>
+              : "Yıllık raporlar ve vergiler gibi uyum yükümlülükleri süreklidir"}</li>
           </ul>
         </section>
 
@@ -148,10 +148,10 @@ export default async function AbddeLLCPage({
                 {isEnglish ? 'This Page Covers' : 'Bu Sayfa Kapsar'}
               </h3>
               <ul className="text-sm text-green-800 space-y-1">
-                <li>• {isEnglish ? 'LLC formation basics' : 'LLC kurulum temelleri'}</li>
-                <li>• {isEnglish ? 'State selection factors' : 'Eyalet seçim faktörleri'}</li>
-                <li>• {isEnglish ? 'Registered agent requirements' : 'Registered agent gereksinimleri'}</li>
-                <li>• {isEnglish ? 'Ongoing compliance overview' : 'Sürekli uyum genel bakışı'}</li>
+                <li>• {isEnglish ? 'LLC formation basics' : 'LLC kurulumunun temelleri'}</li>
+                <li>• {isEnglish ? 'State selection factors' : 'Eyalet seçiminde belirleyici unsurlar'}</li>
+                <li>• {isEnglish ? 'Registered agent requirements' : 'Registered agent zorunluluğu'}</li>
+                <li>• {isEnglish ? 'Ongoing compliance overview' : 'Devam eden uyum yükümlülüklerine genel bakış'}</li>
               </ul>
             </div>
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -159,10 +159,10 @@ export default async function AbddeLLCPage({
                 {isEnglish ? 'This Page Does Not Cover' : 'Bu Sayfa Kapsamaz'}
               </h3>
               <ul className="text-sm text-red-800 space-y-1">
-                <li>• {isEnglish ? 'Specific state-by-state procedures' : 'Eyalet bazında özel prosedürler'}</li>
-                <li>• {isEnglish ? 'Tax planning advice' : 'Vergi planlama tavsiyeleri'}</li>
-                <li>• {isEnglish ? 'Formation service recommendations' : 'Kuruluş hizmeti önerileri'}</li>
-                <li>• {isEnglish ? 'Individual business structure advice' : 'Bireysel iş yapısı tavsiyeleri'}</li>
+                <li>• {isEnglish ? 'Specific state-by-state procedures' : 'Eyalet bazında detaylı prosedürler'}</li>
+                <li>• {isEnglish ? 'Tax planning advice' : 'Vergi planlaması danışmanlığı'}</li>
+                <li>• {isEnglish ? 'Formation service recommendations' : 'Kuruluş hizmeti tavsiyeleri'}</li>
+                <li>• {isEnglish ? 'Individual business structure advice' : 'Kişiye özel iş yapısı danışmanlığı'}</li>
               </ul>
             </div>
           </div>
@@ -178,7 +178,7 @@ export default async function AbddeLLCPage({
             <p>
               {isEnglish
                 ? "A Limited Liability Company (LLC) is a business structure that combines the liability protection of a corporation with the tax flexibility of a partnership. Members (owners) are generally not personally liable for business debts and obligations."
-                : "Limited Liability Company (LLC), bir şirketin sorumluluk korumasını ortaklığın vergi esnekliğiyle birleştiren bir iş yapısıdır. Üyeler (sahipler) genellikle iş borçları ve yükümlülüklerinden kişisel olarak sorumlu değildir."}
+                : "LLC (Limited Liability Company), şirketlerin sunduğu sınırlı sorumluluk korumasını ortaklıkların vergisel esnekliğiyle bir araya getiren bir işletme yapısıdır. Üyeler (sahipler), kural olarak işletme borç ve yükümlülüklerinden şahsen sorumlu tutulmaz."}
             </p>
           </div>
         </section>
@@ -195,10 +195,10 @@ export default async function AbddeLLCPage({
               <div className="text-sm text-gray-600 space-y-2">
                 <p><strong>{isEnglish ? 'Advantages:' : 'Avantajlar:'}</strong> {isEnglish
                   ? "Established Court of Chancery, extensive case law, business-friendly statutes, privacy protections."
-                  : "Yerleşik Court of Chancery, geniş içtihat, iş dostu yasalar, gizlilik korumaları."}</p>
+                  : "Köklü Court of Chancery mahkemesi, zengin içtihat birikimi, iş dünyasına elverişli mevzuat ve gizlilik korumaları."}</p>
                 <p><strong>{isEnglish ? 'Considerations:' : 'Dikkat Edilecekler:'}</strong> {isEnglish
                   ? "Annual franchise tax ($300 minimum), requires registered agent, may need to register as foreign LLC in other states where you do business."
-                  : "Yıllık franchise vergisi (minimum $300), registered agent gerektirir, iş yaptığınız diğer eyaletlerde yabancı LLC olarak kayıt gerekebilir."}</p>
+                  : "Yıllık franchise vergisi (asgari 300 $), registered agent zorunluluğu, fiilen iş yaptığınız diğer eyaletlerde yabancı LLC kaydı gerekebilir."}</p>
               </div>
             </div>
 
@@ -207,10 +207,10 @@ export default async function AbddeLLCPage({
               <div className="text-sm text-gray-600 space-y-2">
                 <p><strong>{isEnglish ? 'Advantages:' : 'Avantajlar:'}</strong> {isEnglish
                   ? "No state income tax, low annual fees ($60), strong asset protection, privacy protections."
-                  : "Eyalet gelir vergisi yok, düşük yıllık ücretler ($60), güçlü varlık koruması, gizlilik korumaları."}</p>
+                  : "Eyalet gelir vergisi yok, düşük yıllık harçlar (60 $), güçlü varlık koruması ve gizlilik güvenceleri."}</p>
                 <p><strong>{isEnglish ? 'Considerations:' : 'Dikkat Edilecekler:'}</strong> {isEnglish
                   ? "Less established case law than Delaware, still may need foreign LLC registration elsewhere."
-                  : "Delaware'den daha az yerleşik içtihat, başka yerlerde yabancı LLC kaydı gerekebilir."}</p>
+                  : "Delaware kadar köklü bir içtihat birikimi yoktur; diğer eyaletlerde yabancı LLC kaydı yine gerekebilir."}</p>
               </div>
             </div>
 
@@ -219,10 +219,10 @@ export default async function AbddeLLCPage({
               <div className="text-sm text-gray-600 space-y-2">
                 <p><strong>{isEnglish ? 'Advantages:' : 'Avantajlar:'}</strong> {isEnglish
                   ? "If you have physical presence or do business in a specific state, forming there avoids foreign LLC registration requirements."
-                  : "Belirli bir eyalette fiziksel varlığınız varsa veya iş yapıyorsanız, orada kurmak yabancı LLC kayıt gereksinimlerini önler."}</p>
+                  : "Belirli bir eyalette fiziksel varlığınız varsa veya fiilen orada iş yapıyorsanız, LLC'yi o eyalette kurmak yabancı LLC tescili yükümlülüğünü ortadan kaldırır."}</p>
                 <p><strong>{isEnglish ? 'Considerations:' : 'Dikkat Edilecekler:'}</strong> {isEnglish
                   ? "State-specific rules, fees, and tax implications vary significantly."
-                  : "Eyalete özgü kurallar, ücretler ve vergi etkileri önemli ölçüde değişir."}</p>
+                  : "Eyalete özgü kurallar, harçlar ve vergisel sonuçlar önemli farklılıklar gösterir."}</p>
               </div>
             </div>
           </div>
@@ -247,13 +247,13 @@ export default async function AbddeLLCPage({
               { step: '6', title: 'Obtain EIN', desc: 'Federal tax ID from IRS. Required for bank accounts and tax filings.' },
               { step: '7', title: 'Open Bank Account', desc: 'US business bank account. Requirements vary by bank.' }
             ] : [
-              { step: '1', title: 'Eyalet Seçin', desc: 'Nerede iş yaptığınızı, vergi etkilerini ve sürekli maliyetleri düşünün.' },
-              { step: '2', title: 'İsim Seçin', desc: 'Eyalette benzersiz olmalı ve genellikle "LLC" veya "Limited Liability Company" içermeli.' },
-              { step: '3', title: 'Registered Agent Atayın', desc: 'Her eyalette gereklidir. Kuruluş eyaletinde fiziksel adresi olmalıdır.' },
-              { step: '4', title: 'Articles of Organization Dosyalayın', desc: 'Eyalete sunulan resmi kuruluş belgesi. Ücretler değişir ($50-$500+).' },
-              { step: '5', title: 'Operating Agreement Oluşturun', desc: 'İç yönetişim belgesi. Her zaman zorunlu değil ancak işlemler için gerekli.' },
-              { step: '6', title: 'EIN Alın', desc: "IRS'den federal vergi kimliği. Banka hesapları ve vergi beyannameleri için gerekli." },
-              { step: '7', title: 'Banka Hesabı Açın', desc: 'ABD iş banka hesabı. Gereksinimler bankaya göre değişir.' }
+              { step: '1', title: 'Eyalet Seçin', desc: 'Fiilen nerede iş yapacağınızı, vergisel sonuçları ve devam eden maliyetleri değerlendirin.' },
+              { step: '2', title: 'İsim Belirleyin', desc: 'Seçtiğiniz eyalette benzersiz olmalı ve genellikle "LLC" veya "Limited Liability Company" ibaresini içermelidir.' },
+              { step: '3', title: 'Registered Agent Atayın', desc: 'Her eyalette zorunludur. Kuruluş eyaletinde fiziksel adresi olan bir kişi veya kuruluş olmalıdır.' },
+              { step: '4', title: 'Articles of Organization Sunun', desc: 'Eyalete teslim edilen resmi kuruluş belgesidir. Harçlar 50 $ ile 500 $+ arasında değişir.' },
+              { step: '5', title: 'Operating Agreement Hazırlayın', desc: 'İç yönetim kurallarını belirleyen belgedir. Her eyalette zorunlu olmasa da pratikte gereklidir.' },
+              { step: '6', title: 'EIN Alın', desc: "IRS'den temin edilen federal vergi kimlik numarasıdır. Banka hesabı açmak ve vergi beyannamesi vermek için şarttır." },
+              { step: '7', title: 'Banka Hesabı Açın', desc: 'ABD iş banka hesabı. Şartlar bankadan bankaya farklılık gösterir.' }
             ]).map((item, i) => (
               <div key={i} className="flex gap-4 p-4 border border-gray-200 rounded-lg">
                 <div className="w-8 h-8 bg-[#C9A227] text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
@@ -271,18 +271,18 @@ export default async function AbddeLLCPage({
         {/* Common Misconceptions */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">
-            {isEnglish ? 'Common Misconceptions' : 'Yaygın Yanlış Varsayımlar'}
+            {isEnglish ? 'Common Misconceptions' : 'Sık Karşılaşılan Yanılgılar'}
           </h2>
 
           <div className="space-y-4">
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
               <h3 className="font-semibold text-amber-900 mb-2">
-                {isEnglish ? '"Having an LLC gives me a visa"' : '"LLC\'m olması bana vize verir"'}
+                {isEnglish ? '"Having an LLC gives me a visa"' : '"LLC kurmak bana vize sağlar"'}
               </h3>
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "LLC formation has zero connection to immigration. You cannot sponsor yourself for a work visa through your own LLC without meeting specific visa requirements (substantial investment for E-2, etc.)."
-                  : "LLC kurulumunun göçmenlikle sıfır bağlantısı var. Belirli vize gereksinimlerini karşılamadan (E-2 için önemli yatırım vb.) kendi LLC'niz aracılığıyla kendinize çalışma vizesi sponsoru olamazsınız."}
+                  : "LLC kurulumunun göçmenlik hukukuyla hiçbir bağlantısı yoktur. Belirli vize şartlarını karşılamadan (örneğin E-2 için esaslı yatırım) kendi LLC'niz üzerinden kendinize vize sponsorluğu yapamazsınız."}
               </p>
             </div>
 
@@ -293,18 +293,18 @@ export default async function AbddeLLCPage({
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "Delaware makes sense for certain situations (VC-backed startups, complex equity structures) but may be overkill for simple businesses. If you operate only in one state, forming there may be simpler and cheaper."
-                  : "Delaware belirli durumlar için (VC destekli girişimler, karmaşık hisse yapıları) mantıklıdır ancak basit işletmeler için aşırı olabilir. Yalnızca bir eyalette faaliyet gösteriyorsanız, orada kurmak daha basit ve ucuz olabilir."}
+                  : "Delaware, risk sermayesi destekli girişimler veya karmaşık ortaklık yapıları gibi belirli senaryolarda mantıklıdır; ancak basit işletmeler için gereksiz maliyet yaratabilir. Tek bir eyalette faaliyet gösteriyorsanız, LLC'yi orada kurmak daha pratik ve ekonomik olabilir."}
               </p>
             </div>
 
             <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
               <h3 className="font-semibold text-amber-900 mb-2">
-                {isEnglish ? '"I can avoid all taxes with a US LLC"' : '"ABD LLC\'siyle tüm vergilerden kaçınabilirim"'}
+                {isEnglish ? '"I can avoid all taxes with a US LLC"' : '"ABD LLC\'siyle tüm vergilerden kurtulabilirim"'}
               </h3>
               <p className="text-sm text-amber-800">
                 {isEnglish
                   ? "US LLCs have tax obligations. The specifics depend on your residency, where you operate, and whether you have US-source income. Tax planning requires professional advice."
-                  : "ABD LLC'lerinin vergi yükümlülükleri var. Ayrıntılar ikametinize, nerede faaliyet gösterdiğinize ve ABD kaynaklı geliriniz olup olmadığına bağlıdır. Vergi planlaması profesyonel tavsiye gerektirir."}
+                  : "ABD LLC'lerinin vergi yükümlülükleri vardır. Detaylar ikametgahınıza, faaliyet gösterdiğiniz yere ve ABD kaynaklı gelirinizin olup olmadığına göre şekillenir. Vergi planlaması mutlaka profesyonel destek gerektirir."}
               </p>
             </div>
           </div>

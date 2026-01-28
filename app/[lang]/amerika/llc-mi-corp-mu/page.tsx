@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "LLC vs Corporation - Choosing Your US Business Structure | EchoLegal"
-      : "LLC mi Corp mu? - ABD İş Yapısı Seçimi | EchoLegal",
+      : "LLC mi Corporation mu? - ABD'de Doğru İş Yapısını Seçmek | EchoLegal",
     description: isEnglish
       ? "Compare LLC and Corporation structures for your US business. Tax implications, liability protection, investor expectations, and when each makes sense."
-      : "ABD işletmeniz için LLC ve Corporation yapılarını karşılaştırın. Vergi etkileri, sorumluluk koruması, yatırımcı beklentileri ve her birinin ne zaman mantıklı olduğu.",
+      : "ABD işletmeniz için LLC ve Corporation yapılarının karşılaştırması. Vergisel sonuçlar, sorumluluk koruması, yatırımcı beklentileri ve hangi yapının ne zaman uygun olduğu.",
   }
 }
 
@@ -33,46 +33,46 @@ export default async function LLCvsCorpPage({
 
   const faqItems = [
     {
-      question: isEnglish ? "Which is better for a startup seeking investors?" : "Yatırımcı arayan bir startup için hangisi daha iyi?",
+      question: isEnglish ? "Which is better for a startup seeking investors?" : "Yatırımcı arayan bir girişim için hangisi daha uygun?",
       answer: isEnglish
         ? "C-Corporations are generally preferred by venture capital investors. The familiar stock structure, ability to issue different share classes, and established legal framework make due diligence and investment structuring easier."
-        : "C-Corporation'lar genellikle risk sermayesi yatırımcıları tarafından tercih edilir. Tanıdık hisse yapısı, farklı hisse sınıfları çıkarma yeteneği ve yerleşik yasal çerçeve, durum tespitini ve yatırım yapılandırmasını kolaylaştırır."
+        : "Risk sermayesi yatırımcıları genellikle C-Corporation yapısını tercih eder. Alışılagelen hisse senedi yapısı, farklı hisse sınıfları ihraç edebilme imkanı ve yerleşik hukuki çerçeve, hem durum tespiti sürecini hem de yatırım yapılandırmasını kolaylaştırır."
     },
     {
-      question: isEnglish ? "Can an LLC have investors?" : "LLC'nin yatırımcıları olabilir mi?",
+      question: isEnglish ? "Can an LLC have investors?" : "LLC'nin yatırımcısı olabilir mi?",
       answer: isEnglish
         ? "Yes, LLCs can have investors through membership interests. However, the structure is less standardized than corporate stock, which can complicate negotiations and documentation. Some investors specifically require conversion to C-Corp."
-        : "Evet, LLC'lerin üyelik payları aracılığıyla yatırımcıları olabilir. Ancak yapı, kurumsal hisselerden daha az standartlaştırılmıştır, bu da müzakereleri ve belgelendirmeyi karmaşıklaştırabilir. Bazı yatırımcılar özellikle C-Corp'a dönüşüm gerektirir."
+        : "Evet, LLC'ler üyelik payları aracılığıyla yatırım alabilir. Ancak bu yapı, şirket hisselerine kıyasla daha az standartlaştırılmıştır; bu durum müzakereleri ve sözleşme sürecini karmaşıklaştırabilir. Bazı yatırımcılar C-Corp'a dönüşümü şart koşar."
     },
     {
-      question: isEnglish ? "What is pass-through taxation?" : "Geçişli vergilendirme nedir?",
+      question: isEnglish ? "What is pass-through taxation?" : "Geçişli vergilendirme (pass-through) nedir?",
       answer: isEnglish
         ? "Pass-through means the business entity itself doesn't pay federal income tax. Instead, profits and losses 'pass through' to owners' personal tax returns. LLCs and S-Corps are pass-through by default. C-Corps face 'double taxation' - corporate tax plus shareholder tax on dividends."
-        : "Geçişli, işletme kuruluşunun kendisinin federal gelir vergisi ödemediği anlamına gelir. Bunun yerine, kar ve zararlar sahiplerin kişisel vergi beyannamelerine 'geçer'. LLC'ler ve S-Corp'lar varsayılan olarak geçişlidir. C-Corp'lar 'çifte vergilendirme' ile karşı karşıyadır - kurumlar vergisi artı temettüler üzerinden hissedar vergisi."
+        : "Geçişli vergilendirmede işletmenin kendisi federal gelir vergisi ödemez. Kar ve zararlar doğrudan sahiplerin kişisel vergi beyannamelerine yansır. LLC'ler ve S-Corp'lar varsayılan olarak bu rejime tabidir. C-Corp'larda ise 'çifte vergilendirme' söz konusudur: önce kurum kazancı vergilendirilir, ardından dağıtılan temettüler üzerinden hissedar vergisi alınır."
     },
     {
-      question: isEnglish ? "Can I convert from LLC to Corporation later?" : "Daha sonra LLC'den Corporation'a dönüşebilir miyim?",
+      question: isEnglish ? "Can I convert from LLC to Corporation later?" : "İleride LLC'den Corporation'a dönüşebilir miyim?",
       answer: isEnglish
         ? "Yes, conversion is possible in most states. However, conversion can trigger tax consequences and requires proper legal documentation. It's generally easier to start with the right structure than to convert later."
-        : "Evet, dönüşüm çoğu eyalette mümkündür. Ancak dönüşüm vergi sonuçlarını tetikleyebilir ve uygun yasal belgelendirme gerektirir. Daha sonra dönüştürmektense doğru yapıyla başlamak genellikle daha kolaydır."
+        : "Evet, çoğu eyalette dönüşüm mümkündür. Ancak bu süreç vergisel sonuçlar doğurabilir ve uygun hukuki belgelendirme gerektirir. Sonradan dönüştürmek yerine baştan doğru yapıyı seçmek genellikle daha pratiktir."
     },
     {
-      question: isEnglish ? "What about S-Corporation?" : "S-Corporation ne olacak?",
+      question: isEnglish ? "What about S-Corporation?" : "S-Corporation ne anlama geliyor?",
       answer: isEnglish
         ? "S-Corp is a tax election, not a business structure. Both LLCs and Corporations can elect S-Corp taxation. S-Corp provides pass-through taxation but has restrictions: max 100 shareholders, only US residents/citizens, one class of stock."
-        : "S-Corp bir vergi seçimidir, iş yapısı değil. Hem LLC'ler hem de Corporation'lar S-Corp vergilendirmesini seçebilir. S-Corp geçişli vergilendirme sağlar ancak kısıtlamaları vardır: maksimum 100 hissedar, yalnızca ABD mukimleri/vatandaşları, tek hisse sınıfı."
+        : "S-Corp bir iş yapısı değil, vergisel bir tercihtir. Hem LLC'ler hem de Corporation'lar S-Corp statüsünü seçebilir. Geçişli vergilendirme avantajı sunar ancak kısıtlamaları vardır: en fazla 100 hissedar, yalnızca ABD mukimi veya vatandaşları ve tek hisse sınıfı."
     },
     {
-      question: isEnglish ? "Which has better liability protection?" : "Hangisinin sorumluluk koruması daha iyi?",
+      question: isEnglish ? "Which has better liability protection?" : "Hangisinin sorumluluk koruması daha güçlü?",
       answer: isEnglish
         ? "Both LLCs and Corporations provide limited liability protection when properly maintained. The key is observing formalities - keeping business and personal finances separate, maintaining proper records, and following state requirements."
-        : "Hem LLC'ler hem de Corporation'lar düzgün bir şekilde sürdürüldüğünde sınırlı sorumluluk koruması sağlar. Anahtar formalitelere uymaktır - iş ve kişisel finansları ayrı tutmak, uygun kayıtları sürdürmek ve eyalet gereksinimlerini takip etmek."
+        : "Her iki yapı da usulüne uygun yönetildiğinde sınırlı sorumluluk koruması sağlar. Belirleyici olan formalitelere uyumdur: iş ve kişisel finansları ayrı tutmak, düzenli kayıt tutmak ve eyalet yükümlülüklerini yerine getirmek."
     },
     {
-      question: isEnglish ? "Is an LLC easier to manage?" : "LLC yönetmesi daha kolay mı?",
+      question: isEnglish ? "Is an LLC easier to manage?" : "LLC'yi yönetmek daha mı kolay?",
       answer: isEnglish
         ? "Generally yes. LLCs have fewer required formalities - no mandatory board meetings, shareholder meetings, or detailed corporate minutes. However, you should still maintain proper records and an Operating Agreement."
-        : "Genel olarak evet. LLC'lerin daha az zorunlu formalitesi vardır - zorunlu yönetim kurulu toplantıları, hissedar toplantıları veya ayrıntılı şirket tutanakları yok. Ancak yine de uygun kayıtları ve Operating Agreement'ı sürdürmelisiniz."
+        : "Genel olarak evet. LLC'lerde zorunlu formalite yükü daha azdır: yönetim kurulu toplantısı, hissedar toplantısı veya ayrıntılı şirket tutanağı tutma zorunluluğu yoktur. Bununla birlikte düzenli kayıt tutmanız ve Operating Agreement'ınızı güncel tutmanız gerekir."
     }
   ]
 
@@ -112,19 +112,19 @@ export default async function LLCvsCorpPage({
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
               ? "LLC: Simpler, flexible, pass-through taxation by default"
-              : "LLC: Daha basit, esnek, varsayılan olarak geçişli vergilendirme"}</li>
+              : "LLC: Daha yalın yapı, esnek yönetim, varsayılan olarak geçişli vergilendirme"}</li>
             <li>• {isEnglish
               ? "C-Corp: Preferred by VC investors, can issue stock options, double taxation"
-              : "C-Corp: VC yatırımcıları tarafından tercih edilir, hisse opsiyonu çıkarabilir, çifte vergilendirme"}</li>
+              : "C-Corp: Risk sermayesi yatırımcılarının tercihi, hisse opsiyonu imkanı, çifte vergilendirme"}</li>
             <li>• {isEnglish
               ? "S-Corp: Tax election (not a structure), pass-through with restrictions"
-              : "S-Corp: Vergi seçimi (yapı değil), kısıtlamalarla geçişli"}</li>
+              : "S-Corp: Bir iş yapısı değil vergisel tercih; kısıtlamalarla geçişli vergilendirme"}</li>
             <li>• {isEnglish
               ? "Both provide liability protection when properly maintained"
-              : "Her ikisi de düzgün sürdürüldüğünde sorumluluk koruması sağlar"}</li>
+              : "Her iki yapı da usulüne uygun yönetildiğinde sınırlı sorumluluk koruması sunar"}</li>
             <li>• {isEnglish
               ? "The 'right' choice depends on your specific goals and circumstances"
-              : "'Doğru' seçim, özel hedeflerinize ve koşullarınıza bağlıdır"}</li>
+              : "Doğru seçim, hedeflerinize ve somut koşullarınıza göre belirlenir"}</li>
           </ul>
         </section>
 
@@ -182,7 +182,7 @@ export default async function LLCvsCorpPage({
         {/* When to Choose LLC */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">
-            {isEnglish ? 'When LLC Makes Sense' : 'LLC Ne Zaman Mantıklı'}
+            {isEnglish ? 'When LLC Makes Sense' : 'LLC Ne Zaman Uygundur'}
           </h2>
 
           <div className="bg-green-50 border border-green-200 rounded-lg p-6">
@@ -195,12 +195,12 @@ export default async function LLCvsCorpPage({
                 'Want to avoid corporate formalities',
                 'Pass-through taxation is advantageous for your situation'
               ] : [
-                'Küçük işletme veya serbest çalışma operasyonu',
-                'Gayrimenkul holdingleri',
-                'Basitlik isteyen az sayıda sahibi olan işletme',
-                'Dışarıdan yatırım planı yok',
-                'Kurumsal formalitelerden kaçınmak isteyenler',
-                'Geçişli vergilendirme durumunuz için avantajlı'
+                'Küçük ölçekli işletme veya serbest meslek faaliyeti',
+                'Gayrimenkul yatırımları',
+                'Az sayıda ortağı olan ve yalın yapı tercih eden işletmeler',
+                'Dış yatırımcı alma planı bulunmayan yapılar',
+                'Kurumsal formalite yükünden kaçınmak isteyenler',
+                'Geçişli vergilendirmenin avantajlı olduğu durumlar'
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="text-green-600">✓</span>

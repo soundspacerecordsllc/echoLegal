@@ -65,7 +65,7 @@ function AuthorBoxFull({
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
           {author.isTeam
             ? (isEnglish ? 'Editorial Authority' : 'Editöryal Otorite')
-            : (isEnglish ? 'Contributing Attorney' : 'Katkıda Bulunan Avukat')
+            : (isEnglish ? 'Author' : 'Yazar')
           }
         </h2>
       </div>
@@ -168,8 +168,6 @@ function AuthorBoxCompact({
   lang: 'en' | 'tr'
   className: string
 }) {
-  const isEnglish = lang === 'en'
-
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       {/* Initials */}
@@ -206,19 +204,15 @@ function AuthorBoxCompact({
 export function AuthorByline({
   lang,
   authorId,
-  showBar = true,
   className = ''
 }: {
   lang: 'en' | 'tr'
   authorId?: string
-  showBar?: boolean
   className?: string
 }) {
   const author = authorId ? getContributor(authorId) : getCanonicalAuthor()
 
   if (!author) return null
-
-  const isEnglish = lang === 'en'
 
   return (
     <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-sm ${className}`}>
@@ -228,18 +222,7 @@ export function AuthorByline({
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
         {author.name[lang]}
-        {author.isAttorney && ', Esq.'}
       </span>
-
-      {/* Bar badge */}
-      {showBar && author.isAttorney && author.barAdmissions && author.barAdmissions.length > 0 && (
-        <span className="flex items-center gap-1.5 text-blue-700">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-          {author.barAdmissions[0].jurisdictionName} Bar #{author.barAdmissions[0].number}
-        </span>
-      )}
     </div>
   )
 }
@@ -260,22 +243,9 @@ export function getAuthorSchema(authorId?: string) {
     }
   }
 
-  const schema: Record<string, unknown> = {
+  return {
     '@type': 'Person',
     name: author.name.en,
     jobTitle: author.designation.en,
   }
-
-  if (author.barAdmissions && author.barAdmissions.length > 0) {
-    schema.credential = author.barAdmissions.map(a => `${a.jurisdictionName} Bar #${a.number}`).join('; ')
-  }
-
-  if (author.education && author.education.length > 0) {
-    schema.alumniOf = author.education.map(edu => ({
-      '@type': 'CollegeOrUniversity',
-      name: edu.institution,
-    }))
-  }
-
-  return schema
 }

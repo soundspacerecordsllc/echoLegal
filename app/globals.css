@@ -2,38 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
-  
+
   body {
-    @apply font-sans text-legal-gray bg-white;
+    @apply font-sans text-gray-700 bg-white;
+    line-height: 1.6;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-legal-navy;
+
+  /* Typography scale - restrained and consistent */
+  h1 {
+    @apply font-serif text-gray-900 font-semibold tracking-tight;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply font-serif text-gray-900 font-semibold;
+    line-height: 1.2;
+  }
+
+  h3, h4, h5, h6 {
+    @apply font-sans text-gray-900 font-medium;
+    line-height: 1.3;
+  }
+
+  /* Improved link defaults */
+  a {
+    @apply transition-colors duration-150;
+  }
+
+  /* Better focus states */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gray-900 ring-offset-2;
+  }
+
+  /* Print styles */
+  @media print {
+    body {
+      @apply text-black;
+    }
+
+    a {
+      text-decoration: underline;
+    }
   }
 }
 
 @layer components {
+  /* Buttons - minimal, professional */
   .btn-primary {
-    @apply bg-legal-gold text-white px-6 py-3 rounded-lg font-semibold transition-all hover:bg-legal-gold-light hover:shadow-lg;
+    @apply bg-gray-900 text-white px-5 py-2.5 text-sm font-medium transition-colors hover:bg-gray-800;
   }
-  
+
   .btn-secondary {
-    @apply bg-legal-navy text-white px-6 py-3 rounded-lg font-semibold transition-all hover:bg-legal-navy-light hover:shadow-lg;
+    @apply bg-white text-gray-900 px-5 py-2.5 text-sm font-medium border border-gray-300 transition-colors hover:border-gray-400 hover:bg-gray-50;
   }
-  
+
+  /* Disclaimer - subtle, not alarming */
   .disclaimer-box {
-    @apply bg-amber-50 border-l-4 border-legal-gold p-6 rounded-r-lg my-8;
+    @apply bg-gray-50 border-l-2 border-gray-300 px-6 py-4 my-8 text-sm text-gray-600;
   }
-  
+
+  /* Prose for long-form content */
   .prose-legal {
-    @apply prose prose-lg prose-gray max-w-none;
-    @apply prose-headings:font-serif prose-headings:text-legal-navy;
-    @apply prose-a:text-legal-gold prose-a:no-underline hover:prose-a:text-legal-gold-light;
+    @apply prose prose-gray max-w-none;
+    @apply prose-headings:font-serif prose-headings:text-gray-900 prose-headings:font-semibold;
+    @apply prose-a:text-gray-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-gray-600;
+    @apply prose-p:text-gray-700 prose-p:leading-relaxed;
+    @apply prose-li:text-gray-700;
+  }
+
+  /* Article/reference page layout */
+  .article-layout {
+    @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+  }
+
+  /* Section spacing for vertical rhythm */
+  .section-spacing {
+    @apply py-16 md:py-20;
+  }
+
+  /* Card styles - minimal borders */
+  .card {
+    @apply border border-gray-200 p-6 transition-colors hover:border-gray-300;
+  }
+
+  .card-link {
+    @apply block border border-gray-200 p-5 transition-all hover:border-gray-400;
   }
 }

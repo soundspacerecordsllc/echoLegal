@@ -79,8 +79,8 @@ export default async function TaxGuidePage({
       : 'IRS, Vergi ve W-8/W-9 Gerçekleri',
     author: {
       '@type': 'Person',
-      name: 'Zeynep Yılmaz',
-      jobTitle: 'Legal Content Director',
+      name: 'Zeynep Ruziye Moore',
+      jobTitle: 'Licensed in New York',
       affiliation: { '@type': 'Organization', name: 'EchoLegal' },
     },
     publisher: {
@@ -162,7 +162,7 @@ export default async function TaxGuidePage({
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  Zeynep Yılmaz
+                  Zeynep Ruziye Moore
                 </span>
                 <span className="flex items-center gap-1">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

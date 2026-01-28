@@ -272,42 +272,36 @@ export default async function BusinessStarterKitPage({
 
         {/* Download Section */}
         <section className="mb-12 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-gray-200 p-8">
-          <h2 className="text-2xl font-bold text-center text-black mb-4">
-            {isEnglish ? 'Access This Kit' : 'Bu Kite Eriş'}
+          <h2 className="text-3xl font-bold text-center text-black mb-4">
+            {isEnglish ? 'Download This Kit' : 'Bu Kiti İndirin'}
           </h2>
 
-          <p className="text-center text-gray-600 mb-8 max-w-xl mx-auto">
+          <p className="text-center text-gray-600 mb-6">
             {isEnglish
-              ? "Legal knowledge should be accessible to everyone. Pay $20 if you can—it helps us maintain and expand this resource. If you can't, access for free."
-              : 'Hukuki bilgi herkes için erişilebilir olmalı. Eğer ödeyebiliyorsanız 20$ ödeyin—bu kaynağı sürdürmemize ve geliştirmemize yardımcı olur. Ödeyemiyorsanız, ücretsiz erişin.'}
+              ? "I support EchoLegal – $20 recommended."
+              : "EchoLegal'i destekliyorum – $20 önerilir."}
           </p>
 
-          <div className="space-y-4 max-w-md mx-auto">
-            {/* Pay Option */}
-            <a
-              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
-              className="block w-full bg-[#C9A227] text-white text-center py-4 px-6 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-all hover:shadow-lg"
-            >
-              {isEnglish ? 'I support EchoLegal – $20' : 'EchoLegal\'i destekliyorum – $20'}
-            </a>
-            <p className="text-center text-sm text-gray-500">
-              {isEnglish ? 'Instant access to all 5 documents' : 'Tüm 5 belgeye anında erişim'}
-            </p>
+          <a
+            href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+            className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
+          >
+            {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
+          </a>
 
-            {/* Free Option */}
-            <div className="pt-4 border-t border-gray-200">
-              <a
-                href="/documents/kits/abd-business-starter-kit.zip"
-                download
-                className="block w-full bg-gray-800 text-white text-center py-4 px-6 rounded-lg font-semibold hover:bg-gray-700 transition-all"
-              >
-                {isEnglish ? 'Download for free' : 'Ücretsiz indir'}
-              </a>
-              <p className="text-center text-sm text-gray-500 mt-2">
-                {isEnglish ? 'ZIP bundle with all 5 documents' : '5 belgenin tamamını içeren ZIP paketi'}
-              </p>
-            </div>
-          </div>
+          <a
+            href="/documents/kits/abd-business-starter-kit.zip"
+            download
+            className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors mb-4"
+          >
+            {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
+          </a>
+
+          <p className="text-center text-sm text-gray-500">
+            {isEnglish
+              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
+              : 'Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.'}
+          </p>
         </section>
 
         {/* Legal Disclaimer */}

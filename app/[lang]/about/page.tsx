@@ -204,8 +204,8 @@ export default async function AboutPage({
           </h2>
           <div className="bg-gray-50 rounded-lg p-6">
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-2xl">
-                ⚖️
+              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-medium">
+                ZM
               </div>
               <div>
                 <h3 className="font-bold text-black">Zeynep Ruziye Moore</h3>

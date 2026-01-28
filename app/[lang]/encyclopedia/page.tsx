@@ -13,39 +13,39 @@ export default async function EncyclopediaPage({
   const articles = [
     {
       slug: 'what-is-nda',
-      title: isEnglish ? 'What is an NDA?' : 'NDA Nedir?',
+      title: isEnglish ? 'What is an NDA?' : 'Gizlilik Sözleşmesi (NDA) Nedir?',
       description: isEnglish
         ? 'Everything you need to know about Non-Disclosure Agreements.'
-        : 'Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey.',
+        : 'Gizlilik sözleşmelerinin hukuki niteliği, kapsamı ve uygulamadaki yeri.',
       readTime: '8 min',
       available: true,
     },
     {
       slug: 'freelancer-legal-guide',
-      title: isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi',
+      title: isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışanlar İçin Hukuk Rehberi',
       description: isEnglish
         ? 'Essential legal knowledge for freelancers and independent contractors.'
-        : 'Serbest çalışanlar için temel hukuki bilgiler.',
+        : 'Serbest çalışanların ve bağımsız yüklenicilerin bilmesi gereken temel hukuki konular.',
       readTime: '12 min',
-      available: false,
+      available: true,
     },
     {
       slug: 'contractor-vs-employee',
-      title: isEnglish ? 'Contractor vs Employee' : 'Yüklenici mi Çalışan mı?',
+      title: isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi?',
       description: isEnglish
         ? 'Key differences and why classification matters.'
-        : 'Temel farklar ve sınıflandırmanın önemi.',
+        : 'Temel farklar ve doğru sınıflandırmanın hukuki önemi.',
       readTime: '10 min',
-      available: false,
+      available: true,
     },
     {
       slug: 'privacy-policy-guide',
-      title: isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikasına İhtiyacım Var mı?',
+      title: isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikası Gerekli mi?',
       description: isEnglish
         ? 'GDPR, CCPA, and KVKK requirements explained.'
-        : 'GDPR, CCPA ve KVKK gereksinimleri açıklandı.',
+        : 'GDPR, CCPA ve KVKK kapsamında yükümlülükleriniz.',
       readTime: '8 min',
-      available: false,
+      available: true,
     },
   ]
 
@@ -58,7 +58,7 @@ export default async function EncyclopediaPage({
         <p className="text-lg text-gray-600 mb-12">
           {isEnglish
             ? 'Comprehensive guides on business law, employment, intellectual property, and more.'
-            : 'İş hukuku, istihdam, fikri mülkiyet ve daha fazlası hakkında kapsamlı rehberler.'}
+            : 'Ticaret hukuku, iş ilişkileri, fikri mülkiyet ve daha birçok konuda kapsamlı rehberler.'}
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -74,7 +74,7 @@ export default async function EncyclopediaPage({
                     : 'bg-gray-200 text-gray-500'
                 }`}>
                   {article.available
-                    ? (isEnglish ? 'Available' : 'Mevcut')
+                    ? (isEnglish ? 'Available' : 'Yayında')
                     : (isEnglish ? 'Coming Soon' : 'Yakında')}
                 </span>
                 <span className="text-xs text-gray-400">{article.readTime}</span>
@@ -93,7 +93,7 @@ export default async function EncyclopediaPage({
                   href={`/${lang}/encyclopedia/${article.slug}`}
                   className="inline-block text-[#C9A227] font-semibold hover:underline"
                 >
-                  {isEnglish ? 'Read Article →' : 'Makaleyi Oku →'}
+                  {isEnglish ? 'Read Article →' : 'Yazıyı Oku →'}
                 </Link>
               ) : (
                 <span className="text-gray-400">
