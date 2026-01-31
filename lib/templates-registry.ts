@@ -297,7 +297,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'invoice-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/InvoiceTemplate-EN.docx',
   },
   {
     id: 'receipt-template-en',
@@ -309,7 +310,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'template',
     slug: 'receipt-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/PaymentReceipt-EN.docx',
   },
   {
     id: 'authorization-letter-en',
@@ -321,7 +323,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'authorization-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/AuthorizationLetter-EN.docx',
   },
   {
     id: 'company-policy-notice-en',
@@ -333,7 +336,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'company-policy-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/CompanyPolicyNotice-EN.docx',
   },
   {
     id: 'operating-agreement-outline-en',
@@ -345,7 +349,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'operating-agreement-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/LLCOperatingAgreement-EN.docx',
   },
 
   // Turkish business
@@ -359,7 +364,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'invoice-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/FaturaSablonu-TR.docx',
   },
   {
     id: 'receipt-template-tr',
@@ -371,7 +377,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'template',
     slug: 'receipt-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/OdemeMakbuzu-TR.docx',
   },
   {
     id: 'authorization-letter-tr',
@@ -383,7 +390,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'authorization-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/YetkiMektubu-TR.docx',
   },
   {
     id: 'company-policy-notice-tr',
@@ -395,7 +403,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'company-policy-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/SirketPolitikasiBildirimi-TR.docx',
   },
   {
     id: 'operating-agreement-outline-tr',
@@ -407,7 +416,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'operating-agreement-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/LLCIsletmeSozlesmesi-TR.docx',
   },
 
   // ===== IMMIGRATION & CONSULAR =====
@@ -722,7 +732,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'w8-attachment-checklist',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/W8BEN-Checklist-EN.docx',
   },
   {
     id: 'ein-request-cover-letter-en',
@@ -734,7 +745,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'ein-request-cover-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/EINRequestCoverLetter-EN.docx',
   },
   {
     id: 'vendor-onboarding-form-en',
@@ -746,7 +758,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'form',
     slug: 'vendor-onboarding-form',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/VendorOnboardingForm-EN.docx',
   },
   {
     id: 'itin-application-guide-en',
@@ -758,7 +771,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'itin-application-guide',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ITINApplicationGuide-EN.docx',
   },
   {
     id: '1099-response-letter-en',
@@ -770,7 +784,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: '1099-response-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/1099ResponseLetter-EN.docx',
   },
   {
     id: 'tax-treaty-claim-checklist-en',
@@ -797,7 +812,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'w8-attachment-checklist',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/W8BEN-KontrolListesi-TR.docx',
   },
   {
     id: 'ein-request-cover-letter-tr',
@@ -809,7 +825,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'ein-request-cover-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/EINBasvuruKapakYazisi-TR.docx',
   },
   {
     id: 'vendor-onboarding-form-tr',
@@ -821,7 +838,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'form',
     slug: 'vendor-onboarding-form',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TedarikciKayitFormu-TR.docx',
   },
   {
     id: 'itin-application-guide-tr',
@@ -833,7 +851,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'itin-application-guide',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/ITINBasvuruRehberi-TR.docx',
   },
   {
     id: '1099-response-letter-tr',
@@ -845,7 +864,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: '1099-response-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/1099SorguYanitMektubu-TR.docx',
   },
   {
     id: 'tax-treaty-claim-checklist-tr',
@@ -873,7 +893,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'demand-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/DemandLetter-EN.docx',
   },
   {
     id: 'termination-notice-en',
@@ -885,7 +906,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'termination-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/TerminationNotice-EN.docx',
   },
   {
     id: 'cease-desist-en',
@@ -897,7 +919,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'cease-desist-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/CeaseAndDesist-EN.docx',
   },
 
   // Turkish letters
@@ -911,7 +934,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'demand-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/IhtarMektubu-TR.docx',
   },
   {
     id: 'termination-notice-tr',
@@ -923,7 +947,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'termination-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/SozlesmeFesihBildirimi-TR.docx',
   },
   {
     id: 'cease-desist-tr',
@@ -935,7 +960,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'cease-desist-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    downloadUrl: '/documents/IhlaliDurdurmaMektubu-TR.docx',
   },
 ]
 
