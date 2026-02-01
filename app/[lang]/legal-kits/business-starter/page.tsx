@@ -222,7 +222,7 @@ export default async function BusinessStarterKitPage({
               <div key={index} className="border border-gray-200 rounded-lg p-5 hover:border-gray-300 transition-colors">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="font-semibold text-black mb-1">{doc.title}</h3>
+                    <h3 className="text-sm font-semibold text-black mb-1">{doc.title}</h3>
                     <p className="text-gray-600 text-sm">{doc.description}</p>
                   </div>
                   <Link
@@ -327,7 +327,7 @@ export default async function BusinessStarterKitPage({
               href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">
+              <h3 className="text-sm font-semibold text-black mb-1">
                 {isEnglish ? 'LLC Formation Guide' : "ABD'de LLC Kurma Rehberi"}
               </h3>
               <p className="text-sm text-gray-600">
@@ -339,7 +339,7 @@ export default async function BusinessStarterKitPage({
               href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">
+              <h3 className="text-sm font-semibold text-black mb-1">
                 {isEnglish ? 'IRS & Tax Forms Guide' : 'IRS ve Vergi Formları Rehberi'}
               </h3>
               <p className="text-sm text-gray-600">
@@ -351,7 +351,7 @@ export default async function BusinessStarterKitPage({
               href={`/${lang}/ein-itin-ssn-farki`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">
+              <h3 className="text-sm font-semibold text-black mb-1">
                 {isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}
               </h3>
               <p className="text-sm text-gray-600">
@@ -363,7 +363,7 @@ export default async function BusinessStarterKitPage({
               href={`/${lang}/contracts`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">
+              <h3 className="text-sm font-semibold text-black mb-1">
                 {isEnglish ? 'All Contract Templates' : 'Tüm Sözleşme Şablonları'}
               </h3>
               <p className="text-sm text-gray-600">

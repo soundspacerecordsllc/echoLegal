@@ -360,21 +360,21 @@ export default async function TaxIdHubPage({
               href={`/${lang}/amerika`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'US visa pathways and requirements' : 'ABD vize yolları ve gereksinimleri'}</p>
             </Link>
             <Link
               href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation' : 'LLC Kurulumu'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation' : 'LLC Kurulumu'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'Step-by-step US LLC guide' : 'Adım adım ABD LLC rehberi'}</p>
             </Link>
             <Link
               href={`/${lang}/contracts`}
               className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
             >
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'Professional legal documents' : 'Profesyonel hukuki belgeler'}</p>
             </Link>
           </div>

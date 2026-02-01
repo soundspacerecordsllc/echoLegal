@@ -406,7 +406,7 @@ export default async function IRSTaxFactsPage({
                 href={`/${lang}/library/llc-kurma-rehberi`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -420,7 +420,7 @@ export default async function IRSTaxFactsPage({
                 href={`/${lang}/library/hukuki-yanilgilar`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
                 </h3>
                 <p className="text-sm text-gray-600">

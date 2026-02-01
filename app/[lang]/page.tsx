@@ -148,7 +148,7 @@ export default async function Home({
               href={`/${lang}/amerika/abdye-gelme-yollari`}
               className="group card-link"
             >
-              <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
+              <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed">
@@ -162,7 +162,7 @@ export default async function Home({
               href={`/${lang}/contracts`}
               className="group card-link"
             >
-              <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
+              <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Template Library' : 'Şablon Kütüphanesi'}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed">
@@ -176,7 +176,7 @@ export default async function Home({
               href={`/${lang}/consular-documents`}
               className="group card-link"
             >
-              <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
+              <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Consular Procedures' : 'Konsolosluk İşlemleri'}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed">

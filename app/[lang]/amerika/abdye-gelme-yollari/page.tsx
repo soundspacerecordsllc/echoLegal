@@ -226,11 +226,11 @@ export default async function VisaPathwaysPage({
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
             <Link href={`/${lang}/library/llc-vize-yanilgisi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'Common misconceptions about business and immigration' : 'İş ve göçmenlik hakkında sık yapılan hatalar'}</p>
             </Link>
             <Link href={`/${lang}/library/llc-kurma-rehberi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'If you decide to form a US business' : 'ABD işletmesi kurmaya karar verirseniz'}</p>
             </Link>
           </div>

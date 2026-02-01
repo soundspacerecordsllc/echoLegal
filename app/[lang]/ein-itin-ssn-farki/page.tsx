@@ -721,19 +721,19 @@ export default async function EinItinSsnPage({
               <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'W-8/W-9 Tax Guide' : 'W-8/W-9 Vergi Rehberi'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'W-8/W-9 Tax Guide' : 'W-8/W-9 Vergi Rehberi'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Which tax form to sign' : 'Hangi vergi formunu imzalamalı'}</p>
                 </Link>
                 <Link href={`/${lang}/1099-vergi-belgeleri`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? '1099 & Tax Documents' : '1099 ve Vergi Belgeleri'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? '1099 & Tax Documents' : '1099 ve Vergi Belgeleri'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Understanding US tax forms' : 'ABD vergi formlarını anlama'}</p>
                 </Link>
                 <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates in one bundle' : 'Tek pakette 5 temel sözleşme şablonu'}</p>
                 </Link>
                 <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'US Bank Account' : 'ABD Banka Hesabı'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Opening business banking' : 'İş banka hesabı açma'}</p>
                 </Link>
               </div>

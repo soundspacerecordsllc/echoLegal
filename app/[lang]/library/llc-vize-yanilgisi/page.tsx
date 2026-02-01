@@ -262,11 +262,11 @@ export default async function LLCVisaMythPage({
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <Link href={`/${lang}/library/llc-kurma-rehberi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'If you do decide to form an LLC' : 'LLC kurmaya karar verirseniz'}</p>
               </Link>
               <Link href={`/${lang}/library/hukuki-yanilgilar`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'More myths vs. facts' : 'Daha fazla mit ve gerçek'}</p>
               </Link>
             </div>

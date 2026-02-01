@@ -239,19 +239,19 @@ export default async function FloridaLLCPage({
             <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <Link href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Complete LLC Guide' : 'Tam LLC Rehberi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Complete LLC Guide' : 'Tam LLC Rehberi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Step-by-step formation guide' : 'Adım adım kurulum rehberi'}</p>
               </Link>
               <Link href={`/${lang}/checklists/llc-checklist`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Checklist' : 'LLC Kurma Kontrol Listesi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Checklist' : 'LLC Kurma Kontrol Listesi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Pre-formation checklist' : 'Kuruluş öncesi kontrol listesi'}</p>
               </Link>
               <Link href={`/${lang}/ein-itin-ssn-farki`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Tax ID numbers explained' : 'Vergi kimlik numaraları'}</p>
               </Link>
               <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates' : '5 temel sözleşme şablonu'}</p>
               </Link>
             </div>
