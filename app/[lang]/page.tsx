@@ -5,9 +5,9 @@ import { Metadata } from 'next'
 import HomeSearch from '@/components/HomeSearch'
 
 export const metadata: Metadata = {
-  title: 'EchoLegal — Legal Encyclopedia & Reference Platform',
+  title: 'EchoLegal | Legal Knowledge Should Belong to Everyone',
   description:
-    'A bilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Available in English and Turkish.',
+    'A global legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Available in English and Turkish.',
 }
 
 export default async function Home({
@@ -20,47 +20,64 @@ export default async function Home({
 
   return (
     <div className="bg-white">
-      {/* Hero — Centered, Authoritative */}
-      <section className="py-20 md:py-28 border-b border-gray-100">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="section-label">
-            {isEnglish ? 'Legal Reference Platform' : 'Hukuki Referans Platformu'}
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6">
-            {isEnglish
-              ? 'Legal Knowledge, Encyclopedic in Scope, Free to Access'
-              : 'Ansiklopedik Kapsamda Hukuki Bilgi, Herkese Açık'}
+      {/* DO NOT MODIFY – CORE BRAND STATEMENT — Hero Section LOCKED */}
+      <section className="min-h-[calc(100vh-80px)] grid md:grid-cols-2">
+        {/* Left - Image */}
+        <div className="relative h-[50vh] md:h-auto">
+          <img
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
+            alt="Legal documents"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Right - Content */}
+        <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-8 bg-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[0.95] tracking-tight mb-8 text-black">
+            {isEnglish ? (
+              <>LEGAL<br />KNOWLEDGE<br />SHOULD<br />BELONG TO<br />EVERYONE.</>
+            ) : (
+              <>HUKUKİ<br />BİLGİ<br />HERKESİN<br />HAKKI<br />OLMALI.</>
+            )}
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+
+          <p className="text-base md:text-lg text-gray-600 mb-3 max-w-md">
             {isEnglish
-              ? 'EchoLegal is a bilingual legal encyclopedia with professionally drafted reference articles, templates, and guides. Founded by a New York-licensed attorney with dual legal education in Turkey and the United States.'
-              : 'EchoLegal, New York lisanslı ve Türkiye ile ABD\'de çifte hukuk eğitimi almış bir avukat tarafından kurulan iki dilli hukuk ansiklopedisidir. Profesyonelce hazırlanmış referans makaleleri, şablonlar ve rehberler içerir.'}
+              ? 'EchoLegal is a global legal encyclopedia with professionally drafted reference articles, explanations, and templates in English and Turkish.'
+              : 'EchoLegal, İngilizce ve Türkçe olarak profesyonelce hazırlanmış referans makaleleri, açıklamalar ve şablonlar içeren küresel bir hukuk ansiklopedisidir.'
+            }
           </p>
 
-          {/* Search */}
-          <div className="max-w-xl mx-auto mb-8">
+          {/* Search Bar */}
+          <div className="mb-8 max-w-md">
             <HomeSearch lang={lang} />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href={`/${lang}/encyclopedia`}
-              className="btn-secondary text-sm"
-            >
-              {isEnglish ? 'Browse Encyclopedia' : 'Ansiklopediyi İncele'}
-            </Link>
-            <Link
-              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
-              className="btn-secondary text-sm"
-            >
-              {isEnglish ? 'View Templates' : 'Şablonları Gör'}
-            </Link>
-            <Link
-              href={`/${lang}/amerika`}
-              className="btn-secondary text-sm"
-            >
-              {isEnglish ? 'US Business Hub' : 'ABD İş Rehberi'}
-            </Link>
+          <div className="space-y-3">
+            <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
+              {isEnglish ? 'Start Exploring' : 'Keşfetmeye Başlayın'}
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={`/${lang}/encyclopedia`}
+                className="text-sm font-medium px-4 py-2 border border-gray-300 rounded hover:border-gray-400 hover:bg-gray-50 transition-colors text-gray-700"
+              >
+                {isEnglish ? 'Legal Knowledge' : 'Hukuki Bilgi'}
+              </Link>
+              <Link
+                href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+                className="text-sm font-medium px-4 py-2 border border-gray-300 rounded hover:border-gray-400 hover:bg-gray-50 transition-colors text-gray-700"
+              >
+                {isEnglish ? 'Templates' : 'Şablonlar'}
+              </Link>
+              <Link
+                href={`/${lang}/library`}
+                className="text-sm font-medium px-4 py-2 border border-gray-300 rounded hover:border-gray-400 hover:bg-gray-50 transition-colors text-gray-700"
+              >
+                {isEnglish ? 'Guides' : 'Rehberler'}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
