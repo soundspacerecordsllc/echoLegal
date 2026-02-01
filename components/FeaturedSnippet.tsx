@@ -13,7 +13,7 @@ type Props = {
 
 export function FeaturedSnippet({ answer, lang, className = '' }: Props) {
   return (
-    <div className={`bg-blue-50 border-l-4 border-blue-400 p-4 mb-8 ${className}`}>
+    <div className={`bg-blue-50 border-l-4 border-blue-400 p-4 mb-8 rounded-r-lg ${className}`}>
       <p className="text-gray-800 leading-relaxed">
         {answer[lang]}
       </p>

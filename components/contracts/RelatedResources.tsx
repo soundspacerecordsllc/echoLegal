@@ -32,20 +32,20 @@ export default function RelatedResources({ lang, title, subtitle, resources }: R
           <Link
             key={resource.slug}
             href={`/${lang}/contracts/${resource.slug}`}
-            className="group block p-5 bg-white rounded-lg border border-gray-100 hover:border-gray-200 transition-all"
+            className="group block p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
           >
             <div className="flex items-center justify-between">
               <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors truncate">
+                <span className="font-medium text-gray-900 group-hover:text-gray-700 underline underline-offset-4 decoration-gray-300 group-hover:decoration-gray-500 transition-colors block truncate">
                   {resource.title}
-                </h3>
+                </span>
                 {resource.description && (
                   <p className="text-sm text-gray-400 mt-1 truncate">
                     {resource.description}
                   </p>
                 )}
               </div>
-              <span className="flex-shrink-0 ml-4 text-gray-300 group-hover:text-gray-400 transition-colors">
+              <span className="flex-shrink-0 ml-4 text-gray-300 group-hover:text-gray-500 transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                 </svg>

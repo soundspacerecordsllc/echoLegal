@@ -33,19 +33,22 @@ export default function FAQAccordion({ items, title }: FAQAccordionProps) {
           >
             <button
               onClick={() => toggle(index)}
-              className="w-full px-6 py-4 text-left flex items-center justify-between bg-white hover:bg-gray-50 transition-colors"
+              className="w-full px-6 py-4 text-left flex items-center justify-between bg-white hover:bg-gray-50 transition-colors cursor-pointer"
               aria-expanded={openIndex === index}
             >
               <span className="font-medium text-gray-900 pr-4">
                 {item.question}
               </span>
-              <span
-                className={`text-gray-500 transition-transform duration-200 ${
+              <svg
+                className={`w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0 ${
                   openIndex === index ? 'rotate-180' : ''
                 }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                ▼
-              </span>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
 
             <div

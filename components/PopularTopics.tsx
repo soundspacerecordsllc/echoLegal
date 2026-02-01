@@ -85,7 +85,7 @@ export default function PopularTopics({ lang, variant = 'sidebar', title, classN
             <Link
               key={idx}
               href={topic.href}
-              className="group p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="group p-4 bg-gray-50 rounded-lg hover:bg-gray-100 hover:shadow-sm transition-all border border-gray-200"
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-gray-500 uppercase tracking-wide">{topic.category}</span>
@@ -95,9 +95,9 @@ export default function PopularTopics({ lang, variant = 'sidebar', title, classN
                   </span>
                 )}
               </div>
-              <h3 className="font-medium text-gray-900 group-hover:text-black">
+              <span className="font-medium text-gray-900 group-hover:text-gray-700 underline underline-offset-4 decoration-gray-300 group-hover:decoration-gray-600 transition-colors block">
                 {topic.title}
-              </h3>
+              </span>
             </Link>
           ))}
         </div>

@@ -81,9 +81,9 @@ export default async function Home({
             {/* Pillar 1: LLC / Business */}
             <Link
               href={`/${lang}/amerika/abdde-llc-kurmak`}
-              className="group card-elevated rounded-lg"
+              className="group card-elevated flex flex-col"
             >
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              <p className="section-label">
                 {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
               </p>
               <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
@@ -94,7 +94,7 @@ export default async function Home({
                   ? 'Comprehensive guide to forming an LLC as a non-resident. Entity types, state selection, compliance, and post-formation requirements.'
                   : 'Türkler için ABD\'de LLC kurma rehberi. Tüzel kişilik türleri, eyalet seçimi, uyum gereksinimleri ve kuruluş sonrası yükümlülükler.'}
               </p>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-400 mt-auto block pt-2">
                 {isEnglish ? 'US Federal & State Law' : 'ABD Federal ve Eyalet Hukuku'}
               </span>
             </Link>
@@ -102,9 +102,9 @@ export default async function Home({
             {/* Pillar 2: Contracts */}
             <Link
               href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`}
-              className="group card-elevated rounded-lg"
+              className="group card-elevated flex flex-col"
             >
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              <p className="section-label">
                 {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
               </p>
               <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
@@ -115,7 +115,7 @@ export default async function Home({
                   ? 'What contracts exist, when each is needed, risks of operating without them, and how they interact across jurisdictions.'
                   : 'Hangi sözleşmeler var, her biri ne zaman gerekli, sözleşmesiz çalışmanın riskleri ve farklı yargı alanlarında etkileşimleri.'}
               </p>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-400 mt-auto block pt-2">
                 {isEnglish ? 'US · Turkey' : 'ABD · Türkiye'}
               </span>
             </Link>
@@ -123,9 +123,9 @@ export default async function Home({
             {/* Pillar 3: Tax */}
             <Link
               href={`/${lang}/amerika/irs-vergi-gercekleri`}
-              className="group card-elevated rounded-lg"
+              className="group card-elevated flex flex-col"
             >
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+              <p className="section-label">
                 {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
               </p>
               <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
@@ -136,7 +136,7 @@ export default async function Home({
                   ? 'Tax residency, reporting obligations, FATCA/FBAR, treaty benefits, and common misconceptions for non-residents.'
                   : 'Vergi mukimliği, raporlama yükümlülükleri, FATCA/FBAR, anlaşma hakları ve mukim olmayanlar için yaygın yanılgılar.'}
               </p>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-400 mt-auto block pt-2">
                 {isEnglish ? 'US Federal Tax Law' : 'ABD Federal Vergi Hukuku'}
               </span>
             </Link>
@@ -146,7 +146,7 @@ export default async function Home({
           <div className="grid md:grid-cols-3 gap-6">
             <Link
               href={`/${lang}/amerika/abdye-gelme-yollari`}
-              className="group card-link rounded-lg"
+              className="group card-link"
             >
               <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}
@@ -160,7 +160,7 @@ export default async function Home({
 
             <Link
               href={`/${lang}/contracts`}
-              className="group card-link rounded-lg"
+              className="group card-link"
             >
               <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Template Library' : 'Şablon Kütüphanesi'}
@@ -174,7 +174,7 @@ export default async function Home({
 
             <Link
               href={`/${lang}/consular-documents`}
-              className="group card-link rounded-lg"
+              className="group card-link"
             >
               <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Consular Procedures' : 'Konsolosluk İşlemleri'}
@@ -195,72 +195,76 @@ export default async function Home({
           <h2 className="text-2xl font-semibold text-gray-900 mb-10 text-center">
             {isEnglish ? 'Browse by Content Type' : 'İçerik Türüne Göre İncele'}
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Reference articles explaining legal concepts, doctrines, and processes with precision and neutrality.'
                   : 'Hukuki kavramları, doktrinleri ve süreçleri hassasiyet ve tarafsızlıkla açıklayan referans makaleleri.'}
               </p>
               <Link
                 href={`/${lang}/encyclopedia`}
-                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+                className="arrow-link"
               >
-                {isEnglish ? 'Browse articles' : 'Makalelere göz at'} →
+                {isEnglish ? 'Browse articles' : 'Makalelere göz at'}
+                <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Templates' : 'Şablonlar'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Professionally drafted legal documents — contracts, agreements, and forms — with usage guidance.'
                   : 'Profesyonelce hazırlanmış hukuki belgeler — sözleşmeler, anlaşmalar ve formlar — kullanım rehberiyle.'}
               </p>
               <Link
                 href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
-                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+                className="arrow-link"
               >
-                {isEnglish ? 'View templates' : 'Şablonları gör'} →
+                {isEnglish ? 'View templates' : 'Şablonları gör'}
+                <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Guides' : 'Rehberler'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Process-oriented explanations for navigating legal procedures and compliance matters.'
                   : 'Hukuki prosedürler ve uyum konularında yol gösterici süreç odaklı açıklamalar.'}
               </p>
               <Link
                 href={`/${lang}/library`}
-                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+                className="arrow-link"
               >
-                {isEnglish ? 'Read guides' : 'Rehberleri oku'} →
+                {isEnglish ? 'Read guides' : 'Rehberleri oku'}
+                <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Practical tools for document preparation, filing requirements, and procedural verification.'
                   : 'Belge hazırlama, dosyalama gereksinimleri ve prosedür doğrulama için pratik araçlar.'}
               </p>
               <Link
                 href={`/${lang}/checklists`}
-                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+                className="arrow-link"
               >
-                {isEnglish ? 'Use checklists' : 'Kontrol listelerini kullan'} →
+                {isEnglish ? 'Use checklists' : 'Kontrol listelerini kullan'}
+                <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>
@@ -290,9 +294,10 @@ export default async function Home({
           </div>
           <Link
             href={`/${lang}/about`}
-            className="inline-block mt-6 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+            className="arrow-link mt-6"
           >
-            {isEnglish ? 'About EchoLegal →' : 'EchoLegal hakkında →'}
+            {isEnglish ? 'About EchoLegal' : 'EchoLegal hakkında'}
+            <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
       </section>

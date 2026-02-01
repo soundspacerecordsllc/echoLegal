@@ -18,7 +18,7 @@ export default function ContractHero({
   breadcrumbs,
 }: ContractHeroProps) {
   return (
-    <div className="border-b border-gray-100">
+    <div className="border-b border-gray-200">
       <div className="max-w-3xl mx-auto px-6 py-12 md:py-16">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
@@ -26,11 +26,11 @@ export default function ContractHero({
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span className="text-gray-300">/</span>}
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-gray-600 transition-colors">
+                <Link href={crumb.href} className="hover:text-gray-600 underline underline-offset-2 decoration-gray-300 hover:decoration-gray-500 transition-colors">
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-gray-600">{crumb.label}</span>
+                <span className="text-gray-600 font-medium">{crumb.label}</span>
               )}
             </span>
           ))}

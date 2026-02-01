@@ -216,7 +216,7 @@ export default function Header({ lang, dict }: HeaderProps) {
 
                       {/* Dropdown Menu - refined, calm, decisive */}
                       {activeDropdown === item.key && (
-                        <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-100 rounded-md shadow-sm py-1.5 z-50">
+                        <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-1.5 z-50">
                           {item.dropdown.map((subItem, idx) => (
                             <Link
                               key={idx}
