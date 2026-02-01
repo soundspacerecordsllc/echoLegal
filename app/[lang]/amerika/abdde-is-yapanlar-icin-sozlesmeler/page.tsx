@@ -78,6 +78,18 @@ export default async function SozlesmelerPage({
       answer: isEnglish
         ? "Statutes of limitations for contract claims vary by state and contract type. For written contracts: New York allows 6 years (CPLR 213), California allows 4 years (CCP 337), and Delaware allows 3 years from accrual for most claims. For oral contracts, periods are generally shorter (e.g., 3 years in New York). Under the UCC, the limitation period for sale-of-goods claims is 4 years, which parties can contractually reduce to no less than 1 year. The limitation period typically begins when the breach occurs, not when it is discovered — although some states apply a 'discovery rule' for certain claims. Contractual limitation clauses that shorten the statute of limitations are enforceable in most states if reasonable."
         : "Sözleşme davalarında zamanaşımı süreleri eyalete ve sözleşme türüne göre farklılık gösterir. Yazılı sözleşmelerde: New York 6 yıl (CPLR 213), California 4 yıl (CCP 337) ve Delaware çoğu talep için ihlâlden itibaren 3 yıl öngörür. Sözlü sözleşmelerde süreler genellikle daha kısadır (örneğin New York'ta 3 yıl). UCC kapsamındaki mal satışı uyuşmazlıklarında zamanaşımı 4 yıldır ve bu süre sözleşmeyle en az 1 yıla indirilebilir. Zamanaşımı süresi tipik olarak ihlâlin meydana geldiği tarihte başlar; ihlâlin öğrenildiği tarihte değil. Ancak bazı eyaletler belirli talep türleri için 'keşif kuralı' (discovery rule) uygular. Zamanaşımını kısaltan sözleşme hükümleri, makul olmak koşuluyla çoğu eyalette geçerli kabul edilir."
+    },
+    {
+      question: isEnglish ? "Are verbal contracts enforceable in the United States?" : "ABD'de sözlü (şifahî) sözleşmeler hukuken bağlayıcı mıdır?",
+      answer: isEnglish
+        ? "Verbal contracts are generally enforceable under US law, provided the standard elements of contract formation are present (offer, acceptance, consideration, capacity, legality). However, the Statute of Frauds requires certain categories of contracts to be in writing to be enforceable: real property transactions, agreements that cannot be performed within one year from their making, promises to pay another person's debt (suretyship), contracts for the sale of goods priced at $500 or more under UCC Section 2-201, and prenuptial agreements. Even for contracts not covered by the Statute of Frauds, the practical challenge of proving the terms of an oral agreement in court makes written contracts strongly preferable. Absent a writing, disputes reduce to competing testimonies about what was agreed."
+        : "Sözlü sözleşmeler, sözleşme kurulmasının temel unsurları (icap, kabul, ivaz, ehliyet, hukuka uygunluk) mevcut olduğu sürece ABD hukukunda kural olarak bağlayıcıdır. Ancak Statute of Frauds kuralı, belirli sözleşme türlerinin geçerli olabilmesi için yazılı yapılmasını zorunlu kılar: gayrimenkul işlemleri, kurulduğu tarihten itibaren bir yıl içinde ifa edilemeyecek anlaşmalar, üçüncü kişinin borcunun garantisi (kefalet), UCC md. 2-201 kapsamında bedeli 500 dolar ve üzeri mal satışları ve evlilik öncesi mal rejimi sözleşmeleri. Statute of Frauds kapsamına girmeyen sözleşmelerde dahi, sözlü anlaşmanın şartlarını mahkemede ispat etmenin pratik güçlüğü yazılı sözleşmeyi kesinlikle tercih edilir kılmaktadır. Yazılı belge yokluğunda uyuşmazlıklar, nelerin kararlaştırıldığına ilişkin çelişen tanıklıklara dönüşür."
+    },
+    {
+      question: isEnglish ? "What are liquidated damages and when are they enforceable?" : "Götürü tazminat (liquidated damages) nedir ve ne zaman geçerlidir?",
+      answer: isEnglish
+        ? "Liquidated damages are a pre-determined sum specified in the contract that becomes payable upon a particular breach. US courts enforce liquidated damages clauses when two conditions are satisfied: (1) actual damages arising from the breach would be difficult to calculate at the time of contracting, and (2) the stipulated amount represents a reasonable estimate of the anticipated or actual harm — not a penalty designed to punish the breaching party. If a court determines that the amount is grossly disproportionate to any conceivable loss, it will strike the clause as an unenforceable penalty. The reasonableness analysis may be applied at the time of contracting (majority rule) or at the time of breach (minority rule), depending on the jurisdiction. Liquidated damages provisions are common in construction contracts, software development agreements, and service-level agreements where delay or non-performance causes quantifiable but hard-to-prove harm."
+        : "Götürü tazminat, sözleşmede belirli bir ihlâl hâlinde ödenmesi önceden kararlaştırılan sabit bir meblağdır. ABD mahkemeleri götürü tazminat hükümlerini iki koşulun birlikte gerçekleşmesi hâlinde geçerli sayar: (1) ihlâlden doğacak fiilî zararın sözleşmenin kurulduğu sırada hesaplanmasının güç olması ve (2) belirlenen tutarın beklenen veya fiilî zararın makul bir tahmini olması — ihlâl eden tarafı cezalandırmaya yönelik bir müeyyide niteliği taşımaması. Mahkeme, belirlenen meblağın tasavvur edilebilecek herhangi bir zarara oranla aşırı ölçüde yüksek olduğunu tespit ederse, hükmü uygulanamaz bir cezai şart olarak iptal eder. Makullük değerlendirmesi, yargı çevresine bağlı olarak sözleşmenin kurulduğu anda (çoğunluk görüşü) veya ihlâlin gerçekleştiği anda (azınlık görüşü) yapılabilir. Götürü tazminat hükümleri, gecikme veya ifa etmemenin ölçülebilir ancak ispatı güç zararlara yol açtığı inşaat sözleşmeleri, yazılım geliştirme anlaşmaları ve hizmet düzeyi sözleşmelerinde yaygındır."
     }
   ]
 
@@ -199,6 +211,81 @@ export default async function SozlesmelerPage({
 
         {/* CTA - Above fold */}
         <KitCallout lang={lang} variant="compact" />
+
+        {/* Contract Enforceability in the US */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">
+            {isEnglish ? 'Contract Enforceability in the US' : "ABD'de Sözleşmenin Geçerliliği ve Bağlayıcılığı"}
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            {isEnglish
+              ? "US contract law is predominantly state law, derived from common-law principles and, for the sale of goods, the Uniform Commercial Code (UCC). Before examining specific contract types, it is essential to understand the five elements that must coexist for a contract to be valid and enforceable."
+              : "ABD sözleşme hukuku ağırlıklı olarak eyalet hukukuna dayanır; temel ilkeler common law'dan, mal satışına ilişkin kurallar ise Tekdüzen Ticaret Kanunu'ndan (UCC) türetilir. Belirli sözleşme türlerini incelemeden önce, bir sözleşmenin geçerli ve bağlayıcı olabilmesi için bir arada bulunması gereken beş unsuru kavramak zorunludur."}
+          </p>
+
+          <div className="space-y-4 mb-6">
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h3 className="font-bold mb-2">{isEnglish ? '1. Offer (İcap)' : '1. İcap (Offer)'}</h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "A clear, definite proposal communicated to the offeree, demonstrating the offeror's willingness to be bound upon acceptance. The offer must contain sufficiently definite terms — at minimum, the parties, subject matter, and consideration. Advertisements and price lists are generally treated as invitations to negotiate, not binding offers, unless they contain specific, limiting language (e.g., 'first come, first served' with a stated quantity). An offer can be revoked at any time before acceptance, unless supported by separate consideration (an option contract) or made irrevocable by statute (UCC firm offer rule for merchants, Section 2-205)."
+                  : "Muhataba iletilen, icapcının kabul hâlinde bağlanma iradesini ortaya koyan açık ve kesin bir öneridir. İcap yeterince belirli şartları içermelidir — en azından taraflar, konu ve karşılık. Reklamlar ve fiyat listeleri, belirli ve sınırlayıcı ifadeler içermedikçe ('ilk gelen alır' gibi, belirli miktarla sınırlı) kural olarak müzakereye davet sayılır, bağlayıcı icap değildir. İcap, ayrı bir karşılıkla desteklenmedikçe (opsiyon sözleşmesi) veya kanunla geri alınamaz kılınmadıkça (UCC md. 2-205 kapsamında tacirler için kesin icap kuralı) kabul öncesinde her zaman geri alınabilir."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h3 className="font-bold mb-2">{isEnglish ? '2. Acceptance (Kabul)' : '2. Kabul (Acceptance)'}</h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "An unconditional assent to the terms of the offer. Under the common-law 'mirror image rule,' any material alteration to the terms constitutes a counteroffer, not an acceptance — the original offer is thereby rejected. The UCC relaxes this rule for transactions between merchants: under Section 2-207, a definite expression of acceptance operates as an acceptance even if it contains additional or different terms, unless acceptance is expressly conditioned on assent to the new terms. Acceptance must be communicated through the method specified in the offer; if none is specified, any reasonable method suffices."
+                  : "İcabın şartlarına koşulsuz olarak verilen onay beyanıdır. Common law'daki 'ayna kuralı' (mirror image rule) uyarınca, şartlarda yapılan her esaslı değişiklik kabul değil karşı icap niteliği taşır ve asıl icap reddedilmiş sayılır. UCC, tacirler arası işlemlerde bu kuralı esnetir: md. 2-207 uyarınca kesin bir kabul beyanı, ek veya farklı şartlar içerse dahi, kabul açıkça yeni şartlara rıza koşuluna bağlanmadıkça kabul olarak hüküm doğurur. Kabul, icapta belirlenen yöntemle bildirilmelidir; bir yöntem belirlenmemişse herhangi bir makul yöntem yeterlidir."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h3 className="font-bold mb-2">{isEnglish ? '3. Consideration (Karşılık / İvaz)' : '3. Karşılık / İvaz (Consideration)'}</h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "A bargained-for exchange of value between the parties — a promise for a promise, a promise for an act, or a promise for forbearance. Each party must incur a legal detriment or confer a legal benefit. Past consideration (a benefit already conferred before the promise was made) does not satisfy this requirement. Nominal consideration ($1 in exchange for an option) is generally sufficient. Without consideration, an agreement is typically unenforceable, with limited exceptions: promissory estoppel (detrimental reliance), charitable pledges, and modification of existing contracts under the UCC (Section 2-209, which does not require consideration for good-faith modifications)."
+                  : "Taraflar arasında karşılıklı olarak pazarlık edilen bir değer değişimidir — taahhüde karşı taahhüt, taahhüde karşı edim veya taahhüde karşı bir haktan feragat. Her iki tarafın da hukuki bir yükümlülük üstlenmesi veya hukuki bir menfaat sağlaması gerekir. Geçmiş edim (taahhütten önce zaten sağlanmış olan fayda) bu unsuru karşılamaz. Sembolik karşılık (bir opsiyon için 1 dolar) genel olarak yeterli kabul edilir. Karşılık bulunmaksızın yapılan bir anlaşma kural olarak bağlayıcı değildir; sınırlı istisnalar mevcuttur: estoppel (güven ilkesi), hayır vaatleri ve UCC kapsamında mevcut sözleşmelerin değiştirilmesi (md. 2-209, iyi niyetli değişiklikler için karşılık aramaz)."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h3 className="font-bold mb-2">{isEnglish ? '4. Capacity (Ehliyet)' : '4. Ehliyet (Capacity)'}</h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "Parties must possess legal capacity to enter into a binding agreement. Minors (under 18 in most states), individuals adjudicated mentally incompetent, and persons under the influence of substances to the degree they cannot understand the transaction may lack capacity. Contracts entered into by parties lacking capacity are generally voidable (not void) — the incapacitated party may choose to affirm or disaffirm. For business entities, the individual executing the contract must have actual or apparent authority to bind the organization; absent such authority, the entity may not be bound."
+                  : "Tarafların bağlayıcı bir sözleşme yapma ehliyetine sahip olması gerekir. Küçükler (çoğu eyalette 18 yaş altı), mahkemece akıl sağlığı yetersiz bulunan kişiler ve işlemin niteliğini kavrayamayacak derecede madde etkisinde olan kişiler ehliyetsiz sayılabilir. Ehliyetsiz kişilerin yaptığı sözleşmeler genel olarak iptal edilebilir (butlan değil) niteliktedir — ehliyetsiz taraf sözleşmeyi onaylama veya iptal etme seçeneğine sahiptir. Tüzel kişiler bakımından, sözleşmeyi imzalayan gerçek kişinin kuruluşu bağlayacak fiilî veya görünürde yetkiye sahip olması gerekir; bu yetki bulunmadığında tüzel kişi bağlanmayabilir."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h3 className="font-bold mb-2">{isEnglish ? '5. Legality (Hukuka Uygunluk)' : '5. Hukuka Uygunluk (Legality)'}</h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "The contract's subject matter and purpose must be lawful. Agreements to commit crimes, engage in fraud, restrain trade unreasonably, or violate public policy are void ab initio and confer no enforceable rights on either party. Where illegality affects only a severable portion of the contract and a valid severability clause exists, the remaining provisions may survive. Courts in some jurisdictions will reform rather than void an overly broad restrictive covenant."
+                  : "Sözleşmenin konusu ve amacı hukuka uygun olmalıdır. Suç işlemeye, dolandırıcılığa, ticareti makul olmayan biçimde kısıtlamaya veya kamu düzenini ihlâle yönelik anlaşmalar baştan itibaren geçersiz (batıl) olup hiçbir tarafa uygulanabilir hak sağlamaz. Hukuka aykırılık sözleşmenin yalnızca ayrılabilir bir bölümünü etkiliyorsa ve geçerli bir bölünebilirlik maddesi mevcutsa, kalan hükümler geçerliliğini koruyabilir. Bazı yargı çevrelerindeki mahkemeler, aşırı geniş kısıtlayıcı hükümleri tamamen geçersiz saymak yerine daraltma yoluyla yeniden düzenler."}
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-bold mb-3">
+            {isEnglish ? 'The Parol Evidence Rule' : 'Parol Evidence Kuralı (Sözlü Kanıt Yasağı)'}
+          </h3>
+          <p className="text-gray-600 mb-4">
+            {isEnglish
+              ? "Where parties have reduced their agreement to a final, integrated written document, the parol evidence rule bars the introduction of prior or contemporaneous oral or written statements to contradict its terms. A well-drafted 'entire agreement' or 'merger' clause reinforces this protection by declaring that the written contract supersedes all prior negotiations, understandings, and agreements. Exceptions permit parol evidence to show fraud, duress, mutual mistake, ambiguity requiring clarification, or the existence of a condition precedent. The practical implication is significant: once you sign a comprehensive written contract, earlier email exchanges, verbal promises, or draft term sheets will generally be inadmissible to alter the contract's meaning."
+              : "Taraflar anlaşmalarını nihai ve bütünleşik bir yazılı belgeye dönüştürdüğünde, parol evidence kuralı sözleşme hükümlerine aykırı düşen önceki veya eşzamanlı sözlü ya da yazılı beyanların kanıt olarak ileri sürülmesini engeller. İyi hazırlanmış bir 'bütünlük maddesi' (entire agreement / merger clause), yazılı sözleşmenin önceki tüm müzakereleri, mutabakatları ve anlaşmaları geçersiz kıldığını beyan ederek bu korumayı pekiştirir. İstisnalar, hile, zorlama, karşılıklı yanılma, açıklama gerektiren belirsizlik veya geciktirici koşulun varlığının ispatına olanak tanır. Pratik sonucu önemlidir: kapsamlı bir yazılı sözleşme imzaladığınızda, önceki e-posta yazışmaları, sözlü vaatler veya taslak şart sayfaları sözleşmenin anlamını değiştirmek amacıyla kural olarak delil olarak kabul edilmez."}
+          </p>
+
+          <p className="text-gray-600">
+            {isEnglish
+              ? <>These enforceability principles apply to every contract type discussed on this page. Whether you are executing an <Link href={`/${lang}/contracts/nda`} className="text-[#C9A227] underline hover:text-[#B8922A]">NDA</Link>, a <Link href={`/${lang}/contracts/service-agreement`} className="text-[#C9A227] underline hover:text-[#B8922A]">Service Agreement</Link>, or an <Link href={`/${lang}/contracts/independent-contractor`} className="text-[#C9A227] underline hover:text-[#B8922A]">Independent Contractor Agreement</Link>, the same foundational requirements govern whether the agreement will be upheld in court. For entity-related contracts, note that when you <Link href={`/${lang}/amerika/abdde-llc-kurmak`} className="text-[#C9A227] underline hover:text-[#B8922A]">form an LLC in the US</Link>, the operating agreement is itself a contract among members subject to these same rules.</>
+              : <>Bu bağlayıcılık ilkeleri, bu sayfada ele alınan tüm sözleşme türleri için geçerlidir. İster bir <Link href={`/${lang}/contracts/nda`} className="text-[#C9A227] underline hover:text-[#B8922A]">NDA</Link>, ister bir <Link href={`/${lang}/contracts/service-agreement`} className="text-[#C9A227] underline hover:text-[#B8922A]">Hizmet Sözleşmesi</Link>, ister bir <Link href={`/${lang}/contracts/independent-contractor`} className="text-[#C9A227] underline hover:text-[#B8922A]">Bağımsız Yüklenici Sözleşmesi</Link> imzalıyor olun, anlaşmanın mahkemede ayakta kalıp kalmayacağını aynı temel gereklilikler belirler. Kurumsal sözleşmeler açısından, <Link href={`/${lang}/amerika/abdde-llc-kurmak`} className="text-[#C9A227] underline hover:text-[#B8922A]">ABD'de LLC kurduğunuzda</Link> işletme sözleşmesinin (operating agreement) üyeler arasında aynı kurallara tâbi bir sözleşme niteliği taşıdığını unutmayın.</>}
+          </p>
+        </section>
 
         {/* Why Written Contracts Matter */}
         <section className="mb-12">
@@ -347,6 +434,28 @@ export default async function SozlesmelerPage({
                 {isEnglish
                   ? "Automatic renewal (evergreen) clauses silently extend the contract for successive terms unless one party provides advance notice of non-renewal. The risk: a narrow notice window (e.g., 'written notice of non-renewal must be given no earlier than 90 and no later than 60 days before the renewal date') can lock a party into an unwanted renewal if the deadline is missed by even one day. Review the notice period carefully, calendar the opt-out date, and negotiate broader windows or shorter renewal terms where possible."
                   : "Otomatik yenileme (evergreen) maddeleri, taraflardan biri belirli süre öncesinde bildirimde bulunmadıkça sözleşmeyi ardışık dönemler için sessizce uzatır. Risk şudur: dar bir bildirim penceresi (örneğin 'yenileme tarihinden en erken 90, en geç 60 gün önce yazılı bildirim yapılmalıdır') bir günlük gecikmeyle dahi tarafı istenmeyen bir yenilemeye bağlayabilir. Bildirim süresini dikkatle inceleyin, çıkış tarihini takviminize kaydedin ve mümkünse daha geniş bildirim pencereleri veya daha kısa yenileme süreleri müzakere edin."}
+              </p>
+            </div>
+
+            <div className="bg-red-50 border-l-4 border-red-500 p-4">
+              <h3 className="font-semibold text-red-900 mb-2">
+                {isEnglish ? 'Unilateral Modification Clauses' : 'Tek Taraflı Değişiklik Hükümleri'}
+              </h3>
+              <p className="text-sm text-red-800">
+                {isEnglish
+                  ? "Clauses that permit one party to amend material terms — pricing, scope, service levels, or obligations — without the other party's written consent. In a negotiated commercial contract, amendments should require mutual written agreement. A provision stating 'Company reserves the right to modify these terms at any time' is common in consumer click-wrap agreements but is a significant red flag in B2B contracts where both parties have bargaining power. Such clauses effectively render the contract illusory — if one party can change its obligations at will, the other party's consideration may be undermined. Negotiate for mutual consent requirements or, at minimum, notice-and-opt-out mechanics."
+                  : "Bir tarafın karşı tarafın yazılı onayı olmaksızın fiyat, kapsam, hizmet düzeyi veya yükümlülük gibi esaslı şartları değiştirmesine olanak tanıyan maddelerdir. Müzakere edilen ticari sözleşmelerde değişiklikler karşılıklı yazılı mutabakat gerektirmelidir. 'Şirket bu şartları herhangi bir zamanda değiştirme hakkını saklı tutar' şeklindeki hüküm, tüketici tıkla-kabul et sözleşmelerinde yaygın olmakla birlikte, her iki tarafın müzakere gücüne sahip olduğu B2B sözleşmelerde ciddi bir tehlike işaretidir. Bu tür maddeler sözleşmeyi fiilen 'göstermelik' (illusory) kılabilir — bir taraf yükümlülüklerini istediği gibi değiştirebiliyorsa, diğer tarafın karşılığı (consideration) zayıflamış olur. Karşılıklı onay şartı veya en azından bildirim ve çıkış mekanizması müzakere edin."}
+              </p>
+            </div>
+
+            <div className="bg-red-50 border-l-4 border-red-500 p-4">
+              <h3 className="font-semibold text-red-900 mb-2">
+                {isEnglish ? 'Forum Selection Away from Your Jurisdiction' : 'Kendi Yargı Çevreniz Dışında Yetki Şartı'}
+              </h3>
+              <p className="text-sm text-red-800">
+                {isEnglish
+                  ? <>Forum selection clauses requiring dispute resolution in a distant or inconvenient jurisdiction impose substantial practical burdens: travel costs, retention of local counsel, unfamiliarity with local procedural rules, and the psychological disadvantage of litigating on the opposing party's home turf. US courts enforce forum selection clauses under the standard established in M/S Bremen v. Zapata Off-Shore Co. (1972) unless the clause is unreasonable, was procured by fraud, or enforcement would violate public policy. For a Turkish business owner operating through a US LLC, a clause requiring litigation in a remote US state can be as burdensome as a clause requiring proceedings in Turkey would be for an American counterparty. Where possible, negotiate for a neutral forum or your own jurisdiction. For cross-border contracts, an arbitration clause with a neutral seat — as discussed in the <Link href={`/${lang}/amerika/ny-law-neden-tercih-edilir`} className="text-[#C9A227] underline hover:text-[#B8922A]">governing law analysis</Link> — is often the most equitable solution.</>
+                  : <>Uyuşmazlıkların uzak veya elverişsiz bir yargı çevresinde çözülmesini gerektiren yetki şartı maddeleri önemli pratik yükler getirir: seyahat masrafları, yerel avukat tutulması, yerel usul kurallarına yabancılık ve karşı tarafın sahasında dava takip etmenin psikolojik dezavantajı. ABD mahkemeleri yetki şartı maddelerini M/S Bremen v. Zapata Off-Shore Co. (1972) kararıyla belirlenen ölçüt çerçevesinde, madde makul olmadıkça, hile yoluyla elde edilmedikçe veya uygulanması kamu düzenini ihlâl etmedikçe geçerli sayar. ABD LLC'si aracılığıyla faaliyet gösteren bir Türk iş insanı için uzak bir ABD eyaletinde dava açılmasını gerektiren bir madde, Amerikan tarafa Türkiye'de yargılama gerektiren bir madde kadar külfetli olabilir. Mümkünse tarafsız bir forum veya kendi yargı çevreniz için müzakere edin. Sınır ötesi sözleşmelerde, <Link href={`/${lang}/amerika/ny-law-neden-tercih-edilir`} className="text-[#C9A227] underline hover:text-[#B8922A]">uygulanacak hukuk analizinde</Link> tartışıldığı gibi tarafsız bir tahkim yeri ile tahkim şartı çoğu zaman en hakkaniyetli çözümdür.</>}
               </p>
             </div>
           </div>
@@ -575,6 +684,15 @@ export default async function SozlesmelerPage({
             </div>
 
             <div className="border border-gray-200 rounded-lg p-4">
+              <h3 className="font-semibold mb-2">{isEnglish ? 'Digital Signatures and Execution' : 'Dijital İmza ve Sözleşme İmzalama'}</h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "Under the federal ESIGN Act (15 U.S.C. Section 7001 et seq.) and the Uniform Electronic Transactions Act (UETA) adopted by most states, electronic signatures are legally equivalent to handwritten signatures for the vast majority of commercial contracts. Platforms such as DocuSign, HelloSign (now Dropbox Sign), and Adobe Sign produce comprehensive audit trails documenting the identity of each signatory, timestamps, IP addresses, and email confirmations — all of which serve as evidence of execution. Exceptions to e-signature validity include wills, certain trust instruments, specific UCC transactions (negotiable instruments), and court orders. For international transactions involving Turkish counterparts, Turkey's Electronic Signature Law (5070 sayili Kanun) recognizes qualified electronic signatures (nitelikli elektronik imza) as having the same legal effect as handwritten signatures. When using e-signature platforms, ensure that the final executed PDF includes a tamper-evident certificate and that all parties receive a complete copy immediately upon execution."
+                  : "Federal ESIGN Yasası (15 U.S.C. md. 7001 vd.) ve çoğu eyaletin benimsediği UETA kapsamında, elektronik imzalar ticari sözleşmelerin büyük çoğunluğunda el yazısı imzalarla hukuken eşdeğerdir. DocuSign, HelloSign (artık Dropbox Sign) ve Adobe Sign gibi platformlar, her imzacının kimliğini, zaman damgasını, IP adresini ve e-posta onaylarını belgeleyen kapsamlı denetim izleri üretir; tüm bu veriler imza sürecinin kanıtı olarak işlev görür. E-imza geçerliliğinin istisnaları arasında vasiyetnameler, belirli vakıf senetleri, bazı UCC işlemleri (kıymetli evraklar) ve mahkeme kararları yer alır. Türk muhatapları içeren uluslararası işlemlerde, 5070 sayılı Elektronik İmza Kanunu nitelikli elektronik imzayı el yazısı imza ile aynı hukuki etkiye sahip olarak kabul eder. E-imza platformları kullanılırken, nihai imzalı PDF'in değişikliğe karşı korumalı bir sertifika içerdiğinden ve tüm tarafların imzadan hemen sonra eksiksiz bir kopya aldığından emin olun."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
               <h3 className="font-semibold mb-2">{isEnglish ? 'Record Keeping and Compliance' : 'Kayıt Tutma ve Uyum'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
@@ -583,6 +701,69 @@ export default async function SozlesmelerPage({
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Privacy & Data Protection Contracts */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">
+            {isEnglish ? 'Privacy and Data Protection Contracts' : 'Gizlilik ve Veri Koruma Sözleşmeleri'}
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            {isEnglish
+              ? <>Businesses that collect, process, or transfer personal data operate within an increasingly complex regulatory environment. The contractual infrastructure supporting data protection is distinct from general commercial contracts and serves both compliance and risk allocation functions. For the public-facing disclosure document, see our <Link href={`/${lang}/contracts/privacy-policy`} className="text-[#C9A227] underline hover:text-[#B8922A]">Privacy Policy template</Link>; for website terms, see our <Link href={`/${lang}/contracts/terms-of-service`} className="text-[#C9A227] underline hover:text-[#B8922A]">Terms of Service template</Link>.</>
+              : <>Kişisel veri toplayan, işleyen veya aktaran işletmeler giderek karmaşıklaşan bir düzenleyici çerçeve içinde faaliyet gösterir. Veri korumayı destekleyen sözleşme altyapısı, genel ticari sözleşmelerden farklıdır ve hem uyumluluk hem de risk dağılımı işlevlerini yerine getirir. Kamuya yönelik bilgilendirme belgesi için <Link href={`/${lang}/contracts/privacy-policy`} className="text-[#C9A227] underline hover:text-[#B8922A]">Gizlilik Politikası şablonumuza</Link>; web sitesi koşulları için <Link href={`/${lang}/contracts/terms-of-service`} className="text-[#C9A227] underline hover:text-[#B8922A]">Kullanım Koşulları şablonumuza</Link> bakınız.</>}
+          </p>
+
+          <h3 className="text-lg font-bold mb-3">
+            {isEnglish ? 'When You Need a Data Processing Agreement (DPA)' : 'Veri İşleme Sözleşmesine (DPA) Ne Zaman İhtiyaç Duyarsınız'}
+          </h3>
+          <p className="text-gray-600 mb-4">
+            {isEnglish
+              ? "A Data Processing Agreement is a binding contract between a data controller (the entity determining the purposes and means of processing) and a data processor (the entity processing data on the controller's behalf). A DPA is legally required whenever you engage a third party to process personal data — whether a cloud hosting provider, an email marketing platform, a payroll service, or an analytics tool. The DPA must specify: the subject matter and duration of processing, the nature and purpose of processing, the type of personal data and categories of data subjects, the controller's obligations and rights, and the processor's obligations regarding sub-processors, security measures, breach notification timelines, data return or deletion upon termination, and audit rights."
+              : "Veri İşleme Sözleşmesi, veri sorumlusu (işleme amaç ve araçlarını belirleyen kuruluş) ile veri işleyen (veri sorumlusu adına veri işleyen kuruluş) arasında bağlayıcı bir sözleşmedir. Kişisel verilerin işlenmesi için bir üçüncü tarafı görevlendirdiğiniz her durumda — bulut barındırma sağlayıcısı, e-posta pazarlama platformu, bordro hizmeti veya analitik aracı olsun — DPA hukuken zorunludur. DPA'da şu hususlar belirtilmelidir: işlemenin konusu ve süresi, işlemenin niteliği ve amacı, kişisel veri türleri ve ilgili kişi kategorileri, veri sorumlusunun yükümlülükleri ve hakları, veri işleyenin alt işleyiciler, güvenlik önlemleri, ihlâl bildirim süreleri, sona ermede verilerin iadesi veya silinmesi ve denetim hakları konusundaki yükümlülükleri."}
+          </p>
+
+          <h3 className="text-lg font-bold mb-3">
+            {isEnglish ? 'Applicable Regulatory Frameworks' : 'Uygulanabilir Düzenleyici Çerçeveler'}
+          </h3>
+          <div className="space-y-4 mb-6">
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h4 className="font-semibold mb-1">GDPR (EU/EEA)</h4>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "The General Data Protection Regulation applies to any entity processing personal data of individuals in the EU/EEA, regardless of where the entity is established. Article 28 mandates a written contract (the DPA) between controller and processor. For US-based businesses serving EU customers, GDPR compliance requires DPAs with all processors, a documented lawful basis for each processing activity, privacy-by-design implementation, and appropriate safeguards for international data transfers. Non-compliance penalties can reach EUR 20 million or 4% of global annual turnover, whichever is higher."
+                  : "Genel Veri Koruma Tüzüğü (GDPR), kuruluş yeri ne olursa olsun, AB/AEA'daki bireylerin kişisel verilerini işleyen her kuruluşa uygulanır. Madde 28, veri sorumlusu ile veri işleyen arasında yazılı bir sözleşme (DPA) yapılmasını zorunlu kılar. AB müşterilerine hizmet veren ABD merkezli işletmelerin GDPR uyumu için tüm veri işleyenlerle DPA imzalaması, her işleme faaliyeti için belgelenmiş hukuki dayanak bulundurması, tasarımdan itibaren gizlilik (privacy-by-design) ilkesini uygulaması ve uluslararası veri transferleri için uygun güvenceler sağlaması gerekmektedir. Uyumsuzluk yaptırımları 20 milyon Euro'ya veya küresel yıllık cironun %4'üne (hangisi yüksekse) ulaşabilir."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h4 className="font-semibold mb-1">CCPA / CPRA (California)</h4>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "The California Consumer Privacy Act (as amended by the California Privacy Rights Act) requires written 'service provider' or 'contractor' agreements with entities processing personal information on a business's behalf. These agreements must prohibit the service provider from selling or sharing the information, restrict use to the contracted purposes, require the same level of privacy protection as the CCPA provides, and grant the business the right to audit compliance. Similar comprehensive state privacy laws are in effect or pending in Virginia, Colorado, Connecticut, Utah, Iowa, Indiana, Tennessee, Montana, Texas, Oregon, and other states."
+                  : "Kaliforniya Tüketici Gizlilik Yasası (CPRA ile değişik), bir işletme adına kişisel bilgi işleyen kuruluşlarla yazılı 'hizmet sağlayıcı' veya 'yüklenici' sözleşmesi yapılmasını şart koşar. Bu sözleşmeler, hizmet sağlayıcının bilgiyi satmasını veya paylaşmasını yasaklamalı, kullanımı sözleşmede belirlenen amaçlarla sınırlandırmalı, CCPA'nın öngördüğü düzeyde gizlilik koruması gerektirmeli ve işletmeye uyumluluk denetimi hakkı tanımalıdır. Benzer kapsamlı eyalet gizlilik yasaları Virginia, Colorado, Connecticut, Utah, Iowa, Indiana, Tennessee, Montana, Texas, Oregon ve diğer eyaletlerde yürürlüktedir veya yasalaşma aşamasındadır."}
+              </p>
+            </div>
+
+            <div className="border border-gray-200 rounded-lg p-4">
+              <h4 className="font-semibold mb-1">KVKK (Turkey)</h4>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? "Turkey's Personal Data Protection Law (Law No. 6698, KVKK) closely follows the GDPR model. KVKK imposes obligations on data controllers and processors, requires explicit or implicit consent depending on the processing category, and restricts international data transfers to countries with adequate protection as determined by the Personal Data Protection Board (KVKK Kurulu) or where the parties provide sufficient safeguards through written commitments approved by the Board. For businesses operating across both the US and Turkey, KVKK and GDPR compliance must be addressed in parallel, with particular attention to cross-border data transfer mechanisms."
+                  : "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), GDPR modelini yakından takip eder. KVKK, veri sorumlularına ve veri işleyenlere yükümlülükler getirir, işleme kategorisine bağlı olarak açık veya zımnî rıza arar ve uluslararası veri aktarımını Kişisel Verileri Koruma Kurulu tarafından yeterli koruma düzeyi bulunduğu tespit edilen ülkelerle veya tarafların Kurul onaylı yazılı taahhütlerle yeterli güvence sağladığı durumlarla sınırlandırır. Hem ABD hem Türkiye'de faaliyet gösteren işletmelerin KVKK ve GDPR uyum gerekliliklerini eş zamanlı olarak ele alması, özellikle sınır ötesi veri aktarım mekanizmalarına dikkat göstermesi zorunludur."}
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-bold mb-3">
+            {isEnglish ? 'Standard Contractual Clauses for International Data Transfers' : 'Uluslararası Veri Transferleri İçin Standart Sözleşme Hükümleri'}
+          </h3>
+          <p className="text-gray-600">
+            {isEnglish
+              ? "Standard Contractual Clauses (SCCs) are pre-approved contractual terms adopted by the European Commission providing adequate safeguards for transferring personal data from the EU/EEA to third countries. The current SCCs (adopted June 2021) employ a modular structure covering four scenarios: controller-to-controller, controller-to-processor, processor-to-processor, and processor-to-controller. In addition to executing the SCCs, businesses must conduct a Transfer Impact Assessment evaluating whether the recipient country's legal framework provides protection essentially equivalent to that in the EU. For US-Turkey data flows where EU-origin data is involved, SCCs may need to be supplemented with additional technical and organizational measures. Under KVKK, the Turkish data protection authority may require analogous written commitments for cross-border transfers from Turkey."
+              : "Standart Sözleşme Hükümleri (SCC'ler), Avrupa Komisyonu tarafından kabul edilen, kişisel verilerin AB/AEA'dan üçüncü ülkelere aktarılması için yeterli güvence sağlayan önceden onaylanmış sözleşme şartlarıdır. Güncel SCC'ler (Haziran 2021'de kabul edilen) dört senaryoyu kapsayan modüler bir yapı benimser: sorumluden sorumluya, sorumluden işleyene, işleyenden işleyene ve işleyenden sorumluya. SCC'lerin imzalanmasına ek olarak, işletmelerin alıcı ülkenin hukuki çerçevesinin AB'deki korumaya esasen eşdeğer koruma sağlayıp sağlamadığını değerlendiren bir Transfer Etki Değerlendirmesi yapması gerekmektedir. AB kökenli verilerin söz konusu olduğu ABD-Türkiye veri akışlarında, SCC'lerin ek teknik ve organizasyonel önlemlerle desteklenmesi gerekebilir. KVKK kapsamında, Türk veri koruma otoritesi Türkiye'den yapılacak sınır ötesi aktarımlar için benzer nitelikte yazılı taahhütler isteyebilir."}
+          </p>
         </section>
 
         {/* FAQ */}
@@ -636,6 +817,20 @@ export default async function SozlesmelerPage({
               className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
             >
               <span className="font-medium text-gray-800">{isEnglish ? 'Freelance Agreement Template' : 'Serbest Çalışan Sözleşmesi Şablonu'}</span>
+              <span className="text-[#C9A227]">→</span>
+            </Link>
+            <Link
+              href={`/${lang}/contracts/privacy-policy`}
+              className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
+            >
+              <span className="font-medium text-gray-800">{isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu'}</span>
+              <span className="text-[#C9A227]">→</span>
+            </Link>
+            <Link
+              href={`/${lang}/contracts/terms-of-service`}
+              className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
+            >
+              <span className="font-medium text-gray-800">{isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu'}</span>
               <span className="text-[#C9A227]">→</span>
             </Link>
           </div>
