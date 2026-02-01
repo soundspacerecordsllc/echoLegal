@@ -92,7 +92,7 @@ export default async function SablonlarPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Header */}
         <div className="mb-10">
-          <h1 className="text-4xl font-black text-black mb-4">Şablonlar</h1>
+          <h1 className="text-4xl font-bold text-black mb-4">Şablonlar</h1>
           <p className="text-lg text-gray-600 max-w-3xl">
             Türk girişimcilere yönelik {templates.length}+ ücretsiz hukuki şablon.
             Sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge

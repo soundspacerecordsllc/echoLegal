@@ -183,7 +183,7 @@ export default async function W8W9DecisionMapPage({
             <span className="inline-block px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-sm font-medium mb-4">
               {isEnglish ? 'Interactive Tool' : 'Etkileşimli Araç'}
             </span>
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
               {isEnglish ? 'W-8 or W-9? Decision Tool' : 'W-8 mi W-9 mu? Karar Aracı'}
             </h1>
 

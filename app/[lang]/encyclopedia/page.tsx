@@ -52,7 +52,7 @@ export default async function EncyclopediaPage({
   return (
     <div className="bg-white">
       <main className="max-w-7xl mx-auto px-4 py-12">
-        <h1 className="text-4xl font-black mb-4">
+        <h1 className="text-4xl font-bold mb-4">
           {isEnglish ? 'Legal Encyclopedia' : 'Hukuk Ansiklopedisi'}
         </h1>
         <p className="text-lg text-gray-600 mb-12">

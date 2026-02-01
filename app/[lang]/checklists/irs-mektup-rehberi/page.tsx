@@ -97,7 +97,7 @@ export default async function IRSLetterGuidePage({
             <span className="inline-block px-3 py-1 bg-red-50 text-red-800 rounded-full text-sm font-medium mb-4">
               {isEnglish ? 'Reference Guide' : 'Referans Rehberi'}
             </span>
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
               {isEnglish ? 'IRS Letter Received: First 7 Facts' : 'IRS\'ten Mektup Geldiyse: İlk 7 Gerçek'}
             </h1>
             <p className="text-lg text-gray-600">

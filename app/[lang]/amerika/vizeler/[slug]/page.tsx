@@ -80,7 +80,7 @@ export default async function VisaDetailPage({
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-black text-black mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
               {title}
             </h1>
 

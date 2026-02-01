@@ -181,7 +181,7 @@ export default async function EinItinSsnPage({
                 {isEnglish ? 'Tax ID Guide' : 'Vergi Kimlik Rehberi'}
               </span>
 
-              <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
                 {isEnglish
                   ? 'EIN vs ITIN vs SSN: Which Tax ID Do You Need?'
                   : 'EIN, ITIN ve SSN Farkları: Hangisine İhtiyacınız Var?'}

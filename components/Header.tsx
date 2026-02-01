@@ -184,7 +184,7 @@ export default function Header({ lang, dict }: HeaderProps) {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link href={`/${lang}`} className="flex items-center">
-              <span className="text-2xl font-black text-black tracking-tight">
+              <span className="text-2xl font-bold text-black tracking-tight">
                 EchoLegal
               </span>
             </Link>

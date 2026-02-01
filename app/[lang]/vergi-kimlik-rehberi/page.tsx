@@ -216,7 +216,7 @@ export default async function TaxIdHubPage({
             {isEnglish ? 'Tax & Identification Hub' : 'Vergi ve Kimlik Merkezi'}
           </span>
 
-          <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {isEnglish
               ? 'US Tax & Identification Guide'
               : 'ABD Vergi ve Kimlik Rehberi'}

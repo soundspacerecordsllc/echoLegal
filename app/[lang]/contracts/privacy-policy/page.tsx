@@ -58,7 +58,7 @@ export default async function PrivacyPolicyPage({
           📍 {isEnglish ? 'Jurisdiction: GDPR / CCPA / KVKK Compliant' : 'Yargı Yetkisi: GDPR / CCPA / KVKK Uyumlu'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu'}
         </h1>
 
@@ -93,6 +93,57 @@ export default async function PrivacyPolicyPage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Any website or app collecting user data',
+              'E-commerce businesses',
+              'SaaS platforms',
+              'Mobile app developers',
+              'Businesses operating in GDPR, CCPA, or KVKK jurisdictions'
+            ] : [
+              'Kullanıcı verisi toplayan tüm web siteleri veya uygulamalar',
+              'E-ticaret işletmeleri',
+              'SaaS platformları',
+              'Mobil uygulama geliştiricileri',
+              'GDPR, CCPA veya KVKK yargı bölgelerinde faaliyet gösteren işletmeler'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            {isEnglish
+              ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Without policy: GDPR fines up to \u20AC20M or 4% global revenue, CCPA penalties up to $7,500 per violation, KVKK fines up to 1,946,000 TL',
+              'Outdated policy: non-compliance if data practices change',
+              'Missing cookie disclosure: ePrivacy Directive violations',
+              'No data breach procedure: increased liability and regulatory scrutiny'
+            ] : [
+              'Politika olmadan: GDPR kapsamında 20 milyon EUR veya küresel cironun %4\'üne kadar para cezası, CCPA kapsamında ihlal başına 7.500 USD ceza, KVKK kapsamında 1.946.000 TL\'ye kadar para cezası',
+              'Güncelliğini yitirmiş politika: veri uygulamaları değişirse uyumsuzluk',
+              'Çerez beyanı eksikse: eGizlilik Yönergesi ihlalleri',
+              'Veri ihlali prosedürü yoksa: artan sorumluluk ve düzenleyici denetim'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-red-500 mr-3">✗</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

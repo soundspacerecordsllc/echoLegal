@@ -68,7 +68,7 @@ export default async function ProcedurePage({
           🇹🇷 {isEnglish ? 'Turkish Consulate Service' : 'Türk Konsolosluk Hizmeti'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">{title}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">{title}</h1>
 
         <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
 

@@ -46,7 +46,7 @@ export default async function LLCVisaMythPage({
               {isEnglish ? 'Immigration Reality' : 'Göçmenlik Gerçeği'}
             </span>
 
-            <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
               {isEnglish
                 ? 'LLC ≠ Visa: Immigration Realities'
                 : 'LLC Kurmak Vize Vermez: Göçmenlik Gerçekleri'}

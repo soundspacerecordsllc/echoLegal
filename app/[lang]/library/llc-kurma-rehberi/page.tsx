@@ -47,7 +47,7 @@ export default async function LLCFormationGuidePage({
               {isEnglish ? 'Reference Guide' : 'Referans Rehberi'}
             </span>
 
-            <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
               {isEnglish
                 ? 'LLC Formation in the US: What You Need to Know'
                 : "ABD'de LLC Kurmak: Bilmeniz Gerekenler"}

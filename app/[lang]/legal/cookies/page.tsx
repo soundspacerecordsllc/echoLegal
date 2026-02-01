@@ -13,7 +13,7 @@ export default async function CookiesPage({
   return (
     <div className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-legal-navy mb-4">
+          <h1 className="font-serif text-3xl md:text-4xl font-bold text-legal-navy mb-4">
             {dict.footer.cookiePolicy}
           </h1>
           <p className="text-legal-gray mb-8">

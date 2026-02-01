@@ -58,7 +58,7 @@ export default async function TermsOfServicePage({
           📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu'}
         </h1>
 
@@ -93,6 +93,59 @@ export default async function TermsOfServicePage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Website operators',
+              'SaaS companies',
+              'Marketplace platforms',
+              'Mobile app publishers',
+              'Any digital service provider'
+            ] : [
+              'Web sitesi işletmecileri',
+              'SaaS şirketleri',
+              'Pazar yeri platformları',
+              'Mobil uygulama yayıncıları',
+              'Tüm dijital hizmet sağlayıcıları'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            {isEnglish
+              ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Without ToS: no limitation of liability for platform issues',
+              'Missing dispute resolution: expensive litigation',
+              'No content moderation terms: liability for user-generated content',
+              'Missing IP protection: users may claim rights to platform features',
+              'No account termination clause: difficulty removing abusive users'
+            ] : [
+              'Kullanım Koşulları olmadan: platform sorunları için sorumluluk sınırlaması yok',
+              'Uyuşmazlık çözüm mekanizması eksikse: maliyetli davalar',
+              'İçerik moderasyon şartları yoksa: kullanıcı tarafından oluşturulan içerikten doğan sorumluluk',
+              'Fikri mülkiyet koruması eksikse: kullanıcılar platform özellikleri üzerinde hak iddia edebilir',
+              'Hesap fesih maddesi yoksa: kötüye kullanan kullanıcıların kaldırılmasında zorluk'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-red-500 mr-3">✗</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

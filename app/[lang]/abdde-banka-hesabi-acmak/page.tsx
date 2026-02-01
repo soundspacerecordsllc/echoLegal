@@ -135,7 +135,7 @@ export default async function BankAccountGuidePage({
                 {isEnglish ? 'Banking Guide' : 'Bankacılık Rehberi'}
               </span>
 
-              <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
                 {isEnglish
                   ? 'How to Open a US Bank Account as a Non-Resident'
                   : 'ABD\'de Banka Hesabı Açmak: Türkler İçin Rehber'}

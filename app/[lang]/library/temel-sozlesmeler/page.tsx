@@ -128,7 +128,7 @@ export default async function EssentialContractsPage({
             {isEnglish ? 'Contract Guide' : 'Sözleşme Rehberi'}
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {isEnglish
               ? 'Essential Contracts for US Business'
               : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler'}

@@ -58,7 +58,7 @@ export default async function ServiceAgreementPage({
           📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}
         </h1>
 
@@ -93,6 +93,57 @@ export default async function ServiceAgreementPage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Small business owners hiring service providers',
+              'Agencies contracting with clients',
+              'Consultants formalizing engagements',
+              'SaaS companies with enterprise clients',
+              'Marketing agencies with corporate clients'
+            ] : [
+              'Hizmet sağlayıcı kiralayan küçük işletme sahipleri',
+              'Müşterileriyle sözleşme yapan ajanslar',
+              'Çalışmalarını resmileştiren danışmanlar',
+              'Kurumsal müşterilere sahip SaaS şirketleri',
+              'Kurumsal müşterilere sahip pazarlama ajansları'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            {isEnglish
+              ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Without agreement: scope disputes, payment conflicts, unclear deliverable ownership',
+              'Missing payment terms: cash flow disputes, collection difficulties',
+              'No termination clause: parties trapped in unfavorable arrangements',
+              'Vague scope: scope creep without compensation'
+            ] : [
+              'Sözleşme olmadan: kapsam anlaşmazlıkları, ödeme çatışmaları, belirsiz teslimat sahipliği',
+              'Ödeme koşulları eksikse: nakit akışı anlaşmazlıkları, tahsilat güçlükleri',
+              'Fesih maddesi yoksa: taraflar olumsuz düzenlemelerde sıkışır',
+              'Belirsiz kapsam: tazminatsız iş kapsamı genişlemesi'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-red-500 mr-3">✗</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

@@ -38,7 +38,7 @@ export default async function ContributePage({
       {/* Header */}
       <header className="border-b border-gray-100">
         <nav className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black text-black">EchoLegal</Link>
+          <Link href={`/${lang}`} className="text-2xl font-bold text-black">EchoLegal</Link>
           <div className="flex items-center gap-6">
             <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">
               {isEnglish ? 'Home' : 'Ana Sayfa'}
@@ -59,7 +59,7 @@ export default async function ContributePage({
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {isEnglish ? 'Contribute to EchoLegal' : 'EchoLegal\'a Katkıda Bulunun'}
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">

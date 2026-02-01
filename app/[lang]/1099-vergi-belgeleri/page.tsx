@@ -141,7 +141,7 @@ export default async function TaxDocumentsPage({
                 {isEnglish ? 'Tax Documents' : 'Vergi Belgeleri'}
               </span>
 
-              <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
                 {isEnglish
                   ? '1099 Forms & US Tax Documents Explained'
                   : '1099 Formları ve ABD Vergi Belgeleri'}

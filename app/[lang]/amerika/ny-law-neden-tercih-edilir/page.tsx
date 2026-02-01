@@ -85,7 +85,7 @@ export default async function NYLawPage({
           📍 {isEnglish ? 'Jurisdiction: New York' : 'Kapsam: New York'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {isEnglish ? "Why Choose New York Law" : "New York Hukuku Neden Tercih Edilir"}
         </h1>
 

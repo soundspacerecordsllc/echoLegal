@@ -194,7 +194,7 @@ export default async function BusinessStarterKitPage({
             {isEnglish ? 'Reference Document Bundle' : 'Referans Belge Paketi'}
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             ABD Business Starter<br />Legal Kit
           </h1>
 

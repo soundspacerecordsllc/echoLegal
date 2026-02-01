@@ -58,7 +58,7 @@ export default async function FreelanceAgreementPage({
           📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi'}
         </h1>
 
@@ -91,6 +91,57 @@ export default async function FreelanceAgreementPage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Freelance designers, developers, and writers',
+              'Content creators',
+              'Small agencies subcontracting work',
+              'Companies hiring project-based talent',
+              'Platform-based freelancers formalizing off-platform work'
+            ] : [
+              'Serbest tasarımcılar, geliştiriciler ve yazarlar',
+              'İçerik üreticileri',
+              'İşi taşerona veren küçük ajanslar',
+              'Proje bazlı yetenek kiralayan şirketler',
+              'Platform dışı çalışmalarını resmileştiren serbest çalışanlar'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            {isEnglish
+              ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Without agreement: disputes over project scope, revision limits, payment timing',
+              'Missing IP clause: ownership of work product unclear',
+              'No kill fee: freelancer bears loss if client cancels mid-project',
+              'Missing payment milestones: late or non-payment risk'
+            ] : [
+              'Sözleşme olmadan: proje kapsamı, revizyon limitleri ve ödeme zamanlaması üzerine anlaşmazlıklar',
+              'Fikri mülkiyet maddesi eksikse: iş ürünü sahipliği belirsiz kalır',
+              'İptal ücreti yoksa: müşteri projeyi yarıda iptal ederse serbest çalışan zarara uğrar',
+              'Ödeme aşamaları belirtilmemişse: geç ödeme veya ödenmeme riski'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-red-500 mr-3">✗</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

@@ -166,7 +166,7 @@ export default async function TurkishTemplateDetailPage({
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-black text-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
           {template.title}
         </h1>
 

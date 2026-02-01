@@ -93,7 +93,7 @@ export default async function BankaHesabiPage({
           {isEnglish ? 'Jurisdiction: United States' : 'Yargı Yetkisi: ABD'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {isEnglish ? "US Bank Account" : "ABD'de Banka Hesabı"}
         </h1>
 

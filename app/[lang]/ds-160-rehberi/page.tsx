@@ -161,7 +161,7 @@ export default async function DS160GuidePage({
               📋 {isEnglish ? 'Visa Application' : 'Vize Başvurusu'}
             </span>
 
-            <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
               {isEnglish
                 ? 'DS-160 Form Guide'
                 : 'DS-160 Formu Rehberi'}
