@@ -724,19 +724,19 @@ export default async function TaxGuidePage({
               <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href={`/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Step-by-step guide to forming a US LLC' : 'ABD\'de LLC kurma adım adım rehberi'}</p>
                 </Link>
                 <Link href={`/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Must-have legal documents for US business' : 'ABD\'de iş için gerekli hukuki belgeler'}</p>
                 </Link>
                 <Link href={`/${lang}/checklists/w8-w9-karar-haritasi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Quick reference for which form to use' : 'Hangi formu kullanacağınıza hızlı referans'}</p>
                 </Link>
                 <Link href={`/${lang}/library`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                  <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Legal Library' : 'Hukuk Kütüphanesi'}</h3>
+                  <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Legal Library' : 'Hukuk Kütüphanesi'}</h3>
                   <p className="text-sm text-gray-600">{isEnglish ? 'Browse all guides and resources' : 'Tüm rehber ve kaynaklara göz atın'}</p>
                 </Link>
               </div>

@@ -282,11 +282,11 @@ export default async function VisaDetailPage({
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <Link href={`/${lang}/library/llc-vize-yanilgisi`} className="block border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Understanding the separation' : 'Ayrımı anlama'}</p>
               </Link>
               <Link href={`/${lang}/amerika`} className="block border border-gray-200 rounded-lg p-4 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Complete US business guide' : 'Eksiksiz ABD iş rehberi'}</p>
               </Link>
             </div>

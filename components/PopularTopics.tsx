@@ -95,7 +95,7 @@ export default function PopularTopics({ lang, variant = 'sidebar', title, classN
                   </span>
                 )}
               </div>
-              <span className="font-medium text-gray-900 group-hover:text-gray-700 underline underline-offset-4 decoration-gray-300 group-hover:decoration-gray-600 transition-colors block">
+              <span className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors block">
                 {topic.title}
               </span>
             </Link>

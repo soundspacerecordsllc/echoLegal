@@ -372,7 +372,7 @@ export default async function LegalMisconceptionsPage({
                 href={`/${lang}/library/llc-kurma-rehberi`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -386,7 +386,7 @@ export default async function LegalMisconceptionsPage({
                 href={`/${lang}/library/irs-vergi-gercekleri`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -400,7 +400,7 @@ export default async function LegalMisconceptionsPage({
                 href={`/${lang}/library/llc-vize-yanilgisi`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -414,7 +414,7 @@ export default async function LegalMisconceptionsPage({
                 href={`/${lang}/contracts`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}
                 </h3>
                 <p className="text-sm text-gray-600">

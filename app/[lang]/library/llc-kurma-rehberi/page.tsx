@@ -374,7 +374,7 @@ export default async function LLCFormationGuidePage({
                   href={`/${lang}/contracts/nda`}
                   className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
                 >
-                  <h3 className="font-semibold text-black mb-1">
+                  <h3 className="text-sm font-semibold text-black mb-1">
                     {isEnglish ? 'Non-Disclosure Agreement' : 'Gizlilik Sözleşmesi (NDA)'}
                   </h3>
                   <p className="text-sm text-gray-600">
@@ -388,7 +388,7 @@ export default async function LLCFormationGuidePage({
                   href={`/${lang}/contracts/service-agreement`}
                   className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
                 >
-                  <h3 className="font-semibold text-black mb-1">
+                  <h3 className="text-sm font-semibold text-black mb-1">
                     {isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}
                   </h3>
                   <p className="text-sm text-gray-600">
@@ -402,7 +402,7 @@ export default async function LLCFormationGuidePage({
                   href={`/${lang}/contracts/independent-contractor`}
                   className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
                 >
-                  <h3 className="font-semibold text-black mb-1">
+                  <h3 className="text-sm font-semibold text-black mb-1">
                     {isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'}
                   </h3>
                   <p className="text-sm text-gray-600">
@@ -416,7 +416,7 @@ export default async function LLCFormationGuidePage({
                   href={`/${lang}/contracts/privacy-policy`}
                   className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
                 >
-                  <h3 className="font-semibold text-black mb-1">
+                  <h3 className="text-sm font-semibold text-black mb-1">
                     {isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}
                   </h3>
                   <p className="text-sm text-gray-600">
@@ -460,7 +460,7 @@ export default async function LLCFormationGuidePage({
                 href={`/${lang}/library/irs-vergi-gercekleri`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -474,7 +474,7 @@ export default async function LLCFormationGuidePage({
                 href={`/${lang}/library/llc-vize-yanilgisi`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -488,7 +488,7 @@ export default async function LLCFormationGuidePage({
                 href={`/${lang}/library/hukuki-yanilgilar`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'Common Legal Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -502,7 +502,7 @@ export default async function LLCFormationGuidePage({
                 href={`/${lang}/library/temel-sozlesmeler`}
                 className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <h3 className="font-semibold text-black mb-1">
+                <h3 className="text-sm font-semibold text-black mb-1">
                   {isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler'}
                 </h3>
                 <p className="text-sm text-gray-600">

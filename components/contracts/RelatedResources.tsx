@@ -36,7 +36,7 @@ export default function RelatedResources({ lang, title, subtitle, resources }: R
           >
             <div className="flex items-center justify-between">
               <div className="flex-1 min-w-0">
-                <span className="font-medium text-gray-900 group-hover:text-gray-700 underline underline-offset-4 decoration-gray-300 group-hover:decoration-gray-500 transition-colors block truncate">
+                <span className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors block truncate">
                   {resource.title}
                 </span>
                 {resource.description && (

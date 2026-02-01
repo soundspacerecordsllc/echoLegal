@@ -297,19 +297,19 @@ export default async function BankAccountChecklistPage({
             <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Bank Account Guide' : 'ABD Banka Hesabı Rehberi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'US Bank Account Guide' : 'ABD Banka Hesabı Rehberi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Complete banking guide' : 'Tam bankacılık rehberi'}</p>
               </Link>
               <Link href={`/${lang}/checklists/llc-checklist`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Checklist' : 'LLC Kurma Kontrol Listesi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Checklist' : 'LLC Kurma Kontrol Listesi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Form your LLC first' : 'Önce LLC\'nizi kurun'}</p>
               </Link>
               <Link href={`/${lang}/legal-kits/business-starter`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all bg-amber-50 border-amber-200">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Business Starter Kit' : 'Business Starter Kit'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? '5 essential contract templates' : '5 temel sözleşme şablonu'}</p>
               </Link>
               <Link href={`/${lang}/abd-odemeleri-alma-rehberi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-                <h3 className="font-semibold text-black mb-1">{isEnglish ? 'US Payments Guide' : 'ABD Ödeme Rehberi'}</h3>
+                <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'US Payments Guide' : 'ABD Ödeme Rehberi'}</h3>
                 <p className="text-sm text-gray-600">{isEnglish ? 'Stripe, PayPal, Wise' : 'Stripe, PayPal, Wise'}</p>
               </Link>
             </div>

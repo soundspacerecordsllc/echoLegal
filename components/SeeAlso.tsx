@@ -163,7 +163,7 @@ export default function SeeAlso({ lang, items, title, variant = 'list', classNam
               href={item.href}
               className="group p-4 bg-gray-50 rounded-lg hover:bg-gray-100 hover:shadow-sm transition-all border border-gray-200"
             >
-              <span className="font-medium text-gray-900 group-hover:text-gray-700 underline underline-offset-4 decoration-gray-300 group-hover:decoration-gray-600 transition-colors block mb-1">
+              <span className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors block mb-1">
                 {item.title}
               </span>
               {item.description && (
@@ -276,7 +276,7 @@ export function RelatedResources({
 
             {/* Content */}
             <div className="min-w-0">
-              <h3 className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
+              <h3 className="text-sm font-medium text-gray-900 group-hover:text-gray-700 transition-colors">
                 {item.title}
               </h3>
               {item.description && (

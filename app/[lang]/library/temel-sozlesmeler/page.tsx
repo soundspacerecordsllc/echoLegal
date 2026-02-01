@@ -236,11 +236,11 @@ export default async function EssentialContractsPage({
           <h2 className="text-xl font-bold text-black mb-6">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <Link href={`/${lang}/library/llc-kurma-rehberi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'If you\'re forming a US business' : 'ABD işi kuruyorsanız'}</p>
             </Link>
             <Link href={`/${lang}/contracts`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-              <h3 className="font-semibold text-black mb-1">{isEnglish ? 'All Contract Templates' : 'Tüm Sözleşme Şablonları'}</h3>
+              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'All Contract Templates' : 'Tüm Sözleşme Şablonları'}</h3>
               <p className="text-sm text-gray-600">{isEnglish ? 'Browse our full library' : 'Tam kütüphanemize göz atın'}</p>
             </Link>
           </div>
