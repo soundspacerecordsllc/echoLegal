@@ -284,20 +284,20 @@ export default async function Home({
         </div>
       </section>
 
-      {/* About & Credentials */}
+      {/* About This Platform */}
       <section className="py-16 md:py-20 border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="section-label">
             {isEnglish ? 'About This Platform' : 'Bu Platform Hakkında'}
           </p>
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            {isEnglish ? 'Independent. Attorney-Founded. Free to Access.' : 'Bağımsız. Avukat Tarafından Kurulmuş. Erişime Açık.'}
+            {isEnglish ? 'Independent. Attorney-Drafted. Free to Access.' : 'Bağımsız. Avukat Tarafından Hazırlanmış. Erişime Açık.'}
           </h2>
           <div className="text-gray-600 leading-relaxed space-y-4">
             <p>
               {isEnglish
-                ? 'EchoLegal is an independent legal knowledge platform founded by Zeynep Ruziye Moore, a New York-licensed attorney with dual legal education in Turkey and the United States. All content is written with attorney-level precision and reviewed for accuracy.'
-                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı avukat Zeynep Ruziye Moore tarafından kurulan bağımsız bir hukuki bilgi platformudur. Tüm içerikler avukat düzeyinde hassasiyetle yazılmış ve doğruluk açısından gözden geçirilmiştir.'}
+                ? 'EchoLegal is an independent legal knowledge platform providing bilingual reference articles, templates, and guides. All content is drafted with attorney-level precision and reviewed for accuracy.'
+                : 'EchoLegal, iki dilli referans makaleleri, şablonlar ve rehberler sunan bağımsız bir hukuki bilgi platformudur. Tüm içerikler avukat düzeyinde hassasiyetle hazırlanmış ve doğruluk açısından gözden geçirilmiştir.'}
             </p>
             <p className="text-sm text-gray-500">
               {isEnglish

@@ -768,22 +768,6 @@ export default async function ContractsGuidePage({
               </div>
             </section>
 
-            {/* Author Box */}
-            <section className="border border-gray-200 rounded-lg p-6 mb-10">
-              <h2 className="text-lg font-bold text-black mb-3">{isEnglish ? 'Author' : 'Yazar'}</h2>
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold text-xl">
-                  ZM
-                </div>
-                <div>
-                  <h3 className="font-semibold text-black">Zeynep Ruziye Moore</h3>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {isEnglish ? 'Licensed in New York' : 'New York Lisanslı'}
-                  </p>
-                </div>
-              </div>
-            </section>
-
             {/* Final Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">
               <p className="text-xs text-gray-600 leading-relaxed">

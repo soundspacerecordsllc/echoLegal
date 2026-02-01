@@ -203,20 +203,11 @@ export default async function AboutPage({
             {isEnglish ? 'Editorial Oversight' : 'Editöryal Gözetim'}
           </h2>
           <div className="bg-gray-50 rounded-lg p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-medium">
-                ZM
-              </div>
-              <div>
-                <h3 className="font-bold text-black">Zeynep Ruziye Moore</h3>
-                <p className="text-sm text-gray-600 mb-2">Attorney at Law • New York Bar No: 5552336</p>
-                <p className="text-sm text-gray-700">
-                  {isEnglish
-                    ? 'All legal content on EchoLegal is reviewed for accuracy by a licensed attorney with expertise in US immigration and business law.'
-                    : 'EchoLegal\'daki tüm hukuki içerik, ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
-                </p>
-              </div>
-            </div>
+            <p className="text-sm text-gray-700">
+              {isEnglish
+                ? 'All legal content on EchoLegal is reviewed for accuracy by licensed attorneys with expertise in US immigration and business law before publication.'
+                : 'EchoLegal\'daki tüm hukuki içerik, yayınlanmadan önce ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip lisanslı avukatlar tarafından doğruluk açısından incelenmektedir.'}
+            </p>
           </div>
         </section>
 

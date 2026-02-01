@@ -1,6 +1,9 @@
 /**
  * Structured Data Schemas for EchoLegal
  * Implements Organization, Person (Author), WebSite, and Article schemas
+ *
+ * Authority/credentials are intentionally hidden (service-first). Do not render in UI.
+ * These schemas provide authority signals for SEO, AI search, and knowledge graphs only.
  */
 
 export const SITE_URL = 'https://echo-legal.com'
@@ -20,6 +23,17 @@ export const organizationSchema = {
   },
   description: 'Bilingual legal encyclopedia providing professionally drafted contracts and legal guides in English and Turkish.',
   foundingDate: '2024',
+  founder: {
+    '@id': `${SITE_URL}/#author`,
+  },
+  knowsAbout: [
+    'US Business Law',
+    'LLC Formation',
+    'US Immigration Law',
+    'US Tax Law (IRS)',
+    'International Contracts',
+    'Turkish-US Legal Bridge',
+  ],
   sameAs: [],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -29,13 +43,34 @@ export const organizationSchema = {
   },
 }
 
-// Person Schema - Primary Author
+// Person Schema - Primary Author (hidden metadata only, never rendered in UI)
 export const authorSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${SITE_URL}/#author`,
   name: 'Zeynep Ruziye Moore',
-  jobTitle: 'Licensed in New York',
+  jobTitle: 'Attorney, Licensed in New York',
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Bar Admission',
+      recognizedBy: {
+        '@type': 'Organization',
+        name: 'New York State Bar',
+      },
+    },
+  ],
+  knowsAbout: [
+    'US Business Law',
+    'US Immigration Law',
+    'US Tax Law',
+    'Turkish Law',
+    'International Contracts',
+  ],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Istanbul University Faculty of Law' },
+    { '@type': 'CollegeOrUniversity', name: 'Fordham University School of Law' },
+  ],
   affiliation: {
     '@type': 'Organization',
     name: 'EchoLegal',

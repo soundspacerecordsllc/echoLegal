@@ -95,40 +95,42 @@ function EditorialBoardFull({
         </h2>
       </div>
 
-      {/* Board Members */}
+      {/* Board Overview */}
       <div className="space-y-6">
-        {/* Primary Reviewing Attorney */}
+        {/* Legal Review */}
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-gray-900 text-white rounded flex items-center justify-center text-lg font-semibold flex-shrink-0">
-            {author.initials}
+          <div className="w-12 h-12 bg-gray-900 text-white rounded flex items-center justify-center flex-shrink-0">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900">
-              {author.name[lang]}
-              {author.isAttorney && ', Esq.'}
+              {isEnglish ? 'Legal Review' : 'Hukuki İnceleme'}
             </h3>
             <p className="text-sm text-gray-600">
-              {isEnglish ? 'Reviewing Attorney' : 'İnceleme Avukatı'}
+              {isEnglish
+                ? 'All content is reviewed for accuracy by licensed attorneys'
+                : 'Tüm içerikler lisanslı avukatlar tarafından doğruluk açısından incelenir'}
             </p>
-            {author.barAdmissions && author.barAdmissions.length > 0 && (
-              <p className="text-xs text-gray-500 mt-1">
-                {isEnglish
-                  ? `Admitted in ${author.barAdmissions[0].jurisdictionName}`
-                  : `${author.barAdmissions[0].jurisdictionName} Barosu`}
-              </p>
-            )}
           </div>
         </div>
 
         {/* Editorial Team */}
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-gray-200 text-gray-700 rounded flex items-center justify-center text-lg font-semibold flex-shrink-0">
-            {team.initials}
+          <div className="w-12 h-12 bg-gray-200 text-gray-700 rounded flex items-center justify-center flex-shrink-0">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">{team.name[lang]}</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-semibold text-gray-900">
               {isEnglish ? 'Content Research & Drafting' : 'İçerik Araştırma ve Hazırlık'}
+            </h3>
+            <p className="text-sm text-gray-600">
+              {isEnglish
+                ? 'Maintained by the EchoLegal editorial team'
+                : 'EchoLegal editör ekibi tarafından sürdürülmektedir'}
             </p>
           </div>
         </div>
@@ -195,17 +197,19 @@ function EditorialBoardCompact({
       </h3>
 
       <div className="space-y-3">
-        {/* Reviewing Attorney */}
+        {/* Legal Review */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gray-900 text-white rounded flex items-center justify-center text-xs font-semibold flex-shrink-0">
-            {author.initials}
+          <div className="w-8 h-8 bg-gray-900 text-white rounded flex items-center justify-center flex-shrink-0">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
           <div className="min-w-0">
             <p className="text-sm font-medium text-gray-900 truncate">
-              {author.name[lang]}
+              {isEnglish ? 'Attorney Reviewed' : 'Avukat İncelemeli'}
             </p>
             <p className="text-xs text-gray-500">
-              {isEnglish ? 'Reviewing Attorney' : 'İnceleme Avukatı'}
+              {isEnglish ? 'Verified for accuracy' : 'Doğruluk açısından doğrulanmıştır'}
             </p>
           </div>
         </div>
@@ -244,18 +248,14 @@ function EditorialBoardInline({
 
   return (
     <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600 ${className}`}>
-      {/* Reviewed by */}
+      {/* Attorney Reviewed */}
       <span className="flex items-center gap-1.5">
         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        {isEnglish ? 'Reviewed by' : 'İnceleyen'}:{' '}
-        <span className="font-medium text-gray-900">{author.name[lang]}</span>
-        {author.barAdmissions && author.barAdmissions.length > 0 && (
-          <span className="text-xs text-gray-400">
-            ({author.barAdmissions[0].jurisdictionName} Bar)
-          </span>
-        )}
+        <span className="font-medium text-gray-900">
+          {isEnglish ? 'Attorney Reviewed' : 'Avukat İncelemeli'}
+        </span>
       </span>
 
       {/* Last updated */}

@@ -228,8 +228,8 @@ export default async function PlatformPage({
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
             <p className="text-gray-700 mb-4">
               {isEnglish
-                ? "EchoLegal content is prepared under the supervision of Zeynep Ruziye Moore, licensed in New York."
-                : "EchoLegal içeriği, New York Barosu'na kayıtlı Zeynep Ruziye Moore gözetiminde hazırlanmaktadır."}
+                ? "EchoLegal content is prepared with attorney-level oversight and reviewed for accuracy."
+                : "EchoLegal içeriği avukat düzeyinde gözetim altında hazırlanmakta ve doğruluk açısından incelenmektedir."}
             </p>
             <p className="text-gray-700">
               {isEnglish

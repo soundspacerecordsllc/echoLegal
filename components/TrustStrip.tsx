@@ -7,12 +7,12 @@ export default function TrustStrip({ lang }: TrustStripProps) {
 
   const items = isEnglish
     ? [
-        { icon: '⚖️', text: 'NY Licensed Attorney' },
+        { icon: '⚖️', text: 'Attorney-Drafted Content' },
         { icon: '🌐', text: 'TR/US Bilingual Legal Reference' },
         { icon: '📚', text: 'Reference-Only Platform' }
       ]
     : [
-        { icon: '⚖️', text: 'NY Lisanslı Avukat' },
+        { icon: '⚖️', text: 'Avukat Tarafından Hazırlanmış İçerik' },
         { icon: '🌐', text: 'TR/US İki Dilli Hukuk Referansı' },
         { icon: '📚', text: 'Yalnızca Referans Platformu' }
       ]

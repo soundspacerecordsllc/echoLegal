@@ -9,11 +9,20 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
+// Authority/credentials are intentionally hidden (service-first). Do not render in UI.
+// metadata.authors provides hidden authority signals for SEO and AI search indexing only.
 export const metadata: Metadata = {
   title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
   description:
-    'Bilingual legal encyclopedia providing professionally drafted contracts and legal guides in English and Turkish. I support EchoLegal – legal knowledge for everyone.',
+    'Bilingual legal encyclopedia providing professionally drafted contracts and legal guides in English and Turkish. Legal knowledge should belong to everyone.',
   metadataBase: new URL('https://echo-legal.com'),
+  authors: [{ name: 'Zeynep Ruziye Moore', url: 'https://echo-legal.com/en/about' }],
+  openGraph: {
+    type: 'website',
+    siteName: 'EchoLegal',
+    locale: 'en_US',
+    alternateLocale: 'tr_TR',
+  },
 }
 
 // Generate dynamic hreflang links based on current path

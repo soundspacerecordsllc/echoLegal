@@ -257,8 +257,8 @@ export default async function EditorialPolicyPage({
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
           <p className="text-gray-700 mb-4">
             {isEnglish
-              ? 'All legal content on EchoLegal is reviewed by a licensed attorney before publication. The reviewing attorney:'
-              : 'EchoLegal\'daki tüm hukuki içerik, yayınlanmadan önce lisanslı bir avukat tarafından gözden geçirilir. Gözden geçiren avukat:'}
+              ? 'All legal content on EchoLegal is reviewed for accuracy before publication. The review process:'
+              : 'EchoLegal\'daki tüm hukuki içerik, yayınlanmadan önce doğruluk açısından gözden geçirilir. Gözden geçirme süreci:'}
           </p>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>

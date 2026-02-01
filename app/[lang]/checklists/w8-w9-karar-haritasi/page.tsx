@@ -5,7 +5,6 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import W8W9DecisionTool from '@/components/W8W9DecisionTool'
-import AuthorBox from '@/components/AuthorBox'
 
 export async function generateMetadata({
   params,
@@ -189,17 +188,6 @@ export default async function W8W9DecisionMapPage({
 
             {/* Authority signals */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-6">
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-                Zeynep Ruziye Moore
-              </span>
               <span className="flex items-center gap-1">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -794,9 +782,6 @@ export default async function W8W9DecisionMapPage({
               </Link>
             </div>
           </section>
-
-          {/* Contributing Attorney */}
-          <AuthorBox lang={lang} authorId="zeynep-moore" className="mb-10" />
 
           {/* Review Date */}
           <div className="bg-gray-50 rounded-lg p-4 mb-10 text-sm text-gray-600">

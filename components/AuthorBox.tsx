@@ -1,6 +1,7 @@
 // components/AuthorBox.tsx
-// Institutional-grade author attribution component
-// Designed to meet Big Law / Legal Encyclopedia standards
+// Authority/credentials are intentionally hidden (service-first). Do not render in UI.
+// This component is retained for type compatibility but renders nothing.
+// Authority signals exist only in hidden metadata (JSON-LD, Next.js metadata).
 
 import { Contributor, getCanonicalAuthor, getContributor } from '@/lib/contributors'
 
@@ -13,16 +14,8 @@ type AuthorBoxProps = {
 
 /**
  * AuthorBox Component
- *
- * Renders an institutional-grade author attribution section that meets
- * Big Law firm and legal encyclopedia standards.
- *
- * Design principles:
- * - Third-person voice throughout
- * - Institutional phrasing (not personal bio)
- * - Clear authority hierarchy
- * - Professional legal tone
- * - Jurisdictional disclaimer integrated
+ * Service-first: no visible personal credit rendered.
+ * Authority signals exist in JSON-LD and metadata only.
  */
 export default function AuthorBox({
   lang,
@@ -30,17 +23,8 @@ export default function AuthorBox({
   className = '',
   variant = 'full'
 }: AuthorBoxProps) {
-  const author = authorId ? getContributor(authorId) : getCanonicalAuthor()
-
-  if (!author) return null
-
-  const isEnglish = lang === 'en'
-
-  if (variant === 'compact') {
-    return <AuthorBoxCompact author={author} lang={lang} className={className} />
-  }
-
-  return <AuthorBoxFull author={author} lang={lang} className={className} />
+  // Service-first: no visible personal credit rendered
+  return null
 }
 
 /**
@@ -199,7 +183,7 @@ function AuthorBoxCompact({
 }
 
 /**
- * AuthorByline - Minimal inline byline for article headers
+ * AuthorByline - Service-first: returns null. No visible personal credit.
  */
 export function AuthorByline({
   lang,
@@ -210,21 +194,7 @@ export function AuthorByline({
   authorId?: string
   className?: string
 }) {
-  const author = authorId ? getContributor(authorId) : getCanonicalAuthor()
-
-  if (!author) return null
-
-  return (
-    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-sm ${className}`}>
-      {/* Author name with icon */}
-      <span className="flex items-center gap-1.5 text-gray-600">
-        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
-        {author.name[lang]}
-      </span>
-    </div>
-  )
+  return null
 }
 
 /**

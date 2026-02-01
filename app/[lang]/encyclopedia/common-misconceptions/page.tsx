@@ -267,8 +267,8 @@ export default async function CommonMisconceptionsPage({
         <div className="max-w-7xl mx-auto">
           <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
             {isEnglish
-              ? 'LEGAL DISCLAIMER: This article is for educational purposes only and does not constitute legal advice. Laws vary by jurisdiction. Consult a licensed attorney for advice specific to your situation. Prepared under the supervision of a New York licensed attorney (NY Bar #5552336).'
-              : 'HUKUKI SORUMLULUK REDDİ: Bu makale yalnızca eğitim amaçlıdır ve hukuki tavsiye teşkil etmez. Yasalar yargı yetkisine göre değişir. Durumunuza özel tavsiye için lisanslı bir avukata danışın. New York lisanslı avukat gözetiminde hazırlanmıştır (NY Bar #5552336).'}
+              ? 'LEGAL DISCLAIMER: This article is for educational purposes only and does not constitute legal advice. Laws vary by jurisdiction. Consult a licensed attorney for advice specific to your situation. Prepared with attorney-level review for accuracy.'
+              : 'HUKUKI SORUMLULUK REDDİ: Bu makale yalnızca eğitim amaçlıdır ve hukuki tavsiye teşkil etmez. Yasalar yargı yetkisine göre değişir. Durumunuza özel tavsiye için lisanslı bir avukata danışın. Doğruluk açısından avukat düzeyinde inceleme ile hazırlanmıştır.'}
           </p>
           <p className="text-xs text-gray-400 mt-4">© 2025 EchoLegal.</p>
         </div>
