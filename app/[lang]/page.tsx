@@ -20,47 +20,59 @@ export default async function Home({
 
   return (
     <div className="bg-white">
-      {/* Hero — Centered, Authoritative */}
-      <section className="py-20 md:py-28 border-b border-gray-100">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="section-label">
-            {isEnglish ? 'Legal Reference Platform' : 'Hukuki Referans Platformu'}
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl mb-6">
-            {isEnglish
-              ? 'Legal Knowledge, Encyclopedic in Scope, Free to Access'
-              : 'Ansiklopedik Kapsamda Hukuki Bilgi, Herkese Açık'}
-          </h1>
-          <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
-            {isEnglish
-              ? 'EchoLegal is a bilingual legal encyclopedia with professionally drafted reference articles, templates, and guides. Founded by a New York-licensed attorney with dual legal education in Turkey and the United States.'
-              : 'EchoLegal, New York lisanslı ve Türkiye ile ABD\'de çifte hukuk eğitimi almış bir avukat tarafından kurulan iki dilli hukuk ansiklopedisidir. Profesyonelce hazırlanmış referans makaleleri, şablonlar ve rehberler içerir.'}
-          </p>
-
-          {/* Search */}
-          <div className="max-w-xl mx-auto mb-8">
-            <HomeSearch lang={lang} />
+      {/* Hero — Split Layout with Photo */}
+      <section className="border-b border-gray-100">
+        <div className="grid md:grid-cols-2 min-h-[70vh]">
+          {/* Left - Image */}
+          <div className="relative h-[40vh] md:h-auto">
+            <img
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
+              alt={isEnglish ? 'Legal documents on a desk' : 'Masadaki hukuki belgeler'}
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href={`/${lang}/encyclopedia`}
-              className="btn-secondary text-sm"
-            >
-              {isEnglish ? 'Browse Encyclopedia' : 'Ansiklopediyi İncele'}
-            </Link>
-            <Link
-              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
-              className="btn-secondary text-sm"
-            >
-              {isEnglish ? 'View Templates' : 'Şablonları Gör'}
-            </Link>
-            <Link
-              href={`/${lang}/amerika`}
-              className="btn-secondary text-sm"
-            >
-              {isEnglish ? 'US Business Hub' : 'ABD İş Rehberi'}
-            </Link>
+          {/* Right - Content */}
+          <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight mb-8 text-gray-900 uppercase">
+              {isEnglish ? (
+                <>Legal<br />Knowledge<br />Should<br />Belong to<br />Everyone.</>
+              ) : (
+                <>Hukuki<br />Bilgi<br />Herkese<br />Ait<br />Olmalı.</>
+              )}
+            </h1>
+
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8 max-w-md">
+              {isEnglish
+                ? 'EchoLegal is a bilingual legal encyclopedia with professionally drafted reference articles, templates, and guides. Founded by a New York-licensed attorney with dual legal education in Turkey and the United States.'
+                : 'EchoLegal, New York lisanslı ve Türkiye ile ABD\'de çifte hukuk eğitimi almış bir avukat tarafından kurulan iki dilli hukuk ansiklopedisidir. Profesyonelce hazırlanmış referans makaleleri, şablonlar ve rehberler içerir.'}
+            </p>
+
+            {/* Search */}
+            <div className="max-w-md mb-8">
+              <HomeSearch lang={lang} />
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={`/${lang}/encyclopedia`}
+                className="btn-secondary text-sm"
+              >
+                {isEnglish ? 'Browse Encyclopedia' : 'Ansiklopediyi İncele'}
+              </Link>
+              <Link
+                href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+                className="btn-secondary text-sm"
+              >
+                {isEnglish ? 'View Templates' : 'Şablonları Gör'}
+              </Link>
+              <Link
+                href={`/${lang}/amerika`}
+                className="btn-secondary text-sm"
+              >
+                {isEnglish ? 'US Business Hub' : 'ABD İş Rehberi'}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
