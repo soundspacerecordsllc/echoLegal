@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   return {
     title: isEnglish
       ? "Forming an LLC in the US - Complete Guide to State Selection, Formation & Compliance | EchoLegal"
-      : "ABD'de LLC Kurmak - Eyalet Secimi, Kurulus ve Uyum Yukumlulukleri Rehberi | EchoLegal",
+      : "ABD'de LLC Kurmak - Eyalet Seçimi, Kuruluş ve Uyum Yükümlülükleri Rehberi | EchoLegal",
     description: isEnglish
       ? "Comprehensive guide to forming a US LLC. State comparison (Delaware, Wyoming, Florida, Nevada, New Mexico), formation steps, Operating Agreement, EIN application, post-formation compliance, and corporate veil protection."
-      : "ABD'de LLC kurulumuna iliskin kapsamli rehber. Eyalet karsilastirmasi (Delaware, Wyoming, Florida, Nevada, New Mexico), kurulus adimlari, Operating Agreement, EIN basvurusu, kurulus sonrasi uyum yukumlulukleri ve tuzel kisilik perdesi korunmasi.",
+      : "ABD'de LLC kurulumuna ilişkin kapsamlı rehber. Eyalet karşılaştırması (Delaware, Wyoming, Florida, Nevada, New Mexico), kuruluş adımları, Operating Agreement, EIN başvurusu, kuruluş sonrası uyum yükümlülükleri ve tüzel kişilik perdesi korunması.",
   }
 }
 
@@ -486,7 +486,7 @@ export default async function AbddeLLCPage({
               {isEnglish
                 ? "The following seven steps outline the standard LLC formation process. For a printable version, see the "
                 : "Aşağıdaki yedi adım, standart LLC kuruluş sürecini özetlemektedir. Yazdırılabilir bir sürüm için "}
-              <Link href={`/${lang}/checklists/llc-checklist`} className="text-[#C9A227] underline hover:text-[#B8922A]">
+              <Link href={`/${lang}/checklists/llc-kontrol-listesi`} className="text-[#C9A227] underline hover:text-[#B8922A]">
                 {isEnglish ? 'LLC Formation Checklist' : 'LLC Kuruluş Kontrol Listesi'}
               </Link>
               {isEnglish ? '.' : ' sayfasını ziyaret edebilirsiniz.'}
@@ -796,6 +796,18 @@ export default async function AbddeLLCPage({
               </p>
             </div>
           </div>
+
+          <div className="prose max-w-none text-gray-600 mt-6">
+            <p>
+              {isEnglish
+                ? "Maintaining proper contracts reinforces the LLC's separate identity and reduces veil-piercing risk. Ensure all client engagements, vendor relationships, and confidential exchanges are governed by written agreements executed in the LLC's name. For templates, see our "
+                : "Usulüne uygun sözleşmelerin sürdürülmesi, LLC'nin ayrı kimliğini güçlendirir ve tüzel kişilik perdesinin kaldırılması riskini azaltır. Tüm müşteri ilişkilerinin, tedarikçi bağlantılarının ve gizli bilgi paylaşımlarının LLC adına imzalanmış yazılı sözleşmelerle yönetilmesini sağlayın. Şablonlar için "}
+              <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] underline hover:text-[#B8922A]">
+                {isEnglish ? 'Contracts for US Business' : "ABD'de İş Yapanlar İçin Sözleşmeler"}
+              </Link>
+              {isEnglish ? ' page.' : ' sayfamıza bakınız.'}
+            </p>
+          </div>
         </section>
 
         {/* ===== SECTION 9: Multi-State Operations ===== */}
@@ -960,11 +972,20 @@ export default async function AbddeLLCPage({
               <span className="text-[#C9A227]">→</span>
             </Link>
             <Link
-              href={`/${lang}/checklists/llc-checklist`}
+              href={`/${lang}/checklists/llc-kontrol-listesi`}
               className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
             >
               <span className="font-medium text-gray-800">
                 {isEnglish ? 'LLC Formation Checklist' : 'LLC Kuruluş Kontrol Listesi'}
+              </span>
+              <span className="text-[#C9A227]">→</span>
+            </Link>
+            <Link
+              href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`}
+              className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#C9A227] hover:shadow-md transition-all"
+            >
+              <span className="font-medium text-gray-800">
+                {isEnglish ? 'Contracts for US Business' : "ABD'de İş Yapanlar İçin Sözleşmeler"}
               </span>
               <span className="text-[#C9A227]">→</span>
             </Link>
