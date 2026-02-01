@@ -16,22 +16,27 @@
   }
 
   h1 {
-    @apply font-serif text-gray-900 font-bold tracking-tight;
-    line-height: 1.25;
+    @apply font-serif text-3xl md:text-4xl text-gray-900 font-bold tracking-tight;
+    line-height: 1.2;
   }
 
   h2 {
-    @apply font-serif text-gray-900 font-semibold;
-    line-height: 1.3;
+    @apply font-serif text-2xl md:text-3xl text-gray-900 font-semibold;
+    line-height: 1.25;
   }
 
   h3 {
-    @apply font-serif text-gray-900 font-semibold;
+    @apply font-serif text-xl md:text-2xl text-gray-900 font-semibold;
+    line-height: 1.3;
+  }
+
+  h4 {
+    @apply font-sans text-lg text-gray-900 font-semibold;
     line-height: 1.35;
   }
 
-  h4, h5, h6 {
-    @apply font-sans text-gray-900 font-semibold;
+  h5, h6 {
+    @apply font-sans text-base text-gray-900 font-semibold;
     line-height: 1.4;
   }
 
@@ -55,25 +60,25 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-gray-900 text-white px-6 py-3 text-sm font-semibold transition-all hover:bg-gray-800 shadow-sm hover:shadow-md;
+    @apply bg-gray-900 text-white px-6 py-3 text-sm font-semibold rounded-lg transition-all hover:bg-gray-800 shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply bg-white text-gray-900 px-6 py-3 text-sm font-semibold border border-gray-300 transition-all hover:border-gray-500 hover:bg-gray-50 shadow-sm;
+    @apply bg-white text-gray-900 px-6 py-3 text-sm font-semibold rounded-lg border border-gray-300 transition-all hover:border-gray-500 hover:bg-gray-50 shadow-sm;
   }
 
   .disclaimer-box {
-    @apply bg-amber-50/60 border-l-4 border-amber-400 px-6 py-5 my-8 text-sm text-gray-700 leading-relaxed;
+    @apply bg-amber-50/60 border-l-4 border-amber-400 px-6 py-5 my-8 text-sm text-gray-700 leading-relaxed rounded-r-lg;
   }
 
   .prose-legal {
     @apply prose prose-gray max-w-none;
     @apply prose-headings:font-serif prose-headings:text-gray-900 prose-headings:font-semibold;
-    @apply prose-a:text-gray-900 prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-gray-600;
+    @apply prose-a:text-gray-900 prose-a:underline prose-a:underline-offset-4 prose-a:decoration-gray-300 hover:prose-a:decoration-gray-900;
     @apply prose-p:text-gray-700 prose-p:leading-relaxed;
     @apply prose-li:text-gray-700;
-    @apply prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4;
-    @apply prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3;
+    @apply prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-5;
+    @apply prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4;
   }
 
   .article-layout {
@@ -85,22 +90,27 @@
   }
 
   .card {
-    @apply border border-gray-200 p-6 transition-all hover:border-gray-300 hover:shadow-sm bg-white;
+    @apply border border-gray-200 rounded-lg p-6 transition-all hover:border-gray-300 hover:shadow-sm bg-white;
   }
 
   .card-link {
-    @apply block border border-gray-200 p-6 transition-all hover:border-gray-400 hover:shadow-md bg-white;
+    @apply block border border-gray-200 rounded-lg p-6 transition-all hover:border-gray-400 hover:shadow-md bg-white cursor-pointer;
   }
 
   .card-elevated {
-    @apply bg-white border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all;
+    @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-all;
   }
 
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3;
+    @apply text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4;
   }
 
   .pillar-link {
-    @apply text-gray-900 underline underline-offset-2 decoration-gray-300 hover:decoration-gray-900 transition-colors font-medium;
+    @apply text-gray-900 underline underline-offset-4 decoration-gray-300 hover:decoration-gray-900 transition-colors font-medium;
+  }
+
+  /* Arrow link — standalone navigation links with → indicator */
+  .arrow-link {
+    @apply text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors inline-flex items-center gap-1 underline underline-offset-4 decoration-gray-300 hover:decoration-gray-600;
   }
 }

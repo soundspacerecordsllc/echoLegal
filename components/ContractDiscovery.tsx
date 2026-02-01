@@ -381,7 +381,7 @@ function DocumentRow({
   return (
     <Link
       href={`${templatesPath}/${template.slug}`}
-      className="block p-4 hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
+      className="group block p-4 hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
       aria-label={`${lang === 'en' ? 'View' : 'Görüntüle'}: ${template.title}`}
     >
       <div className="flex items-start justify-between gap-4">
@@ -407,7 +407,7 @@ function DocumentRow({
           </div>
 
           {/* Title */}
-          <h3 className="text-base font-semibold text-gray-900">
+          <h3 className="text-base font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
             {template.title}
           </h3>
 
@@ -431,7 +431,7 @@ function DocumentRow({
 
         {/* Arrow indicator */}
         <svg
-          className="w-5 h-5 text-gray-400 flex-shrink-0 mt-1"
+          className="w-5 h-5 text-gray-300 group-hover:text-gray-500 flex-shrink-0 mt-1 transition-colors"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

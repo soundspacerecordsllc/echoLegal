@@ -161,11 +161,11 @@ export default function SeeAlso({ lang, items, title, variant = 'list', classNam
             <Link
               key={idx}
               href={item.href}
-              className="group p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors border border-gray-100"
+              className="group p-4 bg-gray-50 rounded-lg hover:bg-gray-100 hover:shadow-sm transition-all border border-gray-200"
             >
-              <h4 className="font-medium text-gray-900 group-hover:text-black mb-1">
+              <span className="font-medium text-gray-900 group-hover:text-gray-700 underline underline-offset-4 decoration-gray-300 group-hover:decoration-gray-600 transition-colors block mb-1">
                 {item.title}
-              </h4>
+              </span>
               {item.description && (
                 <p className="text-sm text-gray-500">{item.description}</p>
               )}
@@ -180,17 +180,17 @@ export default function SeeAlso({ lang, items, title, variant = 'list', classNam
   return (
     <div className={`${className}`}>
       <h3 className="text-lg font-bold text-black mb-4">{title || defaultTitle}</h3>
-      <ul className="space-y-2">
+      <ul className="space-y-2.5">
         {items.map((item, idx) => (
           <li key={idx} className="flex items-start gap-2">
-            <span className="text-gray-400 mt-1">→</span>
+            <span className="text-gray-400 mt-0.5">&rarr;</span>
             <Link
               href={item.href}
-              className="text-gray-700 hover:text-black transition-colors"
+              className="text-gray-700 hover:text-black transition-colors underline underline-offset-4 decoration-gray-300 hover:decoration-gray-700"
             >
               <span className="font-medium">{item.title}</span>
               {item.description && (
-                <span className="text-sm text-gray-500 ml-1">— {item.description}</span>
+                <span className="text-sm text-gray-500 ml-1 no-underline">— {item.description}</span>
               )}
             </Link>
           </li>
@@ -306,9 +306,10 @@ export function RelatedResources({
       <div className="mt-6 text-center">
         <Link
           href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
-          className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+          className="arrow-link text-gray-500 hover:text-gray-700"
         >
-          {isEnglish ? 'Browse all resources' : 'Tüm kaynaklara göz at'} →
+          {isEnglish ? 'Browse all resources' : 'Tüm kaynaklara göz at'}
+          <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>
     </section>
