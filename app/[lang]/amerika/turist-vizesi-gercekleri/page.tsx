@@ -102,7 +102,7 @@ export default async function TuristVizesiPage({
           📍 {isEnglish ? 'Jurisdiction: US Federal Immigration Law' : 'Yargı Yetkisi: ABD Federal Göçmenlik Hukuku'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {isEnglish ? "Tourist Visa Realities" : "Turist Vizesi Gerçekleri"}
         </h1>
 

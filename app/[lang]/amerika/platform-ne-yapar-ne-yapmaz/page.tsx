@@ -38,7 +38,7 @@ export default async function PlatformPage({
 
         <TrustStrip lang={lang} />
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {isEnglish ? "What This Platform Does and Does Not Do" : "Platformun Kapsamı ve Sınırları"}
         </h1>
 

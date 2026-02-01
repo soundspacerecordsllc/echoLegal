@@ -140,7 +140,7 @@ export default async function LLCvsCorporationPage({
               {isEnglish ? 'Business Structure Guide' : 'İş Yapısı Rehberi'}
             </span>
 
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
               {isEnglish
                 ? 'LLC vs Corporation: Which is Right for Your US Business?'
                 : 'LLC mi Corporation mı: Hangisi Sizin İçin Doğru?'}

@@ -112,7 +112,7 @@ export default async function LLCChecklistPage({
             <span className="inline-block px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-sm font-medium mb-4">
               {isEnglish ? 'Reference Checklist' : 'Referans Kontrol Listesi'}
             </span>
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
               {isEnglish ? 'Before Forming a US LLC' : 'ABD\'de LLC Kurmadan Önce'}
             </h1>
             <p className="text-lg text-gray-600">

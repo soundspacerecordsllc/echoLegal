@@ -49,7 +49,7 @@ export default async function PreArrivalGuidePage({
         {isEnglish ? 'Jurisdiction: US Federal Immigration Law' : 'Yargi Yetkisi: ABD Federal Gocmenlik Hukuku'}
       </span>
 
-      <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+      <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
         {isEnglish ? "Legal Realities Before Coming to the US" : "ABD'ye Gelmeden Önce Hukuki Gerçekler Rehberi"}
       </h1>
 

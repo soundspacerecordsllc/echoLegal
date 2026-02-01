@@ -96,7 +96,7 @@ export default async function LegalUpdateDetailPage({
       </div>
 
       {/* Title */}
-      <h1 className="text-3xl md:text-4xl font-black text-black mb-6">
+      <h1 className="text-3xl md:text-4xl font-bold text-black mb-6">
         {update.title}
       </h1>
 

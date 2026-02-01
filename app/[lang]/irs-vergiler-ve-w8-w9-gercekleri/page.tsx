@@ -150,7 +150,7 @@ export default async function TaxGuidePage({
                 {isEnglish ? 'Tax Guide' : 'Vergi Rehberi'}
               </span>
 
-              <h1 className="text-3xl md:text-4xl font-black text-black mb-4 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
                 {isEnglish
                   ? 'IRS, Taxes & W-8/W-9 Realities'
                   : 'IRS, Vergi ve W-8/W-9 Gerçekleri'}

@@ -36,7 +36,7 @@ export default async function WhatIsNDAPage({
 
       {/* Article Header */}
       <article>
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'What is an NDA?' : 'NDA Nedir?'}
         </h1>
 

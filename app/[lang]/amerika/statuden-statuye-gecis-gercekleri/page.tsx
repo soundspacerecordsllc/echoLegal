@@ -90,7 +90,7 @@ export default async function StatuGecisPage({
           📍 {isEnglish ? 'Jurisdiction: US Federal Immigration Law' : 'Yargı Yetkisi: ABD Federal Göçmenlik Hukuku'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {isEnglish ? "Status Change Realities" : "Statüden Statüye Geçiş Gerçekleri"}
         </h1>
 

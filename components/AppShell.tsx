@@ -76,7 +76,7 @@ function AppHeader({ lang }: { lang: 'en' | 'tr' }) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href={`/${lang}`} className="flex items-center flex-shrink-0">
-            <span className="text-2xl font-black text-black tracking-tight">
+            <span className="text-2xl font-bold text-black tracking-tight">
               EchoLegal
             </span>
           </Link>
@@ -524,49 +524,45 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
   const isEnglish = lang === 'en'
 
   return (
-    <footer className="border-t border-gray-200 py-12 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="border-t border-gray-200 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8 py-12">
           {/* Brand */}
           <div>
-            <Link href={`/${lang}`} className="text-xl font-black text-black">
+            <Link href={`/${lang}`} className="text-lg font-bold text-black tracking-tight">
               EchoLegal
             </Link>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-500 leading-relaxed">
               {isEnglish
-                ? 'A global legal encyclopedia.'
-                : 'Küresel hukuk ansiklopedisi.'}
+                ? 'A bilingual legal encyclopedia founded by a New York-licensed attorney.'
+                : 'New York lisanslı bir avukat tarafından kurulan iki dilli hukuk ansiklopedisi.'}
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Reference */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3">
-              {isEnglish ? 'Quick Links' : 'Hızlı Bağlantılar'}
+            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">
+              {isEnglish ? 'Reference' : 'Referans'}
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link
-                  href={`/${lang}/amerika`}
-                  className="text-gray-500 hover:text-black"
-                >
-                  {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
+                <Link href={`/${lang}/amerika`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'US Business Hub' : 'ABD İş Rehberi'}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={resolveHref('/{lang}/templates', lang)}
-                  className="text-gray-500 hover:text-black"
-                >
+                <Link href={`/${lang}/encyclopedia`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
+                </Link>
+              </li>
+              <li>
+                <Link href={resolveHref('/{lang}/templates', lang)} className="text-gray-500 hover:text-black transition-colors">
                   {isEnglish ? 'Templates' : 'Şablonlar'}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/legal-kits`}
-                  className="text-gray-500 hover:text-black"
-                >
-                  {isEnglish ? 'Legal Kits' : 'Hukuki Kitler'}
+                <Link href={`/${lang}/checklists`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
                 </Link>
               </li>
             </ul>
@@ -574,57 +570,52 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
 
           {/* Legal */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3">
+            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">
               {isEnglish ? 'Legal' : 'Hukuki'}
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link
-                  href={`/${lang}/legal/privacy`}
-                  className="text-gray-500 hover:text-black"
-                >
+                <Link href={`/${lang}/legal/privacy`} className="text-gray-500 hover:text-black transition-colors">
                   {isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/legal/terms`}
-                  className="text-gray-500 hover:text-black"
-                >
+                <Link href={`/${lang}/legal/terms`} className="text-gray-500 hover:text-black transition-colors">
                   {isEnglish ? 'Terms of Service' : 'Kullanım Koşulları'}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/legal/disclaimer`}
-                  className="text-gray-500 hover:text-black"
-                >
+                <Link href={`/${lang}/legal/disclaimer`} className="text-gray-500 hover:text-black transition-colors">
                   {isEnglish ? 'Disclaimer' : 'Sorumluluk Reddi'}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/about/editorial-policy`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Editorial Policy' : 'Yayın Politikası'}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* About */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3">
-              {isEnglish ? 'Support' : 'Destek'}
+            <h4 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">
+              {isEnglish ? 'Platform' : 'Platform'}
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link
-                  href={`/${lang}/support`}
-                  className="text-gray-500 hover:text-black"
-                >
-                  {isEnglish ? 'Support Us' : 'Bizi Destekle'}
+                <Link href={`/${lang}/about`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'About' : 'Hakkımızda'}
                 </Link>
               </li>
               <li>
-                <Link
-                  href={`/${lang}/about`}
-                  className="text-gray-500 hover:text-black"
-                >
-                  {isEnglish ? 'About' : 'Hakkımızda'}
+                <Link href={`/${lang}/support`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Support' : 'Destek'}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/contribute`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Contribute' : 'Katkıda Bulun'}
                 </Link>
               </li>
             </ul>
@@ -632,14 +623,14 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
         </div>
 
         {/* Disclaimer */}
-        <div className="pt-8 border-t border-gray-200">
-          <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
+        <div className="py-6 border-t border-gray-200">
+          <p className="text-xs text-gray-500 leading-relaxed max-w-4xl">
             {isEnglish
-              ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship.'
-              : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanılması avukat-müvekkil ilişkisi oluşturmaz.'}
+              ? 'LEGAL DISCLAIMER: EchoLegal provides educational legal information and document templates for general informational purposes only. Nothing on this website constitutes legal advice, nor does use of this website create an attorney-client relationship. Laws vary by jurisdiction. Consult a licensed attorney for advice specific to your situation.'
+              : 'HUKUKI SORUMLULUK REDDİ: EchoLegal, yalnızca genel bilgilendirme amaçlı eğitici hukuki bilgiler ve belge şablonları sunar. Bu web sitesindeki hiçbir şey hukuki tavsiye teşkil etmez ve bu web sitesinin kullanılması avukat-müvekkil ilişkisi oluşturmaz. Yasalar yargı alanlarına göre farklılık gösterir. Durumunuza özel tavsiye için lisanslı bir avukata danışın.'}
           </p>
-          <p className="text-xs text-gray-400 mt-4">
-            © 2026 EchoLegal
+          <p className="text-xs text-gray-400 mt-3">
+            © 2026 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
           </p>
         </div>
       </div>

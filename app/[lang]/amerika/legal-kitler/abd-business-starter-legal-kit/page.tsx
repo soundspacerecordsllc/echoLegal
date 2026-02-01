@@ -49,7 +49,7 @@ export default async function BusinessStarterKitPage({
         {isEnglish ? 'Jurisdiction: United States (Delaware, Wyoming, NY focus)' : 'Yargi Yetkisi: ABD (Delaware, Wyoming, NY odakli)'}
       </span>
 
-      <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+      <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
         {isEnglish ? "US Business Starter Legal Kit" : "ABD Business Starter Legal Kit"}
       </h1>
 

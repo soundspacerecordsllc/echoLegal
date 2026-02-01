@@ -49,7 +49,7 @@ export default async function TRUSBridgeLibraryPage({
           📍 {isEnglish ? 'Jurisdiction: US + Turkey (Cross-Referenced)' : 'Yargı Yetkisi: ABD + Türkiye (Çapraz Referanslı)'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           TR-US Legal Bridge Mini Library
         </h1>
 
@@ -67,15 +67,15 @@ export default async function TRUSBridgeLibraryPage({
             </h2>
             <div className="grid md:grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-3xl font-black text-[#C9A227]">7+</div>
+                <div className="text-3xl font-bold text-[#C9A227]">7+</div>
                 <div className="text-sm text-gray-600">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonu'}</div>
               </div>
               <div>
-                <div className="text-3xl font-black text-[#C9A227]">EN/TR</div>
+                <div className="text-3xl font-bold text-[#C9A227]">EN/TR</div>
                 <div className="text-sm text-gray-600">{isEnglish ? 'Bilingual Access' : 'İki Dilli Erişim'}</div>
               </div>
               <div>
-                <div className="text-3xl font-black text-[#C9A227]">5+</div>
+                <div className="text-3xl font-bold text-[#C9A227]">5+</div>
                 <div className="text-sm text-gray-600">{isEnglish ? 'Reference Guides' : 'Referans Rehberi'}</div>
               </div>
             </div>

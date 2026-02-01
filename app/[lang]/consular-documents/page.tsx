@@ -36,7 +36,7 @@ export default async function ConsularDocumentsPage({
             {isEnglish ? 'For Turkish Citizens Abroad' : 'Yurt Dışındaki Türk Vatandaşları İçin'}
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
             {isEnglish ? 'Consular Documents & Procedures' : 'Konsolosluk Belgeleri & İşlemleri'}
           </h1>
 

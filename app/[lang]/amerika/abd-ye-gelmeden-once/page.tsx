@@ -49,7 +49,7 @@ export default async function PreArrivalChecklistPage({
               {isEnglish ? 'Legal Readiness Checklist' : 'Hukuki Hazırlık Kontrol Listesi'}
             </span>
 
-            <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
               {isEnglish
                 ? 'Before Arriving in the US'
                 : "ABD'ye Gelmeden Önce Yapılması Gerekenler"}

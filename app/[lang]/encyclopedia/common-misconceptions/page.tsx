@@ -103,7 +103,7 @@ export default async function CommonMisconceptionsPage({
     <div className="min-h-screen bg-white">
       <header className="border-b border-gray-100">
         <nav className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href={`/${lang}`} className="text-2xl font-black">EchoLegal</Link>
+          <Link href={`/${lang}`} className="text-2xl font-bold">EchoLegal</Link>
           <div className="flex items-center gap-6">
             <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
             <Link href={`/${lang}/contracts`} className="text-sm font-medium hover:opacity-60">{isEnglish ? 'Contracts' : 'Sözleşmeler'}</Link>
@@ -126,7 +126,7 @@ export default async function CommonMisconceptionsPage({
 
         {/* Article Header */}
         <article>
-          <h1 className="text-4xl md:text-5xl font-black mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">
             {isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar'}
           </h1>
 

@@ -58,7 +58,7 @@ export default async function InfluencerAgreementPage({
           📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Influencer / Brand Collaboration Agreement' : 'Influencer / Marka İşbirliği Sözleşmesi'}
         </h1>
 
@@ -91,6 +91,59 @@ export default async function InfluencerAgreementPage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Brands running influencer marketing campaigns',
+              'Influencers and content creators formalizing sponsorships',
+              'Marketing agencies managing influencer relationships',
+              'E-commerce companies with affiliate or ambassador programs',
+              'PR firms coordinating product placements'
+            ] : [
+              'Influencer pazarlama kampanyaları yürüten markalar',
+              'Sponsorlukları resmileştiren influencer ve içerik üreticileri',
+              'Influencer ilişkilerini yöneten pazarlama ajansları',
+              'Affiliate veya marka elçisi programlarına sahip e-ticaret şirketleri',
+              'Ürün yerleştirmelerini koordine eden halkla ilişkiler firmaları'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            {isEnglish
+              ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Without FTC disclosures: regulatory fines for undisclosed sponsorship (FTC Act Section 5)',
+              'Missing content approval: brand damage from off-message posts',
+              'No exclusivity terms: influencer may promote competing brands simultaneously',
+              'Missing usage rights: brand cannot repurpose content',
+              'No performance metrics: disputes over campaign success'
+            ] : [
+              'FTC beyanları olmadan: açıklanmamış sponsorluk için düzenleyici cezalar (FTC Yasası Bölüm 5)',
+              'İçerik onayı eksikse: mesaj dışı paylaşımlardan marka itibarı zararı',
+              'Münhasırlık koşulları yoksa: influencer aynı anda rakip markaları tanıtabilir',
+              'Kullanım hakları belirsizse: marka içeriği yeniden kullanamaz',
+              'Performans ölçütleri yoksa: kampanya başarısı konusunda anlaşmazlıklar'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-red-500 mr-3">✗</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

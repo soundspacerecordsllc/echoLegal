@@ -155,7 +155,7 @@ export default async function LLCGuidePage({
                 {isEnglish ? 'Legal Guide' : 'Hukuki Rehber'}
               </span>
 
-              <h1 className="text-3xl md:text-4xl font-black text-black mb-4 leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
                 {isEnglish
                   ? 'How to Form an LLC in the US: Step-by-Step Guide for Turkish Entrepreneurs'
                   : 'ABD\'de LLC Kurmak: Türkler İçin Adım Adım Hukuki Rehber'}

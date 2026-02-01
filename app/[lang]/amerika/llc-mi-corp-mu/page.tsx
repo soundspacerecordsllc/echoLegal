@@ -98,7 +98,7 @@ export default async function LLCvsCorpPage({
           📍 {isEnglish ? 'Jurisdiction: United States' : 'Yargı Yetkisi: ABD'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
           {isEnglish ? "LLC vs Corporation" : "LLC mi Corp mu?"}
         </h1>
 

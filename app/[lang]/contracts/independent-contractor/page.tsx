@@ -58,7 +58,7 @@ export default async function IndependentContractorPage({
           📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'}
         </h1>
 
@@ -91,6 +91,59 @@ export default async function IndependentContractorPage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Companies hiring contractors instead of employees',
+              'Staffing agencies',
+              'Technology companies with remote workers',
+              'Businesses with international contractors',
+              'Any entity that needs to establish independent contractor relationship for tax purposes'
+            ] : [
+              'Çalışan yerine yüklenici kiralayan şirketler',
+              'İstihdam ajansları',
+              'Uzaktan çalışanları olan teknoloji şirketleri',
+              'Uluslararası yüklenicileri olan işletmeler',
+              'Vergi amaçlı bağımsız yüklenici ilişkisi kurmak isteyen tüm kuruluşlar'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-gray-500">
+            {isEnglish
+              ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-xl font-bold mb-3">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Misclassification risk: IRS penalties, back taxes, benefits liability',
+              'Without agreement: worker may be reclassified as employee (IRS 20-factor test)',
+              'Missing control provisions: suggests employment relationship',
+              'No IP assignment: contractor may retain ownership of work product',
+              'Penalties can include back payroll taxes plus interest and penalties'
+            ] : [
+              'Yanlış sınıflandırma riski: IRS cezaları, geriye dönük vergiler, yan hak yükümlülükleri',
+              'Sözleşme olmadan: çalışan, işçi olarak yeniden sınıflandırılabilir (IRS 20 faktör testi)',
+              'Kontrol hükümleri eksikse: istihdam ilişkisinin varlığına işaret eder',
+              'Fikri mülkiyet devri yoksa: yüklenici iş ürünü sahipliğini elinde tutabilir',
+              'Cezalar geriye dönük bordro vergileri ile faiz ve ek yaptırımları içerebilir'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-red-500 mr-3">✗</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

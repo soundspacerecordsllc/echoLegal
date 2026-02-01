@@ -176,7 +176,7 @@ export default async function TemplateDetailPage({
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-black text-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
           {template.title}
         </h1>
 
@@ -190,56 +190,66 @@ export default async function TemplateDetailPage({
 
         {/* Download Section */}
         {(template.downloadUrl || hasContractPage) ? (
-          <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
-            <h2 className="text-3xl font-bold text-center mb-4">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-8 mb-12">
+            <h2 className="text-xl font-semibold text-center mb-2">
               {isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}
             </h2>
-            <p className="text-center text-gray-600 mb-6">
+            <p className="text-center text-gray-500 text-sm mb-6">
               {isEnglish
-                ? 'I support EchoLegal – $20 recommended.'
-                : "EchoLegal'i destekliyorum – $20 önerilir."}
+                ? 'Pay what you can — $20 recommended to support ongoing updates.'
+                : 'Gücünüz yettiğince katkıda bulunun — sürekli güncellemeler için $20 önerilir.'}
             </p>
 
-            <a
-              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
-              className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
-            >
-              {isEnglish
-                ? 'I CAN Afford It — $20 (Recommended)'
-                : 'Ödeyebilirim — $20 (Önerilen)'}
-            </a>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-5 border border-gray-200 rounded-lg bg-gray-50">
+                <a
+                  href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+                  className="block w-full bg-gray-900 text-white text-center py-3.5 px-4 text-sm font-semibold rounded hover:bg-gray-800 transition-all shadow-sm hover:shadow-md"
+                >
+                  {isEnglish
+                    ? 'Support EchoLegal — $20'
+                    : "EchoLegal'i Destekle — $20"}
+                </a>
+                <p className="text-center text-xs text-gray-500 mt-3 leading-relaxed">
+                  {isEnglish
+                    ? 'Helps maintain bilingual access and updates.'
+                    : 'İki dilli erişimi ve güncellemeleri sürdürmeye yardımcı olur.'}
+                </p>
+              </div>
 
-            <a
-              href={template.downloadUrl || `/${lang}/contracts/${slug}`}
-              {...(template.downloadUrl ? { download: true } : {})}
-              className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors mb-4"
-            >
-              {isEnglish
-                ? 'I CANNOT Afford It — Download Free'
-                : 'Ödeyemiyorum — Ücretsiz İndir'}
-            </a>
-
-            <p className="text-center text-sm text-gray-500">
-              {isEnglish
-                ? 'Most users choose $20 to support ongoing updates and bilingual access.'
-                : 'Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.'}
-            </p>
+              <div className="p-5 border border-gray-200 rounded-lg bg-white">
+                <a
+                  href={template.downloadUrl || `/${lang}/contracts/${slug}`}
+                  {...(template.downloadUrl ? { download: true } : {})}
+                  className="block w-full bg-white text-gray-900 text-center py-3.5 px-4 text-sm font-semibold border border-gray-300 rounded hover:border-gray-500 hover:bg-gray-50 transition-all"
+                >
+                  {isEnglish
+                    ? 'Download Free'
+                    : 'Ücretsiz İndir'}
+                </a>
+                <p className="text-center text-xs text-gray-500 mt-3 leading-relaxed">
+                  {isEnglish
+                    ? 'No payment required. Always free to access.'
+                    : 'Ödeme gerekmez. Erişim her zaman ücretsizdir.'}
+                </p>
+              </div>
+            </div>
           </div>
         ) : (
-          <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
-            <h2 className="text-2xl font-bold text-center mb-4">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-8 mb-12">
+            <h2 className="text-xl font-semibold text-center mb-3">
               {isEnglish ? 'Template Coming Soon' : 'Şablon Yakında'}
             </h2>
-            <p className="text-center text-gray-600 mb-6">
+            <p className="text-center text-gray-500 text-sm mb-6">
               {isEnglish
                 ? 'This downloadable template is being prepared. Check back soon or contact us for updates.'
                 : 'Bu indirilebilir şablon hazırlanıyor. Yakında tekrar kontrol edin veya güncellemeler için bize ulaşın.'}
             </p>
             <a
               href={`/${lang}/support`}
-              className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors"
+              className="block w-full max-w-xs mx-auto bg-gray-900 text-white text-center py-3 rounded font-semibold text-sm hover:bg-gray-800 transition-colors"
             >
-              {isEnglish ? 'Contact Us for Updates' : 'Güncellemeler İçin Bize Ulaşın'}
+              {isEnglish ? 'Contact for Updates' : 'Güncellemeler İçin İletişime Geçin'}
             </a>
           </div>
         )}
@@ -248,7 +258,7 @@ export default async function TemplateDetailPage({
         <div className="prose prose-gray max-w-none mb-12">
           {templateContent.whatIsIt && (
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-black mb-4">
+              <h2 className="text-2xl font-semibold text-black mb-4">
                 {isEnglish ? 'What is This?' : 'Bu Nedir?'}
               </h2>
               <p className="text-gray-600">{templateContent.whatIsIt}</p>
@@ -257,7 +267,7 @@ export default async function TemplateDetailPage({
 
           {templateContent.whenToUse && templateContent.whenToUse.length > 0 && (
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-black mb-4">
+              <h2 className="text-2xl font-semibold text-black mb-4">
                 {isEnglish ? 'When to Use' : 'Ne Zaman Kullanılır'}
               </h2>
               <ul className="space-y-2">
@@ -273,7 +283,7 @@ export default async function TemplateDetailPage({
 
           {templateContent.keyElements && templateContent.keyElements.length > 0 && (
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-black mb-4">
+              <h2 className="text-2xl font-semibold text-black mb-4">
                 {isEnglish ? 'Key Elements' : 'Temel Unsurlar'}
               </h2>
               <ul className="space-y-2">

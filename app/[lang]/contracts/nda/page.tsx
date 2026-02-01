@@ -58,7 +58,7 @@ export default async function NDAPage({
           📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)'}
         </h1>
 
@@ -91,6 +91,59 @@ export default async function NDAPage({
             ]).map((item, i) => (
               <li key={i} className="flex items-start">
                 <span className="text-[#C9A227] mr-3">✓</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'Who Uses This?' : 'Kimler Kullanır?'}</h2>
+          <p className="text-gray-600 mb-4">
+            {isEnglish
+              ? <>NDAs are among the most frequently used <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] underline hover:text-[#B8922A]">business contracts in the United States</Link>. Typical users include:</>
+              : <>Gizlilik sözleşmeleri, <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] underline hover:text-[#B8922A]">ABD&apos;de iş yapanlar için temel sözleşmelerden</Link> biridir. Başlıca kullanıcılar şunlardır:</>}
+          </p>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Entrepreneurs discussing business ideas with potential partners',
+              'Companies hiring contractors or freelancers with access to proprietary information',
+              'Startups in fundraising discussions with investors',
+              'Businesses exploring mergers, acquisitions, or joint ventures',
+              'Technology companies sharing technical specifications or trade secrets'
+            ] : [
+              'Potansiyel ortaklarla iş fikirlerini görüşen girişimciler',
+              'Özel bilgilere erişimi olan yüklenici veya serbest çalışanları işe alan şirketler',
+              'Yatırımcılarla finansman görüşmeleri yürüten girişimler (start-up\'lar)',
+              'Birleşme, devralma veya ortak girişim fırsatlarını değerlendiren işletmeler',
+              'Teknik spesifikasyonlarını veya ticari sırlarını paylaşan teknoloji şirketleri'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">•</span>
+                <span className="text-gray-600">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What Happens If Misused or Missing?' : 'Yanlış veya Eksik Kullanılırsa Ne Olur?'}</h2>
+          <ul className="space-y-3">
+            {(isEnglish ? [
+              'Without NDA: No legal recourse if confidential information is disclosed',
+              'Overly broad NDA: May be unenforceable if scope is unreasonable',
+              'Missing definition of confidential information: Creates ambiguity about what is protected',
+              'No time limit: Some jurisdictions may refuse to enforce perpetual obligations',
+              'No jurisdiction clause: Uncertainty about where disputes will be resolved'
+            ] : [
+              'NDA olmadan: Gizli bilgilerin ifşa edilmesi hâlinde hukuki başvuru yolu bulunmaz',
+              'Aşırı geniş kapsamlı NDA: Kapsam makul değilse mahkemece uygulanamaz hâle gelebilir',
+              'Gizli bilgi tanımının eksikliği: Neyin korunduğu konusunda belirsizlik yaratır',
+              'Süre sınırı bulunmaması: Bazı yargı bölgeleri süresiz yükümlülükleri uygulamayı reddedebilir',
+              'Yargı yetkisi maddesinin bulunmaması: Uyuşmazlıkların nerede çözüleceğine dair belirsizlik doğurur'
+            ]).map((item, i) => (
+              <li key={i} className="flex items-start">
+                <span className="text-[#C9A227] mr-3">•</span>
                 <span className="text-gray-600">{item}</span>
               </li>
             ))}

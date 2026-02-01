@@ -128,7 +128,7 @@ export default async function LibraryPage({
           <p className="text-sm font-medium text-[#C9A227] uppercase tracking-widest mb-2">
             {isEnglish ? 'Reference' : 'Referans'}
           </p>
-          <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             {isEnglish ? 'Library' : 'Kütüphane'}
           </h1>
           <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-2xl">

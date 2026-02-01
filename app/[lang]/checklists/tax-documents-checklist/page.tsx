@@ -208,7 +208,7 @@ export default async function TaxDocumentsChecklistPage({
               {isEnglish ? 'Free Checklist' : 'Ücretsiz Kontrol Listesi'}
             </span>
 
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
               {isEnglish ? 'US Tax Documents: First Year Checklist' : "ABD Vergi Belgeleri: İlk Yıl Checklist"}
             </h1>
 

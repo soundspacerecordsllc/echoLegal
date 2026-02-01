@@ -22,7 +22,7 @@ export default function FAQAccordion({ items, title }: FAQAccordionProps) {
   return (
     <section className="mb-12">
       {title && (
-        <h2 className="text-2xl font-bold mb-6">{title}</h2>
+        <h2 className="text-2xl font-semibold mb-6">{title}</h2>
       )}
 
       <div className="space-y-3">

@@ -36,7 +36,7 @@ export default async function FreelancerLegalGuidePage({
 
       {/* Article Header */}
       <article>
-        <h1 className="text-4xl md:text-5xl font-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi'}
         </h1>
 

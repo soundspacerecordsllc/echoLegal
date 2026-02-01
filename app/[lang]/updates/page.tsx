@@ -51,7 +51,7 @@ export default async function LegalUpdatesPage({
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-black text-black mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
           {isEnglish ? 'Legal Updates' : 'Hukuki Güncellemeler'}
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl">

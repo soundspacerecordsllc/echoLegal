@@ -124,7 +124,7 @@ export default async function TemplatesPage({
             <p className="text-xs font-semibold text-[#C9A227] uppercase tracking-[0.2em] mb-3">
               {isEnglish ? 'Document Library' : 'Belge Kütüphanesi'}
             </p>
-            <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               {isEnglish ? 'Templates' : 'Şablonlar'}
             </h1>
             <p className="text-base text-gray-500 leading-relaxed max-w-2xl">

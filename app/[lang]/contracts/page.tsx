@@ -84,45 +84,13 @@ export default async function ContractsPage({
       />
 
       <div className="min-h-screen bg-white">
-        {/* Header */}
-        <header className="border-b border-gray-100">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <Link href={`/${lang}`} className="text-2xl font-black text-black">
-              EchoLegal
-            </Link>
-            <div className="flex items-center gap-6">
-              <Link href={`/${lang}`} className="text-sm font-medium hover:opacity-60">
-                {isEnglish ? 'Home' : 'Ana Sayfa'}
-              </Link>
-              <Link
-                href={`/${lang}/contracts`}
-                className="text-sm font-medium text-black border-b-2 border-black"
-              >
-                {isEnglish ? 'Contracts' : 'Sözleşmeler'}
-              </Link>
-              <Link href={`/${lang}/templates`} className="text-sm font-medium hover:opacity-60">
-                {isEnglish ? 'Templates' : 'Şablonlar'}
-              </Link>
-              <Link href={`/${lang}/library`} className="text-sm font-medium hover:opacity-60">
-                {isEnglish ? 'Library' : 'Kütüphane'}
-              </Link>
-              <Link href={`/${lang}/contribute`} className="text-sm font-medium hover:opacity-60">
-                {isEnglish ? 'Contribute' : 'Katkıda Bulun'}
-              </Link>
-              <Link
-                href={`/${lang === 'en' ? 'tr' : 'en'}/contracts`}
-                className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
-              >
-                {isEnglish ? 'TR' : 'EN'}
-              </Link>
-            </div>
-          </nav>
-        </header>
-
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Page Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-black text-black mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+              {isEnglish ? 'Template Library' : 'Şablon Kütüphanesi'}
+            </p>
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
               {isEnglish ? 'Legal Documents' : 'Hukuki Belgeler'}
             </h1>
             <p className="text-lg text-gray-600 max-w-3xl">
@@ -185,18 +153,6 @@ export default async function ContractsPage({
             </div>
           </section>
         </main>
-
-        {/* Footer */}
-        <footer className="border-t border-gray-200 mt-20 py-12 px-4">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-xs text-gray-400 leading-relaxed max-w-4xl">
-              {dict.disclaimer.global}
-            </p>
-            <p className="text-xs text-gray-400 mt-4">
-              © 2025 EchoLegal. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}
-            </p>
-          </div>
-        </footer>
       </div>
     </>
   )

@@ -52,7 +52,7 @@ export default async function AmerikaHubPage({
             🇺🇸 {isEnglish ? 'US Business Hub' : 'ABD Ticaret Rehberi'}
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-black text-black mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {isEnglish
               ? 'US Business & Legal Guide'
               : "Türk Girişimciler İçin ABD Hukuk Rehberi"}
@@ -91,50 +91,72 @@ export default async function AmerikaHubPage({
 
         {/* Featured Guides */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Featured Guides' : 'Öne Çıkan Rehberler'}
+          <h2 className="text-2xl font-semibold text-black mb-6">
+            {isEnglish ? 'Pillar Guides' : 'Ana Rehberler'}
           </h2>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <Link
+              href={`/${lang}/amerika/abdde-llc-kurmak`}
+              className="card-elevated rounded-lg group"
+            >
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
+              </p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                {isEnglish ? 'LLC Formation in the US' : "ABD'de LLC Kurmak"}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {isEnglish
+                  ? 'Entity types, state selection, formation steps, compliance, and post-formation requirements.'
+                  : 'Tüzel kişilik türleri, eyalet seçimi, kuruluş adımları, uyum gereksinimleri ve kuruluş sonrası yükümlülükler.'}
+              </p>
+            </Link>
+
+            <Link
+              href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`}
+              className="card-elevated rounded-lg group"
+            >
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
+              </p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                {isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler'}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {isEnglish
+                  ? 'Contract types, key elements, red flags, international enforcement, and when to get legal review.'
+                  : 'Sözleşme türleri, temel unsurlar, tehlike işaretleri, uluslararası tenfiz ve avukat incelemesi gerektiren durumlar.'}
+              </p>
+            </Link>
+
+            <Link
+              href={`/${lang}/amerika/irs-vergi-gercekleri`}
+              className="card-elevated rounded-lg group"
+            >
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
+              </p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                {isEnglish ? 'IRS, Taxes & W-8/W-9' : 'IRS, Vergi ve W-8/W-9'}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {isEnglish
+                  ? 'Tax residency, FATCA/FBAR, treaty benefits, US-source income, and common misconceptions.'
+                  : 'Vergi mukimliği, FATCA/FBAR, anlaşma hakları, ABD kaynaklı gelir ve yaygın yanılgılar.'}
+              </p>
+            </Link>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <Link
-              href={`/${lang}/library/llc-kurma-rehberi`}
-              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
-            >
-              <span className="text-3xl mb-3 block">🏢</span>
-              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                {isEnglish ? 'LLC Formation Guide' : "ABD'de LLC Kurmak"}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {isEnglish
-                  ? 'State selection, formation process, and what you need to know.'
-                  : 'Eyalet seçimi, kuruluş süreci ve bilmeniz gerekenler.'}
-              </p>
-            </Link>
-
-            <Link
-              href={`/${lang}/library/irs-vergi-gercekleri`}
-              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
-            >
-              <span className="text-3xl mb-3 block">📋</span>
-              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
-                {isEnglish ? 'IRS & Tax Facts' : 'IRS ve Vergi Gerçekleri'}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {isEnglish
-                  ? 'W-8, W-9, 1099 forms explained in plain language.'
-                  : 'W-8, W-9 ve 1099 formlarının anlaşılır özeti.'}
-              </p>
-            </Link>
-
-            <Link
               href={`/${lang}/library/hukuki-yanilgilar`}
-              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
+              className="card-link rounded-lg group"
             >
-              <span className="text-3xl mb-3 block">❌</span>
-              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'Common Misconceptions' : 'Sık Yapılan Hukuki Hatalar'}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 {isEnglish
                   ? 'Myths vs. facts about doing business in the US.'
                   : "ABD'de iş yapma konusunda doğru bilinen yanlışlar."}
@@ -143,13 +165,12 @@ export default async function AmerikaHubPage({
 
             <Link
               href={`/${lang}/library/llc-vize-yanilgisi`}
-              className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#C9A227] hover:shadow-lg transition-all group"
+              className="card-link rounded-lg group"
             >
-              <span className="text-3xl mb-3 block">🛂</span>
-              <h3 className="text-lg font-bold text-black mb-2 group-hover:text-[#C9A227] transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
                 {isEnglish ? 'LLC ≠ Visa' : 'LLC Kurmak Vize Vermez'}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 {isEnglish
                   ? 'Understanding the immigration realities.'
                   : 'LLC ile vize arasındaki ilişkinin gerçek yüzü.'}

@@ -124,7 +124,7 @@ export default async function FloridaLLCPage({
               {isEnglish ? 'State Guide' : 'Eyalet Rehberi'}
             </span>
 
-            <h1 className="text-3xl md:text-4xl font-black text-black mb-4 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
               {isEnglish
                 ? `How to Form an LLC in ${state.name.en}`
                 : `ABD'de ${state.name.tr}'da LLC Kurmak`}
