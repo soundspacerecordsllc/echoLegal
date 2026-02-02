@@ -758,15 +758,20 @@ export default async function LLCGuidePage({
             </section>
 
             {/* Legal Kit Reference */}
-            <div className="border border-gray-200 rounded-lg p-6 mb-10">
-              <h3 className="text-lg font-bold text-black mb-2">ABD Business Starter Legal Kit</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+            <div className="border border-gray-200 rounded-lg p-8 mb-10">
+              <h2 className="text-xl font-bold text-black mb-3">ABD Business Starter Legal Kit</h2>
+              <p className="text-sm text-gray-700 leading-relaxed mb-4">
                 {isEnglish
-                  ? 'A set of foundational legal document templates for Turkish entrepreneurs forming a US-based business. Includes operating agreement, independent contractor agreement, and NDA.'
-                  : 'ABD merkezli iş kuran Türk girişimciler için temel hukuki belge şablonları. Operating agreement, bağımsız yüklenici sözleşmesi ve gizlilik sözleşmesi (NDA) içerir.'}
+                  ? 'Five foundational legal templates — operating agreement, independent contractor agreement, NDA, service agreement, and IP assignment — prepared for Turkish entrepreneurs forming a US-based LLC. Each document reflects standard US commercial practice. This kit helps sustain the free legal encyclopedia you just read.'
+                  : 'Operating agreement, bağımsız yüklenici sözleşmesi, NDA, hizmet sözleşmesi ve fikri mülkiyet devir sözleşmesi — ABD\'de LLC kuran Türk girişimciler için hazırlanmış beş temel hukuki şablon. Her belge standart ABD ticari uygulamalarını yansıtır. Bu paket, okuduğunuz ücretsiz hukuki ansiklopedinin sürdürülmesine katkı sağlar.'}
               </p>
-              <Link href={`/${lang}/legal-kits/business-starter`} className="inline-block mt-4 text-sm font-medium text-black underline underline-offset-4 hover:text-gray-700">
-                {isEnglish ? 'Review kit contents →' : 'Kit içeriğini inceleyin →'}
+              <p className="text-sm text-gray-500 mb-5">
+                {isEnglish
+                  ? 'Pay What You Can — $20 suggested'
+                  : 'Pay What You Can — Önerilen: $20'}
+              </p>
+              <Link href={`/${lang}/legal-kits/business-starter`} className="inline-block px-5 py-2.5 border border-black text-sm font-medium text-black rounded hover:bg-gray-50 transition-colors">
+                {isEnglish ? 'View Kit' : 'Paketi Gör'}
               </Link>
             </div>
 
