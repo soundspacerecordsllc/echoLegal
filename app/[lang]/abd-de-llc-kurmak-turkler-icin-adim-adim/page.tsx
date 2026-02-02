@@ -757,6 +757,41 @@ export default async function LLCGuidePage({
               </div>
             </section>
 
+            {/* Targeted FAQ for search intent */}
+            <section className="mb-12">
+              <h2 className="text-xl font-bold text-black mb-4">
+                {isEnglish ? 'Frequently Asked Questions (for Turkish Nationals)' : 'Sık Sorulan Sorular (Türkler için)'}
+              </h2>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-black mb-2">
+                    {isEnglish
+                      ? 'Do I need to live in the US to form an LLC?'
+                      : 'ABD\'de LLC kurmak için ABD\'de yaşamak gerekir mi?'}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {isEnglish
+                      ? 'No. US state law does not require LLC owners to be US residents or citizens. Formation can be completed entirely from abroad through a registered agent in the chosen state. However, certain post-formation steps — particularly opening a US bank account — may require physical presence depending on the institution.'
+                      : 'Hayır. ABD eyalet hukuku, LLC sahiplerinin ABD\'de ikamet etmesini veya vatandaş olmasını şart koşmaz. Kuruluş, seçilen eyaletteki bir registered agent aracılığıyla tamamen yurt dışından tamamlanabilir. Ancak kuruluş sonrası bazı adımlar — özellikle ABD banka hesabı açma — kuruma bağlı olarak fiziksel varlık gerektirebilir.'}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-black mb-2">
+                    {isEnglish
+                      ? 'Can I form an LLC without opening a US bank account?'
+                      : 'ABD\'de banka hesabı açmadan LLC kurulabilir mi?'}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {isEnglish
+                      ? 'Yes. A bank account is not a legal prerequisite for LLC formation. The LLC becomes a legal entity upon state approval of the Articles of Organization. That said, operating without a US bank account limits your ability to receive payments, pay taxes, and use most US-based financial platforms.'
+                      : 'Evet. Banka hesabı, LLC kuruluşu için yasal bir ön koşul değildir. LLC, Articles of Organization\'ın eyalet tarafından onaylanmasıyla tüzel kişilik kazanır. Bununla birlikte, ABD banka hesabı olmadan faaliyet göstermek ödeme alma, vergi ödeme ve ABD merkezli finansal platformları kullanma imkanınızı önemli ölçüde kısıtlar.'}
+                  </p>
+                </div>
+              </div>
+            </section>
+
             {/* Legal Kit Reference */}
             <div className="border border-gray-200 rounded-lg p-8 mb-10">
               <h2 className="text-xl font-bold text-black mb-3">ABD Business Starter Legal Kit</h2>
