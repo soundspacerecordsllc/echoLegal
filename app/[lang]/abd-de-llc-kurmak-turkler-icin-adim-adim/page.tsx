@@ -61,7 +61,7 @@ export default async function LLCGuidePage({
 
   const tocItems = [
     { id: 'llc-nedir', label: isEnglish ? 'What is an LLC?' : 'LLC Nedir?' },
-    { id: 'turkiye-mukimi-gercekler', label: isEnglish ? 'Key Realities for Turkish Residents' : 'Türkiye Mukimleri İçin Temel Gerçekler' },
+    { id: 'turkiye-mukimi-gercekler', label: isEnglish ? 'Key Realities for Turkish Residents' : 'Türkiye\'de İkamet Edenler İçin Temel Gerçekler' },
     { id: 'adim-adim-surecler', label: isEnglish ? 'Step-by-Step Process' : 'Adım Adım Süreç' },
     { id: 'sik-yapilan-hatalar', label: isEnglish ? 'Common Mistakes' : 'Sık Yapılan Hatalar' },
     { id: 'belgeler-kontrol-listesi', label: isEnglish ? 'Document Checklist' : 'Belgeler Kontrol Listesi' },
@@ -261,7 +261,7 @@ export default async function LLCGuidePage({
             {/* Section 2: Türkiye Mukimleri İçin Temel Gerçekler */}
             <section id="turkiye-mukimi-gercekler" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                {isEnglish ? '2. Key Realities for Turkish Residents' : '2. Türkiye Mukimleri İçin Temel Gerçekler'}
+                {isEnglish ? '2. Key Realities for Turkish Residents' : '2. Türkiye\'de İkamet Edenler İçin Temel Gerçekler'}
               </h2>
 
               {isEnglish ? (
