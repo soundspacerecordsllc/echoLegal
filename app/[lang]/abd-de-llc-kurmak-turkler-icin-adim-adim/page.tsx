@@ -163,8 +163,8 @@ export default async function LLCGuidePage({
 
               <p className="text-base text-gray-600 mb-6">
                 {isEnglish
-                  ? 'Written for Turkish entrepreneurs and business owners evaluating LLC formation in the United States. This guide covers legal requirements — not marketing promises.'
-                  : 'ABD\'de LLC kurmayı değerlendiren Türk girişimciler ve iş sahipleri için hazırlanmıştır. Pazarlama vaatleri değil, hukuki gereklilikleri ele alır.'}
+                  ? 'Written for Turkish entrepreneurs and business owners evaluating LLC formation in the United States.'
+                  : 'ABD\'de LLC kurmayı değerlendiren Türk girişimciler ve iş sahipleri için hazırlanmıştır.'}
               </p>
 
               {/* Authority signals */}
