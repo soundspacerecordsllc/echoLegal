@@ -548,7 +548,7 @@ export default async function PreArrivalChecklistPage({
                 {isEnglish ? 'ABD Business Starter Legal Kit →' : 'ABD Business Starter Legal Kit →'}
               </Link>
               <span className="text-xs text-gray-500">
-                {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – önerilen tutar 20 $'}
+                {isEnglish ? 'I support EchoLegal – $49 recommended' : 'EchoLegal\'i destekliyorum – önerilen tutar 49 $'}
               </span>
             </div>
           </section>

@@ -436,8 +436,8 @@ export default async function LLCFormationGuidePage({
             </h2>
             <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
               {isEnglish
-                ? 'Our Business Starter Kit includes 5 essential legal documents for starting a business in the US. I support EchoLegal – $20 recommended.'
-                : "Business Starter Kit, ABD'de iş kurmak için gereken 5 temel hukuki belgeyi içerir. Bütçenize göre ödeme yapabilirsiniz."}
+                ? 'Our Business Starter Kit includes 3 essential legal documents for starting a business in the US. I support EchoLegal – $49 recommended.'
+                : "Business Starter Kit, ABD'de iş kurmak için gereken 3 temel hukuki belgeyi içerir. Bütçenize göre ödeme yapabilirsiniz."}
             </p>
             <div className="text-center">
               <Link

@@ -172,8 +172,8 @@ export default async function AboutPage({
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
             <p className="text-gray-700 mb-4">
               {isEnglish
-                ? 'Our templates and guides are available on a "pay what you can" basis. We recommend $20, but if you\'re just starting out or times are tight, you can access everything for free.'
-                : 'Şablonlarımız ve rehberlerimiz "gücünüz yettiğince ödeyin" esasına göre sunulmaktadır. 20$ öneriyoruz, ancak yeni başlıyorsanız veya ekonomik durumunuz uygun değilse her şeye ücretsiz erişebilirsiniz.'}
+                ? 'Our templates and guides are available on a "pay what you can" basis. We recommend $49, but if you\'re just starting out or times are tight, you can access everything for free.'
+                : 'Şablonlarımız ve rehberlerimiz "gücünüz yettiğince ödeyin" esasına göre sunulmaktadır. 49$ öneriyoruz, ancak yeni başlıyorsanız veya ekonomik durumunuz uygun değilse her şeye ücretsiz erişebilirsiniz.'}
             </p>
             <p className="text-gray-700">
               {isEnglish

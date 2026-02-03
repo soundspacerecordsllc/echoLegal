@@ -61,7 +61,7 @@ export default async function LLCGuidePage({
 
   const tocItems = [
     { id: 'llc-nedir', label: isEnglish ? 'What is an LLC?' : 'LLC Nedir?' },
-    { id: 'turkiye-mukimi-gercekler', label: isEnglish ? 'Key Realities for Turkish Residents' : 'Türkiye Mukimleri İçin Temel Gerçekler' },
+    { id: 'turkiye-mukimi-gercekler', label: isEnglish ? 'Key Realities for Turkish Residents' : 'Türkiye\'de İkamet Edenler İçin Temel Gerçekler' },
     { id: 'adim-adim-surecler', label: isEnglish ? 'Step-by-Step Process' : 'Adım Adım Süreç' },
     { id: 'sik-yapilan-hatalar', label: isEnglish ? 'Common Mistakes' : 'Sık Yapılan Hatalar' },
     { id: 'belgeler-kontrol-listesi', label: isEnglish ? 'Document Checklist' : 'Belgeler Kontrol Listesi' },
@@ -163,8 +163,8 @@ export default async function LLCGuidePage({
 
               <p className="text-base text-gray-600 mb-6">
                 {isEnglish
-                  ? 'Written for Turkish entrepreneurs and business owners evaluating LLC formation in the United States. This guide covers legal requirements — not marketing promises.'
-                  : 'ABD\'de LLC kurmayı değerlendiren Türk girişimciler ve iş sahipleri için hazırlanmıştır. Pazarlama vaatleri değil, hukuki gereklilikleri ele alır.'}
+                  ? 'Written for Turkish entrepreneurs and business owners evaluating LLC formation in the United States.'
+                  : 'ABD\'de LLC kurmayı değerlendiren Türk girişimciler ve iş sahipleri için hazırlanmıştır.'}
               </p>
 
               {/* Authority signals */}
@@ -261,7 +261,7 @@ export default async function LLCGuidePage({
             {/* Section 2: Türkiye Mukimleri İçin Temel Gerçekler */}
             <section id="turkiye-mukimi-gercekler" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                {isEnglish ? '2. Key Realities for Turkish Residents' : '2. Türkiye Mukimleri İçin Temel Gerçekler'}
+                {isEnglish ? '2. Key Realities for Turkish Residents' : '2. Türkiye\'de İkamet Edenler İçin Temel Gerçekler'}
               </h2>
 
               {isEnglish ? (
@@ -317,6 +317,8 @@ export default async function LLCGuidePage({
 
               {isEnglish ? (
                 <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed">Each step below builds on the one before it. The state is selected first because the registered agent must have a physical presence in that state. The Articles of Organization are filed before applying for an EIN, as the IRS requires proof that the legal entity exists. To open a U.S. bank account, banks generally require both an EIN and an Operating Agreement. This sequence is not arbitrary; it reflects the legal and practical dependencies of the process.</p>
+
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 1: Choose Your State</h3>
                     <p className="text-gray-700 mt-2">Delaware and Wyoming are popular for their business-friendly laws and privacy protections. However, if you will conduct business primarily in one state, forming there may be simpler. Each state has different fees and requirements.</p>
@@ -334,42 +336,37 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 3: File Articles of Organization</h3>
-                    <p className="text-gray-700 mt-2">Submit formation documents to the state. This can usually be done online. Processing time varies: some states offer same-day processing for an additional fee; others take 1-2 weeks.</p>
+                    <p className="text-gray-700 mt-2">Articles of Organization is the founding document that formally registers your LLC with the state. Most states accept online filings. Processing times range from same-day (for an expedited fee) to one or two weeks depending on the state. Once approved, your LLC legally exists.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 4: Obtain an EIN</h3>
-                    <p className="text-gray-700 mt-2">Apply for an Employer Identification Number from the IRS using Form SS-4. Non-residents without an SSN must apply by mail or fax (not online). Processing takes 4-6 weeks.</p>
+                    <p className="text-gray-700 mt-2">An EIN (Employer Identification Number) is essentially a tax ID for your LLC, issued by the IRS. You will need it to open a bank account, file tax returns, and enter into contracts. Non-residents without an SSN cannot apply online; the application must be submitted by mail or fax using Form SS-4, and processing typically takes four to six weeks. Without an EIN, your LLC exists on paper but cannot operate commercially in the United States.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 5: Draft an Operating Agreement</h3>
-                    <p className="text-gray-700 mt-2">While not always legally required, an Operating Agreement defines ownership, profit distribution, and management rules. Banks often require this document to open an account.</p>
+                    <p className="text-gray-700 mt-2">An Operating Agreement is the internal governance document of your LLC. It defines who owns what percentage, how profits are distributed, and how decisions are made. Not every state requires one by law, but in practice it is indispensable: banks ask for it when opening an account, and it protects you in disputes between members.</p>
+                    <p className="text-gray-700 mt-2">The majority of US banks request a copy of the Operating Agreement when opening a business account. Even for single-member LLCs, banks verify who is authorized to act on behalf of the entity and how it is managed through this document. LLCs without an Operating Agreement may face significant delays or outright rejection during the account opening process.</p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      For related contract templates your LLC may need, see the <Link href={`/${lang}/contracts/service-agreement`} className="text-blue-600 hover:underline">Service Agreement</Link> and <Link href={`/${lang}/contracts/nda`} className="text-blue-600 hover:underline">Non-Disclosure Agreement</Link> template pages.
+                    </p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 6: Open a US Bank Account</h3>
-                    <p className="text-gray-700 mt-2">This is often the most challenging step for non-residents. Options include:</p>
-                    <ul className="mt-2 text-sm text-gray-600 list-disc pl-5">
-                      <li>In-person visit to a US bank</li>
-                      <li>Banks that accept remote applications (Mercury, Relay, etc.)</li>
-                      <li>International banks with US branches</li>
-                    </ul>
+                    <p className="text-gray-700 mt-2">For non-residents, this is often the most difficult step in the entire process. Traditional US banks generally require an in-person visit to a branch. A smaller number of banks and fintech platforms accept remote applications from foreign LLC owners, though their requirements and approval rates change frequently. Having your EIN confirmation letter, Articles of Organization, and Operating Agreement ready before applying will streamline the process.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 7: Maintain Compliance</h3>
-                    <p className="text-gray-700 mt-2">Ongoing requirements vary by state but typically include:</p>
-                    <ul className="mt-2 text-sm text-gray-600 list-disc pl-5">
-                      <li>Annual reports and fees</li>
-                      <li>Franchise taxes (in some states)</li>
-                      <li>Federal tax filings (even if no US-source income)</li>
-                      <li>BOI (Beneficial Ownership Information) reporting to FinCEN</li>
-                    </ul>
+                    <p className="text-gray-700 mt-2">Forming an LLC is not a one-time event. Most states require annual reports and charge ongoing fees or franchise taxes. At the federal level, you may need to file informational tax returns even if your LLC earned no US-source income. Additionally, the Corporate Transparency Act now requires most LLCs to submit Beneficial Ownership Information (BOI) reports to FinCEN. Failing to meet these obligations can result in penalties or administrative dissolution of your LLC. Ongoing compliance is what preserves your LLC&apos;s legal standing; neglecting it directly jeopardizes the limited liability protection that was the reason for forming it.</p>
                   </div>
                 </div>
               ) : (
                 <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed">Aşağıdaki her adım, bir öncekinin üzerine inşa edilir. Önce eyalet seçilir; çünkü registered agent, kuruluş eyaletinde fiziksel olarak bulunmak zorundadır. Articles of Organization, EIN başvurusundan önce dosyalanır; zira IRS, tüzel kişiliğin hukuken var olduğuna dair belge talep eder. ABD&apos;de banka hesabı açılabilmesi için ise genellikle hem EIN hem de Operating Agreement gerekir. Bu sıralama rastgele değildir; sürecin hukuki ve pratik bağımlılıklarını yansıtır.</p>
+
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 1: Eyalet Seçimi</h3>
                     <p className="text-gray-700 mt-2">Delaware ve Wyoming, iş dostu yasaları ve gizlilik korumaları nedeniyle popülerdir. Ancak işinizi ağırlıklı olarak tek bir eyalette yürütecekseniz, orada kurmak daha pratik olabilir. Her eyaletin farklı harç ve gereksinimleri vardır.</p>
@@ -382,43 +379,36 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 2: Registered Agent Atama</h3>
-                    <p className="text-gray-700 mt-2">Her LLC&apos;nin kuruluş eyaletinde fiziksel adresi olan bir registered agent&apos;ı olmalıdır. Bu temsilci, LLC adına yasal belgeleri tebellüğ eder. Ticari registered agent hizmetleri genellikle yıllık $50-300 arasındadır.</p>
+                    <p className="text-gray-700 mt-2">Her LLC, kuruluş eyaletinde fiziksel adresi bulunan bir registered agent atamak zorundadır. Registered agent, LLC adına resmî ve hukuki bildirimleri kabul eden yetkili kişidir. Profesyonel registered agent hizmetleri genellikle yıllık 50–300 USD arasında ücretlendirilir.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 3: Articles of Organization Başvurusu</h3>
-                    <p className="text-gray-700 mt-2">Kuruluş belgelerini eyalete sunun. Bu genellikle çevrimiçi yapılabilir. İşlem süresi değişkendir: bazı eyaletler ek ücretle aynı gün işlem sunar; diğerleri 1-2 hafta alabilir.</p>
+                    <p className="text-gray-700 mt-2">Articles of Organization, LLC&apos;nizi eyalet nezdinde resmî olarak tescil eden kuruluş belgesidir. Çoğu eyalet çevrimiçi başvuru kabul eder. İşlem süreleri, ek ücretle aynı gün onaydan bir ila iki haftaya kadar değişebilir. Bu belge onaylandığında LLC&apos;niz hukuken var olmuş sayılır.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 4: EIN Alma</h3>
-                    <p className="text-gray-700 mt-2">IRS&apos;den SS-4 formu ile Employer Identification Number başvurusu yapın. SSN&apos;si olmayan yabancılar çevrimiçi başvuru yapamaz; posta veya faks kullanmalıdır. İşlem süresi 4-6 haftadır.</p>
+                    <p className="text-gray-700 mt-2">EIN (Employer Identification Number), IRS tarafından LLC&apos;nize verilen vergi kimlik numarasıdır. Banka hesabı açmak, vergi beyannamesi vermek ve sözleşme imzalamak için bu numaraya ihtiyacınız olacaktır. SSN&apos;si olmayan yabancılar çevrimiçi başvuru yapamaz; SS-4 formunu posta veya faks yoluyla göndermek gerekir. İşlem süresi genellikle dört ila altı haftadır. EIN olmadan LLC&apos;niz kâğıt üzerinde var olur ancak ABD&apos;de ticari olarak faaliyet gösteremez.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 5: Operating Agreement Hazırlama</h3>
-                    <p className="text-gray-700 mt-2">Her zaman yasal olarak zorunlu olmasa da Operating Agreement, ortaklık yapısını, kâr dağılımını ve yönetim kurallarını belirler. Bankalar genellikle hesap açmak için bu belgeyi ister.</p>
+                    <p className="text-gray-700 mt-2">Operating Agreement, LLC&apos;nizin iç yönetim belgesidir. Ortaklık paylarını, kâr dağılımını ve karar alma süreçlerini düzenler. Her eyalet bunu yasal olarak zorunlu kılmasa da pratikte vazgeçilmezdir: bankalar hesap açarken bu belgeyi ister ve üyeler arasında çıkabilecek anlaşmazlıklarda koruma sağlar.</p>
+                    <p className="text-gray-700 mt-2">ABD&apos;deki bankaların büyük çoğunluğu, iş hesabı açılışı sırasında Operating Agreement&apos;ın bir kopyasını talep eder. Tek üyeli LLC&apos;lerde dahi bankalar, hesap üzerinde kimin yetkili olduğunu ve LLC&apos;nin nasıl yönetildiğini bu belge üzerinden doğrular. Operating Agreement bulunmayan LLC&apos;ler, banka hesabı açma sürecinde ciddi gecikmeler yaşayabilir veya başvurularının reddedilmesiyle karşılaşabilir.</p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      LLC&apos;nizin ihtiyaç duyabileceği ilgili sözleşme şablonları için <Link href={`/${lang}/contracts/service-agreement`} className="text-blue-600 hover:underline">Hizmet Sözleşmesi</Link> ve <Link href={`/${lang}/contracts/nda`} className="text-blue-600 hover:underline">Gizlilik Sözleşmesi</Link> şablon sayfalarına bakabilirsiniz.
+                    </p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 6: ABD Banka Hesabı Açma</h3>
-                    <p className="text-gray-700 mt-2">ABD dışından kuranlar için genellikle en zorlu adım budur. Seçenekler:</p>
-                    <ul className="mt-2 text-sm text-gray-600 list-disc pl-5">
-                      <li>ABD&apos;deki bir bankaya şahsen başvuru</li>
-                      <li>Uzaktan başvuru kabul eden bankalar (Mercury, Relay vb.)</li>
-                      <li>ABD şubesi olan uluslararası bankalar</li>
-                    </ul>
+                    <p className="text-gray-700 mt-2">ABD dışından kuruluş yapanlar için genellikle sürecin en zorlu adımı budur. Geleneksel ABD bankaları büyük çoğunlukla şubeye şahsen gitmenizi ister. Daha az sayıda banka ve fintek platformu yabancı LLC sahiplerinden uzaktan başvuru kabul eder; ancak koşulları ve onay oranları sık değişir. Başvuruya başlamadan önce EIN onay mektubunuzu, Articles of Organization belgenizi ve Operating Agreement&apos;ınızı hazır bulundurmanız süreci önemli ölçüde kolaylaştırır.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 7: Uyumu Sürdürme</h3>
-                    <p className="text-gray-700 mt-2">Süregelen gereksinimler eyalete göre değişir ancak genellikle şunları içerir:</p>
-                    <ul className="mt-2 text-sm text-gray-600 list-disc pl-5">
-                      <li>Yıllık raporlar ve harçlar</li>
-                      <li>Franchise vergileri (bazı eyaletlerde)</li>
-                      <li>Federal vergi beyannameleri (ABD kaynaklı gelir olmasa bile)</li>
-                      <li>FinCEN&apos;e BOI (Beneficial Ownership Information) bildirimi</li>
-                    </ul>
+                    <p className="text-gray-700 mt-2">LLC kurmak tek seferlik bir işlem değildir. Çoğu eyalet yıllık rapor ve süregelen harç veya franchise vergisi talep eder. Federal düzeyde, LLC&apos;niz ABD kaynaklı gelir elde etmemiş olsa bile bilgi amaçlı vergi beyannamesi vermeniz gerekebilir. Buna ek olarak, Corporate Transparency Act kapsamında çoğu LLC&apos;nin FinCEN&apos;e Beneficial Ownership Information (BOI) bildirimi yapması artık zorunludur. Bu yükümlülüklerin yerine getirilmemesi cezalara veya LLC&apos;nizin idari olarak feshedilmesine yol açabilir. Süregelen uyum, LLC&apos;nizin hukuki varlığını koruyan unsurdur; ihmal edilmesi, kuruluş amacınız olan sınırlı sorumluluk korumasını doğrudan tehlikeye atar.</p>
                   </div>
                 </div>
               )}
@@ -757,21 +747,56 @@ export default async function LLCGuidePage({
               </div>
             </section>
 
+            {/* Targeted FAQ for search intent */}
+            <section className="mb-12">
+              <h2 className="text-xl font-bold text-black mb-4">
+                {isEnglish ? 'Frequently Asked Questions (for Turkish Nationals)' : 'Sık Sorulan Sorular (Türkler için)'}
+              </h2>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-black mb-2">
+                    {isEnglish
+                      ? 'Do I need to live in the US to form an LLC?'
+                      : 'ABD\'de LLC kurmak için ABD\'de yaşamak gerekir mi?'}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {isEnglish
+                      ? 'No. US state law does not require LLC owners to be US residents or citizens. Formation can be completed entirely from abroad through a registered agent in the chosen state. However, certain post-formation steps — particularly opening a US bank account — may require physical presence depending on the institution.'
+                      : 'Hayır. ABD eyalet hukuku, LLC sahiplerinin ABD\'de ikamet etmesini veya vatandaş olmasını şart koşmaz. Kuruluş, seçilen eyaletteki bir registered agent aracılığıyla tamamen yurt dışından tamamlanabilir. Ancak kuruluş sonrası bazı adımlar — özellikle ABD banka hesabı açma — kuruma bağlı olarak fiziksel varlık gerektirebilir.'}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-black mb-2">
+                    {isEnglish
+                      ? 'Can I form an LLC without opening a US bank account?'
+                      : 'ABD\'de banka hesabı açmadan LLC kurulabilir mi?'}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {isEnglish
+                      ? 'Yes. A bank account is not a legal prerequisite for LLC formation. The LLC becomes a legal entity upon state approval of the Articles of Organization. That said, operating without a US bank account limits your ability to receive payments, pay taxes, and use most US-based financial platforms.'
+                      : 'Evet. Banka hesabı, LLC kuruluşu için yasal bir ön koşul değildir. LLC, Articles of Organization\'ın eyalet tarafından onaylanmasıyla tüzel kişilik kazanır. Bununla birlikte, ABD banka hesabı olmadan faaliyet göstermek ödeme alma, vergi ödeme ve ABD merkezli finansal platformları kullanma imkanınızı önemli ölçüde kısıtlar.'}
+                  </p>
+                </div>
+              </div>
+            </section>
+
             {/* Legal Kit Reference */}
             <div className="border border-gray-200 rounded-lg p-8 mb-10">
               <h2 className="text-xl font-bold text-black mb-3">ABD Business Starter Legal Kit</h2>
               <p className="text-sm text-gray-700 leading-relaxed mb-4">
                 {isEnglish
-                  ? 'Five foundational legal templates — operating agreement, independent contractor agreement, NDA, service agreement, and IP assignment — prepared for Turkish entrepreneurs forming a US-based LLC. Each document reflects standard US commercial practice. This kit helps sustain the free legal encyclopedia you just read.'
-                  : 'Operating agreement, bağımsız yüklenici sözleşmesi, NDA, hizmet sözleşmesi ve fikri mülkiyet devir sözleşmesi — ABD\'de LLC kuran Türk girişimciler için hazırlanmış beş temel hukuki şablon. Her belge standart ABD ticari uygulamalarını yansıtır. Bu paket, okuduğunuz ücretsiz hukuki ansiklopedinin sürdürülmesine katkı sağlar.'}
+                  ? 'Three legal document templates — Operating Agreement, Service Agreement, and NDA — prepared for Turkish entrepreneurs forming a US-based LLC. Each document is drafted in both English and Turkish, reflecting standard US commercial practice.'
+                  : 'Operating Agreement, Hizmet Sözleşmesi ve NDA — ABD merkezli LLC kuran Türk girişimciler için hazırlanmış üç temel hukuki belge şablonu. Her belge, standart ABD ticari uygulamalarını yansıtacak şekilde hem İngilizce hem Türkçe olarak hazırlanmıştır.'}
               </p>
               <p className="text-sm text-gray-500 mb-5">
                 {isEnglish
-                  ? 'Pay What You Can — $20 suggested'
-                  : 'Pay What You Can — Önerilen: $20'}
+                  ? '$49 — one-time purchase'
+                  : '$49 — tek seferlik ödeme'}
               </p>
               <Link href={`/${lang}/legal-kits/business-starter`} className="inline-block px-5 py-2.5 border border-black text-sm font-medium text-black rounded hover:bg-gray-50 transition-colors">
-                {isEnglish ? 'View Kit' : 'Paketi Gör'}
+                {isEnglish ? 'Access the Legal Kit' : 'Legal Kit\'e Eriş'}
               </Link>
             </div>
 

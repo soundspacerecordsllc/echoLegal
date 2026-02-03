@@ -30,7 +30,7 @@ export default async function BusinessStarterKitPage({
   const isEnglish = lang === 'en'
   const kit = getLegalKitBySlug('abd-business-starter-legal-kit')
 
-  const stripePaymentLink = kit?.stripeLink || 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
+  const stripePaymentLink = kit?.stripeLink || 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03'
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
@@ -151,14 +151,14 @@ export default async function BusinessStarterKitPage({
             {isEnglish ? 'Get This Kit' : 'Bu Kiti Edinin'}
           </h2>
           <p className="text-center text-gray-600 mb-6">
-            {isEnglish ? 'Pay what you can. $20 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir.'}
+            {isEnglish ? 'Pay what you can. $49 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $49 önerilir.'}
           </p>
 
           <a
             href={stripePaymentLink}
             className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
           >
-            {isEnglish ? 'Pay $20 (Recommended)' : '$20 Öde (Önerilen)'}
+            {isEnglish ? 'Pay $49 (Recommended)' : '$49 Öde (Önerilen)'}
           </a>
 
           <a

@@ -50,8 +50,8 @@ export default async function ConsularDocumentsPage({
           <div className="bg-gradient-to-r from-red-50 to-white border border-red-100 rounded-xl p-6 max-w-2xl">
             <p className="font-semibold text-gray-900 mb-2">
               {isEnglish
-                ? 'Free checklists in English & Turkish. I support EchoLegal – $20 recommended.'
-                : 'İngilizce ve Türkçe ücretsiz kontrol listeleri. EchoLegal\'e destek olmak ister misiniz? 20 $ önerilir.'}
+                ? 'Free checklists in English & Turkish. I support EchoLegal – $49 recommended.'
+                : 'İngilizce ve Türkçe ücretsiz kontrol listeleri. EchoLegal\'e destek olmak ister misiniz? 49 $ önerilir.'}
             </p>
             <Link
               href="#procedures"

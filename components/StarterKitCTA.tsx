@@ -25,14 +25,14 @@ export default function StarterKitCTA({
       description: 'Essential contract templates for US business (EN/TR)',
       cta: 'View Kit',
       support: 'I support EchoLegal',
-      recommended: '$20 recommended · Free access available',
+      recommended: '$49 recommended · Free access available',
     },
     tr: {
       title: 'Legal Starter Kit',
       description: 'ABD işletmeleri için temel sözleşme şablonları (EN/TR)',
       cta: 'Kiti Görüntüle',
       support: 'EchoLegal\'ı destekliyorum',
-      recommended: '20$ önerilir · Ücretsiz erişim mevcut',
+      recommended: '49$ önerilir · Ücretsiz erişim mevcut',
     },
   }
 

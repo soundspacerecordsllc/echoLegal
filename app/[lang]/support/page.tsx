@@ -43,8 +43,8 @@ export default async function SupportPage({
               <span>
                 <strong className="text-gray-900">{isEnglish ? 'Contribution option' : 'Katkı seçeneği'}</strong>
                 {isEnglish
-                  ? ' — $20 (USD). Proceeds support infrastructure and content maintenance.'
-                  : ' — 20$ (USD). Gelirler altyapı ve içerik bakımını destekler.'}
+                  ? ' — $49 (USD). Proceeds support infrastructure and content maintenance.'
+                  : ' — 49$ (USD). Gelirler altyapı ve içerik bakımını destekler.'}
               </span>
             </li>
             <li className="flex items-start gap-3">

@@ -185,14 +185,14 @@ export default async function TurkishTemplateDetailPage({
               Bu Şablonu İndirin
             </h2>
             <p className="text-center text-gray-600 mb-6">
-              {"EchoLegal'i destekliyorum – $20 önerilir."}
+              {"EchoLegal'i destekliyorum – $49 önerilir."}
             </p>
 
             <a
-              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+              href="https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03"
               className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
             >
-              Ödeyebilirim — $20 (Önerilen)
+              Ödeyebilirim — $49 (Önerilen)
             </a>
 
             <a
@@ -204,7 +204,7 @@ export default async function TurkishTemplateDetailPage({
             </a>
 
             <p className="text-center text-sm text-gray-500">
-              Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.
+              Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $49 katkıda bulunuyor.
             </p>
           </div>
         )}

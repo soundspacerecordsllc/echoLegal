@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'Free Non-Disclosure Agreement (NDA) Template (English & Turkish) | EchoLegal'
       : 'Ücretsiz Gizlilik Sözleşmesi (NDA) Şablonu (İngilizce & Türkçe) | EchoLegal',
     description: isEnglish
-      ? 'Free bilingual NDA template. I support EchoLegal ($20 recommended) or download free. Protect confidential business information.'
-      : 'Ücretsiz iki dilli NDA şablonu. Gücünüz kadar ödeyin (20$ önerilir) veya ücretsiz indirin. Gizli iş bilgilerinizi koruyun.',
+      ? 'Free bilingual NDA template. I support EchoLegal ($49 recommended) or download free. Protect confidential business information.'
+      : 'Ücretsiz iki dilli NDA şablonu. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin. Gizli iş bilgilerinizi koruyun.',
   }
 }
 
@@ -26,7 +26,7 @@ export default async function NDAPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
-  const stripePaymentLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
+  const stripePaymentLink = 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03'
   const documentUrl = isEnglish 
     ? '/documents/NDA-EN.docx'
     : '/documents/GizlilikSozlesmesi-TR.docx'
@@ -162,10 +162,10 @@ export default async function NDAPage({
         {/* Download Section - Updated */}
         <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-xl p-8 mb-12">
           <h2 className="text-3xl font-bold text-center mb-4">{isEnglish ? 'Download This Template' : 'Bu Şablonu İndirin'}</h2>
-          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'I support EchoLegal – $20 recommended.' : 'EchoLegal\'i destekliyorum – $20 önerilir.'}</p>
+          <p className="text-center text-gray-600 mb-6">{isEnglish ? 'I support EchoLegal – $49 recommended.' : 'EchoLegal\'i destekliyorum – $49 önerilir.'}</p>
           
           <a href={stripePaymentLink} className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3">
-            💳 {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
+            💳 {isEnglish ? 'I CAN Afford It — $49 (Recommended)' : 'Ödeyebilirim — $49 (Önerilen)'}
           </a>
           
           <a href={documentUrl} download className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4">
@@ -175,8 +175,8 @@ export default async function NDAPage({
           {/* Microcopy */}
           <p className="text-center text-sm text-gray-500">
             {isEnglish 
-              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
-              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
+              ? 'Most users choose $49 to support ongoing updates and bilingual access.'
+              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 49$ seçiyor.'}
           </p>
         </div>
 
