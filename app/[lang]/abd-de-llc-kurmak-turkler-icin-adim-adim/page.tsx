@@ -317,6 +317,8 @@ export default async function LLCGuidePage({
 
               {isEnglish ? (
                 <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed">Each step below builds on the one before it. You choose a state before appointing a registered agent because the agent must be located in that state. You file your Articles of Organization before applying for an EIN because the IRS requires proof that the entity exists. And you generally need both an EIN and an Operating Agreement before a bank will open an account. The sequence is not arbitrary — it follows the legal and practical dependencies of the process.</p>
+
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 1: Choose Your State</h3>
                     <p className="text-gray-700 mt-2">Delaware and Wyoming are popular for their business-friendly laws and privacy protections. However, if you will conduct business primarily in one state, forming there may be simpler. Each state has different fees and requirements.</p>
@@ -359,6 +361,8 @@ export default async function LLCGuidePage({
                 </div>
               ) : (
                 <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed">Aşağıdaki her adım bir öncekinin üzerine kuruludur. Önce eyalet seçilir, çünkü registered agent o eyalette bulunmak zorundadır. Articles of Organization, EIN başvurusundan önce dosyalanır, çünkü IRS tüzel kişiliğin var olduğuna dair kanıt ister. Banka hesabı açmak için de genellikle hem EIN hem Operating Agreement gerekir. Bu sıralama rastgele değildir — sürecin hukuki ve pratik bağımlılıklarını yansıtır.</p>
+
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 1: Eyalet Seçimi</h3>
                     <p className="text-gray-700 mt-2">Delaware ve Wyoming, iş dostu yasaları ve gizlilik korumaları nedeniyle popülerdir. Ancak işinizi ağırlıklı olarak tek bir eyalette yürütecekseniz, orada kurmak daha pratik olabilir. Her eyaletin farklı harç ve gereksinimleri vardır.</p>
