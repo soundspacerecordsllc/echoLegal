@@ -5,17 +5,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { Resend } from 'resend'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-04-10',
-})
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-const DOWNLOAD_URL = process.env.KIT_DOWNLOAD_URL || 'https://echo-legal.com/documents/kits/abd-business-starter-kit.zip'
 const SUPPORT_EMAIL = 'support@echo-legal.com'
-const FROM_EMAIL = process.env.FROM_EMAIL || 'EchoLegal <noreply@echo-legal.com>'
 
 export async function POST(request: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2023-10-16',
+  })
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  const DOWNLOAD_URL = process.env.KIT_DOWNLOAD_URL || 'https://echo-legal.com/documents/kits/abd-business-starter-kit.zip'
+  const FROM_EMAIL = process.env.FROM_EMAIL || 'EchoLegal <noreply@echo-legal.com>'
+
   const body = await request.text()
   const signature = request.headers.get('stripe-signature')
 
