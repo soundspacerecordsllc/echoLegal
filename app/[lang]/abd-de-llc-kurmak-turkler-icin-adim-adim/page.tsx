@@ -382,7 +382,7 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 2: Registered Agent Atama</h3>
-                    <p className="text-gray-700 mt-2">Her LLC&apos;nin kuruluş eyaletinde fiziksel adresi olan bir registered agent&apos;ı olmalıdır. Bu temsilci, LLC adına yasal belgeleri tebellüğ eder. Ticari registered agent hizmetleri genellikle yıllık $50-300 arasındadır.</p>
+                    <p className="text-gray-700 mt-2">Her LLC, kuruluş eyaletinde fiziksel adresi bulunan bir registered agent atamak zorundadır. Registered agent, LLC adına resmî ve hukuki bildirimleri kabul eden yetkili kişidir. Profesyonel registered agent hizmetleri genellikle yıllık 50–300 USD arasında ücretlendirilir.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
