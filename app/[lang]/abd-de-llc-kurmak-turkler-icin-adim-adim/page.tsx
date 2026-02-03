@@ -341,7 +341,7 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 4: Obtain an EIN</h3>
-                    <p className="text-gray-700 mt-2">An EIN (Employer Identification Number) is essentially a tax ID for your LLC, issued by the IRS. You will need it to open a bank account, file tax returns, and enter into contracts. Non-residents without an SSN cannot apply online; the application must be submitted by mail or fax using Form SS-4, and processing typically takes four to six weeks.</p>
+                    <p className="text-gray-700 mt-2">An EIN (Employer Identification Number) is essentially a tax ID for your LLC, issued by the IRS. You will need it to open a bank account, file tax returns, and enter into contracts. Non-residents without an SSN cannot apply online; the application must be submitted by mail or fax using Form SS-4, and processing typically takes four to six weeks. Without an EIN, your LLC exists on paper but cannot operate commercially in the United States.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
@@ -356,7 +356,7 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 7: Maintain Compliance</h3>
-                    <p className="text-gray-700 mt-2">Forming an LLC is not a one-time event. Most states require annual reports and charge ongoing fees or franchise taxes. At the federal level, you may need to file informational tax returns even if your LLC earned no US-source income. Additionally, the Corporate Transparency Act now requires most LLCs to submit Beneficial Ownership Information (BOI) reports to FinCEN. Failing to meet these obligations can result in penalties or administrative dissolution of your LLC.</p>
+                    <p className="text-gray-700 mt-2">Forming an LLC is not a one-time event. Most states require annual reports and charge ongoing fees or franchise taxes. At the federal level, you may need to file informational tax returns even if your LLC earned no US-source income. Additionally, the Corporate Transparency Act now requires most LLCs to submit Beneficial Ownership Information (BOI) reports to FinCEN. Failing to meet these obligations can result in penalties or administrative dissolution of your LLC. Ongoing compliance is what preserves your LLC&apos;s legal standing; neglecting it directly jeopardizes the limited liability protection that was the reason for forming it.</p>
                   </div>
                 </div>
               ) : (
@@ -385,7 +385,7 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 4: EIN Alma</h3>
-                    <p className="text-gray-700 mt-2">EIN (Employer Identification Number), IRS tarafından LLC&apos;nize verilen vergi kimlik numarasıdır. Banka hesabı açmak, vergi beyannamesi vermek ve sözleşme imzalamak için bu numaraya ihtiyacınız olacaktır. SSN&apos;si olmayan yabancılar çevrimiçi başvuru yapamaz; SS-4 formunu posta veya faks yoluyla göndermek gerekir. İşlem süresi genellikle dört ila altı haftadır.</p>
+                    <p className="text-gray-700 mt-2">EIN (Employer Identification Number), IRS tarafından LLC&apos;nize verilen vergi kimlik numarasıdır. Banka hesabı açmak, vergi beyannamesi vermek ve sözleşme imzalamak için bu numaraya ihtiyacınız olacaktır. SSN&apos;si olmayan yabancılar çevrimiçi başvuru yapamaz; SS-4 formunu posta veya faks yoluyla göndermek gerekir. İşlem süresi genellikle dört ila altı haftadır. EIN olmadan LLC&apos;niz kâğıt üzerinde var olur ancak ABD&apos;de ticari olarak faaliyet gösteremez.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
@@ -400,7 +400,7 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 7: Uyumu Sürdürme</h3>
-                    <p className="text-gray-700 mt-2">LLC kurmak tek seferlik bir işlem değildir. Çoğu eyalet yıllık rapor ve süregelen harç veya franchise vergisi talep eder. Federal düzeyde, LLC&apos;niz ABD kaynaklı gelir elde etmemiş olsa bile bilgi amaçlı vergi beyannamesi vermeniz gerekebilir. Buna ek olarak, Corporate Transparency Act kapsamında çoğu LLC&apos;nin FinCEN&apos;e Beneficial Ownership Information (BOI) bildirimi yapması artık zorunludur. Bu yükümlülüklerin yerine getirilmemesi cezalara veya LLC&apos;nizin idari olarak feshedilmesine yol açabilir.</p>
+                    <p className="text-gray-700 mt-2">LLC kurmak tek seferlik bir işlem değildir. Çoğu eyalet yıllık rapor ve süregelen harç veya franchise vergisi talep eder. Federal düzeyde, LLC&apos;niz ABD kaynaklı gelir elde etmemiş olsa bile bilgi amaçlı vergi beyannamesi vermeniz gerekebilir. Buna ek olarak, Corporate Transparency Act kapsamında çoğu LLC&apos;nin FinCEN&apos;e Beneficial Ownership Information (BOI) bildirimi yapması artık zorunludur. Bu yükümlülüklerin yerine getirilmemesi cezalara veya LLC&apos;nizin idari olarak feshedilmesine yol açabilir. Süregelen uyum, LLC&apos;nizin hukuki varlığını koruyan unsurdur; ihmal edilmesi, kuruluş amacınız olan sınırlı sorumluluk korumasını doğrudan tehlikeye atar.</p>
                   </div>
                 </div>
               )}
