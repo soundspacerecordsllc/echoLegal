@@ -263,6 +263,12 @@ export default async function ContractsGuidePage({
                   : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler'}
               </h1>
 
+              <p className="text-base text-gray-600 mb-6">
+                {isEnglish
+                  ? 'Written for Turkish entrepreneurs who are doing business in or with the United States and need to understand which contracts to have in place.'
+                  : 'ABD\'de veya ABD ile iş yapan ve hangi sözleşmelere ihtiyaç duyduğunu anlamak isteyen Türk girişimciler için hazırlanmıştır.'}
+              </p>
+
               <p className="text-lg text-gray-600 leading-relaxed">
                 {isEnglish
                   ? 'This guide covers the legal contracts you\'ll likely need when doing business in or with the United States, with considerations for Turkish entrepreneurs operating across borders.'
@@ -299,6 +305,12 @@ export default async function ContractsGuidePage({
               <h2 className="text-2xl font-bold text-black mb-4">
                 {isEnglish ? '1. Core Contract Types' : '1. Temel Sözleşme Türleri'}
               </h2>
+
+              <p className="text-gray-700 mb-4 leading-relaxed">
+                {isEnglish
+                  ? 'The contracts below are not listed in random order. The NDA comes first because it protects information you share before any deal is signed. Service and contractor agreements follow because they govern the actual working relationship. IP assignment exists to ensure that what gets created under those agreements belongs to you. The Operating Agreement, Privacy Policy, and Terms of Service round out the set because they address the structural and regulatory foundations your business needs to operate.'
+                  : 'Aşağıdaki sözleşmeler rastgele sıralanmamıştır. NDA en başta yer alır; çünkü herhangi bir anlaşma imzalanmadan önce paylaşılan bilgileri korur. Hizmet ve yüklenici sözleşmeleri onu takip eder; çünkü fiili iş ilişkisini düzenler. Fikri mülkiyet devri, bu sözleşmeler kapsamında üretilen işin size ait olmasını güvence altına alır. Operating Agreement, Gizlilik Politikası ve Kullanım Koşulları ise işletmenizin faaliyete geçmesi için gereken yapısal ve hukuki temelleri tamamlar.'}
+              </p>
 
               <p className="text-gray-700 mb-6">
                 {isEnglish
@@ -734,6 +746,59 @@ export default async function ContractsGuidePage({
                 </div>
               </div>
             </section>
+
+            {/* Targeted FAQ for search intent */}
+            <section className="mb-12">
+              <h2 className="text-xl font-bold text-black mb-4">
+                {isEnglish ? 'Frequently Asked Questions (for Turkish Entrepreneurs)' : 'Sık Sorulan Sorular (Türk Girişimciler için)'}
+              </h2>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-semibold text-black mb-2">
+                    {isEnglish
+                      ? 'Can I use a contract drafted under Turkish law for US business relationships?'
+                      : 'Türk hukukuna göre hazırlanmış bir sözleşmeyi ABD iş ilişkilerinde kullanabilir miyim?'}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {isEnglish
+                      ? 'It is technically possible, but generally inadvisable. US counterparties expect contracts governed by US state law, and US courts may not enforce certain provisions valid only under Turkish law. If your business relationship is based in the US or serves US clients, contracts drafted under the applicable US state law provide significantly stronger protection.'
+                      : 'Teknik olarak mümkündür, ancak genel olarak tavsiye edilmez. ABD\'deki karşı taraflar ABD eyalet hukukuna tabi sözleşmeler bekler ve ABD mahkemeleri yalnızca Türk hukuku kapsamında geçerli olan bazı hükümleri uygulamayabilir. İş ilişkiniz ABD merkezliyse veya ABD müşterilerine hizmet veriyorsanız, ilgili ABD eyalet hukukuna göre hazırlanmış sözleşmeler önemli ölçüde daha güçlü koruma sağlar.'}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-black mb-2">
+                    {isEnglish
+                      ? 'Do I need all of these contracts from day one?'
+                      : 'Bu sözleşmelerin hepsine ilk günden ihtiyacım var mı?'}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {isEnglish
+                      ? 'Not necessarily, but delaying increases your risk. At minimum, an Operating Agreement should be in place at formation, a Privacy Policy before your website goes live, and an NDA before any confidential business discussion. The remaining contracts become necessary as you take on clients, hire contractors, or commission work product.'
+                      : 'Zorunlu değil, ancak ertelemek riskinizi artırır. En azından Operating Agreement kuruluşta, Gizlilik Politikası web siteniz yayına girmeden önce ve NDA herhangi bir gizli iş görüşmesinden önce hazır olmalıdır. Diğer sözleşmeler müşteri aldıkça, yüklenici çalıştırdıkça veya iş ürünü sipariş ettikçe gerekli hale gelir.'}
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Legal Kit Reference */}
+            <div className="border border-gray-200 rounded-lg p-8 mb-10">
+              <h2 className="text-xl font-bold text-black mb-3">ABD Business Starter Legal Kit</h2>
+              <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                {isEnglish
+                  ? 'Five foundational legal templates — operating agreement, independent contractor agreement, NDA, service agreement, and IP assignment — prepared for Turkish entrepreneurs forming a US-based business. Each document reflects standard US commercial practice. This kit helps sustain the free legal encyclopedia you just read.'
+                  : 'Operating agreement, bağımsız yüklenici sözleşmesi, NDA, hizmet sözleşmesi ve fikri mülkiyet devir sözleşmesi — ABD merkezli iş kuran Türk girişimciler için hazırlanmış beş temel hukuki şablon. Her belge standart ABD ticari uygulamalarını yansıtır. Bu paket, okuduğunuz ücretsiz hukuki ansiklopedinin sürdürülmesine katkı sağlar.'}
+              </p>
+              <p className="text-sm text-gray-500 mb-5">
+                {isEnglish
+                  ? 'Pay What You Can — $20 suggested'
+                  : 'Pay What You Can — Önerilen: $20'}
+              </p>
+              <Link href={`/${lang}/legal-kits/business-starter`} className="inline-block px-5 py-2.5 border border-black text-sm font-medium text-black rounded hover:bg-gray-50 transition-colors">
+                {isEnglish ? 'View Kit' : 'Paketi Gör'}
+              </Link>
+            </div>
 
             {/* Template Library CTA */}
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
