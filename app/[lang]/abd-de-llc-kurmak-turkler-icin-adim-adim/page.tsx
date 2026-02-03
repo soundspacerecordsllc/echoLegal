@@ -787,13 +787,13 @@ export default async function LLCGuidePage({
               <h2 className="text-xl font-bold text-black mb-3">ABD Business Starter Legal Kit</h2>
               <p className="text-sm text-gray-700 leading-relaxed mb-4">
                 {isEnglish
-                  ? 'Five foundational legal templates — operating agreement, independent contractor agreement, NDA, service agreement, and IP assignment — prepared for Turkish entrepreneurs forming a US-based LLC. Each document reflects standard US commercial practice. This kit helps sustain the free legal encyclopedia you just read.'
-                  : 'Operating agreement, bağımsız yüklenici sözleşmesi, NDA, hizmet sözleşmesi ve fikri mülkiyet devir sözleşmesi — ABD\'de LLC kuran Türk girişimciler için hazırlanmış beş temel hukuki şablon. Her belge standart ABD ticari uygulamalarını yansıtır. Bu paket, okuduğunuz ücretsiz hukuki ansiklopedinin sürdürülmesine katkı sağlar.'}
+                  ? 'Three legal document templates — Operating Agreement, Service Agreement, and NDA — prepared for Turkish entrepreneurs forming a US-based LLC. Each document is drafted in both English and Turkish, reflecting standard US commercial practice.'
+                  : 'Operating Agreement, Hizmet Sözleşmesi ve NDA — ABD merkezli LLC kuran Türk girişimciler için hazırlanmış üç temel hukuki belge şablonu. Her belge, standart ABD ticari uygulamalarını yansıtacak şekilde hem İngilizce hem Türkçe olarak hazırlanmıştır.'}
               </p>
               <p className="text-sm text-gray-500 mb-5">
                 {isEnglish
-                  ? 'Pay What You Can — $20 suggested'
-                  : 'Pay What You Can — Önerilen: $20'}
+                  ? '$49 — one-time purchase'
+                  : '$49 — tek seferlik ödeme'}
               </p>
               <Link href={`/${lang}/legal-kits/business-starter`} className="inline-block px-5 py-2.5 border border-black text-sm font-medium text-black rounded hover:bg-gray-50 transition-colors">
                 {isEnglish ? 'View Kit' : 'Paketi Gör'}

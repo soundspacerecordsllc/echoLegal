@@ -10,12 +10,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const isEnglish = lang === 'en'
 
   const title = isEnglish
-    ? 'US Business Starter Legal Kit | Essential Documents for US Business | EchoLegal'
-    : "ABD Business Starter Legal Kit | ABD'de İş Kurmak İçin Temel Belgeler | EchoLegal"
+    ? 'ABD Business Starter Legal Kit | EchoLegal'
+    : 'ABD Business Starter Legal Kit | EchoLegal'
 
   const description = isEnglish
-    ? 'Essential legal document bundle for starting a business in the US. NDA, Service Agreement, Contractor Agreement, Privacy Policy & Terms of Service. Available in English and Turkish.'
-    : "ABD'de iş kurmak için temel hukuki belge paketi. NDA, Hizmet Sözleşmesi, Yüklenici Sözleşmesi, Gizlilik Politikası ve Kullanım Koşulları. İngilizce ve Türkçe olarak mevcuttur."
+    ? 'Three foundational legal document templates for Turkish entrepreneurs forming a US-based business: Operating Agreement, Service Agreement, and NDA. Bilingual (EN/TR).'
+    : 'ABD merkezli iş kuran Türk girişimciler için üç temel hukuki belge şablonu: Operating Agreement, Hizmet Sözleşmesi ve NDA. İki dilli (EN/TR).'
 
   return {
     title,
@@ -52,64 +52,44 @@ export default async function BusinessStarterKitPage({
 
   const includedDocuments = [
     {
-      title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
+      title: isEnglish ? 'Operating Agreement (EN + TR)' : 'Operating Agreement (EN + TR)',
       description: isEnglish
-        ? 'Protect confidential information when discussing business opportunities.'
-        : 'İş fırsatlarını görüşürken gizli bilgilerinizi koruyun.',
-      link: `/${lang}/contracts/nda`
+        ? 'Internal governance document for your LLC. Defines ownership structure, profit distribution, and management authority. Required by most US banks for account opening.'
+        : 'LLC\'nizin iç yönetim belgesi. Ortaklık yapısını, kâr dağılımını ve yönetim yetkisini tanımlar. Çoğu ABD bankası hesap açılışında bu belgeyi talep eder.',
+      link: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim#adim-adim-surecler`
     },
     {
       title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
       description: isEnglish
-        ? 'Define scope, payment terms, and deliverables for client work.'
-        : 'Müşteri işleri için kapsam, ödeme koşulları ve teslim edilecekleri belirleyin.',
+        ? 'Defines the scope, payment terms, deliverables, and liability limits for client work under US commercial practice.'
+        : 'ABD ticari uygulamaları çerçevesinde müşteri işleri için kapsamı, ödeme koşullarını, teslim edilecekleri ve sorumluluk sınırlarını belirler.',
       link: `/${lang}/contracts/service-agreement`
     },
     {
-      title: isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
+      title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
       description: isEnglish
-        ? 'Establish clear terms when hiring freelancers or contractors.'
-        : 'Serbest çalışan veya yüklenici çalıştırırken net koşullar belirleyin.',
-      link: `/${lang}/contracts/independent-contractor`
-    },
-    {
-      title: isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası',
-      description: isEnglish
-        ? 'GDPR and CCPA compliant privacy policy for your website or app.'
-        : 'Web siteniz veya uygulamanız için KVKK uyumlu gizlilik politikası.',
-      link: `/${lang}/contracts/privacy-policy`
-    },
-    {
-      title: isEnglish ? 'Terms of Service' : 'Kullanım Koşulları',
-      description: isEnglish
-        ? 'Terms and conditions for websites, apps, and online services.'
-        : 'Web siteleri, uygulamalar ve çevrimiçi hizmetler için kullanım şartları.',
-      link: `/${lang}/contracts/terms-of-service`
+        ? 'Protects confidential information shared between parties before or during a business relationship.'
+        : 'İş ilişkisi öncesinde veya sırasında taraflar arasında paylaşılan gizli bilgileri korur.',
+      link: `/${lang}/contracts/nda`
     },
   ]
 
   const whoIsThisFor = isEnglish ? [
-    'International entrepreneurs starting a business in the US',
-    'Freelancers and consultants working with US clients',
-    'E-commerce sellers operating in the US market',
-    'Tech founders launching a US-based startup',
-    'Anyone needing bilingual (EN/TR) legal documents',
+    'Turkish entrepreneurs forming or operating a US-based LLC',
+    'Freelancers and service providers working with US clients who need standard commercial agreements',
+    'Founders who need bilingual (EN/TR) legal documents reflecting US commercial practice',
   ] : [
-    "ABD'de iş kurmaya başlayan uluslararası girişimciler",
-    "ABD'li müşterilerle çalışan serbest çalışanlar ve danışmanlar",
-    'ABD pazarında faaliyet gösteren e-ticaret satıcıları',
-    'ABD merkezli startup kuran teknoloji kurucuları',
-    'İki dilli (EN/TR) hukuki belgelere ihtiyaç duyan herkes',
+    'ABD merkezli LLC kuran veya işleten Türk girişimciler',
+    'ABD\'li müşterilerle çalışan ve standart ticari sözleşmelere ihtiyaç duyan serbest çalışanlar ve hizmet sağlayıcılar',
+    'ABD ticari uygulamalarını yansıtan iki dilli (EN/TR) hukuki belgelere ihtiyaç duyan kurucular',
   ]
 
   const whoIsThisNotFor = isEnglish ? [
-    'Individuals seeking personalized legal advice',
-    'Complex corporate structures requiring custom documentation',
-    'Regulated industries with specific compliance requirements',
+    'Individuals seeking personalized legal advice for a specific dispute or transaction',
+    'Businesses in regulated industries (healthcare, finance, securities) requiring specialized compliance documentation',
   ] : [
-    'Kişiye özel hukuki danışmanlık arayanlar',
-    'Özel dokümantasyon gerektiren karmaşık kurumsal yapılar',
-    'Spesifik uyum gereksinimleri olan düzenlenmiş sektörler',
+    'Belirli bir uyuşmazlık veya işlem için kişiye özel hukuki danışmanlık arayanlar',
+    'Düzenlemeye tabi sektörlerde (sağlık, finans, menkul kıymetler) özel uyum belgelerine ihtiyaç duyan işletmeler',
   ]
 
   // Product schema with pay-what-you-can pricing
@@ -127,18 +107,10 @@ export default async function BusinessStarterKitPage({
     offers: {
       '@type': 'Offer',
       priceCurrency: 'USD',
-      price: '0',
+      price: '49',
       priceValidUntil: '2026-12-31',
       availability: 'https://schema.org/InStock',
       url: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
-      description: isEnglish
-        ? 'Pay what you can. $20 recommended, free access available.'
-        : '20$ önerilir, ücretsiz erişim mevcut.',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '47',
     },
   }
 
@@ -198,16 +170,22 @@ export default async function BusinessStarterKitPage({
             ABD Business Starter<br />Legal Kit
           </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed mb-6">
+          <p className="text-lg text-gray-600 leading-relaxed mb-4">
             {isEnglish
-              ? 'A curated collection of essential legal documents for starting or operating a business in the United States. Five professionally drafted templates, available in both English and Turkish.'
-              : "ABD'de iş kurmak veya işletmek için özenle seçilmiş temel hukuki belgeler. Hem İngilizce hem Türkçe olarak hazırlanmış beş profesyonel şablon."}
+              ? 'Three legal document templates that cover the most common needs of a Turkish entrepreneur forming a US-based LLC. Each template is drafted in both English and Turkish, reflecting standard US commercial practice.'
+              : 'ABD merkezli LLC kuran bir Türk girişimcinin en yaygın ihtiyaçlarını karşılayan üç hukuki belge şablonu. Her şablon, standart ABD ticari uygulamalarını yansıtacak şekilde hem İngilizce hem Türkçe olarak hazırlanmıştır.'}
+          </p>
+
+          <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            {isEnglish
+              ? 'These are starting-point templates, not finished legal instruments. They are designed to give you a structurally sound foundation that a licensed attorney can then tailor to your specific situation.'
+              : 'Bunlar bitmiş hukuki belgeler değil, başlangıç noktası niteliğinde şablonlardır. Yapısal olarak sağlam bir temel sunmak üzere tasarlanmıştır; lisanslı bir avukat bunları sizin durumunuza uyarlayabilir.'}
           </p>
 
           <div className="flex flex-wrap gap-3 text-sm text-gray-500">
             <span className="bg-gray-100 px-3 py-1 rounded-full">{isEnglish ? 'US Jurisdiction' : 'ABD Yargı Yetkisi'}</span>
             <span className="bg-gray-100 px-3 py-1 rounded-full">{isEnglish ? 'Bilingual (EN/TR)' : 'İki Dilli (EN/TR)'}</span>
-            <span className="bg-gray-100 px-3 py-1 rounded-full">{isEnglish ? '5 Documents' : '5 Belge'}</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full">{isEnglish ? '3 Documents' : '3 Belge'}</span>
           </div>
         </div>
 
@@ -270,38 +248,24 @@ export default async function BusinessStarterKitPage({
           </div>
         </section>
 
-        {/* Download Section */}
-        <section className="mb-12 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-gray-200 p-8">
-          <h2 className="text-3xl font-bold text-center text-black mb-4">
-            {isEnglish ? 'Download This Kit' : 'Bu Kiti İndirin'}
+        {/* Pricing Section */}
+        <section className="mb-12 border border-gray-200 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-black mb-4">
+            {isEnglish ? 'Get This Kit' : 'Bu Kiti Edinin'}
           </h2>
 
-          <p className="text-center text-gray-600 mb-6">
+          <p className="text-gray-700 mb-6">
             {isEnglish
-              ? "I support EchoLegal – $20 recommended."
-              : "EchoLegal'i destekliyorum – $20 önerilir."}
+              ? '$49 — one-time purchase. Includes all three templates in both English and Turkish.'
+              : '$49 — tek seferlik ödeme. Üç şablonun tamamını İngilizce ve Türkçe olarak içerir.'}
           </p>
 
           <a
             href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
-            className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
+            className="inline-block px-6 py-3 border border-black text-black font-medium rounded hover:bg-gray-50 transition-colors"
           >
-            {isEnglish ? 'I CAN Afford It — $20 (Recommended)' : 'Ödeyebilirim — $20 (Önerilen)'}
+            {isEnglish ? 'Purchase Kit — $49' : 'Kiti Satın Al — $49'}
           </a>
-
-          <a
-            href="/documents/kits/abd-business-starter-kit.zip"
-            download
-            className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-colors mb-4"
-          >
-            {isEnglish ? 'I CANNOT Afford It — Download Free' : 'Ödeyemiyorum — Ücretsiz İndir'}
-          </a>
-
-          <p className="text-center text-sm text-gray-500">
-            {isEnglish
-              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
-              : 'Çoğu kullanıcı sürdürülebilirlik ve iki dilli erişim için $20 katkıda bulunuyor.'}
-          </p>
         </section>
 
         {/* Legal Disclaimer */}
