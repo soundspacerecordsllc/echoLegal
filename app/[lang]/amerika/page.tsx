@@ -239,7 +239,7 @@ export default async function AmerikaHubPage({
               {isEnglish ? 'US Business Starter Legal Kit →' : 'ABD Ticaret Başlangıç Hukuk Paketi →'}
             </Link>
             <span className="text-xs text-gray-500">
-              {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'e destek olun – önerilen tutar 20 $'}
+              {isEnglish ? 'I support EchoLegal – $49 recommended' : 'EchoLegal\'e destek olun – önerilen tutar 49 $'}
             </span>
           </div>
         </section>

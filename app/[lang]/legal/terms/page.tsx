@@ -74,8 +74,8 @@ export default async function TermsPage({
               </h2>
               <p className="text-legal-gray">
                 {isEnglish
-                  ? 'EchoLegal is a public legal knowledge resource. Supporting EchoLegal ($20 recommended) helps maintain and expand these resources. All support payments are non-refundable, and free downloads are available to everyone without restriction.'
-                  : 'EchoLegal, halka açık bir hukuki bilgi kaynağıdır. EchoLegal\'i desteklemek (20$ önerilir) bu kaynakları sürdürmeye ve genişletmeye yardımcı olur. Tüm destek ödemeleri iade edilemez ve ücretsiz indirmeler herkes için kısıtlama olmaksızın mevcuttur.'
+                  ? 'EchoLegal is a public legal knowledge resource. Supporting EchoLegal ($49 recommended) helps maintain and expand these resources. All support payments are non-refundable, and free downloads are available to everyone without restriction.'
+                  : 'EchoLegal, halka açık bir hukuki bilgi kaynağıdır. EchoLegal\'i desteklemek (49$ önerilir) bu kaynakları sürdürmeye ve genişletmeye yardımcı olur. Tüm destek ödemeleri iade edilemez ve ücretsiz indirmeler herkes için kısıtlama olmaksızın mevcuttur.'
                 }
               </p>
             </section>

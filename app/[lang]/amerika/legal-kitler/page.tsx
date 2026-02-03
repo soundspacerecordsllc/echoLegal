@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? "Legal Kits - Curated Template & Guide Packages | EchoLegal"
       : "Legal Kitler - Derlenmiş Şablon & Rehber Paketleri | EchoLegal",
     description: isEnglish
-      ? "Curated legal template and guide packages for US business and immigration. Pay what you can - $20 recommended."
-      : "ABD iş ve göçmenlik için derlenmiş hukuki şablon ve rehber paketleri. Ödeyebildiğiniz kadar ödeyin - $20 önerilir.",
+      ? "Curated legal template and guide packages for US business and immigration. Pay what you can - $49 recommended."
+      : "ABD iş ve göçmenlik için derlenmiş hukuki şablon ve rehber paketleri. Ödeyebildiğiniz kadar ödeyin - $49 önerilir.",
   }
 }
 
@@ -48,8 +48,8 @@ export default async function LegalKitlerPage({
 
         <p className="text-xl text-gray-600 mb-8">
           {isEnglish
-            ? "Curated template and guide packages. Pay what you can - $20 recommended."
-            : "Derlenmiş şablon ve rehber paketleri. Ödeyebildiğiniz kadar ödeyin - $20 önerilir."}
+            ? "Curated template and guide packages. Pay what you can - $49 recommended."
+            : "Derlenmiş şablon ve rehber paketleri. Ödeyebildiğiniz kadar ödeyin - $49 önerilir."}
         </p>
 
         {/* Kits Grid */}
@@ -138,8 +138,8 @@ export default async function LegalKitlerPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Pay What You Can' : 'Ödeyebildiğiniz Kadar Ödeyin'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "$20 recommended, or download free if needed"
-                  : "$20 önerilir, veya gerekirse ücretsiz indirin"}
+                  ? "$49 recommended, or download free if needed"
+                  : "$49 önerilir, veya gerekirse ücretsiz indirin"}
               </p>
             </div>
 

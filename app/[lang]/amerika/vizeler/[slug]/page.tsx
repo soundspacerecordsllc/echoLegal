@@ -313,7 +313,7 @@ export default async function VisaDetailPage({
                   {isEnglish ? 'ABD Business Starter Legal Kit →' : 'ABD Business Starter Legal Kit →'}
                 </Link>
                 <span className="text-xs text-gray-500">
-                  {isEnglish ? 'I support EchoLegal – $20 recommended' : 'EchoLegal\'i destekliyorum – 20$ önerilir'}
+                  {isEnglish ? 'I support EchoLegal – $49 recommended' : 'EchoLegal\'i destekliyorum – 49$ önerilir'}
                 </span>
               </div>
             </section>

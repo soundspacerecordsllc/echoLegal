@@ -129,7 +129,7 @@ export default async function ProcedurePage({
             href="https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03"
             className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3"
           >
-            💳 {isEnglish ? 'I support EchoLegal – $20' : 'EchoLegal\'i destekliyorum – $20'}
+            💳 {isEnglish ? 'I support EchoLegal – $49' : 'EchoLegal\'i destekliyorum – $49'}
           </a>
 
           <a
@@ -143,8 +143,8 @@ export default async function ProcedurePage({
 
           <p className="text-center text-sm text-gray-500">
             {isEnglish 
-              ? 'Most users choose $20 to support ongoing updates and bilingual access.'
-              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 20$ seçiyor.'}
+              ? 'Most users choose $49 to support ongoing updates and bilingual access.'
+              : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 49$ seçiyor.'}
           </p>
         </div>
 

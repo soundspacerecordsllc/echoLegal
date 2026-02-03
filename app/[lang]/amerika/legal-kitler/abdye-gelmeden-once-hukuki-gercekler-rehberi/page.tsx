@@ -186,14 +186,14 @@ export default async function PreArrivalGuidePage({
             {isEnglish ? 'Get This Guide' : 'Bu Rehberi Edinin'}
           </h2>
           <p className="text-center text-gray-600 mb-6">
-            {isEnglish ? 'Pay what you can. $20 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $20 önerilir.'}
+            {isEnglish ? 'Pay what you can. $49 recommended.' : 'Ödeyebildiğiniz kadar ödeyin. $49 önerilir.'}
           </p>
 
           <a
             href={stripePaymentLink}
             className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
           >
-            {isEnglish ? 'Pay $20 (Recommended)' : '$20 Öde (Önerilen)'}
+            {isEnglish ? 'Pay $49 (Recommended)' : '$49 Öde (Önerilen)'}
           </a>
 
           <a

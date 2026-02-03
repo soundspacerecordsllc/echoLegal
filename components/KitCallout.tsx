@@ -39,7 +39,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
               href={stripeLink}
               className="px-4 py-2 bg-[#C9A227] text-white text-sm font-medium rounded-lg hover:bg-[#B8922A] transition-colors whitespace-nowrap"
             >
-              {isEnglish ? '$20 Pay' : '20 $ Destek'}
+              {isEnglish ? '$49 Pay' : '49 $ Destek'}
             </a>
             <a
               href={freeDownloadLink}
@@ -88,7 +88,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
           href={stripeLink}
           className="px-6 py-3 bg-[#C9A227] text-white font-semibold rounded-lg hover:bg-[#B8922A] transition-colors text-center"
         >
-          {isEnglish ? '$20 Recommended' : '20 $ Önerilen'}
+          {isEnglish ? '$49 Recommended' : '49 $ Önerilen'}
         </a>
         <a
           href={freeDownloadLink}
