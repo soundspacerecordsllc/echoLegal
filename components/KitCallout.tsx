@@ -16,7 +16,7 @@ interface KitCalloutProps {
 export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProps) {
   const isEnglish = lang === 'en'
 
-  const stripeLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
+  const stripeLink = 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03'
   const freeDownloadLink = '/documents/kits/abd-business-starter-kit.zip'
   const kitPageLink = `/${lang}/amerika/legal-kitler/abd-business-starter-legal-kit`
 

@@ -261,7 +261,7 @@ export default async function BusinessStarterKitPage({
           </p>
 
           <a
-            href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+            href="https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03"
             className="inline-block px-6 py-3 border border-black text-black font-medium rounded hover:bg-gray-50 transition-colors"
           >
             {isEnglish ? 'Access the Legal Kit' : 'Legal Kit\'e Eriş'}

@@ -170,7 +170,7 @@ export const legalKits: LegalKit[] = [
       'Bireysel hukuki temsil bekleyenler'
     ],
     jurisdiction: 'ABD (Delaware, Wyoming, New York odaklı)',
-    stripeLink: 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01',
+    stripeLink: 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03',
     documentUrl: '/documents/kits/abd-business-starter-kit.zip'
   },
   {
@@ -198,7 +198,7 @@ export const legalKits: LegalKit[] = [
       'Red sonrası itiraz desteği bekleyenler'
     ],
     jurisdiction: 'ABD Federal Göçmenlik Hukuku',
-    stripeLink: 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01',
+    stripeLink: 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03',
     documentUrl: '/documents/kits/abdye-gelmeden-once-rehberi.zip'
   },
   {
@@ -226,7 +226,7 @@ export const legalKits: LegalKit[] = [
       'Dava veya uyuşmazlık desteği isteyenler'
     ],
     jurisdiction: 'ABD + Türkiye (çapraz referanslı)',
-    stripeLink: 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01',
+    stripeLink: 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03',
     documentUrl: '/documents/kits/tr-us-legal-bridge-library.zip'
   }
 ]

@@ -30,7 +30,7 @@ export default async function TRUSBridgeLibraryPage({
   const isEnglish = lang === 'en'
   const kit = getLegalKitBySlug('tr-us-legal-bridge-mini-library')
 
-  const stripePaymentLink = kit?.stripeLink || 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
+  const stripePaymentLink = kit?.stripeLink || 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03'
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">

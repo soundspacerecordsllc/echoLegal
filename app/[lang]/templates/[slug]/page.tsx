@@ -203,7 +203,7 @@ export default async function TemplateDetailPage({
             <div className="grid md:grid-cols-2 gap-4">
               <div className="p-5 border border-gray-200 rounded-lg bg-gray-50">
                 <a
-                  href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+                  href="https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03"
                   className="block w-full bg-gray-900 text-white text-center py-3.5 px-4 text-sm font-semibold rounded hover:bg-gray-800 transition-all shadow-sm hover:shadow-md"
                 >
                   {isEnglish

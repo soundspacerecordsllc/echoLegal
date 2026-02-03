@@ -189,7 +189,7 @@ export default async function TurkishTemplateDetailPage({
             </p>
 
             <a
-              href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
+              href="https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03"
               className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] transition-colors mb-3"
             >
               Ödeyebilirim — $20 (Önerilen)

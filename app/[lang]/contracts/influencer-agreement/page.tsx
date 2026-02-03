@@ -26,7 +26,7 @@ export default async function InfluencerAgreementPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
-  const stripePaymentLink = 'https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01'
+  const stripePaymentLink = 'https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03'
   const documentUrl = isEnglish
     ? '/documents/InfluencerAgreement-Modern-EN.docx'
     : '/documents/InfluencerSozlesmesi-Modern-TR.docx'
