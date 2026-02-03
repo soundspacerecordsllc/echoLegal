@@ -317,7 +317,7 @@ export default async function LLCGuidePage({
 
               {isEnglish ? (
                 <div className="space-y-6">
-                  <p className="text-gray-700 leading-relaxed">Each step below builds on the one before it. You choose a state before appointing a registered agent because the agent must be located in that state. You file your Articles of Organization before applying for an EIN because the IRS requires proof that the entity exists. And you generally need both an EIN and an Operating Agreement before a bank will open an account. The sequence is not arbitrary — it follows the legal and practical dependencies of the process.</p>
+                  <p className="text-gray-700 leading-relaxed">Each step below builds on the one before it. The state is selected first because the registered agent must have a physical presence in that state. The Articles of Organization are filed before applying for an EIN, as the IRS requires proof that the legal entity exists. To open a U.S. bank account, banks generally require both an EIN and an Operating Agreement. This sequence is not arbitrary; it reflects the legal and practical dependencies of the process.</p>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 1: Choose Your State</h3>
@@ -361,7 +361,7 @@ export default async function LLCGuidePage({
                 </div>
               ) : (
                 <div className="space-y-6">
-                  <p className="text-gray-700 leading-relaxed">Aşağıdaki her adım bir öncekinin üzerine kuruludur. Önce eyalet seçilir, çünkü registered agent o eyalette bulunmak zorundadır. Articles of Organization, EIN başvurusundan önce dosyalanır, çünkü IRS tüzel kişiliğin var olduğuna dair kanıt ister. Banka hesabı açmak için de genellikle hem EIN hem Operating Agreement gerekir. Bu sıralama rastgele değildir — sürecin hukuki ve pratik bağımlılıklarını yansıtır.</p>
+                  <p className="text-gray-700 leading-relaxed">Aşağıdaki her adım, bir öncekinin üzerine inşa edilir. Önce eyalet seçilir; çünkü registered agent, kuruluş eyaletinde fiziksel olarak bulunmak zorundadır. Articles of Organization, EIN başvurusundan önce dosyalanır; zira IRS, tüzel kişiliğin hukuken var olduğuna dair belge talep eder. ABD&apos;de banka hesabı açılabilmesi için ise genellikle hem EIN hem de Operating Agreement gerekir. Bu sıralama rastgele değildir; sürecin hukuki ve pratik bağımlılıklarını yansıtır.</p>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 1: Eyalet Seçimi</h3>
