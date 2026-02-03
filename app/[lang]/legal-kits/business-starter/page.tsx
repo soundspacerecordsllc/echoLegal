@@ -264,7 +264,7 @@ export default async function BusinessStarterKitPage({
             href="https://buy.stripe.com/7sY4gzcdidxZ3gmdCnd7q01"
             className="inline-block px-6 py-3 border border-black text-black font-medium rounded hover:bg-gray-50 transition-colors"
           >
-            {isEnglish ? 'Purchase Kit — $49' : 'Kiti Satın Al — $49'}
+            {isEnglish ? 'Access the Legal Kit' : 'Legal Kit\'e Eriş'}
           </a>
         </section>
 

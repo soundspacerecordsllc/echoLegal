@@ -796,7 +796,7 @@ export default async function LLCGuidePage({
                   : '$49 — tek seferlik ödeme'}
               </p>
               <Link href={`/${lang}/legal-kits/business-starter`} className="inline-block px-5 py-2.5 border border-black text-sm font-medium text-black rounded hover:bg-gray-50 transition-colors">
-                {isEnglish ? 'View Kit' : 'Paketi Gör'}
+                {isEnglish ? 'Access the Legal Kit' : 'Legal Kit\'e Eriş'}
               </Link>
             </div>
 
