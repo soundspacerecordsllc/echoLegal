@@ -347,6 +347,10 @@ export default async function LLCGuidePage({
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 5: Draft an Operating Agreement</h3>
                     <p className="text-gray-700 mt-2">An Operating Agreement is the internal governance document of your LLC. It defines who owns what percentage, how profits are distributed, and how decisions are made. Not every state requires one by law, but in practice it is indispensable: banks ask for it when opening an account, and it protects you in disputes between members.</p>
+                    <p className="text-gray-700 mt-2">The majority of US banks request a copy of the Operating Agreement when opening a business account. Even for single-member LLCs, banks verify who is authorized to act on behalf of the entity and how it is managed through this document. LLCs without an Operating Agreement may face significant delays or outright rejection during the account opening process.</p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      For related contract templates your LLC may need, see the <Link href={`/${lang}/contracts/service-agreement`} className="text-blue-600 hover:underline">Service Agreement</Link> and <Link href={`/${lang}/contracts/nda`} className="text-blue-600 hover:underline">Non-Disclosure Agreement</Link> template pages.
+                    </p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
@@ -391,6 +395,10 @@ export default async function LLCGuidePage({
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 5: Operating Agreement Hazırlama</h3>
                     <p className="text-gray-700 mt-2">Operating Agreement, LLC&apos;nizin iç yönetim belgesidir. Ortaklık paylarını, kâr dağılımını ve karar alma süreçlerini düzenler. Her eyalet bunu yasal olarak zorunlu kılmasa da pratikte vazgeçilmezdir: bankalar hesap açarken bu belgeyi ister ve üyeler arasında çıkabilecek anlaşmazlıklarda koruma sağlar.</p>
+                    <p className="text-gray-700 mt-2">ABD&apos;deki bankaların büyük çoğunluğu, iş hesabı açılışı sırasında Operating Agreement&apos;ın bir kopyasını talep eder. Tek üyeli LLC&apos;lerde dahi bankalar, hesap üzerinde kimin yetkili olduğunu ve LLC&apos;nin nasıl yönetildiğini bu belge üzerinden doğrular. Operating Agreement bulunmayan LLC&apos;ler, banka hesabı açma sürecinde ciddi gecikmeler yaşayabilir veya başvurularının reddedilmesiyle karşılaşabilir.</p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      LLC&apos;nizin ihtiyaç duyabileceği ilgili sözleşme şablonları için <Link href={`/${lang}/contracts/service-agreement`} className="text-blue-600 hover:underline">Hizmet Sözleşmesi</Link> ve <Link href={`/${lang}/contracts/nda`} className="text-blue-600 hover:underline">Gizlilik Sözleşmesi</Link> şablon sayfalarına bakabilirsiniz.
+                    </p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
