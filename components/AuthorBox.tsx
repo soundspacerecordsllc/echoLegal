@@ -88,15 +88,6 @@ function AuthorBoxFull({
             {author.isAttorney && (
               <p className="text-sm text-gray-600 mt-1">
                 {author.designation[lang]}
-                {author.barAdmissions && author.barAdmissions.length > 0 && (
-                  <span className="text-gray-400">
-                    {' '}&middot;{' '}
-                    {isEnglish
-                      ? `Admitted in ${author.barAdmissions[0].jurisdictionName}`
-                      : `${author.barAdmissions[0].jurisdictionName} Barosu`
-                    }
-                  </span>
-                )}
               </p>
             )}
           </div>
@@ -106,43 +97,7 @@ function AuthorBoxFull({
             {author.institutionalRole[lang]}
           </p>
 
-          {/* Education (for attorneys) */}
-          {author.education && author.education.length > 0 && (
-            <div className="mb-4">
-              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                {isEnglish ? 'Education' : 'Eğitim'}
-              </h4>
-              <ul className="space-y-1">
-                {author.education.map((edu, idx) => (
-                  <li key={idx} className="text-sm text-gray-600">
-                    <span className="font-medium">{edu.degree}</span>
-                    {', '}
-                    {edu.institution}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* Bar Admission (formal display) */}
-          {author.barAdmissions && author.barAdmissions.length > 0 && (
-            <div className="mb-4">
-              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                {isEnglish ? 'Bar Admission' : 'Baro Kaydı'}
-              </h4>
-              {author.barAdmissions.map((admission, idx) => (
-                <p key={idx} className="text-sm text-gray-600">
-                  {isEnglish
-                    ? `${admission.jurisdictionName}`
-                    : `${admission.jurisdictionName}`
-                  }
-                  <span className="text-gray-400 ml-2">
-                    {isEnglish ? 'Registration No.' : 'Sicil No.'} {admission.number}
-                  </span>
-                </p>
-              ))}
-            </div>
-          )}
+          {/* Education and Bar Admission details are kept in internal data but not displayed publicly */}
 
           {/* Jurisdictional Disclaimer */}
           <div className="pt-4 border-t border-gray-100">
@@ -181,14 +136,8 @@ function AuthorBoxCompact({
           {author.name[lang]}
         </p>
         <p className="text-xs text-gray-500 truncate">
-          {author.isAttorney && author.barAdmissions && author.barAdmissions.length > 0 ? (
-            <>
-              {author.designation[lang]}
-              <span className="text-gray-400">
-                {' '}&middot;{' '}
-                {author.barAdmissions[0].jurisdictionName}
-              </span>
-            </>
+          {author.isAttorney ? (
+            author.designation[lang]
           ) : (
             author.title[lang]
           )}
@@ -235,17 +184,9 @@ export function getAuthorSchema(authorId?: string) {
 
   if (!author) return null
 
-  if (author.isTeam) {
-    return {
-      '@type': 'Organization',
-      name: author.name.en,
-      url: 'https://echo-legal.com',
-    }
-  }
-
   return {
-    '@type': 'Person',
-    name: author.name.en,
-    jobTitle: author.designation.en,
+    '@type': 'Organization',
+    name: 'EchoLegal',
+    url: 'https://echo-legal.com',
   }
 }

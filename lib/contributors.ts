@@ -155,10 +155,10 @@ export const DEFAULT_PERMISSIONS: Record<ContributorRole, ContributorPermissions
 export const ZEYNEP_MOORE: Contributor = {
   id: 'zeynep-moore',
   name: {
-    en: 'Zeynep Ruziye Moore',
-    tr: 'Zeynep Ruziye Moore',
+    en: 'EchoLegal Legal Team',
+    tr: 'EchoLegal Hukuk Ekibi',
   },
-  initials: 'ZM',
+  initials: 'EL',
   designation: {
     en: 'Licensed in New York',
     tr: 'New York Lisanslı',
@@ -198,8 +198,8 @@ export const ZEYNEP_MOORE: Contributor = {
   verificationStatus: 'verified',
   permissions: DEFAULT_PERMISSIONS['editorial-authority'],
   bio: {
-    en: 'Zeynep Ruziye Moore is licensed to practice law in the State of New York.',
-    tr: 'Zeynep Ruziye Moore, New York Eyaleti\'nde avukatlık yapmaya yetkilidir.',
+    en: 'Content is authored and reviewed by a New York-licensed attorney.',
+    tr: 'İçerik, New York lisanslı bir avukat tarafından yazılmakta ve incelenmektedir.',
   },
   jurisdictionalNote: {
     en: 'Licensed in New York. This content is provided for general informational purposes and does not constitute legal advice.',

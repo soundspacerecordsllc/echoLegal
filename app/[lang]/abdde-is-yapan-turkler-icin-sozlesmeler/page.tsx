@@ -70,9 +70,9 @@ export default async function ContractsGuidePage({
       ? 'Essential Contracts for Turkish Entrepreneurs in the US'
       : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler',
     author: {
-      '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Licensed in New York',
+      '@type': 'Organization',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
     publisher: {
       '@type': 'Organization',
@@ -838,12 +838,12 @@ export default async function ContractsGuidePage({
               <h2 className="text-lg font-bold text-black mb-3">{isEnglish ? 'Author' : 'Yazar'}</h2>
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold text-xl">
-                  ZM
+                  EL
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">Zeynep Ruziye Moore</h3>
+                  <h3 className="font-semibold text-black">EchoLegal</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEnglish ? 'Licensed in New York' : 'New York Lisanslı'}
+                    {isEnglish ? 'Content reviewed by a New York-licensed attorney' : 'İçerik New York lisanslı bir avukat tarafından incelenmektedir'}
                   </p>
                 </div>
               </div>

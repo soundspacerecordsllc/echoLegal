@@ -62,9 +62,9 @@ export default async function W8W9DecisionMapPage({
       ? 'W-8 or W-9? Complete Decision Guide for International Entrepreneurs'
       : 'W-8 mi W-9 mu? Uluslararası Girişimciler İçin Tam Karar Rehberi',
     author: {
-      '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Licensed in New York',
+      '@type': 'Organization',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
     publisher: {
       '@type': 'Organization',
@@ -198,7 +198,7 @@ export default async function W8W9DecisionMapPage({
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
-                Zeynep Ruziye Moore
+                EchoLegal
               </span>
               <span className="flex items-center gap-1">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
