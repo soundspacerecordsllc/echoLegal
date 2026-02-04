@@ -15,6 +15,7 @@ import {
 import { JurisdictionCode, LanguageCode, getJurisdiction, getLanguageName } from '@/lib/jurisdictions'
 import { getContributor, Contributor } from '@/lib/contributors'
 import ContributorAttribution from './ContributorAttribution'
+import InstitutionalBadge from './InstitutionalBadge'
 
 // ============================================
 // TYPES
@@ -248,6 +249,14 @@ export default function CanonicalPage({
             <span>{formatDate(updatedAt)}</span>
           </div>
         </div>
+
+        {/* Institutional trust signal */}
+        <InstitutionalBadge
+          lang={isEnglish ? 'en' : 'tr'}
+          jurisdictions={jurisdictions}
+          lastReviewedAt={lastReviewedAt || updatedAt}
+          className="mt-4"
+        />
       </header>
 
       {/* Main content area with optional sidebar */}

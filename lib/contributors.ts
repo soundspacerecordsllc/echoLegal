@@ -1,6 +1,10 @@
 // lib/contributors.ts
 // Contributor data model for EchoLegal legal encyclopedia
 // Institutional author profiles with governance and verification support
+//
+// Tier model (Section 2 of Governance Execution Plan):
+//   candidate → author → reviewer → jurisdiction-editor →
+//   senior-editor → board-member → editorial-authority
 
 import { JurisdictionCode, LanguageCode } from './jurisdictions'
 
@@ -8,24 +12,50 @@ import { JurisdictionCode, LanguageCode } from './jurisdictions'
 // CONTRIBUTOR TYPES
 // ============================================
 
-export type ContributorRole =
-  | 'author'              // Can create and submit content
-  | 'reviewer'            // Can review and approve content
-  | 'editor'              // Can edit and approve content
-  | 'editorial-authority' // Full editorial control
+/**
+ * 7-tier contributor role hierarchy.
+ * Each tier inherits the capabilities of the tiers below it
+ * unless explicitly restricted in the permissions matrix.
+ */
+export type ContributorTier =
+  | 'candidate'            // Applied, not yet verified
+  | 'author'               // Verified, can draft and submit
+  | 'reviewer'             // Can peer-review within jurisdiction
+  | 'jurisdiction-editor'  // Responsible for a specific jurisdiction
+  | 'senior-editor'        // Cross-jurisdiction review and publish
+  | 'board-member'         // Editorial advisory board
+  | 'editorial-authority'  // Final editorial authority (exactly one)
+
+/** @deprecated Use ContributorTier instead. Kept for backward compatibility. */
+export type ContributorRole = ContributorTier
 
 export type VerificationStatus =
-  | 'unverified'          // Credentials not yet verified
-  | 'pending'             // Verification in progress
-  | 'verified'            // Credentials verified
-  | 'suspended'           // Temporarily suspended
+  | 'unverified'           // Claimed, no evidence submitted
+  | 'documents-submitted'  // Evidence submitted, pending review
+  | 'pending'              // Verification in progress
+  | 'verified'             // Confirmed by EchoLegal verification
+  | 'expired'              // Verification lapsed (annual re-check required)
+  | 'suspended'            // Suspended pending investigation
+  | 'revoked'              // Permanently removed
+
+export type BarAdmissionStatus = 'active' | 'inactive' | 'retired' | 'suspended'
+
+export type VerificationMethod =
+  | 'bar-directory-lookup'
+  | 'certificate-review'
+  | 'peer-attestation'
 
 export type ContributorPermissions = {
-  canAuthor: boolean       // Can create new content
-  canReview: boolean       // Can review others' content
-  canPublish: boolean      // Can publish without review
-  canEditOthers: boolean   // Can edit content by other authors
-  canManageContributors: boolean // Can manage other contributors
+  canAuthor: boolean               // Can create new content
+  canReview: boolean               // Can review others' content
+  canPublish: boolean              // Can publish without higher approval
+  canEditOthers: boolean           // Can edit content by other authors
+  canManageContributors: boolean   // Can manage other contributors
+  canCommissionContent: boolean    // Can assign and commission new content
+  canSetPolicy: boolean            // Can propose or vote on editorial policy
+  canVeto: boolean                 // Can veto any publication
+  canReviewInJurisdiction: JurisdictionCode[]   // Jurisdiction-scoped review
+  canApproveInJurisdiction: JurisdictionCode[]  // Jurisdiction-scoped approval
 }
 
 // ============================================
@@ -63,11 +93,14 @@ export type Contributor = {
   // Credentials
   credentials: string[]
   barAdmissions: {
-    jurisdiction: JurisdictionCode | string // Allow string for non-US jurisdictions
+    jurisdiction: JurisdictionCode | string
     jurisdictionName: string
     number: string
     year?: number
     isVerified: boolean
+    verifiedAt?: string                // ISO date
+    verificationMethod?: VerificationMethod
+    admissionStatus?: BarAdmissionStatus
   }[]
   education: {
     degree: string
@@ -75,13 +108,15 @@ export type Contributor = {
     location?: string
     year?: number
   }[]
+  specializations?: string[]            // e.g., ['immigration', 'corporate', 'tax']
 
   // Scope
   jurisdictions: JurisdictionCode[]  // Jurisdictions contributor can write about
   languages: LanguageCode[]          // Languages contributor can write in
 
   // Governance
-  role: ContributorRole
+  tier: ContributorTier               // Primary tier designation
+  role: ContributorRole               // Alias for tier (backward compat)
   verificationStatus: VerificationStatus
   permissions: ContributorPermissions
 
@@ -90,8 +125,8 @@ export type Contributor = {
   isAttorney: boolean
   isTeam?: boolean                    // Is this an organizational account
 
-  // Contact
-  email?: string                      // Internal use only
+  // Contact (PRIVATE — never displayed)
+  email?: string
   linkedIn?: string
 
   // Jurisdictional scope disclaimer
@@ -104,25 +139,48 @@ export type Contributor = {
   joinedAt?: string                   // ISO date
   lastActiveAt?: string               // ISO date
 
+  // Agreements
+  contributorAgreementSignedAt?: string
+  conflictOfInterestDeclaredAt?: string
+
   // Statistics (optional, computed)
   stats?: {
     articlesAuthored: number
     documentsAuthored: number
     reviewsCompleted: number
+    draftsSubmitted?: number
+    revisionsRequested?: number
   }
 }
 
 // ============================================
-// DEFAULT PERMISSIONS BY ROLE
+// DEFAULT PERMISSIONS BY TIER
 // ============================================
 
-export const DEFAULT_PERMISSIONS: Record<ContributorRole, ContributorPermissions> = {
+export const DEFAULT_PERMISSIONS: Record<ContributorTier, ContributorPermissions> = {
+  candidate: {
+    canAuthor: false,
+    canReview: false,
+    canPublish: false,
+    canEditOthers: false,
+    canManageContributors: false,
+    canCommissionContent: false,
+    canSetPolicy: false,
+    canVeto: false,
+    canReviewInJurisdiction: [],
+    canApproveInJurisdiction: [],
+  },
   author: {
     canAuthor: true,
     canReview: false,
     canPublish: false,
     canEditOthers: false,
     canManageContributors: false,
+    canCommissionContent: false,
+    canSetPolicy: false,
+    canVeto: false,
+    canReviewInJurisdiction: [],
+    canApproveInJurisdiction: [],
   },
   reviewer: {
     canAuthor: true,
@@ -130,13 +188,47 @@ export const DEFAULT_PERMISSIONS: Record<ContributorRole, ContributorPermissions
     canPublish: false,
     canEditOthers: false,
     canManageContributors: false,
+    canCommissionContent: false,
+    canSetPolicy: false,
+    canVeto: false,
+    canReviewInJurisdiction: [],    // Populated per-contributor
+    canApproveInJurisdiction: [],
   },
-  editor: {
+  'jurisdiction-editor': {
+    canAuthor: true,
+    canReview: true,
+    canPublish: false,
+    canEditOthers: true,
+    canManageContributors: false,
+    canCommissionContent: true,
+    canSetPolicy: false,
+    canVeto: false,
+    canReviewInJurisdiction: [],    // Populated per-contributor
+    canApproveInJurisdiction: [],   // Populated per-contributor
+  },
+  'senior-editor': {
     canAuthor: true,
     canReview: true,
     canPublish: true,
     canEditOthers: true,
     canManageContributors: false,
+    canCommissionContent: true,
+    canSetPolicy: true,
+    canVeto: false,
+    canReviewInJurisdiction: [],
+    canApproveInJurisdiction: [],
+  },
+  'board-member': {
+    canAuthor: true,
+    canReview: true,
+    canPublish: false,
+    canEditOthers: false,
+    canManageContributors: false,
+    canCommissionContent: false,
+    canSetPolicy: true,
+    canVeto: false,
+    canReviewInJurisdiction: [],
+    canApproveInJurisdiction: [],
   },
   'editorial-authority': {
     canAuthor: true,
@@ -144,14 +236,25 @@ export const DEFAULT_PERMISSIONS: Record<ContributorRole, ContributorPermissions
     canPublish: true,
     canEditOthers: true,
     canManageContributors: true,
+    canCommissionContent: true,
+    canSetPolicy: true,
+    canVeto: true,
+    canReviewInJurisdiction: [],
+    canApproveInJurisdiction: [],
   },
+}
+
+/** @deprecated Use DEFAULT_PERMISSIONS with ContributorTier. */
+export function getPermissionsForRole(role: ContributorRole): ContributorPermissions {
+  return DEFAULT_PERMISSIONS[role] || DEFAULT_PERMISSIONS.author
 }
 
 // ============================================
 // CONTRIBUTOR INSTANCES
 // ============================================
 
-// Primary Contributing Attorney
+// Primary Contributing Attorney (Editorial Director)
+// Personal name stored for internal contracts/verification only — never displayed.
 export const ZEYNEP_MOORE: Contributor = {
   id: 'zeynep-moore',
   name: {
@@ -178,6 +281,9 @@ export const ZEYNEP_MOORE: Contributor = {
       jurisdictionName: 'New York',
       number: '5552336',
       isVerified: true,
+      verifiedAt: '2024-01-01',
+      verificationMethod: 'bar-directory-lookup',
+      admissionStatus: 'active',
     },
   ],
   education: [
@@ -192,11 +298,17 @@ export const ZEYNEP_MOORE: Contributor = {
       location: 'Istanbul, Turkey',
     },
   ],
+  specializations: ['business-formation', 'immigration', 'contracts', 'tax'],
   jurisdictions: ['US', 'US-NY', 'TR'],
   languages: ['en', 'tr'],
+  tier: 'editorial-authority',
   role: 'editorial-authority',
   verificationStatus: 'verified',
-  permissions: DEFAULT_PERMISSIONS['editorial-authority'],
+  permissions: {
+    ...DEFAULT_PERMISSIONS['editorial-authority'],
+    canReviewInJurisdiction: ['US', 'US-NY', 'TR'],
+    canApproveInJurisdiction: ['US', 'US-NY', 'TR'],
+  },
   bio: {
     en: 'Content is authored and reviewed by a New York-licensed attorney.',
     tr: 'İçerik, New York lisanslı bir avukat tarafından yazılmakta ve incelenmektedir.',
@@ -208,6 +320,7 @@ export const ZEYNEP_MOORE: Contributor = {
   isActive: true,
   isAttorney: true,
   joinedAt: '2024-01-01',
+  contributorAgreementSignedAt: '2024-01-01',
 }
 
 // Editorial Team (organizational author)
@@ -235,14 +348,13 @@ export const EDITORIAL_TEAM: Contributor = {
   education: [],
   jurisdictions: ['US', 'TR', 'GENERAL'],
   languages: ['en', 'tr'],
+  tier: 'author',
   role: 'author',
   verificationStatus: 'verified',
   permissions: {
-    canAuthor: true,
-    canReview: false,
-    canPublish: false,
-    canEditOthers: false,
-    canManageContributors: false,
+    ...DEFAULT_PERMISSIONS.author,
+    canReviewInJurisdiction: [],
+    canApproveInJurisdiction: [],
   },
   bio: {
     en: 'The EchoLegal Editorial Team researches and maintains legal educational content for international entrepreneurs and professionals navigating US legal and regulatory systems.',
@@ -281,6 +393,33 @@ export function getActiveContributors(): Contributor[] {
 
 export function getContributorsByRole(role: ContributorRole): Contributor[] {
   return Object.values(contributors).filter(c => c.role === role && c.isActive)
+}
+
+export function getContributorsByTier(tier: ContributorTier): Contributor[] {
+  return Object.values(contributors).filter(c => c.tier === tier && c.isActive)
+}
+
+/**
+ * Tier ordering for display and comparison.
+ */
+export const TIER_ORDER: Record<ContributorTier, number> = {
+  candidate: 0,
+  author: 1,
+  reviewer: 2,
+  'jurisdiction-editor': 3,
+  'senior-editor': 4,
+  'board-member': 5,
+  'editorial-authority': 6,
+}
+
+export const TIER_LABELS: Record<ContributorTier, { en: string; tr: string }> = {
+  candidate: { en: 'Candidate', tr: 'Aday' },
+  author: { en: 'Author', tr: 'Yazar' },
+  reviewer: { en: 'Reviewer', tr: 'İncelemeci' },
+  'jurisdiction-editor': { en: 'Jurisdiction Editor', tr: 'Yargı Alanı Editörü' },
+  'senior-editor': { en: 'Senior Editor', tr: 'Kıdemli Editör' },
+  'board-member': { en: 'Board Member', tr: 'Kurul Üyesi' },
+  'editorial-authority': { en: 'Editorial Director', tr: 'Editöryal Direktör' },
 }
 
 export function getVerifiedAttorneys(): Contributor[] {

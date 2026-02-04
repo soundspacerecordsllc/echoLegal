@@ -5,6 +5,7 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import Breadcrumb from '@/components/Breadcrumb'
+import GovernanceNav from '@/components/GovernanceNav'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -60,6 +61,8 @@ export default async function EditorialPolicyPage({
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Breadcrumb items={breadcrumbItems} lang={lang} />
+
+      <GovernanceNav lang={lang} currentPath="/about/editorial-policy" />
 
       {/* Hero */}
       <div className="mb-12">

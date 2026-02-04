@@ -247,19 +247,73 @@ export default async function AboutPage({
           </div>
         </section>
 
-        {/* Related Links */}
+        {/* Governance & Policies */}
         <section className="border-t border-gray-200 pt-8">
           <h2 className="text-lg font-bold text-black mb-4">
-            {isEnglish ? 'Learn More' : 'Daha Fazla Bilgi'}
+            {isEnglish ? 'Governance & Policies' : 'Yönetişim ve Politikalar'}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Link
+              href={`/${lang}/about/charter`}
+              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span className="font-medium text-black">{isEnglish ? 'Institutional Charter' : 'Kurumsal Tüzük'}</span>
+              <span className="block text-sm text-gray-600 mt-1">
+                {isEnglish ? 'Mission, editorial independence, and governance structure' : 'Misyon, editöryal bağımsızlık ve yönetişim yapısı'}
+              </span>
+            </Link>
             <Link
               href={`/${lang}/about/editorial-policy`}
               className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <span className="font-medium text-black">{isEnglish ? 'Editorial Policy' : 'Editöryal Politika'}</span>
               <span className="block text-sm text-gray-600 mt-1">
-                {isEnglish ? 'Our standards for accuracy and sourcing' : 'Doğruluk ve kaynak kullanımı standartlarımız'}
+                {isEnglish ? 'Standards for accuracy, sourcing, and review' : 'Doğruluk, kaynak kullanımı ve inceleme standartları'}
+              </span>
+            </Link>
+            <Link
+              href={`/${lang}/about/editorial-board`}
+              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span className="font-medium text-black">{isEnglish ? 'Editorial Board' : 'Yayın Kurulu'}</span>
+              <span className="block text-sm text-gray-600 mt-1">
+                {isEnglish ? 'Reviewing attorneys and editorial team' : 'İnceleme avukatları ve editör ekibi'}
+              </span>
+            </Link>
+            <Link
+              href={`/${lang}/about/contributor-standards`}
+              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span className="font-medium text-black">{isEnglish ? 'Contributor Standards' : 'Katkıda Bulunan Standartları'}</span>
+              <span className="block text-sm text-gray-600 mt-1">
+                {isEnglish ? 'Requirements for contributing attorneys' : 'Katkıda bulunan avukatlar için gereksinimler'}
+              </span>
+            </Link>
+            <Link
+              href={`/${lang}/about/corrections`}
+              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span className="font-medium text-black">{isEnglish ? 'Corrections & Retractions' : 'Düzeltmeler ve Geri Çekmeler'}</span>
+              <span className="block text-sm text-gray-600 mt-1">
+                {isEnglish ? 'How errors are handled and documented' : 'Hataların nasıl ele alınıp belgelendiği'}
+              </span>
+            </Link>
+            <Link
+              href={`/${lang}/about/citation-guide`}
+              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span className="font-medium text-black">{isEnglish ? 'Citation Guide' : 'Atıf Rehberi'}</span>
+              <span className="block text-sm text-gray-600 mt-1">
+                {isEnglish ? 'How to cite EchoLegal content' : 'EchoLegal içeriğine nasıl atıf yapılır'}
+              </span>
+            </Link>
+            <Link
+              href={`/${lang}/jurisdictions`}
+              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <span className="font-medium text-black">{isEnglish ? 'Jurisdictions' : 'Yargı Alanları'}</span>
+              <span className="block text-sm text-gray-600 mt-1">
+                {isEnglish ? 'Legal jurisdictions currently covered' : 'Şu anda kapsanan hukuki yargı alanları'}
               </span>
             </Link>
             <Link
