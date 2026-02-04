@@ -838,7 +838,7 @@ export type ContractTemplateMeta = UniversalMeta & {
   // Template details
   complexityLevel: 'simple' | 'moderate' | 'complex'
   requiresCustomization: boolean
-  governingLaw?: string             // e.g., 'State of New York'
+  governingLaw: string              // e.g., 'State of New York'
   isSample: boolean                 // true = reference only, not for use
 
   // Files
