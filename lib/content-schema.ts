@@ -24,7 +24,58 @@ export type ContentType =
   | 'Sample'       // Example documents (reference only)
   | 'Policy'       // Policy templates (privacy, terms, etc.)
 
-export type ContentStatus = 'draft' | 'review' | 'published' | 'archived'
+export type ContentStatus =
+  | 'draft'
+  | 'review'
+  | 'approved'
+  | 'published'
+  | 'archived'
+  | 'retracted'
+
+// ============================================
+// VERSIONING & REVISION HISTORY
+// ============================================
+
+export type RevisionType =
+  | 'substantive'          // Legal change (new statute, case, procedure)
+  | 'correction'           // Factual error corrected
+  | 'editorial'            // Clarity, formatting, non-substantive
+  | 'translation-update'   // Translation brought current with source
+
+export type RevisionEntry = {
+  version: string          // Semantic: '1.0', '1.1', '2.0'
+  date: string             // ISO date
+  authorId: string         // Contributor who made the change
+  summary: string          // Human-readable summary of change
+  type: RevisionType
+}
+
+// ============================================
+// CITATION KEY SYSTEM
+// ============================================
+
+/**
+ * Canonical content type prefixes for citation keys.
+ * Format: ecl-{prefix}-{5-digit-sequence}
+ * Example: ecl-enc-00142
+ */
+export const CITATION_TYPE_PREFIX: Record<ContentType, string> = {
+  Article: 'enc',
+  Guide: 'gde',
+  Contract: 'tpl',
+  Form: 'frm',
+  Sample: 'smp',
+  Letter: 'ltr',
+  Kit: 'kit',
+  Checklist: 'chk',
+  Policy: 'pol',
+}
+
+export function generateCitationKey(contentType: ContentType, sequenceNumber: number): string {
+  const prefix = CITATION_TYPE_PREFIX[contentType]
+  const padded = String(sequenceNumber).padStart(5, '0')
+  return `ecl-${prefix}-${padded}`
+}
 
 // ============================================
 // DISCLAIMER TYPES
@@ -91,10 +142,13 @@ export type BaseContentMeta = {
   id: string                          // Unique identifier (kebab-case)
   canonicalSlug: string               // URL-safe slug for routing
   contentType: ContentType
+  citationKey?: string                // Machine-readable: ecl-{type}-{seq} (see generateCitationKey)
 
   // Localization
   lang: LanguageCode                  // Primary language of this version
+  canonicalLang?: LanguageCode        // Language of the ORIGINAL version
   availableLanguages: LanguageCode[]  // All languages this content exists in
+  translatedFrom?: string             // ID of the source-language version (if translation)
 
   // Scope
   jurisdictions: JurisdictionCode[]   // Applicable jurisdictions
@@ -107,9 +161,13 @@ export type BaseContentMeta = {
 
   // Authorship & Review
   authorId: string                    // Contributor ID of primary author
+  authorIds?: string[]                // Additional co-authors
   reviewerId?: string                 // Contributor ID of legal reviewer
+  reviewerIds?: string[]              // Additional reviewers
   lastReviewedAt?: string             // ISO date of last legal review
+  lastReviewedBy?: string             // Contributor ID of last reviewer
   reviewNotes?: string                // Internal notes about review
+  nextReviewDue?: string              // ISO date — computed from review policy
 
   // Timestamps
   createdAt: string                   // ISO date created
@@ -118,6 +176,11 @@ export type BaseContentMeta = {
 
   // Status
   status: ContentStatus
+
+  // Versioning
+  version?: string                    // Semantic: '1.0', '1.1', '2.0'
+  revisionHistory?: RevisionEntry[]   // Ordered list of revisions
+  changelogSummary?: string           // Human-readable summary of latest change
 
   // Metadata
   readingTimeMinutes?: number         // Estimated reading time
@@ -136,6 +199,7 @@ export type BaseContentMeta = {
   // SEO
   metaTitle?: string                  // Override for <title>
   metaDescription?: string            // Override for meta description
+  canonicalUrl?: string               // Fully qualified canonical URL
   noIndex?: boolean                   // Exclude from search engines
 }
 
@@ -159,17 +223,21 @@ export type ArticleMeta = BaseContentMeta & {
     text: string
     url?: string
     accessedAt?: string
+    sourceType?: 'statute' | 'regulation' | 'case' | 'government-source'
+      | 'academic' | 'bar-association' | 'news' | 'other'
   }[]
+
+  // Defined legal terms (for cross-referencing)
+  definedTerms?: string[]
+
+  // Related statutes
+  relatedStatutes?: string[]             // e.g., ['26 USC § 7701', 'INA § 101']
+
+  // Key takeaways (3-5 bullet points for summaries)
+  keyTakeaways?: string[]
 
   // Article category
   category: 'business' | 'tax' | 'immigration' | 'contracts' | 'compliance' | 'other'
-
-  // Revision history
-  revisionHistory?: {
-    date: string
-    authorId: string
-    summary: string
-  }[]
 }
 
 // ============================================
