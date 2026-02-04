@@ -85,9 +85,9 @@ export default async function BankAccountGuidePage({
       ? 'How to Open a US Bank Account as a Non-Resident'
       : 'ABD\'de Banka Hesabı Açmak: Türkler İçin Rehber',
     author: {
-      '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Attorney at Law',
+      '@type': 'Organization',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
     publisher: {
       '@type': 'Organization',

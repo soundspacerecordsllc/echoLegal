@@ -295,8 +295,8 @@ export default async function Home({
           <div className="text-gray-600 leading-relaxed space-y-4">
             <p>
               {isEnglish
-                ? 'EchoLegal is an independent legal knowledge platform founded by Zeynep Ruziye Moore, a New York-licensed attorney with dual legal education in Turkey and the United States. All content is written with attorney-level precision and reviewed for accuracy.'
-                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı avukat Zeynep Ruziye Moore tarafından kurulan bağımsız bir hukuki bilgi platformudur. Tüm içerikler avukat düzeyinde hassasiyetle yazılmış ve doğruluk açısından gözden geçirilmiştir.'}
+                ? 'EchoLegal is an independent legal knowledge platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. All content is written with attorney-level precision and reviewed for accuracy.'
+                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuki bilgi platformudur. Tüm içerikler avukat düzeyinde hassasiyetle yazılmış ve doğruluk açısından gözden geçirilmiştir.'}
             </p>
             <p className="text-sm text-gray-500">
               {isEnglish

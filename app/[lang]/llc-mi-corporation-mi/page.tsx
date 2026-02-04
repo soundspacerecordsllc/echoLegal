@@ -91,9 +91,9 @@ export default async function LLCvsCorporationPage({
       ? 'LLC vs Corporation: Which is Right for Your US Business?'
       : 'LLC mi Corporation mı: Hangisi Sizin İçin Doğru?',
     author: {
-      '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Attorney at Law',
+      '@type': 'Organization',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
     publisher: {
       '@type': 'Organization',

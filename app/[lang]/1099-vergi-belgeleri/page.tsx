@@ -70,9 +70,9 @@ export default async function TaxDocumentsPage({
       ? '1099 Forms & US Tax Documents Explained'
       : '1099 Formları ve ABD Vergi Belgeleri',
     author: {
-      '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Licensed in New York',
+      '@type': 'Organization',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
     publisher: {
       '@type': 'Organization',

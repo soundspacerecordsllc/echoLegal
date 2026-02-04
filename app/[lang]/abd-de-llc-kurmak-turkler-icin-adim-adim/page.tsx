@@ -80,13 +80,9 @@ export default async function LLCGuidePage({
       ? 'How to Form an LLC in the US: Step-by-Step Guide for Turkish Entrepreneurs'
       : 'ABD\'de LLC Kurmak: Türkler İçin Adım Adım Hukuki Rehber',
     author: {
-      '@type': 'Person',
-      name: 'Zeynep Ruziye Moore',
-      jobTitle: 'Licensed in New York',
-      affiliation: {
-        '@type': 'Organization',
-        name: 'EchoLegal',
-      },
+      '@type': 'Organization',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
     publisher: {
       '@type': 'Organization',
@@ -173,7 +169,7 @@ export default async function LLCGuidePage({
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  Zeynep Ruziye Moore
+                  EchoLegal
                 </span>
                 <span className="flex items-center gap-1">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -736,12 +732,12 @@ export default async function LLCGuidePage({
               <h2 className="text-lg font-bold text-black mb-3">{isEnglish ? 'Author' : 'Yazar'}</h2>
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold text-xl">
-                  ZM
+                  EL
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black">Zeynep Ruziye Moore</h3>
+                  <h3 className="font-semibold text-black">EchoLegal</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEnglish ? 'Licensed in New York' : 'New York Lisanslı'}
+                    {isEnglish ? 'Content reviewed by a New York-licensed attorney' : 'İçerik New York lisanslı bir avukat tarafından incelenmektedir'}
                   </p>
                 </div>
               </div>

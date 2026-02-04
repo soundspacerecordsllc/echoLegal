@@ -29,18 +29,13 @@ export const organizationSchema = {
   },
 }
 
-// Person Schema - Primary Author
+// Author Schema - Organization
 export const authorSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
+  '@type': 'Organization',
   '@id': `${SITE_URL}/#author`,
-  name: 'Zeynep Ruziye Moore',
-  jobTitle: 'Licensed in New York',
-  affiliation: {
-    '@type': 'Organization',
-    name: 'EchoLegal',
-    url: SITE_URL,
-  },
+  name: 'EchoLegal',
+  url: SITE_URL,
 }
 
 // WebSite Schema with SearchAction
