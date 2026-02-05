@@ -297,7 +297,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'invoice-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/InvoiceTemplate-EN.docx',
   },
   {
     id: 'receipt-template-en',
@@ -309,7 +310,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'template',
     slug: 'receipt-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/PaymentReceipt-EN.docx',
   },
   {
     id: 'authorization-letter-en',
@@ -321,7 +323,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'authorization-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/AuthorizationLetter-EN.docx',
   },
   {
     id: 'company-policy-notice-en',
@@ -333,7 +336,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'company-policy-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/CompanyPolicyNotice-EN.docx',
   },
   {
     id: 'operating-agreement-outline-en',
@@ -345,7 +349,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'operating-agreement-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/OperatingAgreementOutline-EN.docx',
   },
 
   // Turkish business
@@ -359,7 +364,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'invoice-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/FaturaSablonu-TR.docx',
   },
   {
     id: 'receipt-template-tr',
@@ -371,7 +377,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'template',
     slug: 'receipt-template',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/OdemeMakbuzu-TR.docx',
   },
   {
     id: 'authorization-letter-tr',
@@ -383,7 +390,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'authorization-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/YetkiMektubu-TR.docx',
   },
   {
     id: 'company-policy-notice-tr',
@@ -395,7 +403,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'template',
     slug: 'company-policy-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/SirketPolitikasiBildirimi-TR.docx',
   },
   {
     id: 'operating-agreement-outline-tr',
@@ -407,7 +416,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'operating-agreement-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/OperatingAgreementAnahat-TR.docx',
   },
 
   // ===== IMMIGRATION & CONSULAR =====
