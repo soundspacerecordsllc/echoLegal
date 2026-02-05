@@ -6,6 +6,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { Locale } from '@/i18n-config'
 import { PrimaryAuthorAttribution } from '@/components/ContributorAttribution'
+import ContributorApplicationForm from '@/components/ContributorApplicationForm'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -357,25 +358,32 @@ export default async function ContributePage({
           <PrimaryAuthorAttribution lang={lang} variant="full" />
         </section>
 
-        {/* Contact Section */}
-        <section className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {isEnglish ? 'Interested in Contributing?' : 'Katkıda Bulunmak İstiyor musunuz?'}
+        {/* Application Form */}
+        <section className="mb-12" id="apply">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            {isEnglish ? 'Apply to Contribute' : 'Katkıda Bulunmak İçin Başvurun'}
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-8">
             {isEnglish
-              ? 'We\'re building our contributor network. If you\'re a licensed attorney interested in contributing to EchoLegal, we\'d love to hear from you.'
-              : 'Katkıda bulunan ağımızı oluşturuyoruz. EchoLegal\'a katkıda bulunmak isteyen lisanslı bir avukatsanız, sizden haber almaktan memnuniyet duyarız.'}
+              ? 'Complete the form below to express your interest in contributing to EchoLegal. All fields marked with * are required.'
+              : 'EchoLegal\'a katkıda bulunma ilginizi belirtmek için aşağıdaki formu doldurun. * ile işaretlenmiş tüm alanlar zorunludur.'}
+          </p>
+          <ContributorApplicationForm lang={lang} />
+        </section>
+
+        {/* Alternative Contact */}
+        <section className="bg-gray-50 border border-gray-200 rounded-xl p-8 text-center">
+          <p className="text-gray-600 mb-3">
+            {isEnglish
+              ? 'Prefer to reach out directly? Contact us at:'
+              : 'Doğrudan ulaşmayı mı tercih ediyorsunuz? Bize ulaşın:'}
           </p>
           <a
             href="mailto:contribute@echo-legal.com"
-            className="inline-block bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+            className="text-gray-900 font-medium hover:underline"
           >
-            {isEnglish ? 'Contact Us' : 'Bizimle İletişime Geçin'}
-          </a>
-          <p className="text-sm text-gray-500 mt-4">
             contribute@echo-legal.com
-          </p>
+          </a>
         </section>
       </main>
 
