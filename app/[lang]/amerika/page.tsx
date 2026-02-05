@@ -126,7 +126,7 @@ export default async function AmerikaHubPage({
               <p className="text-sm text-gray-600 leading-relaxed">
                 {isEnglish
                   ? 'Contract types, key elements, red flags, international enforcement, and when to get legal review.'
-                  : 'Sözleşme türleri, temel unsurlar, tehlike işaretleri, uluslararası tenfiz ve avukat incelemesi gerektiren durumlar.'}
+                  : 'Sözleşme türleri, temel bileşenler, tehlike işaretleri, uluslararası tenfiz ve avukat incelemesi gerektiren durumlar.'}
               </p>
             </Link>
 

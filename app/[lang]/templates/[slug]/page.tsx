@@ -284,7 +284,7 @@ export default async function TemplateDetailPage({
           {templateContent.keyElements && templateContent.keyElements.length > 0 && (
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-black mb-4">
-                {isEnglish ? 'Key Elements' : 'Temel Unsurlar'}
+                {isEnglish ? 'Key Elements' : 'Temel Bileşenler'}
               </h2>
               <ul className="space-y-2">
                 {templateContent.keyElements.map((item, i) => (
