@@ -59,14 +59,14 @@ export default async function BusinessStarterKitPage({
       link: `/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim#adim-adim-surecler`
     },
     {
-      title: isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi',
+      title: isEnglish ? 'Service Agreement (EN + TR)' : 'Hizmet Sözleşmesi (EN + TR)',
       description: isEnglish
         ? 'Defines the scope, payment terms, deliverables, and liability limits for client work under US commercial practice.'
         : 'ABD ticari uygulamaları çerçevesinde müşteri işleri için kapsamı, ödeme koşullarını, teslim edilecekleri ve sorumluluk sınırlarını belirler.',
       link: `/${lang}/contracts/service-agreement`
     },
     {
-      title: isEnglish ? 'Non-Disclosure Agreement (NDA)' : 'Gizlilik Sözleşmesi (NDA)',
+      title: isEnglish ? 'Non-Disclosure Agreement / NDA (EN + TR)' : 'Gizlilik Sözleşmesi / NDA (EN + TR)',
       description: isEnglish
         ? 'Protects confidential information shared between parties before or during a business relationship.'
         : 'İş ilişkisi öncesinde veya sırasında taraflar arasında paylaşılan gizli bilgileri korur.',
