@@ -31,35 +31,56 @@ export default async function EncyclopediaPage({
 
   const conceptArticles = [
     {
-      slug: 'what-is-nda',
+      href: `/${lang}/encyclopedia/concepts/contract-formation-enforceability`,
+      title: isEnglish ? 'Contract Formation & Enforceability' : 'Sözleşme Kurulumu ve Geçerliliği',
+      description: isEnglish
+        ? 'Elements of formation, offer and acceptance, consideration, capacity, defenses, and remedies under common law, UCC, and Turkish law.'
+        : 'Kurucu unsurlar, icap ve kabul, ivaz, ehliyet, geçersizlik savunmaları ve hukuki yaptırımlar — common law, UCC ve Türk hukuku çerçevesinde.',
+    },
+    {
+      href: `/${lang}/encyclopedia/concepts/governing-law-jurisdiction`,
+      title: isEnglish ? 'Governing Law & Jurisdiction' : 'Uygulanacak Hukuk ve Yargı Yetkisi',
+      description: isEnglish
+        ? 'Choice-of-law clauses, forum selection, personal jurisdiction, and the interplay between domestic and international dispute resolution.'
+        : 'Hukuk seçimi klozları, mahkeme seçimi, kişi bakımından yargı yetkisi ve iç-uluslararası uyuşmazlık çözümü arasındaki etkileşim.',
+    },
+    {
+      href: `/${lang}/encyclopedia/concepts/common-law-vs-civil-law`,
+      title: isEnglish ? 'Common Law vs Civil Law' : 'Anglosakson Hukuku ve Kıta Avrupası Hukuku',
+      description: isEnglish
+        ? 'Structural comparison of the two dominant legal traditions — sources of law, judicial role, contract principles, and cross-border implications.'
+        : 'İki baskın hukuk geleneğinin yapısal karşılaştırması — hukukun kaynakları, yargının rolü, sözleşme ilkeleri ve sınır ötesi etkileri.',
+    },
+    {
+      href: `/${lang}/encyclopedia/what-is-nda`,
       title: isEnglish ? 'What is an NDA?' : 'Gizlilik Sözleşmesi (NDA) Nedir?',
       description: isEnglish
         ? 'Legal nature, enforceability, and standard provisions of non-disclosure agreements.'
         : 'Gizlilik sözleşmelerinin hukuki niteliği, uygulanabilirliği ve standart hükümleri.',
     },
     {
-      slug: 'freelancer-legal-guide',
+      href: `/${lang}/encyclopedia/freelancer-legal-guide`,
       title: isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışanlar İçin Hukuk Rehberi',
       description: isEnglish
         ? 'Contract requirements, tax obligations, and liability considerations for independent professionals.'
         : 'Bağımsız profesyoneller için sözleşme gereksinimleri, vergi yükümlülükleri ve sorumluluk değerlendirmeleri.',
     },
     {
-      slug: 'contractor-vs-employee',
+      href: `/${lang}/encyclopedia/contractor-vs-employee`,
       title: isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi?',
       description: isEnglish
         ? 'Classification criteria under US federal and state law, and consequences of misclassification.'
         : 'ABD federal ve eyalet hukukuna göre sınıflandırma kriterleri ve yanlış sınıflandırmanın sonuçları.',
     },
     {
-      slug: 'privacy-policy-guide',
+      href: `/${lang}/encyclopedia/privacy-policy-guide`,
       title: isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikası Gerekli mi?',
       description: isEnglish
         ? 'Obligations under GDPR, CCPA, and KVKK for businesses collecting personal data.'
         : 'Kişisel veri toplayan işletmeler için GDPR, CCPA ve KVKK kapsamındaki yükümlülükler.',
     },
     {
-      slug: 'common-misconceptions',
+      href: `/${lang}/encyclopedia/common-misconceptions`,
       title: isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Hukuki Yanılgılar',
       description: isEnglish
         ? 'Frequently repeated claims about US business law that do not reflect current legal standards.'
@@ -196,8 +217,8 @@ export default async function EncyclopediaPage({
           <div className="grid gap-3 sm:grid-cols-2">
             {conceptArticles.map((article) => (
               <Link
-                key={article.slug}
-                href={`/${lang}/encyclopedia/${article.slug}`}
+                key={article.href}
+                href={article.href}
                 className="group flex flex-col justify-between p-5 md:p-6 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all duration-150"
               >
                 <div>
