@@ -409,10 +409,12 @@ function getTemplateContent(template: Template): {
         'Sektör standartlarına uygun belge oluştururken',
       ],
       keyElements: [
-        'Standart belge biçimi',
-        'Doldurulacak alanlar',
-        'Düzenlenebilir bölümler',
-        'Kullanım açıklamaları',
+        'Hukuki gerekliliklere uygun belge yapısı ve düzeni',
+        'Taraf kimlik bilgileri, tarih ve imza alanları',
+        'Yürürlükteki mevzuata uygun standart hükümler',
+        'İhtiyaca göre uyarlanabilir madde ve koşullar',
+        'Adım adım doldurma rehberi ve yönlendirici notlar',
+        'Profesyonel biçimlendirme ve sektörel uyumluluk',
       ],
     },
     guide: {
