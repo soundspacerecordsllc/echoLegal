@@ -115,20 +115,20 @@ export default async function TuristVizesiPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "Every tourist visa applicant is presumed to be an intending immigrant under INA § 214(b)"
-              : "INA 214(b) uyarınca her turist vizesi başvuru sahibi, potansiyel göçmen olarak kabul edilir"}</li>
+              ? "Every tourist visa applicant is presumed to be an intending immigrant under INA § 214(b)."
+              : "INA 214(b) uyarınca her turist vizesi başvuru sahibi, potansiyel göçmen olarak kabul edilir."}</li>
             <li>• {isEnglish
-              ? "214(b) denials are about your overall profile, not missing documents"
-              : "214(b) retleri eksik belge meselesi değil, genel profilinizin değerlendirmesidir"}</li>
+              ? "214(b) denials are about your overall profile, not missing documents."
+              : "214(b) retleri eksik belge meselesi değil, genel profilinizin değerlendirmesidir."}</li>
             <li>• {isEnglish
-              ? "There is no formal appeal process for tourist visa denials"
-              : "Turist vizesi retlerine karşı resmi bir itiraz mekanizması yoktur"}</li>
+              ? "There is no formal appeal process for tourist visa denials."
+              : "Turist vizesi retlerine karşı resmi bir itiraz mekanizması yoktur."}</li>
             <li>• {isEnglish
-              ? "Reapplying without changed circumstances rarely produces different results"
-              : "Koşullar değişmeden yeniden başvurmak farklı bir sonuç doğurmaz"}</li>
+              ? "Reapplying without changed circumstances rarely produces different results."
+              : "Koşullar değişmeden yeniden başvurmak farklı bir sonuç doğurmaz."}</li>
             <li>• {isEnglish
-              ? "Entering as tourist while planning to change status carries serious legal risks"
-              : "Statü değiştirme planıyla turist olarak giriş yapmak ciddi hukuki riskler taşır"}</li>
+              ? "Entering as tourist while planning to change status carries serious legal risks."
+              : "Statü değiştirme planıyla turist olarak giriş yapmak ciddi hukuki riskler taşır."}</li>
           </ul>
         </section>
 

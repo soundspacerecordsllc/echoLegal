@@ -103,20 +103,20 @@ export default async function StatuGecisPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "The 30/60 day rule creates presumptions about your intent when you entered"
-              : "30/60 gün kuralı, giriş anındaki niyetinize ilişkin karineler öngörür"}</li>
+              ? "The 30/60 day rule creates presumptions about your intent when you entered."
+              : "30/60 gün kuralı, giriş anındaki niyetinize ilişkin karineler öngörür."}</li>
             <li>• {isEnglish
-              ? "Change of Status is different from Adjustment of Status (green card process)"
-              : "Statü değişikliği ile statü düzeltmesi (yeşil kart süreci) farklı hukuki yollardır"}</li>
+              ? "Change of Status is different from Adjustment of Status (green card process)."
+              : "Statü değişikliği ile statü düzeltmesi (yeşil kart süreci) farklı hukuki yollardır."}</li>
             <li>• {isEnglish
-              ? "Entering with intent to change status can constitute misrepresentation"
-              : "Statü değiştirme niyetiyle giriş yapmak yanlış beyan sayılabilir"}</li>
+              ? "Entering with intent to change status can constitute misrepresentation."
+              : "Statü değiştirme niyetiyle giriş yapmak yanlış beyan sayılabilir."}</li>
             <li>• {isEnglish
-              ? "Overstaying triggers bars on future entry (3-year and 10-year bars)"
-              : "Süre aşımı, gelecekteki girişlere yönelik yasakları tetikler (3 ve 10 yıllık yasaklar)"}</li>
+              ? "Overstaying triggers bars on future entry (3-year and 10-year bars)."
+              : "Süre aşımı, gelecekteki girişlere yönelik yasakları tetikler (3 ve 10 yıllık yasaklar)."}</li>
             <li>• {isEnglish
-              ? "Pending applications generally don't authorize work or extend status"
-              : "Bekleyen başvurular kural olarak ne çalışma izni verir ne de statünüzü uzatır"}</li>
+              ? "Pending applications generally don't authorize work or extend status."
+              : "Bekleyen başvurular kural olarak ne çalışma izni verir ne de statünüzü uzatır."}</li>
           </ul>
         </section>
 

@@ -130,26 +130,26 @@ export default async function IRSVergiPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "US tax residency is determined by substantial presence test or green card test"
-              : "ABD vergi mukimliği, substantial presence test veya yeşil kart testi ile belirlenir"}</li>
+              ? "US tax residency is determined by substantial presence test or green card test."
+              : "ABD vergi mukimliği, substantial presence test veya yeşil kart testi ile belirlenir."}</li>
             <li>• {isEnglish
-              ? "Owning a US LLC does not automatically create US tax obligations for non-residents"
-              : "ABD'de LLC sahibi olmak, mukim olmayanlar için tek başına vergi yükümlülüğü doğurmaz"}</li>
+              ? "Owning a US LLC does not automatically create US tax obligations for non-residents."
+              : "ABD'de LLC sahibi olmak, mukim olmayanlar için tek başına vergi yükümlülüğü doğurmaz."}</li>
             <li>• {isEnglish
-              ? "US-source income is categorized as FDAP or ECI, each with different tax treatment"
-              : "ABD kaynaklı gelir, FDAP veya ECI olarak sınıflandırılır; her birinin vergi uygulaması farklıdır"}</li>
+              ? "US-source income is categorized as FDAP or ECI, each with different tax treatment."
+              : "ABD kaynaklı gelir, FDAP veya ECI olarak sınıflandırılır; her birinin vergi uygulaması farklıdır."}</li>
             <li>• {isEnglish
-              ? "FATCA and FBAR have separate reporting requirements with severe penalties"
-              : "FATCA ve FBAR birbirinden ayrı bildirim yükümlülükleri içerir; ihlâl hâlinde ağır yaptırımlar uygulanır"}</li>
+              ? "FATCA and FBAR have separate reporting requirements with severe penalties."
+              : "FATCA ve FBAR birbirinden ayrı bildirim yükümlülükleri içerir; ihlâl hâlinde ağır yaptırımlar uygulanır."}</li>
             <li>• {isEnglish
-              ? "US-Turkey tax treaty (TIAS 10205) provides double taxation relief and reduced withholding rates"
-              : "ABD-Türkiye vergi anlaşması (TIAS 10205) çifte vergilendirmeyi hafifletir ve indirimli stopaj oranları sağlar"}</li>
+              ? "US-Turkey tax treaty (TIAS 10205) provides double taxation relief and reduced withholding rates."
+              : "ABD-Türkiye vergi anlaşması (TIAS 10205) çifte vergilendirmeyi hafifletir ve indirimli stopaj oranları sağlar."}</li>
             <li>• {isEnglish
-              ? "State taxes, franchise taxes, and filing obligations (Form 5472) apply even to foreign-owned LLCs"
-              : "Eyalet vergileri, franchise vergileri ve beyanname yükümlülükleri (Form 5472) yabancı sahipli LLC'ler için de geçerlidir"}</li>
+              ? "State taxes, franchise taxes, and filing obligations (Form 5472) apply even to foreign-owned LLCs."
+              : "Eyalet vergileri, franchise vergileri ve beyanname yükümlülükleri (Form 5472) yabancı sahipli LLC'ler için de geçerlidir."}</li>
             <li>• {isEnglish
-              ? "Tax planning requires professional advice - this is general information only"
-              : "Vergi planlaması profesyonel destek gerektirir; buradaki bilgiler yalnızca genel niteliktedir"}</li>
+              ? "Tax planning requires professional advice - this is general information only."
+              : "Vergi planlaması profesyonel destek gerektirir; buradaki bilgiler yalnızca genel niteliktedir."}</li>
           </ul>
         </section>
 

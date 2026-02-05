@@ -260,7 +260,7 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
           ) : query.trim() ? (
             <div className="p-8 text-center">
               <p className="text-gray-500 mb-4">
-                {isEnglish ? 'No results found for' : 'Sonuç bulunamadı:'} "{query}"
+                {isEnglish ? 'No results found for' : 'Sonuç bulunamadı:'} &quot;{query}&quot;
               </p>
               <p className="text-sm text-gray-400 mb-6">
                 {isEnglish ? 'Try searching for:' : 'Şunları deneyin:'}

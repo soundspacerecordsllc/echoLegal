@@ -732,7 +732,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'w8-attachment-checklist',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/W8BEN-AttachmentChecklist-EN.docx',
   },
   {
     id: 'ein-request-cover-letter-en',
@@ -744,7 +745,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'ein-request-cover-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/EIN-RequestCoverLetter-EN.docx',
   },
   {
     id: 'vendor-onboarding-form-en',
@@ -756,7 +758,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'form',
     slug: 'vendor-onboarding-form',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/VendorOnboardingForm-EN.docx',
   },
   {
     id: 'itin-application-guide-en',
@@ -768,7 +771,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'itin-application-guide',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/ITIN-ApplicationGuide-EN.docx',
   },
   {
     id: '1099-response-letter-en',
@@ -780,7 +784,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: '1099-response-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/1099-ResponseLetter-EN.docx',
   },
   {
     id: 'tax-treaty-claim-checklist-en',
@@ -807,7 +812,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'w8-attachment-checklist',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/W8BEN-EkleriKontrolListesi-TR.docx',
   },
   {
     id: 'ein-request-cover-letter-tr',
@@ -819,7 +825,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'ein-request-cover-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/EIN-BasvuruKapakYazisi-TR.docx',
   },
   {
     id: 'vendor-onboarding-form-tr',
@@ -831,7 +838,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'form',
     slug: 'vendor-onboarding-form',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/TedarikciKayitFormu-TR.docx',
   },
   {
     id: 'itin-application-guide-tr',
@@ -843,7 +851,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'checklist',
     slug: 'itin-application-guide',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/ITIN-BasvuruRehberi-TR.docx',
   },
   {
     id: '1099-response-letter-tr',
@@ -855,7 +864,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: '1099-response-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/1099-SorguYanitMektubu-TR.docx',
   },
   {
     id: 'tax-treaty-claim-checklist-tr',
@@ -883,7 +893,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'demand-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/DemandLetter-EN.docx',
   },
   {
     id: 'termination-notice-en',
@@ -895,7 +906,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'termination-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/TerminationNotice-EN.docx',
   },
   {
     id: 'cease-desist-en',
@@ -907,7 +919,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'cease-desist-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/CeaseDesist-EN.docx',
   },
 
   // Turkish letters
@@ -921,7 +934,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'letter',
     slug: 'demand-letter',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/IhtarMektubu-TR.docx',
   },
   {
     id: 'termination-notice-tr',
@@ -933,7 +947,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'General',
     docType: 'letter',
     slug: 'termination-notice',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/FesihBildirimi-TR.docx',
   },
   {
     id: 'cease-desist-tr',
@@ -945,7 +960,8 @@ export const templatesRegistry: Template[] = [
     jurisdiction: 'US',
     docType: 'guide',
     slug: 'cease-desist-outline',
-    updatedAt: '2026-01-25',
+    updatedAt: '2026-02-05',
+    downloadUrl: '/documents/IhliDurdurmaMektubu-TR.docx',
   },
 ]
 
