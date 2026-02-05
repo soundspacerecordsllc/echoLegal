@@ -238,7 +238,7 @@ export default async function TurkishTemplateDetailPage({
             templateContent.keyElements.length > 0 && (
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-black mb-4">
-                  Temel Bileşenler
+                  Temel Unsurlar
                 </h2>
                 <ul className="space-y-2">
                   {templateContent.keyElements.map((item, i) => (

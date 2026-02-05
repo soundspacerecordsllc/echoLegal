@@ -162,7 +162,7 @@ export default async function WhatIsNDAPage({
           <p className="text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'A well-drafted NDA should include these essential elements:'
-              : 'İyi hazırlanmış bir NDA şu temel bileşenleri içermelidir:'}
+              : 'İyi hazırlanmış bir NDA şu temel unsurları içermelidir:'}
           </p>
 
           <div className="space-y-6">

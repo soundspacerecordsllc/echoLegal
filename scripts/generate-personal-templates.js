@@ -378,7 +378,7 @@ const poaEN = {
 };
 
 const poaTR = {
-  title: 'Vekaletname - Temel Bileşenler Anahat',
+  title: 'Vekaletname - Temel Unsurlar Anahat',
   filename: 'Vekaletname-Anahat-TR.docx',
   sections: [
     {
@@ -386,7 +386,7 @@ const poaTR = {
       content: [
         'Vekaletname, bir kişiye (vekil) başka bir kişi (asıl/müvekkil) adına hukuki, mali veya kişisel konularda işlem yapma yetkisi veren yasal bir belgedir.',
         '',
-        'Bu anahat, vekaletname düzenlerken veya incelerken dikkate alınması gereken temel bileşenleri kapsamaktadır.',
+        'Bu anahat, vekaletname düzenlerken veya incelerken dikkate alınması gereken temel unsurları kapsamaktadır.',
       ],
     },
     {
@@ -414,7 +414,7 @@ const poaTR = {
       ],
     },
     {
-      heading: 'Temel Bileşenler',
+      heading: 'Temel Unsurlar',
       content: [
         '1. TARAFLARIN KİMLİĞİ',
         '   • Müvekkilin tam yasal adı ve adresi',
@@ -1232,7 +1232,7 @@ const nameChangeEN = {
 };
 
 const nameChangeTR = {
-  title: 'İsim Değişikliği Beyanı - Temel Bileşenler Anahat',
+  title: 'İsim Değişikliği Beyanı - Temel Unsurlar Anahat',
   filename: 'IsimDegisikligiBeyanı-Anahat-TR.docx',
   sections: [
     {
@@ -1240,7 +1240,7 @@ const nameChangeTR = {
       content: [
         'İsim Değişikliği Beyanı, bir isim değişikliğini resmi olarak belgelemek için kullanılan yeminli bir ifadedir. Mahkemeye isim değişikliği dilekçesinin bir parçası olarak veya evlilik, boşanma veya diğer yasal yollarla gerçekleşen bir isim değişikliğinin kanıtı olarak kullanılabilir.',
         '',
-        'Bu anahat, bir isim değişikliği beyanında tipik olarak yer alan temel bileşenleri kapsamaktadır.',
+        'Bu anahat, bir isim değişikliği beyanında tipik olarak yer alan temel unsurları kapsamaktadır.',
       ],
     },
     {
@@ -1256,7 +1256,7 @@ const nameChangeTR = {
       ],
     },
     {
-      heading: 'Temel Bileşenler',
+      heading: 'Temel Unsurlar',
       content: [
         '1. KİŞİSEL BİLGİLER',
         '   • Mevcut yasal ad',

@@ -625,7 +625,7 @@ const affidavitSupportEN = {
 };
 
 const affidavitSupportTR = {
-  title: 'Mali Destek Beyanı - Temel Bileşenler Rehberi',
+  title: 'Mali Destek Beyanı - Temel Unsurlar Rehberi',
   filename: 'MaliDestekBeyani-TR.docx',
   sections: [
     {
@@ -638,7 +638,7 @@ const affidavitSupportTR = {
       ],
     },
     {
-      heading: 'Dahil Edilmesi Gereken Temel Bileşenler',
+      heading: 'Dahil Edilmesi Gereken Temel Unsurlar',
       content: [
         '1. SPONSOR BİLGİLERİ',
         '   • Tam yasal adı',
