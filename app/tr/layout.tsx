@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { getGlobalSchemas, SITE_URL } from '@/lib/structured-data'
 import AppShell from '@/components/AppShell'
+import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration'
 
 export const metadata: Metadata = {
   title: 'EchoLegal | Ücretsiz Hukuki Ansiklopedi ve Sözleşme Şablonları',
@@ -43,6 +44,13 @@ export default async function TurkishLayout({
   return (
     <html lang="tr">
       <head>
+        {/* PWA */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#111827" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
         {/* Dynamic hreflang tags */}
         <link rel="alternate" hrefLang="en" href={hreflangs.en} />
         <link rel="alternate" hrefLang="tr" href={hreflangs.tr} />
@@ -58,6 +66,7 @@ export default async function TurkishLayout({
       </head>
       <body>
         <AppShell lang="tr">{children}</AppShell>
+        <ServiceWorkerRegistration />
       </body>
     </html>
   )

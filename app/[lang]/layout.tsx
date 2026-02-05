@@ -4,6 +4,7 @@ import { i18n, Locale } from '@/i18n-config'
 import { headers } from 'next/headers'
 import { getGlobalSchemas, SITE_URL } from '@/lib/structured-data'
 import AppShell from '@/components/AppShell'
+import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration'
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
@@ -52,6 +53,13 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <head>
+        {/* PWA */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#111827" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
         {/* Dynamic hreflang tags */}
         <link rel="alternate" hrefLang="en" href={hreflangs.en} />
         <link rel="alternate" hrefLang="tr" href={hreflangs.tr} />
@@ -67,6 +75,7 @@ export default async function RootLayout({
       </head>
       <body>
         <AppShell lang={lang}>{children}</AppShell>
+        <ServiceWorkerRegistration />
       </body>
     </html>
   )
