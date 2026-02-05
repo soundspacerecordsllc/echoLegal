@@ -189,23 +189,23 @@ export default async function SozlesmelerPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "Written contracts are the primary evidence of commercial relationships under US law — verbal agreements are difficult to prove and certain transactions require writing"
-              : "Yazılı sözleşmeler, ABD hukukunda ticari ilişkilerin birincil ispat aracıdır; sözlü anlaşmaların ispatı güçtür ve belirli işlemler için yazılı şekil zorunludur"}</li>
+              ? "Written contracts are the primary evidence of commercial relationships under US law — verbal agreements are difficult to prove and certain transactions require writing."
+              : "Yazılı sözleşmeler, ABD hukukunda ticari ilişkilerin birincil ispat aracıdır; sözlü anlaşmaların ispatı güçtür ve belirli işlemler için yazılı şekil zorunludur."}</li>
             <li>• {isEnglish
-              ? "A governing law clause determines which state's substantive law interprets the contract — New York and Delaware are common choices"
-              : "Uygulanacak hukuk maddesi, sözleşmenin hangi eyaletin maddi hukukuna göre yorumlanacağını belirler — New York ve Delaware en yaygın tercihlerdir"}</li>
+              ? "A governing law clause determines which state's substantive law interprets the contract — New York and Delaware are common choices."
+              : "Uygulanacak hukuk maddesi, sözleşmenin hangi eyaletin maddi hukukuna göre yorumlanacağını belirler — New York ve Delaware en yaygın tercihlerdir."}</li>
             <li>• {isEnglish
-              ? "Worker classification (employee vs. contractor) carries significant tax, liability, and compliance implications"
-              : "İşçi sınıflandırmasının (çalışan mı, bağımsız yüklenici mi) vergi, sorumluluk ve uyum açısından ciddi sonuçları vardır"}</li>
+              ? "Worker classification (employee vs. contractor) carries significant tax, liability, and compliance implications."
+              : "İşçi sınıflandırmasının (çalışan mı, bağımsız yüklenici mi) vergi, sorumluluk ve uyum açısından ciddi sonuçları vardır."}</li>
             <li>• {isEnglish
-              ? "For cross-border contracts, arbitration clauses enable enforcement under the New York Convention across 170+ countries"
-              : "Sınır ötesi sözleşmelerde tahkim şartı, New York Sözleşmesi kapsamında 170'ten fazla ülkede kararın tenfizini mümkün kılar"}</li>
+              ? "For cross-border contracts, arbitration clauses enable enforcement under the New York Convention across 170+ countries."
+              : "Sınır ötesi sözleşmelerde tahkim şartı, New York Sözleşmesi kapsamında 170'ten fazla ülkede kararın tenfizini mümkün kılar."}</li>
             <li>• {isEnglish
-              ? "Red-flag clauses (unlimited indemnification, vague IP assignment, one-sided termination) can expose a party to disproportionate risk"
-              : "Tehlikeli hükümler (sınırsız tazmin yükümlülüğü, belirsiz fikri mülkiyet devri, tek taraflı fesih hakkı) bir tarafı orantısız riske maruz bırakabilir"}</li>
+              ? "Red-flag clauses (unlimited indemnification, vague IP assignment, one-sided termination) can expose a party to disproportionate risk."
+              : "Tehlikeli hükümler (sınırsız tazmin yükümlülüğü, belirsiz fikri mülkiyet devri, tek taraflı fesih hakkı) bir tarafı orantısız riske maruz bırakabilir."}</li>
             <li>• {isEnglish
-              ? "Electronic signatures are legally valid for most US commercial contracts under ESIGN and UETA"
-              : "Elektronik imzalar, ESIGN ve UETA kapsamında ABD ticari sözleşmelerinin büyük çoğunluğunda hukuken geçerlidir"}</li>
+              ? "Electronic signatures are legally valid for most US commercial contracts under ESIGN and UETA."
+              : "Elektronik imzalar, ESIGN ve UETA kapsamında ABD ticari sözleşmelerinin büyük çoğunluğunda hukuken geçerlidir."}</li>
           </ul>
         </section>
 
@@ -535,12 +535,12 @@ export default async function SozlesmelerPage({
               <p className="text-sm text-gray-600 mb-3">
                 {isEnglish
                   ? "Defines how the contractual relationship ends — by expiration, mutual agreement, termination for convenience, or termination for cause. The termination clause determines each party's exit rights and the consequences of ending the relationship."
-                  : "Sözleşme ilişkisinin nasıl sona ereceğini düzenler: sürenin dolması, karşılıklı mutabakat, kolaylık feshi veya haklı sebeple fesih yoluyla. Fesih maddesi, her bir tarafın çıkış haklarını ve ilişkinin sona erdirilmesinin hukuki sonuçlarını belirler."}
+                  : "Sözleşme ilişkisinin nasıl sona ereceğini belirler. Sona erme; sürenin dolması, karşılıklı mutabakat, kolaylık feshi veya haklı sebeple fesih yoluyla gerçekleşebilir. Fesih maddesi tarafların çıkış haklarını ve ilişkinin sona ermesinin hukuki sonuçlarını düzenler."}
               </p>
               <p className="text-sm text-gray-600">
                 {isEnglish
                   ? "A comprehensive termination clause addresses: (1) termination for cause — what constitutes a material breach and whether the breaching party has a cure period (typically 15-30 days); (2) termination for convenience — either party's right to end the agreement without cause upon advance written notice; (3) effect of termination — what happens to accrued payment obligations, ongoing confidentiality duties, and work in progress; (4) survival — which provisions continue after termination (typically confidentiality, IP ownership, limitation of liability, and dispute resolution). Without clear termination provisions, unwinding a commercial relationship becomes unpredictable and expensive."
-                  : "Kapsamlı bir fesih maddesi şunları ele alır: (1) haklı sebeple fesih — esaslı ihlâlin ne anlama geldiği ve ihlâl eden tarafa giderim süresi tanınıp tanınmadığı (genellikle 15-30 gün); (2) kolaylık feshi — her iki tarafın önceden yazılı bildirimde bulunarak sebep göstermeksizin sözleşmeyi sona erdirme hakkı; (3) feshin sonuçları — birikmiş ödeme yükümlülükleri, devam eden gizlilik görevleri ve sürmekte olan işlerin akıbeti; (4) geçerliliğini koruyacak hükümler (survival) — fesihten sonra da yürürlükte kalacak maddeler (genellikle gizlilik, fikri mülkiyet, sorumluluk sınırlaması ve uyuşmazlık çözümü). Açık fesih hükümleri bulunmadığında, ticari ilişkinin tasfiyesi öngörülemez ve maliyetli bir sürece dönüşür."}
+                  : "Kapsamlı bir fesih maddesi dört temel konuyu ele alır. Birincisi, haklı sebeple fesih: esaslı ihlâlin ne anlama geldiğini ve ihlâl eden tarafa giderim süresi tanınıp tanınmadığını belirler (genellikle 15-30 gün). İkincisi, kolaylık feshi: tarafların önceden yazılı bildirimde bulunarak sebep göstermeksizin sözleşmeyi sona erdirme hakkıdır. Üçüncüsü, feshin sonuçları: birikmiş ödeme yükümlülüklerinin, devam eden gizlilik görevlerinin ve sürmekte olan işlerin akıbetini düzenler. Dördüncüsü, geçerliliğini koruyacak hükümler (survival): fesihten sonra da yürürlükte kalacak maddeleri kapsar — genellikle gizlilik, fikri mülkiyet, sorumluluk sınırlaması ve uyuşmazlık çözümü. Açık fesih hükümleri bulunmadığında ticari ilişkinin tasfiyesi öngörülemez ve maliyetli bir sürece dönüşür."}
               </p>
             </div>
           </div>
