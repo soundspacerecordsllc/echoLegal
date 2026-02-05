@@ -154,6 +154,27 @@ export default async function TemplatesPage({
           </div>
         </div>
 
+        {/* Related Reference Strip */}
+        <div className="max-w-5xl mx-auto px-4 md:px-8 pt-6">
+          <nav className="flex flex-wrap items-center gap-2 text-sm" aria-label={isEnglish ? 'Related reference' : 'İlgili referans'}>
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-1">
+              {isEnglish ? 'See also' : 'Ayrıca bkz.'}
+            </span>
+            <Link
+              href={`/${lang}/encyclopedia`}
+              className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
+            </Link>
+            <Link
+              href={`/${lang}/library`}
+              className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+            >
+              {isEnglish ? 'Guides' : 'Rehberler'}
+            </Link>
+          </nav>
+        </div>
+
         {/* Document Sections */}
         <div className="max-w-5xl mx-auto px-4 md:px-8 py-10 md:py-14">
           <div className="space-y-12">

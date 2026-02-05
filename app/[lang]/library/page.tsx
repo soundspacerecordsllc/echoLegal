@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const isEnglish = lang === 'en'
   return {
     title: isEnglish
-      ? 'Legal Reference Library | EchoLegal'
-      : 'Hukuki Başvuru Kaynakları | EchoLegal',
+      ? 'Legal Guides | EchoLegal'
+      : 'Hukuki Rehberler | EchoLegal',
     description: isEnglish
       ? 'Comprehensive legal reference guides for doing business in the United States. LLC formation, tax compliance, common misconceptions, and more. Available in English and Turkish.'
       : "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi uyumu, sık yapılan hatalar ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur.",
@@ -129,7 +129,7 @@ export default async function LibraryPage({
             {isEnglish ? 'Reference' : 'Referans'}
           </p>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            {isEnglish ? 'Library' : 'Kütüphane'}
+            {isEnglish ? 'Guides' : 'Rehberler'}
           </h1>
           <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-2xl">
             {isEnglish
@@ -137,6 +137,25 @@ export default async function LibraryPage({
               : 'ABD iş hukuku ve ticari yapılara ilişkin ayrıntılı başvuru rehberleri. Hukuki tavsiye niteliğinde değildir; doğruluk ve anlaşılırlık esas alınarak hazırlanmıştır.'}
           </p>
         </header>
+
+        {/* Related Reference Strip */}
+        <nav className="mb-10 flex flex-wrap items-center gap-2 text-sm" aria-label={isEnglish ? 'Related reference' : 'İlgili referans'}>
+          <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-1">
+            {isEnglish ? 'See also' : 'Ayrıca bkz.'}
+          </span>
+          <Link
+            href={`/${lang}/encyclopedia`}
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+          >
+            {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
+          </Link>
+          <Link
+            href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+          >
+            {isEnglish ? 'Templates' : 'Şablonlar'}
+          </Link>
+        </nav>
 
         {/* Section Jump Links */}
         <nav className="mb-10 flex flex-wrap gap-2" aria-label={isEnglish ? 'Jump to section' : 'Bölüme atla'}>
@@ -229,12 +248,19 @@ export default async function LibraryPage({
           <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
             {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
             <Link
-              href={`/${lang}/amerika`}
+              href={`/${lang}/encyclopedia`}
               className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all"
             >
-              <span className="text-sm font-medium text-gray-700">{isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}</span>
+              <span className="text-sm font-medium text-gray-700">{isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}</span>
+              <span className="text-gray-400 text-sm">→</span>
+            </Link>
+            <Link
+              href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
+              className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all"
+            >
+              <span className="text-sm font-medium text-gray-700">{isEnglish ? 'Templates' : 'Şablonlar'}</span>
               <span className="text-gray-400 text-sm">→</span>
             </Link>
             <Link

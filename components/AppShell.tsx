@@ -546,13 +546,13 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href={`/${lang}/amerika`} className="text-gray-500 hover:text-black transition-colors">
-                  {isEnglish ? 'US Business Hub' : 'ABD İş Rehberi'}
+                <Link href={`/${lang}/encyclopedia`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/encyclopedia`} className="text-gray-500 hover:text-black transition-colors">
-                  {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
+                <Link href={`/${lang}/library`} className="text-gray-500 hover:text-black transition-colors">
+                  {isEnglish ? 'Guides' : 'Rehberler'}
                 </Link>
               </li>
               <li>

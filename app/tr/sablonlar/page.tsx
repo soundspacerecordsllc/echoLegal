@@ -100,6 +100,25 @@ export default async function SablonlarPage() {
           </p>
         </div>
 
+        {/* Related Reference Strip */}
+        <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm" aria-label="İlgili referans">
+          <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-1">
+            Ayrıca bkz.
+          </span>
+          <Link
+            href="/tr/encyclopedia"
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+          >
+            Ansiklopedi
+          </Link>
+          <Link
+            href="/tr/library"
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+          >
+            Rehberler
+          </Link>
+        </nav>
+
         {/* Search prompt */}
         <div className="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
           <p className="text-sm text-gray-600">

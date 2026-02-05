@@ -48,6 +48,35 @@ export function getAlternatePath(path: string, targetLang: 'en' | 'tr'): string 
 // Central navigation structure
 export const NAV_ITEMS: NavItem[] = [
   {
+    key: 'encyclopedia',
+    labelEn: 'Encyclopedia',
+    labelTr: 'Ansiklopedi',
+    href: '/{lang}/encyclopedia',
+    children: [
+      {
+        labelEn: 'Core Concepts',
+        labelTr: 'Temel Kavramlar',
+        href: '/{lang}/encyclopedia',
+        descriptionEn: 'Reference articles on legal concepts',
+        descriptionTr: 'Hukuki kavramlara ilişkin başvuru makaleleri',
+      },
+      {
+        labelEn: 'By Jurisdiction',
+        labelTr: 'Yargı Alanına Göre',
+        href: '/{lang}/encyclopedia#by-jurisdiction',
+        descriptionEn: 'US Federal, NY, FL, Turkey',
+        descriptionTr: 'ABD Federal, NY, FL, Türkiye',
+      },
+      {
+        labelEn: 'By Topic',
+        labelTr: 'Konuya Göre',
+        href: '/{lang}/encyclopedia#by-topic',
+        descriptionEn: 'Business, Contracts, Tax, Immigration',
+        descriptionTr: 'Şirket, Sözleşme, Vergi, Göçmenlik',
+      },
+    ],
+  },
+  {
     key: 'guides',
     labelEn: 'Guides',
     labelTr: 'Rehberler',

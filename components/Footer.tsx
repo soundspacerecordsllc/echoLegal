@@ -14,25 +14,25 @@ export default function Footer({ lang, dict }: FooterProps) {
     <footer className="bg-gray-900 text-white mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          {/* Library */}
+          {/* Reference */}
           <div>
             <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide mb-4">
-              {isEnglish ? 'Library' : 'Kütüphane'}
+              {isEnglish ? 'Reference' : 'Referans'}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href={`/${lang}/encyclopedia`} className="text-gray-300 hover:text-white transition-colors">
+                  {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${lang}/library`} className="text-gray-300 hover:text-white transition-colors">
-                  {isEnglish ? 'Reference Guides' : 'Referans Rehberleri'}
+                  {isEnglish ? 'Guides' : 'Rehberler'}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/amerika`} className="text-gray-300 hover:text-white transition-colors">
                   {isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${lang}/encyclopedia`} className="text-gray-300 hover:text-white transition-colors">
-                  {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
                 </Link>
               </li>
             </ul>
