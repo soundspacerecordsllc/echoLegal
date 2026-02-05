@@ -111,20 +111,20 @@ export default async function LLCvsCorpPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "LLC: Simpler, flexible, pass-through taxation by default"
-              : "LLC: Daha yalın yapı, esnek yönetim, varsayılan olarak geçişli vergilendirme"}</li>
+              ? "LLC: Simpler, flexible, pass-through taxation by default."
+              : "LLC: Daha yalın yapı, esnek yönetim, varsayılan olarak geçişli vergilendirme."}</li>
             <li>• {isEnglish
-              ? "C-Corp: Preferred by VC investors, can issue stock options, double taxation"
-              : "C-Corp: Risk sermayesi yatırımcılarının tercihi, hisse opsiyonu imkanı, çifte vergilendirme"}</li>
+              ? "C-Corp: Preferred by VC investors, can issue stock options, double taxation."
+              : "C-Corp: Risk sermayesi yatırımcılarının tercihi, hisse opsiyonu imkanı, çifte vergilendirme."}</li>
             <li>• {isEnglish
-              ? "S-Corp: Tax election (not a structure), pass-through with restrictions"
-              : "S-Corp: Bir iş yapısı değil vergisel tercih; kısıtlamalarla geçişli vergilendirme"}</li>
+              ? "S-Corp: Tax election (not a structure), pass-through with restrictions."
+              : "S-Corp: Bir iş yapısı değil vergisel tercih; kısıtlamalarla geçişli vergilendirme."}</li>
             <li>• {isEnglish
-              ? "Both provide liability protection when properly maintained"
-              : "Her iki yapı da usulüne uygun yönetildiğinde sınırlı sorumluluk koruması sunar"}</li>
+              ? "Both provide liability protection when properly maintained."
+              : "Her iki yapı da usulüne uygun yönetildiğinde sınırlı sorumluluk koruması sunar."}</li>
             <li>• {isEnglish
-              ? "The 'right' choice depends on your specific goals and circumstances"
-              : "Doğru seçim, hedeflerinize ve somut koşullarınıza göre belirlenir"}</li>
+              ? "The 'right' choice depends on your specific goals and circumstances."
+              : "Doğru seçim, hedeflerinize ve somut koşullarınıza göre belirlenir."}</li>
           </ul>
         </section>
 

@@ -124,7 +124,7 @@ export default async function PrivacyPolicyPage({
           <p className="mt-4 text-sm text-gray-500">
             {isEnglish
               ? <>Browse all contract templates on our <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">Contracts for Doing Business in the US</Link> guide.</>
-              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD'de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
+              : <>Tüm sözleşme şablonlarını <Link href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`} className="text-[#C9A227] hover:underline">ABD&apos;de İş Yapanlar İçin Sözleşmeler</Link> rehberimizde inceleyin.</>}
           </p>
         </section>
 

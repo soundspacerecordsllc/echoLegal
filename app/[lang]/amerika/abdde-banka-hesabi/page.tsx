@@ -106,20 +106,20 @@ export default async function BankaHesabiPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "Business accounts require EIN; personal accounts typically require SSN or ITIN"
-              : "İş hesapları EIN gerektirir; kişisel hesaplar genellikle SSN veya ITIN gerektirir"}</li>
+              ? "Business accounts require EIN; personal accounts typically require SSN or ITIN."
+              : "İş hesapları EIN gerektirir; kişisel hesaplar genellikle SSN veya ITIN gerektirir."}</li>
             <li>• {isEnglish
-              ? "Most traditional banks require in-person verification"
-              : "Çoğu geleneksel banka yüz yüze doğrulama gerektirir"}</li>
+              ? "Most traditional banks require in-person verification."
+              : "Çoğu geleneksel banka yüz yüze doğrulama gerektirir."}</li>
             <li>• {isEnglish
-              ? "Some fintech services allow remote account opening for businesses"
-              : "Bazı fintech hizmetleri işletmeler için uzaktan hesap açmaya izin verir"}</li>
+              ? "Some fintech services allow remote account opening for businesses."
+              : "Bazı fintech hizmetleri işletmeler için uzaktan hesap açmaya izin verir."}</li>
             <li>• {isEnglish
-              ? "Banks have their own policies - rejection by one doesn't mean rejection by all"
-              : "Bankaların kendi politikaları var - birinin reddi tümünün reddi anlamına gelmez"}</li>
+              ? "Banks have their own policies - rejection by one doesn't mean rejection by all."
+              : "Bankaların kendi politikaları var - birinin reddi tümünün reddi anlamına gelmez."}</li>
             <li>• {isEnglish
-              ? "FBAR reporting applies if you're a US person with foreign accounts over $10K"
-              : "10K dolardan fazla yabancı hesabı olan bir ABD kişisiyseniz FBAR raporlaması geçerlidir"}</li>
+              ? "FBAR reporting applies if you're a US person with foreign accounts over $10K."
+              : "10K dolardan fazla yabancı hesabı olan bir ABD kişisiyseniz FBAR raporlaması geçerlidir."}</li>
           </ul>
         </section>
 

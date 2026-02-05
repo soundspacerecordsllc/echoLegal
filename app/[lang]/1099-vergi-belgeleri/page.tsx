@@ -191,7 +191,7 @@ export default async function TaxDocumentsPage({
               <div className="prose prose-gray max-w-none">
                 {isEnglish ? (
                   <>
-                    <p>Form 1099 is a series of IRS "information returns" used to report various types of income other than wages, salaries, and tips. When a US person or entity pays you for services, they may be required to report those payments to the IRS using a 1099 form.</p>
+                    <p>Form 1099 is a series of IRS &quot;information returns&quot; used to report various types of income other than wages, salaries, and tips. When a US person or entity pays you for services, they may be required to report those payments to the IRS using a 1099 form.</p>
                     <p>Key points about 1099s:</p>
                     <ul>
                       <li><strong>They&apos;re information reports</strong> — they tell the IRS what you were paid</li>
@@ -202,7 +202,7 @@ export default async function TaxDocumentsPage({
                   </>
                 ) : (
                   <>
-                    <p>Form 1099, maaş, ücret ve bahşiş dışındaki çeşitli gelir türlerini bildirmek için kullanılan bir IRS "bilgi beyannamesi" serisidir. ABD kişisi veya kurumu size hizmet için ödeme yaptığında, bu ödemeleri 1099 formu kullanarak IRS&apos;e bildirmeleri gerekebilir.</p>
+                    <p>Form 1099, maaş, ücret ve bahşiş dışındaki çeşitli gelir türlerini bildirmek için kullanılan bir IRS &quot;bilgi beyannamesi&quot; serisidir. ABD kişisi veya kurumu size hizmet için ödeme yaptığında, bu ödemeleri 1099 formu kullanarak IRS&apos;e bildirmeleri gerekebilir.</p>
                     <p>1099&apos;lar hakkında temel noktalar:</p>
                     <ul>
                       <li><strong>Bilgi raporlarıdır</strong> — IRS&apos;e ne kadar ödendiğinizi söyler</li>

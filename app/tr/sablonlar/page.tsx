@@ -105,7 +105,7 @@ export default async function SablonlarPage() {
           <p className="text-sm text-gray-600">
             <span className="font-medium text-gray-900">İpucu:</span> Tüm şablon
             ve rehberlerde arama yapmak için istediğiniz zaman Ctrl+K (veya
-            Mac'te ⌘+K) tuşlarına basın.
+            Mac&apos;te ⌘+K) tuşlarına basın.
           </p>
         </div>
 
@@ -214,7 +214,7 @@ export default async function SablonlarPage() {
               href="/tr/support"
               className="inline-flex items-center px-5 py-2.5 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors"
             >
-              EchoLegal'i Destekle
+              EchoLegal&apos;i Destekle
               <svg
                 className="ml-2 w-4 h-4"
                 fill="none"

@@ -98,20 +98,20 @@ export default async function NYLawPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "New York has well-developed commercial law with extensive case precedents"
-              : "New York, zengin içtihat birikimiyle köklü bir ticaret hukuku geleneğine sahiptir"}</li>
+              ? "New York has well-developed commercial law with extensive case precedents."
+              : "New York, zengin içtihat birikimiyle köklü bir ticaret hukuku geleneğine sahiptir."}</li>
             <li>• {isEnglish
-              ? "NY GOL § 5-1401 allows parties to choose NY law for contracts ≥$250K"
-              : "NY GOL § 5-1401, toplam değeri 250.000 dolar ve üzerindeki sözleşmelerde tarafların NY hukukunu seçmesine olanak tanır"}</li>
+              ? "NY GOL § 5-1401 allows parties to choose NY law for contracts ≥$250K."
+              : "NY GOL § 5-1401, toplam değeri 250.000 dolar ve üzerindeki sözleşmelerde tarafların NY hukukunu seçmesine olanak tanır."}</li>
             <li>• {isEnglish
-              ? "International commercial contracts often specify NY law for predictability"
-              : "Uluslararası ticari sözleşmelerde, sonuçların öngörülebilirliği nedeniyle NY hukuku sıklıkla tercih edilir"}</li>
+              ? "International commercial contracts often specify NY law for predictability."
+              : "Uluslararası ticari sözleşmelerde, sonuçların öngörülebilirliği nedeniyle NY hukuku sıklıkla tercih edilir."}</li>
             <li>• {isEnglish
-              ? "Governing law and dispute forum are separate choices"
-              : "Uygulanacak hukuk ile uyuşmazlık forumu birbirinden bağımsız olarak belirlenebilir"}</li>
+              ? "Governing law and dispute forum are separate choices."
+              : "Uygulanacak hukuk ile uyuşmazlık forumu birbirinden bağımsız olarak belirlenebilir."}</li>
             <li>• {isEnglish
-              ? "Not ideal for consumer/employment contracts due to mandatory local protections"
-              : "Emredici yerel koruma hükümleri nedeniyle tüketici ve iş sözleşmeleri için uygun değildir"}</li>
+              ? "Not ideal for consumer/employment contracts due to mandatory local protections."
+              : "Emredici yerel koruma hükümleri nedeniyle tüketici ve iş sözleşmeleri için uygun değildir."}</li>
           </ul>
         </section>
 

@@ -132,23 +132,23 @@ export default async function AbddeLLCPage({
           <h2 className="font-bold text-lg mb-3">TL;DR</h2>
           <ul className="space-y-2 text-gray-700">
             <li>• {isEnglish
-              ? "An LLC provides personal asset protection and pass-through taxation in a single, flexible structure"
-              : "LLC, kişisel varlık koruması ile geçişli vergilendirmeyi tek bir esnek yapıda birleştirir"}</li>
+              ? "An LLC provides personal asset protection and pass-through taxation in a single, flexible structure."
+              : "LLC, kişisel varlık koruması ile geçişli vergilendirmeyi tek bir esnek yapıda birleştirir."}</li>
             <li>• {isEnglish
-              ? "Non-US residents can form US LLCs without visa or physical presence"
-              : "ABD dışında yaşayanlar, vize veya fiziksel bulunma şartı olmaksızın LLC kurabilir"}</li>
+              ? "Non-US residents can form US LLCs without visa or physical presence."
+              : "ABD dışında yaşayanlar, vize veya fiziksel bulunma şartı olmaksızın LLC kurabilir."}</li>
             <li>• {isEnglish
-              ? "LLC formation does NOT provide any immigration status or visa"
-              : "LLC kurmak herhangi bir göçmenlik statüsü veya vize SAĞLAMAZ"}</li>
+              ? "LLC formation does NOT provide any immigration status or visa."
+              : "LLC kurmak herhangi bir göçmenlik statüsü veya vize SAĞLAMAZ."}</li>
             <li>• {isEnglish
-              ? "State selection (Delaware, Wyoming, Florida, Nevada, New Mexico, Home State) depends on your specific needs and budget"
-              : "Eyalet seçimi (Delaware, Wyoming, Florida, Nevada, New Mexico, kendi eyaletiniz) ihtiyaçlarınıza ve bütçenize göre şekillenir"}</li>
+              ? "State selection (Delaware, Wyoming, Florida, Nevada, New Mexico, Home State) depends on your specific needs and budget."
+              : "Eyalet seçimi (Delaware, Wyoming, Florida, Nevada, New Mexico, kendi eyaletiniz) ihtiyaçlarınıza ve bütçenize göre şekillenir."}</li>
             <li>• {isEnglish
-              ? "Post-formation compliance (annual reports, franchise taxes, registered agent) is mandatory and ongoing"
-              : "Kurulum sonrası uyum yükümlülükleri (yıllık raporlar, franchise vergisi, registered agent) zorunlu ve süreklidir"}</li>
+              ? "Post-formation compliance (annual reports, franchise taxes, registered agent) is mandatory and ongoing."
+              : "Kurulum sonrası uyum yükümlülükleri (yıllık raporlar, franchise vergisi, registered agent) zorunlu ve süreklidir."}</li>
             <li>• {isEnglish
-              ? "An Operating Agreement and EIN are functionally required for every LLC"
-              : "Operating Agreement ve EIN, pratikte her LLC için zorunludur"}</li>
+              ? "An Operating Agreement and EIN are functionally required for every LLC."
+              : "Operating Agreement ve EIN, pratikte her LLC için zorunludur."}</li>
           </ul>
         </section>
 
