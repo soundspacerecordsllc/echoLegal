@@ -2,10 +2,23 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateDigitalDocumentSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'terms-of-service',
+  datePublished: '2025-08-15',
+  dateModified: '2026-01-20',
+  version: '1.0',
+  citationKey: 'ecl-ctr-00007',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
 
   return {
     title: isEnglish
@@ -14,6 +27,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual Terms of Service template. I support EchoLegal ($49 recommended) or download free. Protect your website or app.'
       : 'Ücretsiz iki dilli Kullanım Koşulları şablonu. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/08/15',
+      'citation_lastmod': '2026/01/20',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -43,8 +73,33 @@ export default async function TermsOfServicePage({
     },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu'
+
+  const documentSchema = generateDigitalDocumentSchema({
+    title: isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu',
+    description: isEnglish
+      ? 'Terms of Service (also called Terms and Conditions or Terms of Use) is a legal agreement between you and your users that establishes the rules for using your website, app, or service. It protects your business by limiting liability, establishing user conduct rules, and defining intellectual property rights.'
+      : 'Kullanım Koşulları (Hizmet Şartları veya Kullanım Şartları olarak da bilinir), web sitenizi, uygulamanızı veya hizmetinizi kullanma kurallarını belirleyen sizinle kullanıcılarınız arasındaki yasal bir anlaşmadır. Sorumluluğu sınırlayarak, kullanıcı davranış kuralları oluşturarak ve fikri mülkiyet haklarını tanımlayarak işletmenizi korur.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['terms-of-service', 'terms-and-conditions', 'website-legal', 'contract-template'],
+    encodingFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    citationKey: PAGE_META.citationKey,
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Contracts' : 'Sözleşmeler', url: `${SITE_URL}/${lang}/contracts` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <div className="bg-white">
+      <JsonLdScript data={[documentSchema, breadcrumbSchema]} />
       <main className="max-w-4xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -54,15 +109,16 @@ export default async function TermsOfServicePage({
           <span className="text-black font-medium">{isEnglish ? 'Terms of Service' : 'Kullanım Koşulları'}</span>
         </nav>
 
-        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
-        </span>
-
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu'}
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-8"
+        />
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Document?' : 'Bu Belge Nedir?'}</h2>
@@ -181,6 +237,17 @@ export default async function TermsOfServicePage({
               : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 49$ seçiyor.'}
           </p>
         </div>
+
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="contract-template"
+          className="mb-12"
+        />
 
         {/* Cross-sell: People also download */}
         <section className="bg-gray-50 rounded-xl p-6 mb-12">

@@ -2,16 +2,49 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'privacy-policy-guide',
+  datePublished: '2025-09-15',
+  dateModified: '2026-01-18',
+  version: '1.1',
+  wordCount: 4800,
+  citationKey: 'ecl-enc-00004',
+}
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const isEnglish = params.lang === 'en'
+  const title = isEnglish
+    ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained | EchoLegal'
+    : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması | EchoLegal'
+  const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
+
   return {
-    title: isEnglish
-      ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained | EchoLegal'
-      : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması | EchoLegal',
+    title,
     description: isEnglish
       ? 'Complete guide to privacy policy requirements under GDPR, CCPA, KVKK, and other laws. Learn when you need a privacy policy, what to include, and how to stay compliant.'
       : 'GDPR, CCPA, KVKK ve diğer yasalar kapsamında gizlilik politikası gereksinimleri için tam rehber. Ne zaman gizlilik politikasına ihtiyacınız olduğunu, neleri dahil edeceğinizi ve nasıl uyumlu kalacağınızı öğrenin.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained' : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/09/15',
+      'citation_lastmod': '2026/01/18',
+      'citation_version': PAGE_META.version,
+      'citation_language': params.lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -22,9 +55,54 @@ export default async function PrivacyPolicyGuidePage({
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const pageUrl = `${SITE_URL}/${lang}/encyclopedia/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikasına İhtiyacım Var mı?'
+
+  const faqs = isEnglish ? [
+    { question: 'Do I need a privacy policy for a personal blog?', answer: 'If you use ANY analytics (even free ones like Google Analytics), have comments, use affiliate links, or have an email signup, yes. The safest approach is to have one for any public website.' },
+    { question: 'Can I copy another company\'s privacy policy?', answer: 'No. This is copyright infringement AND your policy must accurately describe YOUR practices. A policy that doesn\'t match your actual practices exposes you to more liability, not less.' },
+    { question: 'Do privacy policies need to be in the user\'s language?', answer: 'GDPR requires information to be in clear, plain language. Best practice is to provide policies in the languages you actively target. If your site is in Turkish, your privacy policy should be in Turkish.' },
+    { question: 'How often should I update my privacy policy?', answer: 'Review annually at minimum, and update whenever you change data practices, add new services/tools, or when laws change. Always notify users of material changes.' },
+    { question: 'Is a Terms of Service the same as a Privacy Policy?', answer: 'No, they\'re different documents. Terms of Service govern how users can use your service. Privacy Policy explains how you handle their data. You typically need both.' },
+    { question: 'Do I need a Data Protection Officer (DPO)?', answer: 'Under GDPR, you need a DPO if you\'re a public authority, do large-scale systematic monitoring, or process sensitive data at scale. Most small businesses don\'t need one, but having a privacy point-of-contact is good practice.' }
+  ] : [
+    { question: 'Kişisel bir blog için gizlilik politikasına ihtiyacım var mı?', answer: 'HERHANGİ BİR analitik (Google Analytics gibi ücretsiz olanlar bile) kullanıyorsanız, yorumlarınız varsa, ortaklık bağlantıları kullanıyorsanız veya e-posta kaydınız varsa, evet. En güvenli yaklaşım, herhangi bir genel web sitesi için bir tane bulundurmaktır.' },
+    { question: 'Başka bir şirketin gizlilik politikasını kopyalayabilir miyim?', answer: 'Hayır. Bu telif hakkı ihlalidir VE politikanız SİZİN uygulamalarınızı doğru bir şekilde tanımlamalıdır. Gerçek uygulamalarınızla eşleşmeyen bir politika sizi daha az değil, daha fazla sorumluluğa maruz bırakır.' },
+    { question: 'Gizlilik politikalarının kullanıcının dilinde olması gerekir mi?', answer: 'GDPR, bilgilerin açık, sade bir dilde olmasını gerektirir. En iyi uygulama, aktif olarak hedeflediğiniz dillerde politikalar sağlamaktır. Siteniz Türkçeyse, gizlilik politikanız da Türkçe olmalıdır.' },
+    { question: 'Gizlilik politikamı ne sıklıkla güncellemeliyim?', answer: 'Minimum yılda bir gözden geçirin ve veri uygulamalarını değiştirdiğinizde, yeni hizmetler/araçlar eklediğinizde veya yasalar değiştiğinde güncelleyin. Önemli değişiklikleri her zaman kullanıcılara bildirin.' },
+    { question: 'Kullanım Koşulları Gizlilik Politikası ile aynı mı?', answer: 'Hayır, farklı belgelerdir. Kullanım Koşulları, kullanıcıların hizmetinizi nasıl kullanabileceğini yönetir. Gizlilik Politikası, verilerini nasıl işlediğinizi açıklar. Genellikle her ikisine de ihtiyacınız vardır.' },
+    { question: 'Veri Koruma Görevlisine (DPO) ihtiyacım var mı?', answer: 'GDPR kapsamında, kamu otoritesiyseniz, büyük ölçekli sistematik izleme yapıyorsanız veya hassas verileri ölçekte işliyorsanız bir DPO\'ya ihtiyacınız vardır. Çoğu küçük işletmenin buna ihtiyacı yoktur, ancak bir gizlilik iletişim noktası bulundurmak iyi bir uygulamadır.' }
+  ]
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained' : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması',
+    alternativeHeadline: isEnglish ? 'Privacy Policy Guide — GDPR, CCPA, KVKK Compliance' : 'Gizlilik Politikası Rehberi — GDPR, CCPA, KVKK Uyumu',
+    abstractText: isEnglish
+      ? 'A comprehensive guide to privacy policy requirements under GDPR, CCPA, KVKK, and other laws. Learn when you need a privacy policy, what to include, and how to stay compliant.'
+      : 'GDPR, CCPA, KVKK ve diğer yasalar kapsamında gizlilik politikası gereksinimleri için tam rehber. Ne zaman gizlilik politikasına ihtiyacınız olduğunu, neleri dahil edeceğinizi ve nasıl uyumlu kalacağınızı öğrenin.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['privacy-policy', 'gdpr', 'ccpa', 'kvkk', 'data-protection'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['Privacy Policy', 'GDPR', 'CCPA', 'KVKK', 'Data Protection'],
+  })
+
+  const faqSchema = generateFAQSchema(faqs)
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <JsonLdScript data={[scholarlySchema, faqSchema, breadcrumbSchema]} />
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
         <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -46,11 +124,12 @@ export default async function PrivacyPolicyGuidePage({
             : 'Dünya çapında gizlilik yasalarına kapsamlı rehber: GDPR, CCPA, KVKK ve ötesi. Yükümlülüklerinizi anlayın, ağır para cezalarından kaçının ve kullanıcı güveni oluşturun.'}
         </p>
 
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-12">
-          <span>{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</span>
-          <span>•</span>
-          <span>{isEnglish ? '8 min read' : '8 dk okuma'}</span>
-        </div>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US', 'TR']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-12"
+        />
 
         {/* Quick Answer Box */}
         <div className="bg-[#C9A227]/10 border-2 border-[#C9A227] rounded-xl p-6 mb-12">
@@ -564,24 +643,10 @@ export default async function PrivacyPolicyGuidePage({
           <h2 className="text-2xl font-bold mb-6">{isEnglish ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}</h2>
 
           <div className="space-y-4">
-            {(isEnglish ? [
-              { q: 'Do I need a privacy policy for a personal blog?', a: 'If you use ANY analytics (even free ones like Google Analytics), have comments, use affiliate links, or have an email signup, yes. The safest approach is to have one for any public website.' },
-              { q: 'Can I copy another company\'s privacy policy?', a: 'No. This is copyright infringement AND your policy must accurately describe YOUR practices. A policy that doesn\'t match your actual practices exposes you to more liability, not less.' },
-              { q: 'Do privacy policies need to be in the user\'s language?', a: 'GDPR requires information to be in clear, plain language. Best practice is to provide policies in the languages you actively target. If your site is in Turkish, your privacy policy should be in Turkish.' },
-              { q: 'How often should I update my privacy policy?', a: 'Review annually at minimum, and update whenever you change data practices, add new services/tools, or when laws change. Always notify users of material changes.' },
-              { q: 'Is a Terms of Service the same as a Privacy Policy?', a: 'No, they\'re different documents. Terms of Service govern how users can use your service. Privacy Policy explains how you handle their data. You typically need both.' },
-              { q: 'Do I need a Data Protection Officer (DPO)?', a: 'Under GDPR, you need a DPO if you\'re a public authority, do large-scale systematic monitoring, or process sensitive data at scale. Most small businesses don\'t need one, but having a privacy point-of-contact is good practice.' }
-            ] : [
-              { q: 'Kişisel bir blog için gizlilik politikasına ihtiyacım var mı?', a: 'HERHANGİ BİR analitik (Google Analytics gibi ücretsiz olanlar bile) kullanıyorsanız, yorumlarınız varsa, ortaklık bağlantıları kullanıyorsanız veya e-posta kaydınız varsa, evet. En güvenli yaklaşım, herhangi bir genel web sitesi için bir tane bulundurmaktır.' },
-              { q: 'Başka bir şirketin gizlilik politikasını kopyalayabilir miyim?', a: 'Hayır. Bu telif hakkı ihlalidir VE politikanız SİZİN uygulamalarınızı doğru bir şekilde tanımlamalıdır. Gerçek uygulamalarınızla eşleşmeyen bir politika sizi daha az değil, daha fazla sorumluluğa maruz bırakır.' },
-              { q: 'Gizlilik politikalarının kullanıcının dilinde olması gerekir mi?', a: 'GDPR, bilgilerin açık, sade bir dilde olmasını gerektirir. En iyi uygulama, aktif olarak hedeflediğiniz dillerde politikalar sağlamaktır. Siteniz Türkçeyse, gizlilik politikanız da Türkçe olmalıdır.' },
-              { q: 'Gizlilik politikamı ne sıklıkla güncellemeliyim?', a: 'Minimum yılda bir gözden geçirin ve veri uygulamalarını değiştirdiğinizde, yeni hizmetler/araçlar eklediğinizde veya yasalar değiştiğinde güncelleyin. Önemli değişiklikleri her zaman kullanıcılara bildirin.' },
-              { q: 'Kullanım Koşulları Gizlilik Politikası ile aynı mı?', a: 'Hayır, farklı belgelerdir. Kullanım Koşulları, kullanıcıların hizmetinizi nasıl kullanabileceğini yönetir. Gizlilik Politikası, verilerini nasıl işlediğinizi açıklar. Genellikle her ikisine de ihtiyacınız vardır.' },
-              { q: 'Veri Koruma Görevlisine (DPO) ihtiyacım var mı?', a: 'GDPR kapsamında, kamu otoritesiyseniz, büyük ölçekli sistematik izleme yapıyorsanız veya hassas verileri ölçekte işliyorsanız bir DPO\'ya ihtiyacınız vardır. Çoğu küçük işletmenin buna ihtiyacı yoktur, ancak bir gizlilik iletişim noktası bulundurmak iyi bir uygulamadır.' }
-            ]).map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.q}</summary>
-                <p className="p-4 pt-0 text-gray-600">{faq.a}</p>
+                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.question}</summary>
+                <p className="p-4 pt-0 text-gray-600">{faq.answer}</p>
               </details>
             ))}
           </div>
@@ -613,6 +678,18 @@ export default async function PrivacyPolicyGuidePage({
             </div>
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={isEnglish ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained' : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması'}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="encyclopedia-entry"
+          className="mt-8"
+        />
 
       </article>
 

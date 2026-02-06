@@ -2,10 +2,23 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateDigitalDocumentSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'independent-contractor',
+  datePublished: '2025-07-10',
+  dateModified: '2026-01-20',
+  version: '1.0',
+  citationKey: 'ecl-ctr-00004',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
 
   return {
     title: isEnglish
@@ -14,6 +27,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual contractor agreement template. I support EchoLegal ($49 recommended) or download free. Avoid misclassification issues.'
       : 'Ücretsiz iki dilli yüklenici sözleşmesi. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/07/10',
+      'citation_lastmod': '2026/01/20',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -43,8 +73,33 @@ export default async function IndependentContractorPage({
     },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'
+
+  const documentSchema = generateDigitalDocumentSchema({
+    title: isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
+    description: isEnglish
+      ? 'An Independent Contractor Agreement establishes a formal relationship between a business and a contractor. It clarifies that the contractor is not an employee, defines the scope of work, payment terms, intellectual property rights, and helps protect both parties from misclassification issues.'
+      : 'Bağımsız Yüklenici Sözleşmesi, bir işletme ile yüklenici arasında resmi bir ilişki kurar. Yüklenicinin çalışan olmadığını açıklar, iş kapsamını, ödeme koşullarını, fikri mülkiyet haklarını tanımlar ve her iki tarafı da yanlış sınıflandırma sorunlarından korur.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['independent-contractor', 'contractor-agreement', 'misclassification', 'contract-template'],
+    encodingFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    citationKey: PAGE_META.citationKey,
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Contracts' : 'Sözleşmeler', url: `${SITE_URL}/${lang}/contracts` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <div className="bg-white">
+      <JsonLdScript data={[documentSchema, breadcrumbSchema]} />
       <main className="max-w-4xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -54,15 +109,16 @@ export default async function IndependentContractorPage({
           <span className="text-black font-medium">{isEnglish ? 'Independent Contractor' : 'Bağımsız Yüklenici'}</span>
         </nav>
 
-        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
-        </span>
-
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi'}
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-8"
+        />
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Agreement?' : 'Bu Sözleşme Nedir?'}</h2>
@@ -179,6 +235,17 @@ export default async function IndependentContractorPage({
               : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 49$ seçiyor.'}
           </p>
         </div>
+
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="contract-template"
+          className="mb-12"
+        />
 
         {/* Cross-sell: People also download */}
         <section className="bg-gray-50 rounded-xl p-6 mb-12">

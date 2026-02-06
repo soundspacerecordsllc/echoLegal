@@ -2,9 +2,23 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'contractor-vs-employee',
+  datePublished: '2025-07-10',
+  dateModified: '2026-01-22',
+  version: '1.3',
+  wordCount: 5200,
+  citationKey: 'ecl-enc-00003',
+}
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const isEnglish = params.lang === 'en'
+  const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'Contractor vs Employee: Complete Classification Guide | EchoLegal'
@@ -12,6 +26,23 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Understand the critical differences between contractors and employees. Learn IRS tests, legal factors, misclassification risks, and how to properly classify workers.'
       : 'Bağımsız yüklenici ile işçi arasındaki temel farklar. IRS testleri, hukuki kriterler, hatalı sınıflandırma riskleri ve doğru statü belirleme yöntemleri.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/07/10',
+      'citation_lastmod': '2026/01/22',
+      'citation_version': PAGE_META.version,
+      'citation_language': params.lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -22,9 +53,52 @@ export default async function ContractorVsEmployeePage({
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const pageUrl = `${SITE_URL}/${lang}/encyclopedia/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi?'
+
+  const faqs = isEnglish ? [
+    { question: 'Can a contract override classification rules?', answer: 'No. A contract calling someone a "contractor" doesn\'t make them one legally. Classification is determined by the actual nature of the working relationship, not by labels or agreements. Courts and agencies look at how work is actually performed.' },
+    { question: 'What if I\'ve been misclassified?', answer: 'You can file a complaint with the IRS (Form SS-8), Department of Labor, or your state labor agency. You may be entitled to back pay, overtime, benefits, and tax refunds. Consider consulting an employment attorney.' },
+    { question: 'Can I be a contractor for one company and employee for another?', answer: 'Yes, absolutely. Classification is determined relationship by relationship. You could be an employee at your day job and a legitimate contractor for freelance work, as long as each relationship meets the appropriate criteria.' },
+    { question: 'Does working from home make me a contractor?', answer: 'No. Remote work alone doesn\'t determine classification. Many employees work from home. What matters is the degree of control over HOW work is performed, not WHERE.' },
+    { question: 'What about the gig economy?', answer: 'Gig workers (Uber, DoorDash, etc.) have been the subject of major legal battles. Some states (California) have moved toward classifying them as employees, while others maintain contractor status. This area of law is rapidly evolving.' }
+  ] : [
+    { question: 'Sözleşme sınıflandırma kurallarını geçersiz kılabilir mi?', answer: 'Hayır. Birini "yüklenici" olarak adlandıran bir sözleşme onu yasal olarak yüklenici yapmaz. Sınıflandırma, etiketler veya anlaşmalarla değil, çalışma ilişkisinin gerçek doğasıyla belirlenir. Mahkemeler ve kurumlar işin gerçekte nasıl yapıldığına bakar.' },
+    { question: 'Yanlış sınıflandırılmışsam ne olur?', answer: 'IRS (Form SS-8), Çalışma Bakanlığı veya eyalet çalışma kurumunuza şikayette bulunabilirsiniz. Geri ödeme, fazla mesai, haklar ve vergi iadeleri hakkınız olabilir. Bir iş hukuku avukatına danışmayı düşünün.' },
+    { question: 'Bir şirket için yüklenici ve başka biri için çalışan olabilir miyim?', answer: 'Evet, kesinlikle. Sınıflandırma ilişkiye göre belirlenir. Günlük işinizde çalışan ve serbest çalışma için meşru yüklenici olabilirsiniz, her ilişki uygun kriterleri karşıladığı sürece.' },
+    { question: 'Evden çalışmak beni yüklenici yapar mı?', answer: 'Hayır. Uzaktan çalışma tek başına sınıflandırmayı belirlemez. Birçok çalışan evden çalışır. Önemli olan işin NEREDE değil, NASIL yapıldığı üzerindeki kontrol derecesidir.' },
+    { question: 'Gig ekonomisi ne olacak?', answer: 'Gig çalışanları (Uber, DoorDash, vb.) büyük hukuki mücadelelerin konusu olmuştur. Bazı eyaletler (Kaliforniya) onları çalışan olarak sınıflandırmaya doğru ilerledi, diğerleri yüklenici statüsünü sürdürüyor. Bu hukuk alanı hızla gelişiyor.' }
+  ]
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
+    alternativeHeadline: isEnglish ? 'Worker Classification — IRS Tests, ABC Test, and Compliance' : 'İşçi Sınıflandırması — IRS Testleri, ABC Testi ve Uyum',
+    abstractText: isEnglish
+      ? 'The definitive guide to worker classification: understand the legal tests, avoid costly misclassification penalties, and structure your working relationships correctly.'
+      : 'İşçi statüsü belirleme rehberi: Hukuki testleri kavrayın, ağır yanlış sınıflandırma yaptırımlarından korunun ve çalışma ilişkilerinizi doğru kurun.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['contractor', 'employee', 'worker-classification', 'irs-test', 'abc-test', 'misclassification'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['Worker Classification', 'Employment Law', 'Independent Contractor'],
+  })
+
+  const faqSchema = generateFAQSchema(faqs)
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <JsonLdScript data={[scholarlySchema, faqSchema, breadcrumbSchema]} />
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
         <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -46,11 +120,12 @@ export default async function ContractorVsEmployeePage({
             : 'İşçi statüsü belirleme rehberi: Hukuki testleri kavrayın, ağır yanlış sınıflandırma yaptırımlarından korunun ve çalışma ilişkilerinizi doğru kurun.'}
         </p>
 
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-12">
-          <span>{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</span>
-          <span>•</span>
-          <span>{isEnglish ? '10 min read' : '10 dk okuma'}</span>
-        </div>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-12"
+        />
 
         {/* Warning Box */}
         <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-12">
@@ -677,26 +752,26 @@ export default async function ContractorVsEmployeePage({
           <h2 className="text-2xl font-bold mb-6">{isEnglish ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}</h2>
 
           <div className="space-y-4">
-            {(isEnglish ? [
-              { q: 'Can a contract override classification rules?', a: 'No. A contract calling someone a "contractor" doesn\'t make them one legally. Classification is determined by the actual nature of the working relationship, not by labels or agreements. Courts and agencies look at how work is actually performed.' },
-              { q: 'What if I\'ve been misclassified?', a: 'You can file a complaint with the IRS (Form SS-8), Department of Labor, or your state labor agency. You may be entitled to back pay, overtime, benefits, and tax refunds. Consider consulting an employment attorney.' },
-              { q: 'Can I be a contractor for one company and employee for another?', a: 'Yes, absolutely. Classification is determined relationship by relationship. You could be an employee at your day job and a legitimate contractor for freelance work, as long as each relationship meets the appropriate criteria.' },
-              { q: 'Does working from home make me a contractor?', a: 'No. Remote work alone doesn\'t determine classification. Many employees work from home. What matters is the degree of control over HOW work is performed, not WHERE.' },
-              { q: 'What about the gig economy?', a: 'Gig workers (Uber, DoorDash, etc.) have been the subject of major legal battles. Some states (California) have moved toward classifying them as employees, while others maintain contractor status. This area of law is rapidly evolving.' }
-            ] : [
-              { q: 'Sözleşme sınıflandırma kurallarını geçersiz kılabilir mi?', a: 'Hayır. Birini "yüklenici" olarak adlandıran bir sözleşme onu yasal olarak yüklenici yapmaz. Sınıflandırma, etiketler veya anlaşmalarla değil, çalışma ilişkisinin gerçek doğasıyla belirlenir. Mahkemeler ve kurumlar işin gerçekte nasıl yapıldığına bakar.' },
-              { q: 'Yanlış sınıflandırılmışsam ne olur?', a: 'IRS (Form SS-8), Çalışma Bakanlığı veya eyalet çalışma kurumunuza şikayette bulunabilirsiniz. Geri ödeme, fazla mesai, haklar ve vergi iadeleri hakkınız olabilir. Bir iş hukuku avukatına danışmayı düşünün.' },
-              { q: 'Bir şirket için yüklenici ve başka biri için çalışan olabilir miyim?', a: 'Evet, kesinlikle. Sınıflandırma ilişkiye göre belirlenir. Günlük işinizde çalışan ve serbest çalışma için meşru yüklenici olabilirsiniz, her ilişki uygun kriterleri karşıladığı sürece.' },
-              { q: 'Evden çalışmak beni yüklenici yapar mı?', a: 'Hayır. Uzaktan çalışma tek başına sınıflandırmayı belirlemez. Birçok çalışan evden çalışır. Önemli olan işin NEREDE değil, NASIL yapıldığı üzerindeki kontrol derecesidir.' },
-              { q: 'Gig ekonomisi ne olacak?', a: 'Gig çalışanları (Uber, DoorDash, vb.) büyük hukuki mücadelelerin konusu olmuştur. Bazı eyaletler (Kaliforniya) onları çalışan olarak sınıflandırmaya doğru ilerledi, diğerleri yüklenici statüsünü sürdürüyor. Bu hukuk alanı hızla gelişiyor.' }
-            ]).map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.q}</summary>
-                <p className="p-4 pt-0 text-gray-600">{faq.a}</p>
+                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.question}</summary>
+                <p className="p-4 pt-0 text-gray-600">{faq.answer}</p>
               </details>
             ))}
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi'}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="encyclopedia-entry"
+          className="mt-8"
+        />
 
       </article>
 

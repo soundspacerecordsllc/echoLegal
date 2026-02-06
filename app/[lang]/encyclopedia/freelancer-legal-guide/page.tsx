@@ -2,9 +2,23 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'freelancer-legal-guide',
+  datePublished: '2025-08-01',
+  dateModified: '2026-01-20',
+  version: '1.2',
+  wordCount: 5800,
+  citationKey: 'ecl-enc-00002',
+}
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const isEnglish = params.lang === 'en'
+  const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors | EchoLegal'
@@ -12,6 +26,23 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Comprehensive legal guide for freelancers covering contracts, taxes, intellectual property, liability protection, and international clients.'
       : 'Sözleşmeler, vergiler, fikri mülkiyet, sorumluluk koruması ve uluslararası müşteriler hakkında serbest çalışanlar için kapsamlı hukuk rehberi.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/08/01',
+      'citation_lastmod': '2026/01/20',
+      'citation_version': PAGE_META.version,
+      'citation_language': params.lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -22,9 +53,52 @@ export default async function FreelancerLegalGuidePage({
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const pageUrl = `${SITE_URL}/${lang}/encyclopedia/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi'
+
+  const faqs = isEnglish ? [
+    { question: 'Do I need an LLC to freelance?', answer: 'No, you can freelance as a sole proprietor. However, an LLC provides liability protection and tax benefits that become valuable as your income grows. Consider forming one once you earn $50,000+ annually.' },
+    { question: 'Can I use a template contract or do I need a lawyer?', answer: 'Template contracts work well for standard projects. However, for high-value projects, unusual terms, or if you\'ve had disputes before, investing in a lawyer to customize your contracts is worthwhile.' },
+    { question: 'How much should I save for taxes?', answer: 'Save 25-30% of your income for taxes. This covers self-employment tax (15.3%) plus federal and state income taxes. The exact amount depends on your total income and deductions.' },
+    { question: 'What if a client wants me to sign their contract instead of mine?', answer: 'Read their contract carefully. Look for unfavorable terms like full IP transfer, unlimited revisions, or broad non-competes. Negotiate changes or add an addendum for terms you need.' },
+    { question: 'Do I need insurance as a freelancer?', answer: 'It depends on your risk level. Professional liability (E&O) insurance is recommended for anyone whose work could cause financial harm to clients. General liability is important if you meet clients in person.' }
+  ] : [
+    { question: 'Serbest çalışmak için LLC\'ye ihtiyacım var mı?', answer: 'Hayır, şahıs şirketi olarak serbest çalışabilirsiniz. Ancak, bir LLC geliriniz arttıkça değerli hale gelen sorumluluk koruması ve vergi avantajları sağlar. Yıllık 50.000$+ kazandığınızda bir tane kurmayı düşünün.' },
+    { question: 'Şablon sözleşme kullanabilir miyim yoksa avukata mı ihtiyacım var?', answer: 'Şablon sözleşmeler standart projeler için iyi çalışır. Ancak, yüksek değerli projeler, olağandışı koşullar veya daha önce anlaşmazlıklarınız olduysa, sözleşmelerinizi özelleştirmek için bir avukata yatırım yapmaya değer.' },
+    { question: 'Vergiler için ne kadar biriktirmeliyim?', answer: 'Gelirinizin %25-30\'unu vergiler için biriktirin. Bu, serbest meslek vergisini (%15,3) artı federal ve eyalet gelir vergilerini kapsar. Kesin miktar toplam gelirinize ve kesintilerinize bağlıdır.' },
+    { question: 'Bir müşteri benimki yerine kendi sözleşmesini imzalamamı isterse ne olur?', answer: 'Sözleşmelerini dikkatlice okuyun. Tam IP devri, sınırsız revizyon veya geniş rekabet yasağı gibi olumsuz koşulları arayın. Değişiklikleri müzakere edin veya ihtiyacınız olan koşullar için ek protokol ekleyin.' },
+    { question: 'Serbest çalışan olarak sigortaya ihtiyacım var mı?', answer: 'Risk seviyenize bağlıdır. İşi müşterilere mali zarar verebilecek herkes için mesleki sorumluluk (E&O) sigortası önerilir. Müşterilerle şahsen görüşüyorsanız genel sorumluluk önemlidir.' }
+  ]
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz',
+    alternativeHeadline: isEnglish ? 'Freelancer Legal Guide — Contracts, Taxes, IP, and Liability' : 'Serbest Çalışan Hukuk Rehberi — Sözleşmeler, Vergiler, Fikri Mülkiyet ve Sorumluluk',
+    abstractText: isEnglish
+      ? 'Comprehensive legal guide for freelancers and independent contractors covering business structure, contracts, intellectual property, taxes, liability protection, international clients, invoicing, and dispute resolution.'
+      : 'Serbest çalışanlar ve bağımsız yükleniciler için iş yapısı, sözleşmeler, fikri mülkiyet, vergiler, sorumluluk koruması, uluslararası müşteriler, faturalama ve uyuşmazlık çözümünü kapsayan kapsamlı hukuk rehberi.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['freelancer', 'independent-contractor', 'freelance-contracts', 'self-employment-tax', 'intellectual-property', 'liability-protection'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['Freelance Law', 'Independent Contractor', 'Business Structure', 'Intellectual Property', 'Tax Planning'],
+  })
+
+  const faqSchema = generateFAQSchema(faqs)
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <JsonLdScript data={[scholarlySchema, faqSchema, breadcrumbSchema]} />
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
         <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -46,11 +120,12 @@ export default async function FreelancerLegalGuidePage({
             : 'Serbest çalışanlar ve bağımsız yükleniciler için kapsamlı hukuk el kitabı: işinizi yapılandırmaktan çalışmalarınızı korumaya ve ödeme almaya kadar.'}
         </p>
 
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-12">
-          <span>{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</span>
-          <span>•</span>
-          <span>{isEnglish ? '12 min read' : '12 dk okuma'}</span>
-        </div>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-12"
+        />
 
         {/* Table of Contents */}
         <div className="bg-gray-50 rounded-lg p-6 mb-12">
@@ -686,26 +761,26 @@ export default async function FreelancerLegalGuidePage({
           <h2 className="text-2xl font-bold mb-6">{isEnglish ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}</h2>
 
           <div className="space-y-4">
-            {(isEnglish ? [
-              { q: 'Do I need an LLC to freelance?', a: 'No, you can freelance as a sole proprietor. However, an LLC provides liability protection and tax benefits that become valuable as your income grows. Consider forming one once you earn $50,000+ annually.' },
-              { q: 'Can I use a template contract or do I need a lawyer?', a: 'Template contracts work well for standard projects. However, for high-value projects, unusual terms, or if you\'ve had disputes before, investing in a lawyer to customize your contracts is worthwhile.' },
-              { q: 'How much should I save for taxes?', a: 'Save 25-30% of your income for taxes. This covers self-employment tax (15.3%) plus federal and state income taxes. The exact amount depends on your total income and deductions.' },
-              { q: 'What if a client wants me to sign their contract instead of mine?', a: 'Read their contract carefully. Look for unfavorable terms like full IP transfer, unlimited revisions, or broad non-competes. Negotiate changes or add an addendum for terms you need.' },
-              { q: 'Do I need insurance as a freelancer?', a: 'It depends on your risk level. Professional liability (E&O) insurance is recommended for anyone whose work could cause financial harm to clients. General liability is important if you meet clients in person.' }
-            ] : [
-              { q: 'Serbest çalışmak için LLC\'ye ihtiyacım var mı?', a: 'Hayır, şahıs şirketi olarak serbest çalışabilirsiniz. Ancak, bir LLC geliriniz arttıkça değerli hale gelen sorumluluk koruması ve vergi avantajları sağlar. Yıllık 50.000$+ kazandığınızda bir tane kurmayı düşünün.' },
-              { q: 'Şablon sözleşme kullanabilir miyim yoksa avukata mı ihtiyacım var?', a: 'Şablon sözleşmeler standart projeler için iyi çalışır. Ancak, yüksek değerli projeler, olağandışı koşullar veya daha önce anlaşmazlıklarınız olduysa, sözleşmelerinizi özelleştirmek için bir avukata yatırım yapmaya değer.' },
-              { q: 'Vergiler için ne kadar biriktirmeliyim?', a: 'Gelirinizin %25-30\'unu vergiler için biriktirin. Bu, serbest meslek vergisini (%15,3) artı federal ve eyalet gelir vergilerini kapsar. Kesin miktar toplam gelirinize ve kesintilerinize bağlıdır.' },
-              { q: 'Bir müşteri benimki yerine kendi sözleşmesini imzalamamı isterse ne olur?', a: 'Sözleşmelerini dikkatlice okuyun. Tam IP devri, sınırsız revizyon veya geniş rekabet yasağı gibi olumsuz koşulları arayın. Değişiklikleri müzakere edin veya ihtiyacınız olan koşullar için ek protokol ekleyin.' },
-              { q: 'Serbest çalışan olarak sigortaya ihtiyacım var mı?', a: 'Risk seviyenize bağlıdır. İşi müşterilere mali zarar verebilecek herkes için mesleki sorumluluk (E&O) sigortası önerilir. Müşterilerle şahsen görüşüyorsanız genel sorumluluk önemlidir.' }
-            ]).map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.q}</summary>
-                <p className="p-4 pt-0 text-gray-600">{faq.a}</p>
+                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.question}</summary>
+                <p className="p-4 pt-0 text-gray-600">{faq.answer}</p>
               </details>
             ))}
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={isEnglish ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz'}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="encyclopedia-entry"
+          className="mt-8"
+        />
 
       </article>
 
