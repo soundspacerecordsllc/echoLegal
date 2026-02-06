@@ -5,7 +5,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Locale } from '@/i18n-config'
-import { PrimaryAuthorAttribution } from '@/components/ContributorAttribution'
 import ContributorApplicationForm from '@/components/ContributorApplicationForm'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
@@ -353,19 +352,6 @@ export default async function ContributePage({
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Current Editorial Authority */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            {isEnglish ? 'Current Editorial Authority' : 'Mevcut Editöryal Otorite'}
-          </h2>
-          <p className="text-gray-600 mb-6">
-            {isEnglish
-              ? 'All EchoLegal content is currently reviewed under the editorial authority of:'
-              : 'Tüm EchoLegal içeriği şu anda aşağıdaki editöryal otorite altında incelenmektedir:'}
-          </p>
-          <PrimaryAuthorAttribution lang={lang} variant="full" />
         </section>
 
         {/* Application Form */}
