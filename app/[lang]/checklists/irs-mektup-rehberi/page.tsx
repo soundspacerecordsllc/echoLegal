@@ -3,6 +3,9 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -28,6 +31,23 @@ export default async function IRSLetterGuidePage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: isEnglish ? 'IRS Letter Received: First 7 Facts' : "IRS'ten Mektup Geldiyse: İlk 7 Gerçek",
+    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    datePublished: '2026-01-15',
+    dateModified: '2026-01-20',
+    url: `${SITE_URL}/${lang}/checklists/irs-mektup-rehberi`,
+  }
+
+  const breadcrumbJsonLd = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Checklists' : 'Kontrol Listeleri', url: `${SITE_URL}/${lang}/checklists` },
+    { name: isEnglish ? 'IRS Letter' : 'IRS Mektubu', url: `${SITE_URL}/${lang}/checklists/irs-mektup-rehberi` },
+  ])
 
   const facts = [
     {
@@ -83,6 +103,8 @@ export default async function IRSLetterGuidePage({
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[articleJsonLd, breadcrumbJsonLd]} />
+
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -106,6 +128,8 @@ export default async function IRSLetterGuidePage({
                 : 'IRS yazışmalarını anlamanıza yardımcı olacak genel bilgiler. Vergi tavsiyesi değildir.'}
             </p>
           </header>
+
+          <InstitutionalBadge lang={lang} jurisdictions={['US']} lastReviewedAt="2026-01-20" className="mb-10" />
 
           {/* Disclaimer */}
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 mb-10">
@@ -152,12 +176,6 @@ export default async function IRSLetterGuidePage({
                 ? 'For these questions, consult a tax professional who can review your specific situation.'
                 : 'Bu sorular için, özel durumunuzu inceleyebilecek bir vergi uzmanına danışın.'}
             </p>
-          </div>
-
-          {/* Review Date */}
-          <div className="bg-gray-50 rounded-lg p-4 mb-10 text-sm text-gray-600">
-            <p><strong>{isEnglish ? 'Last reviewed:' : 'Son gözden geçirme:'}</strong> {isEnglish ? 'January 2026' : 'Ocak 2026'}</p>
-            <p><strong>{isEnglish ? 'Next planned update:' : 'Sonraki planlanan güncelleme:'}</strong> {isEnglish ? 'July 2026' : 'Temmuz 2026'}</p>
           </div>
 
           {/* Related Resources */}

@@ -3,16 +3,49 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import SearchButton from '@/components/SearchButton'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'common-misconceptions',
+  datePublished: '2025-10-01',
+  dateModified: '2026-01-15',
+  version: '1.0',
+  wordCount: 2800,
+  citationKey: 'ecl-enc-00005',
+}
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const isEnglish = params.lang === 'en'
+  const title = isEnglish
+    ? 'Common Legal Misconceptions | EchoLegal'
+    : 'Yaygın Yanlış Varsayımlar | EchoLegal'
+  const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
+
   return {
-    title: isEnglish
-      ? 'Common Legal Misconceptions | EchoLegal'
-      : 'Yaygın Yanlış Varsayımlar | EchoLegal',
+    title,
     description: isEnglish
       ? 'Common legal misconceptions about LLCs, immigration, contracts, and business law in the United States.'
       : 'LLC, göçmenlik, sözleşmeler ve ABD iş hukuku hakkında yaygın yanlış varsayımlar.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/10/01',
+      'citation_lastmod': '2026/01/15',
+      'citation_version': PAGE_META.version,
+      'citation_language': params.lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -23,6 +56,31 @@ export default async function CommonMisconceptionsPage({
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const pageUrl = `${SITE_URL}/${lang}/encyclopedia/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar'
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar',
+    alternativeHeadline: isEnglish ? 'Legal Myths — LLCs, Immigration, Contracts & Business Law' : 'Hukuki Yanılgılar — LLC, Göçmenlik, Sözleşmeler ve İş Hukuku',
+    abstractText: isEnglish
+      ? 'Widely believed but incorrect assumptions about business law, immigration, and contracts in the United States.'
+      : 'ABD iş hukuku, göçmenlik ve sözleşmeler hakkında sık karşılaşılan yanlış inanışlar.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['legal-misconceptions', 'llc', 'immigration', 'contracts', 'business-law'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['Legal Misconceptions', 'Business Law', 'Immigration Law', 'Contract Law'],
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const misconceptions = isEnglish ? [
     {
@@ -115,6 +173,8 @@ export default async function CommonMisconceptionsPage({
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -136,11 +196,12 @@ export default async function CommonMisconceptionsPage({
               : 'ABD iş hukuku, göçmenlik ve sözleşmeler hakkında sık karşılaşılan yanlış inanışlar.'}
           </p>
 
-          <div className="flex items-center gap-4 text-sm text-gray-500 mb-12">
-            <span>📅 {isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</span>
-            <span>•</span>
-            <span>⏱️ {isEnglish ? '6 min read' : '6 dk okuma'}</span>
-          </div>
+          <InstitutionalBadge
+            lang={lang}
+            jurisdictions={['US']}
+            lastReviewedAt={PAGE_META.dateModified}
+            className="mb-12"
+          />
 
           {/* Introduction */}
           <div className="bg-amber-50 border-l-4 border-[#C9A227] p-6 mb-12">
@@ -243,6 +304,18 @@ export default async function CommonMisconceptionsPage({
               </Link>
             </div>
           </section>
+          {/* Cite This Entry */}
+          <CiteThisEntry
+            lang={lang}
+            title={isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar'}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="encyclopedia-entry"
+            className="mt-8"
+          />
+
         </article>
 
         {/* Related Articles */}

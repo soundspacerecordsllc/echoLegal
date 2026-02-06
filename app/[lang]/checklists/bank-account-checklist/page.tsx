@@ -3,6 +3,9 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -173,18 +176,15 @@ export default async function BankAccountChecklistPage({
     })),
   }
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+  const breadcrumbJsonLd = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Checklists' : 'Kontrol Listeleri', url: `${SITE_URL}/${lang}/checklists` },
+    { name: isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Kontrol Listesi', url: `${SITE_URL}/${lang}/checklists/bank-account-checklist` },
+  ])
 
+  return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <JsonLdScript data={[jsonLd, faqJsonLd, breadcrumbJsonLd]} />
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
             <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -208,6 +208,8 @@ export default async function BankAccountChecklistPage({
                 : 'ABD iş bankası hesabı açmadan önce hazırlamanız gereken her şey. Neobankalar ve geleneksel bankalar için geçerlidir.'}
             </p>
           </div>
+
+          <InstitutionalBadge lang={lang} jurisdictions={['US']} lastReviewedAt="2026-01-20" className="mb-8" />
 
           {/* Prerequisites */}
           <section className="mb-10">
@@ -324,6 +326,5 @@ export default async function BankAccountChecklistPage({
             </p>
           </div>
       </div>
-    </>
   )
 }

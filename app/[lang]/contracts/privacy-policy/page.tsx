@@ -2,10 +2,23 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateDigitalDocumentSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'privacy-policy',
+  datePublished: '2025-08-15',
+  dateModified: '2026-01-20',
+  version: '1.0',
+  citationKey: 'ecl-ctr-00006',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
 
   return {
     title: isEnglish
@@ -14,6 +27,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual privacy policy template. GDPR, CCPA & KVKK compliant. I support EchoLegal ($49 recommended) or download free.'
       : 'Ücretsiz iki dilli gizlilik politikası şablonu. GDPR, CCPA ve KVKK uyumlu. Gücünüz kadar ödeyin (49$ önerilir).',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/08/15',
+      'citation_lastmod': '2026/01/20',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -43,8 +73,33 @@ export default async function PrivacyPolicyPage({
     },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu'
+
+  const documentSchema = generateDigitalDocumentSchema({
+    title: isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu',
+    description: isEnglish
+      ? 'A Privacy Policy is a legal document that explains how your website or app collects, uses, stores, and protects user data. It is required by law in most jurisdictions (GDPR in Europe, CCPA in California, KVKK in Turkey) for any website that collects personal information.'
+      : 'Gizlilik Politikası, web sitenizin veya uygulamanızın kullanıcı verilerini nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklayan yasal bir belgedir. Kişisel bilgi toplayan herhangi bir web sitesi için çoğu yargı bölgesinde (Avrupa\'da GDPR, California\'da CCPA, Türkiye\'de KVKK) yasalarca zorunludur.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['privacy-policy', 'gdpr', 'ccpa', 'kvkk', 'data-protection', 'contract-template'],
+    encodingFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    citationKey: PAGE_META.citationKey,
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Contracts' : 'Sözleşmeler', url: `${SITE_URL}/${lang}/contracts` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <div className="bg-white">
+      <JsonLdScript data={[documentSchema, breadcrumbSchema]} />
       <main className="max-w-4xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -54,15 +109,16 @@ export default async function PrivacyPolicyPage({
           <span className="text-black font-medium">{isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}</span>
         </nav>
 
-        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: GDPR / CCPA / KVKK Compliant' : 'Yargı Yetkisi: GDPR / CCPA / KVKK Uyumlu'}
-        </span>
-
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu'}
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US', 'TR']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-8"
+        />
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Document?' : 'Bu Belge Nedir?'}</h2>
@@ -179,6 +235,17 @@ export default async function PrivacyPolicyPage({
               : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 49$ seçiyor.'}
           </p>
         </div>
+
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="contract-template"
+          className="mb-12"
+        />
 
         {/* Cross-sell: People also download */}
         <section className="bg-gray-50 rounded-xl p-6 mb-12">

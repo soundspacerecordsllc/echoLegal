@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import W8W9DecisionTool from '@/components/W8W9DecisionTool'
 import AuthorBox from '@/components/AuthorBox'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import JsonLdScript from '@/components/JsonLdScript'
+import { SITE_URL } from '@/lib/structured-data'
 
 export async function generateMetadata({
   params,
@@ -149,21 +152,8 @@ export default async function W8W9DecisionMapPage({
   }
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[jsonLd, breadcrumbJsonLd, faqJsonLd]} />
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">
@@ -187,31 +177,7 @@ export default async function W8W9DecisionMapPage({
               {isEnglish ? 'W-8 or W-9? Decision Tool' : 'W-8 mi W-9 mu? Karar Aracı'}
             </h1>
 
-            {/* Authority signals */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-6">
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-                EchoLegal
-              </span>
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                {isEnglish ? 'Updated: January 2026' : 'Güncellendi: Ocak 2026'}
-              </span>
-            </div>
+            <InstitutionalBadge lang={lang} jurisdictions={['US', 'TR']} lastReviewedAt="2026-01-25" className="mb-6" />
 
             <p className="text-lg text-gray-600 leading-relaxed">
               {isEnglish
@@ -798,18 +764,6 @@ export default async function W8W9DecisionMapPage({
           {/* Contributing Attorney */}
           <AuthorBox lang={lang} authorId="zeynep-moore" className="mb-10" />
 
-          {/* Review Date */}
-          <div className="bg-gray-50 rounded-lg p-4 mb-10 text-sm text-gray-600">
-            <p>
-              <strong>{isEnglish ? 'Last reviewed:' : 'Son gözden geçirme:'}</strong>{' '}
-              {isEnglish ? 'January 2026' : 'Ocak 2026'}
-            </p>
-            <p>
-              <strong>{isEnglish ? 'Next planned update:' : 'Sonraki planlanan güncelleme:'}</strong>{' '}
-              {isEnglish ? 'July 2026' : 'Temmuz 2026'}
-            </p>
-          </div>
-
           {/* Final Disclaimer */}
           <div className="bg-gray-100 rounded-lg p-5">
             <p className="text-xs text-gray-600 leading-relaxed">
@@ -820,6 +774,5 @@ export default async function W8W9DecisionMapPage({
           </div>
         </article>
       </div>
-    </>
   )
 }

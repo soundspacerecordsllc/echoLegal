@@ -2,10 +2,23 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateDigitalDocumentSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'freelance-agreement',
+  datePublished: '2025-08-01',
+  dateModified: '2026-01-20',
+  version: '1.0',
+  citationKey: 'ecl-ctr-00003',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
 
   return {
     title: isEnglish
@@ -14,6 +27,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual freelance contract template. I support EchoLegal ($49 recommended) or download free. Protect your freelance projects.'
       : 'Ücretsiz iki dilli serbest çalışan sözleşmesi. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/08/01',
+      'citation_lastmod': '2026/01/20',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -43,8 +73,33 @@ export default async function FreelanceAgreementPage({
     },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/contracts/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi'
+
+  const documentSchema = generateDigitalDocumentSchema({
+    title: isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
+    description: isEnglish
+      ? 'A Freelance Service Agreement is a legally binding contract between a freelancer and a client that outlines project terms, deliverables, payment schedules, intellectual property rights, and termination conditions. It protects both parties by setting clear expectations.'
+      : 'Serbest Çalışan Hizmet Sözleşmesi, bir serbest çalışan ile müşteri arasında proje şartlarını, teslimatları, ödeme takvimlerini, fikri mülkiyet haklarını ve fesih koşullarını belirleyen yasal olarak bağlayıcı bir sözleşmedir.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['freelance-agreement', 'freelance-contract', 'contract-template'],
+    encodingFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    citationKey: PAGE_META.citationKey,
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Contracts' : 'Sözleşmeler', url: `${SITE_URL}/${lang}/contracts` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <div className="bg-white">
+      <JsonLdScript data={[documentSchema, breadcrumbSchema]} />
       <main className="max-w-4xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -54,15 +109,16 @@ export default async function FreelanceAgreementPage({
           <span className="text-black font-medium">{isEnglish ? 'Freelance Agreement' : 'Serbest Çalışan Sözleşmesi'}</span>
         </nav>
 
-        <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: United States / Turkey' : 'Yargı Yetkisi: ABD / Türkiye'}
-        </span>
-
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
           {isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi'}
         </h1>
 
-        <p className="text-sm text-gray-500 mb-8">{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</p>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-8"
+        />
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">{isEnglish ? 'What is This Agreement?' : 'Bu Sözleşme Nedir?'}</h2>
@@ -177,6 +233,17 @@ export default async function FreelanceAgreementPage({
               : 'Çoğu kullanıcı, sürekli güncellemeleri ve iki dilli erişimi desteklemek için 49$ seçiyor.'}
           </p>
         </div>
+
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="contract-template"
+          className="mb-12"
+        />
 
         {/* Cross-sell: People also download */}
         <section className="bg-gray-50 rounded-xl p-6 mb-12">

@@ -2,16 +2,49 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'what-is-nda',
+  datePublished: '2025-06-15',
+  dateModified: '2026-01-25',
+  version: '2.1',
+  wordCount: 3200,
+  citationKey: 'ecl-enc-00001',
+}
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }): Promise<Metadata> {
   const isEnglish = params.lang === 'en'
+  const title = isEnglish
+    ? 'What is an NDA? Non-Disclosure Agreement Explained | EchoLegal'
+    : 'NDA Nedir? Gizlilik Sözleşmesi Rehberi | EchoLegal'
+  const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
+
   return {
-    title: isEnglish
-      ? 'What is an NDA? Non-Disclosure Agreement Explained | EchoLegal'
-      : 'NDA Nedir? Gizlilik Sözleşmesi Rehberi | EchoLegal',
+    title,
     description: isEnglish
       ? 'Learn what an NDA (Non-Disclosure Agreement) is, when you need one, key clauses to include, and download a free template.'
       : 'NDA (Gizlilik Sözleşmesi) nedir, ne zaman gereklidir, hangi maddeler bulunmalı ve ücretsiz şablon indirin.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'What is an NDA? Non-Disclosure Agreement Explained' : 'NDA Nedir? Gizlilik Sözleşmesi Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/15',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': params.lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -22,22 +55,63 @@ export default async function WhatIsNDAPage({
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const pageUrl = `${SITE_URL}/${lang}/encyclopedia/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'What is an NDA?' : 'NDA Nedir?'
+
+  const faqs = isEnglish ? [
+    { question: 'Is an NDA legally binding?', answer: 'Yes, when properly drafted and signed, an NDA is a legally enforceable contract. Breach of an NDA can result in lawsuits for damages and injunctive relief.' },
+    { question: 'Can I write my own NDA?', answer: 'Yes, but it\'s recommended to use a professionally drafted template or consult with an attorney to ensure it\'s enforceable and covers all necessary elements.' },
+    { question: 'How long should an NDA last?', answer: 'Typically 2-5 years for general business information. Trade secrets may be protected indefinitely. The duration should be reasonable for the type of information being protected.' },
+    { question: 'What happens if someone breaks an NDA?', answer: 'You can sue for damages (monetary compensation for losses) and seek an injunction (court order to stop further disclosure). The specific remedies depend on the terms of your NDA.' }
+  ] : [
+    { question: 'NDA yasal olarak bağlayıcı mı?', answer: 'Evet, düzgün hazırlanıp imzalandığında NDA yasal olarak uygulanabilir bir sözleşmedir. NDA ihlali tazminat davaları ve ihtiyati tedbir ile sonuçlanabilir.' },
+    { question: 'Kendi NDA\'mı yazabilir miyim?', answer: 'Evet, ancak uygulanabilir olduğundan ve tüm gerekli unsurları kapsadığından emin olmak için profesyonelce hazırlanmış bir şablon kullanmanız veya bir avukata danışmanız önerilir.' },
+    { question: 'NDA ne kadar sürmeli?', answer: 'Genel iş bilgileri için genellikle 2-5 yıl. Ticari sırlar süresiz olarak korunabilir. Süre, korunan bilgi türü için makul olmalıdır.' },
+    { question: 'Birisi NDA\'yı ihlal ederse ne olur?', answer: 'Tazminat davası açabilir (kayıplar için parasal tazminat) ve ihtiyati tedbir (daha fazla ifşayı durdurmak için mahkeme kararı) talep edebilirsiniz.' }
+  ]
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'What is an NDA? Non-Disclosure Agreement Explained' : 'NDA Nedir? Gizlilik Sözleşmesi Rehberi',
+    alternativeHeadline: isEnglish ? 'NDA Overview — Definition, Types, and Enforceability' : 'NDA Genel Bakış — Tanım, Türler ve Uygulanabilirlik',
+    abstractText: isEnglish
+      ? 'A non-disclosure agreement (NDA) is a legally binding contract that establishes a confidential relationship between parties, protecting sensitive business information from unauthorized disclosure.'
+      : 'Gizlilik sözleşmesi (NDA), taraflar arasında gizli bir ilişki kuran ve hassas iş bilgilerini yetkisiz ifşadan koruyan yasal olarak bağlayıcı bir sözleşmedir.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['nda', 'non-disclosure agreement', 'confidentiality', 'trade-secrets', 'contract-law'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['Non-Disclosure Agreement', 'Contract Law', 'Confidentiality'],
+  })
+
+  const faqSchema = generateFAQSchema(faqs)
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+      <JsonLdScript data={[scholarlySchema, faqSchema, breadcrumbSchema]} />
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
         <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
         {' → '}
         <Link href={`/${lang}/encyclopedia`} className="hover:text-black">{isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}</Link>
         {' → '}
-        <span className="text-black font-medium">{isEnglish ? 'What is an NDA?' : 'NDA Nedir?'}</span>
+        <span className="text-black font-medium">{pageTitle}</span>
       </nav>
 
       {/* Article Header */}
       <article>
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
-          {isEnglish ? 'What is an NDA?' : 'NDA Nedir?'}
+          {pageTitle}
         </h1>
 
         <p className="text-xl text-gray-600 mb-6">
@@ -46,11 +120,12 @@ export default async function WhatIsNDAPage({
             : 'Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey: ne zaman kullanılır, neler içermeli ve kaçınılması gereken hatalar.'}
         </p>
 
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-12">
-          <span>{isEnglish ? 'Last Updated: January 2026' : 'Son Güncelleme: Ocak 2026'}</span>
-          <span>•</span>
-          <span>{isEnglish ? '8 min read' : '8 dk okuma'}</span>
-        </div>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-12"
+        />
 
         {/* Table of Contents */}
         <div className="bg-gray-50 rounded-lg p-6 mb-12">
@@ -221,7 +296,7 @@ export default async function WhatIsNDAPage({
             <h2 className="text-3xl font-bold mb-4">{isEnglish ? 'Get Your NDA Template' : 'NDA Şablonunuzu Alın'}</h2>
             <p className="text-gray-300 mb-6">
               {isEnglish
-                ? 'Download our professionally drafted NDA template. Available in English and Turkish. I support EchoLegal – $49 recommended. Download for free..'
+                ? 'Download our professionally drafted NDA template. Available in English and Turkish. I support EchoLegal – $49 recommended. Download for free.'
                 : 'Profesyonelce hazırlanmış NDA şablonumuzu indirin. İngilizce ve Türkçe olarak mevcuttur. Ödeyebildiğiniz kadar ödeyin – $49 önerilir, ücretsiz seçenek mevcuttur.'}
             </p>
             <Link
@@ -238,29 +313,31 @@ export default async function WhatIsNDAPage({
           <h2 className="text-2xl font-bold mb-6">{isEnglish ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}</h2>
 
           <div className="space-y-4">
-            {(isEnglish ? [
-              { q: 'Is an NDA legally binding?', a: 'Yes, when properly drafted and signed, an NDA is a legally enforceable contract. Breach of an NDA can result in lawsuits for damages and injunctive relief.' },
-              { q: 'Can I write my own NDA?', a: 'Yes, but it\'s recommended to use a professionally drafted template or consult with an attorney to ensure it\'s enforceable and covers all necessary elements.' },
-              { q: 'How long should an NDA last?', a: 'Typically 2-5 years for general business information. Trade secrets may be protected indefinitely. The duration should be reasonable for the type of information being protected.' },
-              { q: 'What happens if someone breaks an NDA?', a: 'You can sue for damages (monetary compensation for losses) and seek an injunction (court order to stop further disclosure). The specific remedies depend on the terms of your NDA.' }
-            ] : [
-              { q: 'NDA yasal olarak bağlayıcı mı?', a: 'Evet, düzgün hazırlanıp imzalandığında NDA yasal olarak uygulanabilir bir sözleşmedir. NDA ihlali tazminat davaları ve ihtiyati tedbir ile sonuçlanabilir.' },
-              { q: 'Kendi NDA\'mı yazabilir miyim?', a: 'Evet, ancak uygulanabilir olduğundan ve tüm gerekli unsurları kapsadığından emin olmak için profesyonelce hazırlanmış bir şablon kullanmanız veya bir avukata danışmanız önerilir.' },
-              { q: 'NDA ne kadar sürmeli?', a: 'Genel iş bilgileri için genellikle 2-5 yıl. Ticari sırlar süresiz olarak korunabilir. Süre, korunan bilgi türü için makul olmalıdır.' },
-              { q: 'Birisi NDA\'yı ihlal ederse ne olur?', a: 'Tazminat davası açabilir (kayıplar için parasal tazminat) ve ihtiyati tedbir (daha fazla ifşayı durdurmak için mahkeme kararı) talep edebilirsiniz.' }
-            ]).map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="border border-gray-200 rounded-lg">
-                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.q}</summary>
-                <p className="p-4 pt-0 text-gray-600">{faq.a}</p>
+                <summary className="p-4 font-semibold cursor-pointer hover:bg-gray-50">{faq.question}</summary>
+                <p className="p-4 pt-0 text-gray-600">{faq.answer}</p>
               </details>
             ))}
           </div>
         </section>
 
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={isEnglish ? 'What is an NDA? Non-Disclosure Agreement Explained' : 'NDA Nedir? Gizlilik Sözleşmesi Rehberi'}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="encyclopedia-entry"
+          className="mt-8"
+        />
+
       </article>
 
       {/* Related Articles */}
-      <section className="bg-gray-50 rounded-lg p-6">
+      <section className="bg-gray-50 rounded-lg p-6 mt-8">
         <h2 className="text-xl font-bold mb-4">{isEnglish ? 'Related Articles' : 'İlgili Makaleler'}</h2>
         <ul className="space-y-2">
           <li>

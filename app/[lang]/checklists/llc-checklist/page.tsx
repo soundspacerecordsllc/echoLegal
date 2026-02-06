@@ -4,6 +4,9 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import JsonLdScript from '@/components/JsonLdScript'
+import { SITE_URL } from '@/lib/structured-data'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -175,39 +178,26 @@ export default async function LLCChecklistPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: `${SITE_URL}/${lang}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-        item: `https://echo-legal.com/${lang}/checklists`,
+        item: `${SITE_URL}/${lang}/checklists`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: isEnglish ? 'LLC Checklist' : 'LLC Kontrol Listesi',
-        item: `https://echo-legal.com/${lang}/checklists/llc-checklist`,
+        item: `${SITE_URL}/${lang}/checklists/llc-checklist`,
       },
     ],
   }
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-
       <div className="bg-white">
+        <JsonLdScript data={[jsonLd, faqJsonLd, breadcrumbJsonLd]} />
         <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
@@ -232,6 +222,8 @@ export default async function LLCChecklistPage({
                 : 'Amerika Birleşik Devletleri\'nde Limited Şirket kurmak için yapılandırılmış bir hazırlık listesi. Kuruluş öncesi planlama, gerekli belgeler ve kuruluş sonrası yükümlülükleri kapsar.'}
             </p>
           </header>
+
+          <InstitutionalBadge lang={lang} jurisdictions={['US']} lastReviewedAt="2026-01-20" className="mb-8" />
 
           {/* Pre-Formation Checklist */}
           <section className="mb-12">
@@ -345,6 +337,5 @@ export default async function LLCChecklistPage({
           </aside>
         </main>
       </div>
-    </>
   )
 }

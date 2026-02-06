@@ -3,6 +3,9 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -183,18 +186,15 @@ export default async function TaxDocumentsChecklistPage({
     })),
   }
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+  const breadcrumbJsonLd = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Checklists' : 'Kontrol Listeleri', url: `${SITE_URL}/${lang}/checklists` },
+    { name: isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Kontrol Listesi', url: `${SITE_URL}/${lang}/checklists/tax-documents-checklist` },
+  ])
 
+  return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <JsonLdScript data={[jsonLd, faqJsonLd, breadcrumbJsonLd]} />
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
             <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -218,6 +218,8 @@ export default async function TaxDocumentsChecklistPage({
                 : 'ABD LLC\'nizin ilk yılı için temel vergi belgeleri ve son tarihler. Düzenli ve uyumlu kalın.'}
             </p>
           </div>
+
+          <InstitutionalBadge lang={lang} jurisdictions={['US', 'TR']} lastReviewedAt="2026-01-20" className="mb-8" />
 
           {/* Tax IDs */}
           <section className="mb-10">
@@ -350,6 +352,5 @@ export default async function TaxDocumentsChecklistPage({
             </p>
           </div>
       </div>
-    </>
   )
 }
