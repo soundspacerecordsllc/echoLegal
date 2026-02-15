@@ -158,7 +158,7 @@ export default async function DS160GuidePage({
           {/* Hero */}
           <div className="mb-12">
             <span className="inline-block px-4 py-2 bg-blue-50 text-blue-800 rounded-full text-sm font-semibold mb-4">
-              📋 {isEnglish ? 'Visa Application' : 'Vize Başvurusu'}
+              {isEnglish ? 'Visa Application' : 'Vize Başvurusu'}
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
@@ -177,7 +177,7 @@ export default async function DS160GuidePage({
           {/* Official Source */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-10">
             <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-              <span>🏛️</span>
+              <span></span>
               {isEnglish ? 'Official Application Portal' : 'Resmi Başvuru Portalı'}
             </h3>
             <p className="text-sm text-blue-800 mb-3">

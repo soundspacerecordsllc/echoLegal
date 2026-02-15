@@ -76,9 +76,9 @@
 
 ## [2.0.0] - 2026-01-25
 
-### 🚀 Major Feature: Passive Income Architecture
+### Major Feature: Passive Income Architecture
 
-Complete restructure of EchoLegal into a high-conversion, authority-driven legal reference platform focused on passive income generation for Turkish entrepreneurs doing business in the US.
+Complete restructure of EchoLegal into a legal reference platform serving Turkish entrepreneurs doing business in the United States.
 
 ### New Sections
 

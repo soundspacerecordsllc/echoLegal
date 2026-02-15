@@ -113,7 +113,7 @@ export default async function PaymentPlatformsGuidePage({
           {/* Hero */}
           <div className="mb-12">
             <span className="inline-block px-4 py-2 bg-green-50 text-green-800 rounded-full text-sm font-semibold mb-4">
-              💳 {isEnglish ? 'Payment Guide' : 'Ödeme Rehberi'}
+              {isEnglish ? 'Payment Guide' : 'Ödeme Rehberi'}
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
@@ -132,7 +132,7 @@ export default async function PaymentPlatformsGuidePage({
           {/* Key Points */}
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 mb-10">
             <h3 className="font-semibold text-amber-900 mb-3 flex items-center gap-2">
-              <span>⚡</span>
+              <span></span>
               {isEnglish ? 'Key Points' : 'Önemli Noktalar'}
             </h3>
             <ul className="list-disc list-inside space-y-2 text-sm text-amber-800">

@@ -1,4 +1,4 @@
-# 🚀 EchoLegal Quick Start
+# EchoLegal Quick Start
 
 ## Deploy in 30 Minutes
 
@@ -40,7 +40,7 @@ In your domain provider:
 1. Add A record: `@` → `76.76.21.21`
 2. Add CNAME: `www` → `cname.vercel-dns.com`
 
-**Done!** Site live at echo-legal.com
+The site will be live at echo-legal.com once DNS propagation completes.
 
 ---
 
@@ -65,9 +65,9 @@ npm run dev
 
 ---
 
-## Need Help?
+## Additional Resources
 
-Read full README.md for:
+Refer to README.md for:
 - Complete documentation
 - Troubleshooting
 - Payment setup details

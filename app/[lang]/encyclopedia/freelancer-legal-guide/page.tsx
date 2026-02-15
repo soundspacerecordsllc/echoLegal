@@ -426,7 +426,7 @@ export default async function FreelancerLegalGuidePage({
                   'Ortak çalışma alanı'
                 ]).map((item, i) => (
                   <li key={i} className="flex items-center">
-                    <span className="text-green-600 mr-2">✓</span>
+                    <span className="text-green-600 mr-2">--</span>
                     {item}
                   </li>
                 ))}
@@ -668,19 +668,19 @@ export default async function FreelancerLegalGuidePage({
               <h3 className="text-xl font-semibold mb-3">{isEnglish ? 'Prevention is Best' : 'Önleme En İyisidir'}</h3>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-green-600 mr-2">--</span>
                   <span>{isEnglish ? 'Document everything in writing (emails, chat logs, meeting notes)' : 'Her şeyi yazılı olarak belgeleyin (e-postalar, sohbet kayıtları, toplantı notları)'}</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-green-600 mr-2">--</span>
                   <span>{isEnglish ? 'Get sign-off at each project milestone' : 'Her proje aşamasında onay alın'}</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-green-600 mr-2">--</span>
                   <span>{isEnglish ? 'Address concerns immediately—don\'t let issues fester' : 'Endişeleri hemen ele alın—sorunların büyümesine izin vermeyin'}</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-green-600 mr-2">--</span>
                   <span>{isEnglish ? 'Keep scope changes documented with price adjustments' : 'Kapsam değişikliklerini fiyat ayarlamalarıyla belgelenmiş tutun'}</span>
                 </li>
               </ul>
@@ -748,7 +748,7 @@ export default async function FreelancerLegalGuidePage({
                 'Uyuşmazlık çözüm seçeneklerinizi bilin'
               ]).map((item, i) => (
                 <div key={i} className="flex items-start">
-                  <span className="text-[#C9A227] mr-2">☐</span>
+                  <span className="text-[#C9A227] mr-2">[ ]</span>
                   <span className="text-gray-300">{item}</span>
                 </div>
               ))}

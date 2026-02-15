@@ -65,7 +65,7 @@ export const jurisdictions: Record<JurisdictionCode, Jurisdiction> = {
     languages: ['en'],
     legalSystem: 'common-law',
     isActive: true,
-    flag: '🇺🇸',
+    flag: '',
   },
 
   // US States
@@ -279,7 +279,7 @@ export const jurisdictions: Record<JurisdictionCode, Jurisdiction> = {
     languages: ['tr'],
     legalSystem: 'civil-law',
     isActive: true,
-    flag: '🇹🇷',
+    flag: '',
   },
 
   // Future jurisdictions (placeholders for expansion)
@@ -431,7 +431,7 @@ export const jurisdictions: Record<JurisdictionCode, Jurisdiction> = {
     languages: ['en'],
     legalSystem: 'mixed',
     isActive: false,
-    flag: '🌐',
+    flag: '',
   },
   GENERAL: {
     code: 'GENERAL',

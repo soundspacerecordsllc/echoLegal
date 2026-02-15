@@ -166,7 +166,7 @@ export default async function IRSTaxFactsPage({
             <div className="bg-gray-50 rounded-lg p-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <span className="text-2xl">🌍</span>
+                  <span className="text-2xl"></span>
                   <div>
                     <p className="font-semibold text-black">
                       {isEnglish
@@ -180,7 +180,7 @@ export default async function IRSTaxFactsPage({
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <span className="text-2xl">🇺🇸</span>
+                  <span className="text-2xl"></span>
                   <div>
                     <p className="font-semibold text-black">
                       {isEnglish
@@ -316,7 +316,7 @@ export default async function IRSTaxFactsPage({
           <section className="mb-12">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="font-semibold text-blue-800 mb-3">
-                🇹🇷🇺🇸 {isEnglish ? 'Note for Turkish Citizens' : 'Türk Vatandaşları İçin Not'}
+                {isEnglish ? 'Note for Turkish Citizens' : 'Türk Vatandaşları İçin Not'}
               </h3>
               <p className="text-sm text-blue-900 leading-relaxed mb-3">
                 {isEnglish

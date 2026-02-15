@@ -82,7 +82,7 @@ export default async function NYLawPage({
         <TrustStrip lang={lang} />
 
         <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: New York' : 'Kapsam: New York'}
+          {isEnglish ? 'Jurisdiction: New York' : 'Kapsam: New York'}
         </span>
 
         <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">

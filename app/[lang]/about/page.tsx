@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'Neden EchoLegal? | Misyonumuz ve Yaklaşımımız'
 
   const description = isEnglish
-    ? 'Learn about EchoLegal\'s mission to democratize legal knowledge worldwide. Our encyclopedic approach, editorial standards, and pay-what-you-can model. Currently serving US and Turkish law.'
-    : 'EchoLegal\'ın hukuki bilgiyi dünya genelinde demokratikleştirme misyonunu öğrenin. Ansiklopedik yaklaşımımız, editöryal standartlarımız ve destekle modelimiz. Şu anda ABD ve Türk hukuku.'
+    ? 'Learn about EchoLegal\'s mission to democratize legal knowledge worldwide. Our encyclopedic approach, editorial standards, and sustainable access model. Currently serving US and Turkish law.'
+    : 'EchoLegal\'ın hukuki bilgiyi dünya genelinde demokratikleştirme misyonunu öğrenin. Ansiklopedik yaklaşımımız, editöryal standartlarımız ve sürdürülebilir erişim modelimiz. Şu anda ABD ve Türk hukuku.'
 
   return {
     title,
@@ -118,7 +118,6 @@ export default async function AboutPage({
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">📚</div>
               <h3 className="font-semibold text-black mb-2">
                 {isEnglish ? 'Reference, Not Marketing' : 'Pazarlama Değil, Referans'}
               </h3>
@@ -129,7 +128,6 @@ export default async function AboutPage({
               </p>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">🏛️</div>
               <h3 className="font-semibold text-black mb-2">
                 {isEnglish ? 'Primary Sources First' : 'Önce Birincil Kaynaklar'}
               </h3>
@@ -140,7 +138,6 @@ export default async function AboutPage({
               </p>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">🌍</div>
               <h3 className="font-semibold text-black mb-2">
                 {isEnglish ? 'Multilingual by Design' : 'Tasarımı İtibarıyla Çok Dilli'}
               </h3>
@@ -151,7 +148,6 @@ export default async function AboutPage({
               </p>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">📅</div>
               <h3 className="font-semibold text-black mb-2">
                 {isEnglish ? 'Dated & Updated' : 'Tarihli ve Güncel'}
               </h3>
@@ -164,21 +160,21 @@ export default async function AboutPage({
           </div>
         </section>
 
-        {/* Pay What You Can */}
+        {/* Sustainable Access Model */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'I Support EchoLegal Model' : 'EchoLegal\'ı Destekliyorum Modeli'}
+            {isEnglish ? 'Sustainable Access Model' : 'Sürdürülebilir Erişim Modeli'}
           </h2>
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
             <p className="text-gray-700 mb-4">
               {isEnglish
-                ? 'Our templates and guides are available on a "pay what you can" basis. We recommend $49, but if you\'re just starting out or times are tight, you can access everything for free.'
-                : 'Şablonlarımız ve rehberlerimiz "gücünüz yettiğince ödeyin" esasına göre sunulmaktadır. 49$ öneriyoruz, ancak yeni başlıyorsanız veya ekonomik durumunuz uygun değilse her şeye ücretsiz erişebilirsiniz.'}
+                ? 'Our templates and guides are available through a flexible pricing model. The suggested contribution is $49, though all materials remain accessible at no cost to ensure equitable access regardless of financial circumstances.'
+                : 'Şablonlarımız ve rehberlerimiz esnek bir fiyatlandırma modeliyle sunulmaktadır. Önerilen katkı payı 49$ olmakla birlikte, mali koşullardan bağımsız olarak eşit erişim sağlamak amacıyla tüm materyaller ücretsiz olarak erişilebilir durumdadır.'}
             </p>
             <p className="text-gray-700">
               {isEnglish
-                ? 'This isn\'t charity — it\'s sustainability. Those who can pay help subsidize access for those who can\'t. The content is the same either way.'
-                : 'Bu hayır işi değil — sürdürülebilirlik. Ödeyebilenler, ödeyemeyenlerin erişimini sübvanse etmeye yardımcı oluyor. İçerik her iki durumda da aynı.'}
+                ? 'This model is designed for long-term sustainability. Contributions from paying users support continued free access for all. The content provided is identical regardless of payment.'
+                : 'Bu model uzun vadeli sürdürülebilirlik için tasarlanmıştır. Ödeme yapan kullanıcıların katkıları, herkes için ücretsiz erişimin devamını destekler. Sunulan içerik, ödeme durumundan bağımsız olarak aynıdır.'}
             </p>
           </div>
           <div className="flex items-center gap-4 text-sm text-gray-600">
@@ -188,11 +184,11 @@ export default async function AboutPage({
             </span>
             <span className="flex items-center gap-2">
               <span className="text-green-600">✓</span>
-              {isEnglish ? 'No forced sign-ups' : 'Zorunlu kayıt yok'}
+              {isEnglish ? 'No mandatory registration' : 'Zorunlu kayıt yok'}
             </span>
             <span className="flex items-center gap-2">
               <span className="text-green-600">✓</span>
-              {isEnglish ? 'Same quality for all' : 'Herkes için aynı kalite'}
+              {isEnglish ? 'Uniform quality for all users' : 'Tüm kullanıcılar için aynı kalite'}
             </span>
           </div>
         </section>

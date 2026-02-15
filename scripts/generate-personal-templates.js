@@ -28,7 +28,7 @@ async function createDocument(title, sections, filename) {
     new Paragraph({
       children: [
         new TextRun({
-          text: '⚖️ This template is for informational purposes only and does not constitute legal advice.',
+          text: 'This template is for informational purposes only and does not constitute legal advice.',
           italics: true,
           size: 20,
         }),
@@ -571,10 +571,10 @@ const residencyEN = {
     {
       heading: 'Attachments (if applicable)',
       content: [
-        '☐ Copy of government-issued ID',
-        '☐ Copy of lease agreement or deed',
-        '☐ Recent utility bill showing address',
-        '☐ Other supporting documentation',
+        '[ ] Copy of government-issued ID',
+        '[ ] Copy of lease agreement or deed',
+        '[ ] Recent utility bill showing address',
+        '[ ] Other supporting documentation',
       ],
     },
   ],
@@ -662,10 +662,10 @@ const residencyTR = {
     {
       heading: 'Ekler (varsa)',
       content: [
-        '☐ Devlet tarafından verilmiş kimlik belgesi kopyası',
-        '☐ Kira sözleşmesi veya tapu kopyası',
-        '☐ Adresi gösteren güncel fatura',
-        '☐ Diğer destekleyici belgeler',
+        '[ ] Devlet tarafından verilmiş kimlik belgesi kopyası',
+        '[ ] Kira sözleşmesi veya tapu kopyası',
+        '[ ] Adresi gösteren güncel fatura',
+        '[ ] Diğer destekleyici belgeler',
       ],
     },
   ],

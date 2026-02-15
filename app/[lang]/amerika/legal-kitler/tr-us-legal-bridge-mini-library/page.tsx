@@ -46,7 +46,7 @@ export default async function TRUSBridgeLibraryPage({
         <TrustStrip lang={lang} />
 
         <span className="inline-block px-4 py-2 bg-gradient-to-r from-red-100 to-blue-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: US + Turkey (Cross-Referenced)' : 'Yargı Yetkisi: ABD + Türkiye (Çapraz Referanslı)'}
+          {isEnglish ? 'Jurisdiction: US + Turkey (Cross-Referenced)' : 'Yargı Yetkisi: ABD + Türkiye (Çapraz Referanslı)'}
         </span>
 
         <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -92,7 +92,7 @@ export default async function TRUSBridgeLibraryPage({
             {/* Contract Templates */}
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                <span className="text-[#C9A227]">📝</span>
+                <span className="text-[#C9A227]"></span>
                 {isEnglish ? 'Contract Templates (All EN/TR)' : 'Sözleşme Şablonları (Tümü EN/TR)'}
               </h3>
               <ul className="grid md:grid-cols-2 gap-2">
@@ -130,7 +130,7 @@ export default async function TRUSBridgeLibraryPage({
             {/* Guides */}
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                <span className="text-[#C9A227]">📚</span>
+                <span className="text-[#C9A227]"></span>
                 {isEnglish ? 'Reference Guides' : 'Referans Rehberleri'}
               </h3>
               <ul className="space-y-2">

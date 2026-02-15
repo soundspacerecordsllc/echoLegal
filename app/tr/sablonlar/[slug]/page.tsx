@@ -160,7 +160,7 @@ export default async function TurkishTemplateDetailPage({
           </span>
           {template.jurisdiction !== 'General' && (
             <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">
-              📍 {jurisdictionLabels[template.jurisdiction][lang]}
+              {jurisdictionLabels[template.jurisdiction][lang]}
             </span>
           )}
         </div>
@@ -254,7 +254,7 @@ export default async function TurkishTemplateDetailPage({
 
         {/* Legal Disclaimer */}
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
-          <h3 className="font-semibold mb-2">⚖️ Hukuki Sorumluluk Reddi</h3>
+          <h3 className="font-semibold mb-2">Hukuki Sorumluluk Reddi</h3>
           <p className="text-sm text-gray-600">
             Bu şablon yalnızca bilgilendirme amacıyla sunulmaktadır; hukuki
             danışmanlık yerine geçmez. Somut bir hukuki mesele için kullanmadan
@@ -266,7 +266,7 @@ export default async function TurkishTemplateDetailPage({
         {officialSources.length > 0 && (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
             <h3 className="font-semibold mb-3 text-blue-900">
-              📚 Resmi Kaynaklar
+              Resmi Kaynaklar
             </h3>
             <ul className="space-y-2">
               {officialSources.map((source, i) => (

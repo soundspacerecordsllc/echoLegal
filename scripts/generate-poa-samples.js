@@ -76,7 +76,7 @@ async function createPOA_EN() {
     new Paragraph({
       children: [
         new TextRun({
-          text: '⚖️ This is a sample template for educational purposes. Consult an attorney before using for legal matters.',
+          text: 'This is a sample template for educational purposes. Consult an attorney before using for legal matters.',
           italics: true,
           size: 20,
         }),
@@ -161,7 +161,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'DURABLE: ', bold: true }),
         new TextRun({ text: 'This Power of Attorney shall NOT be affected by my subsequent disability or incapacity.' }),
       ],
@@ -170,7 +170,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'NON-DURABLE: ', bold: true }),
         new TextRun({ text: 'This Power of Attorney shall terminate upon my disability or incapacity.' }),
       ],
@@ -186,7 +186,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'IMMEDIATE: ', bold: true }),
         new TextRun({ text: 'This Power of Attorney is effective immediately upon execution.' }),
       ],
@@ -195,7 +195,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'SPRINGING: ', bold: true }),
         new TextRun({ text: 'This Power of Attorney becomes effective upon: ' }),
         new TextRun({ text: '[SPECIFY TRIGGERING EVENT]', highlight: 'yellow' }),
@@ -217,7 +217,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'Revoked by me in writing' }),
       ],
       spacing: { after: 100 },
@@ -225,7 +225,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'My death' }),
       ],
       spacing: { after: 100 },
@@ -233,7 +233,7 @@ async function createPOA_EN() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'Specific date: ' }),
         new TextRun({ text: '[DATE]', highlight: 'yellow' }),
       ],
@@ -381,7 +381,7 @@ async function createPOA_TR() {
     new Paragraph({
       children: [
         new TextRun({
-          text: '⚖️ Bu örnek şablon eğitim amaçlıdır. Hukuki konularda kullanmadan önce bir avukata danışın.',
+          text: 'Bu örnek şablon eğitim amaçlıdır. Hukuki konularda kullanmadan önce bir avukata danışın.',
           italics: true,
           size: 20,
         }),
@@ -489,7 +489,7 @@ async function createPOA_TR() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'Süresiz: ', bold: true }),
         new TextRun({ text: 'Azil edilene kadar geçerlidir.' }),
       ],
@@ -498,7 +498,7 @@ async function createPOA_TR() {
 
     new Paragraph({
       children: [
-        new TextRun({ text: '☐ ', size: 28 }),
+        new TextRun({ text: '[ ] ', size: 28 }),
         new TextRun({ text: 'Süreli: ', bold: true }),
         new TextRun({ text: '[BİTİŞ TARİHİ]', highlight: 'yellow' }),
         new TextRun({ text: ' tarihine kadar geçerlidir.' }),

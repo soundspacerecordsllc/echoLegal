@@ -181,7 +181,7 @@ export default async function BankaHesabiPage({
                 'İş tanımı veya web sitesi'
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-[#C9A227] mt-1">☐</span>
+                  <span className="text-[#C9A227] mt-1">[ ]</span>
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}

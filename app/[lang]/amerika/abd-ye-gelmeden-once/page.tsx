@@ -325,25 +325,25 @@ export default async function PreArrivalChecklistPage({
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-500">⚠</span>
+                    <span className="text-amber-500">-</span>
                     {isEnglish
                       ? 'May have restrictions on certain business types or transaction volumes'
                       : 'Belirli faaliyet türleri veya işlem hacimleri bakımından kısıtlamalar içerebilir'}
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-500">⚠</span>
+                    <span className="text-amber-500">-</span>
                     {isEnglish
                       ? 'Account freezes can occur with limited recourse'
                       : 'Hesap dondurma riski vardır ve itiraz imkanları sınırlı olabilir'}
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-500">⚠</span>
+                    <span className="text-amber-500">-</span>
                     {isEnglish
                       ? 'Not all accept non-resident owners without US presence'
                       : 'Tamamı, ABD\'de fiziki varlığı olmayan yabancı sahipleri kabul etmez'}
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-amber-500">⚠</span>
+                    <span className="text-amber-500">-</span>
                     {isEnglish
                       ? 'Integration with Turkish banking may have delays or fees'
                       : 'Türkiye\'deki bankalarla entegrasyonda gecikmeler veya ek masraflar söz konusu olabilir'}

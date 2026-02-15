@@ -98,7 +98,7 @@ export const visaCategories: VisaCategory[] = [
     titleTr: 'Öğrenci Vizesi',
     shortDescEn: 'Full-time academic study at accredited US institutions.',
     shortDescTr: 'ABD\'deki akredite eğitim kurumlarında tam zamanlı akademik öğrenim.',
-    icon: '🎓',
+    icon: '',
     whatIsEn: 'The F-1 visa allows foreign nationals to pursue full-time academic study at accredited US colleges, universities, seminaries, conservatories, high schools, language training programs, or other academic institutions. Students must be enrolled in a program that results in a degree, diploma, or certificate. The F-1 status includes provisions for limited on-campus employment and practical training opportunities.',
     whatIsTr: 'F-1 vizesi, yabancı uyruklu kişilerin ABD\'deki akredite kolejler, üniversiteler, konservatuarlar, liseler ve dil eğitim programları gibi akademik kurumlarda tam zamanlı öğrenim görmesine olanak tanır. Kayıtlı olunan programın derece, diploma veya sertifika ile sonuçlanması zorunludur. F-1 statüsü çerçevesinde sınırlı kampüs içi çalışma ve pratik eğitim (OPT/CPT) imkanları da mevcuttur.',
     suitableForEn: [
@@ -228,7 +228,7 @@ export const visaCategories: VisaCategory[] = [
     titleTr: 'Şirket İçi Transfer Vizesi',
     shortDescEn: 'Transfer of executives, managers, or specialized knowledge employees within multinational companies.',
     shortDescTr: 'Çok uluslu şirketlerde üst düzey yönetici, müdür veya özel bilgiye sahip personelin ABD ofisine transferi.',
-    icon: '🏢',
+    icon: '',
     whatIsEn: 'The L-1 visa enables multinational companies to transfer certain employees from foreign offices to US offices. L-1A is for executives and managers, while L-1B is for employees with specialized knowledge of the company\'s products, services, or procedures. The employee must have worked for the foreign company for at least one continuous year within the three years preceding the transfer.',
     whatIsTr: 'L-1 vizesi, çok uluslu kuruluşların belirli çalışanlarını yurt dışı ofislerinden ABD ofislerine nakletmesine imkan tanır. L-1A üst düzey yöneticiler ve müdürler için; L-1B ise şirketin ürün, hizmet veya iç süreçleri hakkında özel bilgi birikimine sahip çalışanlar için öngörülmüştür. Adayın, transfer tarihinden önceki üç yıl içinde en az bir yıl kesintisiz olarak ilgili yabancı şirkette çalışmış olması şarttır.',
     suitableForEn: [
@@ -292,7 +292,7 @@ export const visaCategories: VisaCategory[] = [
     titleTr: 'Anlaşmalı Ülke Yatırımcı Vizesi',
     shortDescEn: 'Investment in and direction of a US business by treaty country nationals.',
     shortDescTr: 'Anlaşmalı ülke vatandaşlarının ABD\'de işletme kurması, yatırım yapması ve yönetmesi.',
-    icon: '💰',
+    icon: '',
     whatIsEn: 'The E-2 visa allows nationals of treaty countries to enter the United States to invest in and direct a US business. Turkey is a treaty country with the US, making Turkish citizens eligible. The investment must be "substantial" relative to the total cost of the business, and the investor must be coming to develop and direct the enterprise. The business must be real and operating, not marginal.',
     whatIsTr: 'E-2 vizesi, ABD ile yatırım anlaşması bulunan ülkelerin vatandaşlarına ABD\'de işletme kurup yönetme imkanı tanır. Türkiye bu anlaşmaya taraf olduğundan Türk vatandaşları E-2\'ye başvurabilir. Yatırımın, işletmenin niteliğine oranla "esaslı" (substantial) kabul edilecek düzeyde olması gerekir. Yatırımcının işletmeyi bizzat geliştirmek ve yönetmek amacıyla gelmesi şarttır. İşletme gerçek, faal ve yalnızca yatırımcının geçimini sağlamaktan öte bir ekonomik katkıya sahip olmalıdır.',
     suitableForEn: [
@@ -356,7 +356,7 @@ export const visaCategories: VisaCategory[] = [
     titleTr: 'Olağanüstü Yetenek Vizesi',
     shortDescEn: 'Individuals with extraordinary ability or achievement in their field.',
     shortDescTr: 'Kendi alanında olağanüstü yetenek veya başarıya sahip profesyoneller.',
-    icon: '⭐',
+    icon: '',
     whatIsEn: 'The O-1 visa is for individuals who possess extraordinary ability in sciences, arts, education, business, or athletics (O-1A), or who have a demonstrated record of extraordinary achievement in the motion picture or television industry (O-1B). "Extraordinary ability" means a level of expertise indicating that the person is one of the small percentage who has risen to the very top of their field.',
     whatIsTr: 'O-1 vizesi; bilim, sanat, eğitim, iş dünyası veya spor alanlarında olağanüstü yeteneğe sahip kişilere (O-1A) ya da sinema ve televizyon sektöründe istisnai başarı geçmişi bulunan kişilere (O-1B) yöneliktir. "Olağanüstü yetenek" ifadesi, kişinin kendi alanında en üst düzeye ulaşmış dar bir kesime dahil olduğunu ortaya koyan bir uzmanlık seviyesini tanımlar.',
     suitableForEn: [

@@ -62,7 +62,6 @@ export default function StarterKitCTA({
     return (
       <div className={`border border-gray-200 rounded-lg p-6 bg-white shadow-sm ${className}`}>
         <div className="flex items-start gap-3 mb-4">
-          <span className="text-2xl">📦</span>
           <div>
             <h3 className="font-bold text-black">{t.title}</h3>
             <p className="text-sm text-gray-600 mt-1">{t.description}</p>
@@ -86,7 +85,6 @@ export default function StarterKitCTA({
     <div className={`fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-40 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <span className="text-xl hidden sm:block">📦</span>
           <div>
             <h4 className="font-semibold text-black text-sm">{t.title}</h4>
             <p className="text-xs text-gray-600 hidden sm:block">{t.description}</p>

@@ -65,7 +65,7 @@ export default async function ProcedurePage({
         </nav>
 
         <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          🇹🇷 {isEnglish ? 'Turkish Consulate Service' : 'Türk Konsolosluk Hizmeti'}
+          {isEnglish ? 'Turkish Consulate Service' : 'Türk Konsolosluk Hizmeti'}
         </span>
 
         <h1 className="text-3xl md:text-4xl font-bold mb-4">{title}</h1>
@@ -79,8 +79,7 @@ export default async function ProcedurePage({
 
         {/* Official Source */}
         <div className="bg-red-50 border border-red-200 rounded-lg p-5 mb-8">
-          <h3 className="font-semibold text-red-900 mb-2 flex items-center gap-2">
-            <span>🏛️</span>
+          <h3 className="font-semibold text-red-900 mb-2">
             {isEnglish ? 'Official Source' : 'Resmi Kaynak'}
           </h3>
           <p className="text-sm text-red-800 mb-3">
@@ -101,7 +100,7 @@ export default async function ProcedurePage({
         {/* Appointment Notice */}
         <div className="bg-amber-50 border-l-4 border-[#C9A227] p-6 rounded-r-lg mb-12">
           <h3 className="font-bold text-amber-900 mb-2">
-            {isEnglish ? '📅 Appointment Required' : '📅 Randevu Gerekli'}
+            {isEnglish ? 'Appointment Required' : 'Randevu Gerekli'}
           </h3>
           <p className="text-amber-800">
             {isEnglish 
@@ -129,7 +128,7 @@ export default async function ProcedurePage({
             href="https://buy.stripe.com/aFa8wP0uAbpRdV01TFd7q03"
             className="block w-full bg-[#C9A227] text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-[#B8922A] mb-3"
           >
-            💳 {isEnglish ? 'I support EchoLegal – $49' : 'EchoLegal\'i destekliyorum – $49'}
+            {isEnglish ? 'I support EchoLegal – $49' : 'EchoLegal\'i destekliyorum – $49'}
           </a>
 
           <a
@@ -138,7 +137,7 @@ export default async function ProcedurePage({
             rel="noopener noreferrer"
             className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg font-semibold text-lg hover:bg-gray-700 mb-4"
           >
-            📄 {isEnglish ? 'Download for free' : 'Ücretsiz indir'}
+            {isEnglish ? 'Download for free' : 'Ücretsiz indir'}
           </a>
 
           <p className="text-center text-sm text-gray-500">
@@ -160,7 +159,7 @@ export default async function ProcedurePage({
 
         {/* Disclaimer */}
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
-          <h3 className="font-semibold mb-3">⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
+          <h3 className="font-semibold mb-3">{isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}</h3>
           <p className="text-sm text-gray-600">
             {isEnglish
               ? 'This checklist is for informational purposes only. Requirements may change. Always confirm current requirements with the Turkish Consulate General before your appointment.'

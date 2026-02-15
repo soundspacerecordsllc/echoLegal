@@ -596,7 +596,7 @@ export default async function PrivacyPolicyGuidePage({
                   'Kişisel verileri işleyen ekip üyelerini eğitin'
                 ]).map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="text-green-600 mr-2">☐</span>
+                    <span className="text-green-600 mr-2">[ ]</span>
                     <span>{item}</span>
                   </li>
                 ))}
