@@ -20,8 +20,8 @@ export default function LanguageSwitcher({
   const pathWithoutLocale = pathname.replace(`/${currentLang}`, '') || '/'
 
   const languages = [
-    { code: 'tr', label: 'Türkçe', flag: '🇹🇷' },
-    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'tr', label: 'Türkçe', flag: '' },
+    { code: 'en', label: 'English', flag: '' },
   ]
 
   const otherLang = currentLang === 'en' ? 'tr' : 'en'

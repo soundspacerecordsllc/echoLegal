@@ -493,35 +493,35 @@ export default async function ContractorVsEmployeePage({
               <h3 className="text-lg font-semibold text-red-900 mb-4">{isEnglish ? 'For Businesses' : 'İşletmeler İçin'}</h3>
               <ul className="space-y-3 text-red-800">
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✗</span>
+                  <span className="text-red-600 mr-2">--</span>
                   <div>
                     <strong>{isEnglish ? 'Back Taxes:' : 'Geriye Dönük Vergiler:'}</strong>
                     <span className="text-sm block">{isEnglish ? 'All unpaid employment taxes (Social Security, Medicare, unemployment)' : 'Eksik yatırılan tüm istihdam vergileri (Sosyal Güvenlik, Medicare, işsizlik sigortası)'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✗</span>
+                  <span className="text-red-600 mr-2">--</span>
                   <div>
                     <strong>{isEnglish ? 'Penalties:' : 'Cezalar:'}</strong>
                     <span className="text-sm block">{isEnglish ? 'Up to 40% of unpaid taxes, plus interest' : 'Eksik vergilerin %40\'ına varan para cezası ve faiz'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✗</span>
+                  <span className="text-red-600 mr-2">--</span>
                   <div>
                     <strong>{isEnglish ? 'Unpaid Benefits:' : 'Ödenmemiş Haklar:'}</strong>
                     <span className="text-sm block">{isEnglish ? 'Health insurance, retirement, paid leave owed' : 'Sağlık sigortası, emeklilik ve ücretli izin borçları'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✗</span>
+                  <span className="text-red-600 mr-2">--</span>
                   <div>
                     <strong>{isEnglish ? 'Overtime & Minimum Wage:' : 'Fazla Mesai ve Asgari Ücret:'}</strong>
                     <span className="text-sm block">{isEnglish ? 'FLSA violations with liquidated damages (2x)' : 'FLSA ihlali halinde iki katına kadar tazminat'}</span>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✗</span>
+                  <span className="text-red-600 mr-2">--</span>
                   <div>
                     <strong>{isEnglish ? 'Criminal Liability:' : 'Cezai Sorumluluk:'}</strong>
                     <span className="text-sm block">{isEnglish ? 'Willful violations can lead to prosecution' : 'Kasıtlı ihlaller cezai kovuşturma konusu olabilir'}</span>
@@ -555,7 +555,7 @@ export default async function ContractorVsEmployeePage({
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-green-600 mr-2">--</span>
                   <div>
                     <strong>{isEnglish ? 'You May Have Claims:' : 'Hak Talebi Yolunuz Açık:'}</strong>
                     <span className="text-sm block">{isEnglish ? 'Can file complaints with DOL, state agencies, or sue for back pay/benefits' : 'DOL veya eyalet kurumlarına başvurabilir ya da birikmiş ücret ve haklar için dava açabilirsiniz'}</span>
@@ -668,7 +668,7 @@ export default async function ContractorVsEmployeePage({
                   'Yüklenici tercihinin ticari gerekçesini yazılı olarak belgeleyin'
                 ]).map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="text-green-600 mr-2">✓</span>
+                    <span className="text-green-600 mr-2">--</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -700,7 +700,7 @@ export default async function ContractorVsEmployeePage({
                   'İstihdam gibi görünen düzenlemelerden kaçının'
                 ]).map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="text-blue-600 mr-2">✓</span>
+                    <span className="text-blue-600 mr-2">--</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -739,7 +739,7 @@ export default async function ContractorVsEmployeePage({
                 'Günlük denetimden bağımsız mı?'
               ]).map((q, i) => (
                 <div key={i} className="flex items-center">
-                  <span className="text-[#C9A227] mr-3">☐</span>
+                  <span className="text-[#C9A227] mr-3">[ ]</span>
                   <span className="text-gray-300">{q}</span>
                 </div>
               ))}

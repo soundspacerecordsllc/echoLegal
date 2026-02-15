@@ -159,7 +159,7 @@ export default async function VisaDetailPage({
               <ul className="space-y-3">
                 {commonMistakes.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-amber-600 mt-1">⚠</span>
+                    <span className="text-amber-600 mt-1 font-bold">!</span>
                     <span className="text-amber-900">{item}</span>
                   </li>
                 ))}

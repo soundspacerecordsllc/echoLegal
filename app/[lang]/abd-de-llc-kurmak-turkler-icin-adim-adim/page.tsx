@@ -299,8 +299,8 @@ export default async function LLCGuidePage({
               <div className="bg-red-50 border border-red-200 rounded-lg p-5 mt-6">
                 <p className="text-sm text-red-900 leading-relaxed font-medium">
                   {isEnglish
-                    ? '⚠️ Important: Forming an LLC does NOT provide any immigration benefit. Do not rely on advice suggesting otherwise.'
-                    : '⚠️ Önemli: LLC kurmak hiçbir göçmenlik avantajı sağlamaz. Aksini iddia eden tavsiyelere güvenmeyin.'}
+                    ? 'Important: Forming an LLC does NOT provide any immigration benefit. Do not rely on advice suggesting otherwise.'
+                    : 'Önemli: LLC kurmak hiçbir göçmenlik avantajı sağlamaz. Aksini iddia eden tavsiyelere güvenmeyin.'}
                 </p>
               </div>
             </section>
@@ -419,54 +419,54 @@ export default async function LLCGuidePage({
               {isEnglish ? (
                 <div className="space-y-4">
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;LLC means no taxes&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;LLC means no taxes&quot;</h3>
                     <p className="text-gray-700 text-sm">False. An LLC is a legal structure, not a tax exemption. Depending on your situation, you may owe US federal taxes, state taxes, and/or taxes in your country of residence.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;I can use a nominee to hide ownership&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;I can use a nominee to hide ownership&quot;</h3>
                     <p className="text-gray-700 text-sm">The Corporate Transparency Act now requires disclosure of beneficial owners to FinCEN. Using nominees to conceal true ownership may result in civil and criminal penalties.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;Delaware is always the best choice&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;Delaware is always the best choice&quot;</h3>
                     <p className="text-gray-700 text-sm">Delaware has advantages for certain situations (venture-backed startups, complex corporate structures). For a simple single-member LLC with no US operations, other states may be more cost-effective.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;I don&apos;t need to file anything if I have no income&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;I don&apos;t need to file anything if I have no income&quot;</h3>
                     <p className="text-gray-700 text-sm">Even with zero income, you may have filing obligations (state annual reports, BOI reporting, informational tax returns). Failure to file can result in penalties or administrative dissolution.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ Confusing sales tax with income tax</h3>
+                    <h3 className="font-bold text-black mb-2">Confusing sales tax with income tax</h3>
                     <p className="text-gray-700 text-sm">Sales tax is a separate obligation from income tax. If you sell taxable goods or services to customers in certain states, you may need to collect and remit sales tax—even without a physical presence there.</p>
                   </div>
                 </div>
               ) : (
                 <div className="space-y-4">
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;LLC kurunca vergi yok&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;LLC kurunca vergi yok&quot;</h3>
                     <p className="text-gray-700 text-sm">Yanlış. LLC bir hukuki yapıdır, vergi muafiyeti değildir. Durumunuza bağlı olarak ABD federal vergisi, eyalet vergisi ve/veya ikamet ettiğiniz ülkede vergi borcunuz doğabilir.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;Nominee kullanarak sahipliği gizleyebilirim&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;Nominee kullanarak sahipliği gizleyebilirim&quot;</h3>
                     <p className="text-gray-700 text-sm">Corporate Transparency Act artık gerçek faydalanıcı sahiplerin FinCEN&apos;e bildirilmesini zorunlu kılmaktadır. Gerçek sahipliği gizlemek için nominee kullanmak hukuki ve cezai yaptırımlara yol açabilir.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;Delaware her zaman en iyi seçim&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;Delaware her zaman en iyi seçim&quot;</h3>
                     <p className="text-gray-700 text-sm">Delaware belirli durumlar için avantajlıdır (risk sermayesi destekli girişimler, karmaşık şirket yapıları). ABD operasyonu olmayan basit bir tek üyeli LLC için diğer eyaletler daha uygun maliyetli olabilir.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ &quot;Gelirim yoksa beyanname vermeme gerek yok&quot;</h3>
+                    <h3 className="font-bold text-black mb-2">&quot;Gelirim yoksa beyanname vermeme gerek yok&quot;</h3>
                     <p className="text-gray-700 text-sm">Sıfır geliriniz olsa bile beyanname yükümlülükleriniz olabilir (eyalet yıllık raporları, BOI bildirimi, bilgi amaçlı vergi beyannameleri). Beyanname vermemek cezalara veya LLC&apos;nin idari feshedilmesine yol açabilir.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-black mb-2">❌ Satış vergisini gelir vergisiyle karıştırmak</h3>
+                    <h3 className="font-bold text-black mb-2">Satış vergisini gelir vergisiyle karıştırmak</h3>
                     <p className="text-gray-700 text-sm">Satış vergisi (sales tax), gelir vergisinden ayrı bir yükümlülüktür. Belirli eyaletlerdeki müşterilere vergilendirilebilir mal veya hizmet satıyorsanız, orada fiziksel varlığınız olmasa bile satış vergisi toplamanız ve ödemeniz gerekebilir.</p>
                   </div>
                 </div>
@@ -501,7 +501,7 @@ export default async function LLCGuidePage({
                     'BOI raporu onayı (FinCEN)',
                   ]).map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <span className="text-blue-600 mt-0.5">☐</span>
+                      <span className="text-blue-600 mt-0.5">[ ]</span>
                       <span className="text-gray-800">{item}</span>
                     </li>
                   ))}
@@ -518,8 +518,8 @@ export default async function LLCGuidePage({
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
                 <p className="text-sm text-amber-900">
                   {isEnglish
-                    ? '⚠️ These are estimates only. Actual costs and timelines vary by state and service provider. Verify current fees with official sources.'
-                    : '⚠️ Bunlar yalnızca tahmindir. Gerçek maliyetler ve süreler eyalete ve hizmet sağlayıcıya göre değişir. Güncel harçları resmi kaynaklardan doğrulayın.'}
+                    ? 'These are estimates only. Actual costs and timelines vary by state and service provider. Verify current fees with official sources.'
+                    : 'Bunlar yalnızca tahmindir. Gerçek maliyetler ve süreler eyalete ve hizmet sağlayıcıya göre değişir. Güncel harçları resmi kaynaklardan doğrulayın.'}
                 </p>
               </div>
 

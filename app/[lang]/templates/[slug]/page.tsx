@@ -170,7 +170,7 @@ export default async function TemplateDetailPage({
           </span>
           {template.jurisdiction !== 'General' && (
             <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">
-              📍 {jurisdictionLabels[template.jurisdiction][lang]}
+              {jurisdictionLabels[template.jurisdiction][lang]}
             </span>
           )}
         </div>
@@ -340,7 +340,7 @@ export default async function TemplateDetailPage({
         {/* Legal Disclaimer */}
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
           <h3 className="font-semibold mb-2">
-            ⚖️ {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}
+            {isEnglish ? 'Legal Disclaimer' : 'Hukuki Sorumluluk Reddi'}
           </h3>
           <p className="text-sm text-gray-600">
             {isEnglish

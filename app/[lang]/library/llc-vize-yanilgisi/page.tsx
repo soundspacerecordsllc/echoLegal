@@ -62,7 +62,7 @@ export default async function LLCVisaMythPage({
           {/* Critical Alert */}
           <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-10">
             <h2 className="font-bold text-red-800 mb-3 flex items-center gap-2">
-              <span className="text-2xl">⚠️</span>
+              <span className="text-2xl font-bold text-red-700">!</span>
               {isEnglish ? 'Critical Understanding' : 'Dikkat Edilmesi Gereken Temel Nokta'}
             </h2>
             <p className="text-red-900 font-medium text-lg mb-3">
@@ -80,7 +80,7 @@ export default async function LLCVisaMythPage({
           {/* Official Source */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
             <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-              <span>🏛️</span>
+              <span></span>
               {isEnglish ? 'Official Source' : 'Resmi Kaynak'}
             </h3>
             <p className="text-sm text-blue-800 mb-3">
@@ -193,7 +193,7 @@ export default async function LLCVisaMythPage({
             <div className="bg-gray-50 rounded-lg p-6">
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start gap-3">
-                  <span className="text-xl">📋</span>
+                  <span className="text-xl"></span>
                   <span>
                     <strong>{isEnglish ? 'LLC = Business structure' : 'LLC = Ticari yapı'}</strong>
                     <br />
@@ -209,7 +209,7 @@ export default async function LLCVisaMythPage({
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-xl">🔗</span>
+                  <span className="text-xl"></span>
                   <span>
                     <strong>{isEnglish ? 'They are separate' : 'Bunlar ayrı şeylerdir'}</strong>
                     <br />

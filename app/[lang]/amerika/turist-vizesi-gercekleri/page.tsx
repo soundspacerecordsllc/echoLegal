@@ -99,7 +99,7 @@ export default async function TuristVizesiPage({
         <TrustStrip lang={lang} />
 
         <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-semibold mb-4">
-          📍 {isEnglish ? 'Jurisdiction: US Federal Immigration Law' : 'Yargı Yetkisi: ABD Federal Göçmenlik Hukuku'}
+          {isEnglish ? 'Jurisdiction: US Federal Immigration Law' : 'Yargı Yetkisi: ABD Federal Göçmenlik Hukuku'}
         </span>
 
         <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -306,7 +306,7 @@ export default async function TuristVizesiPage({
                 'Tarafsız bir gözlemci, geri döneceğinize ikna olur mu?'
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-[#C9A227] mt-1">☐</span>
+                  <span className="text-[#C9A227] mt-1">[ ]</span>
                   <span className="text-gray-700">{item}</span>
                 </li>
               ))}

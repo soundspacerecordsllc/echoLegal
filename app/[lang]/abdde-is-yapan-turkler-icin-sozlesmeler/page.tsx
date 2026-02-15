@@ -620,7 +620,7 @@ export default async function ContractsGuidePage({
                 ]).map((item, index) => (
                   <div key={index} className="bg-red-50 border border-red-200 rounded-lg p-4">
                     <h3 className="font-bold text-red-900 flex items-center gap-2">
-                      <span>⚠️</span> {item.flag}
+                      {item.flag}
                     </h3>
                     <p className="text-sm text-red-800 mt-1">{item.risk}</p>
                   </div>

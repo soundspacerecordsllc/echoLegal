@@ -49,7 +49,7 @@ export default async function AmerikaHubPage({
         {/* Hero */}
         <div className="mb-12">
           <span className="inline-block px-4 py-2 bg-blue-50 text-blue-800 rounded-full text-sm font-semibold mb-4">
-            🇺🇸 {isEnglish ? 'US Business Hub' : 'ABD Ticaret Rehberi'}
+            {isEnglish ? 'US Business Hub' : 'ABD Ticaret Rehberi'}
           </span>
 
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">

@@ -46,7 +46,7 @@ export default async function VisaPathwaysPage({
         {/* Hero */}
         <div className="mb-12">
           <span className="inline-block px-4 py-2 bg-blue-50 text-blue-800 rounded-full text-sm font-semibold mb-4">
-            🇺🇸 {isEnglish ? 'Immigration Reference' : 'Göçmenlik Referansı'}
+            {isEnglish ? 'Immigration Reference' : 'Göçmenlik Referansı'}
           </span>
 
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
@@ -65,7 +65,7 @@ export default async function VisaPathwaysPage({
         {/* Official Source */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-10">
           <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-            <span>🏛️</span>
+            <span></span>
             {isEnglish ? 'Official Source' : 'Resmi Kaynak'}
           </h3>
           <p className="text-sm text-blue-800 mb-3">
@@ -186,7 +186,7 @@ export default async function VisaPathwaysPage({
         <section className="mb-12">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6">
             <h3 className="font-bold text-red-900 mb-3 flex items-center gap-2">
-              <span>🇹🇷</span>
+              <span></span>
               {isEnglish ? 'For Turkish Nationals' : 'Türk Vatandaşları İçin'}
             </h3>
             <p className="text-sm text-red-800 mb-4">

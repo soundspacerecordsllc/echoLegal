@@ -44,7 +44,7 @@ export const amerikaHubPages: HubPage[] = [
     titleEn: 'Status Change Realities',
     descriptionTr: 'ABD içinde statü değişikliği, 30/60 gün kuralı, adjustment of status süreci ve sık karşılaşılan hatalar.',
     descriptionEn: 'Changing status within the US, 30/60 day rule, adjustment of status, and common mistakes.',
-    icon: '🔄',
+    icon: '',
     category: 'immigration',
     available: true,
     order: 3
@@ -55,7 +55,7 @@ export const amerikaHubPages: HubPage[] = [
     titleEn: 'Forming an LLC in the US',
     descriptionTr: 'Delaware, Wyoming ve diğer eyaletlerde LLC kuruluş süreci, registered agent zorunluluğu ve yıllık yükümlülükler.',
     descriptionEn: 'LLC formation in Delaware, Wyoming, and other states, registered agents, and annual obligations.',
-    icon: '🏢',
+    icon: '',
     category: 'business',
     available: true,
     order: 4
@@ -66,7 +66,7 @@ export const amerikaHubPages: HubPage[] = [
     titleEn: 'LLC vs Corporation',
     descriptionTr: 'Şirket yapısı tercihi, vergisel sonuçları, sorumluluk koruması ve yatırımcı beklentileri.',
     descriptionEn: 'Choosing business structure, tax implications, liability protection, and investor expectations.',
-    icon: '⚖️',
+    icon: '',
     category: 'business',
     available: true,
     order: 5
@@ -88,7 +88,7 @@ export const amerikaHubPages: HubPage[] = [
     titleEn: 'IRS Tax Realities',
     descriptionTr: 'ABD vergi mukimliği, fiziksel bulunma testi (substantial presence test), FATCA ve Türkiye-ABD çifte vergilendirme anlaşması.',
     descriptionEn: 'US tax residency, substantial presence test, FATCA, and US-Turkey double taxation.',
-    icon: '📊',
+    icon: '',
     category: 'tax',
     available: true,
     order: 7
@@ -99,7 +99,7 @@ export const amerikaHubPages: HubPage[] = [
     titleEn: 'Contracts for Doing Business in the US',
     descriptionTr: 'Temel sözleşme türleri, uygulanacak hukuk seçimi, uyuşmazlık çözüm mekanizmaları ve NDA kullanımı.',
     descriptionEn: 'Essential contract types, choice of law, dispute resolution, and NDA usage.',
-    icon: '📝',
+    icon: '',
     category: 'contracts',
     available: true,
     order: 8

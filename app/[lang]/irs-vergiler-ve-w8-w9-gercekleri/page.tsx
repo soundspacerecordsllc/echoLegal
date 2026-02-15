@@ -457,8 +457,8 @@ export default async function TaxGuidePage({
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
                 <p className="text-sm text-amber-900">
                   {isEnglish
-                    ? '⚠️ This is a high-level overview only. Tax obligations depend on many factors including income type, amount, treaty benefits, and your specific circumstances. Consult a qualified tax professional.'
-                    : '⚠️ Bu yalnızca üst düzey bir genel bakıştır. Vergi yükümlülükleri gelir türü, tutarı, anlaşma avantajları ve özel koşullarınız dahil birçok faktöre bağlıdır. Uzman bir vergi danışmanına başvurun.'}
+                    ? 'This is a high-level overview only. Tax obligations depend on many factors including income type, amount, treaty benefits, and your specific circumstances. Consult a qualified tax professional.'
+                    : 'Bu yalnızca üst düzey bir genel bakıştır. Vergi yükümlülükleri gelir türü, tutarı, anlaşma avantajları ve özel koşullarınız dahil birçok faktöre bağlıdır. Uzman bir vergi danışmanına başvurun.'}
                 </p>
               </div>
 
@@ -570,9 +570,9 @@ export default async function TaxGuidePage({
                   },
                 ]).map((item, index) => (
                   <div key={index} className="bg-gray-50 rounded-lg p-5">
-                    <h3 className="font-bold text-red-700 mb-2">❌ {item.myth}</h3>
+                    <h3 className="font-bold text-red-700 mb-2">{item.myth}</h3>
                     <p className="text-gray-700 text-sm">
-                      <strong className="text-green-700">✓ {isEnglish ? 'Reality:' : 'Gerçek:'}</strong> {item.reality}
+                      <strong className="text-green-700">{isEnglish ? 'Reality:' : 'Gerçek:'}</strong> {item.reality}
                     </p>
                   </div>
                 ))}

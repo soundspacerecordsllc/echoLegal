@@ -29,7 +29,7 @@ async function createDocument(children, filename) {
 function checkboxItem(text, checked = false) {
   return new Paragraph({
     children: [
-      new TextRun({ text: checked ? '☑ ' : '☐ ', size: 24 }),
+      new TextRun({ text: checked ? '[x] ' : '[ ] ', size: 24 }),
       new TextRun({ text: text }),
     ],
     spacing: { after: 150 },
@@ -59,7 +59,7 @@ async function createTaxTreatyChecklist_EN() {
     new Paragraph({
       children: [
         new TextRun({
-          text: '⚖️ This checklist is for informational purposes. Consult a tax professional for your specific situation.',
+          text: 'This checklist is for informational purposes. Consult a tax professional for your specific situation.',
           italics: true,
           size: 20,
         }),
@@ -228,7 +228,7 @@ async function createTaxTreatyChecklist_TR() {
     new Paragraph({
       children: [
         new TextRun({
-          text: '⚖️ Bu kontrol listesi bilgilendirme amaçlıdır. Özel durumunuz için bir vergi uzmanına danışın.',
+          text: 'Bu kontrol listesi bilgilendirme amaçlıdır. Özel durumunuz için bir vergi uzmanına danışın.',
           italics: true,
           size: 20,
         }),

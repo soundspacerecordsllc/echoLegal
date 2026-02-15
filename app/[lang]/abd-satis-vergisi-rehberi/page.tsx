@@ -131,7 +131,7 @@ export default async function SalesTaxGuidePage({
           {/* Key Distinction */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-10">
             <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
-              <span>💡</span>
+              <span></span>
               {isEnglish ? 'Sales Tax vs Income Tax' : 'Satış Vergisi ve Gelir Vergisi Farkı'}
             </h3>
             <p className="text-sm text-blue-800">

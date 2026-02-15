@@ -148,7 +148,6 @@ export default async function ContributePage({
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">📚</div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Encyclopedic Articles' : 'Ansiklopedik Makaleler'}
               </h3>
@@ -160,7 +159,6 @@ export default async function ContributePage({
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">📄</div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}
               </h3>
@@ -172,7 +170,6 @@ export default async function ContributePage({
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">✅</div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Checklists & Guides' : 'Kontrol Listeleri ve Rehberler'}
               </h3>
@@ -184,7 +181,6 @@ export default async function ContributePage({
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6">
-              <div className="text-2xl mb-3">🔍</div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Review & Updates' : 'İnceleme ve Güncellemeler'}
               </h3>
