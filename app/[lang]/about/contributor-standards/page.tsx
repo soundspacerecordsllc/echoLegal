@@ -431,6 +431,80 @@ export default async function ContributorStandardsPage({
         </div>
       </section>
 
+      {/* Normative Hierarchy and Authority Modeling */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-black mb-6">
+          {isEnglish ? 'Normative Hierarchy and Authority Modeling' : 'Normatif Hiyerarşi ve Otorite Modelleme'}
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <p>
+            {isEnglish
+              ? 'EchoLegal models law as a layered authority system. Each source cited in a primary source disclosure occupies a defined position within the normative hierarchy. This hierarchy governs not only how sources are classified, but also the order in which they are presented to the reader.'
+              : 'EchoLegal, hukuku katmanlı bir otorite sistemi olarak modellemektedir. Birincil kaynak açıklamasında atıf yapılan her kaynak, normatif hiyerarşi içinde tanımlanmış bir konuma sahiptir. Bu hiyerarşi, yalnızca kaynakların nasıl sınıflandırıldığını değil, aynı zamanda okuyucuya sunulma sırasını da belirler.'}
+          </p>
+
+          <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Constitutional and Statutory Authority' : 'Anayasal ve Yasal Otorite'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'The highest tier. Constitutional provisions and enacted statutes represent binding law. Primary analysis of any legal question begins at this level. Statutes define obligations, rights, and penalties with the force of legislative authority.'
+                  : 'En üst kademe. Anayasal hükümler ve yürürlüğe konmuş kanunlar bağlayıcı hukuku temsil eder. Herhangi bir hukuki sorunun birincil analizi bu düzeyde başlar. Kanunlar; yükümlülükleri, hakları ve cezaları yasama otoritesinin gücüyle tanımlar.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Implementing Regulations' : 'Uygulama Yönetmelikleri'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Regulations promulgated by executive agencies under statutory authorization. They carry the force of law within their delegated scope, but cannot exceed or contradict the statute they implement.'
+                  : 'Yasal yetkilendirme altında yürütme organı kurumları tarafından çıkarılan düzenlemeler. Devredilen kapsamları dahilinde kanun gücü taşırlar, ancak uyguladıkları kanunu aşamaz veya çelişemezler.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Administrative Instruments' : 'İdari Araçlar'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Forms, instructions, and procedural documents issued by agencies to operationalize statutory and regulatory requirements. These instruments are interpretive in nature; they represent an agency\'s administrative position but do not independently create legal obligations.'
+                  : 'Yasal ve düzenleyici gereksinimleri işlevselleştirmek amacıyla kurumlar tarafından yayımlanan formlar, talimatlar ve prosedürel belgeler. Bu araçlar yorumlayıcı niteliktedir; bir kurumun idari pozisyonunu temsil eder ancak bağımsız olarak hukuki yükümlülük oluşturmaz.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Agency Guidance and Publications' : 'Kurum Rehberliği ve Yayınlar'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Revenue rulings, revenue procedures, notices, publications, and similar materials. These provide the agency\'s interpretive position but lack the binding force of statute or regulation. They are cited for context, not as controlling authority.'
+                  : 'Gelir kararları, gelir prosedürleri, bildirimler, yayınlar ve benzeri materyaller. Bunlar kurumun yorumlayıcı pozisyonunu sağlar ancak kanun veya düzenlemenin bağlayıcı gücünden yoksundur. Bağlam için atıf yapılır, bağlayıcı otorite olarak değil.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="border-l-4 border-gray-300 pl-4 py-2">
+            <p className="text-sm text-gray-700">
+              {isEnglish
+                ? 'Lower-tier instruments cannot override higher-tier authority. A form instruction cannot alter a statutory obligation; a publication cannot supersede a regulation. Where a conflict exists between tiers, the higher-tier source controls.'
+                : 'Alt kademe araçlar, üst kademe otoriteyi geçersiz kılamaz. Bir form talimatı yasal bir yükümlülüğü değiştiremez; bir yayın bir düzenlemenin yerini alamaz. Kademeler arasında bir çelişki bulunduğunda, üst kademe kaynak bağlayıcıdır.'}
+            </p>
+          </div>
+
+          <p className="text-sm text-gray-600">
+            {isEnglish
+              ? 'This hierarchy is enforced structurally. Authority classification and canonical identifiers ensure that source presentation order reflects normative weight, not editorial preference. These mechanisms are applied consistently across all entries that include primary source disclosures.'
+              : 'Bu hiyerarşi yapısal olarak uygulanır. Otorite sınıflandırması ve kanonik tanımlayıcılar, kaynak sunuş sırasının editöryal tercihi değil, normatif ağırlığı yansıtmasını sağlar. Bu mekanizmalar, birincil kaynak açıklamaları içeren tüm maddelerde tutarlı bir şekilde uygulanır.'}
+          </p>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="border-t border-gray-200 pt-8">
         <h2 className="text-lg font-bold text-black mb-4">
