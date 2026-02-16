@@ -72,7 +72,14 @@ export function normalizeLabelText(input: string): string {
  * Lower value = higher precedence in the US legal hierarchy.
  * Used by PrimarySources component to enforce normative ordering.
  */
-export const AUTHORITY_LEVEL_WEIGHT: Record<string, number> = {
+import type { AuthorityLevel } from '@/lib/content-schema'
+
+/**
+ * Exhaustive weight map. TypeScript enforces that every AuthorityLevel
+ * variant has a corresponding weight. Adding a new AuthorityLevel
+ * without updating this map is a compilation error.
+ */
+export const AUTHORITY_LEVEL_WEIGHT: Record<AuthorityLevel, number> = {
   constitutional: 0,
   federal_statute: 1,
   federal_regulation: 2,

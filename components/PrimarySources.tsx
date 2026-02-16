@@ -17,6 +17,32 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
   const isEnglish = lang === 'en'
   const title = isEnglish ? 'Primary legal sources' : 'Birincil hukuki kaynaklar'
 
+  // Runtime invariant: every source must carry authorityLevel and canonicalId.
+  // Hard fail. No silent degradation.
+  for (const source of sources) {
+    if (!source.authorityLevel) {
+      throw new Error(
+        `PrimarySource invariant violation: missing authorityLevel on "${source.citation}"`
+      )
+    }
+    if (!source.canonicalId) {
+      throw new Error(
+        `PrimarySource invariant violation: missing canonicalId on "${source.citation}"`
+      )
+    }
+    if (!(source.authorityLevel in AUTHORITY_LEVEL_WEIGHT)) {
+      throw new Error(
+        `PrimarySource invariant violation: unknown authorityLevel "${source.authorityLevel}" on "${source.citation}"`
+      )
+    }
+  }
+
+  // Normative hierarchy is structurally enforced.
+  // Ordering is non-discretionary.
+  const sorted = [...sources].sort((a, b) => {
+    return AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] - AUTHORITY_LEVEL_WEIGHT[b.authorityLevel]
+  })
+
   return (
     <section className="mb-10">
       <button
@@ -43,11 +69,7 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
         }`}
       >
         <ul className="space-y-2 text-sm text-gray-700 leading-relaxed pl-5">
-          {[...sources].sort((a, b) => {
-            const wa = a.authorityLevel ? (AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] ?? 99) : 99
-            const wb = b.authorityLevel ? (AUTHORITY_LEVEL_WEIGHT[b.authorityLevel] ?? 99) : 99
-            return wa - wb
-          }).map((source, index) => {
+          {sorted.map((source, index) => {
             const citation = normalizeCitationText(source.citation)
             const label = source.label ? normalizeLabelText(source.label) : undefined
 
@@ -55,8 +77,8 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
               <li
                 key={index}
                 className="flex items-start gap-2"
-                {...(source.canonicalId ? { 'data-canonical-id': source.canonicalId } : {})}
-                {...(source.authorityLevel ? { 'data-authority-tier': source.authorityLevel } : {})}
+                data-canonical-id={source.canonicalId}
+                data-authority-tier={source.authorityLevel}
               >
                 <span className="text-gray-400 select-none mt-px">–</span>
                 <div>

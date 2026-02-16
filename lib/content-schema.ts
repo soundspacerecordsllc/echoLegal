@@ -652,8 +652,8 @@ export type PrimarySourceEntry = {
   citation: string
   label?: string
   url?: string
-  authorityLevel?: AuthorityLevel
-  canonicalId?: string
+  authorityLevel: AuthorityLevel
+  canonicalId: string
 }
 
 // ============================================

@@ -433,6 +433,102 @@ assert(
   'federal_statute,federal_regulation,form_instruction,publication'
 )
 
+// ============================================
+// STRUCTURAL INVARIANT TESTS
+// ============================================
+
+// --- Invariant 1: missing authorityLevel must throw ---
+function assertThrows(testName, fn) {
+  try {
+    fn()
+    failed++
+    console.error(`FAIL: ${testName} (expected throw, but did not throw)`)
+  } catch (_e) {
+    passed++
+  }
+}
+
+function validateSource(source) {
+  if (!source.authorityLevel) {
+    throw new Error('missing authorityLevel')
+  }
+  if (!source.canonicalId) {
+    throw new Error('missing canonicalId')
+  }
+  if (!(source.authorityLevel in AUTHORITY_LEVEL_WEIGHT)) {
+    throw new Error('unknown authorityLevel')
+  }
+}
+
+assertThrows(
+  'Invariant: missing authorityLevel throws',
+  () => validateSource({ citation: '26 U.S.C. § 7701', canonicalId: 'usc-26-7701' })
+)
+
+// --- Invariant 2: missing canonicalId must throw ---
+assertThrows(
+  'Invariant: missing canonicalId throws',
+  () => validateSource({ citation: '26 U.S.C. § 7701', authorityLevel: 'federal_statute' })
+)
+
+// --- Invariant 3: unknown authorityLevel must throw ---
+assertThrows(
+  'Invariant: unknown authorityLevel throws',
+  () => validateSource({ citation: 'test', authorityLevel: 'invented_level', canonicalId: 'test-id' })
+)
+
+// --- Invariant 4: weight map covers all known authority levels ---
+const KNOWN_AUTHORITY_LEVELS = [
+  'constitutional', 'federal_statute', 'federal_regulation',
+  'state_statute', 'treaty', 'agency_guidance',
+  'form_instruction', 'publication',
+]
+
+for (const level of KNOWN_AUTHORITY_LEVELS) {
+  assert(
+    `Invariant: AUTHORITY_LEVEL_WEIGHT covers "${level}"`,
+    level in AUTHORITY_LEVEL_WEIGHT,
+    true
+  )
+}
+
+// --- Invariant 5: attempted manual reordering is overridden ---
+const manuallyMisordered = [
+  { authorityLevel: 'publication', canonicalId: 'pub-1', citation: 'pub' },
+  { authorityLevel: 'constitutional', canonicalId: 'const-1', citation: 'const' },
+  { authorityLevel: 'federal_regulation', canonicalId: 'reg-1', citation: 'reg' },
+  { authorityLevel: 'federal_statute', canonicalId: 'stat-1', citation: 'stat' },
+]
+const reordered = [...manuallyMisordered].sort((a, b) => {
+  return AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] - AUTHORITY_LEVEL_WEIGHT[b.authorityLevel]
+})
+assert(
+  'Invariant: manual misordering is corrected by sort',
+  reordered.map(s => s.authorityLevel).join(','),
+  'constitutional,federal_statute,federal_regulation,publication'
+)
+
+// --- Invariant 6: no fallback weight (unknown level yields undefined, not 99) ---
+assert(
+  'Invariant: unknown level has no fallback weight',
+  AUTHORITY_LEVEL_WEIGHT['nonexistent_level'],
+  undefined
+)
+
+// --- Invariant 7: sort is stable for same-tier sources ---
+const sameTier = [
+  { authorityLevel: 'federal_statute', canonicalId: 'a', citation: 'first' },
+  { authorityLevel: 'federal_statute', canonicalId: 'b', citation: 'second' },
+]
+const sameTierSorted = [...sameTier].sort((a, b) => {
+  return AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] - AUTHORITY_LEVEL_WEIGHT[b.authorityLevel]
+})
+assert(
+  'Invariant: same-tier sources preserve insertion order',
+  sameTierSorted.map(s => s.canonicalId).join(','),
+  'a,b'
+)
+
 // ---- Results ----
 
 console.log(`\nCitation Canon v2 tests: ${passed} passed, ${failed} failed`)
