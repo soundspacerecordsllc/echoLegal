@@ -1,6 +1,7 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import HomeSearch from '@/components/HomeSearch'
 
@@ -25,10 +26,13 @@ export default async function Home({
         <div className="grid md:grid-cols-2 min-h-[70vh]">
           {/* Left - Image */}
           <div className="relative h-[40vh] md:h-auto">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
               alt={isEnglish ? 'Legal documents on a desk' : 'Masadaki hukuki belgeler'}
-              className="w-full h-full object-cover"
+              className="object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
           </div>
 

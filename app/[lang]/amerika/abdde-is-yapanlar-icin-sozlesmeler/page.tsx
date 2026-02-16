@@ -6,6 +6,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
 import KitCallout from '@/components/KitCallout'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -183,6 +184,12 @@ export default async function SozlesmelerPage({
         <p className="text-sm text-gray-500 mb-8">
           {isEnglish ? 'Last verified: January 2026' : 'Son doğrulama: Ocak 2026'}
         </p>
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt="2026-01-25"
+          className="mt-6 mb-4"
+        />
 
         {/* TL;DR */}
         <section className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">

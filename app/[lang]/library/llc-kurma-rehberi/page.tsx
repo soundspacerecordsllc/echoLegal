@@ -3,10 +3,24 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'llc-kurma-rehberi',
+  datePublished: '2025-09-01',
+  dateModified: '2026-01-25',
+  version: '1.2',
+  wordCount: 2800,
+  citationKey: 'ecl-gde-00001',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'LLC Formation in the US: What You Need to Know | EchoLegal'
@@ -14,6 +28,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'A comprehensive reference guide to LLC formation in the United States for non-US entrepreneurs. State selection, formation process, tax implications, and common misconceptions.'
       : "ABD dışından girişimcilere yönelik LLC kurulum rehberi. Eyalet seçimi, kuruluş süreci, vergisel sonuçlar ve yaygın yanılgılar.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'LLC Formation in the US: What You Need to Know' : "ABD'de LLC Kurmak: Bilmeniz Gerekenler",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/09/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -29,8 +60,36 @@ export default async function LLCFormationGuidePage({
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'LLC Formation in the US: What You Need to Know' : "ABD'de LLC Kurmak: Bilmeniz Gerekenler"
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: pageTitle,
+    alternativeHeadline: isEnglish ? 'LLC Formation Guide for Non-US Entrepreneurs' : 'ABD Dışından Girişimciler İçin LLC Kurulum Rehberi',
+    abstractText: isEnglish
+      ? 'A factual reference guide explaining what an LLC is, how it is formed in the United States, and what non-US entrepreneurs should understand before starting the process.'
+      : 'LLC nedir, ABD\'de nasıl kurulur ve ABD dışından girişimcilerin bu sürece başlamadan önce bilmesi gereken temel noktaları ele alan bir referans rehberi.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['llc', 'limited-liability-company', 'business-formation', 'delaware', 'wyoming', 'ein'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['LLC Formation', 'US Business Law', 'Corporate Structure'],
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -48,9 +107,7 @@ export default async function LLCFormationGuidePage({
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-              {isEnglish
-                ? 'LLC Formation in the US: What You Need to Know'
-                : "ABD'de LLC Kurmak: Bilmeniz Gerekenler"}
+              {pageTitle}
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
@@ -59,14 +116,12 @@ export default async function LLCFormationGuidePage({
                 : "LLC nedir, nasıl kurulur ve ABD dışından girişimcilerin bu sürece başlamadan önce bilmesi gereken temel noktalar nelerdir? Bu rehber bu soruları yanıtlıyor."}
             </p>
 
-            <div className="flex flex-wrap gap-3 text-sm text-gray-500">
-              <span className="bg-gray-100 px-3 py-1 rounded-full">
-                {isEnglish ? 'Last updated: January 2026' : 'Son güncelleme: Ocak 2026'}
-              </span>
-              <span className="bg-gray-100 px-3 py-1 rounded-full">
-                {isEnglish ? '~12 min read' : '~12 dk okuma'}
-              </span>
-            </div>
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-4"
+            />
           </header>
 
           {/* Important Notice */}
@@ -513,6 +568,16 @@ export default async function LLCFormationGuidePage({
               </Link>
             </div>
           </section>
+
+          {/* Citation Block */}
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            version={PAGE_META.version}
+            dateModified={PAGE_META.dateModified}
+            citationKey={PAGE_META.citationKey}
+          />
         </article>
       </main>
   )

@@ -3,10 +3,24 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'hukuki-yanilgilar',
+  datePublished: '2025-10-01',
+  dateModified: '2026-01-25',
+  version: '1.1',
+  wordCount: 3000,
+  citationKey: 'ecl-enc-00006',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'Common Legal Misconceptions About US Business | EchoLegal'
@@ -14,6 +28,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Debunking common myths about doing business in the US. LLC formation, visas, taxes, and more explained with facts.'
       : 'ABD\'de iş yapma hakkındaki yaygın mitleri çürütme. LLC kurulumu, vizeler, vergiler ve daha fazlası gerçeklerle açıklandı.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Common Legal Misconceptions About US Business' : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/10/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -28,6 +59,31 @@ export default async function LegalMisconceptionsPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Common Legal Misconceptions' : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları'
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'Common Legal Misconceptions About US Business' : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları',
+    abstractText: isEnglish
+      ? 'Facts vs. myths about doing business in the United States. Common misunderstandings about LLC formation, visas, taxes, and legal obligations for international entrepreneurs.'
+      : 'ABD\'de iş yapma hakkında gerçekler ve mitler. LLC kurulumu, vizeler, vergiler ve uluslararası girişimciler için hukuki yükümlülükler hakkında yaygın yanlış anlamalar.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['legal-misconceptions', 'llc-myths', 'us-business', 'tax-myths', 'visa-myths'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['US Business Misconceptions', 'LLC Formation', 'International Business'],
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const misconceptions = [
     {
@@ -166,6 +222,8 @@ export default async function LegalMisconceptionsPage({
 
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -183,9 +241,7 @@ export default async function LegalMisconceptionsPage({
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-              {isEnglish
-                ? 'Common Legal Misconceptions'
-                : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları'}
+              {pageTitle}
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
@@ -194,14 +250,12 @@ export default async function LegalMisconceptionsPage({
                 : 'ABD\'de iş yapma hakkında gerçekler ve mitler. Bunlar uluslararası girişimciler arasında gördüğümüz yaygın yanlış anlamalardır.'}
             </p>
 
-            <div className="flex flex-wrap gap-3 text-sm text-gray-500">
-              <span className="bg-gray-100 px-3 py-1 rounded-full">
-                {isEnglish ? 'Last updated: January 2026' : 'Son güncelleme: Ocak 2026'}
-              </span>
-              <span className="bg-gray-100 px-3 py-1 rounded-full">
-                {misconceptions.length} {isEnglish ? 'misconceptions covered' : 'yanılgı ele alındı'}
-              </span>
-            </div>
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-4"
+            />
           </header>
 
           {/* Important Notice */}
@@ -425,6 +479,16 @@ export default async function LegalMisconceptionsPage({
               </Link>
             </div>
           </section>
+
+          {/* Citation Block */}
+          <CiteThisEntry
+            lang={lang}
+            title={isEnglish ? 'Common Legal Misconceptions About US Business' : 'ABD\'de İş Yapan Türklerin Sık Yapılan Hukuki Hataları'}
+            url={pageUrl}
+            version={PAGE_META.version}
+            dateModified={PAGE_META.dateModified}
+            citationKey={PAGE_META.citationKey}
+          />
         </article>
       </main>
   )
