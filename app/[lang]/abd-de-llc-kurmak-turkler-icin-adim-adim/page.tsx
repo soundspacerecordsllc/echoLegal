@@ -711,7 +711,7 @@ export default async function LLCGuidePage({
               </h2>
               <ul className="list-disc list-inside space-y-2 text-sm text-gray-700 leading-relaxed">
                 <li>{isEnglish ? 'Applicable state limited liability company statutes (e.g., Delaware LLC Act, Wyoming LLC Act, New Mexico LLC Act)' : 'İlgili eyalet limited şirket (LLC) mevzuatı (ör. Delaware LLC Yasası, Wyoming LLC Yasası, New Mexico LLC Yasası)'}</li>
-                <li>{isEnglish ? 'Internal Revenue Code and Treasury Regulations on entity classification (check-the-box regulations)' : 'İç Gelir Kanunu ve Hazine Düzenlemeleri — tüzel kişilik sınıflandırması (check-the-box düzenlemeleri)'}</li>
+                <li>{isEnglish ? 'Internal Revenue Code and Treasury Regulations governing entity classification (commonly referred to as the \'check-the-box\' regulations)' : 'İç Gelir Kanunu ve tüzel kişilik sınıflandırmasını düzenleyen Hazine Tüzükleri (yaygın olarak \'check-the-box\' düzenlemeleri olarak anılır)'}</li>
                 <li>{isEnglish ? 'IRS authority and guidance on EIN issuance and taxpayer identification' : 'IRS\'nin EIN verilmesi ve vergi mükellefi kimliği konusundaki yetki ve rehberliği'}</li>
                 <li>{isEnglish ? 'FinCEN Beneficial Ownership Information reporting requirements under the Corporate Transparency Act' : 'Kurumsal Şeffaflık Yasası kapsamında FinCEN Gerçek Lehdar Bilgileri raporlama gereksinimleri'}</li>
                 <li>{isEnglish ? 'Federal immigration law (distinguishing entity formation from immigration status)' : 'Federal göçmenlik hukuku (tüzel kişilik kuruluşunun göçmenlik statüsünden ayrımı)'}</li>
