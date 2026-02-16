@@ -73,8 +73,8 @@ function scanFile(filePath) {
   }
 }
 
-// Types that should have authorityLevel and canonicalId
-const TYPED_SOURCES = ['statute', 'regulation', 'treaty', 'guidance', 'form', 'publication']
+// All PrimarySourceType values — every source type must have authorityLevel and canonicalId
+const TYPED_SOURCES = ['CFR', 'USC', 'StateStatute', 'Reg', 'Guidance', 'Case', 'Treaty', 'Other']
 
 /**
  * Parse primarySources arrays and check each entry for missing
@@ -170,16 +170,70 @@ function checkEntryBlock(filePath, lineNum, block) {
   }
 }
 
-// Files to scan
+// ============================================
+// REGISTRY LOCKDOWN: Inline primarySources detection
+// ============================================
+
+/**
+ * Page files MUST NOT contain inline primarySources arrays.
+ * All primarySources must originate from lib/primary-sources-registry.ts.
+ * Detect patterns: `primarySources: [`, `primarySources = [`,
+ * `PrimarySourceEntry[] = [`.
+ */
+const INLINE_PATTERNS = [
+  /const\s+primarySources\s*:\s*PrimarySourceEntry\[\]\s*=\s*\[/,
+  /const\s+primarySources\s*=\s*\[/,
+  /primarySources\s*:\s*\[(?!\s*\])/, // matches `primarySources: [` but not `primarySources: []`
+]
+
+const PAGE_GLOB_DIRS = [
+  'app/[lang]',
+]
+
+function scanForInlinePrimarySources() {
+  for (const dir of PAGE_GLOB_DIRS) {
+    const dirPath = path.join(root, dir)
+    if (!fs.existsSync(dirPath)) continue
+    const entries = fs.readdirSync(dirPath, { withFileTypes: true })
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue
+      const pagePath = path.join(dirPath, entry.name, 'page.tsx')
+      if (!fs.existsSync(pagePath)) continue
+      const content = fs.readFileSync(pagePath, 'utf8')
+      const lines = content.split('\n')
+      for (let i = 0; i < lines.length; i++) {
+        for (const pattern of INLINE_PATTERNS) {
+          if (pattern.test(lines[i])) {
+            violations.push({
+              file: pagePath,
+              lineNum: i + 1,
+              field: 'primarySources',
+              value: lines[i].trim().substring(0, 60),
+              rule: 'Inline primarySources array detected. Import from lib/primary-sources-registry.ts instead.',
+            })
+          }
+        }
+      }
+    }
+  }
+}
+
+// Files to scan for citation formatting
 const filesToScan = [
   'lib/amerika-content-registry.ts',
+  'lib/primary-sources-registry.ts',
   'app/[lang]/abd-de-llc-kurmak-turkler-icin-adim-adim/page.tsx',
   'app/[lang]/irs-vergiler-ve-w8-w9-gercekleri/page.tsx',
   'app/[lang]/ein-itin-ssn-farki/page.tsx',
+  'app/[lang]/foreign-owned-single-member-llc-reporting/page.tsx',
 ]
 
 const root = path.resolve(__dirname, '..')
 
+// Run inline detection
+scanForInlinePrimarySources()
+
+// Run citation format checks
 for (const file of filesToScan) {
   const fullPath = path.join(root, file)
   if (fs.existsSync(fullPath)) {

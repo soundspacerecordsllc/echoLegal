@@ -529,6 +529,165 @@ assert(
   'a,b'
 )
 
+// ============================================
+// REGISTRY STRUCTURAL VALIDATION (Phase 4)
+// ============================================
+
+const fs = require('fs')
+const path = require('path')
+const registryPath = path.resolve(__dirname, '../lib/primary-sources-registry.ts')
+
+// Parse registry entries from file
+function parseRegistryEntries() {
+  const content = fs.readFileSync(registryPath, 'utf8')
+  const slugRegex = /['"]([a-z0-9-]+)['"]\s*:\s*\[/g
+  const results = {}
+  let slugMatch
+
+  while ((slugMatch = slugRegex.exec(content)) !== null) {
+    const slug = slugMatch[1]
+    const startPos = slugMatch.index + slugMatch[0].length
+
+    let depth = 1
+    let pos = startPos
+    let arrayContent = ''
+    while (pos < content.length && depth > 0) {
+      const ch = content[pos]
+      if (ch === '[') depth++
+      if (ch === ']') depth--
+      if (depth > 0) arrayContent += ch
+      pos++
+    }
+
+    const entryBlocks = []
+    let entryDepth = 0
+    let entryStart = -1
+    let currentBlock = ''
+    for (let i = 0; i < arrayContent.length; i++) {
+      const ch = arrayContent[i]
+      if (ch === '{') {
+        if (entryDepth === 0) { entryStart = i; currentBlock = '' }
+        entryDepth++
+      }
+      if (entryDepth > 0) currentBlock += ch
+      if (ch === '}') {
+        entryDepth--
+        if (entryDepth === 0 && entryStart !== -1) {
+          entryBlocks.push(currentBlock)
+          entryStart = -1
+        }
+      }
+    }
+    results[slug] = entryBlocks
+  }
+  return results
+}
+
+const registryData = parseRegistryEntries()
+const registrySlugs = Object.keys(registryData)
+
+// Invariant 8: registry has entries
+assert(
+  'Registry: has at least one slug',
+  registrySlugs.length > 0,
+  true
+)
+
+// Invariant 9: every registry entry has non-empty primarySources
+for (const slug of registrySlugs) {
+  assert(
+    `Registry: "${slug}" has non-empty primarySources`,
+    registryData[slug].length > 0,
+    true
+  )
+}
+
+// Invariant 10: every PrimarySource has required fields
+for (const slug of registrySlugs) {
+  for (let idx = 0; idx < registryData[slug].length; idx++) {
+    const block = registryData[slug][idx]
+    const authorityMatch = block.match(/authorityLevel:\s*['"]([^'"]+)['"]/)
+    const canonicalMatch = block.match(/canonicalId:\s*['"]([^'"]+)['"]/)
+    const jurisdictionMatch = block.match(/jurisdiction:\s*['"]([^'"]+)['"]/)
+
+    assert(
+      `Registry: "${slug}" source ${idx} has authorityLevel`,
+      !!authorityMatch,
+      true
+    )
+
+    assert(
+      `Registry: "${slug}" source ${idx} has canonicalId`,
+      !!canonicalMatch,
+      true
+    )
+
+    assert(
+      `Registry: "${slug}" source ${idx} has jurisdiction`,
+      !!jurisdictionMatch,
+      true
+    )
+
+    // Validate authorityLevel is known
+    if (authorityMatch) {
+      const level = authorityMatch[1]
+      assert(
+        `Registry: "${slug}" source ${idx} authorityLevel "${level}" is valid`,
+        KNOWN_AUTHORITY_LEVELS.includes(level),
+        true
+      )
+      assert(
+        `Registry: "${slug}" source ${idx} authorityLevel "${level}" in AUTHORITY_LEVEL_WEIGHT`,
+        level in AUTHORITY_LEVEL_WEIGHT,
+        true
+      )
+    }
+  }
+}
+
+// Invariant 11: AUTHORITY_LEVEL_WEIGHT contains ALL AuthorityLevel enum values
+for (const level of KNOWN_AUTHORITY_LEVELS) {
+  assert(
+    `Exhaustive: AUTHORITY_LEVEL_WEIGHT has "${level}"`,
+    AUTHORITY_LEVEL_WEIGHT[level] !== undefined,
+    true
+  )
+}
+
+// Invariant 12: AUTHORITY_LEVEL_WEIGHT has no extra keys beyond AuthorityLevel
+const weightKeys = Object.keys(AUTHORITY_LEVEL_WEIGHT)
+for (const key of weightKeys) {
+  assert(
+    `Exhaustive: AUTHORITY_LEVEL_WEIGHT key "${key}" is a valid AuthorityLevel`,
+    KNOWN_AUTHORITY_LEVELS.includes(key),
+    true
+  )
+}
+
+// Invariant 13: no page files have inline primarySources (registry lockdown)
+const pageDir = path.resolve(__dirname, '../app/[lang]')
+const pageDirEntries = fs.readdirSync(pageDir, { withFileTypes: true })
+const INLINE_PATTERNS = [
+  /const\s+primarySources\s*:\s*PrimarySourceEntry\[\]\s*=\s*\[/,
+  /const\s+primarySources\s*=\s*\[/,
+]
+
+for (const entry of pageDirEntries) {
+  if (!entry.isDirectory()) continue
+  const pagePath = path.join(pageDir, entry.name, 'page.tsx')
+  if (!fs.existsSync(pagePath)) continue
+  const content = fs.readFileSync(pagePath, 'utf8')
+  let hasInline = false
+  for (const pattern of INLINE_PATTERNS) {
+    if (pattern.test(content)) hasInline = true
+  }
+  assert(
+    `Registry lockdown: "${entry.name}/page.tsx" has no inline primarySources`,
+    hasInline,
+    false
+  )
+}
+
 // ---- Results ----
 
 console.log(`\nCitation Canon v2 tests: ${passed} passed, ${failed} failed`)
