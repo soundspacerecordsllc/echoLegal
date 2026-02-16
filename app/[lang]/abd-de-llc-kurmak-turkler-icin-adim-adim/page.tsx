@@ -139,7 +139,7 @@ export default async function LLCGuidePage({
     },
     {
       type: 'StateStatute',
-      citation: 'Del. Code Ann. tit. 6, ch. 18',
+      citation: '6 Del. C. § 18-101 et seq.',
       label: 'Delaware Limited Liability Company Act',
     },
     {

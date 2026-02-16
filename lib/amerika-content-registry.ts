@@ -104,9 +104,9 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
     verificationRequired: true,
     sources: [
       {
-        title: 'Change of Status - 8 CFR 248',
+        title: 'Change of Status — 8 C.F.R. § 248',
         type: 'regulation',
-        citation: '8 CFR § 248'
+        citation: '8 C.F.R. § 248'
       },
       {
         title: 'Adjustment of Status - INA § 245',
@@ -208,7 +208,7 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
       {
         title: 'Internal Revenue Code',
         type: 'statute',
-        citation: '26 U.S.C.'
+        citation: 'Internal Revenue Code (26 U.S.C.)'
       },
       {
         title: 'IRS - International Taxpayers',
@@ -218,7 +218,7 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
       {
         title: 'US-Turkey Tax Treaty',
         type: 'treaty',
-        citation: 'TIAS 10205'
+        citation: 'U.S.–Turkey Income Tax Treaty, TIAS 10205 (1996)'
       }
     ],
     needsLexisResearch: [

@@ -172,7 +172,7 @@ export default async function EinItinSsnPage({
     },
     {
       type: 'Guidance',
-      citation: 'IRS Form W-7 Instructions',
+      citation: 'IRS, Instructions for Form W-7',
       label: 'Application for IRS Individual Taxpayer Identification Number',
       url: 'https://www.irs.gov/forms-pubs/about-form-w-7',
     },

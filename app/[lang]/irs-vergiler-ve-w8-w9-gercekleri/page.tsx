@@ -155,7 +155,7 @@ export default async function TaxGuidePage({
     },
     {
       type: 'Guidance',
-      citation: 'IRS Instructions for Form W-8BEN',
+      citation: 'IRS, Instructions for Form W-8BEN',
       label: 'Certificate of Foreign Status of Beneficial Owner',
       url: 'https://www.irs.gov/forms-pubs/about-form-w-8-ben',
     },
