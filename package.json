@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build:search": "node scripts/build-search-index.js",
-    "build": "npm run build:search && next build",
+    "validate:sources": "node scripts/validate-primary-sources.js",
+    "build": "npm run validate:sources && npm run build:search && next build",
     "start": "next start",
     "lint": "next lint"
   },

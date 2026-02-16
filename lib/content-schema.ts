@@ -654,6 +654,7 @@ export type PrimarySourceEntry = {
   url?: string
   authorityLevel: AuthorityLevel
   canonicalId: string
+  jurisdiction: string
 }
 
 // ============================================

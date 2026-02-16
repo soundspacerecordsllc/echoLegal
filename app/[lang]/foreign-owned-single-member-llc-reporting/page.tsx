@@ -4,7 +4,7 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import PrimarySources from '@/components/PrimarySources'
-import type { PrimarySourceEntry } from '@/lib/content-schema'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
 
@@ -79,48 +79,7 @@ export default async function ForeignOwnedSMLLCReportingPage({
     { id: 'cross-references', label: isEnglish ? 'Cross-References' : 'Çapraz Referanslar' },
   ]
 
-  const primarySources: PrimarySourceEntry[] = [
-    {
-      type: 'USC',
-      citation: '26 U.S.C. § 6038A',
-      label: isEnglish
-        ? 'Information with respect to certain foreign-owned corporations'
-        : 'Belirli yabancı sermayeli şirketlere ilişkin bilgi',
-      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6038A&num=0&edition=prelim',
-      authorityLevel: 'federal_statute',
-      canonicalId: 'US-26USC-6038A',
-    },
-    {
-      type: 'CFR',
-      citation: '26 C.F.R. § 1.6038A-1',
-      label: isEnglish
-        ? 'General requirements and definitions for information reporting'
-        : 'Bilgi raporlaması için genel gereksinimler ve tanımlar',
-      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/subject-group-ECFRd277d0563e9069f/section-1.6038A-1',
-      authorityLevel: 'federal_regulation',
-      canonicalId: 'US-26CFR-1.6038A-1',
-    },
-    {
-      type: 'USC',
-      citation: '26 U.S.C. § 6038A(d)',
-      label: isEnglish
-        ? 'Penalty for failure to furnish information or maintain records'
-        : 'Bilgi sağlama veya kayıt tutma başarısızlığı cezası',
-      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6038A&num=0&edition=prelim',
-      authorityLevel: 'federal_statute',
-      canonicalId: 'US-26USC-6038A-d',
-    },
-    {
-      type: 'Guidance',
-      citation: 'IRS, Instructions for Form 5472',
-      label: isEnglish
-        ? 'Information Return of a 25% Foreign-Owned U.S. Corporation or a Foreign Corporation Engaged in a U.S. Trade or Business'
-        : 'Yüzde 25 yabancı sermayeli ABD şirketi veya ABD ticareti veya işiyle uğraşan yabancı şirket bilgi beyannamesi',
-      url: 'https://www.irs.gov/forms-pubs/about-form-5472',
-      authorityLevel: 'form_instruction',
-      canonicalId: 'US-IRS-FORM-5472-INSTR',
-    },
-  ]
+  const primarySources = getPrimarySources(ENTRY_SLUG, isEnglish ? 'en' : 'tr')
 
   const jsonLd = {
     '@context': 'https://schema.org',
