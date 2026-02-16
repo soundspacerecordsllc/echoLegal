@@ -58,265 +58,263 @@ export default async function AboutPage({
 
   return (
     <div className="bg-white">
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Breadcrumb items={breadcrumbItems} lang={lang} />
 
         {/* Hero */}
-        <div className="mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-            {isEnglish ? 'Why EchoLegal?' : 'Neden EchoLegal?'}
+        <div className="mb-16">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{ lineHeight: '1.15' }}>
+            {isEnglish ? 'About EchoLegal' : 'EchoLegal Hakkında'}
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-700 leading-relaxed max-w-3xl">
             {isEnglish
-              ? 'A global legal encyclopedia providing free, high-quality legal knowledge for individuals and businesses worldwide.'
-              : 'Dünya genelinde bireyler ve işletmeler için ücretsiz, yüksek kaliteli hukuki bilgi sağlayan global bir hukuk ansiklopedisi.'}
+              ? 'EchoLegal is a multilingual legal reference platform providing structured, jurisdiction-tagged legal knowledge for individuals, professionals, and institutions worldwide.'
+              : 'EchoLegal, dünya genelinde bireyler, profesyoneller ve kurumlar için yapılandırılmış, yargı alanı etiketli hukuki bilgi sunan çok dilli bir hukuk referans platformudur.'}
           </p>
         </div>
 
         {/* Mission Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Our Mission' : 'Misyonumuz'}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {isEnglish ? 'Mission' : 'Misyon'}
           </h2>
-          <div className="prose prose-lg max-w-none">
-            <p className="text-gray-700 mb-4">
+          <div className="max-w-none">
+            <p className="text-gray-800 leading-relaxed">
               {isEnglish
-                ? 'EchoLegal exists to democratize legal knowledge. We believe that understanding your legal rights and obligations shouldn\'t require expensive consultations for every basic question. Our goal is to build a global, multilingual legal encyclopedia that serves individuals and businesses everywhere.'
-                : 'EchoLegal, hukuki bilgiyi demokratikleştirmek için var. Her temel soru için pahalı danışmanlıklara ihtiyaç duymadan hukuki hak ve yükümlülüklerinizi anlamanız gerektiğine inanıyoruz. Amacımız, her yerdeki bireyler ve işletmelere hizmet veren global, çok dilli bir hukuk ansiklopedisi oluşturmaktır.'}
+                ? 'EchoLegal provides open-access legal reference content structured for long-term citability by professionals, institutions, and automated systems. The platform is designed to make foundational legal knowledge accessible across jurisdictions and languages without requiring individual consultation for each matter of general application.'
+                : 'EchoLegal, profesyoneller, kurumlar ve otomatik sistemler tarafından uzun vadeli alıntılanabilirlik için yapılandırılmış açık erişimli hukuk referans içeriği sunar. Platform, genel uygulama konularında bireysel danışmanlık gerektirmeksizin temel hukuki bilginin yargı alanları ve diller arasında erişilebilir olmasını sağlamak üzere tasarlanmıştır.'}
             </p>
           </div>
         </section>
 
-        {/* Current Focus Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Current Focus' : 'Mevcut Odak'}
+        {/* Scope and Jurisdiction */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {isEnglish ? 'Scope and Jurisdiction' : 'Kapsam ve Yargı Alanı'}
           </h2>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <p className="text-gray-700 mb-4">
+          <div className="space-y-4">
+            <p className="text-gray-800 leading-relaxed">
               {isEnglish
-                ? 'We are building EchoLegal one jurisdiction at a time. Our initial focus is United States business and legal requirements, with all content available in both English and Turkish.'
-                : 'EchoLegal\'ı tek tek yargı alanlarına göre oluşturuyoruz. İlk odak noktamız ABD iş ve hukuki gereksinimleridir ve tüm içerik hem İngilizce hem de Türkçe olarak mevcuttur.'}
+                ? 'EchoLegal structures its content on a jurisdiction-by-jurisdiction basis. The current scope encompasses the following areas:'
+                : 'EchoLegal içerikleri yargı alanı bazında yapılandırır. Mevcut kapsam aşağıdaki alanları içerir:'}
             </p>
-            <p className="text-gray-700 mb-4">
+            <p className="text-gray-800 leading-relaxed">
               {isEnglish
-                ? 'Topics currently covered include: US business formation (LLC, Corporation), tax compliance (EIN, ITIN, W-8, W-9, 1099), essential contracts, and visa-related documentation.'
-                : 'Şu anda kapsanan konular: ABD şirket kurulumu (LLC, Corporation), vergi uyumu (EIN, ITIN, W-8, W-9, 1099), temel sözleşmeler ve vize ile ilgili belgeler.'}
+                ? 'United States business formation (LLC, Corporation), federal tax compliance (EIN, ITIN, W-8, W-9, 1099), essential commercial contracts, and visa-related documentation. All content is published in English and Turkish.'
+                : 'ABD şirket kurulumu (LLC, Corporation), federal vergi uyumu (EIN, ITIN, W-8, W-9, 1099), temel ticari sözleşmeler ve vize ile ilgili belgeler. Tüm içerik İngilizce ve Türkçe olarak yayınlanmaktadır.'}
             </p>
-            <p className="text-sm text-blue-800">
+            <p className="text-sm text-gray-600">
               {isEnglish
-                ? 'We welcome contributions from licensed attorneys in other jurisdictions who share our mission. Contact us to learn about contributing.'
-                : 'Misyonumuzu paylaşan diğer yargı alanlarındaki lisanslı avukatlardan katkıları memnuniyetle karşılıyoruz. Katkıda bulunma hakkında bilgi almak için bizimle iletişime geçin.'}
+                ? 'Contributions from licensed attorneys in additional jurisdictions are accepted subject to editorial review and credential verification.'
+                : 'Ek yargı alanlarındaki lisanslı avukatlardan katkılar, editöryal inceleme ve kimlik doğrulamasına tabi olarak kabul edilmektedir.'}
             </p>
           </div>
         </section>
 
-        {/* Encyclopedic Approach */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Our Encyclopedic Approach' : 'Ansiklopedik Yaklaşımımız'}
+        {/* Editorial Methodology */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">
+            {isEnglish ? 'Editorial Methodology' : 'Editöryal Metodoloji'}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-black mb-2">
-                {isEnglish ? 'Reference, Not Marketing' : 'Pazarlama Değil, Referans'}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="border-t border-gray-200 pt-5">
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {isEnglish ? 'Reference Standard' : 'Referans Standardı'}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700 leading-relaxed">
                 {isEnglish
-                  ? 'We write like an encyclopedia, not a sales page. No hype, no fear tactics, no manipulation. Just clear, factual information.'
-                  : 'Satış sayfası gibi değil, ansiklopedi gibi yazıyoruz. Abartı yok, korku taktikleri yok, manipülasyon yok. Sadece net, olgusal bilgi.'}
+                  ? 'Content is authored in encyclopedic, declarative register. Promotional language, speculative framing, and advocacy are excluded.'
+                  : 'İçerik ansiklopedik, beyan edici kayıtla yazılmaktadır. Tanıtım dili, spekülatif çerçeveleme ve savunuculuk hariç tutulur.'}
               </p>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-black mb-2">
-                {isEnglish ? 'Primary Sources First' : 'Önce Birincil Kaynaklar'}
+            <div className="border-t border-gray-200 pt-5">
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {isEnglish ? 'Primary Source Citation' : 'Birincil Kaynak Atfı'}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700 leading-relaxed">
                 {isEnglish
-                  ? 'Every claim is traceable to official government sources, statutes, or regulations. We cite USCIS, IRS, and state authorities directly.'
-                  : 'Her iddia resmi hükümet kaynaklarına, yasalara veya düzenlemelere kadar izlenebilir. USCIS, IRS ve eyalet otoritelerini doğrudan alıntılıyoruz.'}
+                  ? 'All assertions are traceable to official government sources, statutes, or regulations. USCIS, IRS, and state authorities are cited directly.'
+                  : 'Tüm iddialar resmi hükümet kaynaklarına, yasalara veya düzenlemelere kadar izlenebilir durumdadır. USCIS, IRS ve eyalet otoriteleri doğrudan atıfla belirtilir.'}
               </p>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-black mb-2">
-                {isEnglish ? 'Multilingual by Design' : 'Tasarımı İtibarıyla Çok Dilli'}
+            <div className="border-t border-gray-200 pt-5">
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {isEnglish ? 'Native-Language Authorship' : 'Anadil Yazarlığı'}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700 leading-relaxed">
                 {isEnglish
-                  ? 'Not machine-translated. Content is written by native speakers who understand the nuances of legal terminology. Currently available in English and Turkish, with more languages planned.'
-                  : 'Makine çevirisi değil. İçerik, hukuki terminolojinin inceliklerini anlayan anadili konuşan kişiler tarafından yazılmaktadır. Şu anda İngilizce ve Türkçe olarak mevcut, daha fazla dil planlanmaktadır.'}
+                  ? 'Content is authored by native speakers with command of legal terminology. Machine translation is not used. Currently published in English and Turkish.'
+                  : 'İçerik, hukuki terminolojiye hakim anadili konuşanlar tarafından yazılmaktadır. Makine çevirisi kullanılmaz. Şu anda İngilizce ve Türkçe olarak yayınlanmaktadır.'}
               </p>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="font-semibold text-black mb-2">
-                {isEnglish ? 'Dated & Updated' : 'Tarihli ve Güncel'}
+            <div className="border-t border-gray-200 pt-5">
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {isEnglish ? 'Temporal Provenance' : 'Zamansal Kaynak Takibi'}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-700 leading-relaxed">
                 {isEnglish
-                  ? 'Every article shows when it was published and last updated. Legal information changes; we track when our content was verified.'
-                  : 'Her makale ne zaman yayınlandığını ve son güncellendiğini gösterir. Hukuki bilgiler değişir; içeriğimizin ne zaman doğrulandığını takip ediyoruz.'}
+                  ? 'All entries carry publication and revision dates. Legal information is time-sensitive; the platform records when content was last verified.'
+                  : 'Tüm girdiler yayın ve revizyon tarihleri taşır. Hukuki bilgiler zamana duyarlıdır; platform içeriğin en son ne zaman doğrulandığını kayıt altına alır.'}
               </p>
             </div>
           </div>
         </section>
 
-        {/* Sustainable Access Model */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Sustainable Access Model' : 'Sürdürülebilir Erişim Modeli'}
+        {/* Access Model */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {isEnglish ? 'Access Model' : 'Erişim Modeli'}
           </h2>
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-            <p className="text-gray-700 mb-4">
+          <div className="space-y-4 mb-8">
+            <p className="text-gray-800 leading-relaxed">
               {isEnglish
-                ? 'Our templates and guides are available through a flexible pricing model. The suggested contribution is $49, though all materials remain accessible at no cost to ensure equitable access regardless of financial circumstances.'
-                : 'Şablonlarımız ve rehberlerimiz esnek bir fiyatlandırma modeliyle sunulmaktadır. Önerilen katkı payı 49$ olmakla birlikte, mali koşullardan bağımsız olarak eşit erişim sağlamak amacıyla tüm materyaller ücretsiz olarak erişilebilir durumdadır.'}
+                ? 'Templates and reference guides are available through a voluntary contribution model. The suggested contribution is $49. All materials remain accessible at no cost to maintain equitable access irrespective of financial circumstance.'
+                : 'Şablonlar ve referans rehberleri gönüllü katkı modeli ile sunulmaktadır. Önerilen katkı payı 49$\'dır. Mali koşullardan bağımsız olarak eşit erişimi korumak amacıyla tüm materyaller ücretsiz olarak erişilebilir durumdadır.'}
             </p>
-            <p className="text-gray-700">
+            <p className="text-gray-800 leading-relaxed">
               {isEnglish
-                ? 'This model is designed for long-term sustainability. Contributions from paying users support continued free access for all. The content provided is identical regardless of payment.'
-                : 'Bu model uzun vadeli sürdürülebilirlik için tasarlanmıştır. Ödeme yapan kullanıcıların katkıları, herkes için ücretsiz erişimin devamını destekler. Sunulan içerik, ödeme durumundan bağımsız olarak aynıdır.'}
+                ? 'This model is structured for long-term operational sustainability. Voluntary contributions support continued open access. Content is identical regardless of payment status.'
+                : 'Bu model uzun vadeli operasyonel sürdürülebilirlik için yapılandırılmıştır. Gönüllü katkılar açık erişimin devamını destekler. İçerik, ödeme durumundan bağımsız olarak aynıdır.'}
             </p>
           </div>
-          <div className="flex items-center gap-4 text-sm text-gray-600">
+          <div className="flex flex-wrap items-center gap-6 text-sm text-gray-700 border-t border-gray-200 pt-5">
             <span className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-gray-400">&mdash;</span>
               {isEnglish ? 'No paywalls on information' : 'Bilgide ödeme duvarı yok'}
             </span>
             <span className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-gray-400">&mdash;</span>
               {isEnglish ? 'No mandatory registration' : 'Zorunlu kayıt yok'}
             </span>
             <span className="flex items-center gap-2">
-              <span className="text-green-600">✓</span>
+              <span className="text-gray-400">&mdash;</span>
               {isEnglish ? 'Uniform quality for all users' : 'Tüm kullanıcılar için aynı kalite'}
             </span>
           </div>
         </section>
 
         {/* Editorial Oversight */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
             {isEnglish ? 'Editorial Oversight' : 'Editöryal Gözetim'}
           </h2>
-          <div className="bg-gray-50 rounded-lg p-6">
-            <p className="text-sm text-gray-700">
-              {isEnglish
-                ? 'All legal content on EchoLegal is reviewed for accuracy by a New York-licensed attorney with expertise in US immigration and business law.'
-                : 'EchoLegal\'daki tüm hukuki içerik, ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip New York lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
-            </p>
-          </div>
+          <p className="text-gray-800 leading-relaxed">
+            {isEnglish
+              ? 'All legal content published on EchoLegal is reviewed for accuracy by a New York-licensed attorney with expertise in US immigration and business law.'
+              : 'EchoLegal\'da yayınlanan tüm hukuki içerik, ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip New York lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
+          </p>
         </section>
 
-        {/* What We Don't Do */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'What EchoLegal Is Not' : 'EchoLegal Ne Değildir'}
+        {/* Limitations */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {isEnglish ? 'Limitations' : 'Sınırlamalar'}
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div className="flex items-start gap-3">
-              <span className="text-red-500 mt-1">✕</span>
-              <p className="text-gray-700">
-                <strong>{isEnglish ? 'Not legal advice:' : 'Hukuki tavsiye değildir:'}</strong>{' '}
+              <span className="text-gray-400 mt-0.5">&mdash;</span>
+              <p className="text-gray-800 leading-relaxed">
+                <strong>{isEnglish ? 'Not legal advice.' : 'Hukuki tavsiye değildir.'}</strong>{' '}
                 {isEnglish
-                  ? 'Our content is educational. It doesn\'t replace consultation with a qualified attorney for your specific situation.'
-                  : 'İçeriğimiz eğitim amaçlıdır. Özel durumunuz için nitelikli bir avukatla danışmanlığın yerini almaz.'}
+                  ? 'Content is published for reference and educational purposes. It does not substitute consultation with a qualified attorney for matters of individual application.'
+                  : 'İçerik referans ve eğitim amaçlı yayınlanmaktadır. Bireysel uygulama konularında nitelikli bir avukatla danışmanlığın yerini tutmaz.'}
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-red-500 mt-1">✕</span>
-              <p className="text-gray-700">
-                <strong>{isEnglish ? 'Not a law firm:' : 'Hukuk bürosu değildir:'}</strong>{' '}
+              <span className="text-gray-400 mt-0.5">&mdash;</span>
+              <p className="text-gray-800 leading-relaxed">
+                <strong>{isEnglish ? 'Not a law firm.' : 'Hukuk bürosu değildir.'}</strong>{' '}
                 {isEnglish
-                  ? 'We don\'t represent clients, file documents, or provide individual legal services.'
-                  : 'Müvekkilleri temsil etmiyor, belge sunmuyor veya bireysel hukuk hizmetleri sağlamıyoruz.'}
+                  ? 'EchoLegal does not represent clients, file documents, or provide individual legal services.'
+                  : 'EchoLegal müvekkilleri temsil etmez, belge sunmaz veya bireysel hukuk hizmetleri sağlamaz.'}
               </p>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-red-500 mt-1">✕</span>
-              <p className="text-gray-700">
-                <strong>{isEnglish ? 'Not a referral service:' : 'Yönlendirme hizmeti değildir:'}</strong>{' '}
+              <span className="text-gray-400 mt-0.5">&mdash;</span>
+              <p className="text-gray-800 leading-relaxed">
+                <strong>{isEnglish ? 'Not a referral service.' : 'Yönlendirme hizmeti değildir.'}</strong>{' '}
                 {isEnglish
-                  ? 'We don\'t receive commissions from lawyers or service providers. We have no financial incentive to recommend specific professionals.'
-                  : 'Avukatlardan veya hizmet sağlayıcılardan komisyon almıyoruz. Belirli profesyonelleri önerme konusunda mali teşvikimiz yok.'}
+                  ? 'No commissions are received from attorneys or service providers. There is no financial incentive to recommend specific professionals.'
+                  : 'Avukatlardan veya hizmet sağlayıcılardan komisyon alınmaz. Belirli profesyonelleri önerme konusunda herhangi bir mali teşvik bulunmaz.'}
               </p>
             </div>
           </div>
         </section>
 
         {/* Governance & Policies */}
-        <section className="border-t border-gray-200 pt-8">
-          <h2 className="text-lg font-bold text-black mb-4">
+        <section className="border-t border-gray-200 pt-10">
+          <h2 className="text-lg font-bold text-gray-900 mb-6">
             {isEnglish ? 'Governance & Policies' : 'Yönetişim ve Politikalar'}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200">
             <Link
               href={`/${lang}/about/charter`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Institutional Charter' : 'Kurumsal Tüzük'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Institutional Charter' : 'Kurumsal Tüzük'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Mission, editorial independence, and governance structure' : 'Misyon, editöryal bağımsızlık ve yönetişim yapısı'}
               </span>
             </Link>
             <Link
               href={`/${lang}/about/editorial-policy`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Editorial Policy' : 'Editöryal Politika'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Editorial Policy' : 'Editöryal Politika'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Standards for accuracy, sourcing, and review' : 'Doğruluk, kaynak kullanımı ve inceleme standartları'}
               </span>
             </Link>
             <Link
               href={`/${lang}/about/editorial-board`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Editorial Board' : 'Yayın Kurulu'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Editorial Board' : 'Yayın Kurulu'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Reviewing attorneys and editorial team' : 'İnceleme avukatları ve editör ekibi'}
               </span>
             </Link>
             <Link
               href={`/${lang}/about/contributor-standards`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Contributor Standards' : 'Katkıda Bulunan Standartları'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Contributor Standards' : 'Katkıda Bulunan Standartları'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Requirements for contributing attorneys' : 'Katkıda bulunan avukatlar için gereksinimler'}
               </span>
             </Link>
             <Link
               href={`/${lang}/about/corrections`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Corrections & Retractions' : 'Düzeltmeler ve Geri Çekmeler'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Corrections & Retractions' : 'Düzeltmeler ve Geri Çekmeler'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'How errors are handled and documented' : 'Hataların nasıl ele alınıp belgelendiği'}
               </span>
             </Link>
             <Link
               href={`/${lang}/about/citation-guide`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Citation Guide' : 'Atıf Rehberi'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Citation Guide' : 'Atıf Rehberi'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'How to cite EchoLegal content' : 'EchoLegal içeriğine nasıl atıf yapılır'}
               </span>
             </Link>
             <Link
               href={`/${lang}/jurisdictions`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Jurisdictions' : 'Yargı Alanları'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Jurisdictions' : 'Yargı Alanları'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Legal jurisdictions currently covered' : 'Şu anda kapsanan hukuki yargı alanları'}
               </span>
             </Link>
             <Link
               href={`/${lang}/legal/disclaimer`}
-              className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              className="block p-5 bg-white hover:bg-gray-50 transition-colors"
             >
-              <span className="font-medium text-black">{isEnglish ? 'Legal Disclaimer' : 'Yasal Uyarı'}</span>
+              <span className="font-medium text-gray-900">{isEnglish ? 'Legal Disclaimer' : 'Yasal Uyarı'}</span>
               <span className="block text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Important limitations of our content' : 'İçeriğimizin önemli sınırlamaları'}
               </span>
