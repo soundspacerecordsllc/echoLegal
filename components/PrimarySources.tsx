@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { PrimarySourceEntry } from '@/lib/content-schema'
+import { normalizeCitationText, normalizeLabelText } from '@/lib/citations/canon'
 
 interface PrimarySourcesProps {
   sources: PrimarySourceEntry[]
@@ -42,28 +43,33 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
         }`}
       >
         <ul className="space-y-2 text-sm text-gray-700 leading-relaxed pl-5">
-          {sources.map((source, index) => (
-            <li key={index} className="flex items-start gap-2">
-              <span className="text-gray-400 select-none mt-px">–</span>
-              <div>
-                {source.url ? (
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
-                    {source.citation}
-                  </a>
-                ) : (
-                  <span>{source.citation}</span>
-                )}
-                {source.label && (
-                  <span className="text-gray-500 ml-1">— {source.label}</span>
-                )}
-              </div>
-            </li>
-          ))}
+          {sources.map((source, index) => {
+            const citation = normalizeCitationText(source.citation)
+            const label = source.label ? normalizeLabelText(source.label) : undefined
+
+            return (
+              <li key={index} className="flex items-start gap-2">
+                <span className="text-gray-400 select-none mt-px">–</span>
+                <div>
+                  {source.url ? (
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {citation}
+                    </a>
+                  ) : (
+                    <span>{citation}</span>
+                  )}
+                  {label && (
+                    <span className="text-gray-500 ml-1">— {label}</span>
+                  )}
+                </div>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>
