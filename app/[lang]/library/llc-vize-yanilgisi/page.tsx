@@ -3,10 +3,24 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'llc-vize-yanilgisi',
+  datePublished: '2025-10-15',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  wordCount: 2000,
+  citationKey: 'ecl-enc-00007',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'LLC ≠ Visa: Immigration Realities for Business Owners | EchoLegal'
@@ -14,6 +28,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Understanding the relationship between US business formation and immigration. Why forming an LLC does not grant visa or immigration benefits.'
       : 'ABD\'de şirket kuruluşu ile göçmenlik hukuku arasındaki ilişki. LLC kurmanın neden vize ya da oturma hakkı sağlamadığını açıklıyoruz.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'LLC ≠ Visa: Immigration Realities for Business Owners' : 'LLC Kurmak Vize Vermez: İş Sahipleri İçin Göçmenlik Gerçekleri',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/10/15',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -28,9 +59,35 @@ export default async function LLCVisaMythPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'LLC ≠ Visa: Immigration Realities' : 'LLC Kurmak Vize Vermez: Göçmenlik Gerçekleri'
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'LLC ≠ Visa: Immigration Realities for Business Owners' : 'LLC Kurmak Vize Vermez: İş Sahipleri İçin Göçmenlik Gerçekleri',
+    abstractText: isEnglish
+      ? 'Forming a US LLC does not grant any visa or immigration benefit. This article explains the separation between business formation and immigration law.'
+      : 'ABD\'de LLC kurmak herhangi bir vize veya göçmenlik hakkı doğurmaz. Bu makale şirket kuruluşu ile göçmenlik hukuku arasındaki ayrımı açıklar.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['llc', 'visa', 'immigration', 'e-2', 'work-authorization', 'business-formation'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['LLC Formation', 'US Immigration', 'Business vs Immigration'],
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -47,16 +104,21 @@ export default async function LLCVisaMythPage({
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-              {isEnglish
-                ? 'LLC ≠ Visa: Immigration Realities'
-                : 'LLC Kurmak Vize Vermez: Göçmenlik Gerçekleri'}
+              {pageTitle}
             </h1>
 
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 leading-relaxed mb-6">
               {isEnglish
                 ? 'One of the most common misconceptions among international entrepreneurs: forming a US LLC does not, by itself, grant any visa or immigration benefit.'
                 : 'Yabancı girişimciler arasında en yaygın yanılgılardan biri budur: ABD\'de LLC kurmak, tek başına herhangi bir vize veya göçmenlik hakkı doğurmaz.'}
             </p>
+
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-4"
+            />
           </header>
 
           {/* Critical Alert */}
@@ -271,6 +333,16 @@ export default async function LLCVisaMythPage({
               </Link>
             </div>
           </section>
+
+          {/* Citation Block */}
+          <CiteThisEntry
+            lang={lang}
+            title={isEnglish ? 'LLC ≠ Visa: Immigration Realities for Business Owners' : 'LLC Kurmak Vize Vermez: İş Sahipleri İçin Göçmenlik Gerçekleri'}
+            url={pageUrl}
+            version={PAGE_META.version}
+            dateModified={PAGE_META.dateModified}
+            citationKey={PAGE_META.citationKey}
+          />
         </article>
       </main>
   )

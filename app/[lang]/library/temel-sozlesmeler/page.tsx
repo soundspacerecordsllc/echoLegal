@@ -4,10 +4,24 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'temel-sozlesmeler',
+  datePublished: '2025-09-01',
+  dateModified: '2026-01-25',
+  version: '1.1',
+  wordCount: 2200,
+  citationKey: 'ecl-gde-00003',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'Essential Contracts for Turkish Entrepreneurs in the US | EchoLegal'
@@ -15,6 +29,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'The must-have legal documents for Turkish entrepreneurs doing business in the United States. NDA, Service Agreements, Privacy Policies, and more.'
       : 'ABD\'de iş yapan Türk girişimciler için olmazsa olmaz hukuki belgeler. NDA, Hizmet Sözleşmeleri, Gizlilik Politikaları ve daha fazlası.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/09/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -30,6 +61,31 @@ export default async function EssentialContractsPage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Essential Contracts for US Business' : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler'
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler',
+    abstractText: isEnglish
+      ? 'A guide to the legal documents needed when doing business in or with the United States. Covers NDAs, Service Agreements, Privacy Policies, and more.'
+      : 'ABD\'de veya ABD ile iş yaparken gereken hukuki belgelere rehber. NDA, Hizmet Sözleşmeleri, Gizlilik Politikaları ve daha fazlasını kapsar.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['contracts', 'nda', 'service-agreement', 'privacy-policy', 'terms-of-service', 'business-documents'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['Business Contracts', 'Legal Documents', 'US Business Law'],
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const contracts = [
     {
@@ -113,6 +169,8 @@ export default async function EssentialContractsPage({
 
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
         <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -129,16 +187,21 @@ export default async function EssentialContractsPage({
           </span>
 
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-            {isEnglish
-              ? 'Essential Contracts for US Business'
-              : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler'}
+            {pageTitle}
           </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-gray-600 leading-relaxed mb-6">
             {isEnglish
               ? 'A guide to the legal documents you\'ll likely need when doing business in or with the United States. Understanding when and why you need each contract.'
               : 'ABD\'de veya ABD ile iş yaparken muhtemelen ihtiyaç duyacağınız hukuki belgelere rehber. Her bir sözleşmeye ne zaman ve neden ihtiyaç duyacağınızı anlama.'}
           </p>
+
+          <InstitutionalBadge
+            lang={lang}
+            jurisdictions={['US']}
+            lastReviewedAt={PAGE_META.dateModified}
+            className="mb-4"
+          />
         </header>
 
         {/* Disclaimer */}
@@ -245,6 +308,16 @@ export default async function EssentialContractsPage({
             </Link>
           </div>
         </section>
+
+        {/* Citation Block */}
+        <CiteThisEntry
+          lang={lang}
+          title={isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler'}
+          url={pageUrl}
+          version={PAGE_META.version}
+          dateModified={PAGE_META.dateModified}
+          citationKey={PAGE_META.citationKey}
+        />
       </article>
     </main>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { LegalUpdate, jurisdictionLabels } from '@/lib/legal-updates'
 
 type FilterStatus = 'all' | 'draft' | 'published'
@@ -20,7 +20,7 @@ export default function AdminUpdatesPage() {
   const authHeader = `Basic ${Buffer.from(`${username}:${password}`).toString('base64')}`
 
   // Fetch updates
-  const fetchUpdates = async () => {
+  const fetchUpdates = useCallback(async () => {
     setLoading(true)
     setMessage(null)
 
@@ -51,7 +51,7 @@ export default function AdminUpdatesPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [authHeader, statusFilter])
 
   // Handle login
   const handleLogin = async (e: React.FormEvent) => {
@@ -136,7 +136,7 @@ export default function AdminUpdatesPage() {
     if (isAuthenticated) {
       fetchUpdates()
     }
-  }, [isAuthenticated, statusFilter])
+  }, [isAuthenticated, statusFilter, fetchUpdates])
 
   // Login form
   if (!isAuthenticated) {

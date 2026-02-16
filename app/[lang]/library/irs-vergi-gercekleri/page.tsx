@@ -3,10 +3,24 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'irs-vergi-gercekleri',
+  datePublished: '2025-09-15',
+  dateModified: '2026-01-25',
+  version: '1.1',
+  wordCount: 2400,
+  citationKey: 'ecl-gde-00002',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'IRS, Taxes & Form Realities: W-8, W-9, 1099 Explained | EchoLegal'
@@ -14,6 +28,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Understanding US tax forms for non-US entrepreneurs. W-8BEN, W-9, 1099-NEC, and more explained in plain language.'
       : 'ABD dışından girişimcilere yönelik ABD vergi formları rehberi. W-8BEN, W-9, 1099-NEC ve diğer formlar sade bir dille açıklanmıştır.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'IRS, Taxes & Form Realities: W-8, W-9, 1099 Explained' : 'IRS, Vergi ve Form Gerçekleri: W-8, W-9, 1099 Açıklamalı',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/09/15',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -107,8 +138,35 @@ export default async function IRSTaxFactsPage({
     },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'IRS, Taxes & Form Realities' : 'IRS, Vergi ve Form Gerçekleri'
+
+  const scholarlySchema = generateScholarlyArticleSchema({
+    title: isEnglish ? 'IRS, Taxes & Form Realities: W-8, W-9, 1099 Explained' : 'IRS, Vergi ve Form Gerçekleri: W-8, W-9, 1099 Açıklamalı',
+    abstractText: isEnglish
+      ? 'A plain-language guide to understanding US tax forms for non-US entrepreneurs. Covers W-8BEN, W-9, 1099-NEC, and withholding tax basics.'
+      : 'ABD dışından girişimcilere yönelik ABD vergi formları rehberi. W-8BEN, W-9, 1099-NEC ve stopaj vergisi temellerini kapsar.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['irs', 'w-8ben', 'w-9', '1099', 'tax-forms', 'withholding-tax', 'fatca'],
+    wordCount: PAGE_META.wordCount,
+    citationKey: PAGE_META.citationKey,
+    aboutTopics: ['US Tax Forms', 'IRS', 'International Taxation'],
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -126,9 +184,7 @@ export default async function IRSTaxFactsPage({
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-              {isEnglish
-                ? 'IRS, Taxes & Form Realities'
-                : 'IRS, Vergi ve Form Gerçekleri'}
+              {pageTitle}
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed mb-6">
@@ -137,14 +193,12 @@ export default async function IRSTaxFactsPage({
                 : 'ABD vergi formlarını sade bir dille ele alan başvuru rehberi. ABD şirketleriyle çalışan yabancı girişimciler için W-8, W-9 ve 1099 formları açıklanmıştır.'}
             </p>
 
-            <div className="flex flex-wrap gap-3 text-sm text-gray-500">
-              <span className="bg-gray-100 px-3 py-1 rounded-full">
-                {isEnglish ? 'Last updated: January 2026' : 'Son güncelleme: Ocak 2026'}
-              </span>
-              <span className="bg-gray-100 px-3 py-1 rounded-full">
-                {isEnglish ? '~10 min read' : '~10 dk okuma'}
-              </span>
-            </div>
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-4"
+            />
           </header>
 
           {/* Important Notice */}
@@ -431,6 +485,16 @@ export default async function IRSTaxFactsPage({
               </Link>
             </div>
           </section>
+
+          {/* Citation Block */}
+          <CiteThisEntry
+            lang={lang}
+            title={isEnglish ? 'IRS, Taxes & Form Realities: W-8, W-9, 1099 Explained' : 'IRS, Vergi ve Form Gerçekleri: W-8, W-9, 1099 Açıklamalı'}
+            url={pageUrl}
+            version={PAGE_META.version}
+            dateModified={PAGE_META.dateModified}
+            citationKey={PAGE_META.citationKey}
+          />
         </article>
       </main>
   )

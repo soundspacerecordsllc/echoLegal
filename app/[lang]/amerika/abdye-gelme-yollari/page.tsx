@@ -5,6 +5,7 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { visaCategories } from '@/lib/visa-categories'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -60,6 +61,12 @@ export default async function VisaPathwaysPage({
               ? 'A comprehensive reference to non-immigrant visa categories relevant to Turkish nationals. Each category has specific requirements, limitations, and pathways.'
               : 'Türk vatandaşlarını ilgilendiren geçici (non-immigrant) vize kategorilerinin kapsamlı bir özeti. Her kategorinin kendine özgü şartları, sınırları ve izlediği yol farklıdır.'}
           </p>
+          <InstitutionalBadge
+            lang={lang}
+            jurisdictions={['US']}
+            lastReviewedAt="2026-01-25"
+            className="mt-6 mb-4"
+          />
         </div>
 
         {/* Official Source */}
