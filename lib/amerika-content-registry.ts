@@ -271,6 +271,36 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
     sourceType: 'secondary',
     verificationRequired: false,
     sources: []
+  },
+  {
+    page: 'Foreign-Owned Single-Member LLC Reporting',
+    slug: 'foreign-owned-single-member-llc-reporting',
+    jurisdiction: 'US',
+    lastVerified: '2026-02-16',
+    sourceType: 'primary',
+    verificationRequired: true,
+    sources: [
+      {
+        title: '26 U.S.C. § 6038A',
+        type: 'statute',
+        citation: '26 U.S.C. § 6038A'
+      },
+      {
+        title: '26 C.F.R. § 1.6038A-1',
+        type: 'regulation',
+        citation: '26 C.F.R. § 1.6038A-1'
+      },
+      {
+        title: '26 U.S.C. § 6038A(d) — Penalty',
+        type: 'statute',
+        citation: '26 U.S.C. § 6038A(d)'
+      },
+      {
+        title: 'IRS Form 5472 Instructions',
+        url: 'https://www.irs.gov/forms-pubs/about-form-5472',
+        type: 'official'
+      }
+    ]
   }
 ]
 
