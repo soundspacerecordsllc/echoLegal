@@ -317,6 +317,69 @@ export default async function CharterPage({
               ? 'Lower-tier instruments cannot override higher-tier authority. The order in which sources are presented across the platform reflects this normative weight, not editorial discretion. Authority classification and canonical identifiers enforce this hierarchy structurally.'
               : 'Alt kademe araçlar, üst kademe otoriteyi geçersiz kılamaz. Kaynakların platform genelinde sunulma sırası, editöryal takdir yetkisini değil, bu normatif ağırlığı yansıtır. Otorite sınıflandırması ve kanonik tanımlayıcılar bu hiyerarşiyi yapısal olarak uygular.'}
           </p>
+
+          <div className="mt-8">
+            <h3 className="font-semibold text-black mb-4">
+              {isEnglish ? 'Section V.5 — Structural Authority Enforcement' : 'Bölüm V.5 — Yapısal Otorite Uygulaması'}
+            </h3>
+            <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-gray-900">
+              <p className="text-gray-800 mb-4">
+                {isEnglish
+                  ? 'The following rules are binding and non-discretionary. They apply to every entry that includes a primary source disclosure.'
+                  : 'Aşağıdaki kurallar bağlayıcı ve takdir yetkisine tabi değildir. Birincil kaynak açıklaması içeren her maddeye uygulanır.'}
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">i.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'All primary sources must be assigned an AuthorityLevel classification corresponding to their position in the normative hierarchy.'
+                      : 'Tüm birincil kaynaklar, normatif hiyerarşideki konumlarına karşılık gelen bir AuthorityLevel sınıflandırmasına atanmalıdır.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">ii.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'All primary sources must include a canonical identifier conforming to the Citation Canon specification.'
+                      : 'Tüm birincil kaynaklar, Atıf Kanonu spesifikasyonuna uygun bir kanonik tanımlayıcı içermelidir.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">iii.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Disclosure ordering must reflect normative authority weight. Sources are presented in descending order of legal precedence.'
+                      : 'Açıklama sıralaması normatif otorite ağırlığını yansıtmalıdır. Kaynaklar hukuki önceliğin azalan sırasına göre sunulur.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">iv.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Editorial discretion may not override tier precedence. The ordering of sources by authority weight is structurally enforced and not subject to editorial adjustment.'
+                      : 'Editöryal takdir yetkisi kademe önceliğini geçersiz kılamaz. Kaynakların otorite ağırlığına göre sıralanması yapısal olarak uygulanır ve editöryal düzenlemeye tabi değildir.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">v.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Entries lacking authority classification are incomplete and non-compliant. An entry may not be published until every primary source carries both an AuthorityLevel and a canonical identifier.'
+                      : 'Otorite sınıflandırması eksik olan maddeler tamamlanmamış ve uyumsuz kabul edilir. Her birincil kaynak hem AuthorityLevel hem de kanonik tanımlayıcı taşıyana kadar bir madde yayınlanamaz.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">vi.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Lower-tier instruments cannot supersede higher-tier authority. Where a conflict exists between sources at different tiers, the higher-tier source controls.'
+                      : 'Alt kademe araçlar, üst kademe otoriteyi geçersiz kılamaz. Farklı kademelerdeki kaynaklar arasında bir çelişki bulunduğunda, üst kademe kaynak bağlayıcıdır.'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -56,7 +56,7 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
                 key={index}
                 className="flex items-start gap-2"
                 {...(source.canonicalId ? { 'data-canonical-id': source.canonicalId } : {})}
-                {...(source.authorityLevel ? { 'data-authority': source.authorityLevel } : {})}
+                {...(source.authorityLevel ? { 'data-authority-tier': source.authorityLevel } : {})}
               >
                 <span className="text-gray-400 select-none mt-px">–</span>
                 <div>

@@ -338,6 +338,85 @@ export default async function EditorialPolicyPage({
         </div>
       </section>
 
+      {/* Authority Classification and Precedence */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-black mb-6">
+          {isEnglish ? 'Authority Classification and Precedence' : 'Otorite Sınıflandırması ve Öncelik'}
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <p>
+            {isEnglish
+              ? 'Every primary source cited in an EchoLegal entry must be classified by its position in the normative hierarchy. This classification is mandatory and governs both how sources are recorded and the order in which they are presented to the reader.'
+              : 'EchoLegal maddesinde atıf yapılan her birincil kaynak, normatif hiyerarşideki konumuna göre sınıflandırılmalıdır. Bu sınıflandırma zorunludur ve hem kaynakların nasıl kaydedileceğini hem de okuyucuya sunulma sırasını belirler.'}
+          </p>
+
+          <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Mandatory Assignment' : 'Zorunlu Atama'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Each primary source must carry an AuthorityLevel classification and a canonical identifier before publication. Entries with unclassified sources are non-compliant and may not be published.'
+                  : 'Her birincil kaynak, yayınlanmadan önce bir AuthorityLevel sınıflandırması ve kanonik tanımlayıcı taşımalıdır. Sınıflandırılmamış kaynakları olan maddeler uyumsuz kabul edilir ve yayınlanamaz.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Conflict Resolution Hierarchy' : 'Çelişki Çözüm Hiyerarşisi'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Where a conflict exists between sources at different tiers, the higher-tier source controls. Constitutional and statutory authority prevails over regulations; regulations prevail over administrative instruments; administrative instruments prevail over agency guidance.'
+                  : 'Farklı kademelerdeki kaynaklar arasında bir çelişki bulunduğunda, üst kademe kaynak bağlayıcıdır. Anayasal ve yasal otorite düzenlemelere üstün gelir; düzenlemeler idari araçlara üstün gelir; idari araçlar kurum rehberliğine üstün gelir.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Implementing Regulation Scope' : 'Uygulama Yönetmeliği Kapsamı'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Regulations promulgated under statutory delegation carry the force of law within their authorized scope. A regulation may not exceed or contradict the statute under which it was promulgated. Where a regulation appears to exceed statutory authority, the statute controls.'
+                  : 'Yasal yetki devri kapsamında çıkarılan düzenlemeler, yetkilendirilmiş kapsamları dahilinde kanun gücü taşır. Bir düzenleme, çıkarıldığı kanunu aşamaz veya çelişemez. Bir düzenlemenin yasal yetkiyi aştığı görüldüğünde, kanun bağlayıcıdır.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Guidance Limitations' : 'Rehberlik Sınırlamaları'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Agency guidance, publications, and form instructions represent an agency\'s interpretive position. They provide context and practical direction but do not independently create legal obligations. Guidance materials are cited for informational value, not as controlling authority.'
+                  : 'Kurum rehberliği, yayınlar ve form talimatları bir kurumun yorumlayıcı pozisyonunu temsil eder. Bağlam ve pratik yönlendirme sağlar ancak bağımsız olarak hukuki yükümlülük oluşturmaz. Rehberlik materyalleri bilgilendirme değeri için atıf yapılır, bağlayıcı otorite olarak değil.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Penalty Anchoring' : 'Ceza Dayanaklama'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'All penalty disclosures must be anchored to the specific statutory provision that authorizes the penalty. Penalty amounts, conditions, and escalation rules must cite the enacted statute — not administrative guidance or form instructions — as the controlling source.'
+                  : 'Tüm ceza açıklamaları, cezayı yetkilendiren belirli yasal hükme dayandırılmalıdır. Ceza miktarları, koşulları ve artırma kuralları, bağlayıcı kaynak olarak idari rehberlik veya form talimatlarını değil, yürürlükteki kanunu atıf göstermelidir.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="border-l-4 border-gray-900 pl-4 py-2">
+            <p className="text-sm text-gray-800 font-medium">
+              {isEnglish
+                ? 'Source presentation order across the platform reflects normative authority weight. This ordering is structurally enforced and is not subject to editorial discretion.'
+                : 'Platform genelindeki kaynak sunuş sırası normatif otorite ağırlığını yansıtır. Bu sıralama yapısal olarak uygulanır ve editöryal takdir yetkisine tabi değildir.'}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="border-t border-gray-200 pt-8">
         <h2 className="text-lg font-bold text-black mb-4">

@@ -143,8 +143,8 @@ export default async function GovernancePage({
           <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-gray-900">
             <p className="text-gray-800">
               {isEnglish
-                ? 'EchoLegal enforces structural authority ordering across all primary source disclosures. Authority precedence is not discretionary.'
-                : 'EchoLegal, tüm birincil kaynak açıklamalarında yapısal otorite sıralaması uygular. Otorite önceliği ihtiyari değildir.'}
+                ? 'EchoLegal enforces structural authority ordering across all primary source disclosures. Authority precedence is non-discretionary.'
+                : 'EchoLegal, tüm birincil kaynak açıklamalarında yapısal otorite sıralaması uygular. Otorite önceliği takdir yetkisine tabi değildir.'}
             </p>
           </div>
           <p>

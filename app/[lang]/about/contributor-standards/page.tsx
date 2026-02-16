@@ -505,6 +505,70 @@ export default async function ContributorStandardsPage({
         </div>
       </section>
 
+      {/* Submission Compliance Checklist */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-black mb-6">
+          {isEnglish ? 'Submission Compliance Checklist' : 'Sunum Uyumluluk Kontrol Listesi'}
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <p>
+            {isEnglish
+              ? 'Every submission that includes primary source disclosures must satisfy the following requirements before review. Submissions that do not meet these criteria are non-compliant and will be returned without review.'
+              : 'Birincil kaynak açıklamaları içeren her sunum, inceleme öncesinde aşağıdaki gereksinimleri karşılamalıdır. Bu kriterleri karşılamayan sunumlar uyumsuz kabul edilir ve incelenmeden iade edilir.'}
+          </p>
+          <div className="bg-gray-50 rounded-lg p-6 space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">1.</span>
+              <p>
+                {isEnglish
+                  ? 'Every primary source carries an AuthorityLevel classification corresponding to its position in the normative hierarchy.'
+                  : 'Her birincil kaynak, normatif hiyerarşideki konumuna karşılık gelen bir AuthorityLevel sınıflandırması taşır.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">2.</span>
+              <p>
+                {isEnglish
+                  ? 'Every primary source includes a canonical identifier conforming to the Citation Canon specification.'
+                  : 'Her birincil kaynak, Atıf Kanonu spesifikasyonuna uygun bir kanonik tanımlayıcı içerir.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">3.</span>
+              <p>
+                {isEnglish
+                  ? 'Sources are classified into the correct tier: constitutional/statutory, implementing regulation, administrative instrument, or agency guidance/publication.'
+                  : 'Kaynaklar doğru kademeye sınıflandırılmıştır: anayasal/yasal, uygulama yönetmeliği, idari araç veya kurum rehberliği/yayın.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">4.</span>
+              <p>
+                {isEnglish
+                  ? 'Source presentation order reflects normative authority weight. No editorial override of tier precedence is permitted.'
+                  : 'Kaynak sunuş sırası normatif otorite ağırlığını yansıtır. Kademe önceliğinin editöryal olarak geçersiz kılınmasına izin verilmez.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">5.</span>
+              <p>
+                {isEnglish
+                  ? 'All penalty disclosures are anchored to the specific statutory provision that authorizes the penalty.'
+                  : 'Tüm ceza açıklamaları, cezayı yetkilendiren belirli yasal hükme dayandırılmıştır.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">6.</span>
+              <p>
+                {isEnglish
+                  ? 'Canonical identifiers follow the deterministic format defined in the Citation Canon (e.g., US-26USC-6038A, US-26CFR-1.6038A-1).'
+                  : 'Kanonik tanımlayıcılar, Atıf Kanonu\'nda tanımlanan deterministik biçimi takip eder (örn. US-26USC-6038A, US-26CFR-1.6038A-1).'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="border-t border-gray-200 pt-8">
         <h2 className="text-lg font-bold text-black mb-4">
