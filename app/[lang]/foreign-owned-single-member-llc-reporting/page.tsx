@@ -318,92 +318,116 @@ export default async function ForeignOwnedSMLLCReportingPage({
               </h2>
               <p className="text-sm text-gray-500 mb-6">
                 {isEnglish
-                  ? 'Listed in hierarchical order of legal precedence.'
-                  : 'Hukuki öncelik sırasına göre listelenmiştir.'}
+                  ? 'Arranged by normative hierarchy. Statutes bind; regulations implement; administrative instruments operationalize.'
+                  : 'Normatif hiyerarşiye göre düzenlenmiştir. Kanunlar bağlayıcıdır; yönetmelikler uygular; idari araçlar işlevselleştirir.'}
               </p>
 
-              <div className="space-y-4">
-                {/* Authority A: § 6038A */}
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-indigo-50 px-5 py-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <h3 className="font-bold text-black">26 U.S.C. § 6038A</h3>
-                      <div className="flex gap-2">
-                        <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">federal_statute</span>
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Binding</span>
+              <div className="space-y-6">
+                {/* Tier I: Statutory Basis */}
+                <div>
+                  <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                    {isEnglish ? 'I. Statutory Basis' : 'I. Yasal Dayanak'}
+                  </h3>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                    <div className="bg-indigo-50 px-5 py-4">
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <h4 className="font-bold text-black">26 U.S.C. § 6038A</h4>
+                        <div className="flex gap-2">
+                          <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">federal_statute</span>
+                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{isEnglish ? 'Binding' : 'Bağlayıcı'}</span>
+                        </div>
                       </div>
+                      <p className="text-xs text-gray-500 mt-1 font-mono">US-26USC-6038A</p>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">US-26USC-6038A</p>
-                  </div>
-                  <div className="px-5 py-4">
-                    <p className="text-sm text-gray-700">
-                      {isEnglish
-                        ? 'Primary statutory authority imposing information reporting requirements on foreign-owned domestic corporations. Establishes the filing obligation, defines "reporting corporation," and prescribes the penalty for non-compliance.'
-                        : 'Yabancı sermayeli yerli şirketlere bilgi raporlama gereksinimlerini yükleyen birincil yasal otorite. Dosyalama yükümlülüğünü belirler, "raporlayan şirket" tanımını yapar ve uyumsuzluk cezasını öngörür.'}
-                    </p>
+                    <div className="px-5 py-4">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-semibold text-gray-800">{isEnglish ? 'Function:' : 'İşlev:'}</span>{' '}
+                        {isEnglish
+                          ? 'Creates the reporting obligation. Requires any 25%-or-more foreign-owned domestic corporation to file an annual information return disclosing transactions with related foreign parties.'
+                          : 'Raporlama yükümlülüğünü oluşturur. Yüzde 25 veya daha fazla yabancı sermayeli herhangi bir yerli şirketin, ilişkili yabancı taraflarla yapılan işlemleri açıklayan yıllık bilgi beyannamesi vermesini zorunlu kılar.'}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Authority B: § 1.6038A-1 */}
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-sky-50 px-5 py-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <h3 className="font-bold text-black">26 C.F.R. § 1.6038A-1</h3>
-                      <div className="flex gap-2">
-                        <span className="text-xs bg-sky-100 text-sky-800 px-2 py-0.5 rounded">federal_regulation</span>
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Binding</span>
+                {/* Tier II: Implementing Regulations */}
+                <div>
+                  <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                    {isEnglish ? 'II. Implementing Regulations' : 'II. Uygulama Yönetmelikleri'}
+                  </h3>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                    <div className="bg-sky-50 px-5 py-4">
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <h4 className="font-bold text-black">26 C.F.R. § 1.6038A-1</h4>
+                        <div className="flex gap-2">
+                          <span className="text-xs bg-sky-100 text-sky-800 px-2 py-0.5 rounded">federal_regulation</span>
+                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{isEnglish ? 'Binding' : 'Bağlayıcı'}</span>
+                        </div>
                       </div>
+                      <p className="text-xs text-gray-500 mt-1 font-mono">US-26CFR-1.6038A-1</p>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">US-26CFR-1.6038A-1</p>
-                  </div>
-                  <div className="px-5 py-4">
-                    <p className="text-sm text-gray-700">
-                      {isEnglish
-                        ? 'Implementing regulation providing general requirements and definitions. Extends the reporting obligation to foreign-owned disregarded entities effective for tax years beginning after December 31, 2016, treating them as corporations solely for purposes of § 6038A compliance.'
-                        : 'Genel gereksinimleri ve tanımları sağlayan uygulama yönetmeliği. Raporlama yükümlülüğünü, 31 Aralık 2016 sonrasında başlayan vergi yılları için geçerli olmak üzere, yabancı sermayeli dikkate alınmayan varlıklara genişletir ve bunları yalnızca § 6038A uyumu amacıyla şirket olarak değerlendirir.'}
-                    </p>
+                    <div className="px-5 py-4">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-semibold text-gray-800">{isEnglish ? 'Function:' : 'İşlev:'}</span>{' '}
+                        {isEnglish
+                          ? 'Extends § 6038A to foreign-owned disregarded entities (effective for tax years beginning after December 31, 2016). Reclassifies a single-member LLC as a corporation solely for purposes of this reporting obligation.'
+                          : '§ 6038A\'yı yabancı sermayeli dikkate alınmayan varlıklara genişletir (31 Aralık 2016 sonrasında başlayan vergi yılları için geçerli). Tek üyeli bir LLC\'yi yalnızca bu raporlama yükümlülüğü amacıyla şirket olarak yeniden sınıflandırır.'}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Authority C: § 6038A(d) Penalty */}
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-red-50 px-5 py-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <h3 className="font-bold text-black">26 U.S.C. § 6038A(d)</h3>
-                      <div className="flex gap-2">
-                        <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">federal_statute</span>
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Binding</span>
+                {/* Tier III: Administrative Instrument */}
+                <div>
+                  <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                    {isEnglish ? 'III. Administrative Instrument' : 'III. İdari Araç'}
+                  </h3>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                    <div className="bg-amber-50 px-5 py-4">
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <h4 className="font-bold text-black">{isEnglish ? 'Form 5472 + Instructions' : 'Form 5472 + Talimatlar'}</h4>
+                        <div className="flex gap-2">
+                          <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded">form_instruction</span>
+                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{isEnglish ? 'Interpretive' : 'Yorumlayıcı'}</span>
+                        </div>
                       </div>
+                      <p className="text-xs text-gray-500 mt-1 font-mono">US-IRS-FORM-5472-INSTR</p>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">US-26USC-6038A-d</p>
-                  </div>
-                  <div className="px-5 py-4">
-                    <p className="text-sm text-gray-700">
-                      {isEnglish
-                        ? 'Penalty subsection prescribing a $25,000 monetary penalty for each taxable year of non-compliance, with continuation penalties of $25,000 per 30-day period following IRS notice of failure to comply.'
-                        : 'Her uyumsuz vergi yılı için 25.000 dolar parasal ceza öngören ceza alt bölümü; IRS uyumsuzluk bildiriminin ardından her 30 günlük dönem için 25.000 dolar devam cezası uygulanır.'}
-                    </p>
+                    <div className="px-5 py-4">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-semibold text-gray-800">{isEnglish ? 'Function:' : 'İşlev:'}</span>{' '}
+                        {isEnglish
+                          ? 'Operationalizes the statutory and regulatory requirements. Specifies reportable transaction categories, related-party definitions, line-by-line filing procedures, and the pro forma Form 1120 attachment requirement for disregarded entities. Not law; represents the IRS\'s administrative position.'
+                          : 'Yasal ve düzenleyici gereksinimleri işlevsel hale getirir. Raporlanabilir işlem kategorilerini, ilişkili taraf tanımlarını, satır satır dosyalama prosedürlerini ve dikkate alınmayan varlıklar için pro forma Form 1120 ek gereksinimini belirler. Kanun değildir; IRS\'in idari pozisyonunu temsil eder.'}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Authority D: Form 5472 Instructions */}
-                <div className="border border-gray-200 rounded-lg overflow-hidden">
-                  <div className="bg-amber-50 px-5 py-4">
-                    <div className="flex items-center justify-between flex-wrap gap-2">
-                      <h3 className="font-bold text-black">{isEnglish ? 'IRS Form 5472 Instructions' : 'IRS Form 5472 Talimatları'}</h3>
-                      <div className="flex gap-2">
-                        <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded">form_instruction</span>
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Interpretive</span>
+                {/* Tier IV: Penalty Mechanism */}
+                <div>
+                  <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                    {isEnglish ? 'IV. Penalty Mechanism' : 'IV. Ceza Mekanizması'}
+                  </h3>
+                  <div className="border border-gray-200 rounded-lg overflow-hidden">
+                    <div className="bg-red-50 px-5 py-4">
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <h4 className="font-bold text-black">26 U.S.C. § 6038A(d)</h4>
+                        <div className="flex gap-2">
+                          <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">federal_statute</span>
+                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{isEnglish ? 'Binding' : 'Bağlayıcı'}</span>
+                        </div>
                       </div>
+                      <p className="text-xs text-gray-500 mt-1 font-mono">US-26USC-6038A-d</p>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">US-IRS-FORM-5472-INSTR</p>
-                  </div>
-                  <div className="px-5 py-4">
-                    <p className="text-sm text-gray-700">
-                      {isEnglish
-                        ? 'Agency-issued guidance detailing line-by-line filing procedures, reportable transaction categories, related-party definitions, and the required attachment of a pro forma Form 1120 for disregarded entities. Interpretive, not binding, but represents the IRS\'s administrative position.'
-                        : 'Satır satır beyanname prosedürlerini, raporlanabilir işlem kategorilerini, ilişkili taraf tanımlarını ve dikkate alınmayan varlıklar için gerekli pro forma Form 1120 ekini ayrıntılandıran ajans rehberliği. Yorumlayıcıdır, bağlayıcı değildir, ancak IRS\'in idari pozisyonunu temsil eder.'}
-                    </p>
+                    <div className="px-5 py-4">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-semibold text-gray-800">{isEnglish ? 'Function:' : 'İşlev:'}</span>{' '}
+                        {isEnglish
+                          ? 'Enforcement backstop. Prescribes the civil monetary penalty for failure to file or maintain required records: $25,000 base penalty per return, plus $25,000 for each 30-day period of continued non-compliance after IRS notice. See Section 7 for full analysis.'
+                          : 'Yaptırım mekanizması. Beyanname vermeme veya gerekli kayıtları tutmama durumunda medeni para cezasını öngörür: beyanname başına 25.000 dolar taban ceza, artı IRS bildiriminden sonra devam eden her 30 günlük uyumsuzluk dönemi için 25.000 dolar. Tam analiz için Bölüm 7\'ye bakınız.'}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -555,51 +579,78 @@ export default async function ForeignOwnedSMLLCReportingPage({
               <h2 className="text-2xl font-bold text-black mb-4">
                 {isEnglish ? '7. Penalty Framework' : '7. Ceza Çerçevesi'}
               </h2>
-              <div className="prose prose-gray max-w-none">
-                {isEnglish ? (
-                  <>
-                    <p>
-                      The penalty regime under § 6038A(d) operates in two tiers:
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p>
-                      § 6038A(d) kapsamındaki ceza rejimi iki katmandan oluşur:
-                    </p>
-                  </>
-                )}
+              <p className="text-sm text-gray-500 mb-4">
+                {isEnglish
+                  ? 'Statutory authority: 26 U.S.C. § 6038A(d). Penalties are civil; no criminal exposure arises from this section alone.'
+                  : 'Yasal dayanak: 26 U.S.C. § 6038A(d). Cezalar medenidir; yalnızca bu bölümden cezai sorumluluk doğmaz.'}
+              </p>
+
+              <div className="space-y-3 mb-6">
+                <div className="border-l-4 border-red-400 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'Base civil penalty' : 'Taban medeni ceza'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? '$25,000 per Form 5472 not timely filed for each taxable year. The penalty attaches per form, per year — an entity required to file multiple Forms 5472 (e.g., transactions with multiple related parties) faces separate penalties for each unfiled form.'
+                      : 'Zamanında dosyalanmayan her vergi yılı için Form 5472 başına 25.000 dolar. Ceza form başına, yıl başına uygulanır — birden fazla Form 5472 dosyalaması gereken bir varlık (örn. birden fazla ilişkili tarafla işlemler), dosyalanmayan her form için ayrı cezayla karşı karşıyadır.'}
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-red-400 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'Continuation penalty after IRS notice' : 'IRS bildiriminden sonra devam cezası'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? 'If non-compliance continues after the IRS mails a notice of failure, an additional $25,000 accrues for each 30-day period (or fraction thereof) during which the failure persists. There is no statutory cap on continuation penalties.'
+                      : 'IRS uyumsuzluk bildirimini gönderdikten sonra uyumsuzluk devam ederse, başarısızlığın sürdüğü her 30 günlük dönem (veya kesri) için ek 25.000 dolar tahakkuk eder. Devam cezaları için yasal tavan yoktur.'}
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-red-400 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'Recordkeeping exposure' : 'Kayıt tutma maruziyeti'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? 'Section 6038A(a) and the Form 5472 Instructions require the reporting entity to maintain records of reportable transactions. Failure to maintain records constitutes an independent basis for penalty under § 6038A(d), separate from failure to file.'
+                      : 'Bölüm 6038A(a) ve Form 5472 Talimatları, raporlayan varlığın raporlanabilir işlemlerin kayıtlarını tutmasını gerektirir. Kayıtları tutmama, § 6038A(d) kapsamında dosyalama başarısızlığından bağımsız bir ceza dayanağı oluşturur.'}
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-6 overflow-x-auto">
+              {/* Penalty table */}
+              <div className="overflow-x-auto mb-6">
                 <table className="w-full border-collapse border border-gray-200 text-sm">
                   <thead>
                     <tr className="bg-gray-50">
-                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Penalty Component' : 'Ceza Bileşeni'}</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Component' : 'Bileşen'}</th>
                       <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Amount' : 'Tutar'}</th>
-                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Trigger' : 'Tetikleyici'}</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Authority' : 'Dayanak'}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td className="border border-gray-200 px-4 py-3">{isEnglish ? 'Base penalty' : 'Taban ceza'}</td>
                       <td className="border border-gray-200 px-4 py-3 font-medium">$25,000</td>
-                      <td className="border border-gray-200 px-4 py-3">{isEnglish ? 'Per Form 5472 not timely filed for each taxable year' : 'Zamanında dosyalanmayan her vergi yılı için Form 5472 başına'}</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">§ 6038A(d)(1)</td>
                     </tr>
                     <tr>
-                      <td className="border border-gray-200 px-4 py-3">{isEnglish ? 'Continuation penalty' : 'Devam cezası'}</td>
-                      <td className="border border-gray-200 px-4 py-3 font-medium">{isEnglish ? '$25,000 per 30-day period' : '30 günlük dönem başına 25.000 $'}</td>
-                      <td className="border border-gray-200 px-4 py-3">{isEnglish ? 'Each 30-day period (or fraction thereof) after IRS notice of failure, with no statutory cap' : 'IRS uyumsuzluk bildiriminden sonraki her 30 günlük dönem (veya kesri), yasal tavan olmaksızın'}</td>
+                      <td className="border border-gray-200 px-4 py-3">{isEnglish ? 'Continuation (per 30-day period)' : 'Devam (30 günlük dönem başına)'}</td>
+                      <td className="border border-gray-200 px-4 py-3 font-medium">$25,000</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">§ 6038A(d)(2)</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">{isEnglish ? 'Statutory cap' : 'Yasal tavan'}</td>
+                      <td className="border border-gray-200 px-4 py-3 font-medium">{isEnglish ? 'None' : 'Yok'}</td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">—</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mt-6">
-                <p className="text-sm text-amber-900">
+              {/* Critical clarification */}
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <p className="text-sm text-red-900">
+                  <strong>{isEnglish ? 'Critical clarification:' : 'Kritik açıklama:'}</strong>{' '}
                   {isEnglish
-                    ? 'The penalty accrues per unfiled form. An entity that fails to file for multiple years faces compounding exposure: three missed years produce a minimum of $75,000 in base penalties alone, before continuation penalties. There is no statutory maximum for continuation penalties.'
-                    : 'Ceza dosyalanmayan form başına tahakkuk eder. Birden fazla yıl boyunca dosyalama yapmayan bir varlık, bileşik maruziyetle karşı karşıyadır: üç kaçırılan yıl, devam cezalarından önce yalnızca taban cezalarda minimum 75.000 dolar üretir. Devam cezaları için yasal azami sınır yoktur.'}
+                    ? 'The § 6038A(d) penalty is triggered by failure to file the required information return. It is not contingent on the existence of income, tax liability, or any underlying tax obligation. An entity with zero revenue and no US-source income is subject to the same penalty as one with substantial operations.'
+                    : '§ 6038A(d) cezası, gerekli bilgi beyannamesinin dosyalanmamasından kaynaklanır. Gelirin, vergi borcunun veya herhangi bir temel vergi yükümlülüğünün varlığına bağlı değildir. Sıfır geliri ve ABD kaynaklı geliri olmayan bir varlık, önemli operasyonları olan bir varlıkla aynı cezaya tabidir.'}
                 </p>
               </div>
             </section>

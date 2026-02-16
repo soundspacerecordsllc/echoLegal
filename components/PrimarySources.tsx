@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { PrimarySourceEntry } from '@/lib/content-schema'
-import { normalizeCitationText, normalizeLabelText } from '@/lib/citations/canon'
+import { normalizeCitationText, normalizeLabelText, AUTHORITY_LEVEL_WEIGHT } from '@/lib/citations/canon'
 
 interface PrimarySourcesProps {
   sources: PrimarySourceEntry[]
@@ -43,7 +43,11 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
         }`}
       >
         <ul className="space-y-2 text-sm text-gray-700 leading-relaxed pl-5">
-          {sources.map((source, index) => {
+          {[...sources].sort((a, b) => {
+            const wa = a.authorityLevel ? (AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] ?? 99) : 99
+            const wb = b.authorityLevel ? (AUTHORITY_LEVEL_WEIGHT[b.authorityLevel] ?? 99) : 99
+            return wa - wb
+          }).map((source, index) => {
             const citation = normalizeCitationText(source.citation)
             const label = source.label ? normalizeLabelText(source.label) : undefined
 

@@ -363,6 +363,76 @@ assert(
   undefined
 )
 
+// ============================================
+// AUTHORITY_LEVEL_WEIGHT ordering tests
+// ============================================
+
+// Inline weight map (mirrors lib/citations/canon.ts AUTHORITY_LEVEL_WEIGHT)
+const AUTHORITY_LEVEL_WEIGHT = {
+  constitutional: 0,
+  federal_statute: 1,
+  federal_regulation: 2,
+  state_statute: 3,
+  treaty: 4,
+  agency_guidance: 5,
+  form_instruction: 6,
+  publication: 7,
+}
+
+assert(
+  'Weight: AUTHORITY_LEVEL_WEIGHT is defined',
+  typeof AUTHORITY_LEVEL_WEIGHT,
+  'object'
+)
+
+assert(
+  'Weight: constitutional < federal_statute',
+  AUTHORITY_LEVEL_WEIGHT.constitutional < AUTHORITY_LEVEL_WEIGHT.federal_statute,
+  true
+)
+
+assert(
+  'Weight: federal_statute < federal_regulation',
+  AUTHORITY_LEVEL_WEIGHT.federal_statute < AUTHORITY_LEVEL_WEIGHT.federal_regulation,
+  true
+)
+
+assert(
+  'Weight: federal_regulation < form_instruction',
+  AUTHORITY_LEVEL_WEIGHT.federal_regulation < AUTHORITY_LEVEL_WEIGHT.form_instruction,
+  true
+)
+
+assert(
+  'Weight: form_instruction < publication',
+  AUTHORITY_LEVEL_WEIGHT.form_instruction < AUTHORITY_LEVEL_WEIGHT.publication,
+  true
+)
+
+assert(
+  'Weight: agency_guidance < form_instruction',
+  AUTHORITY_LEVEL_WEIGHT.agency_guidance < AUTHORITY_LEVEL_WEIGHT.form_instruction,
+  true
+)
+
+// Sort ordering test: simulate PrimarySources sort behavior
+const testSources = [
+  { authorityLevel: 'form_instruction' },
+  { authorityLevel: 'federal_statute' },
+  { authorityLevel: 'federal_regulation' },
+  { authorityLevel: 'publication' },
+]
+const sorted = [...testSources].sort((a, b) => {
+  const wa = AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] ?? 99
+  const wb = AUTHORITY_LEVEL_WEIGHT[b.authorityLevel] ?? 99
+  return wa - wb
+})
+assert(
+  'Weight: sort produces statute > regulation > form_instruction > publication',
+  sorted.map(s => s.authorityLevel).join(','),
+  'federal_statute,federal_regulation,form_instruction,publication'
+)
+
 // ---- Results ----
 
 console.log(`\nCitation Canon v2 tests: ${passed} passed, ${failed} failed`)

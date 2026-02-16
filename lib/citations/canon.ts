@@ -64,6 +64,26 @@ export function normalizeLabelText(input: string): string {
 }
 
 // ============================================
+// AUTHORITY LEVEL PRECEDENCE WEIGHTS
+// ============================================
+
+/**
+ * Numeric weights for deterministic display ordering of primary sources.
+ * Lower value = higher precedence in the US legal hierarchy.
+ * Used by PrimarySources component to enforce normative ordering.
+ */
+export const AUTHORITY_LEVEL_WEIGHT: Record<string, number> = {
+  constitutional: 0,
+  federal_statute: 1,
+  federal_regulation: 2,
+  state_statute: 3,
+  treaty: 4,
+  agency_guidance: 5,
+  form_instruction: 6,
+  publication: 7,
+}
+
+// ============================================
 // CANONICAL ID DERIVATION
 // ============================================
 
