@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { getArticleMetadata } from '@/lib/article-metadata'
 import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
+import PrimarySources from '@/components/PrimarySources'
+import type { PrimarySourceEntry } from '@/lib/content-schema'
 
 const ARTICLE_SLUG = 'abd-de-llc-kurmak-turkler-icin-adim-adim'
 
@@ -121,6 +123,38 @@ export default async function LLCGuidePage({
       },
     ],
   }
+
+  const primarySources: PrimarySourceEntry[] = [
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. §§ 301.7701-1 through 301.7701-3',
+      label: 'Entity classification regulations (check-the-box)',
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-F/part-301/subpart-ECFRd43e1e5bf6e7513/subject-group-ECFRa28caacb356462e',
+    },
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 7701(a)(3)–(4)',
+      label: 'Definitions of "corporation" and "domestic"',
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7701&num=0&edition=prelim',
+    },
+    {
+      type: 'StateStatute',
+      citation: 'Del. Code Ann. tit. 6, ch. 18',
+      label: 'Delaware Limited Liability Company Act',
+    },
+    {
+      type: 'USC',
+      citation: '31 U.S.C. § 5336',
+      label: 'Corporate Transparency Act — beneficial ownership reporting',
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title31-section5336&num=0&edition=prelim',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS Rev. Proc. 2023-32',
+      label: 'EIN application procedures for foreign-owned entities',
+      url: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online',
+    },
+  ]
 
   return (
     <>
@@ -711,12 +745,14 @@ export default async function LLCGuidePage({
               </h2>
               <ul className="list-disc list-inside space-y-2 text-sm text-gray-700 leading-relaxed">
                 <li>{isEnglish ? 'Applicable state limited liability company statutes (e.g., Delaware LLC Act, Wyoming LLC Act, New Mexico LLC Act)' : 'İlgili eyalet limited şirket (LLC) mevzuatı (ör. Delaware LLC Yasası, Wyoming LLC Yasası, New Mexico LLC Yasası)'}</li>
-                <li>{isEnglish ? 'Internal Revenue Code and Treasury Regulations on entity classification (check-the-box regulations)' : 'İç Gelir Kanunu ve Hazine Düzenlemeleri — tüzel kişilik sınıflandırması (check-the-box düzenlemeleri)'}</li>
+                <li>{isEnglish ? 'Internal Revenue Code and Treasury Regulations governing entity classification (commonly referred to as the \'check-the-box\' regulations)' : 'İç Gelir Kanunu ve tüzel kişilik sınıflandırmasını düzenleyen Hazine Tüzükleri (yaygın olarak \'check-the-box\' düzenlemeleri olarak anılır)'}</li>
                 <li>{isEnglish ? 'IRS authority and guidance on EIN issuance and taxpayer identification' : 'IRS\'nin EIN verilmesi ve vergi mükellefi kimliği konusundaki yetki ve rehberliği'}</li>
                 <li>{isEnglish ? 'FinCEN Beneficial Ownership Information reporting requirements under the Corporate Transparency Act' : 'Kurumsal Şeffaflık Yasası kapsamında FinCEN Gerçek Lehdar Bilgileri raporlama gereksinimleri'}</li>
                 <li>{isEnglish ? 'Federal immigration law (distinguishing entity formation from immigration status)' : 'Federal göçmenlik hukuku (tüzel kişilik kuruluşunun göçmenlik statüsünden ayrımı)'}</li>
               </ul>
             </section>
+
+            <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
             {/* Related Legal Entries */}
             <section className="mb-12">

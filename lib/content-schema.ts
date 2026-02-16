@@ -196,6 +196,9 @@ export type BaseContentMeta = {
   parentId?: string                   // Parent content (for sections/chapters)
   seriesId?: string                   // Series this belongs to
 
+  // Primary legal sources (collapsible disclosure)
+  primarySources?: PrimarySourceEntry[]
+
   // SEO
   metaTitle?: string                  // Override for <title>
   metaDescription?: string            // Override for meta description
@@ -612,6 +615,32 @@ export function generateCanonicalCitationKey(
 }
 
 // ============================================
+// PRIMARY SOURCES
+// ============================================
+
+/**
+ * Primary legal source reference for editorial entries.
+ * Used in the collapsible "Primary legal sources" disclosure
+ * below the References section on editorial pages.
+ */
+export type PrimarySourceType =
+  | 'CFR'           // Code of Federal Regulations
+  | 'USC'           // United States Code
+  | 'StateStatute'  // State-level statutes
+  | 'Reg'           // Agency regulations / rules
+  | 'Guidance'      // Agency guidance documents (IRS notices, revenue rulings, etc.)
+  | 'Case'          // Case law
+  | 'Treaty'        // International treaties
+  | 'Other'
+
+export type PrimarySourceEntry = {
+  type: PrimarySourceType
+  citation: string
+  label?: string
+  url?: string
+}
+
+// ============================================
 // SHARED CANONICAL TYPES
 // ============================================
 
@@ -703,6 +732,9 @@ export type UniversalMeta = {
   canonicalUrl?: string             // Fully qualified, language-prefixed
   noIndex: boolean
   citationKey: string               // Machine-readable citation identifier
+
+  // Primary legal sources (collapsible disclosure)
+  primarySources?: PrimarySourceEntry[]
 
   // Content metrics (optional, computed)
   readingTimeMinutes?: number

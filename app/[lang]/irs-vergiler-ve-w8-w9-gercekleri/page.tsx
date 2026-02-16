@@ -6,6 +6,8 @@ import { Metadata } from 'next'
 import { getArticleMetadata } from '@/lib/article-metadata'
 import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
 import AuthorBox from '@/components/AuthorBox'
+import PrimarySources from '@/components/PrimarySources'
+import type { PrimarySourceEntry } from '@/lib/content-schema'
 
 const ARTICLE_SLUG = 'irs-vergiler-ve-w8-w9-gercekleri'
 
@@ -119,6 +121,45 @@ export default async function TaxGuidePage({
       },
     ],
   }
+
+  const primarySources: PrimarySourceEntry[] = [
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 1441',
+      label: 'Withholding of tax on nonresident aliens',
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section1441&num=0&edition=prelim',
+    },
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 7701(b)',
+      label: 'Definition of resident alien and nonresident alien',
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7701&num=0&edition=prelim',
+    },
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. § 1.1441-1',
+      label: 'Requirement for the deduction and withholding of tax on payments to foreign persons',
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/subject-group-ECFRe7928eed88ac04b/section-1.1441-1',
+    },
+    {
+      type: 'Treaty',
+      citation: 'U.S.–Turkey Income Tax Treaty (1996)',
+      label: 'Convention for the avoidance of double taxation',
+      url: 'https://www.irs.gov/businesses/international-businesses/turkey-tax-treaty-documents',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS Publication 515',
+      label: 'Withholding of Tax on Nonresident Aliens and Foreign Entities',
+      url: 'https://www.irs.gov/publications/p515',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS Instructions for Form W-8BEN',
+      label: 'Certificate of Foreign Status of Beneficial Owner',
+      url: 'https://www.irs.gov/forms-pubs/about-form-w-8-ben',
+    },
+  ]
 
   return (
     <>
@@ -717,6 +758,8 @@ export default async function TaxGuidePage({
                 </div>
               </div>
             </section>
+
+            <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
             {/* Related Resources */}
             <section className="mb-12">
