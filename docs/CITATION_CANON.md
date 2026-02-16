@@ -1,4 +1,4 @@
-# EchoLegal Citation Canon v1
+# EchoLegal Citation Canon v2
 
 Standard for legal citation formatting in structured metadata fields.
 
@@ -78,6 +78,85 @@ IRS, Instructions for Form W-8BEN
 
 ---
 
+## Authority level (v2)
+
+Every `primarySources` entry should include an `authorityLevel` field.
+This is a controlled enum for semantic weighting in the US legal hierarchy.
+
+| Value | Use for |
+|---|---|
+| `constitutional` | Constitutional provisions |
+| `federal_statute` | United States Code sections |
+| `federal_regulation` | Code of Federal Regulations sections |
+| `state_statute` | State-level statutes |
+| `treaty` | International treaties |
+| `agency_guidance` | Revenue procedures, notices, rulings |
+| `form_instruction` | IRS form instructions |
+| `publication` | IRS publications, agency manuals |
+
+Set `authorityLevel` explicitly per entry. Do not rely on inference.
+
+---
+
+## Canonical ID (v2)
+
+Every `primarySources` entry should include a `canonicalId` — a stable,
+lowercase, hyphenated identifier for cross-reference and future graphing.
+
+### Format rules
+
+**USC:**
+```
+usc-<title>-<section>[-<subsection>]
+```
+Examples: `usc-26-7701-a`, `usc-42-405-c`, `usc-31-5336`
+
+**CFR:**
+```
+cfr-<title>-<part>.<section>[-<subsection>]
+```
+Examples: `cfr-26-301.7701-1`, `cfr-26-1.1441-1`
+
+**State statutes:**
+```
+<state>-stat-<code>-<title>-<section>
+```
+Examples: `del-stat-c-6-18-101`, `wyo-stat-17-29-101`, `ny-stat-gen-oblig-law-5-1401`
+
+**Treaties:**
+```
+treaty-<country1>-<country2>-<year>[-tias-<number>]
+```
+Example: `treaty-us-turkey-1996-tias-10205`
+
+**Guidance:**
+```
+guidance-<agency>-<type>-<id>
+```
+Example: `guidance-irs-rev-proc-2023-32`
+
+**Publications:**
+```
+publication-<agency>-<number>
+```
+Example: `publication-irs-515`
+
+**Form instructions:**
+```
+form-instructions-<agency>-<form>
+```
+Example: `form-instructions-irs-w-7`
+
+### Derivation
+
+`deriveCanonicalId()` in `lib/citations/canon.ts` can auto-derive IDs
+from citation strings for USC, CFR, treaty (TIAS), state statute, and
+IRS guidance patterns. If derivation is ambiguous, it returns `undefined`.
+
+Prefer explicit IDs in data. Use derivation as a fallback or lint check.
+
+---
+
 ## What we do NOT normalize
 
 - Body text. Narrative prose is written for human readers and uses
@@ -93,8 +172,10 @@ IRS, Instructions for Form W-8BEN
 - **Render-time:** `PrimarySources` component applies `normalizeCitationText()`
   automatically. Data entry does not need to be perfect.
 - **Lint:** `node scripts/lint-citations.js` scans citation fields in
-  registry files for common violations.
-- **Tests:** `node scripts/test-citation-canon.js` validates the normalizer.
+  registry files for common violations. Pass `--strict` to warn on
+  missing `authorityLevel` / `canonicalId` fields.
+- **Tests:** `node scripts/test-citation-canon.js` validates the normalizer
+  and the `deriveCanonicalId()` helper.
 
 ---
 
@@ -105,3 +186,7 @@ IRS, Instructions for Form W-8BEN
 3. Put popular names in the `label` field, not the `citation` field.
 4. Include a URL to the authoritative source where available (eCFR,
    Congress.gov, IRS.gov).
+5. Set `authorityLevel` explicitly.
+6. Set `canonicalId` explicitly, following the format rules above.
+   Run `deriveCanonicalId()` to verify your ID matches what the
+   system would derive.

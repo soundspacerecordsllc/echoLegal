@@ -633,11 +633,27 @@ export type PrimarySourceType =
   | 'Treaty'        // International treaties
   | 'Other'
 
+/**
+ * Authority level for semantic weighting of legal sources.
+ * Ordered roughly by precedence in the US legal hierarchy.
+ */
+export type AuthorityLevel =
+  | 'constitutional'
+  | 'federal_statute'
+  | 'federal_regulation'
+  | 'state_statute'
+  | 'treaty'
+  | 'agency_guidance'
+  | 'form_instruction'
+  | 'publication'
+
 export type PrimarySourceEntry = {
   type: PrimarySourceType
   citation: string
   label?: string
   url?: string
+  authorityLevel?: AuthorityLevel
+  canonicalId?: string
 }
 
 // ============================================

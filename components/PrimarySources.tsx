@@ -48,7 +48,12 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
             const label = source.label ? normalizeLabelText(source.label) : undefined
 
             return (
-              <li key={index} className="flex items-start gap-2">
+              <li
+                key={index}
+                className="flex items-start gap-2"
+                {...(source.canonicalId ? { 'data-canonical-id': source.canonicalId } : {})}
+                {...(source.authorityLevel ? { 'data-authority': source.authorityLevel } : {})}
+              >
                 <span className="text-gray-400 select-none mt-px">–</span>
                 <div>
                   {source.url ? (

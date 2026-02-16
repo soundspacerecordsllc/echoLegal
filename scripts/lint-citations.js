@@ -1,19 +1,25 @@
 #!/usr/bin/env node
 
 /**
- * Citation Canon v1 — lint checker
+ * Citation Canon v2 — lint checker
  *
  * Scans citation fields in registry and primarySources data for
- * common Canon v1 violations. Does NOT scan body text.
+ * common Canon violations. Does NOT scan body text.
  *
  * Run: node scripts/lint-citations.js
- * Exit code 0 = clean, 1 = violations found.
+ *      node scripts/lint-citations.js --strict
+ *
+ * Default mode: checks formatting rules only. Exit 0 = clean.
+ * Strict mode:  also warns on missing authorityLevel / canonicalId
+ *               for typed primarySources entries. Exit 1 if warnings.
  */
 
 const fs = require('fs')
 const path = require('path')
 
+const strict = process.argv.includes('--strict')
 const violations = []
+const warnings = []
 
 function check(file, lineNum, field, value) {
   // Rule 1: "USC" without periods (but not "USCIS")
@@ -45,6 +51,9 @@ function check(file, lineNum, field, value) {
 /**
  * Scan a TypeScript/JavaScript file for citation string patterns.
  * Looks for: citation: '...' or citation: "..."
+ *
+ * In strict mode, also checks primarySources blocks for missing
+ * authorityLevel and canonicalId fields.
  */
 function scanFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8')
@@ -57,6 +66,108 @@ function scanFile(filePath) {
       check(filePath, i + 1, 'citation', citationMatch[1])
     }
   })
+
+  // Strict mode: check primarySources entries for missing v2 fields
+  if (strict) {
+    scanPrimarySourcesBlocks(filePath, content)
+  }
+}
+
+// Types that should have authorityLevel and canonicalId
+const TYPED_SOURCES = ['statute', 'regulation', 'treaty', 'guidance', 'form', 'publication']
+
+/**
+ * Parse primarySources arrays and check each entry for missing
+ * authorityLevel and canonicalId. Uses simple brace-depth tracking.
+ */
+function scanPrimarySourcesBlocks(filePath, content) {
+  const lines = content.split('\n')
+
+  // Find primarySources array regions
+  let inPrimarySources = false
+  let depth = 0
+  let entryStart = -1
+  let currentEntry = ''
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+
+    if (!inPrimarySources) {
+      if (/primarySources\s*[:=]\s*\[/.test(line)) {
+        inPrimarySources = true
+        depth = 0
+        // Count opening brackets on this line
+        for (const ch of line) {
+          if (ch === '[') depth++
+          if (ch === ']') depth--
+        }
+        if (depth <= 0) inPrimarySources = false
+      }
+      continue
+    }
+
+    // Track opening/closing of the array
+    for (const ch of line) {
+      if (ch === '[') depth++
+      if (ch === ']') depth--
+    }
+
+    // Track individual entries by { }
+    if (/{/.test(line) && entryStart === -1) {
+      entryStart = i + 1
+      currentEntry = ''
+    }
+
+    if (entryStart !== -1) {
+      currentEntry += line + '\n'
+    }
+
+    if (/}/.test(line) && entryStart !== -1) {
+      // We have a complete entry block
+      checkEntryBlock(filePath, entryStart, currentEntry)
+      entryStart = -1
+      currentEntry = ''
+    }
+
+    if (depth <= 0) {
+      inPrimarySources = false
+    }
+  }
+}
+
+function checkEntryBlock(filePath, lineNum, block) {
+  const typeMatch = block.match(/type:\s*['"`](\w+)['"`]/)
+  const citationMatch = block.match(/citation:\s*['"`]([^'"`]+)['"`]/)
+  const hasAuthority = /authorityLevel:/.test(block)
+  const hasCanonicalId = /canonicalId:/.test(block)
+
+  if (!typeMatch || !citationMatch) return
+
+  const type = typeMatch[1]
+  const citation = citationMatch[1]
+
+  // Only warn for source types that should have these fields
+  if (!TYPED_SOURCES.includes(type)) return
+
+  if (!hasAuthority) {
+    warnings.push({
+      file: filePath,
+      lineNum,
+      field: 'authorityLevel',
+      value: citation,
+      rule: `Missing authorityLevel for ${type} entry`,
+    })
+  }
+
+  if (!hasCanonicalId) {
+    warnings.push({
+      file: filePath,
+      lineNum,
+      field: 'canonicalId',
+      value: citation,
+      rule: `Missing canonicalId for ${type} entry`,
+    })
+  }
 }
 
 // Files to scan
@@ -76,12 +187,9 @@ for (const file of filesToScan) {
   }
 }
 
-if (violations.length === 0) {
-  console.log('Citation lint: no violations found.')
-  process.exit(0)
-} else {
-  console.error(`Citation lint: ${violations.length} violation(s) found:\n`)
-  for (const v of violations) {
+function printIssues(label, issues) {
+  console.error(`${label}: ${issues.length} issue(s) found:\n`)
+  for (const v of issues) {
     const relPath = path.relative(root, v.file)
     console.error(`  ${relPath}:${v.lineNum}`)
     console.error(`    field: ${v.field}`)
@@ -89,5 +197,21 @@ if (violations.length === 0) {
     console.error(`    rule:  ${v.rule}`)
     console.error()
   }
+}
+
+if (violations.length > 0) {
+  printIssues('Citation lint violations', violations)
+}
+
+if (strict && warnings.length > 0) {
+  printIssues('Citation lint warnings (strict)', warnings)
+}
+
+const total = violations.length + (strict ? warnings.length : 0)
+
+if (total === 0) {
+  console.log(`Citation lint: clean.${strict ? ' (strict mode)' : ''}`)
+  process.exit(0)
+} else {
   process.exit(1)
 }
