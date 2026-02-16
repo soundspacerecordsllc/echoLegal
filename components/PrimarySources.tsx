@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { PrimarySourceEntry } from '@/lib/content-schema'
+import { normalizeCitationText, normalizeLabelText, AUTHORITY_LEVEL_WEIGHT } from '@/lib/citations/canon'
 
 interface PrimarySourcesProps {
   sources: PrimarySourceEntry[]
@@ -15,6 +16,32 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
 
   const isEnglish = lang === 'en'
   const title = isEnglish ? 'Primary legal sources' : 'Birincil hukuki kaynaklar'
+
+  // Runtime invariant: every source must carry authorityLevel and canonicalId.
+  // Hard fail. No silent degradation.
+  for (const source of sources) {
+    if (!source.authorityLevel) {
+      throw new Error(
+        `PrimarySource invariant violation: missing authorityLevel on "${source.citation}"`
+      )
+    }
+    if (!source.canonicalId) {
+      throw new Error(
+        `PrimarySource invariant violation: missing canonicalId on "${source.citation}"`
+      )
+    }
+    if (!(source.authorityLevel in AUTHORITY_LEVEL_WEIGHT)) {
+      throw new Error(
+        `PrimarySource invariant violation: unknown authorityLevel "${source.authorityLevel}" on "${source.citation}"`
+      )
+    }
+  }
+
+  // Normative hierarchy is structurally enforced.
+  // Ordering is non-discretionary.
+  const sorted = [...sources].sort((a, b) => {
+    return AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] - AUTHORITY_LEVEL_WEIGHT[b.authorityLevel]
+  })
 
   return (
     <section className="mb-10">
@@ -42,28 +69,38 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
         }`}
       >
         <ul className="space-y-2 text-sm text-gray-700 leading-relaxed pl-5">
-          {sources.map((source, index) => (
-            <li key={index} className="flex items-start gap-2">
-              <span className="text-gray-400 select-none mt-px">–</span>
-              <div>
-                {source.url ? (
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
-                  >
-                    {source.citation}
-                  </a>
-                ) : (
-                  <span>{source.citation}</span>
-                )}
-                {source.label && (
-                  <span className="text-gray-500 ml-1">— {source.label}</span>
-                )}
-              </div>
-            </li>
-          ))}
+          {sorted.map((source, index) => {
+            const citation = normalizeCitationText(source.citation)
+            const label = source.label ? normalizeLabelText(source.label) : undefined
+
+            return (
+              <li
+                key={index}
+                className="flex items-start gap-2"
+                data-canonical-id={source.canonicalId}
+                data-authority-tier={source.authorityLevel}
+              >
+                <span className="text-gray-400 select-none mt-px">–</span>
+                <div>
+                  {source.url ? (
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {citation}
+                    </a>
+                  ) : (
+                    <span>{citation}</span>
+                  )}
+                  {label && (
+                    <span className="text-gray-500 ml-1">— {label}</span>
+                  )}
+                </div>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

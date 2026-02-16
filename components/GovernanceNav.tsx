@@ -11,6 +11,11 @@ type GovernanceNavItem = {
 
 const GOVERNANCE_ITEMS: GovernanceNavItem[] = [
   {
+    labelEn: 'Governance',
+    labelTr: 'Yönetişim',
+    href: '/about/governance',
+  },
+  {
     labelEn: 'Charter',
     labelTr: 'Tüzük',
     href: '/about/charter',

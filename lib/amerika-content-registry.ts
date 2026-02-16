@@ -104,9 +104,9 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
     verificationRequired: true,
     sources: [
       {
-        title: 'Change of Status - 8 CFR 248',
+        title: 'Change of Status — 8 C.F.R. § 248',
         type: 'regulation',
-        citation: '8 CFR § 248'
+        citation: '8 C.F.R. § 248'
       },
       {
         title: 'Adjustment of Status - INA § 245',
@@ -208,7 +208,7 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
       {
         title: 'Internal Revenue Code',
         type: 'statute',
-        citation: '26 U.S.C.'
+        citation: 'Internal Revenue Code (26 U.S.C.)'
       },
       {
         title: 'IRS - International Taxpayers',
@@ -218,7 +218,7 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
       {
         title: 'US-Turkey Tax Treaty',
         type: 'treaty',
-        citation: 'TIAS 10205'
+        citation: 'U.S.–Turkey Income Tax Treaty, TIAS 10205 (1996)'
       }
     ],
     needsLexisResearch: [
@@ -271,6 +271,36 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
     sourceType: 'secondary',
     verificationRequired: false,
     sources: []
+  },
+  {
+    page: 'Foreign-Owned Single-Member LLC Reporting',
+    slug: 'foreign-owned-single-member-llc-reporting',
+    jurisdiction: 'US',
+    lastVerified: '2026-02-16',
+    sourceType: 'primary',
+    verificationRequired: true,
+    sources: [
+      {
+        title: '26 U.S.C. § 6038A',
+        type: 'statute',
+        citation: '26 U.S.C. § 6038A'
+      },
+      {
+        title: '26 C.F.R. § 1.6038A-1',
+        type: 'regulation',
+        citation: '26 C.F.R. § 1.6038A-1'
+      },
+      {
+        title: '26 U.S.C. § 6038A(d) — Penalty',
+        type: 'statute',
+        citation: '26 U.S.C. § 6038A(d)'
+      },
+      {
+        title: 'IRS Form 5472 Instructions',
+        url: 'https://www.irs.gov/forms-pubs/about-form-5472',
+        type: 'official'
+      }
+    ]
   }
 ]
 

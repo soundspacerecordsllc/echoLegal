@@ -263,10 +263,130 @@ export default async function CharterPage({
         </div>
       </section>
 
-      {/* Article V — Jurisdictional Expansion */}
+      {/* Article V — Normative Hierarchy and Authority Modeling */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-black mb-6">
-          {isEnglish ? 'Article V — Jurisdictional Expansion' : 'Madde V — Yargı Alanı Genişlemesi'}
+          {isEnglish ? 'Article V — Normative Hierarchy and Authority Modeling' : 'Madde V — Normatif Hiyerarşi ve Otorite Modelleme'}
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <p>
+            {isEnglish
+              ? 'EchoLegal treats legal authority as a layered system. All primary source analysis and source disclosure across the platform adheres to the following normative ordering:'
+              : 'EchoLegal, hukuki otoriteyi katmanlı bir sistem olarak ele alır. Platform genelindeki tüm birincil kaynak analizi ve kaynak açıklaması aşağıdaki normatif sıralamaya uyar:'}
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">i.</span>
+              <p>
+                <strong>{isEnglish ? 'Constitutional and statutory authority.' : 'Anayasal ve yasal otorite.'}</strong>{' '}
+                {isEnglish
+                  ? 'Enacted law — constitutional provisions and statutes — constitutes the highest tier of binding authority. Primary analysis begins here.'
+                  : 'Yürürlükteki hukuk — anayasal hükümler ve kanunlar — bağlayıcı otoritenin en üst kademesini oluşturur. Birincil analiz bu noktada başlar.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">ii.</span>
+              <p>
+                <strong>{isEnglish ? 'Implementing regulations.' : 'Uygulama yönetmelikleri.'}</strong>{' '}
+                {isEnglish
+                  ? 'Agency regulations promulgated under statutory delegation carry the force of law within their authorized scope, but may not exceed the statute.'
+                  : 'Yasal yetki devri kapsamında yayımlanan kurum düzenlemeleri, yetkilendirilmiş kapsamları dahilinde kanun gücü taşır, ancak kanunu aşamaz.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">iii.</span>
+              <p>
+                <strong>{isEnglish ? 'Administrative instruments.' : 'İdari araçlar.'}</strong>{' '}
+                {isEnglish
+                  ? 'Forms, instructions, and procedural directives operationalize statutory and regulatory requirements. They are interpretive, not independently binding.'
+                  : 'Formlar, talimatlar ve prosedürel direktifler yasal ve düzenleyici gereksinimleri işlevselleştirir. Yorumlayıcıdır, bağımsız olarak bağlayıcı değildir.'}
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5 font-mono text-sm">iv.</span>
+              <p>
+                <strong>{isEnglish ? 'Agency guidance and publications.' : 'Kurum rehberliği ve yayınlar.'}</strong>{' '}
+                {isEnglish
+                  ? 'Rulings, notices, and publications represent an agency\'s interpretive position. They provide context but lack the binding force of higher-tier authority.'
+                  : 'Kararlar, bildirimler ve yayınlar bir kurumun yorumlayıcı pozisyonunu temsil eder. Bağlam sağlar ancak üst kademe otoritenin bağlayıcı gücünden yoksundur.'}
+              </p>
+            </div>
+          </div>
+          <p>
+            {isEnglish
+              ? 'Lower-tier instruments cannot override higher-tier authority. The order in which sources are presented across the platform reflects this normative weight, not editorial discretion. Authority classification and canonical identifiers enforce this hierarchy structurally.'
+              : 'Alt kademe araçlar, üst kademe otoriteyi geçersiz kılamaz. Kaynakların platform genelinde sunulma sırası, editöryal takdir yetkisini değil, bu normatif ağırlığı yansıtır. Otorite sınıflandırması ve kanonik tanımlayıcılar bu hiyerarşiyi yapısal olarak uygular.'}
+          </p>
+
+          <div className="mt-8">
+            <h3 className="font-semibold text-black mb-4">
+              {isEnglish ? 'Section V.5 — Structural Authority Enforcement' : 'Bölüm V.5 — Yapısal Otorite Uygulaması'}
+            </h3>
+            <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-gray-900">
+              <p className="text-gray-800 mb-4">
+                {isEnglish
+                  ? 'The following rules are binding and non-discretionary. They apply to every entry that includes a primary source disclosure.'
+                  : 'Aşağıdaki kurallar bağlayıcı ve takdir yetkisine tabi değildir. Birincil kaynak açıklaması içeren her maddeye uygulanır.'}
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">i.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'All primary sources must be assigned an AuthorityLevel classification corresponding to their position in the normative hierarchy.'
+                      : 'Tüm birincil kaynaklar, normatif hiyerarşideki konumlarına karşılık gelen bir AuthorityLevel sınıflandırmasına atanmalıdır.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">ii.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'All primary sources must include a canonical identifier conforming to the Citation Canon specification.'
+                      : 'Tüm birincil kaynaklar, Atıf Kanonu spesifikasyonuna uygun bir kanonik tanımlayıcı içermelidir.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">iii.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Disclosure ordering must reflect normative authority weight. Sources are presented in descending order of legal precedence.'
+                      : 'Açıklama sıralaması normatif otorite ağırlığını yansıtmalıdır. Kaynaklar hukuki önceliğin azalan sırasına göre sunulur.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">iv.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Editorial discretion may not override tier precedence. The ordering of sources by authority weight is structurally enforced and not subject to editorial adjustment.'
+                      : 'Editöryal takdir yetkisi kademe önceliğini geçersiz kılamaz. Kaynakların otorite ağırlığına göre sıralanması yapısal olarak uygulanır ve editöryal düzenlemeye tabi değildir.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">v.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Entries lacking authority classification are incomplete and non-compliant. An entry may not be published until every primary source carries both an AuthorityLevel and a canonical identifier.'
+                      : 'Otorite sınıflandırması eksik olan maddeler tamamlanmamış ve uyumsuz kabul edilir. Her birincil kaynak hem AuthorityLevel hem de kanonik tanımlayıcı taşıyana kadar bir madde yayınlanamaz.'}
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-gray-400 mt-0.5 font-mono text-sm">vi.</span>
+                  <p className="text-gray-700">
+                    {isEnglish
+                      ? 'Lower-tier instruments cannot supersede higher-tier authority. Where a conflict exists between sources at different tiers, the higher-tier source controls.'
+                      : 'Alt kademe araçlar, üst kademe otoriteyi geçersiz kılamaz. Farklı kademelerdeki kaynaklar arasında bir çelişki bulunduğunda, üst kademe kaynak bağlayıcıdır.'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Article VI — Jurisdictional Expansion */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-black mb-6">
+          {isEnglish ? 'Article VI — Jurisdictional Expansion' : 'Madde VI — Yargı Alanı Genişlemesi'}
         </h2>
         <div className="space-y-4 text-gray-700">
           <p>
@@ -304,16 +424,16 @@ export default async function CharterPage({
         </div>
       </section>
 
-      {/* Article VI — Open Access Commitment */}
+      {/* Article VII — Open Access Commitment */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-black mb-6">
-          {isEnglish ? 'Article VI — Open Access Commitment' : 'Madde VI — Açık Erişim Taahhüdü'}
+          {isEnglish ? 'Article VII — Open Access Commitment' : 'Madde VII — Açık Erişim Taahhüdü'}
         </h2>
         <div className="space-y-4 text-gray-700">
           <p>
             {isEnglish
-              ? 'All encyclopedic content on EchoLegal — articles, guides, legal updates, and checklists — is freely accessible without registration, paywall, or usage restriction. This commitment is permanent and may not be revoked under Article VIII.'
-              : 'EchoLegal\'daki tüm ansiklopedik içerik — makaleler, rehberler, hukuki güncellemeler ve kontrol listeleri — kayıt, ödeme duvarı veya kullanım kısıtlaması olmaksızın serbestçe erişilebilirdir. Bu taahhüt kalıcıdır ve Madde VIII kapsamında geri alınamaz.'}
+              ? 'All encyclopedic content on EchoLegal — articles, guides, legal updates, and checklists — is freely accessible without registration, paywall, or usage restriction. This commitment is permanent and may not be revoked under Article IX.'
+              : 'EchoLegal\'daki tüm ansiklopedik içerik — makaleler, rehberler, hukuki güncellemeler ve kontrol listeleri — kayıt, ödeme duvarı veya kullanım kısıtlaması olmaksızın serbestçe erişilebilirdir. Bu taahhüt kalıcıdır ve Madde IX kapsamında geri alınamaz.'}
           </p>
           <p>
             {isEnglish
@@ -323,10 +443,10 @@ export default async function CharterPage({
         </div>
       </section>
 
-      {/* Article VII — Conflict of Interest */}
+      {/* Article VIII — Conflict of Interest */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-black mb-6">
-          {isEnglish ? 'Article VII — Conflict of Interest' : 'Madde VII — Çıkar Çatışması'}
+          {isEnglish ? 'Article VIII — Conflict of Interest' : 'Madde VIII — Çıkar Çatışması'}
         </h2>
         <div className="space-y-4 text-gray-700">
           <p>
@@ -342,15 +462,15 @@ export default async function CharterPage({
         </div>
       </section>
 
-      {/* Article VIII — Amendments */}
+      {/* Article IX — Amendments */}
       <section className="border-t border-gray-200 pt-8">
         <h2 className="text-2xl font-bold text-black mb-6">
-          {isEnglish ? 'Article VIII — Amendments' : 'Madde VIII — Değişiklikler'}
+          {isEnglish ? 'Article IX — Amendments' : 'Madde IX — Değişiklikler'}
         </h2>
         <p className="text-gray-700">
           {isEnglish
-            ? 'This charter may be amended by the Editorial Director with the advisory input of the Editorial Board. All amendments are documented with effective dates and made publicly available. The core mission statement (Article I) and open access commitment (Article VI) may not be revoked.'
-            : 'Bu tüzük, Yayın Kurulu\'nun danışma görüşüyle Editöryal Direktör tarafından değiştirilebilir. Tüm değişiklikler yürürlük tarihleriyle belgelenir ve kamuya açık hale getirilir. Temel misyon beyanı (Madde I) ve açık erişim taahhüdü (Madde VI) geri alınamaz.'}
+            ? 'This charter may be amended by the Editorial Director with the advisory input of the Editorial Board. All amendments are documented with effective dates and made publicly available. The core mission statement (Article I) and open access commitment (Article VII) may not be revoked.'
+            : 'Bu tüzük, Yayın Kurulu\'nun danışma görüşüyle Editöryal Direktör tarafından değiştirilebilir. Tüm değişiklikler yürürlük tarihleriyle belgelenir ve kamuya açık hale getirilir. Temel misyon beyanı (Madde I) ve açık erişim taahhüdü (Madde VII) geri alınamaz.'}
         </p>
       </section>
     </main>

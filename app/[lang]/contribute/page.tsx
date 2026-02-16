@@ -264,6 +264,52 @@ export default async function ContributePage({
           </div>
         </section>
 
+        {/* Editorial Infrastructure */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            {isEnglish ? 'Editorial Infrastructure' : 'Editöryal Altyapı'}
+          </h2>
+          <p className="text-gray-700 text-sm leading-relaxed mb-4">
+            {isEnglish
+              ? 'EchoLegal enforces a machine-verifiable citation standard across all primary source metadata. This infrastructure ensures formatting consistency, authority classification, and cross-reference integrity at the repository level.'
+              : 'EchoLegal, tüm birincil kaynak meta verileri genelinde makine tarafından doğrulanabilir bir atıf standardı uygular. Bu altyapı; biçimlendirme tutarlılığını, otorite sınıflandırmasını ve çapraz referans bütünlüğünü depo düzeyinde sağlar.'}
+          </p>
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5">&bull;</span>
+              <span>
+                {isEnglish
+                  ? 'Citation Canon v2 is the single source of truth for citation formatting in structured metadata fields.'
+                  : 'Citation Canon v2, yapılandırılmış meta veri alanlarında atıf biçimlendirmesi için tek doğru kaynaktır.'}
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5">&bull;</span>
+              <span>
+                {isEnglish
+                  ? 'Authority levels are recorded for each primary source, reflecting its position in the legal hierarchy.'
+                  : 'Her birincil kaynak için hukuki hiyerarşideki konumunu yansıtan otorite seviyeleri kaydedilir.'}
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5">&bull;</span>
+              <span>
+                {isEnglish
+                  ? 'Canonical identifiers are assigned deterministically to enable consistent cross-referencing across entries.'
+                  : 'Girdiler arasında tutarlı çapraz referanslamayı sağlamak için kanonik tanımlayıcılar deterministik olarak atanır.'}
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-gray-400 mt-0.5">&bull;</span>
+              <span>
+                {isEnglish
+                  ? 'Continuous integration enforces citation tests and strict lint on all pull requests that modify citation data.'
+                  : 'Sürekli entegrasyon, atıf verilerini değiştiren tüm pull request\'lerde atıf testlerini ve sıkı lint kontrolünü uygular.'}
+              </span>
+            </li>
+          </ul>
+        </section>
+
         {/* Contributor Process */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
