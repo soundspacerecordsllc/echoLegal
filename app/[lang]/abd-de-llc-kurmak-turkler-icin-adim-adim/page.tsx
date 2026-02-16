@@ -704,6 +704,54 @@ export default async function LLCGuidePage({
               </div>
             </section>
 
+            {/* References */}
+            <section className="mb-10">
+              <h2 className="text-lg font-bold text-black mb-3">
+                {isEnglish ? 'References' : 'Referanslar'}
+              </h2>
+              <ul className="list-disc list-inside space-y-2 text-sm text-gray-700 leading-relaxed">
+                <li>{isEnglish ? 'Applicable state limited liability company statutes (e.g., Delaware LLC Act, Wyoming LLC Act, New Mexico LLC Act)' : 'İlgili eyalet limited şirket (LLC) mevzuatı (ör. Delaware LLC Yasası, Wyoming LLC Yasası, New Mexico LLC Yasası)'}</li>
+                <li>{isEnglish ? 'Internal Revenue Code and Treasury Regulations on entity classification (check-the-box regulations)' : 'İç Gelir Kanunu ve Hazine Düzenlemeleri — tüzel kişilik sınıflandırması (check-the-box düzenlemeleri)'}</li>
+                <li>{isEnglish ? 'IRS authority and guidance on EIN issuance and taxpayer identification' : 'IRS\'nin EIN verilmesi ve vergi mükellefi kimliği konusundaki yetki ve rehberliği'}</li>
+                <li>{isEnglish ? 'FinCEN Beneficial Ownership Information reporting requirements under the Corporate Transparency Act' : 'Kurumsal Şeffaflık Yasası kapsamında FinCEN Gerçek Lehdar Bilgileri raporlama gereksinimleri'}</li>
+                <li>{isEnglish ? 'Federal immigration law (distinguishing entity formation from immigration status)' : 'Federal göçmenlik hukuku (tüzel kişilik kuruluşunun göçmenlik statüsünden ayrımı)'}</li>
+              </ul>
+            </section>
+
+            {/* Related Legal Entries */}
+            <section className="mb-12">
+              <h2 className="text-lg font-bold text-black mb-3">
+                {isEnglish ? 'Related Legal Entries' : 'İlgili Hukuki Maddeler'}
+              </h2>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href={`/${lang}/llc-mi-corporation-mi`} className="text-blue-600 hover:underline">
+                    {isEnglish ? 'LLC vs. Corporation: Legal Structure Comparison' : 'LLC mi Corporation mı: Hukuki Yapı Karşılaştırması'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`} className="text-blue-600 hover:underline">
+                    {isEnglish ? 'IRS, Tax Obligations, and W-8BEN / W-9 Realities' : 'IRS, Vergi Yükümlülükleri ve W-8BEN / W-9 Gerçekleri'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="text-blue-600 hover:underline">
+                    {isEnglish ? 'Opening a U.S. Bank Account' : 'ABD\'de Banka Hesabı Açmak'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/ein-itin-ssn-farki`} className="text-blue-600 hover:underline">
+                    {isEnglish ? 'EIN, ITIN, and SSN: Tax Identification Numbers' : 'EIN, ITIN ve SSN: Vergi Kimlik Numaraları'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`} className="text-blue-600 hover:underline">
+                    {isEnglish ? 'Essential Contracts for U.S. Business Operations' : 'ABD\'de İş Operasyonları İçin Temel Sözleşmeler'}
+                  </Link>
+                </li>
+              </ul>
+            </section>
+
             {/* Related Resources */}
             <section className="mb-12">
               <h2 className="text-xl font-bold text-black mb-4">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
