@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { getArticleMetadata } from '@/lib/article-metadata'
 import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
+import PrimarySources from '@/components/PrimarySources'
+import type { PrimarySourceEntry } from '@/lib/content-schema'
 
 const ARTICLE_SLUG = 'ein-itin-ssn-farki'
 
@@ -143,6 +145,38 @@ export default async function EinItinSsnPage({
       },
     ],
   }
+
+  const primarySources: PrimarySourceEntry[] = [
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 6109',
+      label: 'Identifying numbers — statutory requirement for tax identification',
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6109&num=0&edition=prelim',
+    },
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. § 301.6109-1',
+      label: 'Identifying numbers — regulatory implementation',
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-F/part-301/subpart-ECFRd43e1e5bf6e7513/section-301.6109-1',
+    },
+    {
+      type: 'USC',
+      citation: '42 U.S.C. § 405(c)(2)',
+      label: 'Social Security Numbers — issuance authority',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS Publication 1635',
+      label: 'Employer Identification Number — understanding your EIN',
+      url: 'https://www.irs.gov/publications/p1635',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS Form W-7 Instructions',
+      label: 'Application for IRS Individual Taxpayer Identification Number',
+      url: 'https://www.irs.gov/forms-pubs/about-form-w-7',
+    },
+  ]
 
   return (
     <>
@@ -711,6 +745,8 @@ export default async function EinItinSsnPage({
                 </div>
               </div>
             </section>
+
+            <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
             {/* Related Resources */}
             <section className="mb-12">
