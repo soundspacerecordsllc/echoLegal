@@ -40,7 +40,7 @@ export default function StarterKitCTA({
 
   if (variant === 'inline') {
     return (
-      <div className={`border border-gray-200 rounded-lg p-4 my-6 bg-gray-50 ${className}`}>
+      <div className={`border border-gray-200 p-4 my-6 bg-white ${className}`}>
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
             <h4 className="font-semibold text-black text-sm">{t.title}</h4>
@@ -60,7 +60,7 @@ export default function StarterKitCTA({
 
   if (variant === 'card') {
     return (
-      <div className={`border border-gray-200 rounded-lg p-6 bg-white shadow-sm ${className}`}>
+      <div className={`border border-gray-200 p-6 bg-white ${className}`}>
         <div className="flex items-start gap-3 mb-4">
           <div>
             <h3 className="font-bold text-black">{t.title}</h3>

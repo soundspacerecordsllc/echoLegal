@@ -22,7 +22,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
 
   if (variant === 'compact') {
     return (
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 my-8">
+      <div className="bg-white border border-gray-200 p-5 my-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h3 className="font-semibold text-gray-900">
@@ -37,14 +37,14 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
           <div className="flex gap-2">
             <a
               href={stripeLink}
-              className="px-4 py-2 bg-[#C9A227] text-white text-sm font-medium rounded-lg hover:bg-[#B8922A] transition-colors whitespace-nowrap"
+              className="px-4 py-2 bg-[#C9A227] text-white text-sm font-medium rounded hover:bg-[#B8922A] transition-colors whitespace-nowrap"
             >
               {isEnglish ? '$49 Pay' : '49 $ Destek'}
             </a>
             <a
               href={freeDownloadLink}
               download
-              className="px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors whitespace-nowrap"
+              className="px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded hover:bg-gray-700 transition-colors whitespace-nowrap"
             >
               {isEnglish ? 'Free' : 'Ücretsiz'}
             </a>
@@ -56,7 +56,7 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
 
   // Full variant - larger card for end of page
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 my-8">
+    <div className="bg-white border border-gray-200 p-6 my-8">
       <div className="text-center mb-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">
           {isEnglish ? 'US Business Starter Legal Kit' : 'ABD İş Başlangıç Hukuk Kiti'}
@@ -86,14 +86,14 @@ export default function KitCallout({ lang, variant = 'compact' }: KitCalloutProp
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <a
           href={stripeLink}
-          className="px-6 py-3 bg-[#C9A227] text-white font-semibold rounded-lg hover:bg-[#B8922A] transition-colors text-center"
+          className="px-6 py-3 bg-[#C9A227] text-white font-semibold rounded hover:bg-[#B8922A] transition-colors text-center"
         >
           {isEnglish ? '$49 Recommended' : '49 $ Önerilen'}
         </a>
         <a
           href={freeDownloadLink}
           download
-          className="px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors text-center"
+          className="px-6 py-3 bg-gray-800 text-white font-semibold rounded hover:bg-gray-700 transition-colors text-center"
         >
           {isEnglish ? 'Download Free' : 'Ücretsiz İndir'}
         </a>

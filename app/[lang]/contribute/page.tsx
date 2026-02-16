@@ -49,7 +49,7 @@ export default async function ContributePage({
             </Link>
             <Link
               href={`/${lang === 'en' ? 'tr' : 'en'}/contribute`}
-              className="border border-black rounded-full px-3 py-1 text-sm font-medium hover:bg-black hover:text-white transition-all"
+              className="border border-gray-900 px-3 py-1 text-sm font-medium hover:bg-gray-900 hover:text-white transition-all"
             >
               {isEnglish ? 'TR' : 'EN'}
             </Link>
@@ -63,7 +63,7 @@ export default async function ContributePage({
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
             {isEnglish ? 'Contribute to EchoLegal' : 'EchoLegal\'a Katkıda Bulunun'}
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-700 leading-relaxed">
             {isEnglish
               ? 'EchoLegal is a public legal reference library. Contributions to this platform constitute scholarly legal reference work, intended for long-term public access by legal professionals, institutions, and researchers.'
               : 'EchoLegal, bir kamu hukuk referans kütüphanesidir. Bu platforma yapılan katkılar, hukuk profesyonelleri, kurumlar ve araştırmacılar tarafından uzun vadeli kamusal erişim için tasarlanmış akademik hukuk referans çalışmalarıdır.'}
@@ -71,20 +71,22 @@ export default async function ContributePage({
         </div>
 
         {/* Scope and Purpose */}
-        <section className="mb-12 bg-blue-50 border border-blue-200 rounded-xl p-8">
+        <section className="mb-14">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             {isEnglish ? 'Scope and Purpose' : 'Kapsam ve Amaç'}
           </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            {isEnglish
-              ? 'EchoLegal provides structured, jurisdiction-tagged legal reference content designed for long-term citability by professionals, institutions, and automated systems. All entries follow standardized editorial protocols and are assigned persistent citation identifiers.'
-              : 'EchoLegal, profesyoneller, kurumlar ve otomatik sistemler tarafından uzun vadeli alıntılanabilirlik için tasarlanmış yapılandırılmış, yargı alanı etiketli hukuk referans içeriği sunar. Tüm girdiler standartlaştırılmış editöryal protokolleri takip eder ve kalıcı atıf tanımlayıcıları atanır.'}
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            {isEnglish
-              ? 'The platform currently covers US\u2013Turkey cross-border legal matters. Its architecture is designed to scale to additional jurisdictions and languages as qualified contributors are accepted.'
-              : 'Platform şu anda ABD-Türkiye sınır ötesi hukuki konuları kapsamaktadır. Altyapısı, nitelikli katkıda bulunanlar kabul edildikçe ek yargı alanlarına ve dillere ölçeklenebilir olarak tasarlanmıştır.'}
-          </p>
+          <div className="space-y-4">
+            <p className="text-gray-800 leading-relaxed">
+              {isEnglish
+                ? 'EchoLegal provides structured, jurisdiction-tagged legal reference content designed for long-term citability by professionals, institutions, and automated systems. All entries follow standardized editorial protocols and are assigned persistent citation identifiers.'
+                : 'EchoLegal, profesyoneller, kurumlar ve otomatik sistemler tarafından uzun vadeli alıntılanabilirlik için tasarlanmış yapılandırılmış, yargı alanı etiketli hukuk referans içeriği sunar. Tüm girdiler standartlaştırılmış editöryal protokolleri takip eder ve kalıcı atıf tanımlayıcıları atanır.'}
+            </p>
+            <p className="text-gray-800 leading-relaxed">
+              {isEnglish
+                ? 'The platform currently covers US\u2013Turkey cross-border legal matters. Its architecture is designed to scale to additional jurisdictions and languages as qualified contributors are accepted.'
+                : 'Platform şu anda ABD-Türkiye sınır ötesi hukuki konuları kapsamaktadır. Altyapısı, nitelikli katkıda bulunanlar kabul edildikçe ek yargı alanlarına ve dillere ölçeklenebilir olarak tasarlanmıştır.'}
+            </p>
+          </div>
         </section>
 
         {/* Contributor Eligibility */}
@@ -94,44 +96,44 @@ export default async function ContributePage({
           </h2>
 
           <div className="space-y-6">
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Licensed Attorneys' : 'Lisanslı Avukatlar'}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-700 text-sm leading-relaxed">
                 {isEnglish
                   ? 'Contributions are accepted only from attorneys with active bar membership in a recognized jurisdiction. Credentials are verified prior to any publication.'
                   : 'Katkılar yalnızca tanınmış bir yargı alanında aktif baro üyeliğine sahip avukatlardan kabul edilir. Kimlik bilgileri herhangi bir yayından önce doğrulanır.'}
               </p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Jurisdictional and Subject Matter Expertise' : 'Yargı Alanı ve Konu Uzmanlığı'}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-700 text-sm leading-relaxed">
                 {isEnglish
                   ? 'Demonstrated expertise in specific practice areas and jurisdictions is required. Contributors are expected to write within their areas of active practice and jurisdictional competence.'
                   : 'Belirli uygulama alanlarında ve yargı alanlarında kanıtlanmış uzmanlık gereklidir. Katkıda bulunanların aktif uygulama ve yargı yetkinlikleri dahilinde yazmaları beklenir.'}
               </p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Reference-Grade Writing' : 'Referans Düzeyinde Yazım'}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-700 text-sm leading-relaxed">
                 {isEnglish
                   ? 'All submissions must conform to a neutral, declarative, citation-ready writing standard. Content is structured for doctrinal reference, not commentary or advocacy.'
                   : 'Tüm gönderimler tarafsız, beyan edici, alıntıya hazır bir yazım standardına uygun olmalıdır. İçerik yorum veya savunuculuk için değil, doktriner referans için yapılandırılmıştır.'}
               </p>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Native Language Content' : 'Ana Dil İçeriği'}
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-700 text-sm leading-relaxed">
                 {isEnglish
                   ? 'Content authored by native speakers with command of legal terminology in their language is given priority. Accuracy of jurisdiction-specific terminology is required.'
                   : 'Kendi dillerinde hukuki terminolojiye hakim anadili konuşanlar tarafından yazılan içerik önceliklidir. Yargı alanına özgü terminolojinin doğruluğu gereklidir.'}
@@ -147,7 +149,7 @@ export default async function ContributePage({
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gray-50 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Encyclopedic Articles' : 'Ansiklopedik Makaleler'}
               </h3>
@@ -158,7 +160,7 @@ export default async function ContributePage({
               </p>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}
               </h3>
@@ -169,7 +171,7 @@ export default async function ContributePage({
               </p>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Checklists & Guides' : 'Kontrol Listeleri ve Rehberler'}
               </h3>
@@ -180,7 +182,7 @@ export default async function ContributePage({
               </p>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-6">
+            <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Review & Updates' : 'İnceleme ve Güncellemeler'}
               </h3>
@@ -378,7 +380,7 @@ export default async function ContributePage({
         </section>
 
         {/* Closing & Contact */}
-        <section className="bg-gray-50 border border-gray-200 rounded-xl p-8">
+        <section className="border-t border-gray-200 pt-10">
           <p className="text-gray-700 text-sm leading-relaxed mb-4">
             {isEnglish
               ? 'All contributions are subject to editorial review prior to publication. Publication on EchoLegal reflects adherence to the platform\u2019s editorial and structural standards. It does not constitute an endorsement of the contributor, their practice, or any legal position expressed.'

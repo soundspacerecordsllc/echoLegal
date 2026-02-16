@@ -46,7 +46,7 @@ export default async function Home({
               )}
             </h1>
 
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8 max-w-md">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-md">
               {isEnglish
                 ? 'EchoLegal is a bilingual legal encyclopedia with professionally drafted reference articles, templates, and guides. Founded by a New York-licensed attorney with dual legal education in Turkey and the United States.'
                 : 'EchoLegal, New York lisanslı ve Türkiye ile ABD\'de çifte hukuk eğitimi almış bir avukat tarafından kurulan iki dilli hukuk ansiklopedisidir. Profesyonelce hazırlanmış referans makaleleri, şablonlar ve rehberler içerir.'}
@@ -82,7 +82,7 @@ export default async function Home({
       </section>
 
       {/* Pillar Content Areas */}
-      <section className="py-16 md:py-20">
+      <section className="py-20 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-2xl font-semibold text-gray-900 mb-3 text-center">
             {isEnglish ? 'Core Reference Areas' : 'Temel Referans Alanları'}
@@ -206,17 +206,17 @@ export default async function Home({
       </section>
 
       {/* Content Categories */}
-      <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-100">
+      <section className="py-20 md:py-24 border-t border-gray-200">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-10 text-center">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-12 text-center">
             {isEnglish ? 'Browse by Content Type' : 'İçerik Türüne Göre İncele'}
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Reference articles explaining legal concepts, doctrines, and processes with precision and neutrality.'
                   : 'Hukuki kavramları, doktrinleri ve süreçleri hassasiyet ve tarafsızlıkla açıklayan referans makaleleri.'}
@@ -230,11 +230,11 @@ export default async function Home({
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
+            <div className="flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Templates' : 'Şablonlar'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Professionally drafted legal documents — contracts, agreements, and forms — with usage guidance.'
                   : 'Profesyonelce hazırlanmış hukuki belgeler — sözleşmeler, anlaşmalar ve formlar — kullanım rehberiyle.'}
@@ -248,11 +248,11 @@ export default async function Home({
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
+            <div className="flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Guides' : 'Rehberler'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Process-oriented explanations for navigating legal procedures and compliance matters.'
                   : 'Hukuki prosedürler ve uyum konularında yol gösterici süreç odaklı açıklamalar.'}
@@ -266,11 +266,11 @@ export default async function Home({
               </Link>
             </div>
 
-            <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm flex flex-col">
+            <div className="flex flex-col">
               <h3 className="text-base font-semibold text-gray-900 mb-2">
                 {isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Practical tools for document preparation, filing requirements, and procedural verification.'
                   : 'Belge hazırlama, dosyalama gereksinimleri ve prosedür doğrulama için pratik araçlar.'}
@@ -288,29 +288,29 @@ export default async function Home({
       </section>
 
       {/* About & Credentials */}
-      <section className="py-16 md:py-20 border-t border-gray-100">
+      <section className="py-20 md:py-24 border-t border-gray-200">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="section-label">
             {isEnglish ? 'About This Platform' : 'Bu Platform Hakkında'}
           </p>
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            {isEnglish ? 'Independent. Attorney-Founded. Free to Access.' : 'Bağımsız. Avukat Tarafından Kurulmuş. Erişime Açık.'}
+            {isEnglish ? 'Independent. Attorney-Founded. Open Access.' : 'Bağımsız. Avukat Tarafından Kurulmuş. Açık Erişim.'}
           </h2>
-          <div className="text-gray-600 leading-relaxed space-y-4">
+          <div className="text-gray-800 leading-relaxed space-y-4">
             <p>
               {isEnglish
-                ? 'EchoLegal is an independent legal knowledge platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. All content is written with attorney-level precision and reviewed for accuracy.'
-                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuki bilgi platformudur. Tüm içerikler avukat düzeyinde hassasiyetle yazılmış ve doğruluk açısından gözden geçirilmiştir.'}
+                ? 'EchoLegal is an independent legal reference platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. All content is authored with attorney-level precision and reviewed for accuracy.'
+                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuk referans platformudur. Tüm içerikler avukat düzeyinde hassasiyetle yazılmış ve doğruluk açısından gözden geçirilmiştir.'}
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-600">
               {isEnglish
-                ? 'This is legal information for educational purposes — not legal advice, and not a substitute for consultation with a licensed attorney in your jurisdiction.'
-                : 'Bu içerik eğitim amaçlı hukuki bilgidir — hukuki tavsiye değildir ve kendi yargı alanınızda lisanslı bir avukata danışmanın yerini tutmaz.'}
+                ? 'Content is published for reference and educational purposes. It does not constitute legal advice and is not a substitute for consultation with a licensed attorney in the relevant jurisdiction.'
+                : 'İçerik referans ve eğitim amaçlı yayınlanmaktadır. Hukuki tavsiye teşkil etmez ve ilgili yargı alanında lisanslı bir avukata danışmanın yerini tutmaz.'}
             </p>
           </div>
           <Link
             href={`/${lang}/about`}
-            className="arrow-link mt-6"
+            className="arrow-link mt-8"
           >
             {isEnglish ? 'About EchoLegal' : 'EchoLegal hakkında'}
             <span aria-hidden="true">&rarr;</span>
@@ -319,31 +319,31 @@ export default async function Home({
       </section>
 
       {/* Stats */}
-      <section className="py-12 border-t border-gray-100 bg-gray-50">
+      <section className="py-14 border-t border-gray-200">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <p className="text-3xl font-bold text-gray-900">50+</p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Templates' : 'Şablon'}
               </p>
             </div>
             <div>
               <p className="text-3xl font-bold text-gray-900">80+</p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Reference Articles' : 'Referans Makale'}
               </p>
             </div>
             <div>
               <p className="text-3xl font-bold text-gray-900">2</p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 {isEnglish ? 'Languages' : 'Dil'}
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-gray-900">∞</p>
-              <p className="text-sm text-gray-500 mt-1">
-                {isEnglish ? 'Free Access' : 'Ücretsiz Erişim'}
+              <p className="text-3xl font-bold text-gray-900">Open</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {isEnglish ? 'Access' : 'Erişim'}
               </p>
             </div>
           </div>
