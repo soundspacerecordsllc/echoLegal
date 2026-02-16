@@ -179,6 +179,17 @@ Prefer explicit IDs in data. Use derivation as a fallback or lint check.
 
 ---
 
+## Where this is enforced
+
+| Layer | Tool | What it checks |
+|---|---|---|
+| **Unit tests** | `node scripts/test-citation-canon.js` | Normalizer output for every formatting rule; `deriveCanonicalId()` output for every supported pattern. |
+| **Lint (strict)** | `node scripts/lint-citations.js --strict` | Citation field formatting violations (USC/CFR periods, § spacing, double spaces, range dashes) plus missing `authorityLevel` and `canonicalId` on typed entries. |
+| **CI** | `.github/workflows/citation-checks.yml` | Runs both checks above on every pull request that touches citation-related files. Both must pass before merge. |
+| **Render-time** | `components/PrimarySources.tsx` | Applies `normalizeCitationText()` and `normalizeLabelText()` at display time so minor data-entry inconsistencies are corrected without mutating source data. |
+
+---
+
 ## Adding a new citation
 
 1. Use the closest matching format from the rules above.

@@ -356,6 +356,81 @@ export default async function ContributorStandardsPage({
         </div>
       </section>
 
+      {/* Citation & Authority Standards */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-black mb-6">
+          {isEnglish ? 'Citation & Authority Standards (Canon v2)' : 'Atıf ve Otorite Standartları (Canon v2)'}
+        </h2>
+        <div className="space-y-4 text-gray-700">
+          <p>
+            {isEnglish
+              ? 'EchoLegal maintains a structured citation standard for all primary source metadata. This standard governs how statutes, regulations, treaties, and agency materials are recorded in citation fields and rendered in source disclosures.'
+              : 'EchoLegal, tüm birincil kaynak meta verileri için yapılandırılmış bir atıf standardı sürdürür. Bu standart; kanunların, düzenlemelerin, antlaşmaların ve kurum materyallerinin atıf alanlarında nasıl kaydedileceğini ve kaynak açıklamalarında nasıl gösterileceğini düzenler.'}
+          </p>
+
+          <div className="bg-gray-50 rounded-lg p-6 space-y-4">
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Authority Levels' : 'Otorite Seviyeleri'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Each primary source entry is classified by its position in the legal hierarchy (e.g., federal statute, federal regulation, treaty, agency guidance). This classification enables consistent weighting across entries and supports structured retrieval.'
+                  : 'Her birincil kaynak girdisi, hukuki hiyerarşideki konumuna göre sınıflandırılır (örn. federal kanun, federal düzenleme, antlaşma, kurum rehberliği). Bu sınıflandırma, girdiler arasında tutarlı ağırlıklandırmayı sağlar ve yapılandırılmış erişimi destekler.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Canonical Identifiers' : 'Kanonik Tanımlayıcılar'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Each source is assigned a deterministic, lowercase identifier (e.g., usc-26-7701-a, cfr-26-301.7701-1). These identifiers ensure consistency when the same authority is cited across multiple entries and enable cross-referencing.'
+                  : 'Her kaynağa deterministik, küçük harfli bir tanımlayıcı atanır (örn. usc-26-7701-a, cfr-26-301.7701-1). Bu tanımlayıcılar, aynı otorite birden fazla girdide atıf yapıldığında tutarlılığı sağlar ve çapraz referanslamayı mümkün kılar.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'Normalization Scope' : 'Normalizasyon Kapsamı'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'Citation normalization applies to structured citation fields and primary source metadata rendered in source disclosures. Narrative body text is not subject to automated normalization and follows conventional prose style.'
+                  : 'Atıf normalizasyonu, yapılandırılmış atıf alanlarına ve kaynak açıklamalarında gösterilen birincil kaynak meta verilerine uygulanır. Anlatımsal metin otomatik normalizasyona tabi değildir ve geleneksel düz yazı stilini takip eder.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold text-black mb-1">
+                {isEnglish ? 'PR Verification' : 'PR Doğrulaması'}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {isEnglish
+                  ? 'All pull requests that modify citation data must pass citation tests and strict lint checks before merge. These checks verify formatting compliance, authority level completeness, and canonical ID assignment.'
+                  : 'Atıf verilerini değiştiren tüm pull request\'ler, birleştirmeden önce atıf testlerini ve sıkı lint kontrollerini geçmelidir. Bu kontroller, biçimlendirme uyumluluğunu, otorite seviyesi bütünlüğünü ve kanonik kimlik atamasını doğrular.'}
+              </p>
+            </div>
+          </div>
+
+          <p className="text-sm text-gray-600">
+            {isEnglish
+              ? 'The full specification is maintained in the '
+              : 'Tam spesifikasyon '}
+            <Link
+              href="https://github.com/soundspacerecordsllc/echoLegal/blob/main/docs/CITATION_CANON.md"
+              className="text-gray-900 underline hover:opacity-60"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {isEnglish ? 'Citation Canon reference document' : 'Atıf Kanonu referans belgesinde'}
+            </Link>
+            {isEnglish ? '.' : ' tutulmaktadır.'}
+          </p>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="border-t border-gray-200 pt-8">
         <h2 className="text-lg font-bold text-black mb-4">

@@ -1,0 +1,39 @@
+name: Citation Checks
+
+on:
+  pull_request:
+    paths:
+      - 'lib/citations/**'
+      - 'lib/content-schema.ts'
+      - 'lib/amerika-content-registry.ts'
+      - 'components/PrimarySources.tsx'
+      - 'app/**/page.tsx'
+      - 'scripts/test-citation-canon.js'
+      - 'scripts/lint-citations.js'
+
+jobs:
+  citation-tests:
+    name: Citation Canon Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run citation canon tests
+        run: node scripts/test-citation-canon.js
+
+  citation-lint:
+    name: Citation Lint (Strict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run citation lint in strict mode
+        run: node scripts/lint-citations.js --strict
