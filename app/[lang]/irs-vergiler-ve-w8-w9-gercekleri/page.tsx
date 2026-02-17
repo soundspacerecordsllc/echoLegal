@@ -8,6 +8,8 @@ import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
 import AuthorBox from '@/components/AuthorBox'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
+import JudicialInterpretation from '@/components/JudicialInterpretation'
+import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 
 const ARTICLE_SLUG = 'irs-vergiler-ve-w8-w9-gercekleri'
 
@@ -68,6 +70,8 @@ export default async function TaxGuidePage({
     { id: 'yanlis-bilinenler', label: isEnglish ? 'Common Misconceptions' : 'Yaygın Yanlış Bilinenler' },
     { id: 'sss', label: isEnglish ? 'FAQ' : 'Sık Sorulan Sorular' },
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
+    { id: 'judicial-interpretation', label: isEnglish ? 'Judicial Interpretation (Selected)' : 'Yargısal Yorum (Seçilmiş)' },
+    { id: 'interpretive-notes', label: isEnglish ? 'Interpretive Notes' : 'Yorum Notları' },
   ]
 
   const articleMeta = getArticleMetadata(ARTICLE_SLUG)
@@ -123,6 +127,94 @@ export default async function TaxGuidePage({
   }
 
   const primarySources = getPrimarySources(ARTICLE_SLUG, isEnglish ? 'en' : 'tr')
+
+  const judicialEntries: JudicialEntry[] = [
+    {
+      citation: '26 U.S.C. § 1441',
+      summary: {
+        en: 'Imposes a 30% withholding obligation on US-source payments to nonresident aliens. This is the statutory foundation; treaty rates reduce but do not eliminate the underlying obligation.',
+        tr: 'ABD kaynaklı ödemelerden yerleşik olmayan yabancılara %30 stopaj yükümlülüğü getirir. Bu yasal temeldir; anlaşma oranları azaltır ancak temel yükümlülüğü ortadan kaldırmaz.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: '26 U.S.C. § 7701(b)',
+      summary: {
+        en: 'Defines "resident alien" and "nonresident alien" for federal tax purposes using the substantial presence test and green card test. Statutory definition controls over informal guidance.',
+        tr: 'Federal vergi amaçları için "mukim yabancı" ve "mukim olmayan yabancı" tanımlarını önemli varlık testi ve yeşil kart testi ile belirler. Yasal tanım gayri resmi rehberliğe göre geçerlidir.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: '26 C.F.R. § 1.1441-1',
+      summary: {
+        en: 'Treasury regulation implementing the withholding requirement. Specifies documentation (W-8 series), timing, and procedures for withholding agents.',
+        tr: 'Stopaj gereksinimini uygulayan Hazine yönetmeliği. Stopaj acenteleri için belgelendirme (W-8 serisi), zamanlama ve prosedürleri belirtir.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: 'U.S.–Turkey Income Tax Treaty (1996)',
+      summary: {
+        en: 'Bilateral treaty reducing withholding rates on certain income categories (dividends, interest, royalties) between the US and Turkey. Treaty benefits must be affirmatively claimed.',
+        tr: 'ABD ve Türkiye arasında belirli gelir kategorilerinde (temettü, faiz, telif hakları) stopaj oranlarını düşüren ikili anlaşma. Anlaşma avantajları aktif olarak talep edilmelidir.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: 'IRS Publication 515 (Rev. 2024)',
+      summary: {
+        en: 'Agency publication summarising withholding rules for foreign persons. Useful reference but does not have the force of law; where it conflicts with statute or regulation, the higher source controls.',
+        tr: 'Yabancı kişiler için stopaj kurallarını özetleyen kurum yayını. Faydalı referanstır ancak kanun hükmünde değildir; kanun veya yönetmelikle çatıştığında üst kaynak geçerlidir.',
+      },
+      weight: 'persuasive',
+    },
+  ]
+
+  const conflictNotes: InterpretiveNote[] = [
+    {
+      en: 'Where the Internal Revenue Code imposes a 30% withholding rate and a treaty provides a lower rate, the treaty rate applies — but only if the payee provides valid documentation (W-8BEN or W-8BEN-E) claiming treaty benefits.',
+      tr: 'İç Gelir Kanunu %30 stopaj oranı öngördüğünde ve bir anlaşma daha düşük bir oran sağladığında anlaşma oranı uygulanır — ancak yalnızca alacaklı anlaşma avantajlarını talep eden geçerli belgeleri (W-8BEN veya W-8BEN-E) sunarsa.',
+    },
+    {
+      en: 'IRS publications may lag behind statutory or regulatory changes. If Publication 515 states a rule that conflicts with a more recent amendment to § 1441, the amended statute governs.',
+      tr: 'IRS yayınları yasal veya düzenleyici değişikliklerin gerisinde kalabilir. Yayın 515, § 1441\'deki daha yeni bir değişiklikle çatışan bir kural belirtirse, değiştirilen kanun geçerlidir.',
+    },
+    {
+      en: 'Treaty provisions are self-executing in the US under the Supremacy Clause, but the IRS may require specific procedural steps (e.g., filing Form 8833) to claim treaty-based positions.',
+      tr: 'Anlaşma hükümleri ABD\'de Üstünlük Maddesi kapsamında doğrudan uygulanır, ancak IRS, anlaşma temelli pozisyonları talep etmek için belirli prosedür adımları (örn. Form 8833 dosyalama) gerektirebilir.',
+    },
+  ]
+
+  const resolves: ResolutionBullet[] = [
+    {
+      en: 'Which form a foreign individual vs. a foreign entity must sign (W-8BEN vs. W-8BEN-E).',
+      tr: 'Yabancı bireyin ve yabancı kuruluşun hangi formu imzalaması gerektiği (W-8BEN vs. W-8BEN-E).',
+    },
+    {
+      en: 'The default 30% withholding rate for payments to foreign persons under § 1441.',
+      tr: '§ 1441 kapsamında yabancılara yapılan ödemeler için varsayılan %30 stopaj oranı.',
+    },
+    {
+      en: 'That the US-Turkey treaty may reduce (not eliminate) withholding on specific income types.',
+      tr: 'ABD-Türkiye anlaşmasının belirli gelir türlerinde stopajı azaltabileceği (ortadan kaldırmayacağı).',
+    },
+  ]
+
+  const doesNotResolve: ResolutionBullet[] = [
+    {
+      en: 'Individual eligibility for specific treaty benefits (fact-specific; requires professional analysis).',
+      tr: 'Belirli anlaşma avantajları için bireysel uygunluk (duruma bağlı; profesyonel analiz gerektirir).',
+    },
+    {
+      en: 'Whether a particular payment constitutes US-source income (depends on the nature of the service and where it is performed).',
+      tr: 'Belirli bir ödemenin ABD kaynaklı gelir oluşturup oluşturmadığı (hizmetin niteliğine ve nerede gerçekleştirildiğine bağlıdır).',
+    },
+    {
+      en: 'State-level income tax obligations, which exist independently of federal withholding rules.',
+      tr: 'Federal stopaj kurallarından bağımsız olarak var olan eyalet düzeyinde gelir vergisi yükümlülükleri.',
+    },
+  ]
 
   return (
     <>
@@ -721,6 +813,16 @@ export default async function TaxGuidePage({
                 </div>
               </div>
             </section>
+
+            {/* Sections 8–9: Judicial Interpretation & Interpretive Notes */}
+            <JudicialInterpretation
+              lang={isEnglish ? 'en' : 'tr'}
+              entries={judicialEntries}
+              conflictNotes={conflictNotes}
+              resolves={resolves}
+              doesNotResolve={doesNotResolve}
+              sectionNumber="8"
+            />
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 

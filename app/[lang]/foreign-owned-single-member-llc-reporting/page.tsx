@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
+import JudicialInterpretation from '@/components/JudicialInterpretation'
+import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 
 const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
 
@@ -76,10 +78,84 @@ export default async function ForeignOwnedSMLLCReportingPage({
     { id: 'reporting-independent-of-income', label: isEnglish ? 'Reporting Obligation Independent of Income' : 'Gelirden Bağımsız Raporlama Yükümlülüğü' },
     { id: 'filing-mechanics', label: isEnglish ? 'Filing Mechanics' : 'Beyanname Mekaniği' },
     { id: 'penalty-framework', label: isEnglish ? 'Penalty Framework' : 'Ceza Çerçevesi' },
+    { id: 'judicial-interpretation', label: isEnglish ? 'Judicial Interpretation (Selected)' : 'Yargısal Yorum (Seçilmiş)' },
+    { id: 'interpretive-notes', label: isEnglish ? 'Interpretive Notes' : 'Yorum Notları' },
     { id: 'cross-references', label: isEnglish ? 'Cross-References' : 'Çapraz Referanslar' },
   ]
 
   const primarySources = getPrimarySources(ENTRY_SLUG, isEnglish ? 'en' : 'tr')
+
+  const judicialEntries: JudicialEntry[] = [
+    {
+      citation: '26 U.S.C. § 6038A',
+      summary: {
+        en: 'Establishes the mandatory information reporting obligation for 25%-or-more foreign-owned domestic corporations. Statute controls; no agency guidance can narrow or expand this obligation.',
+        tr: 'Yüzde 25 veya daha fazla yabancı sermayeli yerli şirketler için zorunlu bilgi raporlama yükümlülüğünü oluşturur. Kanun belirleyicidir; hiçbir kurum rehberliği bu yükümlülüğü daraltamaz veya genişletemez.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: '26 C.F.R. § 1.6038A-1 (T.D. 9796, 2016)',
+      summary: {
+        en: 'Treasury regulation extending § 6038A to foreign-owned disregarded entities. Issued under notice-and-comment rulemaking; has the force and effect of law.',
+        tr: 'Hazine yönetmeliği, § 6038A kapsamını yabancı sermayeli dikkate alınmayan varlıklara genişletir. Bildirim ve yorum yöntemiyle çıkarılmıştır; kanun hükmünde ve etkisindedir.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: 'IRS Form 5472 Instructions (Rev. 2024)',
+      summary: {
+        en: 'IRS administrative guidance detailing reportable transaction categories, line-by-line procedures, and the pro forma 1120 requirement. Persuasive but does not override statute or regulation.',
+        tr: 'IRS idari rehberliği; raporlanabilir işlem kategorilerini, satır satır prosedürleri ve pro forma 1120 gereksinimini detaylandırır. İkna edicidir ancak kanun veya yönetmeliği geçersiz kılmaz.',
+      },
+      weight: 'persuasive',
+    },
+  ]
+
+  const conflictNotes: InterpretiveNote[] = [
+    {
+      en: 'Statutes enacted by Congress are the highest domestic authority. If a Treasury regulation conflicts with the statute it purports to implement, the statute prevails.',
+      tr: 'Kongre tarafından çıkarılan kanunlar en yüksek iç hukuk otoritesidir. Bir Hazine yönetmeliği, uygulamayı amaçladığı kanunla çatışırsa kanun geçerlidir.',
+    },
+    {
+      en: 'Regulations issued through notice-and-comment rulemaking (such as T.D. 9796) carry the force of law. Courts accord them Chevron deference where the statute is ambiguous.',
+      tr: 'Bildirim ve yorum yöntemiyle çıkarılan yönetmelikler (T.D. 9796 gibi) kanun hükmündedir. Kanunun belirsiz olduğu durumlarda mahkemeler Chevron saygısı gösterir.',
+    },
+    {
+      en: 'IRS instructions and publications are informal guidance. Courts may consider them but are not bound by them. Where instructions conflict with the Code or regulations, the higher-tier source controls.',
+      tr: 'IRS talimatları ve yayınları gayri resmi rehberliktir. Mahkemeler bunları değerlendirebilir ancak bağlı değildir. Talimatlar Kanun veya yönetmeliklerle çatıştığında üst kademe kaynak geçerlidir.',
+    },
+  ]
+
+  const resolves: ResolutionBullet[] = [
+    {
+      en: 'Whether a foreign-owned single-member LLC must file Form 5472 (yes, per statute and regulation).',
+      tr: 'Yabancı sermayeli tek üyeli LLC\'nin Form 5472 dosyalaması gerekip gerekmediği (kanun ve yönetmelik gereği evet).',
+    },
+    {
+      en: 'Whether the filing obligation exists absent taxable income (yes; it is an information return).',
+      tr: 'Vergiye tabi gelir olmaksızın dosyalama yükümlülüğünün var olup olmadığı (evet; bu bir bilgi beyannamesidir).',
+    },
+    {
+      en: 'The base penalty amount for non-compliance ($25,000 per return per year, per statute).',
+      tr: 'Uyumsuzluk için taban ceza tutarı (kanun gereği yıllık beyanname başına 25.000 dolar).',
+    },
+  ]
+
+  const doesNotResolve: ResolutionBullet[] = [
+    {
+      en: 'Whether reasonable cause relief is available for late-filed Forms 5472 (fact-specific; see IRS procedures).',
+      tr: 'Geç dosyalanan Form 5472 için makul neden muafiyetinin mevcut olup olmadığı (duruma bağlı; IRS prosedürlerine bakınız).',
+    },
+    {
+      en: 'State-level reporting obligations that may apply independently of federal requirements.',
+      tr: 'Federal gereksinimlerden bağımsız olarak uygulanabilecek eyalet düzeyinde raporlama yükümlülükleri.',
+    },
+    {
+      en: 'Transfer pricing implications for transactions reported on Form 5472.',
+      tr: 'Form 5472\'de raporlanan işlemler için transfer fiyatlandırması etkileri.',
+    },
+  ]
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -615,11 +691,23 @@ export default async function ForeignOwnedSMLLCReportingPage({
             </section>
 
             {/* ================================================================
-                SECTION 5: CROSS-REFERENCES
+                SECTIONS 8–9: JUDICIAL INTERPRETATION & INTERPRETIVE NOTES
+                ================================================================ */}
+            <JudicialInterpretation
+              lang={isEnglish ? 'en' : 'tr'}
+              entries={judicialEntries}
+              conflictNotes={conflictNotes}
+              resolves={resolves}
+              doesNotResolve={doesNotResolve}
+              sectionNumber="8"
+            />
+
+            {/* ================================================================
+                SECTION 10: CROSS-REFERENCES
                 ================================================================ */}
             <section id="cross-references" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                {isEnglish ? '8. Cross-References' : '8. Çapraz Referanslar'}
+                {isEnglish ? '10. Cross-References' : '10. Çapraz Referanslar'}
               </h2>
               <div className="bg-gray-50 rounded-lg p-5">
                 <ul className="space-y-2 text-sm text-gray-700 font-mono">
