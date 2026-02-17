@@ -10,6 +10,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
+import ConflictPrecedence from '@/components/ConflictPrecedence'
+import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
 
 const ARTICLE_SLUG = 'irs-vergiler-ve-w8-w9-gercekleri'
 
@@ -72,6 +74,8 @@ export default async function TaxGuidePage({
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
     { id: 'judicial-interpretation', label: isEnglish ? 'Judicial Interpretation (Selected)' : 'Yargısal Yorum (Seçilmiş)' },
     { id: 'interpretive-notes', label: isEnglish ? 'Interpretive Notes' : 'Yorum Notları' },
+    { id: 'conflict-precedence', label: isEnglish ? 'Conflict Resolution & Authority Precedence' : 'Çatışma Çözümü ve Yetki Önceliği' },
+    { id: 'illustrative-judicial-treatment', label: isEnglish ? 'Illustrative Judicial Treatment' : 'Seçilmiş Yargısal Yaklaşım Örnekleri' },
   ]
 
   const articleMeta = getArticleMetadata(ARTICLE_SLUG)
@@ -213,6 +217,42 @@ export default async function TaxGuidePage({
     {
       en: 'State-level income tax obligations, which exist independently of federal withholding rules.',
       tr: 'Federal stopaj kurallarından bağımsız olarak var olan eyalet düzeyinde gelir vergisi yükümlülükleri.',
+    },
+  ]
+
+  const caseIllustrations: CaseIllustration[] = [
+    {
+      citation: 'Boulez v. Commissioner, 83 T.C. 584 (1984)',
+      principle: {
+        en: 'Tax treaty provisions operate to reduce statutory withholding rates only when properly claimed. The taxpayer bears the burden of establishing entitlement to treaty benefits through adequate documentation.',
+        tr: 'Vergi anlaşması hükümleri, yalnızca usulüne uygun şekilde talep edildiğinde yasal stopaj oranlarını düşürmek için işler. Mükellef, anlaşma avantajlarına hak kazandığını yeterli belgelerle ispat yükü altındadır.',
+      },
+    },
+    {
+      citation: 'National Muffler Dealers Association v. United States, 440 U.S. 472 (1979)',
+      principle: {
+        en: 'Courts evaluate the validity of Treasury regulations by examining whether the regulation harmonises with the statute\'s plain language, legislative history, and underlying purpose. A regulation that contradicts the statute it purports to implement is invalid.',
+        tr: 'Mahkemeler, Hazine yönetmeliklerinin geçerliliğini, yönetmeliğin kanunun düz metni, yasama tarihi ve temel amacıyla uyum sağlayıp sağlamadığını inceleyerek değerlendirir. Uygulamayı amaçladığı kanunla çelişen bir yönetmelik geçersizdir.',
+      },
+    },
+  ]
+
+  const unresolvedItems: UnresolvedItem[] = [
+    {
+      en: 'Factual determination of whether a payee qualifies as a "resident" or "nonresident" under the substantial presence test.',
+      tr: 'Bir alacaklının önemli varlık testi kapsamında "mukim" veya "mukim olmayan" olarak nitelendirilip nitelendirilmeyeceğine ilişkin olgusal tespit.',
+    },
+    {
+      en: 'Classification of specific income types (e.g., whether a payment constitutes "royalty" or "service fee" under the treaty).',
+      tr: 'Belirli gelir türlerinin sınıflandırılması (örn. bir ödemenin anlaşma kapsamında "telif hakkı" mı yoksa "hizmet bedeli" mi olduğu).',
+    },
+    {
+      en: 'Procedural requirements for claiming treaty benefits on specific return forms.',
+      tr: 'Belirli beyanname formlarında anlaşma avantajlarını talep etmeye ilişkin usul gereksinimleri.',
+    },
+    {
+      en: 'Evidentiary burden in disputes over withholding agent liability.',
+      tr: 'Stopaj acentesi sorumluluğuna ilişkin uyuşmazlıklarda ispat yükü.',
     },
   ]
 
@@ -822,6 +862,14 @@ export default async function TaxGuidePage({
               resolves={resolves}
               doesNotResolve={doesNotResolve}
               sectionNumber="8"
+            />
+
+            {/* Sections 10–11: Conflict Precedence & Case Illustrations */}
+            <ConflictPrecedence
+              lang={isEnglish ? 'en' : 'tr'}
+              caseIllustrations={caseIllustrations}
+              unresolvedItems={unresolvedItems}
+              sectionNumber="10"
             />
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
