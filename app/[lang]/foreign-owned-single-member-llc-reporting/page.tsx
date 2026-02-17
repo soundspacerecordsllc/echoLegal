@@ -7,6 +7,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
+import ConflictPrecedence from '@/components/ConflictPrecedence'
+import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
 
 const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
 
@@ -80,6 +82,8 @@ export default async function ForeignOwnedSMLLCReportingPage({
     { id: 'penalty-framework', label: isEnglish ? 'Penalty Framework' : 'Ceza Çerçevesi' },
     { id: 'judicial-interpretation', label: isEnglish ? 'Judicial Interpretation (Selected)' : 'Yargısal Yorum (Seçilmiş)' },
     { id: 'interpretive-notes', label: isEnglish ? 'Interpretive Notes' : 'Yorum Notları' },
+    { id: 'conflict-precedence', label: isEnglish ? 'Conflict Resolution & Authority Precedence' : 'Çatışma Çözümü ve Yetki Önceliği' },
+    { id: 'illustrative-judicial-treatment', label: isEnglish ? 'Illustrative Judicial Treatment' : 'Seçilmiş Yargısal Yaklaşım Örnekleri' },
     { id: 'cross-references', label: isEnglish ? 'Cross-References' : 'Çapraz Referanslar' },
   ]
 
@@ -154,6 +158,42 @@ export default async function ForeignOwnedSMLLCReportingPage({
     {
       en: 'Transfer pricing implications for transactions reported on Form 5472.',
       tr: 'Form 5472\'de raporlanan işlemler için transfer fiyatlandırması etkileri.',
+    },
+  ]
+
+  const caseIllustrations: CaseIllustration[] = [
+    {
+      citation: 'Chevron U.S.A., Inc. v. Natural Resources Defense Council, Inc., 467 U.S. 837 (1984)',
+      principle: {
+        en: 'Where a statute is ambiguous and the implementing agency has issued a regulation through notice-and-comment rulemaking, courts defer to the agency\'s reasonable interpretation. Treasury regulations issued under § 6038A receive this deference.',
+        tr: 'Kanun belirsiz olduğunda ve uygulayıcı kurum bildirim ve yorum yöntemiyle yönetmelik çıkardığında, mahkemeler kurumun makul yorumuna saygı gösterir. § 6038A kapsamında çıkarılan Hazine yönetmelikleri bu saygıyı alır.',
+      },
+    },
+    {
+      citation: 'Mayo Foundation for Medical Education & Research v. United States, 562 U.S. 44 (2011)',
+      principle: {
+        en: 'Treasury regulations promulgated through notice-and-comment procedures are entitled to judicial deference under the same standard as other agency regulations, regardless of whether the authorizing statute uses general or specific rulemaking language.',
+        tr: 'Bildirim ve yorum prosedürleriyle çıkarılan Hazine yönetmelikleri, yetkilendiren kanunun genel veya özel düzenleme dili kullanıp kullanmadığına bakılmaksızın, diğer kurum yönetmelikleriyle aynı standart kapsamında yargısal saygıya tabidir.',
+      },
+    },
+  ]
+
+  const unresolvedItems: UnresolvedItem[] = [
+    {
+      en: 'Factual disputes regarding whether a specific transaction qualifies as "reportable" under the Form 5472 Instructions.',
+      tr: 'Belirli bir işlemin Form 5472 Talimatları kapsamında "raporlanabilir" niteliğinde olup olmadığına ilişkin olgusal uyuşmazlıklar.',
+    },
+    {
+      en: 'Procedural posture and burden-of-proof allocation in penalty abatement proceedings.',
+      tr: 'Ceza indirimi işlemlerinde usul durumu ve ispat yükü dağılımı.',
+    },
+    {
+      en: 'Evidentiary standards for establishing "reasonable cause" to avoid § 6038A(d) penalties.',
+      tr: '§ 6038A(d) cezalarından kaçınmak için "makul neden" ispatına ilişkin delil standartları.',
+    },
+    {
+      en: 'Foreign-law characterisation of entities that may affect US classification under the check-the-box regulations.',
+      tr: 'Check-the-box düzenlemeleri kapsamında ABD sınıflandırmasını etkileyebilecek yabancı hukuk kapsamında tüzel kişilik nitelendirmesi.',
     },
   ]
 
@@ -703,11 +743,21 @@ export default async function ForeignOwnedSMLLCReportingPage({
             />
 
             {/* ================================================================
-                SECTION 10: CROSS-REFERENCES
+                SECTIONS 10–11: CONFLICT PRECEDENCE & CASE ILLUSTRATIONS
+                ================================================================ */}
+            <ConflictPrecedence
+              lang={isEnglish ? 'en' : 'tr'}
+              caseIllustrations={caseIllustrations}
+              unresolvedItems={unresolvedItems}
+              sectionNumber="10"
+            />
+
+            {/* ================================================================
+                SECTION 12: CROSS-REFERENCES
                 ================================================================ */}
             <section id="cross-references" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                {isEnglish ? '10. Cross-References' : '10. Çapraz Referanslar'}
+                {isEnglish ? '12. Cross-References' : '12. Çapraz Referanslar'}
               </h2>
               <div className="bg-gray-50 rounded-lg p-5">
                 <ul className="space-y-2 text-sm text-gray-700 font-mono">

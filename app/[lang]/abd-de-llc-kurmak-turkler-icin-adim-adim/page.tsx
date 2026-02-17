@@ -10,6 +10,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
+import ConflictPrecedence from '@/components/ConflictPrecedence'
+import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
 
 const ARTICLE_SLUG = 'abd-de-llc-kurmak-turkler-icin-adim-adim'
 
@@ -74,6 +76,8 @@ export default async function LLCGuidePage({
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
     { id: 'judicial-interpretation', label: isEnglish ? 'Judicial Interpretation (Selected)' : 'Yargısal Yorum (Seçilmiş)' },
     { id: 'interpretive-notes', label: isEnglish ? 'Interpretive Notes' : 'Yorum Notları' },
+    { id: 'conflict-precedence', label: isEnglish ? 'Conflict Resolution & Authority Precedence' : 'Çatışma Çözümü ve Yetki Önceliği' },
+    { id: 'illustrative-judicial-treatment', label: isEnglish ? 'Illustrative Judicial Treatment' : 'Seçilmiş Yargısal Yaklaşım Örnekleri' },
   ]
 
   const articleMeta = getArticleMetadata(ARTICLE_SLUG)
@@ -215,6 +219,42 @@ export default async function LLCGuidePage({
     {
       en: 'Immigration implications of LLC ownership (LLC formation confers no immigration benefit).',
       tr: 'LLC sahipliğinin göçmenlik etkileri (LLC kuruluşu hiçbir göçmenlik avantajı sağlamaz).',
+    },
+  ]
+
+  const caseIllustrations: CaseIllustration[] = [
+    {
+      citation: 'Littriello v. United States, 484 F.3d 372 (6th Cir. 2007)',
+      principle: {
+        en: 'State-law entity classification does not control federal tax treatment. The check-the-box regulations provide the exclusive framework for determining how an LLC is taxed at the federal level, regardless of how state law characterises the entity.',
+        tr: 'Eyalet hukuku kapsamındaki tüzel kişilik sınıflandırması federal vergi uygulamasını belirlemez. Check-the-box düzenlemeleri, eyalet hukukunun kuruluşu nasıl nitelendirdiğinden bağımsız olarak, bir LLC\'nin federal düzeyde nasıl vergilendirileceğini belirleyen münhasır çerçeveyi sağlar.',
+      },
+    },
+    {
+      citation: 'McNamee v. Department of the Treasury, 488 F.3d 100 (2d Cir. 2007)',
+      principle: {
+        en: 'An LLC\'s limited liability protection under state law does not automatically confer any particular tax status under federal law. Federal tax classification is determined exclusively by the Treasury regulations, not by the state-law characteristics of the entity.',
+        tr: 'Eyalet hukuku kapsamında bir LLC\'nin sınırlı sorumluluk koruması, federal hukuk kapsamında otomatik olarak belirli bir vergi statüsü sağlamaz. Federal vergi sınıflandırması, tüzel kişiliğin eyalet hukuku özelliklerine göre değil, münhasıran Hazine yönetmelikleri tarafından belirlenir.',
+      },
+    },
+  ]
+
+  const unresolvedItems: UnresolvedItem[] = [
+    {
+      en: 'Whether a specific business activity creates "nexus" sufficient to trigger state-level tax or registration obligations.',
+      tr: 'Belirli bir ticari faaliyetin, eyalet düzeyinde vergi veya tescil yükümlülüklerini tetikleyecek yeterli "bağlantı" (nexus) oluşturup oluşturmadığı.',
+    },
+    {
+      en: 'Factual determination of whether a foreign owner\'s involvement constitutes a "trade or business" within the United States.',
+      tr: 'Yabancı sahibin katılımının ABD sınırları içinde "ticaret veya iş" oluşturup oluşturmadığına ilişkin olgusal tespit.',
+    },
+    {
+      en: 'Choice-of-entity analysis for specific business models (requires professional assessment of individual circumstances).',
+      tr: 'Belirli iş modelleri için tüzel kişilik seçimi analizi (bireysel koşulların profesyonel değerlendirmesini gerektirir).',
+    },
+    {
+      en: 'Application of the "economic substance doctrine" to specific LLC structures or transactions.',
+      tr: '"Ekonomik öz doktrini"nin belirli LLC yapılarına veya işlemlerine uygulanması.',
     },
   ]
 
@@ -822,6 +862,14 @@ export default async function LLCGuidePage({
               resolves={resolves}
               doesNotResolve={doesNotResolve}
               sectionNumber="9"
+            />
+
+            {/* Sections 11–12: Conflict Precedence & Case Illustrations */}
+            <ConflictPrecedence
+              lang={isEnglish ? 'en' : 'tr'}
+              caseIllustrations={caseIllustrations}
+              unresolvedItems={unresolvedItems}
+              sectionNumber="11"
             />
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
