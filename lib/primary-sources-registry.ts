@@ -31,6 +31,18 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
   'foreign-owned-single-member-llc-reporting': [
     {
       type: 'USC',
+      citation: '26 U.S.C. § 7701(a)',
+      label: {
+        en: 'Definitions — entity classification and domestic/foreign status',
+        tr: 'Tanımlar — tüzel kişilik sınıflandırması ve yerli/yabancı statüsü',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7701&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-7701-a',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
       citation: '26 U.S.C. § 6038A',
       label: {
         en: 'Information with respect to certain foreign-owned corporations',
@@ -39,6 +51,30 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6038A&num=0&edition=prelim',
       authorityLevel: 'federal_statute',
       canonicalId: 'US-26USC-6038A',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 6038A(d)',
+      label: {
+        en: 'Penalty for failure to furnish information or maintain records',
+        tr: 'Bilgi sağlama veya kayıt tutma başarısızlığı cezası',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6038A&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-6038A-d',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. §§ 301.7701-1 through 301.7701-3',
+      label: {
+        en: 'Entity classification regulations (check-the-box)',
+        tr: 'Tüzel kişilik sınıflandırma düzenlemeleri (check-the-box)',
+      },
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-F/part-301/subpart-ECFRd43e1e5bf6e7513/subject-group-ECFRa28caacb356462e',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-26CFR-301.7701',
       jurisdiction: 'US',
     },
     {
@@ -54,15 +90,26 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       jurisdiction: 'US',
     },
     {
-      type: 'USC',
-      citation: '26 U.S.C. § 6038A(d)',
+      type: 'CFR',
+      citation: '26 C.F.R. § 1.6038A-2',
       label: {
-        en: 'Penalty for failure to furnish information or maintain records',
-        tr: 'Bilgi sağlama veya kayıt tutma başarısızlığı cezası',
+        en: 'Requirement of return — reportable transaction categories',
+        tr: 'Beyanname gereksinimleri — raporlanabilir işlem kategorileri',
       },
-      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6038A&num=0&edition=prelim',
-      authorityLevel: 'federal_statute',
-      canonicalId: 'US-26USC-6038A-d',
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/subject-group-ECFRd277d0563e9069f/section-1.6038A-2',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-26CFR-1.6038A-2',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'T.D. 9796 (Dec. 12, 2016)',
+      label: {
+        en: 'Treasury Decision extending § 6038A reporting to foreign-owned disregarded entities',
+        tr: '§ 6038A raporlamasını yabancı sermayeli dikkate alınmayan varlıklara genişleten Hazine Kararı',
+      },
+      authorityLevel: 'agency_guidance',
+      canonicalId: 'US-TREAS-TD-9796',
       jurisdiction: 'US',
     },
     {
