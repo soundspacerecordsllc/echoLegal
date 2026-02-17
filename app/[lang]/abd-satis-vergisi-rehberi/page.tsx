@@ -4,6 +4,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abd-satis-vergisi-rehberi',
+  datePublished: '2026-01-25',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00015',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -16,6 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Understanding US sales tax obligations for international e-commerce. Economic nexus thresholds, state-by-state requirements, marketplace facilitator laws, and compliance strategies.'
     : 'Uluslararası e-ticaret için ABD satış vergisi yükümlülüklerini anlama. Ekonomik nexus eşikleri, eyalet bazında gereksinimler, pazar yeri kanunları ve uyum stratejileri.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -33,11 +47,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/abd-satis-vergisi-rehberi`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/abd-satis-vergisi-rehberi',
-        'tr': 'https://echo-legal.com/tr/abd-satis-vergisi-rehberi',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'US Sales Tax & Nexus Guide' : 'ABD Satış Vergisi ve Nexus Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2026/01/25',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -67,36 +91,32 @@ export default async function SalesTaxGuidePage({
     { id: 'sss', label: isEnglish ? 'FAQ' : 'Sık Sorulan Sorular' },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'US Sales Tax & Nexus Guide for Foreign Sellers'
-      : 'ABD Satış Vergisi ve Nexus Rehberi',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2026-01-25',
-    dateModified: '2026-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/abd-satis-vergisi-rehberi`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'US Sales Tax & Nexus Guide' : 'ABD Satış Vergisi ve Nexus Rehberi'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Understanding US sales tax obligations for international e-commerce. Economic nexus thresholds and compliance strategies.'
+      : 'Uluslararası e-ticaret için ABD satış vergisi yükümlülüklerini anlama. Ekonomik nexus eşikleri ve uyum stratejileri.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['sales-tax', 'nexus', 'economic-nexus', 'marketplace-facilitator', 'e-commerce'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi', url: `${SITE_URL}/${lang}/vergi-kimlik-rehberi` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
 
       <div className="min-h-screen bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -126,6 +146,13 @@ export default async function SalesTaxGuidePage({
                 ? 'A practical guide to US sales tax for international sellers. Understand when you have tax obligations, how to register, and how to stay compliant when selling to US customers.'
                 : 'Uluslararası satıcılar için ABD satış vergisi pratik rehberi. Ne zaman vergi yükümlülükleriniz olduğunu, nasıl kayıt yaptıracağınızı ve ABD müşterilerine satış yaparken nasıl uyumlu kalacağınızı anlayın.'}
             </p>
+
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-8"
+            />
           </div>
 
           {/* Key Distinction */}
@@ -580,6 +607,18 @@ export default async function SalesTaxGuidePage({
                 </Link>
               </div>
             </section>
+
+            {/* Cite This Entry */}
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-6 text-sm text-gray-600">
