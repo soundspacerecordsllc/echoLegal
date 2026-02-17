@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
   slug: 'llc-kontrol-listesi',
@@ -64,16 +64,18 @@ export default async function LLCChecklistPage({
   const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
   const pageTitle = isEnglish ? 'LLC Control List' : 'LLC Kontrol Listesi'
 
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish ? 'Before Forming a US LLC' : "ABD'de LLC Kurmadan Önce",
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    datePublished: '2026-01-15',
-    dateModified: '2026-01-20',
-    url: `${SITE_URL}/${lang}/checklists/llc-kontrol-listesi`,
-  }
+  const articleJsonLd = generateArticleSchema({
+    title: isEnglish ? 'Before Forming a US LLC' : "ABD'de LLC Kurmadan Önce",
+    description: isEnglish
+      ? 'Key questions to consider before starting the LLC formation process'
+      : 'LLC kurulum sürecini başlatmadan önce düşünülmesi gereken temel sorular',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['llc', 'kontrol-listesi', 'kuruluş', 'pre-formation'],
+  })
 
   const breadcrumbJsonLd = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },

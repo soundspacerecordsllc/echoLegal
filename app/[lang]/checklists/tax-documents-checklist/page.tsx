@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import { generateHowToSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
   slug: 'tax-documents-checklist',
@@ -183,32 +183,24 @@ export default async function TaxDocumentsChecklistPage({
     },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: isEnglish ? 'US Tax Documents Checklist' : 'ABD Vergi Belgeleri Kontrol Listesi',
+  const jsonLd = generateHowToSchema({
+    title: isEnglish ? 'US Tax Documents Checklist' : 'ABD Vergi Belgeleri Kontrol Listesi',
     description: isEnglish
       ? 'First year tax document checklist for non-resident LLC owners'
       : 'Yabancı LLC sahipleri için ilk yıl vergi belgesi kontrol listesi',
-    step: taxIdChecklist.map((item, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
+    url: pageUrl,
+    lang,
+    steps: taxIdChecklist.map((item, index) => ({
       name: item.item,
+      text: item.item,
+      position: index + 1,
     })),
-  }
+    keywords: ['tax', 'documents', 'checklist', 'irs', 'ein', 'w-8ben', '1099'],
+  })
 
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  }
+  const faqJsonLd = generateFAQSchema(
+    faqItems.map(faq => ({ question: faq.q, answer: faq.a }))
+  )
 
   const breadcrumbJsonLd = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },

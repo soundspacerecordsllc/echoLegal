@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
   slug: 'irs-mektup-rehberi',
@@ -64,16 +64,18 @@ export default async function IRSLetterGuidePage({
   const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
   const pageTitle = isEnglish ? 'IRS Letter Guide' : 'IRS Mektup Rehberi'
 
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish ? 'IRS Letter Received: First 7 Facts' : "IRS'ten Mektup Geldiyse: İlk 7 Gerçek",
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    datePublished: '2026-01-15',
-    dateModified: '2026-01-20',
-    url: `${SITE_URL}/${lang}/checklists/irs-mektup-rehberi`,
-  }
+  const articleJsonLd = generateArticleSchema({
+    title: isEnglish ? 'IRS Letter Received: First 7 Facts' : "IRS'ten Mektup Geldiyse: İlk 7 Gerçek",
+    description: isEnglish
+      ? 'General facts to understand when you receive a letter from the IRS'
+      : 'IRS\'ten mektup aldığınızda anlamanız gereken genel gerçekler',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['irs', 'letter', 'notice', 'tax-guide', 'compliance'],
+  })
 
   const breadcrumbJsonLd = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },

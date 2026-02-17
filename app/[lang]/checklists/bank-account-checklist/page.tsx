@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import { generateHowToSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
   slug: 'bank-account-checklist',
@@ -173,32 +173,24 @@ export default async function BankAccountChecklistPage({
     },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: isEnglish ? 'US Bank Account Opening Checklist' : 'ABD Banka Hesabı Açma Kontrol Listesi',
+  const jsonLd = generateHowToSchema({
+    title: isEnglish ? 'US Bank Account Opening Checklist' : 'ABD Banka Hesabı Açma Kontrol Listesi',
     description: isEnglish
       ? 'Complete checklist for opening a US business bank account as a non-resident'
       : 'Yabancı olarak ABD iş bankası hesabı açma kontrol listesi',
-    step: prerequisiteChecklist.map((item, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
+    url: pageUrl,
+    lang,
+    steps: prerequisiteChecklist.map((item, index) => ({
       name: item.item,
+      text: item.item,
+      position: index + 1,
     })),
-  }
+    keywords: ['bank-account', 'checklist', 'requirements', 'mercury', 'relay'],
+  })
 
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  }
+  const faqJsonLd = generateFAQSchema(
+    faqItems.map(faq => ({ question: faq.q, answer: faq.a }))
+  )
 
   const breadcrumbJsonLd = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },

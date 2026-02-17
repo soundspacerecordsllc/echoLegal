@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { SITE_URL } from '@/lib/structured-data'
+import { generateHowToSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
   slug: 'llc-checklist',
@@ -167,57 +167,30 @@ export default async function LLCChecklistPage({
     },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: isEnglish ? 'US LLC Formation Checklist' : "ABD'de LLC Kurma Kontrol Listesi",
+  const jsonLd = generateHowToSchema({
+    title: isEnglish ? 'US LLC Formation Checklist' : "ABD'de LLC Kurma Kontrol Listesi",
     description: isEnglish
       ? 'Complete checklist for Turkish entrepreneurs forming a US LLC'
       : 'Türk girişimciler için ABD LLC kurma kontrol listesi',
-    step: preFormationChecklist.map((item, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
+    url: pageUrl,
+    lang,
+    steps: preFormationChecklist.map((item, index) => ({
       name: item.item,
+      text: item.item,
+      position: index + 1,
     })),
-  }
+    keywords: ['llc', 'formation', 'checklist', 'compliance', 'delaware', 'wyoming'],
+  })
 
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-  }
+  const faqJsonLd = generateFAQSchema(
+    faqItems.map(faq => ({ question: faq.q, answer: faq.a }))
+  )
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `${SITE_URL}/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-        item: `${SITE_URL}/${lang}/checklists`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: isEnglish ? 'LLC Checklist' : 'LLC Kontrol Listesi',
-        item: `${SITE_URL}/${lang}/checklists/llc-checklist`,
-      },
-    ],
-  }
+  const breadcrumbJsonLd = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Checklists' : 'Kontrol Listeleri', url: `${SITE_URL}/${lang}/checklists` },
+    { name: isEnglish ? 'LLC Checklist' : 'LLC Kontrol Listesi', url: `${SITE_URL}/${lang}/checklists/llc-checklist` },
+  ])
 
   return (
       <div className="bg-white">

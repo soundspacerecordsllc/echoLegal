@@ -9,7 +9,7 @@ import AuthorBox from '@/components/AuthorBox'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { SITE_URL } from '@/lib/structured-data'
+import { generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
   slug: 'w8-w9-karar-haritasi',
@@ -82,98 +82,54 @@ export default async function W8W9DecisionMapPage({
   const pageTitle = isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası'
 
   // JSON-LD structured data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
+  const jsonLd = generateArticleSchema({
+    title: isEnglish
       ? 'W-8 or W-9? Complete Decision Guide for International Entrepreneurs'
       : 'W-8 mi W-9 mu? Uluslararası Girişimciler İçin Tam Karar Rehberi',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2026-01-25',
-    dateModified: '2026-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/checklists/w8-w9-karar-haritasi`,
-    },
-  }
+    description: isEnglish
+      ? 'Interactive tool to determine which US tax form you need: W-9, W-8BEN, or W-8BEN-E'
+      : 'Hangi ABD vergi formuna ihtiyacınız olduğunu belirlemek için etkileşimli araç',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['w-8', 'w-9', 'w-8ben', 'w-8ben-e', 'tax-forms', 'withholding', 'fatca'],
+  })
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-        item: `https://echo-legal.com/${lang}/checklists`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: isEnglish ? 'W-8 vs W-9 Decision Tool' : 'W-8 W-9 Karar Aracı',
-        item: `https://echo-legal.com/${lang}/checklists/w8-w9-karar-haritasi`,
-      },
-    ],
-  }
+  const breadcrumbJsonLd = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Checklists' : 'Kontrol Listeleri', url: `${SITE_URL}/${lang}/checklists` },
+    { name: isEnglish ? 'W-8 vs W-9 Decision Tool' : 'W-8 W-9 Karar Aracı', url: `${SITE_URL}/${lang}/checklists/w8-w9-karar-haritasi` },
+  ])
 
   // FAQ structured data
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: isEnglish
-          ? 'What is the difference between W-8 and W-9?'
-          : 'W-8 ve W-9 arasındaki fark nedir?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: isEnglish
-            ? 'W-9 is for US persons (citizens, residents, US entities) to certify their taxpayer identification number. W-8 forms (W-8BEN for individuals, W-8BEN-E for entities) are for foreign persons to establish their non-US status and potentially claim tax treaty benefits.'
-            : 'W-9, ABD kişilerinin (vatandaşlar, mukimler, ABD şirketleri) vergi kimlik numaralarını onaylaması içindir. W-8 formları (bireyler için W-8BEN, şirketler için W-8BEN-E) yabancı kişilerin ABD dışı statülerini belirlemesi ve potansiyel olarak vergi anlaşması avantajlarını talep etmesi içindir.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: isEnglish
-          ? 'Do I need a W-9 for my US LLC if I am a foreign owner?'
-          : 'Yabancı sahipsem ABD LLC için W-9 gerekir mi?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: isEnglish
-            ? 'Yes. A US LLC is a US entity regardless of who owns it. The LLC provides a W-9 using its EIN. Your personal status as a foreign owner remains separate from the entity\'s US status.'
-            : 'Evet. ABD LLC, kimin sahibi olduğuna bakılmaksızın bir ABD tüzel kişisidir. LLC, EIN\'ini kullanarak W-9 sağlar. Yabancı sahip olarak kişisel statünüz, tüzel kişinin ABD statüsünden ayrı kalır.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: isEnglish
-          ? 'What happens if I provide the wrong form?'
-          : 'Yanlış form verirsem ne olur?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: isEnglish
-            ? 'Providing the wrong form can result in incorrect withholding (24% backup withholding if W-9 is required but not provided, or 30% withholding if foreign status is not properly documented). It may also trigger IRS scrutiny and require amended filings.'
-            : 'Yanlış form vermek yanlış stopaja yol açabilir (W-9 gerekliyse ancak sağlanmazsa %24 yedek stopaj veya yabancı statü düzgün belgelenmezse %30 stopaj). Ayrıca IRS incelemesini tetikleyebilir ve değiştirilmiş beyannameler gerektirebilir.',
-        },
-      },
-    ],
-  }
+  const faqJsonLd = generateFAQSchema([
+    {
+      question: isEnglish
+        ? 'What is the difference between W-8 and W-9?'
+        : 'W-8 ve W-9 arasındaki fark nedir?',
+      answer: isEnglish
+        ? 'W-9 is for US persons (citizens, residents, US entities) to certify their taxpayer identification number. W-8 forms (W-8BEN for individuals, W-8BEN-E for entities) are for foreign persons to establish their non-US status and potentially claim tax treaty benefits.'
+        : 'W-9, ABD kişilerinin (vatandaşlar, mukimler, ABD şirketleri) vergi kimlik numaralarını onaylaması içindir. W-8 formları (bireyler için W-8BEN, şirketler için W-8BEN-E) yabancı kişilerin ABD dışı statülerini belirlemesi ve potansiyel olarak vergi anlaşması avantajlarını talep etmesi içindir.',
+    },
+    {
+      question: isEnglish
+        ? 'Do I need a W-9 for my US LLC if I am a foreign owner?'
+        : 'Yabancı sahipsem ABD LLC için W-9 gerekir mi?',
+      answer: isEnglish
+        ? 'Yes. A US LLC is a US entity regardless of who owns it. The LLC provides a W-9 using its EIN. Your personal status as a foreign owner remains separate from the entity\'s US status.'
+        : 'Evet. ABD LLC, kimin sahibi olduğuna bakılmaksızın bir ABD tüzel kişisidir. LLC, EIN\'ini kullanarak W-9 sağlar. Yabancı sahip olarak kişisel statünüz, tüzel kişinin ABD statüsünden ayrı kalır.',
+    },
+    {
+      question: isEnglish
+        ? 'What happens if I provide the wrong form?'
+        : 'Yanlış form verirsem ne olur?',
+      answer: isEnglish
+        ? 'Providing the wrong form can result in incorrect withholding (24% backup withholding if W-9 is required but not provided, or 30% withholding if foreign status is not properly documented). It may also trigger IRS scrutiny and require amended filings.'
+        : 'Yanlış form vermek yanlış stopaja yol açabilir (W-9 gerekliyse ancak sağlanmazsa %24 yedek stopaj veya yabancı statü düzgün belgelenmezse %30 stopaj). Ayrıca IRS incelemesini tetikleyebilir ve değiştirilmiş beyannameler gerektirebilir.',
+    },
+  ])
 
   return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
