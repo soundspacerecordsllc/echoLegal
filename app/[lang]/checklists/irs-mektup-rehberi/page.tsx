@@ -4,12 +4,23 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'irs-mektup-rehberi',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-chk-00006',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+
   return {
     title: isEnglish
       ? 'IRS Letter Received: First 7 Facts | EchoLegal'
@@ -17,6 +28,24 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'General facts to understand when you receive a letter from the IRS. Reference information for international entrepreneurs.'
       : 'IRS\'ten mektup aldığınızda anlamanız gereken genel gerçekler. Uluslararası girişimciler için referans bilgisi.',
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'IRS Letter Guide' : 'IRS Mektup Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+      'citation_keywords': 'irs, letter, guide, tax-notice',
+    },
   }
 }
 
@@ -31,6 +60,9 @@ export default async function IRSLetterGuidePage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'IRS Letter Guide' : 'IRS Mektup Rehberi'
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -177,6 +209,17 @@ export default async function IRSLetterGuidePage({
                 : 'Bu sorular için, özel durumunuzu inceleyebilecek bir vergi uzmanına danışın.'}
             </p>
           </div>
+
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="checklist"
+            className="mb-8"
+          />
 
           {/* Related Resources */}
           <section>

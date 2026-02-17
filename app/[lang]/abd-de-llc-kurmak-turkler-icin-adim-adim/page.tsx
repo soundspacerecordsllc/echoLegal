@@ -12,8 +12,20 @@ import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 import ConflictPrecedence from '@/components/ConflictPrecedence'
 import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const ARTICLE_SLUG = 'abd-de-llc-kurmak-turkler-icin-adim-adim'
+
+const PAGE_META = {
+  slug: 'abd-de-llc-kurmak-turkler-icin-adim-adim',
+  datePublished: '2025-06-01',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00014',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -26,6 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Complete legal guide for Turkish entrepreneurs forming an LLC in the United States. State selection, EIN, registered agent, bank account, and compliance requirements.'
     : 'Türk girişimciler için ABD\'de LLC kurma rehberi. Eyalet seçimi, EIN başvurusu, registered agent, banka hesabı açma ve uyum gereksinimleri.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -43,11 +57,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/abd-de-llc-kurmak-turkler-icin-adim-adim',
-        'tr': 'https://echo-legal.com/tr/abd-de-llc-kurmak-turkler-icin-adim-adim',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Setting Up a US LLC - Step by Step for Turks' : "ABD'de LLC Kurmak - Türkler İçin Adım Adım",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }

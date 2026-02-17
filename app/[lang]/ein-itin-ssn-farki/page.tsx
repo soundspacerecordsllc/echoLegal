@@ -7,8 +7,20 @@ import { getArticleMetadata } from '@/lib/article-metadata'
 import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const ARTICLE_SLUG = 'ein-itin-ssn-farki'
+
+const PAGE_META = {
+  slug: 'ein-itin-ssn-farki',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-enc-00010',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -22,6 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Complete guide to US tax identification numbers for Turkish entrepreneurs. EIN for businesses, ITIN for individuals without SSN eligibility, SSN for authorized workers.'
     : 'Türk girişimciler için ABD vergi kimlik numaralarına kapsamlı rehber. İşletmeler için EIN, SSN alamayanlar için ITIN, çalışma izni olanlar için SSN.'
 
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+
   return {
     title,
     description,
@@ -33,12 +47,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/ein-itin-ssn-farki`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/ein-itin-ssn-farki',
-        'tr': 'https://echo-legal.com/tr/ein-itin-ssn-farki',
-        'x-default': 'https://echo-legal.com/en/ein-itin-ssn-farki',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
+        'x-default': `${SITE_URL}/en/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN ve SSN Farkı',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -54,6 +78,29 @@ export default async function EinItinSsnPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN ve SSN Farkı'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Complete guide to US tax identification numbers for Turkish entrepreneurs.'
+      : 'Türk girişimciler için ABD vergi kimlik numaralarına kapsamlı rehber.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['ein', 'itin', 'ssn', 'tax-identification'],
+    section: 'encyclopedia-entry',
+  })
+
+  const breadcrumbSchemaNew = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik', url: `${SITE_URL}/${lang}/vergi-kimlik-rehberi` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const tocItems = [
     { id: 'genel-bakis', label: isEnglish ? 'Overview: Three Numbers, Three Purposes' : 'Genel Bakış: Üç Numara, Üç Amaç' },
@@ -150,21 +197,9 @@ export default async function EinItinSsnPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
       <div className="bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <JsonLdScript data={[articleSchema, breadcrumbSchemaNew, jsonLd, breadcrumbJsonLd, faqJsonLd]} />
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
             <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -223,6 +258,13 @@ export default async function EinItinSsnPage({
                   ? 'The IRS uses different identification numbers for different purposes. Understanding which one applies to your situation is essential for compliance and opening business accounts.'
                   : 'IRS, farklı amaçlar için farklı kimlik numaraları kullanır. Hangisinin durumunuza uygun olduğunu anlamak, uyumluluk ve iş hesabı açmak için önemlidir.'}
               </p>
+
+              <InstitutionalBadge
+                lang={lang}
+                jurisdictions={['US']}
+                lastReviewedAt={PAGE_META.dateModified}
+                className="mb-8"
+              />
             </header>
 
             {/* Key Takeaway Box */}

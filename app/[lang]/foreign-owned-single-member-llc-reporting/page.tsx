@@ -9,8 +9,20 @@ import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 import ConflictPrecedence from '@/components/ConflictPrecedence'
 import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
+
+const PAGE_META = {
+  slug: 'foreign-owned-single-member-llc-reporting',
+  datePublished: '2025-06-01',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-enc-00011',
+}
 
 const ENTRY_META = {
   version: '1.0',
@@ -35,6 +47,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Reporting obligations under 26 U.S.C. § 6038A for foreign-owned disregarded entities. Form 5472 filing requirements, pro forma Form 1120 attachment, penalty framework, and regulatory reclassification analysis.'
     : '26 U.S.C. § 6038A kapsamında yabancı sermayeli disregarded entity raporlama yükümlülükleri. Form 5472 beyan gereksinimleri, pro forma Form 1120 eki, ceza çerçevesi ve düzenleyici yeniden sınıflandırma analizi.'
 
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+
   return {
     title,
     description,
@@ -51,11 +65,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/${ENTRY_SLUG}`,
+      canonical: url,
       languages: {
-        'en': `https://echo-legal.com/en/${ENTRY_SLUG}`,
-        'tr': `https://echo-legal.com/tr/${ENTRY_SLUG}`,
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Foreign-Owned Single-Member LLC Reporting' : 'Yabancı Sahipli Tek Üyeli LLC Raporlama Yükümlülükleri',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -197,70 +221,34 @@ export default async function ForeignOwnedSMLLCReportingPage({
     },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'Foreign-Owned Single-Member LLC Reporting (Form 5472 + Pro Forma 1120)'
-      : 'Yabancı Sermayeli Tek Üyeli LLC Raporlaması (Form 5472 + Pro Forma 1120)',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2026-02-16',
-    dateModified: '2026-02-16',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/${ENTRY_SLUG}`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Foreign-Owned Single-Member LLC Reporting' : 'Yabancı Sahipli Tek Üyeli LLC Raporlama Yükümlülükleri'
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Library' : 'Kütüphane',
-        item: `https://echo-legal.com/${lang}/library`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: isEnglish
-          ? 'Foreign-Owned Single-Member LLC Reporting'
-          : 'Yabancı Sermayeli Tek Üyeli LLC Raporlaması',
-        item: `https://echo-legal.com/${lang}/${ENTRY_SLUG}`,
-      },
-    ],
-  }
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Reporting obligations under 26 U.S.C. § 6038A for foreign-owned disregarded entities.'
+      : '26 U.S.C. § 6038A kapsamında yabancı sermayeli disregarded entity raporlama yükümlülükleri.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['form-5472', 'foreign-owned-llc', 'smllc', 'irs-reporting'],
+    section: 'encyclopedia-entry',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-
       <div className="bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
             <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -312,6 +300,13 @@ export default async function ForeignOwnedSMLLCReportingPage({
                   {ENTRY_META.citationKey} &middot; v{ENTRY_META.version}
                 </span>
               </div>
+
+              <InstitutionalBadge
+                lang={lang}
+                jurisdictions={['US']}
+                lastReviewedAt={PAGE_META.dateModified}
+                className="mb-8"
+              />
 
               <p className="text-lg text-gray-600 leading-relaxed">
                 {isEnglish
@@ -823,6 +818,18 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 </Link>
               </div>
             </section>
+
+            {/* Cite This Entry */}
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="encyclopedia-entry"
+              className="mb-8"
+            />
 
             {/* Final Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">

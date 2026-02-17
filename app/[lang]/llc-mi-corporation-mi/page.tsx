@@ -5,6 +5,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'llc-mi-corporation-mi',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-cmp-00001',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -17,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Compare LLC and Corporation structures for your US business. Tax implications, liability protection, management flexibility, and which is better for Turkish entrepreneurs.'
     : 'ABD işiniz için LLC ve Corporation yapılarını karşılaştırın. Vergi etkileri, sorumluluk koruması, yönetim esnekliği ve Türk girişimciler için hangisi daha iyi.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -34,11 +48,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/llc-mi-corporation-mi`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/llc-mi-corporation-mi',
-        'tr': 'https://echo-legal.com/tr/llc-mi-corporation-mi',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'LLC vs Corporation' : 'LLC mi Corporation mı?',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -55,6 +79,29 @@ export default async function LLCvsCorporationPage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'LLC vs Corporation' : 'LLC mi Corporation mı?'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'A comprehensive comparison of LLC and Corporation structures for US business.'
+      : 'ABD iş girişiminiz için LLC ve Corporation yapılarının kapsamlı karşılaştırması.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['llc', 'corporation', 'business-structure', 'comparison'],
+    section: 'comparative-analysis',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const outlineItems = isEnglish ? [
     'Overview: LLC vs Corporation at a Glance',
@@ -84,37 +131,10 @@ export default async function LLCvsCorporationPage({
     'Kaynaklar',
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'LLC vs Corporation: Which is Right for Your US Business?'
-      : 'LLC mi Corporation mı: Hangisi Sizin İçin Doğru?',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2025-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/llc-mi-corporation-mi`,
-    },
-  }
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -151,6 +171,13 @@ export default async function LLCvsCorporationPage({
                 ? 'A comprehensive comparison of LLC and Corporation structures to help you choose the right entity type for your US business venture.'
                 : 'ABD iş girişiminiz için doğru şirket türünü seçmenize yardımcı olacak kapsamlı bir LLC ve Corporation karşılaştırması.'}
             </p>
+
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-8"
+            />
           </header>
 
           {/* Quick Comparison Preview */}
@@ -227,6 +254,18 @@ export default async function LLCvsCorporationPage({
               </Link>
             </div>
           </section>
+
+          {/* Cite This Entry */}
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="comparative-analysis"
+            className="mb-8"
+          />
 
           {/* Disclaimer */}
           <div className="bg-gray-100 rounded-lg p-5">

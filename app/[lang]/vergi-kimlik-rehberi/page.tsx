@@ -5,6 +5,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'vergi-kimlik-rehberi',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00012',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -18,6 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Complete guide to US tax obligations and identification numbers. EIN, ITIN, SSN, W-8, W-9, 1099 forms, tax treaties, and withholding explained for Turkish entrepreneurs.'
     : 'ABD vergi yükümlülükleri ve kimlik numaralarına kapsamlı rehber. Türk girişimciler için EIN, ITIN, SSN, W-8, W-9, 1099 formları, vergi anlaşmaları ve stopaj açıklandı.'
 
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+
   return {
     title,
     description,
@@ -29,12 +43,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/vergi-kimlik-rehberi`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/vergi-kimlik-rehberi',
-        'tr': 'https://echo-legal.com/tr/vergi-kimlik-rehberi',
-        'x-default': 'https://echo-legal.com/en/vergi-kimlik-rehberi',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
+        'x-default': `${SITE_URL}/en/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Tax ID Guide' : 'Vergi Kimlik Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -51,6 +75,28 @@ export default async function TaxIdHubPage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Tax ID Guide' : 'Vergi Kimlik Rehberi'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Complete guide to US tax obligations and identification numbers for Turkish entrepreneurs.'
+      : 'Türk girişimciler için ABD vergi yükümlülükleri ve kimlik numaralarına kapsamlı rehber.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['ein', 'itin', 'ssn', 'tax-id', 'irs'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -193,16 +239,8 @@ export default async function TaxIdHubPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema, jsonLd, breadcrumbJsonLd]} />
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -227,6 +265,13 @@ export default async function TaxIdHubPage({
               ? 'Everything you need to know about US tax obligations, identification numbers, and compliance requirements for Turkish entrepreneurs doing business with or in the United States.'
               : 'ABD\'de veya ABD ile iş yapan Türk girişimciler için ABD vergi yükümlülükleri, kimlik numaraları ve uyumluluk gereksinimleri hakkında bilmeniz gereken her şey.'}
           </p>
+
+          <InstitutionalBadge
+            lang={lang}
+            jurisdictions={['US']}
+            lastReviewedAt={PAGE_META.dateModified}
+            className="mb-8"
+          />
         </header>
 
         {/* Quick Start */}
@@ -380,8 +425,20 @@ export default async function TaxIdHubPage({
           </div>
         </section>
 
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mt-12 mb-8"
+        />
+
         {/* Disclaimer */}
-        <div className="mt-12 bg-gray-100 rounded-lg p-5">
+        <div className="bg-gray-100 rounded-lg p-5">
           <p className="text-xs text-gray-600 leading-relaxed">
             {isEnglish
               ? 'This content is for informational purposes only and does not constitute tax, legal, or financial advice. Tax laws are complex and change frequently. Always consult a qualified CPA, tax attorney, or enrolled agent for advice specific to your situation. EchoLegal is not a law firm, accounting firm, or tax advisory service.'

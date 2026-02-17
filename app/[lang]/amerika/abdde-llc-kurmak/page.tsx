@@ -8,11 +8,23 @@ import FAQAccordion from '@/components/FAQAccordion'
 import KitCallout from '@/components/KitCallout'
 import { getRegistryEntry } from '@/lib/amerika-content-registry'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abdde-llc-kurmak',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '2.0',
+  citationKey: 'ecl-gde-00001',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? "Forming an LLC in the US - Complete Guide to State Selection, Formation & Compliance | EchoLegal"
@@ -20,6 +32,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Comprehensive guide to forming a US LLC. State comparison (Delaware, Wyoming, Florida, Nevada, New Mexico), formation steps, Operating Agreement, EIN application, post-formation compliance, and corporate veil protection."
       : "ABD'de LLC kurulumuna ilişkin kapsamlı rehber. Eyalet karşılaştırması (Delaware, Wyoming, Florida, Nevada, New Mexico), kuruluş adımları, Operating Agreement, EIN başvurusu, kuruluş sonrası uyum yükümlülükleri ve tüzel kişilik perdesi korunması.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Forming an LLC in the US' : "ABD'de LLC Kurmak",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -103,9 +132,33 @@ export default async function AbddeLLCPage({
     { slug: 'abdde-is-yapanlar-icin-sozlesmeler', title: isEnglish ? 'Contracts for US Business' : "ABD'de İş Yapanlar İçin Sözleşmeler" },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Forming an LLC in the US' : "ABD'de LLC Kurmak"
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Comprehensive guide to forming a US LLC.'
+      : "ABD'de LLC kurulumuna ilişkin kapsamlı rehber.",
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['llc', 'us-business', 'formation', 'delaware', 'wyoming', 'operating-agreement'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         <Breadcrumb
           lang={lang}
           items={[
@@ -1063,6 +1116,18 @@ export default async function AbddeLLCPage({
             ))}
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-500">

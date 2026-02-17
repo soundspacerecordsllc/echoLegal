@@ -7,8 +7,17 @@ import { Metadata } from 'next'
 import W8W9DecisionTool from '@/components/W8W9DecisionTool'
 import AuthorBox from '@/components/AuthorBox'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'w8-w9-karar-haritasi',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-chk-00004',
+}
 
 export async function generateMetadata({
   params,
@@ -17,6 +26,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
 
   return {
     title: isEnglish
@@ -26,10 +36,10 @@ export async function generateMetadata({
       ? 'Interactive tool to determine which US tax form you need: W-9, W-8BEN, or W-8BEN-E. Comprehensive guide covering US person status, beneficial owner rules, treaty benefits, and FATCA compliance.'
       : 'Hangi ABD vergi formuna ihtiyacınız olduğunu belirlemek için etkileşimli araç: W-9, W-8BEN veya W-8BEN-E. ABD kişisi statüsü, gerçek hak sahibi kuralları, anlaşma avantajları ve FATCA uyumunu kapsayan kapsamlı rehber.',
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/checklists/w8-w9-karar-haritasi`,
+      canonical: url,
       languages: {
-        en: 'https://echo-legal.com/en/checklists/w8-w9-karar-haritasi',
-        tr: 'https://echo-legal.com/tr/checklists/w8-w9-karar-haritasi',
+        en: `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
+        tr: `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
       },
     },
     openGraph: {
@@ -40,7 +50,18 @@ export async function generateMetadata({
         ? 'Determine which US tax form you need with our interactive tool. Covers W-9, W-8BEN, and W-8BEN-E.'
         : 'Etkileşimli aracımızla hangi ABD vergi formuna ihtiyacınız olduğunu belirleyin.',
       type: 'article',
-      url: `https://echo-legal.com/${lang}/checklists/w8-w9-karar-haritasi`,
+      url: url,
+    },
+    other: {
+      'citation_title': isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+      'citation_keywords': 'w-8, w-9, tax-form, decision-map',
     },
   }
 }
@@ -56,6 +77,9 @@ export default async function W8W9DecisionMapPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası'
 
   // JSON-LD structured data
   const jsonLd = {
@@ -760,6 +784,17 @@ export default async function W8W9DecisionMapPage({
               </Link>
             </div>
           </section>
+
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="checklist"
+            className="mb-8"
+          />
 
           {/* Contributing Attorney */}
           <AuthorBox lang={lang} authorId="zeynep-moore" className="mb-10" />
