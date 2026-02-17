@@ -4,12 +4,22 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'tax-documents-checklist',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-chk-00005',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
 
   const title = isEnglish
     ? 'US Tax Documents Checklist | First Year Tax Prep for Non-Residents | EchoLegal'
@@ -30,11 +40,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/checklists/tax-documents-checklist`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/checklists/tax-documents-checklist',
-        'tr': 'https://echo-legal.com/tr/checklists/tax-documents-checklist',
+        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Kontrol Listesi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+      'citation_keywords': 'tax, documents, checklist, irs',
     },
   }
 }
@@ -50,6 +71,9 @@ export default async function TaxDocumentsChecklistPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Tax Documents Checklist' : 'Vergi Belgeleri Kontrol Listesi'
 
   const taxIdChecklist = isEnglish ? [
     { item: 'EIN (Employer Identification Number) - Required for LLC', done: false },
@@ -342,6 +366,17 @@ export default async function TaxDocumentsChecklistPage({
               </Link>
             </div>
           </section>
+
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="checklist"
+            className="mb-8"
+          />
 
           {/* Disclaimer */}
           <div className="bg-gray-100 rounded-lg p-5">

@@ -7,11 +7,23 @@ import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
 import { getRegistryEntry } from '@/lib/amerika-content-registry'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abdde-banka-hesabi',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00002',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? "US Bank Account - Opening Business & Personal Accounts | EchoLegal"
@@ -19,6 +31,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "How to open a US bank account as a non-resident. Business accounts, EIN/ITIN requirements, FBAR obligations, and common challenges."
       : "Yerleşik olmayan biri olarak ABD banka hesabı nasıl açılır. İş hesapları, EIN/ITIN gereksinimleri, FBAR yükümlülükleri ve yaygın zorluklar.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Opening a US Bank Account' : "ABD'de Banka Hesabı Açmak",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -31,6 +60,29 @@ export default async function BankaHesabiPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
   const registryEntry = getRegistryEntry('abdde-banka-hesabi')
+
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Opening a US Bank Account' : "ABD'de Banka Hesabı Açmak"
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'How to open a US bank account as a non-resident.'
+      : "Yerleşik olmayan biri olarak ABD banka hesabı nasıl açılır.",
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['bank-account', 'us-banking', 'ein', 'business-account'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const faqItems = [
     {
@@ -80,6 +132,7 @@ export default async function BankaHesabiPage({
   return (
     <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         <Breadcrumb
           lang={lang}
           items={[
@@ -283,6 +336,18 @@ export default async function BankaHesabiPage({
             ))}
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-500">

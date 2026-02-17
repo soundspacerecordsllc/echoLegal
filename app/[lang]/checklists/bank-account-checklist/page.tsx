@@ -4,12 +4,22 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'bank-account-checklist',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-chk-00003',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
 
   const title = isEnglish
     ? 'US Bank Account Checklist | What You Need Before Opening | EchoLegal'
@@ -30,11 +40,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/checklists/bank-account-checklist`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/checklists/bank-account-checklist',
-        'tr': 'https://echo-legal.com/tr/checklists/bank-account-checklist',
+        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Kontrol Listesi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+      'citation_keywords': 'bank-account, checklist, requirements',
     },
   }
 }
@@ -50,6 +71,9 @@ export default async function BankAccountChecklistPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Bank Account Checklist' : 'Banka Hesabı Kontrol Listesi'
 
   const prerequisiteChecklist = isEnglish ? [
     { item: 'Active US LLC with Certificate of Formation/Good Standing', done: false },
@@ -316,6 +340,17 @@ export default async function BankAccountChecklistPage({
               </Link>
             </div>
           </section>
+
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="checklist"
+            className="mb-8"
+          />
 
           {/* Disclaimer */}
           <div className="bg-gray-100 rounded-lg p-5">

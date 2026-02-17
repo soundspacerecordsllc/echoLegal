@@ -6,11 +6,23 @@ import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
 import { getRegistryEntry } from '@/lib/amerika-content-registry'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'turist-vizesi-gercekleri',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00010',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? "Tourist Visa Realities - B-1/B-2 Facts & Misconceptions | EchoLegal"
@@ -18,6 +30,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "The truth about US tourist visas. 214(b) refusals, immigrant intent presumption, and common mistakes Turkish applicants make."
       : "ABD turist vizesine ilişkin temel gerçekler. 214(b) ret gerekçesi, göçmen niyeti karinesi ve Türk başvuru sahiplerinin sık düştüğü hatalar.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Tourist Visa Realities' : 'Turist Vizesi Gerçekleri',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -87,8 +116,32 @@ export default async function TuristVizesiPage({
     { slug: 'platform-ne-yapar-ne-yapmaz', title: isEnglish ? 'What This Platform Does' : 'Platform Ne Yapar Ne Yapmaz' },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Tourist Visa Realities' : 'Turist Vizesi Gerçekleri'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'The truth about US tourist visas and 214(b) refusals.'
+      : 'ABD turist vizesine ilişkin temel gerçekler ve 214(b) ret gerekçesi.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['tourist-visa', 'b1-b2', 'visitor-visa', 'immigrant-intent'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         <Breadcrumb
           lang={lang}
           items={[
@@ -373,6 +426,18 @@ export default async function TuristVizesiPage({
             ))}
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-500">

@@ -4,11 +4,23 @@ import { Metadata } from 'next'
 import Breadcrumb from '@/components/Breadcrumb'
 import TrustStrip from '@/components/TrustStrip'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'platform-ne-yapar-ne-yapmaz',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00008',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? "What This Platform Does and Does Not Do | EchoLegal"
@@ -16,6 +28,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Clear explanation of EchoLegal's scope, limitations, and what you can expect from this legal reference platform."
       : "EchoLegal'in kapsamı, sınırları ve bu hukuk referans platformundan neler bekleyebileceğiniz hakkında açık bilgilendirme.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'What This Platform Does and Does Not Do' : 'Platform Ne Yapar, Ne Yapmaz?',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -27,8 +56,32 @@ export default async function PlatformPage({
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'What This Platform Does and Does Not Do' : 'Platform Ne Yapar, Ne Yapmaz?'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? "Clear explanation of EchoLegal's scope, limitations, and what you can expect."
+      : "EchoLegal'in kapsamı, sınırları ve neler bekleyebileceğiniz hakkında bilgilendirme.",
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['platform', 'disclaimer', 'legal-information', 'scope'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         <Breadcrumb
           lang={lang}
           items={[
@@ -290,6 +343,18 @@ export default async function PlatformPage({
             </Link>
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-500">

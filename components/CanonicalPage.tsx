@@ -16,6 +16,9 @@ import { JurisdictionCode, LanguageCode, getJurisdiction, getLanguageName } from
 import { getContributor, Contributor } from '@/lib/contributors'
 import ContributorAttribution from './ContributorAttribution'
 import InstitutionalBadge from './InstitutionalBadge'
+import ContentVersionBanner from './ContentVersionBanner'
+import CiteThisEntry from './CiteThisEntry'
+import { type RevisionEntry, type ContentTypeKey } from '@/lib/content-schema'
 
 // ============================================
 // TYPES
@@ -61,6 +64,13 @@ export type CanonicalPageProps = {
     type?: ContentType
   }[]
 
+  // Version & citation
+  version?: string
+  revisionHistory?: RevisionEntry[]
+  citationKey?: string
+  canonicalContentType?: ContentTypeKey
+  pageUrl?: string
+
   // Display options
   showToc?: boolean
   showAttribution?: boolean
@@ -68,6 +78,8 @@ export type CanonicalPageProps = {
   showJurisdictionChips?: boolean
   showLanguageChips?: boolean
   showLastReviewed?: boolean
+  showVersionBanner?: boolean
+  showCitation?: boolean
   className?: string
 }
 
@@ -93,12 +105,19 @@ export default function CanonicalPage({
   disclaimers,
   customDisclaimer,
   relatedContent = [],
+  version,
+  revisionHistory = [],
+  citationKey,
+  canonicalContentType,
+  pageUrl,
   showToc = true,
   showAttribution = true,
   showDisclaimers = true,
   showJurisdictionChips = true,
   showLanguageChips = true,
   showLastReviewed = true,
+  showVersionBanner = true,
+  showCitation = true,
   className = '',
 }: CanonicalPageProps) {
   const isEnglish = lang === 'en'
@@ -257,6 +276,22 @@ export default function CanonicalPage({
           lastReviewedAt={lastReviewedAt || updatedAt}
           className="mt-4"
         />
+
+        {/* Version and revision metadata */}
+        {showVersionBanner && (version || updatedAt) && (
+          <ContentVersionBanner
+            lang={isEnglish ? 'en' : 'tr'}
+            version={version}
+            revisionHistory={revisionHistory}
+            lastModifiedAt={updatedAt}
+            lastReviewedAt={lastReviewedAt}
+            firstPublishedAt={publishedAt}
+            primaryJurisdiction={primaryJurisdiction}
+            contentType={canonicalContentType}
+            isReviewed={!!lastReviewedAt}
+            className="mt-3"
+          />
+        )}
       </header>
 
       {/* Main content area with optional sidebar */}
@@ -296,6 +331,20 @@ export default function CanonicalPage({
           </aside>
         )}
       </div>
+
+      {/* Cite This Entry */}
+      {showCitation && pageUrl && (
+        <CiteThisEntry
+          lang={isEnglish ? 'en' : 'tr'}
+          title={title}
+          url={pageUrl}
+          dateModified={updatedAt}
+          version={version}
+          citationKey={citationKey}
+          contentType={canonicalContentType}
+          className="mt-12"
+        />
+      )}
 
       {/* Disclaimers */}
       {showDisclaimers && applicableDisclaimers.length > 0 && (

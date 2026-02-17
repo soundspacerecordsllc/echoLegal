@@ -12,8 +12,20 @@ import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 import ConflictPrecedence from '@/components/ConflictPrecedence'
 import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const ARTICLE_SLUG = 'abd-de-llc-kurmak-turkler-icin-adim-adim'
+
+const PAGE_META = {
+  slug: 'abd-de-llc-kurmak-turkler-icin-adim-adim',
+  datePublished: '2025-06-01',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00014',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -26,6 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Complete legal guide for Turkish entrepreneurs forming an LLC in the United States. State selection, EIN, registered agent, bank account, and compliance requirements.'
     : 'Türk girişimciler için ABD\'de LLC kurma rehberi. Eyalet seçimi, EIN başvurusu, registered agent, banka hesabı açma ve uyum gereksinimleri.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -43,11 +57,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/abd-de-llc-kurmak-turkler-icin-adim-adim',
-        'tr': 'https://echo-legal.com/tr/abd-de-llc-kurmak-turkler-icin-adim-adim',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Setting Up a US LLC - Step by Step for Turks' : "ABD'de LLC Kurmak - Türkler İçin Adım Adım",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -83,54 +107,28 @@ export default async function LLCGuidePage({
   const articleMeta = getArticleMetadata(ARTICLE_SLUG)
   const featuredSnippet = getFeaturedSnippet(ARTICLE_SLUG)
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'How to Form an LLC in the US: Step-by-Step Guide for Turkish Entrepreneurs'
-      : 'ABD\'de LLC Kurmak: Türkler İçin Adım Adım Hukuki Rehber',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: articleMeta?.datePublished || '2025-06-15',
-    dateModified: articleMeta?.dateModified || '2026-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Setting Up a US LLC - Step by Step for Turks' : "ABD'de LLC Kurmak - Türkler İçin Adım Adım"
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Guides' : 'Rehberler',
-        item: `https://echo-legal.com/${lang}/library`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi',
-        item: `https://echo-legal.com/${lang}/abd-de-llc-kurmak-turkler-icin-adim-adim`,
-      },
-    ],
-  }
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Complete legal guide for Turkish entrepreneurs forming an LLC in the United States.'
+      : 'Türk girişimciler için ABD\'de LLC kurma rehberi.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['llc', 'turkish-entrepreneurs', 'us-business', 'step-by-step'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Library' : 'Kütüphane', url: `${SITE_URL}/${lang}/library` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const primarySources = getPrimarySources(ARTICLE_SLUG, isEnglish ? 'en' : 'tr')
 
@@ -260,17 +258,9 @@ export default async function LLCGuidePage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-
       <div className="min-h-screen bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
           {/* Breadcrumb */}
           <nav className="text-sm text-gray-500 mb-8">
             <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -320,6 +310,13 @@ export default async function LLCGuidePage({
                   {isEnglish ? 'Reviewed by a licensed attorney' : 'Lisanslı avukat tarafından incelendi'}
                 </span>
               </div>
+
+              <InstitutionalBadge
+                lang={lang}
+                jurisdictions={['US']}
+                lastReviewedAt={PAGE_META.dateModified}
+                className="mb-8"
+              />
 
               {/* Featured snippet block */}
               {featuredSnippet && (
@@ -999,6 +996,18 @@ export default async function LLCGuidePage({
                 {isEnglish ? 'Access the Legal Kit' : 'Legal Kit\'e Eriş'}
               </Link>
             </div>
+
+            {/* Cite This Entry */}
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Final Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">

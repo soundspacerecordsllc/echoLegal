@@ -7,11 +7,23 @@ import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
 import KitCallout from '@/components/KitCallout'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abdde-is-yapanlar-icin-sozlesmeler',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00003',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? "Contracts for Doing Business in the US | EchoLegal"
@@ -19,6 +31,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Comprehensive guide to US business contracts: types, key clauses, red flags, international enforcement, and when to seek legal review. NDAs, service agreements, contractor agreements, and more."
       : "ABD'de ticari sözleşmelere ilişkin kapsamlı rehber: sözleşme türleri, kritik hükümler, tehlikeli maddeler, uluslararası tenfiz ve hukuki inceleme gerekliliği. NDA, hizmet sözleşmesi, yüklenici sözleşmesi ve daha fazlası.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Business Contracts in the US' : "ABD'de İş Yapanlar İçin Sözleşmeler",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -30,6 +59,29 @@ export default async function SozlesmelerPage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Business Contracts in the US' : "ABD'de İş Yapanlar İçin Sözleşmeler"
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Comprehensive guide to US business contracts.'
+      : "ABD'de ticari sözleşmelere ilişkin kapsamlı rehber.",
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['contracts', 'business-agreements', 'us-law', 'nda', 'service-agreement'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   const faqItems = [
     {
@@ -163,6 +215,7 @@ export default async function SozlesmelerPage({
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         <Breadcrumb
           lang={lang}
           items={[
@@ -842,6 +895,18 @@ export default async function SozlesmelerPage({
             </Link>
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-500">

@@ -5,12 +5,22 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'llc-checklist',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-chk-00001',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const url = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
 
   const title = isEnglish
     ? 'US LLC Formation Checklist | Pre-Formation Checklist for Turkish Entrepreneurs | EchoLegal'
@@ -31,11 +41,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/checklists/llc-checklist`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/checklists/llc-checklist',
-        'tr': 'https://echo-legal.com/tr/checklists/llc-checklist',
+        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'LLC Formation Checklist' : 'LLC Kuruluş Kontrol Listesi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+      'citation_keywords': 'llc, checklist, formation, compliance',
     },
   }
 }
@@ -52,6 +73,9 @@ export default async function LLCChecklistPage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+
+  const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'LLC Formation Checklist' : 'LLC Kuruluş Kontrol Listesi'
 
   const preFormationChecklist = isEnglish ? [
     { item: 'Research and select a state (Delaware, Wyoming, New Mexico, or where you operate)', done: false },
@@ -326,6 +350,17 @@ export default async function LLCChecklistPage({
               </Link>
             </div>
           </section>
+
+          <CiteThisEntry
+            lang={lang}
+            title={pageTitle}
+            url={pageUrl}
+            dateModified={PAGE_META.dateModified}
+            version={PAGE_META.version}
+            citationKey={PAGE_META.citationKey}
+            contentType="checklist"
+            className="mb-8"
+          />
 
           {/* Disclaimer */}
           <aside className="pt-8 border-t border-gray-200">

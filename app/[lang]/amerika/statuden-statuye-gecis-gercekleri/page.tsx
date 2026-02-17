@@ -6,11 +6,23 @@ import TrustStrip from '@/components/TrustStrip'
 import FAQAccordion from '@/components/FAQAccordion'
 import { getRegistryEntry } from '@/lib/amerika-content-registry'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'statuden-statuye-gecis-gercekleri',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00009',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? "Status Change Realities - Change of Status & Adjustment | EchoLegal"
@@ -18,6 +30,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "The truth about changing immigration status in the US. 30/60 day rule, preconceived intent, and adjustment of status realities."
       : "ABD'de göçmenlik statüsü değişikliğine ilişkin gerçekler. 30/60 gün kuralı, önceden planlanmış niyet doktrini ve statü düzeltmesi süreci.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Status Change Realities' : 'Statüden Statüye Geçiş Gerçekleri',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -75,8 +104,32 @@ export default async function StatuGecisPage({
     { slug: 'platform-ne-yapar-ne-yapmaz', title: isEnglish ? 'What This Platform Does' : 'Platform Ne Yapar Ne Yapmaz' },
   ]
 
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Status Change Realities' : 'Statüden Statüye Geçiş Gerçekleri'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'The truth about changing immigration status in the US.'
+      : "ABD'de göçmenlik statüsü değişikliğine ilişkin gerçekler.",
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['change-of-status', 'immigration', 'visa-transition', 'uscis'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         <Breadcrumb
           lang={lang}
           items={[
@@ -290,6 +343,18 @@ export default async function StatuGecisPage({
             ))}
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
 
         {/* Disclaimer */}
         <div className="text-sm text-gray-500">

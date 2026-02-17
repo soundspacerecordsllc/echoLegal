@@ -6,10 +6,23 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { visaCategories } from '@/lib/visa-categories'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abdye-gelme-yollari',
+  datePublished: '2025-06-01',
+  dateModified: '2026-01-25',
+  version: '1.0',
+  citationKey: 'ecl-gde-00004',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+
+  const url = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
   return {
     title: isEnglish
       ? 'US Visa Categories for Turkish Nationals | EchoLegal'
@@ -17,6 +30,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Comprehensive guide to US non-immigrant visa categories for Turkish nationals. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 visas explained with official USCIS references.'
       : "Türk vatandaşlarına yönelik ABD geçici vize kategorilerinin kapsamlı rehberi. B-1/B-2, F-1, H-1B, L-1, E-2 ve O-1 vizeleri resmi USCIS kaynaklarıyla ele alınmaktadır.",
+    alternates: {
+      canonical: url,
+      languages: {
+        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
+      },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Pathways to the US' : "ABD'ye Gelme Yolları",
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/01/25',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
+    },
   }
 }
 
@@ -33,8 +63,32 @@ export default async function VisaPathwaysPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
+  const pageUrl = `${SITE_URL}/${lang}/amerika/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Pathways to the US' : "ABD'ye Gelme Yolları"
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Comprehensive guide to US non-immigrant visa categories for Turkish nationals.'
+      : "Türk vatandaşlarına yönelik ABD geçici vize kategorilerinin kapsamlı rehberi.",
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['immigration', 'visa', 'us-entry', 'work-visa', 'green-card'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Amerika Hub' : 'Amerika Hub', url: `${SITE_URL}/${lang}/amerika` },
+    { name: pageTitle, url: pageUrl },
+  ])
+
   return (
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
           <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
@@ -267,6 +321,18 @@ export default async function VisaPathwaysPage({
             </span>
           </div>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="jurisdictional-guide"
+          className="mb-8"
+        />
     </main>
   )
 }
