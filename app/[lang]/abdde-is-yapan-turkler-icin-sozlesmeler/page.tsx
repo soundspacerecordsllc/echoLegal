@@ -3,6 +3,8 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -52,6 +54,7 @@ export default async function ContractsGuidePage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('abdde-is-yapan-turkler-icin-sozlesmeler', isEnglish ? 'en' : 'tr')
 
   const tocItems = [
     { id: 'temel-sozlesme-turleri', label: isEnglish ? 'Core Contract Types' : 'Temel Sözleşme Türleri' },
@@ -817,6 +820,8 @@ export default async function ContractsGuidePage({
                 {isEnglish ? 'View Contract Templates →' : 'Sözleşme Şablonlarını Görüntüle →'}
               </Link>
             </div>
+
+            <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
             {/* Related Resources */}
             <section className="mb-12">

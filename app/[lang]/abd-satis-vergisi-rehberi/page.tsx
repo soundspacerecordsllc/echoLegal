@@ -4,6 +4,8 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -54,6 +56,7 @@ export default async function SalesTaxGuidePage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('abd-satis-vergisi-rehberi', isEnglish ? 'en' : 'tr')
 
   const tocItems = [
     { id: 'satis-vergisi-nedir', label: isEnglish ? 'What is US Sales Tax?' : 'ABD Satış Vergisi Nedir?' },
@@ -557,6 +560,8 @@ export default async function SalesTaxGuidePage({
                 </div>
               </div>
             </section>
+
+            <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
             {/* Related Guides */}
             <section className="mb-12">

@@ -194,38 +194,55 @@ function scanForInlinePrimarySources() {
   for (const dir of PAGE_GLOB_DIRS) {
     const dirPath = path.join(root, dir)
     if (!fs.existsSync(dirPath)) continue
-    const entries = fs.readdirSync(dirPath, { withFileTypes: true })
-    for (const entry of entries) {
-      if (!entry.isDirectory()) continue
-      const pagePath = path.join(dirPath, entry.name, 'page.tsx')
-      if (!fs.existsSync(pagePath)) continue
-      const content = fs.readFileSync(pagePath, 'utf8')
-      const lines = content.split('\n')
-      for (let i = 0; i < lines.length; i++) {
-        for (const pattern of INLINE_PATTERNS) {
-          if (pattern.test(lines[i])) {
-            violations.push({
-              file: pagePath,
-              lineNum: i + 1,
-              field: 'primarySources',
-              value: lines[i].trim().substring(0, 60),
-              rule: 'Inline primarySources array detected. Import from lib/primary-sources-registry.ts instead.',
-            })
-          }
+    scanDirRecursive(dirPath)
+  }
+}
+
+function scanDirRecursive(dirPath) {
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true })
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue
+    const pagePath = path.join(dirPath, entry.name, 'page.tsx')
+    if (fs.existsSync(pagePath)) {
+      checkFileForInline(pagePath)
+    }
+    // Recurse into subdirectories (checklists/, encyclopedia/, library/, etc.)
+    const subDir = path.join(dirPath, entry.name)
+    const subEntries = fs.readdirSync(subDir, { withFileTypes: true })
+    for (const sub of subEntries) {
+      if (sub.isDirectory()) {
+        const subPagePath = path.join(subDir, sub.name, 'page.tsx')
+        if (fs.existsSync(subPagePath)) {
+          checkFileForInline(subPagePath)
         }
       }
     }
   }
 }
 
-// Files to scan for citation formatting
+function checkFileForInline(pagePath) {
+  const content = fs.readFileSync(pagePath, 'utf8')
+  const lines = content.split('\n')
+  for (let i = 0; i < lines.length; i++) {
+    for (const pattern of INLINE_PATTERNS) {
+      if (pattern.test(lines[i])) {
+        violations.push({
+          file: pagePath,
+          lineNum: i + 1,
+          field: 'primarySources',
+          value: lines[i].trim().substring(0, 60),
+          rule: 'Inline primarySources array detected. Import from lib/primary-sources-registry.ts instead.',
+        })
+      }
+    }
+  }
+}
+
+// Files to scan for citation formatting.
+// The registry is the single source of truth — page files import from it.
 const filesToScan = [
   'lib/amerika-content-registry.ts',
   'lib/primary-sources-registry.ts',
-  'app/[lang]/abd-de-llc-kurmak-turkler-icin-adim-adim/page.tsx',
-  'app/[lang]/irs-vergiler-ve-w8-w9-gercekleri/page.tsx',
-  'app/[lang]/ein-itin-ssn-farki/page.tsx',
-  'app/[lang]/foreign-owned-single-member-llc-reporting/page.tsx',
 ]
 
 const root = path.resolve(__dirname, '..')

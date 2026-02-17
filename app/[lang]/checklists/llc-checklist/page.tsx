@@ -7,6 +7,8 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import JsonLdScript from '@/components/JsonLdScript'
 import { SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -52,6 +54,7 @@ export default async function LLCChecklistPage({
   const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('llc-checklist', isEnglish ? 'en' : 'tr')
 
   const preFormationChecklist = isEnglish ? [
     { item: 'Research and select a state (Delaware, Wyoming, New Mexico, or where you operate)', done: false },
@@ -293,6 +296,8 @@ export default async function LLCChecklistPage({
               ))}
             </div>
           </section>
+
+          <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
           {/* Related Resources */}
           <section className="mb-12 pt-8 border-t border-gray-200">

@@ -7,6 +7,8 @@ import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 const PAGE_META = {
   slug: 'llc-kurma-rehberi',
@@ -59,6 +61,7 @@ export default async function LLCFormationGuidePage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('library-llc-kurma-rehberi', isEnglish ? 'en' : 'tr')
 
   const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   const pageTitle = isEnglish ? 'LLC Formation in the US: What You Need to Know' : "ABD'de LLC Kurmak: Bilmeniz Gerekenler"
@@ -503,6 +506,8 @@ export default async function LLCFormationGuidePage({
               </Link>
             </div>
           </div>
+
+          <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
           {/* Related Resources */}
           <section className="mb-12">

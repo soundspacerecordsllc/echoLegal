@@ -6,6 +6,8 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -50,6 +52,7 @@ export default async function TaxDocumentsChecklistPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('tax-documents-checklist', isEnglish ? 'en' : 'tr')
 
   const taxIdChecklist = isEnglish ? [
     { item: 'EIN (Employer Identification Number) - Required for LLC', done: false },
@@ -319,6 +322,8 @@ export default async function TaxDocumentsChecklistPage({
               ))}
             </div>
           </section>
+
+          <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
           {/* Related Resources */}
           <section className="mb-10">

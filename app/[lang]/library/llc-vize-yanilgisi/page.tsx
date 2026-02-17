@@ -7,6 +7,8 @@ import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 const PAGE_META = {
   slug: 'llc-vize-yanilgisi',
@@ -59,6 +61,7 @@ export default async function LLCVisaMythPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('library-llc-vize-yanilgisi', isEnglish ? 'en' : 'tr')
   const pageUrl = `${SITE_URL}/${lang}/library/${PAGE_META.slug}`
   const pageTitle = isEnglish ? 'LLC ≠ Visa: Immigration Realities' : 'LLC Kurmak Vize Vermez: Göçmenlik Gerçekleri'
 
@@ -316,6 +319,8 @@ export default async function LLCVisaMythPage({
               </Link>
             </div>
           </div>
+
+          <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
           {/* Related */}
           <section>

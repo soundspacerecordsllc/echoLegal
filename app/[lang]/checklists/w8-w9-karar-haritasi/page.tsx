@@ -9,6 +9,8 @@ import AuthorBox from '@/components/AuthorBox'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import JsonLdScript from '@/components/JsonLdScript'
 import { SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 export async function generateMetadata({
   params,
@@ -56,6 +58,7 @@ export default async function W8W9DecisionMapPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('w8-w9-karar-haritasi', isEnglish ? 'en' : 'tr')
 
   // JSON-LD structured data
   const jsonLd = {
@@ -718,6 +721,8 @@ export default async function W8W9DecisionMapPage({
               ))}
             </div>
           </section>
+
+          <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
           {/* Related Resources */}
           <section className="mb-12">

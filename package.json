@@ -6,6 +6,9 @@
     "dev": "next dev",
     "build:search": "node scripts/build-search-index.js",
     "validate:sources": "node scripts/validate-primary-sources.js",
+    "test:citations": "node scripts/test-citation-canon.js",
+    "lint:citations": "node scripts/lint-citations.js --strict",
+    "check:strict": "node scripts/test-citation-canon.js && node scripts/lint-citations.js --strict && node scripts/validate-primary-sources.js && npx tsc --noEmit",
     "build": "npm run validate:sources && npm run build:search && next build",
     "start": "next start",
     "lint": "next lint"

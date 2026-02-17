@@ -7,6 +7,8 @@ import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateScholarlyArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 const PAGE_META = {
   slug: 'irs-vergi-gercekleri',
@@ -59,6 +61,7 @@ export default async function IRSTaxFactsPage({
 }) {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('library-irs-vergi-gercekleri', isEnglish ? 'en' : 'tr')
 
   const forms = [
     {
@@ -448,6 +451,8 @@ export default async function IRSTaxFactsPage({
               </Link>
             </div>
           </div>
+
+          <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
           {/* Related Resources */}
           <section className="mb-12">

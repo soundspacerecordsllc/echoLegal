@@ -6,6 +6,8 @@ import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 
 const PAGE_META = {
   slug: 'contractor-vs-employee',
@@ -53,6 +55,7 @@ export default async function ContractorVsEmployeePage({
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+  const primarySources = getPrimarySources('contractor-vs-employee', isEnglish ? 'en' : 'tr')
   const pageUrl = `${SITE_URL}/${lang}/encyclopedia/${PAGE_META.slug}`
   const pageTitle = isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi?'
 
@@ -774,6 +777,8 @@ export default async function ContractorVsEmployeePage({
         />
 
       </article>
+
+      <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
       {/* Related Articles */}
       <section className="bg-gray-50 rounded-lg p-6">
