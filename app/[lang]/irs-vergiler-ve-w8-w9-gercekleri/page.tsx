@@ -8,6 +8,8 @@ import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
 import AuthorBox from '@/components/AuthorBox'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
+import JudicialDeference from '@/components/JudicialDeference'
+import type { DeferenceCase } from '@/components/JudicialDeference'
 
 const ARTICLE_SLUG = 'irs-vergiler-ve-w8-w9-gercekleri'
 
@@ -68,6 +70,8 @@ export default async function TaxGuidePage({
     { id: 'yanlis-bilinenler', label: isEnglish ? 'Common Misconceptions' : 'Yaygın Yanlış Bilinenler' },
     { id: 'sss', label: isEnglish ? 'FAQ' : 'Sık Sorulan Sorular' },
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
+    { id: 'judicial-deference', label: isEnglish ? 'Judicial Deference Framework' : 'Yargısal İtibar (Deference) Çerçevesi' },
+    { id: 'doctrinal-references', label: isEnglish ? 'Representative Doctrinal References' : 'Temsili Doktrinel Referanslar' },
   ]
 
   const articleMeta = getArticleMetadata(ARTICLE_SLUG)
@@ -123,6 +127,23 @@ export default async function TaxGuidePage({
   }
 
   const primarySources = getPrimarySources(ARTICLE_SLUG, isEnglish ? 'en' : 'tr')
+
+  const deferenceCases: DeferenceCase[] = [
+    {
+      citation: 'Chevron U.S.A., Inc. v. Natural Resources Defense Council, Inc., 467 U.S. 837 (1984)',
+      principle: {
+        en: 'Where a statute is ambiguous, courts defer to a reasonable agency interpretation embodied in a regulation promulgated through notice-and-comment rulemaking. Treasury regulations implementing withholding requirements under § 1441 receive this deference.',
+        tr: 'Kanun belirsiz olduğunda, mahkemeler bildirim ve yorum yöntemiyle çıkarılan bir yönetmelikte somutlaşan makul kurum yorumuna saygı gösterir. § 1441 kapsamındaki stopaj gereksinimlerini uygulayan Hazine yönetmelikleri bu saygıyı alır.',
+      },
+    },
+    {
+      citation: 'Skidmore v. Swift & Co., 323 U.S. 134 (1944)',
+      principle: {
+        en: 'Informal agency interpretations — IRS publications, revenue rulings, form instructions — receive weight proportional to their reasoning thoroughness, consistency, and persuasive power. Publication 515 guidance on withholding procedures falls within this tier.',
+        tr: 'Gayri resmi kurum yorumları — IRS yayınları, gelir kararları, form talimatları — muhakeme kapsamlılığı, tutarlılığı ve ikna gücüyle orantılı ağırlık alır. Yayın 515\'in stopaj prosedürlerine ilişkin rehberliği bu kademe kapsamındadır.',
+      },
+    },
+  ]
 
   return (
     <>
@@ -721,6 +742,13 @@ export default async function TaxGuidePage({
                 </div>
               </div>
             </section>
+
+            {/* Sections 8–9: Judicial Deference Framework */}
+            <JudicialDeference
+              lang={isEnglish ? 'en' : 'tr'}
+              cases={deferenceCases}
+              sectionNumber="8"
+            />
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 

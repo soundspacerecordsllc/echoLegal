@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
+import JudicialDeference from '@/components/JudicialDeference'
+import type { DeferenceCase } from '@/components/JudicialDeference'
 
 const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
 
@@ -76,10 +78,29 @@ export default async function ForeignOwnedSMLLCReportingPage({
     { id: 'reporting-independent-of-income', label: isEnglish ? 'Reporting Obligation Independent of Income' : 'Gelirden Bağımsız Raporlama Yükümlülüğü' },
     { id: 'filing-mechanics', label: isEnglish ? 'Filing Mechanics' : 'Beyanname Mekaniği' },
     { id: 'penalty-framework', label: isEnglish ? 'Penalty Framework' : 'Ceza Çerçevesi' },
+    { id: 'judicial-deference', label: isEnglish ? 'Judicial Deference Framework' : 'Yargısal İtibar (Deference) Çerçevesi' },
+    { id: 'doctrinal-references', label: isEnglish ? 'Representative Doctrinal References' : 'Temsili Doktrinel Referanslar' },
     { id: 'cross-references', label: isEnglish ? 'Cross-References' : 'Çapraz Referanslar' },
   ]
 
   const primarySources = getPrimarySources(ENTRY_SLUG, isEnglish ? 'en' : 'tr')
+
+  const deferenceCases: DeferenceCase[] = [
+    {
+      citation: 'Chevron U.S.A., Inc. v. Natural Resources Defense Council, Inc., 467 U.S. 837 (1984)',
+      principle: {
+        en: 'Where a statute is ambiguous, courts defer to a reasonable agency interpretation embodied in a regulation promulgated through notice-and-comment rulemaking. Treasury regulations under § 6038A receive this deference.',
+        tr: 'Kanun belirsiz olduğunda, mahkemeler bildirim ve yorum yöntemiyle çıkarılan bir yönetmelikte somutlaşan makul kurum yorumuna saygı gösterir. § 6038A kapsamındaki Hazine yönetmelikleri bu saygıyı alır.',
+      },
+    },
+    {
+      citation: 'Skidmore v. Swift & Co., 323 U.S. 134 (1944)',
+      principle: {
+        en: 'Informal agency interpretations (revenue rulings, IRS notices, guidance letters) are not entitled to Chevron deference but may be given weight proportional to the thoroughness of their reasoning, consistency with earlier pronouncements, and all factors giving them the power to persuade.',
+        tr: 'Gayri resmi kurum yorumları (gelir kararları, IRS bildirimleri, rehberlik mektupları) Chevron saygısına tabi değildir ancak muhakemelerinin kapsamlılığı, önceki beyanlarla tutarlılığı ve ikna gücü veren tüm faktörlerle orantılı ağırlık verilebilir.',
+      },
+    },
+  ]
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -615,11 +636,20 @@ export default async function ForeignOwnedSMLLCReportingPage({
             </section>
 
             {/* ================================================================
-                SECTION 5: CROSS-REFERENCES
+                SECTIONS 8–9: JUDICIAL DEFERENCE FRAMEWORK
+                ================================================================ */}
+            <JudicialDeference
+              lang={isEnglish ? 'en' : 'tr'}
+              cases={deferenceCases}
+              sectionNumber="8"
+            />
+
+            {/* ================================================================
+                SECTION 10: CROSS-REFERENCES
                 ================================================================ */}
             <section id="cross-references" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                {isEnglish ? '8. Cross-References' : '8. Çapraz Referanslar'}
+                {isEnglish ? '10. Cross-References' : '10. Çapraz Referanslar'}
               </h2>
               <div className="bg-gray-50 rounded-lg p-5">
                 <ul className="space-y-2 text-sm text-gray-700 font-mono">
