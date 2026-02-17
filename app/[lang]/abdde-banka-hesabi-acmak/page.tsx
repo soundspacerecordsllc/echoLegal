@@ -4,6 +4,18 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abdde-banka-hesabi-acmak',
+  datePublished: '2025-01-25',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00016',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -16,6 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Guide for Turkish entrepreneurs on opening a US bank account without US residency. Options, requirements, and step-by-step process.'
     : 'Türk girişimciler için ABD mukimliği olmadan ABD banka hesabı açma rehberi. Seçenekler, gereksinimler ve adım adım süreç.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -33,11 +47,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/abdde-banka-hesabi-acmak`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/abdde-banka-hesabi-acmak',
-        'tr': 'https://echo-legal.com/tr/abdde-banka-hesabi-acmak',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Opening a US Bank Account' : 'ABD\'de Banka Hesabı Açmak',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/01/25',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -78,35 +102,31 @@ export default async function BankAccountGuidePage({
     'Kaynaklar',
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'How to Open a US Bank Account as a Non-Resident'
-      : 'ABD\'de Banka Hesabı Açmak: Türkler İçin Rehber',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2025-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/abdde-banka-hesabi-acmak`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Opening a US Bank Account' : 'ABD\'de Banka Hesabı Açmak'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Guide for Turkish entrepreneurs on opening a US bank account without US residency.'
+      : 'Türk girişimciler için ABD mukimliği olmadan ABD banka hesabı açma rehberi.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['bank-account', 'non-resident', 'mercury', 'relay', 'wise'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Opening a US Bank Account' : 'ABD Banka Hesabı Rehberi', url: pageUrl },
+  ])
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
 
       <div className="bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -146,6 +166,13 @@ export default async function BankAccountGuidePage({
                   ? 'A practical guide for Turkish entrepreneurs on opening and maintaining a US bank account for your LLC or business operations.'
                   : 'Türk girişimciler için LLC veya iş operasyonlarınız için ABD banka hesabı açma ve yönetme rehberi.'}
               </p>
+
+              <InstitutionalBadge
+                lang={lang}
+                jurisdictions={['US']}
+                lastReviewedAt={PAGE_META.dateModified}
+                className="mb-8"
+              />
             </header>
 
             {/* Content Outline */}
@@ -190,6 +217,17 @@ export default async function BankAccountGuidePage({
                 </Link>
               </div>
             </section>
+
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">

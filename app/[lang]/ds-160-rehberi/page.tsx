@@ -4,6 +4,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'ds-160-rehberi',
+  datePublished: '2026-01-25',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00018',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -16,6 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Complete guide to filling out DS-160 online visa application. Section-by-section instructions, common mistakes to avoid, and tips for Turkish nationals.'
     : 'DS-160 online vize başvuru formunu doldurma rehberi. Bölüm bölüm talimatlar, sık yapılan hatalar ve Türk vatandaşları için ipuçları.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -33,11 +47,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/ds-160-rehberi`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/ds-160-rehberi',
-        'tr': 'https://echo-legal.com/tr/ds-160-rehberi',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'DS-160 Visa Application Guide' : 'DS-160 Formu Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2026/01/25',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -72,29 +96,27 @@ export default async function DS160GuidePage({
     { id: 'sss', label: isEnglish ? 'FAQ' : 'Sık Sorulan Sorular' },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'DS-160 Form Guide for Turkish Visa Applicants'
-      : 'DS-160 Formu Rehberi: Türkler İçin Adım Adım',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2026-01-25',
-    dateModified: '2026-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/ds-160-rehberi`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'DS-160 Visa Application Guide' : 'DS-160 Formu Rehberi'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Complete guide to filling out DS-160 online visa application for Turkish nationals.'
+      : 'Türk vatandaşları için DS-160 online vize başvuru formunu doldurma rehberi.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['ds-160', 'visa', 'visa-application', 'consular', 'immigration'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'DS-160 Guide' : 'DS-160 Rehberi', url: pageUrl },
+  ])
 
   const faqJsonLd = {
     '@context': 'https://schema.org',
@@ -135,14 +157,7 @@ export default async function DS160GuidePage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema, faqJsonLd]} />
 
       <div className="bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -172,6 +187,13 @@ export default async function DS160GuidePage({
                 ? 'The DS-160 is the online nonimmigrant visa application required for all US visa types. This guide walks you through each section with tips specific to Turkish applicants.'
                 : 'DS-160, tüm ABD vize türleri için gerekli olan çevrimiçi göçmen olmayan vize başvurusudur. Bu rehber, Türk başvuru sahiplerine özel ipuçlarıyla her bölümde size yol gösterir.'}
             </p>
+
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-8"
+            />
           </div>
 
           {/* Official Source */}
@@ -808,6 +830,17 @@ export default async function DS160GuidePage({
                 </li>
               </ul>
             </section>
+
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-6 text-sm text-gray-600">

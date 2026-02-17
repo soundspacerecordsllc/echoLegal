@@ -3,6 +3,18 @@
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abdde-is-yapan-turkler-icin-sozlesmeler',
+  datePublished: '2025-01-25',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00017',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -15,6 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Must-have legal contracts for Turkish entrepreneurs doing business in the United States. NDA, Service Agreements, IP Assignment, Privacy Policies, and more.'
     : 'ABD\'de iş yapan Türk girişimciler için olmazsa olmaz hukuki sözleşmeler. NDA, Hizmet Sözleşmesi, Fikri Mülkiyet Devri, Gizlilik Politikası ve daha fazlası.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -32,11 +46,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/abdde-is-yapan-turkler-icin-sozlesmeler',
-        'tr': 'https://echo-legal.com/tr/abdde-is-yapan-turkler-icin-sozlesmeler',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Essential Contracts for US Business' : 'ABD\'de İş Yapan Türkler İçin Sözleşmeler',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/01/25',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -63,54 +87,27 @@ export default async function ContractsGuidePage({
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'Essential Contracts for Turkish Entrepreneurs in the US'
-      : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2025-01-25',
-    dateModified: '2025-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Essential Contracts for US Business' : 'ABD\'de İş Yapan Türkler İçin Sözleşmeler'
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Guides' : 'Rehberler',
-        item: `https://echo-legal.com/${lang}/library`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler',
-        item: `https://echo-legal.com/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`,
-      },
-    ],
-  }
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Must-have legal contracts for Turkish entrepreneurs doing business in the United States.'
+      : 'ABD\'de iş yapan Türk girişimciler için olmazsa olmaz hukuki sözleşmeler.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['contracts', 'nda', 'service-agreement', 'ip-assignment', 'privacy-policy'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler', url: pageUrl },
+  ])
 
   const contractTypes = isEnglish ? [
     {
@@ -230,14 +227,7 @@ export default async function ContractsGuidePage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
 
       <div className="bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -274,6 +264,13 @@ export default async function ContractsGuidePage({
                   ? 'This guide covers the legal contracts you\'ll likely need when doing business in or with the United States, with considerations for Turkish entrepreneurs operating across borders.'
                   : 'Bu rehber, ABD\'de veya ABD ile iş yaparken muhtemelen ihtiyaç duyacağınız hukuki sözleşmeleri, sınır ötesi faaliyet gösteren Türk girişimciler için dikkat edilmesi gereken hususlarla birlikte ele almaktadır.'}
               </p>
+
+              <InstitutionalBadge
+                lang={lang}
+                jurisdictions={['US']}
+                lastReviewedAt={PAGE_META.dateModified}
+                className="mb-8"
+              />
             </header>
 
             {/* Disclaimer */}
@@ -848,6 +845,17 @@ export default async function ContractsGuidePage({
                 </div>
               </div>
             </section>
+
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Final Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">

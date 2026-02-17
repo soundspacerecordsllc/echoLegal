@@ -4,6 +4,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'legal-kits/business-starter',
+  datePublished: '2025-06-01',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-kit-00001',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -17,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Three foundational legal document templates for Turkish entrepreneurs forming a US-based business: Operating Agreement, Service Agreement, and NDA. Bilingual (EN/TR).'
     : 'ABD merkezli iş kuran Türk girişimciler için üç temel hukuki belge şablonu: Operating Agreement, Hizmet Sözleşmesi ve NDA. İki dilli (EN/TR).'
 
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+
   return {
     title,
     description,
@@ -28,11 +42,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/legal-kits/business-starter',
-        'tr': 'https://echo-legal.com/tr/legal-kits/business-starter',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Business Starter Legal Kit' : 'Business Starter Hukuki Belge Kiti',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2025/06/01',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -92,63 +116,31 @@ export default async function BusinessStarterKitPage({
     'Düzenlemeye tabi sektörlerde (sağlık, finans, menkul kıymetler) özel uyum belgelerine ihtiyaç duyan işletmeler',
   ]
 
-  // Product schema with pay-what-you-can pricing
-  const productJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: 'US Business Starter Legal Kit',
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Business Starter Legal Kit' : 'Business Starter Hukuki Belge Kiti'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
     description: isEnglish
       ? 'Essential legal document bundle for starting a business in the US. Available in English and Turkish.'
       : "ABD'de iş kurmak için temel hukuki belge paketi. İngilizce ve Türkçe olarak mevcuttur.",
-    brand: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      price: '49',
-      priceValidUntil: '2026-12-31',
-      availability: 'https://schema.org/InStock',
-      url: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
-    },
-  }
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['legal-kit', 'operating-agreement', 'nda', 'service-agreement'],
+  })
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Legal Kits' : 'Hukuki Kitler',
-        item: `https://echo-legal.com/${lang}/legal-kits`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'Business Starter Kit',
-        item: `https://echo-legal.com/${lang}/legal-kits/business-starter`,
-      },
-    ],
-  }
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Legal Kits' : 'Hukuki Kitler', url: `${SITE_URL}/${lang}/legal-kits` },
+    { name: 'Business Starter', url: pageUrl },
+  ])
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
     <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
@@ -188,6 +180,13 @@ export default async function BusinessStarterKitPage({
             <span className="bg-gray-100 px-3 py-1 rounded-full">{isEnglish ? '3 Documents' : '3 Belge'}</span>
           </div>
         </div>
+
+        <InstitutionalBadge
+          lang={lang}
+          jurisdictions={['US']}
+          lastReviewedAt={PAGE_META.dateModified}
+          className="mb-8"
+        />
 
         {/* What's Included */}
         <section className="mb-12">
@@ -267,6 +266,18 @@ export default async function BusinessStarterKitPage({
             {isEnglish ? 'Access the Legal Kit' : 'Legal Kit\'e Eriş'}
           </a>
         </section>
+
+        {/* Cite This Entry */}
+        <CiteThisEntry
+          lang={lang}
+          title={pageTitle}
+          url={pageUrl}
+          dateModified={PAGE_META.dateModified}
+          version={PAGE_META.version}
+          citationKey={PAGE_META.citationKey}
+          contentType="document-kit"
+          className="mb-12"
+        />
 
         {/* Legal Disclaimer */}
         <section className="mb-12 bg-amber-50 border border-amber-200 rounded-lg p-6">

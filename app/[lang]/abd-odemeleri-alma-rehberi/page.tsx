@@ -4,6 +4,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: 'abd-odemeleri-alma-rehberi',
+  datePublished: '2026-01-25',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00014',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -16,6 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const description = isEnglish
     ? 'Complete guide to receiving payments from US clients. Stripe, PayPal, Wise comparison. W-8BEN requirements, withholding taxes, and best practices for Turkish freelancers.'
     : 'ABD müşterilerinden ödeme alma rehberi. Stripe, PayPal, Wise karşılaştırması. W-8BEN gereksinimleri, stopaj vergileri ve Türk serbest çalışanlar için en iyi uygulamalar.'
+
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
   return {
     title,
@@ -33,11 +47,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       description,
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/abd-odemeleri-alma-rehberi`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/abd-odemeleri-alma-rehberi',
-        'tr': 'https://echo-legal.com/tr/abd-odemeleri-alma-rehberi',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? 'Receiving US Payments Guide' : 'ABD\'den Ödeme Alma Rehberi',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2026/01/25',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -68,36 +92,32 @@ export default async function PaymentPlatformsGuidePage({
     { id: 'sss', label: isEnglish ? 'FAQ' : 'Sık Sorulan Sorular' },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? 'Receiving US Payments as Turkish Freelancer'
-      : 'ABD\'den Ödeme Alma Rehberi',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2026-01-25',
-    dateModified: '2026-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/abd-odemeleri-alma-rehberi`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? 'Receiving US Payments Guide' : 'ABD\'den Ödeme Alma Rehberi'
+
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Complete guide to receiving payments from US clients. Stripe, PayPal, Wise comparison.'
+      : 'ABD müşterilerinden ödeme alma rehberi. Stripe, PayPal, Wise karşılaştırması.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['stripe', 'paypal', 'wise', 'w-8ben', 'withholding', 'payments'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi', url: `${SITE_URL}/${lang}/vergi-kimlik-rehberi` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
 
       <div className="min-h-screen bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -127,6 +147,13 @@ export default async function PaymentPlatformsGuidePage({
                 ? 'A comprehensive guide to receiving payments from US clients as a Turkish freelancer or business. Compare Stripe, PayPal, and Wise, understand tax requirements, and learn best practices.'
                 : 'Türk bir serbest çalışan veya işletme olarak ABD müşterilerinden ödeme alma rehberi. Stripe, PayPal ve Wise\'ı karşılaştırın, vergi gereksinimlerini anlayın ve en iyi uygulamaları öğrenin.'}
             </p>
+
+            <InstitutionalBadge
+              lang={lang}
+              jurisdictions={['US']}
+              lastReviewedAt={PAGE_META.dateModified}
+              className="mb-8"
+            />
           </div>
 
           {/* Key Points */}
@@ -583,6 +610,18 @@ export default async function PaymentPlatformsGuidePage({
                 </Link>
               </div>
             </section>
+
+            {/* Cite This Entry */}
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-6 text-sm text-gray-600">

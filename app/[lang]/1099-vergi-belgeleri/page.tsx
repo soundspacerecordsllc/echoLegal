@@ -4,6 +4,18 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import InstitutionalBadge from '@/components/InstitutionalBadge'
+import CiteThisEntry from '@/components/CiteThisEntry'
+import JsonLdScript from '@/components/JsonLdScript'
+import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+
+const PAGE_META = {
+  slug: '1099-vergi-belgeleri',
+  datePublished: '2026-01-25',
+  dateModified: '2026-02-17',
+  version: '1.0',
+  citationKey: 'ecl-gde-00013',
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -17,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Complete guide to 1099 forms for Turkish entrepreneurs. 1099-NEC, 1099-MISC, 1099-K explained. When you receive them, what they mean, and what to do.'
     : 'Türk girişimciler için 1099 formlarına kapsamlı rehber. 1099-NEC, 1099-MISC, 1099-K açıklandı. Ne zaman alırsınız, ne anlama gelir ve ne yapmalısınız.'
 
+  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+
   return {
     title,
     description,
@@ -28,12 +42,22 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       siteName: 'EchoLegal',
     },
     alternates: {
-      canonical: `https://echo-legal.com/${lang}/1099-vergi-belgeleri`,
+      canonical: url,
       languages: {
-        'en': 'https://echo-legal.com/en/1099-vergi-belgeleri',
-        'tr': 'https://echo-legal.com/tr/1099-vergi-belgeleri',
-        'x-default': 'https://echo-legal.com/en/1099-vergi-belgeleri',
+        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
+        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
+        'x-default': `${SITE_URL}/en/${PAGE_META.slug}`,
       },
+    },
+    other: {
+      'citation_title': isEnglish ? '1099 Forms & US Tax Documents' : '1099 Formları ve ABD Vergi Belgeleri',
+      'citation_publisher': 'EchoLegal',
+      'citation_publication_date': '2026/01/25',
+      'citation_lastmod': '2026/02/17',
+      'citation_version': PAGE_META.version,
+      'citation_language': lang,
+      'citation_fulltext_html_url': url,
+      'citation_id': PAGE_META.citationKey,
     },
   }
 }
@@ -63,65 +87,32 @@ export default async function TaxDocumentsPage({
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
   ]
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: isEnglish
-      ? '1099 Forms & US Tax Documents Explained'
-      : '1099 Formları ve ABD Vergi Belgeleri',
-    author: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    datePublished: '2026-01-25',
-    dateModified: '2026-01-25',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/1099-vergi-belgeleri`,
-    },
-  }
+  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageTitle = isEnglish ? '1099 Forms & US Tax Documents' : '1099 Formları ve ABD Vergi Belgeleri'
 
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi',
-        item: `https://echo-legal.com/${lang}/vergi-kimlik-rehberi`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: isEnglish ? '1099 & Tax Documents' : '1099 ve Vergi Belgeleri',
-        item: `https://echo-legal.com/${lang}/1099-vergi-belgeleri`,
-      },
-    ],
-  }
+  const articleSchema = generateArticleSchema({
+    title: pageTitle,
+    description: isEnglish
+      ? 'Complete guide to 1099 forms for Turkish entrepreneurs. 1099-NEC, 1099-MISC, 1099-K explained.'
+      : 'Türk girişimciler için 1099 formlarına kapsamlı rehber. 1099-NEC, 1099-MISC, 1099-K açıklandı.',
+    url: pageUrl,
+    datePublished: PAGE_META.datePublished,
+    dateModified: PAGE_META.dateModified,
+    lang,
+    version: PAGE_META.version,
+    keywords: ['1099', 'tax-documents', '1099-nec', '1099-k', '1042-s'],
+    section: 'jurisdictional-guide',
+  })
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi', url: `${SITE_URL}/${lang}/vergi-kimlik-rehberi` },
+    { name: pageTitle, url: pageUrl },
+  ])
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLdScript data={[articleSchema, breadcrumbSchema]} />
 
       <div className="min-h-screen bg-white">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -156,6 +147,13 @@ export default async function TaxDocumentsPage({
               <div className="flex items-center gap-4 mt-4 text-sm text-gray-500">
                 <span>{isEnglish ? 'Last updated:' : 'Son güncelleme:'} {isEnglish ? 'January 2026' : 'Ocak 2026'}</span>
               </div>
+
+              <InstitutionalBadge
+                lang={lang}
+                jurisdictions={['US']}
+                lastReviewedAt={PAGE_META.dateModified}
+                className="mb-8"
+              />
             </header>
 
             {/* Disclaimer */}
@@ -609,6 +607,18 @@ export default async function TaxDocumentsPage({
                 </Link>
               </div>
             </section>
+
+            {/* Cite This Entry */}
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="jurisdictional-guide"
+              className="mb-8"
+            />
 
             {/* Final Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">
