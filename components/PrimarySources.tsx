@@ -68,6 +68,11 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
           open ? 'max-h-[800px] mt-3' : 'max-h-0'
         }`}
       >
+        <p className="text-xs text-gray-500 leading-relaxed mb-3 pl-5">
+          {isEnglish
+            ? 'Sources are presented in normative order. Lower-tier materials do not override higher-tier authority.'
+            : 'Kaynaklar normatif sıraya göre sunulmaktadır. Alt kademe materyaller, üst kademe otoriteyi geçersiz kılmaz.'}
+        </p>
         <ul className="space-y-2 text-sm text-gray-700 leading-relaxed pl-5">
           {sorted.map((source, index) => {
             const citation = normalizeCitationText(source.citation)

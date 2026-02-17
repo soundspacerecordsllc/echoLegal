@@ -77,6 +77,18 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       canonicalId: 'US-IRS-FORM-5472-INSTR',
       jurisdiction: 'US',
     },
+    {
+      type: 'Guidance',
+      citation: 'IRS Publication 515',
+      label: {
+        en: 'Withholding of Tax on Nonresident Aliens and Foreign Entities',
+        tr: 'Yerleşik Olmayan Yabancılar ve Yabancı Kuruluşlardan Vergi Stopajı',
+      },
+      url: 'https://www.irs.gov/publications/p515',
+      authorityLevel: 'publication',
+      canonicalId: 'publication-irs-515-smllc',
+      jurisdiction: 'US',
+    },
   ],
 
   'ein-itin-ssn-farki': [
@@ -175,10 +187,25 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
     {
       type: 'Guidance',
       citation: 'IRS, Instructions for Form W-8BEN',
-      label: { en: 'Certificate of Foreign Status of Beneficial Owner' },
+      label: {
+        en: 'Certificate of Foreign Status of Beneficial Owner',
+        tr: 'Gerçek Lehdarın Yabancı Statüsü Belgesi',
+      },
       url: 'https://www.irs.gov/forms-pubs/about-form-w-8-ben',
       authorityLevel: 'form_instruction',
       canonicalId: 'form-instructions-irs-w-8ben',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS, Instructions for Form W-9',
+      label: {
+        en: 'Request for Taxpayer Identification Number and Certification',
+        tr: 'Vergi Mükellefi Kimlik Numarası ve Onay Talebi',
+      },
+      url: 'https://www.irs.gov/forms-pubs/about-form-w-9',
+      authorityLevel: 'form_instruction',
+      canonicalId: 'form-instructions-irs-w-9',
       jurisdiction: 'US',
     },
   ],
@@ -222,10 +249,37 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
     {
       type: 'Guidance',
       citation: 'IRS Rev. Proc. 2023-32',
-      label: { en: 'EIN application procedures for foreign-owned entities' },
+      label: {
+        en: 'EIN application procedures for foreign-owned entities',
+        tr: 'Yabancı sermayeli kuruluşlar için EIN başvuru prosedürleri',
+      },
       url: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online',
       authorityLevel: 'agency_guidance',
       canonicalId: 'guidance-irs-rev-proc-2023-32',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS, Instructions for Form SS-4',
+      label: {
+        en: 'Application for Employer Identification Number',
+        tr: 'İşveren Kimlik Numarası Başvurusu',
+      },
+      url: 'https://www.irs.gov/forms-pubs/about-form-ss-4',
+      authorityLevel: 'form_instruction',
+      canonicalId: 'form-instructions-irs-ss-4',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'CFR',
+      citation: '31 C.F.R. § 1010.380',
+      label: {
+        en: 'Beneficial ownership information reporting requirements (FinCEN)',
+        tr: 'Gerçek lehdar bilgi raporlama gereksinimleri (FinCEN)',
+      },
+      url: 'https://www.ecfr.gov/current/title-31/subtitle-B/chapter-X/part-1010/subpart-C/section-1010.380',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'cfr-31-1010.380',
       jurisdiction: 'US',
     },
   ],

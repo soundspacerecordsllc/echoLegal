@@ -8,6 +8,8 @@ import { getArticleMetadata } from '@/lib/article-metadata'
 import { getFeaturedSnippet } from '@/components/FeaturedSnippet'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
+import JudicialInterpretation from '@/components/JudicialInterpretation'
+import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 
 const ARTICLE_SLUG = 'abd-de-llc-kurmak-turkler-icin-adim-adim'
 
@@ -70,6 +72,8 @@ export default async function LLCGuidePage({
     { id: 'sure-ve-maliyet', label: isEnglish ? 'Timeline & Costs' : 'Süre ve Maliyet' },
     { id: 'sss', label: isEnglish ? 'FAQ' : 'Sık Sorulan Sorular' },
     { id: 'kaynaklar', label: isEnglish ? 'Sources' : 'Kaynaklar' },
+    { id: 'judicial-interpretation', label: isEnglish ? 'Judicial Interpretation (Selected)' : 'Yargısal Yorum (Seçilmiş)' },
+    { id: 'interpretive-notes', label: isEnglish ? 'Interpretive Notes' : 'Yorum Notları' },
   ]
 
   const articleMeta = getArticleMetadata(ARTICLE_SLUG)
@@ -125,6 +129,94 @@ export default async function LLCGuidePage({
   }
 
   const primarySources = getPrimarySources(ARTICLE_SLUG, isEnglish ? 'en' : 'tr')
+
+  const judicialEntries: JudicialEntry[] = [
+    {
+      citation: '26 C.F.R. §§ 301.7701-1 through 301.7701-3',
+      summary: {
+        en: 'The "check-the-box" regulations govern entity classification for federal tax purposes. A single-member LLC defaults to disregarded entity status unless an election is made. Binding regulation with the force of law.',
+        tr: '"Check-the-box" düzenlemeleri federal vergi amaçları için tüzel kişilik sınıflandırmasını yönetir. Tek üyeli LLC, seçim yapılmadıkça varsayılan olarak dikkate alınmayan varlık statüsüne sahiptir. Kanun hükmünde bağlayıcı yönetmelik.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: '26 U.S.C. § 7701(a)(3)–(4)',
+      summary: {
+        en: 'Statutory definitions of "corporation" and "domestic" for federal tax purposes. These definitions determine how state-law entities are treated under the Internal Revenue Code.',
+        tr: 'Federal vergi amaçları için "şirket" ve "yerli" yasal tanımları. Bu tanımlar eyalet hukuku kapsamındaki kuruluşların İç Gelir Kanunu kapsamında nasıl değerlendirileceğini belirler.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: '31 U.S.C. § 5336 (Corporate Transparency Act)',
+      summary: {
+        en: 'Requires most LLCs to report beneficial ownership information to FinCEN. Statutory mandate; FinCEN regulations implement the specifics.',
+        tr: 'Çoğu LLC\'nin gerçek lehdar bilgilerini FinCEN\'e bildirmesini zorunlu kılar. Yasal gereklilik; FinCEN yönetmelikleri detayları uygular.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: '6 Del. C. § 18-101 et seq. (Delaware LLC Act)',
+      summary: {
+        en: 'State statute governing LLC formation, governance, and dissolution in Delaware. State law controls entity formation; federal law controls tax treatment.',
+        tr: 'Delaware\'de LLC kuruluş, yönetim ve feshine ilişkin eyalet kanunu. Eyalet hukuku kuruluşu kontrol eder; federal hukuk vergi uygulamasını kontrol eder.',
+      },
+      weight: 'binding',
+    },
+    {
+      citation: 'IRS Rev. Proc. 2023-32',
+      summary: {
+        en: 'IRS guidance on EIN application procedures for foreign-owned entities. Administrative guidance; helpful but not binding on courts.',
+        tr: 'Yabancı sermayeli kuruluşlar için EIN başvuru prosedürlerine ilişkin IRS rehberliği. İdari rehberlik; faydalıdır ancak mahkemeler için bağlayıcı değildir.',
+      },
+      weight: 'persuasive',
+    },
+  ]
+
+  const conflictNotes: InterpretiveNote[] = [
+    {
+      en: 'Entity formation is governed by state law (e.g., Delaware LLC Act). Federal law does not create LLCs but determines how state-law entities are classified and taxed.',
+      tr: 'Tüzel kişilik kuruluşu eyalet hukuku tarafından yönetilir (örn. Delaware LLC Yasası). Federal hukuk LLC oluşturmaz ancak eyalet hukuku kuruluşlarının nasıl sınıflandırıldığını ve vergilendirildiğini belirler.',
+    },
+    {
+      en: 'Where state LLC statutes conflict with federal tax classification rules, federal law governs the tax treatment under the Supremacy Clause. However, state law governs liability protection, governance, and dissolution.',
+      tr: 'Eyalet LLC kanunları federal vergi sınıflandırma kurallarıyla çatıştığında, Üstünlük Maddesi kapsamında federal hukuk vergi uygulamasını yönetir. Ancak sorumluluk koruması, yönetim ve fesih eyalet hukuku tarafından yönetilir.',
+    },
+    {
+      en: 'FinCEN beneficial ownership regulations (31 C.F.R. § 1010.380) implement the Corporate Transparency Act. These regulations have the force of law, distinct from voluntary guidance.',
+      tr: 'FinCEN gerçek lehdar yönetmelikleri (31 C.F.R. § 1010.380) Kurumsal Şeffaflık Yasası\'nı uygular. Bu yönetmelikler gönüllü rehberlikten farklı olarak kanun hükmündedir.',
+    },
+  ]
+
+  const resolves: ResolutionBullet[] = [
+    {
+      en: 'Whether a non-US person can form an LLC (yes, under state law; no federal prohibition).',
+      tr: 'ABD dışı bir kişinin LLC kurabilip kuramayacağı (evet, eyalet hukuku kapsamında; federal yasak yoktur).',
+    },
+    {
+      en: 'Default federal tax classification of a single-member LLC (disregarded entity under check-the-box).',
+      tr: 'Tek üyeli LLC\'nin varsayılan federal vergi sınıflandırması (check-the-box kapsamında dikkate alınmayan varlık).',
+    },
+    {
+      en: 'Obligation to file BOI reports with FinCEN (required for most LLCs under the CTA).',
+      tr: 'FinCEN\'e BOI raporu dosyalama yükümlülüğü (CTA kapsamında çoğu LLC için zorunludur).',
+    },
+  ]
+
+  const doesNotResolve: ResolutionBullet[] = [
+    {
+      en: 'Which state is "best" for a particular business situation (requires analysis of specific facts and objectives).',
+      tr: 'Belirli bir iş durumu için hangi eyaletin "en iyi" olduğu (belirli olgular ve hedeflerin analizi gerektirir).',
+    },
+    {
+      en: 'Whether a foreign LLC owner has personal US tax filing obligations (depends on income sources and activities).',
+      tr: 'Yabancı LLC sahibinin kişisel ABD vergi beyannamesi yükümlülüğü olup olmadığı (gelir kaynakları ve faaliyetlere bağlıdır).',
+    },
+    {
+      en: 'Immigration implications of LLC ownership (LLC formation confers no immigration benefit).',
+      tr: 'LLC sahipliğinin göçmenlik etkileri (LLC kuruluşu hiçbir göçmenlik avantajı sağlamaz).',
+    },
+  ]
 
   return (
     <>
@@ -721,6 +813,16 @@ export default async function LLCGuidePage({
                 <li>{isEnglish ? 'Federal immigration law (distinguishing entity formation from immigration status)' : 'Federal göçmenlik hukuku (tüzel kişilik kuruluşunun göçmenlik statüsünden ayrımı)'}</li>
               </ul>
             </section>
+
+            {/* Sections 9–10: Judicial Interpretation & Interpretive Notes */}
+            <JudicialInterpretation
+              lang={isEnglish ? 'en' : 'tr'}
+              entries={judicialEntries}
+              conflictNotes={conflictNotes}
+              resolves={resolves}
+              doesNotResolve={doesNotResolve}
+              sectionNumber="9"
+            />
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
