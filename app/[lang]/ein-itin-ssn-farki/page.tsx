@@ -783,6 +783,18 @@ export default async function EinItinSsnPage({
               </div>
             </section>
 
+            {/* Cite This Entry */}
+            <CiteThisEntry
+              lang={lang}
+              title={pageTitle}
+              url={pageUrl}
+              dateModified={PAGE_META.dateModified}
+              version={PAGE_META.version}
+              citationKey={PAGE_META.citationKey}
+              contentType="encyclopedia-entry"
+              className="mb-8"
+            />
+
             {/* Final Disclaimer */}
             <div className="bg-gray-100 rounded-lg p-5">
               <p className="text-xs text-gray-600 leading-relaxed">
