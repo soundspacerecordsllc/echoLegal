@@ -9,6 +9,7 @@ import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import AuthorityHierarchyTable, { type AuthorityRow } from '@/components/editorial/AuthorityHierarchyTable'
 
 const ENTRY_SLUG = 'abd-llc-kurmak-prosedurel-mimari'
 
@@ -25,7 +26,7 @@ const ENTRY_META = {
   lastReviewed: '2026-02-18',
   reviewStatus: 'Draft',
   jurisdiction: 'US Federal / State',
-  authorityLayersUsed: false,
+  authorityLayersUsed: true,
   citationKey: 'ecl-enc-00202',
   contentType: 'encyclopedia-entry' as const,
   category: 'formation' as const,
@@ -34,6 +35,7 @@ const ENTRY_META = {
     { date: '2026-02-18', note: 'Foundational layers – classification, pre-formation risk, and formation event (Pass 2)' },
     { date: '2026-02-18', note: 'EIN acquisition, banking infrastructure, and federal reporting trigger map (Pass 3)' },
     { date: '2026-02-18', note: 'Platform integration, compliance calendar, error matrix, and strategic blueprint (Pass 4)' },
+    { date: '2026-02-18', note: 'Authority hierarchy table, judicial deference framework, canonical expansion clause (Pass 5)' },
   ],
 }
 
@@ -140,6 +142,49 @@ export default async function ABDLLCProsedurelMimariPage({
     { name: pageTitle, url: pageUrl },
   ])
 
+  const authorityRows: AuthorityRow[] = [
+    {
+      authorityLevel: 'federal_statute',
+      tier: { en: 'Binding Authority', tr: 'Bağlayıcı Otorite' },
+      instrumentType: { en: 'Federal Statute (IRC)', tr: 'Federal Kanun (IRC)' },
+      description: {
+        en: '26 U.S.C. §§ 7701, 6038A, 6109 — entity classification, foreign-owned reporting, tax identification',
+        tr: '26 U.S.C. §§ 7701, 6038A, 6109 — tüzel kişilik sınıflandırması, yabancı sermayeli raporlama, vergi kimliği',
+      },
+      bindingWeight: { en: 'Controlling — courts must apply as enacted', tr: 'Kontrol edici — mahkemeler kanunlaştırıldığı şekliyle uygulamak zorundadır' },
+    },
+    {
+      authorityLevel: 'federal_regulation',
+      tier: { en: 'Regulatory Authority', tr: 'Düzenleyici Otorite' },
+      instrumentType: { en: 'Treasury Regulations (CFR)', tr: 'Hazine Yönetmelikleri (CFR)' },
+      description: {
+        en: '26 C.F.R. §§ 301.7701-1 through 301.7701-3 — check-the-box classification rules',
+        tr: '26 C.F.R. §§ 301.7701-1 ila 301.7701-3 — check-the-box sınıflandırma kuralları',
+      },
+      bindingWeight: { en: 'Force of law if issued under proper statutory delegation', tr: 'Uygun yasal yetki devri altında çıkarılmışsa kanun hükmünde' },
+    },
+    {
+      authorityLevel: 'agency_guidance',
+      tier: { en: 'Interpretive Authority', tr: 'Yorumlayıcı Otorite' },
+      instrumentType: { en: 'IRS Revenue Rulings & Notices', tr: 'IRS Gelir Kararları ve Bildirimleri' },
+      description: {
+        en: 'Agency interpretation of statutory and regulatory provisions — considered but not binding on courts',
+        tr: 'Kanuni ve düzenleyici hükümlerin kurum yorumu — değerlendirilir ancak mahkemeler için bağlayıcı değildir',
+      },
+      bindingWeight: { en: 'Persuasive — weight varies by formality of issuance', tr: 'İkna edici — ağırlık düzenlemenin resmiyetine göre değişir' },
+    },
+    {
+      authorityLevel: 'form_instruction',
+      tier: { en: 'Persuasive Authority', tr: 'İkna Edici Otorite' },
+      instrumentType: { en: 'IRS Form Instructions & Publications', tr: 'IRS Form Talimatları ve Yayınları' },
+      description: {
+        en: 'SS-4 Instructions, Publication 519 — procedural guidance for taxpayers; no judicial deference',
+        tr: 'SS-4 Talimatları, Publication 519 — mükellefler için prosedürel rehberlik; yargısal saygı yok',
+      },
+      bindingWeight: { en: 'Non-binding — informational aids only', tr: 'Bağlayıcı olmayan — yalnızca bilgilendirme amaçlı' },
+    },
+  ]
+
   return (
     <>
       <div className="bg-white">
@@ -220,6 +265,49 @@ export default async function ABDLLCProsedurelMimariPage({
                   : 'Bu içerik yalnızca bilgilendirme amaçlıdır; hukuki, vergisel veya ticari danışmanlık teşkil etmez. Yasalar ve düzenlemeler eyalete göre değişir ve sık sık güncellenir. Durumunuza özgü tavsiye için uzman bir avukat veya mali müşavire danışın.'}
               </p>
             </div>
+
+            {/* Authority Hierarchy Table */}
+            <AuthorityHierarchyTable lang={lang} rows={authorityRows} className="mb-10" />
+
+            {/* Judicial Deference Framework */}
+            <section id="judicial-deference-framework" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                {isEnglish ? 'Judicial Deference Framework' : 'Yargısal İtibar (Deference) Çerçevesi'}
+              </h2>
+              <div className="prose prose-gray max-w-none">
+                {isEnglish ? (
+                  <>
+                    <p>
+                      The authority hierarchy table above establishes the normative ordering of legal sources. However, the practical weight of each source depends not only on its formal classification but on the degree of judicial deference it commands when statute, regulation, and agency guidance diverge. US administrative law has developed distinct deference doctrines that determine how courts evaluate agency interpretations — and these doctrines directly affect the reliability of the IRS positions that govern LLC classification, EIN issuance, and Form 5472 reporting.
+                    </p>
+                    <p>
+                      <strong>Chevron deference</strong> applies when Congress has delegated rulemaking authority to an agency and the agency has exercised that authority through formal notice-and-comment rulemaking. Under <em>Chevron U.S.A., Inc. v. Natural Resources Defense Council</em> (1984), courts apply a two-step test: first, whether the statute directly addresses the question at issue; second, if the statute is silent or ambiguous, whether the agency&apos;s interpretation is a permissible construction. When Chevron applies, Treasury regulations issued through the Administrative Procedure Act&apos;s notice-and-comment process — including the check-the-box regulations at 26 C.F.R. §§ 301.7701-1 through 301.7701-3 — receive substantial judicial deference. Courts will not substitute their own reading of an ambiguous statute if the regulation represents a reasonable interpretation. For a Turkish founder, this means that the check-the-box classification framework, while regulatory rather than statutory, carries near-binding force in practice.
+                    </p>
+                    <p>
+                      <strong>Skidmore deference</strong> applies to less formal agency pronouncements — revenue rulings, notices, information letters, and other guidance that was not promulgated through notice-and-comment rulemaking. Under <em>Skidmore v. Swift &amp; Co.</em> (1944), these interpretations receive deference proportional to their &quot;power to persuade,&quot; evaluated by reference to the thoroughness of the agency&apos;s reasoning, the consistency of the position over time, and the formality of the issuance process. A revenue ruling that reflects longstanding, consistent IRS practice will carry significant Skidmore weight; an informal FAQ on the IRS website will carry little or none. This distinction is operationally relevant: when IRS guidance on foreign-owned entity reporting or EIN processing procedures diverges from the statutory text or Treasury regulations, the guidance&apos;s practical reliability depends on which deference framework a court would apply.
+                    </p>
+                    <p>
+                      <strong>Non-binding administrative materials</strong> — form instructions, IRS publications, and internal processing manuals — receive no judicial deference under either framework. These materials represent the agency&apos;s own operational interpretation but do not bind courts, taxpayers (except as voluntary compliance aids), or the agency itself in future proceedings. The SS-4 instructions, while essential to the EIN application process described in Section 4, do not carry the force of law. A court reviewing an EIN denial or a penalty assessment will look to the statute and regulations, not to the form instructions, as the governing authority. For a Turkish founder relying on IRS procedural guidance to navigate the formation sequence, this means that agency practice may shift without formal regulatory amendment — and positions taken based solely on form instructions or publications are not legally defensible if challenged.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      Yukarıdaki otorite hiyerarşisi tablosu, hukuki kaynakların normatif sıralamasını ortaya koymaktadır. Ancak her kaynağın pratik ağırlığı yalnızca resmi sınıflandırmasına değil, kanun, yönetmelik ve kurum rehberliği birbirinden ayrıştığında yargısal itibar (deference) derecesine de bağlıdır. ABD idare hukuku, mahkemelerin kurum yorumlarını nasıl değerlendirdiğini belirleyen farklı itibar doktrinleri geliştirmiştir — ve bu doktrinler, LLC sınıflandırması, EIN düzenlenmesi ve Form 5472 raporlamasını yöneten IRS pozisyonlarının güvenilirliğini doğrudan etkiler.
+                    </p>
+                    <p>
+                      <strong>Chevron itibarı</strong>, Kongre&apos;nin bir kuruma kural koyma yetkisi devrettiği ve kurumun bu yetkiyi resmi bildirim-ve-yorum (notice-and-comment) süreciyle kullandığı durumlarda uygulanır. <em>Chevron U.S.A., Inc. v. Natural Resources Defense Council</em> (1984) kararı kapsamında mahkemeler iki aşamalı bir test uygular: birincisi, kanunun söz konusu soruyu doğrudan ele alıp almadığı; ikincisi, kanun sessiz veya belirsizse, kurumun yorumunun izin verilen bir yapılandırma olup olmadığı. Chevron uygulandığında, İdari Usul Kanunu&apos;nun bildirim-ve-yorum süreci aracılığıyla çıkarılan Hazine yönetmelikleri — 26 C.F.R. §§ 301.7701-1 ila 301.7701-3 kapsamındaki check-the-box düzenlemeleri dahil — önemli yargısal itibar görür. Yönetmelik belirsiz bir kanunun makul bir yorumunu temsil ediyorsa mahkemeler kendi okumalarını ikame etmez. Türk kurucu için bu şu anlama gelir: check-the-box sınıflandırma çerçevesi, kanuni olmaktan ziyade düzenleyici nitelikte olmasına rağmen, pratikte neredeyse bağlayıcı güç taşır.
+                    </p>
+                    <p>
+                      <strong>Skidmore itibarı</strong>, daha az resmi kurum beyanlarına — gelir kararlarına, bildirimlere, bilgi mektuplarına ve bildirim-ve-yorum süreciyle yayımlanmamış diğer rehberliğe — uygulanır. <em>Skidmore v. Swift &amp; Co.</em> (1944) kararı kapsamında bu yorumlar, &quot;ikna gücüne&quot; orantılı itibar görür; bu güç, kurumun gerekçesinin kapsamlılığı, pozisyonun zaman içindeki tutarlılığı ve düzenleme sürecinin resmiyeti referans alınarak değerlendirilir. Uzun süredir devam eden, tutarlı IRS uygulamasını yansıtan bir gelir kararı önemli Skidmore ağırlığı taşıyacaktır; IRS web sitesindeki gayri resmi bir SSS çok az taşıyacak veya hiç taşımayacaktır. Bu ayrım operasyonel olarak ilgilidir: yabancı sermayeli tüzel kişilik raporlaması veya EIN işlem prosedürleri hakkındaki IRS rehberliği kanun metninden veya Hazine yönetmeliklerinden ayrıştığında, rehberliğin pratik güvenilirliği mahkemenin hangi itibar çerçevesini uygulayacağına bağlıdır.
+                    </p>
+                    <p>
+                      <strong>Bağlayıcı olmayan idari materyaller</strong> — form talimatları, IRS yayınları ve iç işlem kılavuzları — her iki çerçeve altında da yargısal itibar görmez. Bu materyaller kurumun kendi operasyonel yorumunu temsil eder ancak mahkemeleri, mükellefleri (gönüllü uyum araçları hariç) veya kurumun kendisini gelecekteki işlemlerde bağlamaz. Bölüm 4&apos;te açıklanan EIN başvuru süreci için esas olan SS-4 talimatları kanun hükmü taşımaz. EIN reddini veya ceza değerlendirmesini inceleyen bir mahkeme, yönetici otorite olarak form talimatlarına değil, kanun ve yönetmeliklere bakacaktır. Kuruluş dizisinde IRS prosedürel rehberliğine dayanan Türk kurucu için bu şu anlama gelir: kurum uygulaması resmi düzenleyici değişiklik olmadan kayabilir — ve yalnızca form talimatlarına veya yayınlara dayanan pozisyonlar, itiraz edildiğinde hukuki olarak savunulabilir değildir.
+                    </p>
+                  </>
+                )}
+              </div>
+            </section>
 
             {/* Table of Contents */}
             <nav className="bg-gray-50 rounded-lg p-6 mb-10">
@@ -816,6 +904,15 @@ export default async function ABDLLCProsedurelMimariPage({
                 )}
               </div>
             </section>
+
+            {/* Canonical Expansion Clause */}
+            <div className="border-t border-gray-200 pt-6 mb-8">
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry may be expanded by licensed attorneys for jurisdiction-specific refinement under the EchoLegal Canonical Governance Model.'
+                  : 'Bu içerik, EchoLegal Kanonik Yönetişim Modeli kapsamında lisanslı avukatlar tarafından yargı alanına özgü geliştirmelerle genişletilebilir.'}
+              </p>
+            </div>
 
             {/* Primary Sources */}
             <PrimarySources sources={primarySources} lang={lang} />
