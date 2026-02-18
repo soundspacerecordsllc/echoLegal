@@ -607,13 +607,19 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 {isEnglish ? (
                   <>
                     <p>
-                      The filing mechanism for a foreign-owned disregarded entity involves three components:
+                      A foreign-owned single-member LLC that is classified as a disregarded entity must file Form 5472 (Information Return of a 25% Foreign-Owned U.S. Corporation or a Foreign Corporation Engaged in a U.S. Trade or Business) for each taxable year in which a reportable transaction occurs with a related party. The form is not filed on its own; it must be attached to a pro forma Form 1120, which serves as the transmittal return. This filing obligation exists regardless of whether the LLC earned income, engaged in a trade or business, or has any federal income tax liability. The obligation arises from entity structure and ownership, not from the presence of taxable activity.
+                    </p>
+                    <p>
+                      The filing mechanism involves three components:
                     </p>
                   </>
                 ) : (
                   <>
                     <p>
-                      Yabancı sermayeli bir dikkate alınmayan varlık için dosyalama mekanizması üç bileşenden oluşur:
+                      Dikkate alınmayan varlık olarak sınıflandırılan yabancı sermayeli tek üyeli bir LLC, ilişkili bir tarafla raporlanabilir bir işlemin gerçekleştiği her vergi yılı için Form 5472 (Yüzde 25 Yabancı Sermayeli ABD Şirketi veya ABD Ticareti veya İşi ile Uğraşan Yabancı Şirket Bilgi Beyannamesi) dosyalamalıdır. Form tek başına dosyalanmaz; iletim beyannamesi işlevi gören pro forma Form 1120&apos;ye eklenmelidir. Bu dosyalama yükümlülüğü, LLC&apos;nin gelir elde edip etmediğine, bir ticaret veya işle uğraşıp uğraşmadığına veya herhangi bir federal gelir vergisi borcunun olup olmadığına bakılmaksızın mevcuttur. Yükümlülük, vergiye tabi faaliyetin varlığından değil, kuruluş yapısı ve sahiplikten kaynaklanmaktadır.
+                    </p>
+                    <p>
+                      Dosyalama mekanizması üç bileşenden oluşur:
                     </p>
                   </>
                 )}
@@ -722,12 +728,22 @@ export default async function ForeignOwnedSMLLCReportingPage({
               </div>
 
               {/* Critical clarification */}
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
                 <p className="text-sm text-red-900">
                   <strong>{isEnglish ? 'Critical clarification:' : 'Kritik açıklama:'}</strong>{' '}
                   {isEnglish
                     ? 'The § 6038A(d) penalty is triggered by failure to file the required information return. It is not contingent on the existence of income, tax liability, or any underlying tax obligation. An entity with zero revenue and no US-source income is subject to the same penalty as one with substantial operations.'
                     : '§ 6038A(d) cezası, gerekli bilgi beyannamesinin dosyalanmamasından kaynaklanır. Gelirin, vergi borcunun veya herhangi bir temel vergi yükümlülüğünün varlığına bağlı değildir. Sıfır geliri ve ABD kaynaklı geliri olmayan bir varlık, önemli operasyonları olan bir varlıkla aynı cezaya tabidir.'}
+                </p>
+              </div>
+
+              {/* Reasonable cause */}
+              <div className="border-l-4 border-gray-300 pl-4 py-2">
+                <h3 className="font-bold text-black text-sm">{isEnglish ? 'Reasonable cause' : 'Makul neden'}</h3>
+                <p className="text-gray-700 text-sm mt-1">
+                  {isEnglish
+                    ? 'The Internal Revenue Code provides that penalties under § 6038A(d) may be waived if the reporting entity establishes that the failure was due to reasonable cause and not willful neglect. The reasonable cause standard is fact-specific: the IRS evaluates the totality of the circumstances, including the entity\'s efforts to determine its filing obligations, reliance on professional advice, and the promptness of any corrective filing. Reasonable cause is an affirmative defense — the burden of demonstrating it rests on the taxpayer, not the IRS. The availability and application of this relief are beyond the scope of this entry.'
+                    : 'Internal Revenue Code, raporlayan kuruluşun, uyumsuzluğun makul nedenden kaynaklandığını ve kasıtlı ihmal olmadığını kanıtlaması halinde § 6038A(d) kapsamındaki cezaların kaldırılabileceğini öngörmektedir. Makul neden standardı olguya bağlıdır: IRS, kuruluşun dosyalama yükümlülüklerini belirleme çabalarını, profesyonel tavsiyeye güvenmeyi ve düzeltici dosyalamanın hızını dahil olmak üzere koşulların tamamını değerlendirir. Makul neden olumlu bir savunmadır — bunu kanıtlama yükü IRS\'e değil, vergi mükellefine aittir. Bu muafiyetin mevcudiyeti ve uygulanması bu maddenin kapsamı dışındadır.'}
                 </p>
               </div>
             </section>
@@ -860,9 +876,41 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="regulatory-implementation" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                15. Regulatory Implementation
+                {isEnglish ? '15. Regulatory Implementation' : '15. Düzenleyici Uygulama'}
               </h2>
-              {/* TODO: Pass 2 – substantive content */}
+              <div className="prose prose-gray max-w-none">
+                {isEnglish ? (
+                  <>
+                    <p>
+                      The implementing regulations for 26 U.S.C. § 6038A are found at 26 C.F.R. § 1.6038A-1 through § 1.6038A-7. These regulations define the operative terms of the statute — including &quot;reporting corporation,&quot; &quot;related party,&quot; and &quot;reportable transaction&quot; — and prescribe the procedural requirements for compliance. The regulations were issued through notice-and-comment rulemaking, which means they carry the force and effect of law and are entitled to judicial deference under applicable administrative law standards.
+                    </p>
+                    <p>
+                      The most significant regulatory development for foreign-owned single-member LLCs is Treasury Decision 9796, published in the Federal Register on December 13, 2016 (81 Fed. Reg. 89,852). T.D. 9796 amended 26 C.F.R. § 1.6038A-1 to expand the definition of &quot;reporting corporation&quot; to include a domestic disregarded entity that is wholly owned by a foreign person. For this purpose only, the regulation treats the disregarded entity as a corporation — a limited reclassification that does not affect the entity&apos;s income tax status, its state-law liability protection, or any other federal tax attribute.
+                    </p>
+                    <p>
+                      This distinction between statute and regulation is material. The statute, § 6038A, applies by its terms to &quot;domestic corporations.&quot; A disregarded entity is not a corporation under the entity-classification rules of 26 C.F.R. § 301.7701-3. The extension of § 6038A to disregarded entities was therefore accomplished not by Congress amending the statute, but by Treasury exercising its delegated regulatory authority to redefine the regulatory scope. The validity of this extension rests on the rulemaking authority granted by § 6038A(a) and on the procedural regularity of the notice-and-comment process through which T.D. 9796 was promulgated. Regulations issued through this process are presumed valid absent a successful challenge.
+                    </p>
+                    <p>
+                      The effective date of the regulatory expansion is taxable years beginning after December 31, 2016. Foreign-owned single-member LLCs in existence before that date became subject to the reporting obligation starting with their first taxable year beginning on or after January 1, 2017.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      26 U.S.C. § 6038A&apos;nın uygulama yönetmelikleri 26 C.F.R. § 1.6038A-1 ile § 1.6038A-7 arasında yer almaktadır. Bu yönetmelikler kanunun işlevsel terimlerini — &quot;raporlayan şirket,&quot; &quot;ilişkili taraf&quot; ve &quot;raporlanabilir işlem&quot; dahil — tanımlar ve uyum için usul gereksinimlerini belirler. Yönetmelikler bildirim ve yorum süreciyle çıkarılmıştır; bu, kanun hükmünde ve etkisinde oldukları ve geçerli idare hukuku standartları kapsamında yargısal saygıya tabi oldukları anlamına gelir.
+                    </p>
+                    <p>
+                      Yabancı sermayeli tek üyeli LLC&apos;ler için en önemli düzenleyici gelişme, 13 Aralık 2016&apos;da Federal Register&apos;da yayımlanan Hazine Kararı 9796&apos;dır (81 Fed. Reg. 89.852). T.D. 9796, &quot;raporlayan şirket&quot; tanımını tamamen yabancı bir kişiye ait yerli dikkate alınmayan varlığı kapsayacak şekilde genişletmek üzere 26 C.F.R. § 1.6038A-1&apos;i değiştirmiştir. Yalnızca bu amaçla yönetmelik, dikkate alınmayan varlığı bir şirket olarak işlem görür — bu, kuruluşun gelir vergisi statüsünü, eyalet hukuku kapsamındaki sorumluluk korumasını veya diğer herhangi bir federal vergi niteliğini etkilemeyen sınırlı bir yeniden sınıflandırmadır.
+                    </p>
+                    <p>
+                      Kanun ile yönetmelik arasındaki bu ayrım önemlidir. Kanun, § 6038A, kendi hükümleri gereği &quot;yerli şirketlere&quot; uygulanmaktadır. Dikkate alınmayan bir varlık, 26 C.F.R. § 301.7701-3&apos;ün kuruluş sınıflandırma kuralları kapsamında bir şirket değildir. Bu nedenle § 6038A&apos;nın dikkate alınmayan varlıklara genişletilmesi, Kongre&apos;nin kanunu değiştirmesiyle değil, Hazine&apos;nin devredilen düzenleme yetkisini kullanarak düzenleyici kapsamı yeniden tanımlamasıyla gerçekleştirilmiştir. Bu genişletmenin geçerliliği, § 6038A(a) tarafından verilen düzenleme yetkisine ve T.D. 9796&apos;nın çıkarıldığı bildirim ve yorum sürecinin usul düzenliliğine dayanmaktadır. Bu süreçle çıkarılan yönetmelikler, başarılı bir itiraz olmadıkça geçerli kabul edilir.
+                    </p>
+                    <p>
+                      Düzenleyici genişletmenin yürürlük tarihi 31 Aralık 2016 sonrasında başlayan vergi yıllarıdır. Bu tarihten önce var olan yabancı sermayeli tek üyeli LLC&apos;ler, 1 Ocak 2017 tarihinde veya sonrasında başlayan ilk vergi yıllarından itibaren raporlama yükümlülüğüne tabi hale gelmiştir.
+                    </p>
+                  </>
+                )}
+              </div>
             </section>
 
             {/* ================================================================
