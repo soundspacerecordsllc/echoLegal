@@ -788,9 +788,35 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="legal-classification-framework" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                13. Legal Classification Framework
+                {isEnglish ? '13. Legal Classification Framework' : '13. Hukuki Sınıflandırma Çerçevesi'}
               </h2>
-              {/* TODO: Pass 2 – substantive content */}
+              <div className="prose prose-gray max-w-none">
+                {isEnglish ? (
+                  <>
+                    <p>
+                      The federal tax treatment of any business entity begins with the classification framework established by 26 U.S.C. § 7701(a). This provision defines the foundational categories — corporation, partnership, and trust — and distinguishes between domestic and foreign status based on where the entity is created or organized. An entity formed under the laws of a US state is domestic; an entity formed under foreign law is foreign. These definitions are statutory and do not depend on the entity&apos;s operating location, the nationality of its owners, or the source of its income.
+                    </p>
+                    <p>
+                      The Treasury Regulations at 26 C.F.R. §§ 301.7701-1 through 301.7701-3 — commonly known as the &quot;check-the-box&quot; regulations — implement the statutory framework by providing default classification rules and an elective regime. Under these regulations, a domestic eligible entity with a single owner is classified by default as a <em>disregarded entity</em>: an entity that is not recognized as separate from its owner for federal income tax purposes. The entity&apos;s income, deductions, and credits are reported on the owner&apos;s return. An eligible entity may elect a different classification by filing Form 8832 (Entity Classification Election), but absent such election, the default governs.
+                    </p>
+                    <p>
+                      For a single-member LLC formed in a US state and wholly owned by a foreign person, the default classification under the check-the-box regulations is disregarded entity. This means the LLC has no obligation to file a separate federal income tax return (e.g., Form 1120 or Form 1065) solely by virtue of its classification. However, the disregarded-entity classification does not eliminate all federal filing obligations. Separate statutory and regulatory regimes — including information reporting requirements — may attach to the entity based on its ownership structure rather than its income tax classification. The reporting obligation under 26 U.S.C. § 6038A, addressed in the next section, is the principal example.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      Herhangi bir ticari kuruluşun federal vergi uygulaması, 26 U.S.C. § 7701(a) tarafından oluşturulan sınıflandırma çerçevesiyle başlar. Bu hüküm temel kategorileri — şirket (corporation), ortaklık (partnership) ve tröst (trust) — tanımlar ve kuruluşun oluşturulduğu veya organize edildiği yere göre yerli ile yabancı statüsünü birbirinden ayırır. Bir ABD eyaletinin yasaları kapsamında kurulan kuruluş yerlidir; yabancı hukuk kapsamında kurulan kuruluş yabancıdır. Bu tanımlar kanuni olup kuruluşun faaliyet yeri, sahiplerinin uyruğu veya gelir kaynağına bağlı değildir.
+                    </p>
+                    <p>
+                      26 C.F.R. §§ 301.7701-1 ila 301.7701-3 kapsamındaki Hazine Düzenlemeleri — yaygın olarak &quot;check-the-box&quot; düzenlemeleri olarak bilinen — varsayılan sınıflandırma kuralları ve seçimli bir rejim sağlayarak kanuni çerçeveyi uygular. Bu düzenlemelere göre, tek bir sahibi olan yerli uygun bir kuruluş, varsayılan olarak <em>dikkate alınmayan varlık</em> (disregarded entity) olarak sınıflandırılır: federal gelir vergisi amaçları için sahibinden ayrı olarak tanınmayan bir kuruluş. Kuruluşun geliri, kesintileri ve kredileri sahibin beyannamesinde raporlanır. Uygun bir kuruluş, Form 8832 (Kuruluş Sınıflandırma Seçimi) dosyalayarak farklı bir sınıflandırma seçebilir; ancak böyle bir seçim yapılmadığında varsayılan kural geçerlidir.
+                    </p>
+                    <p>
+                      Bir ABD eyaletinde kurulan ve tamamen yabancı bir kişiye ait olan tek üyeli bir LLC için, check-the-box düzenlemeleri kapsamındaki varsayılan sınıflandırma dikkate alınmayan varlıktır. Bu, LLC&apos;nin yalnızca sınıflandırması nedeniyle ayrı bir federal gelir vergisi beyannamesi (örn. Form 1120 veya Form 1065) verme yükümlülüğü olmadığı anlamına gelir. Ancak dikkate alınmayan varlık sınıflandırması tüm federal dosyalama yükümlülüklerini ortadan kaldırmaz. Ayrı kanuni ve düzenleyici rejimler — bilgi raporlama gereksinimleri dahil — kuruluşun gelir vergisi sınıflandırmasından ziyade sahiplik yapısına bağlı olarak uygulanabilir. Bir sonraki bölümde ele alınan 26 U.S.C. § 6038A kapsamındaki raporlama yükümlülüğü bunun başlıca örneğidir.
+                    </p>
+                  </>
+                )}
+              </div>
             </section>
 
             {/* ================================================================
@@ -798,9 +824,35 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="statutory-authority" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                14. Statutory Authority
+                {isEnglish ? '14. Statutory Authority' : '14. Yasal Dayanak'}
               </h2>
-              {/* TODO: Pass 2 – substantive content */}
+              <div className="prose prose-gray max-w-none">
+                {isEnglish ? (
+                  <>
+                    <p>
+                      The statutory foundation for the Form 5472 reporting regime is 26 U.S.C. § 6038A. Enacted as part of the information reporting provisions of the Internal Revenue Code, § 6038A imposes an annual information return requirement on any domestic corporation that is 25 percent or more foreign-owned. The statute&apos;s operative term is &quot;reporting corporation,&quot; defined as a domestic corporation for which a foreign person owns, directly or indirectly, at least 25 percent of the total voting power or total value of all classes of stock.
+                    </p>
+                    <p>
+                      Section 6038A requires the reporting corporation to furnish information regarding transactions between the corporation and any &quot;related party&quot; as defined in § 6038A(c). The scope of reportable transactions is broad: it encompasses any transaction of the type listed in the regulations that occurs between the reporting corporation and a related foreign party during the taxable year. The statute does not condition the filing obligation on the existence of income, gain, loss, or any tax liability. The obligation is informational — it exists to give the IRS visibility into cross-border related-party dealings.
+                    </p>
+                    <p>
+                      Critically, § 6038A grants the Secretary of the Treasury authority to prescribe regulations necessary to carry out the statute&apos;s purpose. It is under this delegation that the Treasury Department, through T.D. 9796 (2016), extended the § 6038A reporting obligation to foreign-owned disregarded entities — including single-member LLCs. The statutory authority itself does not mention disregarded entities; the extension was accomplished through the regulatory power delegated by the statute. The interaction between § 6038A and the entity-classification framework of § 7701 is therefore mediated by Treasury regulations, which are addressed in the Regulatory Implementation section of this entry.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      Form 5472 raporlama rejiminin kanuni temeli 26 U.S.C. § 6038A&apos;dır. Internal Revenue Code&apos;un bilgi raporlama hükümleri kapsamında çıkarılan § 6038A, yüzde 25 veya daha fazla yabancı sermayeli herhangi bir yerli şirkete yıllık bilgi beyannamesi verme yükümlülüğü getirmektedir. Kanunun işlevsel terimi &quot;raporlayan şirket&quot; (reporting corporation) olup, bir yabancı kişinin doğrudan veya dolaylı olarak toplam oy gücünün veya tüm hisse sınıflarının toplam değerinin en az yüzde 25&apos;ine sahip olduğu yerli şirket olarak tanımlanmaktadır.
+                    </p>
+                    <p>
+                      Bölüm 6038A, raporlayan şirketin, şirket ile § 6038A(c)&apos;de tanımlanan herhangi bir &quot;ilişkili taraf&quot; arasındaki işlemlere ilişkin bilgi sunmasını gerektirmektedir. Raporlanabilir işlemlerin kapsamı geniştir: vergi yılı boyunca raporlayan şirket ile ilişkili yabancı taraf arasında gerçekleşen, düzenlemelerde listelenen türdeki tüm işlemleri kapsar. Kanun, dosyalama yükümlülüğünü gelir, kazanç, kayıp veya herhangi bir vergi borcunun varlığına bağlamamaktadır. Yükümlülük bilgilendirme amaçlıdır — IRS&apos;e sınır ötesi ilişkili taraf işlemleri hakkında görünürlük sağlamak için mevcuttur.
+                    </p>
+                    <p>
+                      Kritik olarak, § 6038A Hazine Sekreterine kanunun amacını gerçekleştirmek için gerekli düzenlemeleri çıkarma yetkisi vermektedir. Bu yetki devri kapsamında Hazine Bakanlığı, T.D. 9796 (2016) aracılığıyla § 6038A raporlama yükümlülüğünü tek üyeli LLC&apos;ler dahil olmak üzere yabancı sermayeli dikkate alınmayan varlıklara genişletmiştir. Kanuni yetki metninin kendisi dikkate alınmayan varlıklardan söz etmez; genişletme, kanun tarafından devredilen düzenleme yetkisi aracılığıyla gerçekleştirilmiştir. Bu nedenle § 6038A ile § 7701&apos;in kuruluş sınıflandırma çerçevesi arasındaki etkileşim, bu maddenin Düzenleyici Uygulama bölümünde ele alınan Hazine düzenlemeleri aracılığıyla sağlanmaktadır.
+                    </p>
+                  </>
+                )}
+              </div>
             </section>
 
             {/* ================================================================
