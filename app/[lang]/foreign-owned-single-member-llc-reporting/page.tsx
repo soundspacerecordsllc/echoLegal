@@ -109,6 +109,13 @@ export default async function ForeignOwnedSMLLCReportingPage({
     { id: 'conflict-precedence', label: isEnglish ? 'Conflict Resolution & Authority Precedence' : 'Çatışma Çözümü ve Yetki Önceliği' },
     { id: 'illustrative-judicial-treatment', label: isEnglish ? 'Illustrative Judicial Treatment' : 'Seçilmiş Yargısal Yaklaşım Örnekleri' },
     { id: 'cross-references', label: isEnglish ? 'Cross-References' : 'Çapraz Referanslar' },
+    { id: 'legal-classification-framework', label: 'Legal Classification Framework' },
+    { id: 'statutory-authority', label: 'Statutory Authority' },
+    { id: 'regulatory-implementation', label: 'Regulatory Implementation' },
+    { id: 'judicial-deference-framework', label: 'Judicial Deference Framework' },
+    { id: 'compliance-timeline', label: 'Compliance Timeline' },
+    { id: 'common-misinterpretations', label: 'Common Misinterpretations' },
+    { id: 'risk-matrix', label: 'Risk Matrix' },
   ]
 
   const primarySources = getPrimarySources(ENTRY_SLUG, isEnglish ? 'en' : 'tr')
@@ -773,6 +780,91 @@ export default async function ForeignOwnedSMLLCReportingPage({
                     <span>US-W8BEN-W9-DISTINCTION</span>
                   </li>
                 </ul>
+              </div>
+            </section>
+
+            {/* ================================================================
+                SECTION 13: LEGAL CLASSIFICATION FRAMEWORK
+                ================================================================ */}
+            <section id="legal-classification-framework" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                13. Legal Classification Framework
+              </h2>
+              {/* TODO: Pass 2 – substantive content */}
+            </section>
+
+            {/* ================================================================
+                SECTION 14: STATUTORY AUTHORITY
+                ================================================================ */}
+            <section id="statutory-authority" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                14. Statutory Authority
+              </h2>
+              {/* TODO: Pass 2 – substantive content */}
+            </section>
+
+            {/* ================================================================
+                SECTION 15: REGULATORY IMPLEMENTATION
+                ================================================================ */}
+            <section id="regulatory-implementation" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                15. Regulatory Implementation
+              </h2>
+              {/* TODO: Pass 2 – substantive content */}
+            </section>
+
+            {/* ================================================================
+                SECTION 16: JUDICIAL DEFERENCE FRAMEWORK
+                ================================================================ */}
+            <section id="judicial-deference-framework" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                16. Judicial Deference Framework
+              </h2>
+              {/* TODO: Pass 2 – substantive content */}
+            </section>
+
+            {/* ================================================================
+                SECTION 17: COMPLIANCE TIMELINE
+                ================================================================ */}
+            <section id="compliance-timeline" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                17. Compliance Timeline
+              </h2>
+              {/* TODO: Pass 2 – substantive content */}
+            </section>
+
+            {/* ================================================================
+                SECTION 18: COMMON MISINTERPRETATIONS
+                ================================================================ */}
+            <section id="common-misinterpretations" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                18. Common Misinterpretations
+              </h2>
+              {/* TODO: Pass 2 – substantive content */}
+            </section>
+
+            {/* ================================================================
+                SECTION 19: RISK MATRIX
+                ================================================================ */}
+            <section id="risk-matrix" className="mb-12">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                19. Risk Matrix
+              </h2>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-200 text-sm">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-200 px-4 py-3 text-left">Risk Factor</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">Likelihood</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">Severity</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">Mitigation</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">Authority</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* TODO: Pass 2 – populate rows */}
+                  </tbody>
+                </table>
               </div>
             </section>
 
