@@ -352,6 +352,38 @@ export default async function ForeignOwnedSMLLCReportingPage({
               </ol>
             </nav>
 
+            {/* Authority Signal Block */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10 text-sm text-gray-700">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <span className="block text-xs text-gray-400 uppercase tracking-wide mb-1">
+                    {isEnglish ? 'Authority Level' : 'Otorite Seviyesi'}
+                  </span>
+                  <span className="text-gray-800 font-medium">
+                    {isEnglish
+                      ? 'Statutory & Regulatory Integrated Analysis'
+                      : 'Kanuni ve Düzenleyici Entegre Analiz'}
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-xs text-gray-400 uppercase tracking-wide mb-1">
+                    {isEnglish ? 'Primary Sources' : 'Birincil Kaynaklar'}
+                  </span>
+                  <span className="text-gray-800 font-medium font-mono text-xs">
+                    IRC §6038A; 26 C.F.R. §§1.6038A-1–7; T.D. 9796
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-xs text-gray-400 uppercase tracking-wide mb-1">
+                    {isEnglish ? 'Jurisdiction' : 'Yargı Alanı'}
+                  </span>
+                  <span className="text-gray-800 font-medium">
+                    {isEnglish ? 'United States (Federal Tax)' : 'Amerika Birleşik Devletleri (Federal Vergi)'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* ================================================================
                 SECTION 1: NORMATIVE QUESTION
                 ================================================================ */}
