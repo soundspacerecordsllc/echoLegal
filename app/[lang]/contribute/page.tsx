@@ -12,13 +12,32 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const { lang } = await params
   const isEnglish = lang === 'en'
 
+  const title = isEnglish
+    ? 'Contribute to EchoLegal | For Licensed Attorneys'
+    : 'EchoLegal\'a Katkıda Bulunun | Lisanslı Avukatlar İçin'
+
+  const description = isEnglish
+    ? 'EchoLegal accepts contributions from licensed attorneys for its public legal reference library. Review eligibility requirements, editorial standards, and submission guidelines.'
+    : 'EchoLegal, lisanslı avukatlardan kamu hukuk referans kütüphanesi için katkı kabul etmektedir. Uygunluk gereksinimleri, editöryal standartlar ve gönderim yönergeleri.'
+
   return {
-    title: isEnglish
-      ? 'Contribute to EchoLegal | For Licensed Attorneys'
-      : 'EchoLegal\'a Katkıda Bulunun | Lisanslı Avukatlar İçin',
-    description: isEnglish
-      ? 'EchoLegal accepts contributions from licensed attorneys for its public legal reference library. Review eligibility requirements, editorial standards, and submission guidelines.'
-      : 'EchoLegal, lisanslı avukatlardan kamu hukuk referans kütüphanesi için katkı kabul etmektedir. Uygunluk gereksinimleri, editöryal standartlar ve gönderim yönergeleri.',
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: isEnglish ? 'en_US' : 'tr_TR',
+      siteName: 'EchoLegal',
+    },
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/contribute`,
+      languages: {
+        'en': 'https://echo-legal.com/en/contribute',
+        'tr': 'https://echo-legal.com/tr/contribute',
+        'x-default': 'https://echo-legal.com/en/contribute',
+      },
+    },
   }
 }
 

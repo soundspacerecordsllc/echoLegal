@@ -8,13 +8,32 @@ import { Metadata } from 'next'
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
+  const title = isEnglish
+    ? 'Legal Reference Library | EchoLegal'
+    : 'Hukuki Başvuru Kaynakları | EchoLegal'
+
+  const description = isEnglish
+    ? 'Comprehensive legal reference guides for doing business in the United States. LLC formation, tax compliance, common misconceptions, and more. Available in English and Turkish.'
+    : "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi uyumu, sık yapılan hatalar ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur."
+
   return {
-    title: isEnglish
-      ? 'Legal Reference Library | EchoLegal'
-      : 'Hukuki Başvuru Kaynakları | EchoLegal',
-    description: isEnglish
-      ? 'Comprehensive legal reference guides for doing business in the United States. LLC formation, tax compliance, common misconceptions, and more. Available in English and Turkish.'
-      : "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi uyumu, sık yapılan hatalar ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur.",
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: isEnglish ? 'en_US' : 'tr_TR',
+      siteName: 'EchoLegal',
+    },
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/library`,
+      languages: {
+        'en': 'https://echo-legal.com/en/library',
+        'tr': 'https://echo-legal.com/tr/library',
+        'x-default': 'https://echo-legal.com/en/library',
+      },
+    },
   }
 }
 

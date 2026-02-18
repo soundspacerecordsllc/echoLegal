@@ -5,17 +5,49 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import HomeSearch from '@/components/HomeSearch'
 
-export const metadata: Metadata = {
-  title: 'EchoLegal — Legal Encyclopedia & Reference Platform',
-  description:
-    'A bilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Available in English and Turkish.',
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params
+  const isEnglish = lang === 'en'
+
+  const title = isEnglish
+    ? 'EchoLegal — Legal Encyclopedia & Reference Platform'
+    : 'EchoLegal — Hukuk Ansiklopedisi ve Referans Platformu'
+
+  const description = isEnglish
+    ? 'A bilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Available in English and Turkish.'
+    : 'Profesyonelce hazırlanmış referans makaleleri, açıklamalar ve şablonlar içeren iki dilli hukuk ansiklopedisi. Netlik, doğruluk ve uzun vadeli kullanım için yapılandırılmıştır.'
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: isEnglish ? 'en_US' : 'tr_TR',
+      siteName: 'EchoLegal',
+    },
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}`,
+      languages: {
+        'en': 'https://echo-legal.com/en',
+        'tr': 'https://echo-legal.com/tr',
+        'x-default': 'https://echo-legal.com/en',
+      },
+    },
+  }
+}
+
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'tr' }]
 }
 
 export default async function Home({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 

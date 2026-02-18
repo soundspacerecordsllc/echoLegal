@@ -19,7 +19,7 @@ const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
 const PAGE_META = {
   slug: 'foreign-owned-single-member-llc-reporting',
   datePublished: '2025-06-01',
-  dateModified: '2026-02-17',
+  dateModified: '2026-02-18',
   version: '1.0',
   citationKey: 'ecl-enc-00011',
 }
