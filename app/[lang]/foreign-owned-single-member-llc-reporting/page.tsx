@@ -33,6 +33,12 @@ const ENTRY_META = {
   citationKey: 'ecl-enc-00201',
   contentType: 'encyclopedia-entry' as const,
   category: 'tax' as const,
+  revisionHistory: [
+    { date: '2026-02-17', note: 'Initial scaffold with authority stack, filing mechanics, and penalty framework' },
+    { date: '2026-02-18', note: 'Classification framework and § 6038A statutory authority layer' },
+    { date: '2026-02-18', note: 'Regulatory implementation, filing mechanics expansion, and reasonable cause' },
+    { date: '2026-02-18', note: 'Cornerstone doctrinal expansion – deference, timeline, and risk framework integration' },
+  ],
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
@@ -918,9 +924,41 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="judicial-deference-framework" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                16. Judicial Deference Framework
+                {isEnglish ? '16. Judicial Deference Framework' : '16. Yargısal Saygı Çerçevesi'}
               </h2>
-              {/* TODO: Pass 2 – substantive content */}
+              <div className="prose prose-gray max-w-none">
+                {isEnglish ? (
+                  <>
+                    <p>
+                      The extension of § 6038A to foreign-owned disregarded entities is a regulatory act, not a statutory one. This distinction raises the question of how courts evaluate the validity and interpretive weight of Treasury regulations in this area. Two doctrinal frameworks are relevant.
+                    </p>
+                    <p>
+                      <strong>Chevron deference.</strong> Under <em>Chevron U.S.A., Inc. v. Natural Resources Defense Council, Inc.</em>, 467 U.S. 837 (1984), courts apply a two-step analysis to agency regulations interpreting ambiguous statutes. First, the court asks whether Congress has directly spoken to the precise question at issue. If the statute is silent or ambiguous, the court proceeds to step two: whether the agency&apos;s interpretation is a permissible construction. Treasury regulations issued through notice-and-comment rulemaking — including T.D. 9796 — have historically received Chevron deference when the authorizing statute delegates interpretive authority to the agency. Under this framework, the regulatory reclassification of disregarded entities as corporations for § 6038A purposes would be sustained so long as it represents a reasonable reading of the statutory delegation.
+                    </p>
+                    <p>
+                      <strong>Skidmore weight.</strong> Where an agency interpretation is set forth in less formal guidance — such as revenue rulings, notices, or form instructions — courts apply the standard from <em>Skidmore v. Swift &amp; Co.</em>, 323 U.S. 134 (1944). Under Skidmore, the weight given to an agency&apos;s interpretation depends on the thoroughness of its reasoning, its consistency with earlier and later pronouncements, and its persuasive power. IRS form instructions and publications concerning Form 5472 fall within this tier: they inform compliance but do not carry the force of law.
+                    </p>
+                    <p>
+                      For practitioners, the practical significance is that the core reporting obligation for foreign-owned disregarded entities rests on a regulation that was promulgated through formal procedures and is presumed valid. Challenges to this regulatory framework would need to demonstrate that Treasury exceeded its delegated authority or that the regulation is arbitrary — a burden that has not been met in reported decisions to date.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      § 6038A&apos;nın yabancı sermayeli dikkate alınmayan varlıklara genişletilmesi kanuni değil, düzenleyici bir eylemdir. Bu ayrım, mahkemelerin bu alandaki Hazine yönetmeliklerinin geçerliliğini ve yorumlayıcı ağırlığını nasıl değerlendirdiği sorusunu gündeme getirir. İki doktrinel çerçeve ilgilidir.
+                    </p>
+                    <p>
+                      <strong>Chevron saygısı.</strong> <em>Chevron U.S.A., Inc. v. Natural Resources Defense Council, Inc.</em>, 467 U.S. 837 (1984) kararı kapsamında mahkemeler, belirsiz kanunları yorumlayan kurum yönetmeliklerine iki aşamalı bir analiz uygular. İlk olarak mahkeme, Kongre&apos;nin söz konusu meseleye doğrudan değinip değinmediğini sorar. Kanun sessiz veya belirsizse mahkeme ikinci aşamaya geçer: kurumun yorumunun kabul edilebilir bir yorum olup olmadığı. Bildirim ve yorum süreciyle çıkarılan Hazine yönetmelikleri — T.D. 9796 dahil — yetkilendiren kanunun kuruma yorumlama yetkisi devrettiği durumlarda tarihsel olarak Chevron saygısı görmüştür. Bu çerçevede, § 6038A amaçları için dikkate alınmayan varlıkların şirket olarak düzenleyici yeniden sınıflandırılması, kanuni yetki devrinin makul bir okumasını temsil ettiği sürece geçerli kabul edilecektir.
+                    </p>
+                    <p>
+                      <strong>Skidmore ağırlığı.</strong> Bir kurum yorumu daha az resmi rehberlikte — gelir kararları, bildirimler veya form talimatları gibi — ortaya konulduğunda, mahkemeler <em>Skidmore v. Swift &amp; Co.</em>, 323 U.S. 134 (1944) kararındaki standardı uygular. Skidmore kapsamında, bir kurum yorumuna verilen ağırlık, muhakemesinin kapsamlılığına, önceki ve sonraki açıklamalarla tutarlılığına ve ikna gücüne bağlıdır. Form 5472&apos;ye ilişkin IRS form talimatları ve yayınları bu kademeye girer: uyumu bilgilendirir ancak kanun hükmünde değildir.
+                    </p>
+                    <p>
+                      Uygulayıcılar için pratik önem şudur: yabancı sermayeli dikkate alınmayan varlıklar için temel raporlama yükümlülüğü, resmi prosedürlerle çıkarılmış ve geçerli kabul edilen bir yönetmeliğe dayanmaktadır. Bu düzenleyici çerçeveye yönelik itirazların, Hazine&apos;nin devredilen yetkisini aştığını veya yönetmeliğin keyfi olduğunu göstermesi gerekir — bugüne kadar raporlanan kararlarda karşılanmamış bir yüktür.
+                    </p>
+                  </>
+                )}
+              </div>
             </section>
 
             {/* ================================================================
@@ -928,9 +966,56 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="compliance-timeline" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                17. Compliance Timeline
+                {isEnglish ? '17. Compliance Timeline' : '17. Uyum Zaman Çizelgesi'}
               </h2>
-              {/* TODO: Pass 2 – substantive content */}
+              <div className="prose prose-gray max-w-none">
+                {isEnglish ? (
+                  <p>
+                    The following timeline illustrates the standard compliance sequence for a foreign-owned single-member LLC formed in a US state and classified as a disregarded entity.
+                  </p>
+                ) : (
+                  <p>
+                    Aşağıdaki zaman çizelgesi, bir ABD eyaletinde kurulan ve dikkate alınmayan varlık olarak sınıflandırılan yabancı sermayeli tek üyeli bir LLC için standart uyum sürecini göstermektedir.
+                  </p>
+                )}
+              </div>
+              <div className="mt-6 space-y-4">
+                <div className="border-l-4 border-indigo-500 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'Formation year' : 'Kuruluş yılı'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? 'Upon formation under state law, the LLC should obtain an Employer Identification Number (EIN) from the IRS using Form SS-4. Even if the LLC has no employees and no US trade or business, the EIN is required for information return filing. The formation year is also the first year in which reportable transactions — including the initial capital contribution — may occur.'
+                      : 'Eyalet hukuku kapsamında kuruluş üzerine, LLC Form SS-4 kullanarak IRS\'ten bir İşveren Kimlik Numarası (EIN) almalıdır. LLC\'nin çalışanı olmasa ve ABD ticareti veya işi bulunmasa dahi, bilgi beyannamesi dosyalaması için EIN gereklidir. Kuruluş yılı aynı zamanda ilk sermaye katkısı dahil raporlanabilir işlemlerin gerçekleşebileceği ilk yıldır.'}
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-indigo-500 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'First reporting year' : 'İlk raporlama yılı'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? 'The first Form 5472 is due for the taxable year in which the LLC first has a reportable transaction with a related party. For most foreign-owned single-member LLCs, this is the formation year itself, because the initial capitalization constitutes a reportable transaction. The form is filed with a pro forma Form 1120 for that taxable year.'
+                      : 'İlk Form 5472, LLC\'nin ilişkili bir tarafla ilk raporlanabilir işlemi gerçekleştirdiği vergi yılı için verilir. Çoğu yabancı sermayeli tek üyeli LLC için bu kuruluş yılının kendisidir, çünkü ilk sermaye katkısı raporlanabilir bir işlem oluşturur. Form, o vergi yılı için pro forma Form 1120 ile birlikte dosyalanır.'}
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-indigo-500 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'Due date' : 'Son tarih'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? 'The pro forma Form 1120 with attached Form 5472 follows the corporate return due date: April 15 following the close of a calendar tax year. A six-month automatic extension to October 15 is available by filing Form 7004 before the original due date. The extension extends the filing deadline but does not extend the time for any other compliance obligation.'
+                      : 'Ekli Form 5472 ile pro forma Form 1120, kurumsal beyanname son tarihini takip eder: takvim vergi yılının kapanışını izleyen 15 Nisan. Orijinal son tarihten önce Form 7004 dosyalanarak 15 Ekim\'e kadar altı aylık otomatik uzatma mevcuttur. Uzatma dosyalama süresini uzatır ancak diğer uyum yükümlülükleri için süreyi uzatmaz.'}
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-indigo-500 pl-4 py-2">
+                  <h3 className="font-bold text-black text-sm">{isEnglish ? 'Late filing' : 'Geç dosyalama'}</h3>
+                  <p className="text-gray-700 text-sm mt-1">
+                    {isEnglish
+                      ? 'If the return is not filed by the due date (including extensions), the $25,000 base penalty under § 6038A(d) attaches automatically. The IRS may issue a notice of failure, after which continuation penalties of $25,000 per 30-day period begin to accrue. Delinquent returns should be filed as soon as practicable; voluntary late filing may be relevant to a reasonable cause determination, though it does not guarantee penalty relief.'
+                      : 'Beyanname son tarihe (uzatmalar dahil) kadar dosyalanmazsa, § 6038A(d) kapsamındaki 25.000 dolar taban ceza otomatik olarak uygulanır. IRS bir uyumsuzluk bildirimi gönderebilir ve bundan sonra 30 günlük dönem başına 25.000 dolar devam cezaları tahakkuk etmeye başlar. Gecikmiş beyannameler mümkün olan en kısa sürede dosyalanmalıdır; gönüllü geç dosyalama makul neden değerlendirmesiyle ilgili olabilir, ancak ceza muafiyetini garanti etmez.'}
+                  </p>
+                </div>
+              </div>
             </section>
 
             {/* ================================================================
@@ -938,9 +1023,66 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="common-misinterpretations" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                18. Common Misinterpretations
+                {isEnglish ? '18. Common Misinterpretations' : '18. Yaygın Yanlış Yorumlar'}
               </h2>
-              {/* TODO: Pass 2 – substantive content */}
+              <div className="space-y-6">
+                <div className="border border-gray-200 rounded-lg p-5">
+                  <h3 className="font-bold text-black text-sm mb-2">
+                    {isEnglish
+                      ? '"No US income means no filing obligation."'
+                      : '"ABD geliri yok = dosyalama yükümlülüğü yok."'}
+                  </h3>
+                  <div className="prose prose-gray prose-sm max-w-none">
+                    {isEnglish ? (
+                      <p>
+                        This is the most prevalent misunderstanding. The Form 5472 filing obligation is an information return requirement, not an income tax return. It is triggered by the occurrence of a reportable transaction between the entity and a related party — not by the existence of income, gain, or US-source revenue. Capital contributions, use of property, and payment of organizational expenses are reportable transactions that commonly arise even in years with zero income. The statute and regulations impose the obligation based on entity structure and ownership, not on the presence of taxable activity.
+                      </p>
+                    ) : (
+                      <p>
+                        Bu en yaygın yanlış anlamadır. Form 5472 dosyalama yükümlülüğü bir bilgi beyannamesi gereksinimidir, gelir vergisi beyannamesi değildir. Kuruluş ile ilişkili taraf arasında raporlanabilir bir işlemin gerçekleşmesiyle tetiklenir — gelir, kazanç veya ABD kaynaklı gelirin varlığıyla değil. Sermaye katkıları, mülk kullanımı ve kuruluş giderlerinin ödenmesi, sıfır gelirli yıllarda bile yaygın olarak ortaya çıkan raporlanabilir işlemlerdir. Kanun ve yönetmelikler yükümlülüğü vergiye tabi faaliyetin varlığına değil, kuruluş yapısı ve sahipliğe dayandırır.
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="border border-gray-200 rounded-lg p-5">
+                  <h3 className="font-bold text-black text-sm mb-2">
+                    {isEnglish
+                      ? '"A disregarded entity has no federal obligations."'
+                      : '"Dikkate alınmayan varlığın federal yükümlülüğü yoktur."'}
+                  </h3>
+                  <div className="prose prose-gray prose-sm max-w-none">
+                    {isEnglish ? (
+                      <p>
+                        Disregarded-entity classification under the check-the-box regulations eliminates the entity&apos;s separate federal <em>income tax</em> return obligation. It does not eliminate all federal filing obligations. The Treasury regulations at 26 C.F.R. § 1.6038A-1, as amended by T.D. 9796, specifically reclassify a foreign-owned disregarded entity as a corporation for purposes of § 6038A information reporting. The disregarded-entity label describes the entity&apos;s income tax treatment; it does not create a blanket exemption from information return requirements or other regulatory regimes.
+                      </p>
+                    ) : (
+                      <p>
+                        Check-the-box düzenlemeleri kapsamındaki dikkate alınmayan varlık sınıflandırması, kuruluşun ayrı federal <em>gelir vergisi</em> beyannamesi verme yükümlülüğünü ortadan kaldırır. Tüm federal dosyalama yükümlülüklerini ortadan kaldırmaz. T.D. 9796 ile değiştirilen 26 C.F.R. § 1.6038A-1 kapsamındaki Hazine yönetmelikleri, yabancı sermayeli dikkate alınmayan bir varlığı § 6038A bilgi raporlaması amaçları için özel olarak şirket olarak yeniden sınıflandırır. Dikkate alınmayan varlık etiketi kuruluşun gelir vergisi uygulamasını tanımlar; bilgi beyannamesi gereksinimlerinden veya diğer düzenleyici rejimlerden genel bir muafiyet oluşturmaz.
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="border border-gray-200 rounded-lg p-5">
+                  <h3 className="font-bold text-black text-sm mb-2">
+                    {isEnglish
+                      ? '"No US bank account means no reporting."'
+                      : '"ABD banka hesabı yok = raporlama yok."'}
+                  </h3>
+                  <div className="prose prose-gray prose-sm max-w-none">
+                    {isEnglish ? (
+                      <p>
+                        The Form 5472 obligation is not conditioned on the existence of a US bank account. The reportable transaction categories defined in the regulations and form instructions extend well beyond financial account activity. Transactions such as capital contributions from the foreign owner, payment of formation or registered agent fees, use of the owner&apos;s personal assets for entity purposes, and intercompany loans are all reportable regardless of whether the LLC maintains a US bank account. The absence of a bank account does not eliminate the entity&apos;s reporting obligation.
+                      </p>
+                    ) : (
+                      <p>
+                        Form 5472 yükümlülüğü ABD banka hesabının varlığına bağlı değildir. Yönetmeliklerde ve form talimatlarında tanımlanan raporlanabilir işlem kategorileri, finansal hesap faaliyetinin çok ötesine geçmektedir. Yabancı sahipten sermaye katkıları, kuruluş veya kayıtlı temsilci ücretlerinin ödenmesi, sahibin kişisel varlıklarının kuruluş amaçları için kullanımı ve şirketler arası krediler gibi işlemler, LLC&apos;nin ABD banka hesabı bulunup bulunmadığına bakılmaksızın raporlanabilir niteliktedir. Banka hesabı bulunmaması kuruluşun raporlama yükümlülüğünü ortadan kaldırmaz.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* ================================================================
@@ -948,21 +1090,127 @@ export default async function ForeignOwnedSMLLCReportingPage({
                 ================================================================ */}
             <section id="risk-matrix" className="mb-12">
               <h2 className="text-2xl font-bold text-black mb-4">
-                19. Risk Matrix
+                {isEnglish ? '19. Risk Matrix' : '19. Risk Matrisi'}
               </h2>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse border border-gray-200 text-sm">
                   <thead>
                     <tr className="bg-gray-50">
-                      <th className="border border-gray-200 px-4 py-3 text-left">Risk Factor</th>
-                      <th className="border border-gray-200 px-4 py-3 text-left">Likelihood</th>
-                      <th className="border border-gray-200 px-4 py-3 text-left">Severity</th>
-                      <th className="border border-gray-200 px-4 py-3 text-left">Mitigation</th>
-                      <th className="border border-gray-200 px-4 py-3 text-left">Authority</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Scenario' : 'Senaryo'}</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Risk Level' : 'Risk Seviyesi'}</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Legal Basis' : 'Yasal Dayanak'}</th>
+                      <th className="border border-gray-200 px-4 py-3 text-left">{isEnglish ? 'Practical Consequence' : 'Pratik Sonuç'}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {/* TODO: Pass 2 – populate rows */}
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Failure to file Form 5472 for any taxable year'
+                          : 'Herhangi bir vergi yılı için Form 5472 dosyalamamak'}
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        <span className="inline-block px-2 py-0.5 bg-red-100 text-red-800 rounded text-xs font-medium">
+                          {isEnglish ? 'High' : 'Yüksek'}
+                        </span>
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">§ 6038A(d)(1)</td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? '$25,000 base penalty per return, per year. Additional continuation penalties accrue after IRS notice.'
+                          : 'Beyanname başına, yıl başına 25.000 dolar taban ceza. IRS bildiriminden sonra ek devam cezaları tahakkuk eder.'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Failure to obtain EIN before filing deadline'
+                          : 'Dosyalama son tarihinden önce EIN almamak'}
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        <span className="inline-block px-2 py-0.5 bg-red-100 text-red-800 rounded text-xs font-medium">
+                          {isEnglish ? 'High' : 'Yüksek'}
+                        </span>
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">26 C.F.R. § 1.6038A-1</td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Cannot file pro forma Form 1120 or Form 5472 without an EIN. Delays trigger late-filing penalties.'
+                          : 'EIN olmadan pro forma Form 1120 veya Form 5472 dosyalanamaz. Gecikmeler geç dosyalama cezalarını tetikler.'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Omitting reportable transactions (e.g., initial capital contribution)'
+                          : 'Raporlanabilir işlemleri atlamak (örn. ilk sermaye katkısı)'}
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        <span className="inline-block px-2 py-0.5 bg-amber-100 text-amber-800 rounded text-xs font-medium">
+                          {isEnglish ? 'Medium' : 'Orta'}
+                        </span>
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">§ 6038A(a)–(b)</td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Incomplete return may be treated as failure to file. IRS may assert penalties or request amended filing.'
+                          : 'Eksik beyanname dosyalamamış olarak değerlendirilebilir. IRS ceza uygulayabilir veya düzeltilmiş dosyalama talep edebilir.'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Failure to maintain records of reportable transactions'
+                          : 'Raporlanabilir işlemlerin kayıtlarını tutmamak'}
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        <span className="inline-block px-2 py-0.5 bg-amber-100 text-amber-800 rounded text-xs font-medium">
+                          {isEnglish ? 'Medium' : 'Orta'}
+                        </span>
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">§ 6038A(a), (d)</td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Independent penalty basis under § 6038A(d). Recordkeeping failure is separately sanctionable from filing failure.'
+                          : '§ 6038A(d) kapsamında bağımsız ceza dayanağı. Kayıt tutmama başarısızlığı, dosyalama başarısızlığından ayrı olarak cezalandırılabilir.'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Assuming disregarded-entity status eliminates all filing obligations'
+                          : 'Dikkate alınmayan varlık statüsünün tüm dosyalama yükümlülüklerini kaldırdığını varsaymak'}
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        <span className="inline-block px-2 py-0.5 bg-red-100 text-red-800 rounded text-xs font-medium">
+                          {isEnglish ? 'High' : 'Yüksek'}
+                        </span>
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">T.D. 9796; § 1.6038A-1</td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Regulatory reclassification creates reporting obligation independent of income tax classification. Multi-year non-filing exposure compounds penalties.'
+                          : 'Düzenleyici yeniden sınıflandırma, gelir vergisi sınıflandırmasından bağımsız raporlama yükümlülüğü oluşturur. Çok yıllı dosyalama yapılmaması cezaları birleştirir.'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Relying solely on IRS form instructions without reviewing statute and regulations'
+                          : 'Kanun ve yönetmelikleri incelemeden yalnızca IRS form talimatlarına güvenmek'}
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        <span className="inline-block px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-xs font-medium">
+                          {isEnglish ? 'Low' : 'Düşük'}
+                        </span>
+                      </td>
+                      <td className="border border-gray-200 px-4 py-3 text-gray-500 font-mono text-xs">{isEnglish ? 'Skidmore v. Swift' : 'Skidmore v. Swift'}</td>
+                      <td className="border border-gray-200 px-4 py-3">
+                        {isEnglish
+                          ? 'Form instructions are persuasive but not binding. Where instructions diverge from the Code or regulations, the higher-authority source controls.'
+                          : 'Form talimatları ikna edicidir ancak bağlayıcı değildir. Talimatlar Kanun veya yönetmeliklerden ayrıldığında, üst otorite kaynağı geçerlidir.'}
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
