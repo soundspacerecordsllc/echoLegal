@@ -1,22 +1,30 @@
 /**
  * JudicialAuthoritySection — structured 3-layer doctrinal block.
  *
+ * This component renders a PARALLEL INTERPRETIVE LAYER, structurally
+ * separate from the canonical normative ordering ladder. Judicial
+ * holdings are non-normative: they interpret statutes but are not
+ * themselves primary sources within the normative hierarchy.
+ *
  * Layer 1: Doctrinal header — Judicial Interpretation Framework
  * Layer 2: Subsection A — Statutory Interpretation Doctrine
  * Layer 3: Subsection B — Key Supreme Court Holdings (case cards)
  *
- * Cases sorted by AUTHORITY_LEVEL_WEIGHT, with chronological
- * tiebreaker (oldest → newest) within the same authority level.
+ * Sorting:
+ *   1) By court level (Supreme Court → Circuit → District)
+ *   2) Then by year ascending (oldest → newest)
  *
  * Mobile-first: stacked cards, no tables.
  * Bilingual: EN/TR with formal legal register.
  * Institutional tone only.
  */
 
-import type { AuthorityLevel } from '@/lib/content-schema'
-import { AUTHORITY_LEVEL_WEIGHT } from '@/lib/citations/canon'
-
 // ── types ──────────────────────────────────────────────────────────────
+
+export type InterpretiveWeight =
+  | 'supreme_court'
+  | 'circuit_court'
+  | 'district_court'
 
 export type ImpactCategory =
   | 'classification'
@@ -30,7 +38,7 @@ export type JudicialCase = {
   court: string
   year: number
   holdingSummary: { en: string; tr: string }
-  authorityLevel: AuthorityLevel
+  interpretiveWeight: InterpretiveWeight
   canonicalId: string
   jurisdiction?: string
   doctrineType?: string
@@ -40,6 +48,14 @@ export type JudicialCase = {
 interface JudicialAuthoritySectionProps {
   lang: 'en' | 'tr'
   cases: JudicialCase[]
+}
+
+// ── interpretive weight ordering ───────────────────────────────────────
+
+const INTERPRETIVE_WEIGHT_ORDER: Record<InterpretiveWeight, number> = {
+  supreme_court: 0,
+  circuit_court: 1,
+  district_court: 2,
 }
 
 // ── impact category labels ─────────────────────────────────────────────
@@ -76,12 +92,11 @@ export default function JudicialAuthoritySection({
 
   if (!cases || cases.length === 0) return null
 
-  // Enforce authority-level ordering (non-discretionary).
-  // Chronological tiebreaker within same authority level.
+  // Sort by court level first, then chronologically within same level.
   const sorted = [...cases].sort((a, b) => {
     const weightDiff =
-      AUTHORITY_LEVEL_WEIGHT[a.authorityLevel] -
-      AUTHORITY_LEVEL_WEIGHT[b.authorityLevel]
+      INTERPRETIVE_WEIGHT_ORDER[a.interpretiveWeight] -
+      INTERPRETIVE_WEIGHT_ORDER[b.interpretiveWeight]
     if (weightDiff !== 0) return weightDiff
     return a.year - b.year
   })
@@ -94,9 +109,17 @@ export default function JudicialAuthoritySection({
           ? 'Judicial Interpretation Framework'
           : 'Yargısal Yorum Çerçevesi'}
       </h2>
-      <span className="inline-block text-xs text-gray-500 mb-4">
-        {isEnglish ? 'Jurisdiction: US Federal' : 'Kapsam: ABD Federal'}
-      </span>
+
+      <div className="flex flex-wrap items-center gap-2 mb-4">
+        <span className="inline-block text-xs text-gray-500">
+          {isEnglish ? 'Jurisdiction: US Federal' : 'Kapsam: ABD Federal'}
+        </span>
+        <span className="inline-block text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
+          {isEnglish
+            ? 'Interpretive Authority (Non-Normative Layer)'
+            : 'Yorumsal Otorite (Normatif Olmayan Katman)'}
+        </span>
+      </div>
 
       <div className="prose max-w-none text-gray-600 mb-8">
         <p className="text-sm leading-relaxed">
@@ -180,7 +203,7 @@ export default function JudicialAuthoritySection({
               key={c.canonicalId}
               className="border border-gray-200 rounded-lg overflow-hidden"
               data-canonical-id={c.canonicalId}
-              data-authority-tier={c.authorityLevel}
+              data-interpretive-weight={c.interpretiveWeight}
             >
               {/* Header */}
               <div className="px-4 py-3 bg-gray-50">
