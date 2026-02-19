@@ -891,6 +891,18 @@ export default async function LLCGuidePage({
                 unresolvedItems={unresolvedItems}
                 sectionNumber="11"
               />
+
+              {/* Conflict Resolution Principle */}
+              <div className="border border-gray-200 rounded-lg px-5 py-4 mt-8">
+                <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                  {isEnglish ? 'Conflict Resolution Principle' : 'Çatışma Çözüm İlkesi'}
+                </h4>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  {isEnglish
+                    ? 'In cases of normative conflict, binding statutory authority prevails over subordinate regulations. Regulations prevail over agency guidance. Judicial interpretation applies where statutory ambiguity exists. In matters governed by federal law, state provisions cannot override federal supremacy.'
+                    : 'Normatif çatışma durumlarında, bağlayıcı yasal otorite alt düzey yönetmeliklere üstün gelir. Yönetmelikler, kurum rehberliğine üstün gelir. Yargısal yorum, yasal belirsizliğin bulunduğu durumlarda uygulanır. Federal hukuk tarafından düzenlenen konularda, eyalet hükümleri federal üstünlüğü geçersiz kılamaz.'}
+                </p>
+              </div>
             </JudicialAuthoritySection>
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
