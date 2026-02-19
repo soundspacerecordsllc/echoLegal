@@ -151,7 +151,12 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
         citation: 'Wyo. Stat. § 17-29-101 et seq.'
       },
       {
-        title: 'IRS - Limited Liability Company',
+        title: 'Treasury Regulations — Entity Classification',
+        type: 'regulation',
+        citation: '26 C.F.R. § 301.7701-3'
+      },
+      {
+        title: 'IRS - Limited Liability Company (non-binding informational page)',
         url: 'https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc',
         type: 'official'
       }

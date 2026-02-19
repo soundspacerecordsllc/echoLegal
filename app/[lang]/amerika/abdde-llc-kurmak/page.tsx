@@ -11,6 +11,7 @@ import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
 import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import DeferenceFramework from '@/components/DeferenceFramework'
 
 const PAGE_META = {
   slug: 'abdde-llc-kurmak',
@@ -534,6 +535,9 @@ export default async function AbddeLLCPage({
 
         {/* CTA 2 - Mid page */}
         <KitCallout lang={lang} variant="compact" />
+
+        {/* ===== Judicial Deference Framework ===== */}
+        <DeferenceFramework lang={lang} />
 
         {/* ===== SECTION 4: Formation Steps ===== */}
         <section className="mb-12">
