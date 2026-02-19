@@ -852,6 +852,18 @@ export default async function LLCGuidePage({
               </ul>
             </section>
 
+            {/* Authority Transparency Note */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                {isEnglish ? 'Authority Structure' : 'Otorite Yapısı'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry is structured according to a formal legal authority hierarchy. Binding sources (statutes and regulations) are presented separately from interpretive authorities (judicial decisions and agency interpretations). Ordering reflects relative legal force.'
+                  : 'Bu madde, resmi bir hukuki otorite hiyerarşisine göre yapılandırılmıştır. Bağlayıcı kaynaklar (kanunlar ve yönetmelikler), yorumlayıcı otoritelerden (yargı kararları ve kurum yorumları) ayrı olarak sunulmaktadır. Sıralama, göreli hukuki bağlayıcılığı yansıtmaktadır.'}
+              </p>
+            </div>
+
             {/* Sections 9–12: Judicial Interpretation Framework */}
             <JudicialAuthoritySection
               lang={isEnglish ? 'en' : 'tr'}
