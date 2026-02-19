@@ -12,6 +12,7 @@ import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 import ConflictPrecedence from '@/components/ConflictPrecedence'
 import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
+import JudicialAuthoritySection from '@/components/editorial/JudicialAuthoritySection'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
@@ -851,23 +852,34 @@ export default async function LLCGuidePage({
               </ul>
             </section>
 
-            {/* Sections 9–10: Judicial Interpretation & Interpretive Notes */}
-            <JudicialInterpretation
+            {/* Sections 9–12: Judicial Interpretation Framework */}
+            <JudicialAuthoritySection
               lang={isEnglish ? 'en' : 'tr'}
-              entries={judicialEntries}
-              conflictNotes={conflictNotes}
-              resolves={resolves}
-              doesNotResolve={doesNotResolve}
-              sectionNumber="9"
-            />
+              id="judicial-authority"
+              title={{
+                en: 'Judicial Interpretation Framework',
+                tr: 'Yargısal Yorum Çerçevesi',
+              }}
+              version="v1.0"
+              lastReviewed="2026-02-19"
+              reviewStatus="foundational"
+            >
+              <JudicialInterpretation
+                lang={isEnglish ? 'en' : 'tr'}
+                entries={judicialEntries}
+                conflictNotes={conflictNotes}
+                resolves={resolves}
+                doesNotResolve={doesNotResolve}
+                sectionNumber="9"
+              />
 
-            {/* Sections 11–12: Conflict Precedence & Case Illustrations */}
-            <ConflictPrecedence
-              lang={isEnglish ? 'en' : 'tr'}
-              caseIllustrations={caseIllustrations}
-              unresolvedItems={unresolvedItems}
-              sectionNumber="11"
-            />
+              <ConflictPrecedence
+                lang={isEnglish ? 'en' : 'tr'}
+                caseIllustrations={caseIllustrations}
+                unresolvedItems={unresolvedItems}
+                sectionNumber="11"
+              />
+            </JudicialAuthoritySection>
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
