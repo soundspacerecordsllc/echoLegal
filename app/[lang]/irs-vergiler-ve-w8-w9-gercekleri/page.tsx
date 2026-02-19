@@ -12,6 +12,7 @@ import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 import ConflictPrecedence from '@/components/ConflictPrecedence'
 import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
+import JudicialAuthoritySection from '@/components/editorial/JudicialAuthoritySection'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
@@ -851,23 +852,46 @@ export default async function TaxGuidePage({
               </div>
             </section>
 
-            {/* Sections 8–9: Judicial Interpretation & Interpretive Notes */}
-            <JudicialInterpretation
-              lang={isEnglish ? 'en' : 'tr'}
-              entries={judicialEntries}
-              conflictNotes={conflictNotes}
-              resolves={resolves}
-              doesNotResolve={doesNotResolve}
-              sectionNumber="8"
-            />
+            {/* Scope Clarification */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                {isEnglish ? 'Scope of This Entry' : 'Bu Maddenin Kapsamı'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry addresses federal tax forms and withholding obligations relevant to non-US persons receiving payments from US sources. It does not cover state-level tax obligations, individual tax return preparation, or jurisdiction-specific treaty analysis. Statutory and regulatory sources are presented as the normative framework; agency guidance and judicial interpretation are addressed in separate sections below.'
+                  : 'Bu madde, ABD kaynaklarından ödeme alan ABD dışı kişilerle ilgili federal vergi formlarını ve stopaj yükümlülüklerini ele almaktadır. Eyalet düzeyinde vergi yükümlülüklerini, bireysel vergi beyannamesi hazırlığını veya yetki alanına özgü anlaşma analizini kapsamamaktadır. Yasal ve düzenleyici kaynaklar normatif çerçeve olarak sunulmaktadır; kurum rehberliği ve yargısal yorum aşağıda ayrı bölümlerde ele alınmaktadır.'}
+              </p>
+            </div>
 
-            {/* Sections 10–11: Conflict Precedence & Case Illustrations */}
-            <ConflictPrecedence
+            {/* Sections 8–11: Judicial Interpretation Framework */}
+            <JudicialAuthoritySection
               lang={isEnglish ? 'en' : 'tr'}
-              caseIllustrations={caseIllustrations}
-              unresolvedItems={unresolvedItems}
-              sectionNumber="10"
-            />
+              id="judicial-authority"
+              title={{
+                en: 'Judicial Interpretation Framework',
+                tr: 'Yargısal Yorum Çerçevesi',
+              }}
+              version="v1.0"
+              lastReviewed="2026-02-19"
+              reviewStatus="foundational"
+            >
+              <JudicialInterpretation
+                lang={isEnglish ? 'en' : 'tr'}
+                entries={judicialEntries}
+                conflictNotes={conflictNotes}
+                resolves={resolves}
+                doesNotResolve={doesNotResolve}
+                sectionNumber="8"
+              />
+
+              <ConflictPrecedence
+                lang={isEnglish ? 'en' : 'tr'}
+                caseIllustrations={caseIllustrations}
+                unresolvedItems={unresolvedItems}
+                sectionNumber="10"
+              />
+            </JudicialAuthoritySection>
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
