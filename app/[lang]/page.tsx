@@ -113,6 +113,30 @@ export default async function Home({
         </div>
       </section>
 
+      {/* Methodology & Structure */}
+      <section className="py-10 md:py-12 border-b border-gray-100">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">
+            {isEnglish ? 'Methodology & Structure' : 'Metodoloji ve Yapı'}
+          </h2>
+          <p className="text-sm text-gray-600 leading-relaxed mb-2">
+            {isEnglish
+              ? 'Content is organized by authority hierarchy — statutes, regulations, official agency guidance, and judicial interpretation — and maintained in a neutral, descriptive register.'
+              : 'İçerik otorite hiyerarşisine göre düzenlenmiştir — kanunlar, yönetmelikler, resmi kurum rehberliği ve yargısal yorum — ve tarafsız, betimleyici bir dilde sürdürülmektedir.'}
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed mb-2">
+            {isEnglish
+              ? 'Key entries carry version traceability (version number and last-reviewed date) and are periodically reviewed. Citations to primary sources are provided where relevant.'
+              : 'Ana maddeler sürüm izlenebilirliği (sürüm numarası ve son inceleme tarihi) taşır ve düzenli olarak gözden geçirilir. Birincil kaynaklara yapılan atıflar ilgili yerlerde verilmektedir.'}
+          </p>
+          <p className="text-xs text-gray-400">
+            {isEnglish
+              ? 'Jurisdiction-tagged: US Federal / State'
+              : 'Yargı alanı etiketli: ABD Federal / Eyalet'}
+          </p>
+        </div>
+      </section>
+
       {/* Pillar Content Areas */}
       <section className="py-20 md:py-24">
         <div className="max-w-6xl mx-auto px-6">
