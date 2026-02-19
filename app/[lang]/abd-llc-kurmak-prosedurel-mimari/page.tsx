@@ -24,7 +24,7 @@ const PAGE_META = {
 const ENTRY_META = {
   version: '1.0',
   lastReviewed: '2026-02-18',
-  reviewStatus: 'Draft',
+  reviewStatus: 'Reviewed (Version 1.0)',
   jurisdiction: 'US Federal / State',
   authorityLayersUsed: true,
   contentType: 'encyclopedia-entry' as const,
@@ -230,11 +230,11 @@ export default async function ABDLLCProsedurelMimariPage({
                   </svg>
                   {isEnglish ? 'Last reviewed: February 18, 2026' : 'Son inceleme: 18 Şubat 2026'}
                 </span>
-                <span className="flex items-center gap-1 text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-green-700 bg-green-50 px-2 py-0.5 rounded-full">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  {isEnglish ? 'Draft' : 'Taslak'}
+                  {isEnglish ? 'Reviewed (Version 1.0)' : 'İncelendi (Sürüm 1.0)'}
                 </span>
                 <span className="text-xs text-gray-400">
                   {PAGE_META.citationKey} &middot; v{ENTRY_META.version}
