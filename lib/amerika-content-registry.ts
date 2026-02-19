@@ -141,6 +141,16 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
     verificationRequired: true,
     sources: [
       {
+        title: 'Internal Revenue Code — Entity Classification',
+        type: 'statute',
+        citation: '26 U.S.C. § 7701(a)'
+      },
+      {
+        title: 'Internal Revenue Code — Foreign-Owned Corporation Reporting',
+        type: 'statute',
+        citation: '26 U.S.C. § 6038A'
+      },
+      {
         title: 'Delaware LLC Act',
         type: 'statute',
         citation: '6 Del. C. § 18-101 et seq.'

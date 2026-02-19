@@ -539,6 +539,119 @@ export default async function AbddeLLCPage({
         {/* ===== Judicial Deference Framework ===== */}
         <DeferenceFramework lang={lang} />
 
+        {/* ===== DOCTRINAL LAYER: Normative Framework ===== */}
+        <section id="normative-framework" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-2">
+            {isEnglish ? 'Normative Framework' : 'Normatif Çerçeve'}
+          </h2>
+          <span className="inline-block text-xs text-gray-500 mb-4">
+            {isEnglish ? 'Jurisdiction: US Federal + State' : 'Kapsam: ABD Federal + Eyalet'}
+          </span>
+
+          <div className="prose max-w-none text-gray-600 space-y-4">
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'LLC formation and operation are governed by a layered normative structure. The sources below are presented in order of legal precedence — higher-tier instruments control where conflict arises with lower-tier sources.'
+                : 'LLC kuruluşu ve işletilmesi, katmanlı bir normatif yapı tarafından düzenlenir. Aşağıdaki kaynaklar hukuki öncelik sırasına göre sunulmuştur — üst kademe belgeler, alt kademe kaynaklarla çatışma halinde belirleyicidir.'}
+            </p>
+          </div>
+
+          {/* Authority-ordered normative sources */}
+          <div className="space-y-3 mt-4">
+            {/* Tier 1: Federal Statute */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 bg-indigo-50">
+                <span className="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-700 flex-shrink-0">1</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-semibold text-sm text-gray-900">
+                    {isEnglish ? 'Federal Statute' : 'Federal Kanun'}
+                  </span>
+                  <span className="text-xs px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">
+                    {isEnglish ? 'Binding' : 'Bağlayıcı'}
+                  </span>
+                </div>
+              </div>
+              <div className="px-4 py-3">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {isEnglish
+                    ? 'The Internal Revenue Code (26 U.S.C.) establishes the federal tax framework governing LLCs. Section 7701(a) defines the categories of business entities. Sections 701–761 govern partnership taxation (the default for multi-member LLCs). Section 1361 et seq. governs S-Corporation elections available to eligible LLCs.'
+                    : 'Internal Revenue Code (26 U.S.C.), LLC\'leri düzenleyen federal vergi çerçevesini oluşturur. § 7701(a), ticari kuruluş kategorilerini tanımlar. §§ 701–761, ortaklık vergilendirmesini (çok üyeli LLC\'ler için varsayılan rejim) düzenler. § 1361 vd., uygun LLC\'lere açık S-Corporation seçimini düzenler.'}
+                </p>
+              </div>
+            </div>
+
+            {/* Tier 2: Federal Regulation */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 bg-indigo-50">
+                <span className="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-700 flex-shrink-0">2</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-semibold text-sm text-gray-900">
+                    {isEnglish ? 'Federal Regulation (Treasury)' : 'Federal Yönetmelik (Treasury)'}
+                  </span>
+                  <span className="text-xs px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">
+                    {isEnglish ? 'Binding' : 'Bağlayıcı'}
+                  </span>
+                </div>
+              </div>
+              <div className="px-4 py-3">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {isEnglish
+                    ? '26 C.F.R. § 301.7701-3 (the "check-the-box" regulations) provides the entity classification rules that determine how an LLC is treated for federal tax purposes. A domestic LLC with a single owner is disregarded by default; a domestic LLC with two or more owners is classified as a partnership by default. Either may elect corporate treatment via Form 8832.'
+                    : '26 C.F.R. § 301.7701-3 ("check-the-box" yönetmelikleri), LLC\'nin federal vergi açısından nasıl değerlendirileceğini belirleyen kuruluş sınıflandırma kurallarını içerir. Tek sahipli yerli LLC varsayılan olarak disregarded entity olarak kabul edilir; iki veya daha fazla sahibi bulunan yerli LLC varsayılan olarak ortaklık (partnership) olarak sınıflandırılır. Her ikisi de Form 8832 aracılığıyla şirket (corporation) statüsünü seçebilir.'}
+                </p>
+              </div>
+            </div>
+
+            {/* Tier 3: State Statute */}
+            <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 bg-indigo-50">
+                <span className="w-7 h-7 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs font-bold text-gray-700 flex-shrink-0">3</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-semibold text-sm text-gray-900">
+                    {isEnglish ? 'State Formation Statutes' : 'Eyalet Kuruluş Kanunları'}
+                  </span>
+                  <span className="text-xs px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">
+                    {isEnglish ? 'Binding (state level)' : 'Bağlayıcı (eyalet düzeyi)'}
+                  </span>
+                </div>
+              </div>
+              <div className="px-4 py-3">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {isEnglish
+                    ? 'LLC formation, governance, dissolution, and member liability are governed by the LLC act of the state of formation. Each state\'s statute provides the default rules that apply absent contrary provisions in the Operating Agreement. Key examples: Delaware Limited Liability Company Act (6 Del. C. § 18-101 et seq.), Wyoming LLC Act (Wyo. Stat. § 17-29-101 et seq.), Revised Uniform Limited Liability Company Act (RULLCA) as adopted by individual states.'
+                    : 'LLC kuruluşu, yönetimi, tasfiyesi ve üye sorumluluğu, kuruluş eyaletinin LLC yasası tarafından düzenlenir. Her eyaletin kanunu, Operating Agreement\'da aksine hüküm bulunmadığında geçerli olacak varsayılan kuralları belirler. Temel örnekler: Delaware Limited Liability Company Act (6 Del. C. § 18-101 vd.), Wyoming LLC Act (Wyo. Stat. § 17-29-101 vd.), Revised Uniform Limited Liability Company Act (RULLCA) — eyaletler tarafından kabul edildiği şekliyle.'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-4">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              {isEnglish
+                ? 'Note: State LLC statutes are subordinate to federal law on matters of federal taxation and constitutional requirements, but control on matters of entity formation, internal governance, and member liability under state law.'
+                : 'Not: Eyalet LLC kanunları, federal vergilendirme ve anayasal gereksinimler konusunda federal hukuka tabidir; ancak kuruluş, iç yönetim ve eyalet hukuku kapsamında üye sorumluluğu konularında belirleyicidir.'}
+            </p>
+          </div>
+        </section>
+
+        {/* ===== DOCTRINAL LAYER: Procedural Architecture ===== */}
+        <section id="procedural-architecture" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-2">
+            {isEnglish ? 'Procedural Architecture' : 'Prosedürel Mimari'}
+          </h2>
+          <span className="inline-block text-xs text-gray-500 mb-4">
+            {isEnglish ? 'Formation → Classification → Compliance' : 'Kuruluş → Sınıflandırma → Uyum'}
+          </span>
+
+          <div className="prose max-w-none text-gray-600 mb-6">
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'LLC establishment follows a defined procedural sequence across state and federal jurisdictions. The four pillars are: (1) state-level formation (filing, registered agent, Operating Agreement), (2) federal tax identification (EIN), (3) tax classification (default disregarded/partnership status or affirmative election via Form 8832 or 2553), and (4) ongoing compliance (annual reports, franchise taxes, federal filings). The sections below address each in detail.'
+                : 'LLC kuruluşu, eyalet ve federal yargı alanlarında tanımlı bir prosedürel sıra izler. Dört temel sütun: (1) eyalet düzeyinde kuruluş (dosyalama, registered agent, Operating Agreement), (2) federal vergi kimliği (EIN), (3) vergi sınıflandırması (varsayılan disregarded/partnership statüsü veya Form 8832 ya da 2553 ile aktif seçim) ve (4) süregelen uyum (yıllık raporlar, franchise vergisi, federal beyannameler). Aşağıdaki bölümler her birini ayrıntılı olarak ele almaktadır.'}
+            </p>
+          </div>
+        </section>
+
         {/* ===== SECTION 4: Formation Steps ===== */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">
@@ -795,11 +908,18 @@ export default async function AbddeLLCPage({
           </div>
         </section>
 
-        {/* ===== SECTION 8: Piercing the Corporate Veil ===== */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">
-            {isEnglish ? 'Piercing the Corporate Veil' : 'Tüzel Kişilik Perdesinin Kaldırılması'}
+        {/* ===== DOCTRINAL LAYER: Risk Zones ===== */}
+        <section id="risk-zones" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-2">
+            {isEnglish ? 'Risk Zones' : 'Risk Alanları'}
           </h2>
+          <span className="inline-block text-xs text-gray-500 mb-6">
+            {isEnglish ? 'Doctrinal risk areas for LLC owners' : 'LLC sahipleri için doktriner risk alanları'}
+          </span>
+
+          <h3 className="text-xl font-semibold mb-4">
+            {isEnglish ? 'Piercing the Corporate Veil' : 'Tüzel Kişilik Perdesinin Kaldırılması'}
+          </h3>
 
           <div className="prose max-w-none text-gray-600 space-y-4">
             <p>
@@ -872,6 +992,42 @@ export default async function AbddeLLCPage({
               {isEnglish ? ' page.' : ' sayfamıza bakınız.'}
             </p>
           </div>
+
+          {/* Risk Zone: Misclassification */}
+          <h3 className="text-xl font-semibold mt-10 mb-4">
+            {isEnglish ? 'Worker Misclassification Risk' : 'İşçi Yanlış Sınıflandırma Riski'}
+          </h3>
+
+          <div className="prose max-w-none text-gray-600 space-y-4">
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'An LLC engaging independent contractors faces classification risk under both federal and state law. The IRS applies behavioral, financial, and relationship-type tests to determine whether a worker is an employee or independent contractor. State agencies (labor departments, workers\' compensation boards) apply their own tests, which frequently differ from the federal standard.'
+                : 'Bağımsız yüklenicilerle çalışan bir LLC, hem federal hem de eyalet hukuku kapsamında sınıflandırma riskiyle karşı karşıyadır. IRS, bir işçinin çalışan mı yoksa bağımsız yüklenici mi olduğunu belirlemek için davranışsal, mali ve ilişki türü testlerini uygular. Eyalet kurumları (iş müdürlükleri, iş kazası tazminat kurulları) ise federal standarttan sıklıkla farklılaşan kendi testlerini uygular.'}
+            </p>
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'Misclassification exposes the LLC to back employment taxes, penalties, interest, and potential liability for unpaid benefits. Where state law applies stricter tests (e.g., California\'s ABC test under AB 5), an LLC treating workers as contractors under the federal common-law test may still be noncompliant at the state level. Written contractor agreements mitigate — but do not eliminate — classification risk.'
+                : 'Yanlış sınıflandırma, LLC\'yi geriye dönük istihdam vergilerine, yaptırımlara, faize ve ödenmemiş haklara ilişkin olası sorumluluğa maruz bırakır. Eyalet hukukunun daha katı testler uyguladığı durumlarda (ör. California\'nın AB 5 kapsamındaki ABC testi), federal common-law testi kapsamında yüklenici olarak kabul edilen işçiler eyalet düzeyinde uyumsuz sayılabilir. Yazılı yüklenici sözleşmeleri sınıflandırma riskini azaltır ancak ortadan kaldırmaz.'}
+            </p>
+          </div>
+
+          {/* Risk Zone: Immigration Misalignment */}
+          <h3 className="text-xl font-semibold mt-10 mb-4">
+            {isEnglish ? 'Immigration Misalignment' : 'Göçmenlik Hukuku Uyumsuzluğu'}
+          </h3>
+
+          <div className="prose max-w-none text-gray-600 space-y-4">
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'LLC formation is a state-law corporate procedure. It confers no immigration status, work authorization, or right of entry under the Immigration and Nationality Act (8 U.S.C. § 1101 et seq.). A foreign national who forms a US LLC remains subject to the same visa requirements that applied before formation.'
+                : 'LLC kuruluşu, eyalet hukuku kapsamında bir şirketler hukuku prosedürüdür. Immigration and Nationality Act (8 U.S.C. § 1101 vd.) kapsamında herhangi bir göçmenlik statüsü, çalışma izni veya giriş hakkı sağlamaz. ABD LLC\'si kuran yabancı uyruklu kişi, kuruluş öncesinde geçerli olan vize gereksinimlerine tabi olmaya devam eder.'}
+            </p>
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'Specific visa categories (E-2 Treaty Investor, L-1 Intracompany Transferee, O-1 Extraordinary Ability) have independent eligibility criteria that must be satisfied regardless of whether the applicant owns a US business entity. An LLC may serve as the sponsoring organization for certain visa petitions, but the existence of the LLC alone is not sufficient to establish visa eligibility. Claims that LLC formation "unlocks" US visa access are inaccurate.'
+                : 'Belirli vize kategorileri (E-2 Anlaşma Yatırımcısı, L-1 Şirket İçi Transfer, O-1 Olağanüstü Yetenek), başvuru sahibinin ABD ticari kuruluşuna sahip olup olmadığından bağımsız olarak karşılanması gereken ayrı uygunluk kriterlerine sahiptir. Bir LLC, belirli vize başvurularında sponsor kuruluş olarak işlev görebilir; ancak LLC\'nin varlığı tek başına vize uygunluğu oluşturmaya yeterli değildir. LLC kuruluşunun ABD vize erişimini "açtığı" yönündeki iddialar gerçeği yansıtmamaktadır.'}
+            </p>
+          </div>
         </section>
 
         {/* ===== SECTION 9: Multi-State Operations ===== */}
@@ -912,6 +1068,46 @@ export default async function AbddeLLCPage({
               {isEnglish
                 ? "Foreign LLC registration typically costs $50-$500 per state for the initial filing, plus ongoing annual report fees and a registered agent in each state. These costs add up and are a primary reason why forming in your home state (or the state where you primarily operate) is often the most cost-effective approach for businesses with a clear geographic focus."
                 : "Yabancı LLC tescili, ilk dosyalama için eyalet başına genellikle 50-500 $ arasında maliyet gerektirir; buna her eyaletteki devam eden yıllık rapor harçları ve registered agent ücreti de eklenir. Bu maliyetler birikir ve belirgin bir coğrafi odağı olan işletmeler için kendi eyaletinde (veya ağırlıklı faaliyet gösterilen eyalette) kurulumun genellikle en maliyet etkin yaklaşım olmasının temel nedenini oluşturur."}
+            </p>
+          </div>
+        </section>
+
+        {/* ===== DOCTRINAL LAYER: Cross-Border Considerations ===== */}
+        <section id="cross-border-considerations" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-2">
+            {isEnglish ? 'Cross-Border Considerations' : 'Sınır Ötesi Hususlar'}
+          </h2>
+          <span className="inline-block text-xs text-gray-500 mb-4">
+            {isEnglish ? 'Jurisdiction: US Federal' : 'Kapsam: ABD Federal'}
+          </span>
+
+          <div className="prose max-w-none text-gray-600 space-y-4">
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'Foreign-owned LLCs face additional federal reporting obligations beyond those applicable to domestically owned entities. Non-compliance penalties in this area are significant.'
+                : 'Yabancı sahipli LLC\'ler, yurtiçinde sahiplik altındaki kuruluşlara uygulanan yükümlülüklerin ötesinde ek federal raporlama yükümlülükleriyle karşı karşıyadır. Bu alandaki uyumsuzluk yaptırımları ağırdır.'}
+            </p>
+
+            <h3 className="font-semibold text-gray-900 text-lg mt-6">
+              {isEnglish
+                ? 'Foreign-Owned Single-Member LLC Reporting'
+                : 'Yabancı Sahipli Tek Üyeli LLC Raporlaması'}
+            </h3>
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'A domestic LLC that is wholly owned by a foreign person and classified as a disregarded entity must file Form 5472 (Information Return of a 25% Foreign-Owned U.S. Corporation) attached to a pro forma Form 1120, pursuant to 26 U.S.C. § 6038A and Treasury Regulations § 1.6038A-1 et seq. This filing reports "reportable transactions" between the LLC and its foreign owner, including capital contributions, loans, payments for services, and use of property. The penalty for failure to timely file Form 5472 is $25,000 per return, per year, with additional penalties for continued non-compliance after IRS notification.'
+                : 'Tamamen yabancı bir kişiye ait olan ve disregarded entity olarak sınıflandırılan yerli bir LLC, 26 U.S.C. § 6038A ve Treasury Regulations § 1.6038A-1 vd. uyarınca, pro forma Form 1120\'ye ekli olarak Form 5472 (25% Yabancı Sahipli ABD Şirketi Bilgi Beyannamesi) sunmak zorundadır. Bu beyanname, LLC ile yabancı sahibi arasındaki "raporlanabilir işlemleri" bildirir: sermaye katkıları, krediler, hizmet ödemeleri ve mülk kullanımı dahil. Form 5472\'nin zamanında sunulmaması halinde ceza beyanname başına yıllık 25.000 $\'dır; IRS bildiriminden sonra devam eden uyumsuzluk için ek yaptırımlar uygulanır.'}
+            </p>
+
+            <h3 className="font-semibold text-gray-900 text-lg mt-6">
+              {isEnglish
+                ? 'Effectively Connected Income (ECI)'
+                : 'Fiilen Bağlantılı Gelir (ECI — Effectively Connected Income)'}
+            </h3>
+            <p className="text-sm leading-relaxed">
+              {isEnglish
+                ? 'Under 26 U.S.C. § 864(c), income of a foreign-owned LLC that is "effectively connected" with the conduct of a trade or business within the United States is subject to US federal income tax at regular graduated rates. Whether income is effectively connected depends on factual analysis, including where business activities are performed, where assets are used, and where economic risk is borne. The determination of ECI status has direct implications for filing obligations and withholding requirements, and should be assessed on a case-by-case basis with qualified tax counsel.'
+                : '26 U.S.C. § 864(c) uyarınca, yabancı sahipli bir LLC\'nin ABD dahilinde ticari faaliyet yürütülmesiyle "fiilen bağlantılı" olan geliri, olağan artan oranlarda ABD federal gelir vergisine tabidir. Gelirin fiilen bağlantılı olup olmadığı olgusal analize bağlıdır: ticari faaliyetlerin nerede yürütüldüğü, varlıkların nerede kullanıldığı ve ekonomik riskin nerede taşındığı değerlendirilir. ECI statüsünün belirlenmesi, beyanname verme yükümlülükleri ve tevkifat gereksinimleri üzerinde doğrudan etkiye sahiptir ve nitelikli vergi danışmanıyla vaka bazında değerlendirilmelidir.'}
             </p>
           </div>
         </section>
@@ -980,6 +1176,54 @@ export default async function AbddeLLCPage({
                   ? "Formation is just the beginning. Maintaining the LLC requires ongoing compliance: annual reports, franchise taxes, registered agent renewals, federal tax filings, BOI reports, and keeping the Operating Agreement current. Neglecting post-formation obligations can result in administrative dissolution, loss of good standing, and vulnerability to veil-piercing claims."
                   : "Kuruluş yalnızca başlangıçtır. LLC'nin sürdürülmesi, devam eden uyum yükümlülüklerini gerektirir: yıllık raporlar, franchise vergisi, registered agent yenilemeleri, federal vergi beyannameleri, BOI raporları ve Operating Agreement'ın güncel tutulması. Kuruluş sonrası yükümlülüklerin ihmal edilmesi idari tasfiye, good standing kaybı ve tüzel kişilik perdesinin kaldırılması taleplerine karşı savunmasızlık ile sonuçlanabilir."}
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== DOCTRINAL LAYER: Judicial Interpretation ===== */}
+        <section id="judicial-interpretation" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-2">
+            {isEnglish ? 'Judicial Interpretation' : 'Yargısal Yorum'}
+          </h2>
+          <span className="inline-block text-xs text-gray-500 mb-4">
+            {isEnglish ? 'Case law references' : 'İçtihat referansları'}
+          </span>
+
+          <div className="border border-dashed border-gray-300 rounded-lg p-6 bg-gray-50">
+            <div className="flex items-start gap-3">
+              <span className="text-gray-400 text-lg flex-shrink-0">§</span>
+              <div>
+                <h3 className="font-semibold text-gray-700 text-sm mb-2">
+                  {isEnglish
+                    ? 'Judicial Interpretation — Pending Case Annotation'
+                    : 'Yargısal Yorum — Bekleyen İçtihat Ek Açıklaması'}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {isEnglish
+                    ? 'This section is reserved for annotated case law references relevant to LLC formation, entity classification, veil-piercing doctrine, and cross-border reporting obligations. Case annotations will be added as they are verified against primary sources and reviewed for jurisdictional accuracy.'
+                    : 'Bu bölüm, LLC kuruluşu, kuruluş sınıflandırması, tüzel kişilik perdesinin kaldırılması doktrini ve sınır ötesi raporlama yükümlülükleriyle ilgili açıklamalı içtihat referansları için ayrılmıştır. İçtihat ek açıklamaları, birincil kaynaklara karşı doğrulanıp yargı alanı doğruluğu açısından incelendikçe eklenecektir.'}
+                </p>
+
+                <div className="mt-4 space-y-2">
+                  <div className="text-xs text-gray-400">
+                    {isEnglish ? 'Anticipated topics:' : 'Beklenen konular:'}
+                  </div>
+                  <ul className="text-xs text-gray-500 space-y-1 pl-4">
+                    <li>• {isEnglish
+                      ? 'Veil-piercing standards across state jurisdictions (multi-factor tests)'
+                      : 'Eyalet yargı alanlarında tüzel kişilik perdesinin kaldırılması standartları (çok faktörlü testler)'}</li>
+                    <li>• {isEnglish
+                      ? 'Check-the-box regulation validity and IRS classification disputes'
+                      : 'Check-the-box yönetmeliğinin geçerliliği ve IRS sınıflandırma uyuşmazlıkları'}</li>
+                    <li>• {isEnglish
+                      ? 'Form 5472 penalty litigation and reasonable cause defenses'
+                      : 'Form 5472 ceza davaları ve makul gerekçe savunmaları'}</li>
+                    <li>• {isEnglish
+                      ? 'Economic nexus determinations post-South Dakota v. Wayfair, 585 U.S. 162 (2018)'
+                      : 'South Dakota v. Wayfair, 585 U.S. 162 (2018) sonrası ekonomik nexus belirlemeleri'}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>
