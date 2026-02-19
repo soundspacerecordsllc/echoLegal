@@ -148,6 +148,8 @@ export default async function AbddeLLCPage({
       authorityLevel: 'federal_statute',
       canonicalId: 'case-scotus-moline-properties-1943',
       jurisdiction: 'US Federal',
+      doctrineType: 'statutory interpretation',
+      impactCategory: 'classification',
     },
     {
       caseName: 'Carden v. Arkoma Associates, Ltd.',
@@ -161,6 +163,8 @@ export default async function AbddeLLCPage({
       authorityLevel: 'federal_statute',
       canonicalId: 'case-scotus-carden-v-arkoma-1990',
       jurisdiction: 'US Federal',
+      doctrineType: 'statutory interpretation',
+      impactCategory: 'classification',
     },
     {
       caseName: 'Hertz Corp. v. Friend',
@@ -174,6 +178,8 @@ export default async function AbddeLLCPage({
       authorityLevel: 'federal_statute',
       canonicalId: 'case-scotus-hertz-v-friend-2010',
       jurisdiction: 'US Federal',
+      doctrineType: 'statutory interpretation',
+      impactCategory: 'nexus-doctrine',
     },
     {
       caseName: 'South Dakota v. Wayfair, Inc.',
@@ -187,6 +193,8 @@ export default async function AbddeLLCPage({
       authorityLevel: 'federal_statute',
       canonicalId: 'case-scotus-sd-v-wayfair-2018',
       jurisdiction: 'US Federal',
+      doctrineType: 'statutory interpretation',
+      impactCategory: 'nexus-doctrine',
     },
   ]
 
