@@ -6,15 +6,6 @@ const LOCALE_COOKIE = 'ECHOLEGAL_LOCALE'
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 // 1 year
 
 export function middleware(request: NextRequest) {
-  // Enforce apex domain: redirect www → echo-legal.com (permanent 301)
-  const host = request.headers.get('host') ?? ''
-  if (host.startsWith('www.')) {
-    const url = request.nextUrl.clone()
-    url.host = host.replace(/^www\./, '')
-    url.port = ''
-    return NextResponse.redirect(url, 301)
-  }
-
   const pathname = request.nextUrl.pathname
 
   // Skip static files and API routes
