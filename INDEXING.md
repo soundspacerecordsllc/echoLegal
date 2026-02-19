@@ -14,7 +14,7 @@
 ## Step 1: Submit Sitemap
 
 1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Select property: `https://www.echo-legal.com`
+2. Select property: `https://echo-legal.com`
 3. In left sidebar, click **Sitemaps**
 4. In "Add a new sitemap" field, enter: `sitemap.xml`
 5. Click **Submit**
@@ -32,7 +32,7 @@ Request indexing for these pages first (they have the highest conversion potenti
 
 #### 1. ABD'de LLC Kurmak
 ```
-https://www.echo-legal.com/tr/amerika/abdde-llc-kurmak
+https://echo-legal.com/tr/amerika/abdde-llc-kurmak
 ```
 - Go to URL Inspection tool
 - Paste the URL above
@@ -40,7 +40,7 @@ https://www.echo-legal.com/tr/amerika/abdde-llc-kurmak
 
 #### 2. ABD'de İş Yapanlar İçin Sözleşmeler
 ```
-https://www.echo-legal.com/tr/amerika/abdde-is-yapanlar-icin-sozlesmeler
+https://echo-legal.com/tr/amerika/abdde-is-yapanlar-icin-sozlesmeler
 ```
 - Go to URL Inspection tool
 - Paste the URL above
@@ -48,7 +48,7 @@ https://www.echo-legal.com/tr/amerika/abdde-is-yapanlar-icin-sozlesmeler
 
 #### 3. IRS Vergi Gerçekleri
 ```
-https://www.echo-legal.com/tr/amerika/irs-vergi-gercekleri
+https://echo-legal.com/tr/amerika/irs-vergi-gercekleri
 ```
 - Go to URL Inspection tool
 - Paste the URL above
@@ -56,7 +56,7 @@ https://www.echo-legal.com/tr/amerika/irs-vergi-gercekleri
 
 #### 4. Business Starter Kit
 ```
-https://www.echo-legal.com/tr/amerika/legal-kitler/abd-business-starter-legal-kit
+https://echo-legal.com/tr/amerika/legal-kitler/abd-business-starter-legal-kit
 ```
 - Go to URL Inspection tool
 - Paste the URL above
@@ -70,15 +70,15 @@ After priority pages, request indexing for remaining hub pages:
 
 | Page | URL |
 |------|-----|
-| Amerika Hub | `https://www.echo-legal.com/tr/amerika` |
-| ABD'ye Gelme Yolları | `https://www.echo-legal.com/tr/amerika/abdye-gelme-yollari` |
-| Turist Vizesi Gerçekleri | `https://www.echo-legal.com/tr/amerika/turist-vizesi-gercekleri` |
-| Statüden Statüye Geçiş | `https://www.echo-legal.com/tr/amerika/statuden-statuye-gecis-gercekleri` |
-| LLC mi Corp mu? | `https://www.echo-legal.com/tr/amerika/llc-mi-corp-mu` |
-| ABD'de Banka Hesabı | `https://www.echo-legal.com/tr/amerika/abdde-banka-hesabi` |
-| NY Law Neden Tercih Edilir | `https://www.echo-legal.com/tr/amerika/ny-law-neden-tercih-edilir` |
-| Platform Ne Yapar Ne Yapmaz | `https://www.echo-legal.com/tr/amerika/platform-ne-yapar-ne-yapmaz` |
-| Legal Kitler Index | `https://www.echo-legal.com/tr/amerika/legal-kitler` |
+| Amerika Hub | `https://echo-legal.com/tr/amerika` |
+| ABD'ye Gelme Yolları | `https://echo-legal.com/tr/amerika/abdye-gelme-yollari` |
+| Turist Vizesi Gerçekleri | `https://echo-legal.com/tr/amerika/turist-vizesi-gercekleri` |
+| Statüden Statüye Geçiş | `https://echo-legal.com/tr/amerika/statuden-statuye-gecis-gercekleri` |
+| LLC mi Corp mu? | `https://echo-legal.com/tr/amerika/llc-mi-corp-mu` |
+| ABD'de Banka Hesabı | `https://echo-legal.com/tr/amerika/abdde-banka-hesabi` |
+| NY Law Neden Tercih Edilir | `https://echo-legal.com/tr/amerika/ny-law-neden-tercih-edilir` |
+| Platform Ne Yapar Ne Yapmaz | `https://echo-legal.com/tr/amerika/platform-ne-yapar-ne-yapmaz` |
+| Legal Kitler Index | `https://echo-legal.com/tr/amerika/legal-kitler` |
 
 ---
 

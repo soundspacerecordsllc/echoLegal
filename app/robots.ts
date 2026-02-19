@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://www.echo-legal.com/sitemap.xml',
+    sitemap: 'https://echo-legal.com/sitemap.xml',
   }
 }
