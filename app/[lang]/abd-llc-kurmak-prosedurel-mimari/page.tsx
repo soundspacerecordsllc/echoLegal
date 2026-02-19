@@ -27,7 +27,6 @@ const ENTRY_META = {
   reviewStatus: 'Draft',
   jurisdiction: 'US Federal / State',
   authorityLayersUsed: true,
-  citationKey: 'ecl-enc-00202',
   contentType: 'encyclopedia-entry' as const,
   category: 'formation' as const,
   revisionHistory: [
@@ -238,7 +237,7 @@ export default async function ABDLLCProsedurelMimariPage({
                   {isEnglish ? 'Draft' : 'Taslak'}
                 </span>
                 <span className="text-xs text-gray-400">
-                  {ENTRY_META.citationKey} &middot; v{ENTRY_META.version}
+                  {PAGE_META.citationKey} &middot; v{ENTRY_META.version}
                 </span>
               </div>
 

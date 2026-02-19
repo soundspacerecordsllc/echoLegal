@@ -4,6 +4,18 @@
 
 import { Contributor, getCanonicalAuthor } from './contributors'
 
+/**
+ * CitationIdentity — the single source of truth for identifying an editorial entry.
+ * Every cornerstone page must derive its citation metadata from one canonical identity.
+ * No secondary or conflicting citation keys should exist elsewhere in the same entry.
+ */
+export type CitationIdentity = {
+  citationKey: string
+  dateModified: string
+  canonicalUrl: string
+  datePublished?: string
+}
+
 export type ArticleMetadata = {
   slug: string
   datePublished: string // ISO format: YYYY-MM-DD
