@@ -166,6 +166,26 @@ export const amerikaContentRegistry: ContentRegistryEntry[] = [
         citation: '26 C.F.R. § 301.7701-3'
       },
       {
+        title: 'Moline Properties, Inc. v. Commissioner',
+        type: 'case',
+        citation: '319 U.S. 436 (1943)'
+      },
+      {
+        title: 'Carden v. Arkoma Associates, Ltd.',
+        type: 'case',
+        citation: '494 U.S. 185 (1990)'
+      },
+      {
+        title: 'Hertz Corp. v. Friend',
+        type: 'case',
+        citation: '559 U.S. 77 (2010)'
+      },
+      {
+        title: 'South Dakota v. Wayfair, Inc.',
+        type: 'case',
+        citation: '585 U.S. 162 (2018)'
+      },
+      {
         title: 'IRS - Limited Liability Company (non-binding informational page)',
         url: 'https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc',
         type: 'official'
