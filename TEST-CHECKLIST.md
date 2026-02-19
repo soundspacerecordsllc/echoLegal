@@ -16,7 +16,7 @@ npm run dev
 ./scripts/smoke-test-downloads.sh http://localhost:3000
 
 # Production
-./scripts/smoke-test-downloads.sh https://www.echo-legal.com
+./scripts/smoke-test-downloads.sh https://echo-legal.com
 ```
 
 Expected: All downloads return HTTP 200

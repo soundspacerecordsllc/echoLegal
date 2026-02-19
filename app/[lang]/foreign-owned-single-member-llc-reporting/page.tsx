@@ -19,7 +19,7 @@ const ENTRY_SLUG = 'foreign-owned-single-member-llc-reporting'
 const PAGE_META = {
   slug: 'foreign-owned-single-member-llc-reporting',
   datePublished: '2025-06-01',
-  dateModified: '2026-02-17',
+  dateModified: '2026-02-18',
   version: '1.0',
   citationKey: 'ecl-enc-00011',
 }
@@ -30,7 +30,6 @@ const ENTRY_META = {
   reviewStatus: 'Attorney Reviewed',
   jurisdiction: 'US Federal',
   authorityLayersUsed: true,
-  citationKey: 'ecl-enc-00201',
   contentType: 'encyclopedia-entry' as const,
   category: 'tax' as const,
   revisionHistory: [
@@ -310,7 +309,7 @@ export default async function ForeignOwnedSMLLCReportingPage({
                   {isEnglish ? 'Attorney Reviewed' : 'Avukat Tarafından İncelendi'}
                 </span>
                 <span className="text-xs text-gray-400">
-                  {ENTRY_META.citationKey} &middot; v{ENTRY_META.version}
+                  {PAGE_META.citationKey} &middot; v{ENTRY_META.version}
                 </span>
               </div>
 
@@ -1261,7 +1260,7 @@ export default async function ForeignOwnedSMLLCReportingPage({
                   <div><span className="text-gray-500">reviewStatus:</span> {ENTRY_META.reviewStatus}</div>
                   <div><span className="text-gray-500">jurisdiction:</span> {ENTRY_META.jurisdiction}</div>
                   <div><span className="text-gray-500">authorityLayersUsed:</span> {String(ENTRY_META.authorityLayersUsed)}</div>
-                  <div><span className="text-gray-500">citationKey:</span> {ENTRY_META.citationKey}</div>
+                  <div><span className="text-gray-500">citationKey:</span> {PAGE_META.citationKey}</div>
                   <div><span className="text-gray-500">contentType:</span> {ENTRY_META.contentType}</div>
                   <div><span className="text-gray-500">category:</span> {ENTRY_META.category}</div>
                 </div>

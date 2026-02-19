@@ -518,6 +518,38 @@ const searchableContent = {
       keywords: ['terms', 'koşullar', 'terms of use', 'kullanım koşulları', 'website', 'service'],
     },
   ],
+  cornerstones: [
+    {
+      slug: 'abd-llc-kurmak-prosedurel-mimari',
+      titleEn: 'Forming an LLC in the US — Procedural Architecture for Turkish Founders',
+      titleTr: 'ABD\'de LLC Kurmak — Türk Kurucular İçin Prosedürel Mimari',
+      descriptionEn: 'End-to-end procedural reference covering entity classification, formation, EIN acquisition, banking, federal reporting, platform integration, and ongoing compliance for Turkish entrepreneurs forming a US LLC.',
+      descriptionTr: 'Türk girişimciler için ABD LLC kurma sürecinin uçtan uca prosedürel referansı. Tüzel kişilik sınıflandırması, kuruluş, EIN edinimi, bankacılık, federal raporlama, platform entegrasyonu ve sürekli uyum.',
+      category: 'cornerstone',
+      jurisdiction: 'US Federal / State',
+      keywords: ['LLC', 'formation', 'kuruluş', 'EIN', 'Form 5472', 'banking', 'compliance', 'Turkish founders', 'Türk kurucular', 'disregarded entity', 'check-the-box'],
+    },
+    {
+      slug: 'foreign-owned-single-member-llc-reporting',
+      titleEn: 'Foreign-Owned Single-Member LLC Reporting Obligations',
+      titleTr: 'Yabancı Sermayeli Tek Üyeli LLC Raporlama Yükümlülükleri',
+      descriptionEn: 'Comprehensive reference on Form 5472, pro forma Form 1120, and information reporting requirements for foreign-owned disregarded entities under 26 U.S.C. § 6038A.',
+      descriptionTr: 'Form 5472, pro forma Form 1120 ve 26 U.S.C. § 6038A kapsamında yabancı sermayeli disregarded entity\'ler için bilgi raporlama gereksinimleri hakkında kapsamlı referans.',
+      category: 'cornerstone',
+      jurisdiction: 'US Federal',
+      keywords: ['Form 5472', 'Form 1120', '6038A', 'disregarded entity', 'foreign-owned', 'SMLLC', 'reporting', 'raporlama', 'penalty', 'ceza', 'BOI'],
+    },
+    {
+      slug: 'irs-vergiler-ve-w8-w9-gercekleri',
+      titleEn: 'IRS, Taxes & W-8/W-9 Realities for Turkish Entrepreneurs',
+      titleTr: 'IRS, Vergiler ve W-8/W-9 Gerçekleri — Türk Girişimciler İçin',
+      descriptionEn: 'Institutional reference on US tax obligations for non-resident entrepreneurs. Covers withholding, W-8BEN/W-8BEN-E, W-9, 1099 reporting, treaty benefits, and FATCA compliance.',
+      descriptionTr: 'Mukim olmayan girişimciler için ABD vergi yükümlülükleri hakkında kurumsal referans. Stopaj, W-8BEN/W-8BEN-E, W-9, 1099 raporlama, anlaşma avantajları ve FATCA uyumu.',
+      category: 'cornerstone',
+      jurisdiction: 'US Federal',
+      keywords: ['IRS', 'W-8BEN', 'W-8BEN-E', 'W-9', '1099', 'withholding', 'stopaj', 'tax treaty', 'vergi anlaşması', 'FATCA', 'ITIN', 'EIN'],
+    },
+  ],
   pages: [
     {
       slug: '',
@@ -726,6 +758,22 @@ function buildSearchIndex() {
       descriptionTr: item.descriptionTr,
       category: item.category,
       jurisdiction: 'US/Turkey',
+      keywords: item.keywords,
+      lastVerified: timestamp,
+    });
+  });
+
+  // Process cornerstone entries
+  searchableContent.cornerstones.forEach((item) => {
+    index.push({
+      id: `cornerstone-${item.slug}`,
+      url: `/${item.slug}`,
+      titleEn: item.titleEn,
+      titleTr: item.titleTr,
+      descriptionEn: item.descriptionEn,
+      descriptionTr: item.descriptionTr,
+      category: item.category,
+      jurisdiction: item.jurisdiction,
       keywords: item.keywords,
       lastVerified: timestamp,
     });

@@ -645,6 +645,69 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       jurisdiction: 'US',
     },
   ],
+
+  'abd-llc-kurmak-prosedurel-mimari': [
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 7701(a)',
+      label: {
+        en: 'Definitions — entity classification and domestic/foreign status',
+        tr: 'Tanımlar — tüzel kişilik sınıflandırması ve yerli/yabancı statüsü',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7701&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-7701-a',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. §§ 301.7701-1 through 301.7701-3',
+      label: {
+        en: 'Entity classification regulations (check-the-box)',
+        tr: 'Tüzel kişilik sınıflandırma düzenlemeleri (check-the-box)',
+      },
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-F/part-301/subpart-ECFRd43e1e5bf6e7513/subject-group-ECFRa28caacb356462e',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-26CFR-301.7701',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 6109',
+      label: {
+        en: 'Identifying numbers — statutory requirement for tax identification',
+        tr: 'Kimlik numaraları — vergi kimliği için yasal gereklilik',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6109&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'usc-26-6109',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 6038A',
+      label: {
+        en: 'Information with respect to certain foreign-owned corporations',
+        tr: 'Belirli yabancı sermayeli şirketlere ilişkin bilgi',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section6038A&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-6038A',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS, Instructions for Form SS-4',
+      label: {
+        en: 'Application for Employer Identification Number',
+        tr: 'İşveren Kimlik Numarası başvurusu',
+      },
+      url: 'https://www.irs.gov/forms-pubs/about-form-ss-4',
+      authorityLevel: 'form_instruction',
+      canonicalId: 'US-IRS-FORM-SS-4-INSTR',
+      jurisdiction: 'US',
+    },
+  ],
 }
 
 // ============================================
