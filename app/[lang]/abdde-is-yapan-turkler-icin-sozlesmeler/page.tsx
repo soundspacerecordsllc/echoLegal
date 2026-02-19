@@ -283,6 +283,37 @@ export default async function ContractsGuidePage({
               </p>
             </div>
 
+            {/* Scope & Method */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                {isEnglish ? 'Scope & Method' : 'Kapsam ve Yöntem'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry covers core contracts commonly used in US business relationships, with considerations for Turkish entrepreneurs operating across borders. It does not constitute legal advice; jurisdiction-specific variations exist and professional review is recommended for any specific engagement. Content is informed by primary legal sources, official agency guidance, and standard US commercial practice descriptions.'
+                  : 'Bu madde, ABD iş ilişkilerinde yaygın olarak kullanılan temel sözleşmeleri, sınır ötesi faaliyet gösteren Türk girişimciler için dikkat edilmesi gereken hususlarla birlikte ele almaktadır. Hukuki danışmanlık teşkil etmez; yargı alanına özgü farklılıklar mevcuttur ve belirli işlemler için profesyonel inceleme önerilir. İçerik, birincil hukuki kaynaklar, resmi kurum rehberliği ve standart ABD ticari uygulama açıklamalarından yararlanılarak hazırlanmıştır.'}
+              </p>
+            </div>
+
+            {/* Version Traceability */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 mb-10 border-b border-gray-100 pb-3">
+              <span>
+                <span className="font-medium text-gray-600">
+                  {isEnglish ? 'Version' : 'Sürüm'}:
+                </span>{' '}
+                v{PAGE_META.version}
+              </span>
+              <span>
+                <span className="font-medium text-gray-600">
+                  {isEnglish ? 'Last Reviewed' : 'Son İnceleme'}:
+                </span>{' '}
+                {PAGE_META.dateModified}
+              </span>
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">
+                {isEnglish ? 'Foundational' : 'Temel'}
+              </span>
+            </div>
+
             {/* Table of Contents */}
             <nav className="bg-gray-50 rounded-lg p-6 mb-10">
               <h2 className="text-lg font-bold text-black mb-4">{isEnglish ? 'Table of Contents' : 'İçindekiler'}</h2>
@@ -296,6 +327,11 @@ export default async function ContractsGuidePage({
                 ))}
               </ol>
             </nav>
+
+            {/* ── Normative Baseline ──────────────────────────────────────── */}
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+              {isEnglish ? 'Normative Baseline' : 'Normatif Temel'}
+            </h2>
 
             {/* Section 1: Temel Sözleşme Türleri */}
             <section id="temel-sozlesme-turleri" className="mb-12">
@@ -343,6 +379,11 @@ export default async function ContractsGuidePage({
                 ))}
               </div>
             </section>
+
+            {/* ── Practical Guidance ──────────────────────────────────────── */}
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+              {isEnglish ? 'Practical Guidance' : 'Pratik Rehberlik'}
+            </h2>
 
             {/* Section 2: Ne Zaman Hangi Sözleşme */}
             <section id="ne-zaman-hangi-sozlesme" className="mb-12">
