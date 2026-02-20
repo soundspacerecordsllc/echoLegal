@@ -443,7 +443,7 @@ export default async function LLCGuidePage({
                   <p><strong>Key characteristics:</strong></p>
                   <ul>
                     <li><strong>Limited liability:</strong> Members&apos; personal assets are generally protected from business debts and lawsuits.</li>
-                    <li><strong>Pass-through taxation:</strong> By default, a single-member LLC is treated as a &quot;disregarded entity&quot; for federal tax purposes—meaning the LLC itself doesn&apos;t file a separate tax return; income passes through to the owner.</li>
+                    <li><strong>Pass-through taxation:</strong> By default, a single-member LLC is treated as a &quot;disregarded entity&quot; for federal tax purposes. The LLC itself does not file a separate tax return. Income passes through to the owner.</li>
                     <li><strong>Flexible management:</strong> Unlike corporations, LLCs have fewer formal requirements (no mandatory board meetings, annual minutes, etc.).</li>
                   </ul>
                   <p>LLCs are formed at the state level. Each state has its own formation requirements, fees, and ongoing compliance obligations.</p>
@@ -454,7 +454,7 @@ export default async function LLCGuidePage({
                   <p><strong>Temel özellikleri:</strong></p>
                   <ul>
                     <li><strong>Sınırlı sorumluluk:</strong> Üyelerin kişisel varlıkları, işletme borçlarından ve davalardan kural olarak korunur.</li>
-                    <li><strong>Geçişli vergilendirme (pass-through):</strong> Tek üyeli LLC, federal vergi açısından varsayılan olarak &quot;disregarded entity&quot; (dikkate alınmayan varlık) muamelesi görür. Bu, LLC&apos;nin ayrı vergi beyannamesi vermediği, gelirin doğrudan sahibine geçtiği anlamına gelir.</li>
+                    <li><strong>Geçişli vergilendirme (pass-through):</strong> Tek üyeli LLC, federal vergi açısından varsayılan olarak &quot;disregarded entity&quot; (dikkate alınmayan varlık) muamelesi görür. LLC ayrı vergi beyannamesi vermez. Gelir doğrudan sahibine geçer.</li>
                     <li><strong>Esnek yönetim:</strong> Corporation&apos;lardan farklı olarak LLC&apos;lerde zorunlu yönetim kurulu toplantısı, yıllık tutanak gibi biçimsel gereklilikler yoktur.</li>
                   </ul>
                   <p>LLC&apos;ler eyalet düzeyinde kurulur. Her eyaletin kendine özgü kuruluş gereksinimleri, harçları ve süregelen uyum yükümlülükleri vardır.</p>
@@ -480,7 +480,7 @@ export default async function LLCGuidePage({
                   </ul>
 
                   <h3>US-Source Income</h3>
-                  <p>Even without a US visa or physical presence, if your LLC earns income from US sources (US clients, US-based services), you may have US tax filing obligations. The US-Turkey tax treaty may provide certain benefits, but does not eliminate all requirements.</p>
+                  <p>Even without a US visa or physical presence, your LLC may trigger US tax filing obligations if it earns income from US sources (US clients, US-based services). The US-Turkey tax treaty may provide certain benefits but does not eliminate all requirements.</p>
 
                   <h3>LLC Does Not Grant Immigration Status</h3>
                   <p>A common misconception: forming an LLC does not provide any visa or immigration benefit. You cannot &quot;move to the US&quot; simply by forming an LLC. Immigration requires a separate legal pathway (E-2, L-1, etc.).</p>
@@ -521,7 +521,7 @@ export default async function LLCGuidePage({
 
               {isEnglish ? (
                 <div className="space-y-6">
-                  <p className="text-gray-700 leading-relaxed">Each step below builds on the one before it. The state is selected first because the registered agent must have a physical presence in that state. The Articles of Organization are filed before applying for an EIN, as the IRS requires proof that the legal entity exists. To open a U.S. bank account, banks generally require both an EIN and an Operating Agreement. This sequence is not arbitrary; it reflects the legal and practical dependencies of the process.</p>
+                  <p className="text-gray-700 leading-relaxed">Each step below builds on the one before it. The state is selected first because the registered agent must be physically present in that state. Articles of Organization are filed before applying for an EIN, as the IRS requires proof that the entity exists. Banks, in turn, generally require both an EIN and an Operating Agreement before opening an account. This sequence reflects the legal and practical dependencies of the process.</p>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 1: Choose Your State</h3>
@@ -535,23 +535,23 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 2: Appoint a Registered Agent</h3>
-                    <p className="text-gray-700 mt-2">Every LLC must have a registered agent with a physical address in the formation state. This agent receives legal documents on behalf of your LLC. Commercial registered agent services typically cost $50-300/year.</p>
+                    <p className="text-gray-700 mt-2">Every LLC must designate a registered agent with a physical address in the formation state. The agent receives legal and official documents on behalf of your LLC. Commercial registered agent services typically cost $50–300 per year.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 3: File Articles of Organization</h3>
-                    <p className="text-gray-700 mt-2">Articles of Organization is the founding document that formally registers your LLC with the state. Most states accept online filings. Processing times range from same-day (for an expedited fee) to one or two weeks depending on the state. Once approved, your LLC legally exists.</p>
+                    <p className="text-gray-700 mt-2">The Articles of Organization is the founding document that formally registers your LLC with the state. Most states accept online filings. Processing times range from same-day (with an expedited fee) to one or two weeks, depending on the state. Once the state approves this filing, your LLC legally exists.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 4: Obtain an EIN</h3>
-                    <p className="text-gray-700 mt-2">An EIN (Employer Identification Number) is essentially a tax ID for your LLC, issued by the IRS. You will need it to open a bank account, file tax returns, and enter into contracts. Non-residents without an SSN cannot apply online; the application must be submitted by mail or fax using Form SS-4, and processing typically takes four to six weeks. Without an EIN, your LLC exists on paper but cannot operate commercially in the United States.</p>
+                    <p className="text-gray-700 mt-2">An EIN (Employer Identification Number) is a tax identification number for your LLC, issued by the IRS. You need it to open a bank account, file tax returns, and enter into contracts. Non-residents without an SSN cannot apply online. The application must be submitted by mail or fax using Form SS-4, and processing typically takes four to six weeks. Without an EIN, your LLC exists on paper but cannot operate commercially in the United States.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 5: Draft an Operating Agreement</h3>
-                    <p className="text-gray-700 mt-2">An Operating Agreement is the internal governance document of your LLC. It defines who owns what percentage, how profits are distributed, and how decisions are made. Not every state requires one by law, but in practice it is indispensable: banks ask for it when opening an account, and it protects you in disputes between members.</p>
-                    <p className="text-gray-700 mt-2">The majority of US banks request a copy of the Operating Agreement when opening a business account. Even for single-member LLCs, banks verify who is authorized to act on behalf of the entity and how it is managed through this document. LLCs without an Operating Agreement may face significant delays or outright rejection during the account opening process.</p>
+                    <p className="text-gray-700 mt-2">An Operating Agreement is the internal governance document of your LLC. It defines ownership percentages, profit distribution, and decision-making procedures. Not every state requires one by law, but in practice it is indispensable. Banks request it when opening an account, and it provides protection in disputes between members.</p>
+                    <p className="text-gray-700 mt-2">Most US banks request a copy of the Operating Agreement when opening a business account. Even for single-member LLCs, banks use this document to verify who is authorized to act on behalf of the entity and how it is managed. An LLC without an Operating Agreement may face significant delays or outright rejection during the account opening process.</p>
                     <p className="text-sm text-gray-600 mt-3">
                       For related contract templates your LLC may need, see the <Link href={`/${lang}/contracts/service-agreement`} className="text-blue-600 hover:underline">Service Agreement</Link> and <Link href={`/${lang}/contracts/nda`} className="text-blue-600 hover:underline">Non-Disclosure Agreement</Link> template pages.
                     </p>
@@ -559,17 +559,17 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 6: Open a US Bank Account</h3>
-                    <p className="text-gray-700 mt-2">For non-residents, this is often the most difficult step in the entire process. Traditional US banks generally require an in-person visit to a branch. A smaller number of banks and fintech platforms accept remote applications from foreign LLC owners, though their requirements and approval rates change frequently. Having your EIN confirmation letter, Articles of Organization, and Operating Agreement ready before applying will streamline the process.</p>
+                    <p className="text-gray-700 mt-2">For non-residents, this is often the most difficult step. Traditional US banks generally require an in-person visit to a branch. A smaller number of banks and fintech platforms accept remote applications from foreign LLC owners, though their requirements and approval rates change frequently. Prepare your EIN confirmation letter, Articles of Organization, and Operating Agreement before applying — having these documents ready streamlines the process.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Step 7: Maintain Compliance</h3>
-                    <p className="text-gray-700 mt-2">Forming an LLC is not a one-time event. Most states require annual reports and charge ongoing fees or franchise taxes. At the federal level, you may need to file informational tax returns even if your LLC earned no US-source income. Additionally, the Corporate Transparency Act now requires most LLCs to submit Beneficial Ownership Information (BOI) reports to FinCEN. Failing to meet these obligations can result in penalties or administrative dissolution of your LLC. Ongoing compliance is what preserves your LLC&apos;s legal standing; neglecting it directly jeopardizes the limited liability protection that was the reason for forming it.</p>
+                    <p className="text-gray-700 mt-2">Forming an LLC is not a one-time event. Most states require annual reports and charge ongoing fees or franchise taxes. At the federal level, you may need to file informational tax returns even if your LLC earned no US-source income. The Corporate Transparency Act also requires most LLCs to submit Beneficial Ownership Information (BOI) reports to FinCEN. Failure to meet these obligations can result in penalties or administrative dissolution. Ongoing compliance preserves your LLC&apos;s legal standing. Neglecting it directly jeopardizes the limited liability protection that was the reason for forming the entity.</p>
                   </div>
                 </div>
               ) : (
                 <div className="space-y-6">
-                  <p className="text-gray-700 leading-relaxed">Aşağıdaki her adım, bir öncekinin üzerine inşa edilir. Önce eyalet seçilir; çünkü registered agent, kuruluş eyaletinde fiziksel olarak bulunmak zorundadır. Articles of Organization, EIN başvurusundan önce dosyalanır; zira IRS, tüzel kişiliğin hukuken var olduğuna dair belge talep eder. ABD&apos;de banka hesabı açılabilmesi için ise genellikle hem EIN hem de Operating Agreement gerekir. Bu sıralama rastgele değildir; sürecin hukuki ve pratik bağımlılıklarını yansıtır.</p>
+                  <p className="text-gray-700 leading-relaxed">Aşağıdaki her adım bir öncekinin üzerine inşa edilir. Önce eyalet seçilir; çünkü registered agent kuruluş eyaletinde fiziksel olarak bulunmak zorundadır. Articles of Organization EIN başvurusundan önce sunulur; zira IRS tüzel kişiliğin hukuken var olduğuna dair belge talep eder. Bankalar ise hesap açmak için genellikle hem EIN hem de Operating Agreement ister. Bu sıralama sürecin hukuki ve pratik bağımlılıklarını yansıtır.</p>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 1: Eyalet Seçimi</h3>
@@ -588,18 +588,18 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 3: Articles of Organization Başvurusu</h3>
-                    <p className="text-gray-700 mt-2">Articles of Organization, LLC&apos;nizi eyalet nezdinde resmî olarak tescil eden kuruluş belgesidir. Çoğu eyalet çevrimiçi başvuru kabul eder. İşlem süreleri, ek ücretle aynı gün onaydan bir ila iki haftaya kadar değişebilir. Bu belge onaylandığında LLC&apos;niz hukuken var olmuş sayılır.</p>
+                    <p className="text-gray-700 mt-2">Articles of Organization, LLC&apos;nizi eyalet nezdinde resmî olarak tescil eden kuruluş belgesidir. Çoğu eyalet çevrimiçi başvuru kabul eder. İşlem süreleri ek ücretle aynı gün onaydan bir ila iki haftaya kadar değişebilir. Eyalet bu başvuruyu onayladığında LLC&apos;niz hukuken var olmuş sayılır.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 4: EIN Alma</h3>
-                    <p className="text-gray-700 mt-2">EIN (Employer Identification Number), IRS tarafından LLC&apos;nize verilen vergi kimlik numarasıdır. Banka hesabı açmak, vergi beyannamesi vermek ve sözleşme imzalamak için bu numaraya ihtiyacınız olacaktır. SSN&apos;si olmayan yabancılar çevrimiçi başvuru yapamaz; SS-4 formunu posta veya faks yoluyla göndermek gerekir. İşlem süresi genellikle dört ila altı haftadır. EIN olmadan LLC&apos;niz kâğıt üzerinde var olur ancak ABD&apos;de ticari olarak faaliyet gösteremez.</p>
+                    <p className="text-gray-700 mt-2">EIN (Employer Identification Number), IRS tarafından LLC&apos;nize verilen vergi kimlik numarasıdır. Banka hesabı açmak, vergi beyannamesi vermek ve sözleşme imzalamak için gereklidir. SSN&apos;si olmayan yabancılar çevrimiçi başvuru yapamaz. SS-4 formu posta veya faks yoluyla gönderilmelidir; işlem süresi genellikle dört ila altı haftadır. EIN olmadan LLC&apos;niz kâğıt üzerinde var olur ancak ABD&apos;de ticari olarak faaliyet gösteremez.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 5: Operating Agreement Hazırlama</h3>
-                    <p className="text-gray-700 mt-2">Operating Agreement, LLC&apos;nizin iç yönetim belgesidir. Ortaklık paylarını, kâr dağılımını ve karar alma süreçlerini düzenler. Her eyalet bunu yasal olarak zorunlu kılmasa da pratikte vazgeçilmezdir: bankalar hesap açarken bu belgeyi ister ve üyeler arasında çıkabilecek anlaşmazlıklarda koruma sağlar.</p>
-                    <p className="text-gray-700 mt-2">ABD&apos;deki bankaların büyük çoğunluğu, iş hesabı açılışı sırasında Operating Agreement&apos;ın bir kopyasını talep eder. Tek üyeli LLC&apos;lerde dahi bankalar, hesap üzerinde kimin yetkili olduğunu ve LLC&apos;nin nasıl yönetildiğini bu belge üzerinden doğrular. Operating Agreement bulunmayan LLC&apos;ler, banka hesabı açma sürecinde ciddi gecikmeler yaşayabilir veya başvurularının reddedilmesiyle karşılaşabilir.</p>
+                    <p className="text-gray-700 mt-2">Operating Agreement, LLC&apos;nizin iç yönetim belgesidir. Ortaklık paylarını, kâr dağılımını ve karar alma süreçlerini düzenler. Her eyalet bunu yasal olarak zorunlu kılmasa da pratikte vazgeçilmezdir. Bankalar hesap açarken bu belgeyi ister ve üyeler arasındaki anlaşmazlıklarda koruma sağlar.</p>
+                    <p className="text-gray-700 mt-2">ABD&apos;deki bankaların büyük çoğunluğu iş hesabı açılışında Operating Agreement&apos;ın bir kopyasını talep eder. Tek üyeli LLC&apos;lerde dahi bankalar, hesap üzerinde kimin yetkili olduğunu ve LLC&apos;nin nasıl yönetildiğini bu belge aracılığıyla doğrular. Operating Agreement bulunmayan LLC&apos;ler hesap açma sürecinde ciddi gecikmeler yaşayabilir veya başvurularının reddedilmesiyle karşılaşabilir.</p>
                     <p className="text-sm text-gray-600 mt-3">
                       LLC&apos;nizin ihtiyaç duyabileceği ilgili sözleşme şablonları için <Link href={`/${lang}/contracts/service-agreement`} className="text-blue-600 hover:underline">Hizmet Sözleşmesi</Link> ve <Link href={`/${lang}/contracts/nda`} className="text-blue-600 hover:underline">Gizlilik Sözleşmesi</Link> şablon sayfalarına bakabilirsiniz.
                     </p>
@@ -607,12 +607,12 @@ export default async function LLCGuidePage({
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 6: ABD Banka Hesabı Açma</h3>
-                    <p className="text-gray-700 mt-2">ABD dışından kuruluş yapanlar için genellikle sürecin en zorlu adımı budur. Geleneksel ABD bankaları büyük çoğunlukla şubeye şahsen gitmenizi ister. Daha az sayıda banka ve fintek platformu yabancı LLC sahiplerinden uzaktan başvuru kabul eder; ancak koşulları ve onay oranları sık değişir. Başvuruya başlamadan önce EIN onay mektubunuzu, Articles of Organization belgenizi ve Operating Agreement&apos;ınızı hazır bulundurmanız süreci önemli ölçüde kolaylaştırır.</p>
+                    <p className="text-gray-700 mt-2">ABD dışından kuruluş yapanlar için genellikle sürecin en zorlu adımı budur. Geleneksel ABD bankaları büyük çoğunlukla şubeye şahsen gitmenizi ister. Daha az sayıda banka ve fintek platformu yabancı LLC sahiplerinden uzaktan başvuru kabul eder; ancak koşulları ve onay oranları sık değişir. Başvuruya başlamadan önce EIN onay mektubunuzu, Articles of Organization belgenizi ve Operating Agreement&apos;ınızı hazır bulundurun — bu belgeler süreci önemli ölçüde kolaylaştırır.</p>
                   </div>
 
                   <div className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-bold text-black">Adım 7: Uyumu Sürdürme</h3>
-                    <p className="text-gray-700 mt-2">LLC kurmak tek seferlik bir işlem değildir. Çoğu eyalet yıllık rapor ve süregelen harç veya franchise vergisi talep eder. Federal düzeyde, LLC&apos;niz ABD kaynaklı gelir elde etmemiş olsa bile bilgi amaçlı vergi beyannamesi vermeniz gerekebilir. Buna ek olarak, Corporate Transparency Act kapsamında çoğu LLC&apos;nin FinCEN&apos;e Beneficial Ownership Information (BOI) bildirimi yapması artık zorunludur. Bu yükümlülüklerin yerine getirilmemesi cezalara veya LLC&apos;nizin idari olarak feshedilmesine yol açabilir. Süregelen uyum, LLC&apos;nizin hukuki varlığını koruyan unsurdur; ihmal edilmesi, kuruluş amacınız olan sınırlı sorumluluk korumasını doğrudan tehlikeye atar.</p>
+                    <p className="text-gray-700 mt-2">LLC kurmak tek seferlik bir işlem değildir. Çoğu eyalet yıllık rapor ve süregelen harç veya franchise vergisi talep eder. Federal düzeyde, LLC&apos;niz ABD kaynaklı gelir elde etmemiş olsa bile bilgi amaçlı vergi beyannamesi vermeniz gerekebilir. Corporate Transparency Act kapsamında çoğu LLC&apos;nin FinCEN&apos;e Beneficial Ownership Information (BOI) bildirimi yapması da zorunludur. Bu yükümlülüklerin yerine getirilmemesi cezalara veya idari feshe yol açabilir. Süregelen uyum, LLC&apos;nizin hukuki varlığını koruyan unsurdur. İhmal edilmesi, kuruluş amacınız olan sınırlı sorumluluk korumasını doğrudan tehlikeye atar.</p>
                   </div>
                 </div>
               )}
@@ -628,7 +628,7 @@ export default async function LLCGuidePage({
                 <div className="space-y-4">
                   <div className="bg-gray-50 rounded-lg p-5">
                     <h3 className="font-bold text-black mb-2">&quot;LLC means no taxes&quot;</h3>
-                    <p className="text-gray-700 text-sm">False. An LLC is a legal structure, not a tax exemption. Depending on your situation, you may owe US federal taxes, state taxes, and/or taxes in your country of residence.</p>
+                    <p className="text-gray-700 text-sm">False. An LLC is a legal structure, not a tax exemption. Depending on your circumstances, you may owe US federal taxes, state taxes, and taxes in your country of residence.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
@@ -648,14 +648,14 @@ export default async function LLCGuidePage({
 
                   <div className="bg-gray-50 rounded-lg p-5">
                     <h3 className="font-bold text-black mb-2">Confusing sales tax with income tax</h3>
-                    <p className="text-gray-700 text-sm">Sales tax is a separate obligation from income tax. If you sell taxable goods or services to customers in certain states, you may need to collect and remit sales tax—even without a physical presence there.</p>
+                    <p className="text-gray-700 text-sm">Sales tax is a separate obligation from income tax. If you sell taxable goods or services to customers in certain states, you may need to collect and remit sales tax — even without a physical presence there.</p>
                   </div>
                 </div>
               ) : (
                 <div className="space-y-4">
                   <div className="bg-gray-50 rounded-lg p-5">
                     <h3 className="font-bold text-black mb-2">&quot;LLC kurunca vergi yok&quot;</h3>
-                    <p className="text-gray-700 text-sm">Yanlış. LLC bir hukuki yapıdır, vergi muafiyeti değildir. Durumunuza bağlı olarak ABD federal vergisi, eyalet vergisi ve/veya ikamet ettiğiniz ülkede vergi borcunuz doğabilir.</p>
+                    <p className="text-gray-700 text-sm">Yanlış. LLC bir hukuki yapıdır, vergi muafiyeti değildir. Koşullarınıza bağlı olarak ABD federal vergisi, eyalet vergisi ve ikamet ettiğiniz ülkede vergi borcunuz doğabilir.</p>
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-5">
@@ -961,8 +961,8 @@ export default async function LLCGuidePage({
                 </h4>
                 <p className="text-xs text-gray-500 leading-relaxed">
                   {isEnglish
-                    ? 'In cases of normative conflict, binding statutory authority prevails over subordinate regulations. Regulations prevail over agency guidance. Judicial interpretation applies where statutory ambiguity exists. In matters governed by federal law, state provisions cannot override federal supremacy.'
-                    : 'Normatif çatışma durumlarında, bağlayıcı yasal otorite alt düzey yönetmeliklere üstün gelir. Yönetmelikler, kurum rehberliğine üstün gelir. Yargısal yorum, yasal belirsizliğin bulunduğu durumlarda uygulanır. Federal hukuk tarafından düzenlenen konularda, eyalet hükümleri federal üstünlüğü geçersiz kılamaz.'}
+                    ? 'In cases of normative conflict, binding statutory authority prevails over subordinate regulations. Regulations prevail over agency guidance. Judicial interpretation applies where statutory ambiguity exists. On matters governed by federal law, state provisions cannot override federal supremacy.'
+                    : 'Normatif çatışma durumlarında bağlayıcı yasal otorite alt düzey yönetmeliklere üstün gelir. Yönetmelikler kurum rehberliğine üstün gelir. Yargısal yorum yasal belirsizliğin bulunduğu durumlarda uygulanır. Federal hukuk tarafından düzenlenen konularda eyalet hükümleri federal üstünlüğü geçersiz kılamaz.'}
                 </p>
               </div>
             </JudicialAuthoritySection>
