@@ -6,6 +6,8 @@ import SearchButton from '@/components/SearchButton'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 
 const PAGE_META = {
@@ -75,6 +77,8 @@ export default async function CommonMisconceptionsPage({
     citationKey: PAGE_META.citationKey,
     aboutTopics: ['Legal Misconceptions', 'Business Law', 'Immigration Law', 'Contract Law'],
   })
+
+  const primarySources = getPrimarySources(PAGE_META.slug, lang)
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
@@ -304,6 +308,8 @@ export default async function CommonMisconceptionsPage({
               </Link>
             </div>
           </section>
+          <PrimarySources sources={primarySources} lang={lang} />
+
           {/* Cite This Entry */}
           <CiteThisEntry
             lang={lang}
