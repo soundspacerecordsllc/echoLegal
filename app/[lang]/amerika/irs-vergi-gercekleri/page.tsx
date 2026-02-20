@@ -236,8 +236,8 @@ export default async function IRSVergiPage({
           <div className="prose max-w-none text-gray-600 space-y-4 mb-6">
             <p>
               {isEnglish
-                ? "The threshold question for any non-US person with US connections is whether they are treated as a US tax resident. Tax residency determines the scope of income subject to US taxation and the applicable filing obligations. The two primary tests are the Green Card Test and the Substantial Presence Test, codified under IRC Section 7701(b)."
-                : "ABD ile bağlantısı olan her yabancı kişi için temel soru, ABD vergi mukimi sayılıp sayılmadığıdır. Vergi mukimliği, ABD vergilendirmesine tabi gelir kapsamını ve geçerli beyanname yükümlülüklerini belirler. IRC Section 7701(b) kapsamında düzenlenen iki temel test Yeşil Kart Testi ve Substantial Presence Testidir."}
+                ? "For any non-US person with US connections, the threshold question is whether they qualify as a US tax resident. Tax residency determines which income is subject to US taxation and what filing obligations apply. Two primary tests govern this determination: the Green Card Test and the Substantial Presence Test, both codified under IRC Section 7701(b)."
+                : "ABD ile bağlantısı olan her yabancı kişi için temel soru, ABD vergi mukimi sayılıp sayılmadığıdır. Vergi mukimliği, hangi gelirin ABD vergilendirmesine tabi olduğunu ve hangi beyanname yükümlülüklerinin geçerli olduğunu belirler. Bu tespiti iki temel test yönetir: Yeşil Kart Testi ve Substantial Presence Testi. Her ikisi de IRC Section 7701(b) kapsamında düzenlenmiştir."}
             </p>
           </div>
 
@@ -246,8 +246,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Green Card Test' : 'Yeşil Kart Testi'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "You're a US tax resident if you're a lawful permanent resident (green card holder) at any time during the calendar year. This status continues until formally revoked or administratively or judicially determined to have been abandoned."
-                  : "Takvim yılı içinde herhangi bir anda yasal daimi oturma iznine (yeşil kart) sahipseniz, ABD vergi mukimi sayılırsınız. Bu statü, resmi olarak iptal edilene veya idari ya da yargısal yollarla terk edilmiş kabul edilene kadar devam eder."}
+                  ? "You are a US tax resident if you hold lawful permanent resident status (green card) at any point during the calendar year. This status remains in effect until formally revoked, or until an administrative or judicial determination establishes that it has been abandoned."
+                  : "Takvim yılı içinde herhangi bir anda yasal daimi oturma iznine (yeşil kart) sahipseniz ABD vergi mukimi sayılırsınız. Bu statü, resmi olarak iptal edilene kadar geçerliliğini korur. İdari veya yargısal bir kararla terk edilmiş sayılması da statüyü sona erdirir."}
               </p>
             </div>
 
@@ -255,14 +255,14 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Substantial Presence Test' : 'Substantial Presence Testi'}</h3>
               <p className="text-sm text-gray-600 mb-3">
                 {isEnglish
-                  ? "You're a US tax resident if you meet both conditions:"
+                  ? "You are a US tax resident if you satisfy both of the following conditions:"
                   : "Aşağıdaki her iki koşulu birlikte sağlıyorsanız ABD vergi mukimi kabul edilirsiniz:"}
               </p>
               <ul className="text-sm text-gray-600 space-y-1 ml-4">
                 <li>• {isEnglish ? "Present in the US at least 31 days in the current year" : "Cari yılda en az 31 gün ABD'de fiziksel olarak bulunmuş olmak"}</li>
                 <li>• {isEnglish
-                  ? "183 or more days over 3 years using weighted formula: current year days + 1/3 of prior year days + 1/6 of second prior year days"
-                  : "Üç yıllık ağırlıklı hesaplamayla 183 gün veya üzerine ulaşmak: cari yıl günleri + bir önceki yılın günlerinin 1/3'ü + iki önceki yılın günlerinin 1/6'sı"}</li>
+                  ? "The weighted three-year total reaches 183 days or more. Formula: current year days + 1/3 of prior year days + 1/6 of the year before that"
+                  : "Üç yıllık ağırlıklı toplamın 183 güne ulaşması veya aşması. Formül: cari yıl günleri + bir önceki yılın günlerinin 1/3'ü + iki önceki yılın günlerinin 1/6'sı"}</li>
               </ul>
             </div>
 
@@ -270,8 +270,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Exempt Individuals' : 'Muaf Tutulan Kişiler'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Certain days don't count: F/J/M/Q visa holders in student/trainee status (with time limits), foreign government officials, teachers/trainees under J visa (first 2 years), and professional athletes here for charity events."
-                  : "Bazı günler hesaba katılmaz: öğrenci veya stajyer statüsündeki F/J/M/Q vize sahipleri (belirli süre sınırlarıyla), yabancı devlet görevlileri, J vizesiyle bulunan öğretmenler ve stajyerler (ilk 2 yıl) ve hayır amaçlı etkinliklere katılan profesyonel sporcular."}
+                  ? "Certain categories of individuals are exempt from the day count. These include F/J/M/Q visa holders in student or trainee status (subject to time limits), foreign government officials, and teachers or trainees under J visa (for the first two years). Professional athletes present solely for charitable events are also excluded."
+                  : "Bazı kişi kategorileri gün hesabından muaf tutulur. Bunlar arasında öğrenci veya stajyer statüsündeki F/J/M/Q vize sahipleri (belirli süre sınırlarına tabi), yabancı devlet görevlileri ve J vizesiyle bulunan öğretmenler ile stajyerler (ilk iki yıl) yer alır. Yalnızca hayır amaçlı etkinliklere katılan profesyonel sporcular da kapsam dışındadır."}
               </p>
             </div>
 
@@ -279,8 +279,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Closer Connection Exception' : 'Daha Yakın Bağlantı İstisnası'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Even if you meet the substantial presence test, you may still be treated as a non-resident alien if you were present fewer than 183 days in the current year, maintain a tax home in a foreign country, and have a closer connection to that country. This exception requires filing Form 8840 (Closer Connection Exception Statement)."
-                  : "Substantial presence testini sağlasanız bile, cari yılda 183 günden az bulunmuşsanız, yabancı bir ülkede vergi ikametgâhınız varsa ve o ülkeyle daha güçlü bir bağınız olduğunu kanıtlayabiliyorsanız mukim olmayan yabancı statüsünü koruyabilirsiniz. Bu istisnanın uygulanabilmesi için Form 8840 (Closer Connection Exception Statement) beyanının sunulması gerekir."}
+                  ? "Meeting the substantial presence test does not automatically establish tax residency. You may retain non-resident alien status if three conditions are met: you were present in the US fewer than 183 days during the current year, you maintain a tax home in a foreign country, and you have a closer connection to that country than to the US. To claim this exception, you must file Form 8840 (Closer Connection Exception Statement)."
+                  : "Substantial presence testini karşılamak, vergi mukimliğini otomatik olarak kesinleştirmez. Üç koşulun birlikte sağlanması hâlinde mukim olmayan yabancı statüsünü koruyabilirsiniz: cari yılda ABD'de 183 günden az bulunmuş olmak, yabancı bir ülkede vergi ikametgâhınızı sürdürmek ve o ülkeyle ABD'ye kıyasla daha güçlü bir bağ kanıtlayabilmek. Bu istisnadan yararlanmak için Form 8840 (Closer Connection Exception Statement) beyanını sunmanız gerekir."}
               </p>
             </div>
           </div>
@@ -295,13 +295,13 @@ export default async function IRSVergiPage({
           <div className="prose max-w-none text-gray-600 space-y-4">
             <p>
               {isEnglish
-                ? "LLCs are 'pass-through' entities by default for federal tax purposes. This means the LLC itself doesn't pay federal income tax - income and losses pass through to the owners' personal returns. The IRS classifies a single-member LLC as a 'disregarded entity' and a multi-member LLC as a partnership, unless the entity elects corporate taxation via Form 8832."
-                : "LLC'ler federal vergi hukuku açısından varsayılan olarak \"geçişli\" (pass-through) kuruluşlardır. Bu, LLC tüzel kişiliğinin kendisinin federal gelir vergisi ödemediği anlamına gelir; gelir ve zararlar doğrudan sahiplerin kişisel beyannamelerine yansır. IRS, tek üyeli LLC'yi \"yok sayılan kuruluş\" (disregarded entity), çok üyeli LLC'yi ise ortaklık (partnership) olarak sınıflandırır. Kuruluş, Form 8832 aracılığıyla kurumsal vergilendirme seçimi de yapabilir."}
+                ? "By default, LLCs are 'pass-through' entities for federal tax purposes. The LLC itself does not pay federal income tax. Instead, income and losses pass through to the owners' personal returns. The IRS classifies a single-member LLC as a 'disregarded entity' and a multi-member LLC as a partnership. Either type may elect corporate taxation by filing Form 8832."
+                : "LLC'ler federal vergi hukuku açısından varsayılan olarak \"geçişli\" (pass-through) kuruluşlardır. LLC tüzel kişiliği federal gelir vergisi ödemez. Gelir ve zararlar doğrudan sahiplerin kişisel beyannamelerine yansır. IRS, tek üyeli LLC'yi \"yok sayılan kuruluş\" (disregarded entity), çok üyeli LLC'yi ise ortaklık (partnership) olarak sınıflandırır. Her iki tür de Form 8832 aracılığıyla kurumsal vergilendirme seçimi yapabilir."}
             </p>
             <p>
               {isEnglish
-                ? "A single-member LLC owned by a non-resident alien with no US-source income (FDAP or ECI) has minimal US federal tax obligations, but state taxes, FBAR, and other requirements may still apply. Critically, Form 5472 must still be filed even if no tax is owed."
-                : "ABD kaynaklı geliri (FDAP veya ECI) bulunmayan, mukim olmayan bir yabancının sahip olduğu tek üyeli LLC'nin federal düzeyde vergi yükümlülüğü oldukça sınırlıdır. Ancak eyalet vergileri, FBAR bildirimi ve diğer beyanname zorunlulukları yine de geçerli olabilir. Özellikle belirtmek gerekir ki, vergi borcu olmasa bile Form 5472 beyannamesi verilmelidir."}
+                ? "A single-member LLC owned by a non-resident alien with no US-source income (FDAP or ECI) has minimal federal tax obligations. However, state taxes, FBAR reporting, and other requirements may still apply. Form 5472 must be filed regardless of whether any tax is owed."
+                : "ABD kaynaklı geliri (FDAP veya ECI) bulunmayan, mukim olmayan bir yabancıya ait tek üyeli LLC'nin federal vergi yükümlülüğü oldukça sınırlıdır. Bununla birlikte eyalet vergileri, FBAR bildirimi ve diğer beyanname zorunlulukları geçerli olabilir. Vergi borcu doğmasa dahi Form 5472 beyannamesi verilmelidir."}
             </p>
             <p className="text-sm">
               {isEnglish
@@ -334,8 +334,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'FDAP Income (Fixed, Determinable, Annual, Periodical)' : 'FDAP Geliri (Fixed, Determinable, Annual, Periodical)'}</h3>
               <p className="text-sm text-gray-600 mb-3">
                 {isEnglish
-                  ? "FDAP income is passive-type income from US sources that is subject to a flat 30% withholding tax (or lower treaty rate) with no deductions allowed. The payer withholds the tax at the source. Common examples include:"
-                  : "FDAP geliri, ABD kaynaklarından elde edilen pasif nitelikli gelir olup herhangi bir indirim uygulanmaksızın sabit %30 stopaj oranına (veya daha düşük vergi anlaşması oranına) tabidir. Vergi, ödemeyi yapan tarafından kaynakta kesilir. Başlıca örnekler şunlardır:"}
+                  ? "FDAP income is passive-type income from US sources. It is subject to a flat 30% withholding tax (or a lower rate under an applicable treaty), and no deductions are allowed. The payer withholds tax at the source. Common examples include:"
+                  : "FDAP geliri, ABD kaynaklarından elde edilen pasif nitelikli gelirdir. Sabit %30 stopaj oranına (veya geçerli anlaşma kapsamında daha düşük orana) tabi olup herhangi bir indirim uygulanmaz. Vergiyi ödemeyi yapan taraf kaynakta keser. Başlıca örnekler şunlardır:"}
               </p>
               <ul className="text-sm text-gray-600 space-y-1 ml-4">
                 <li>• {isEnglish ? "Interest income (with exceptions for portfolio interest)" : "Faiz geliri (portföy faizi istisnaları saklıdır)"}</li>
@@ -355,8 +355,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'ECI (Effectively Connected Income)' : 'ECI (Effectively Connected Income – Fiilen Bağlantılı Gelir)'}</h3>
               <p className="text-sm text-gray-600 mb-3">
                 {isEnglish
-                  ? "ECI is income that is effectively connected with a US trade or business. Unlike FDAP, ECI is taxed at graduated rates (the same rates as US residents) and allows deductions for business expenses. ECI requires filing Form 1040-NR. Common examples include:"
-                  : "ECI, ABD'deki bir ticari faaliyet ile fiilen bağlantılı olan gelirdir. FDAP'tan farklı olarak, ECI kademeli oranlarla (ABD mukimlerine uygulanan oranlarla aynı) vergilendirilir ve işletme giderlerinin indirilmesine olanak tanır. ECI, Form 1040-NR beyannamesi verilmesini gerektirir. Başlıca örnekler:"}
+                  ? "ECI is income effectively connected with a US trade or business. Unlike FDAP, it is taxed at graduated rates — the same rates that apply to US residents — and allows deductions for business expenses. Filing Form 1040-NR is required. Common examples include:"
+                  : "ECI, ABD'deki bir ticari faaliyet ile fiilen bağlantılı olan gelirdir. FDAP'tan farklı olarak kademeli oranlarla — ABD mukimlerine uygulanan oranlarla aynı — vergilendirilir ve işletme giderlerinin düşülmesine olanak tanır. Form 1040-NR beyannamesi verilmesi zorunludur. Başlıca örnekler:"}
               </p>
               <ul className="text-sm text-gray-600 space-y-1 ml-4">
                 <li>• {isEnglish ? "Income from services performed in the US" : "ABD'de ifa edilen hizmetlerden elde edilen gelir"}</li>
@@ -391,8 +391,8 @@ export default async function IRSVergiPage({
           <div className="prose max-w-none text-gray-600 space-y-4 mb-6">
             <p>
               {isEnglish
-                ? "The United States and Turkey have a bilateral income tax treaty (TIAS 10205, effective 1997) designed to prevent double taxation and fiscal evasion. The treaty modifies the default US tax rules for Turkish tax residents who derive US-source income. Below are the key provisions relevant to Turkish entrepreneurs and professionals."
-                : "Amerika Birleşik Devletleri ile Türkiye arasında çifte vergilendirmeyi ve vergi kaçakçılığını önlemek amacıyla imzalanmış bir ikili gelir vergisi anlaşması (TIAS 10205, 1997'den itibaren yürürlükte) bulunmaktadır. Bu anlaşma, ABD kaynaklı gelir elde eden Türkiye vergi mukimleri için varsayılan ABD vergi kurallarını değiştirir. Aşağıda Türk girişimciler ve profesyoneller için öne çıkan hükümler açıklanmıştır."}
+                ? "The United States and Turkey maintain a bilateral income tax treaty (TIAS 10205, effective 1997). Its purpose is to prevent double taxation and fiscal evasion. The treaty modifies the default US tax rules for Turkish tax residents who derive US-source income. The key provisions relevant to Turkish entrepreneurs and professionals are set out below."
+                : "Amerika Birleşik Devletleri ile Türkiye arasında bir ikili gelir vergisi anlaşması (TIAS 10205, 1997'den itibaren yürürlükte) bulunmaktadır. Anlaşmanın amacı çifte vergilendirmeyi ve vergi kaçakçılığını önlemektir. ABD kaynaklı gelir elde eden Türkiye vergi mukimleri için varsayılan ABD vergi kurallarını değiştirir. Aşağıda Türk girişimciler ve profesyoneller açısından öne çıkan hükümler ele alınmıştır."}
             </p>
           </div>
 
@@ -401,8 +401,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Article VII - Business Profits' : 'Madde VII – Ticari Kazançlar'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Business profits of a Turkish resident are taxable in the US only if the enterprise carries on business through a 'permanent establishment' (PE) in the US. If no PE exists, the US cannot tax those business profits. A PE generally includes a fixed place of business, an office, a branch, or a factory. Mere use of a US registered agent or mailing address does not constitute a PE."
-                  : "Türkiye mukimi bir işletmenin ticari kazançları, ABD'de ancak işletmenin ABD'de bir \"daimi işyeri\" (permanent establishment – PE) aracılığıyla faaliyette bulunması hâlinde vergilendirilebilir. Daimi işyeri yoksa ABD bu ticari kazançları vergilendiremez. Daimi işyeri genel olarak sabit bir işyeri, ofis, şube veya fabrikayı kapsar. Yalnızca ABD'de bir registered agent veya posta adresi kullanılması daimi işyeri oluşturmaz."}
+                  ? "Business profits of a Turkish resident are taxable in the US only if the enterprise operates through a 'permanent establishment' (PE) in the US. Without a PE, the US cannot tax those profits. A PE generally includes a fixed place of business such as an office, branch, or factory. The mere use of a US registered agent or mailing address does not constitute a PE."
+                  : "Türkiye mukimi bir işletmenin ticari kazançları, yalnızca ABD'de bir \"daimi işyeri\" (permanent establishment – PE) aracılığıyla faaliyet göstermesi hâlinde ABD'de vergilendirilebilir. Daimi işyeri bulunmuyorsa ABD bu kazançları vergilendiremez. Daimi işyeri genel olarak ofis, şube veya fabrika gibi sabit bir işyerini kapsar. Yalnızca bir registered agent veya posta adresi kullanılması daimi işyeri oluşturmaz."}
               </p>
             </div>
 
@@ -410,8 +410,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Article XIV - Independent Personal Services' : 'Madde XIV – Bağımsız Kişisel Hizmetler'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Income derived by a Turkish resident from independent personal services (freelance, consulting) is taxable in the US only if the individual has a fixed base regularly available in the US or is present in the US for 183 days or more in the relevant fiscal year. Turkish freelancers working remotely from Turkey for US clients are generally not subject to US tax on such income under this article."
-                  : "Türkiye mukimi bir kişinin bağımsız kişisel hizmetlerden (serbest meslek, danışmanlık) elde ettiği gelir, ABD'de ancak kişinin ABD'de düzenli olarak kullanabileceği sabit bir üssü varsa veya ilgili mali yılda 183 gün veya daha fazla ABD'de bulunmuşsa vergilendirilebilir. Türkiye'den uzaktan çalışarak ABD müşterilerine hizmet veren serbest çalışanlar, bu madde kapsamında söz konusu gelir üzerinden genellikle ABD vergisine tabi değildir."}
+                  ? "Income that a Turkish resident derives from independent personal services (freelance, consulting) is taxable in the US only under two circumstances: the individual has a fixed base regularly available in the US, or the individual is present in the US for 183 days or more in the relevant fiscal year. Turkish freelancers working remotely from Turkey for US clients are, as a rule, not subject to US tax on such income under this article."
+                  : "Türkiye mukimi bir kişinin bağımsız kişisel hizmetlerden (serbest meslek, danışmanlık) elde ettiği gelir, ABD'de yalnızca iki durumda vergilendirilebilir: kişinin ABD'de düzenli olarak kullanabileceği sabit bir üssü olması veya ilgili mali yılda ABD'de 183 gün ya da daha fazla bulunmuş olması. Türkiye'den uzaktan çalışarak ABD müşterilerine hizmet veren serbest çalışanlar, kural olarak bu madde kapsamında ABD vergisine tabi değildir."}
               </p>
             </div>
 
@@ -419,8 +419,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Article XII - Royalties' : 'Madde XII – Gayrimaddi Hak Bedelleri'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Royalties arising in the US and paid to a Turkish resident may be taxed in the US, but the treaty limits the withholding rate to 10% (compared to the default 30% statutory rate). This applies to payments for the use of, or right to use, copyrights, patents, trademarks, and similar intellectual property. Software licensing payments may qualify as royalties under this provision."
-                  : "ABD kaynaklı olup Türkiye mukimine ödenen gayrimaddi hak bedelleri ABD'de vergilendirilebilir; ancak anlaşma, stopaj oranını %10 ile sınırlar (kanuni varsayılan oran olan %30 yerine). Bu hüküm, telif hakları, patentler, ticari markalar ve benzeri fikri mülkiyet haklarının kullanımı veya kullanım hakkı karşılığında yapılan ödemelere uygulanır. Yazılım lisans bedelleri de bu kapsamda gayrimaddi hak bedeli olarak değerlendirilebilir."}
+                  ? "Royalties arising in the US and paid to a Turkish resident may be taxed in the US, but the treaty caps the withholding rate at 10% (versus the default 30% statutory rate). This covers payments for the use of, or the right to use, copyrights, patents, trademarks, and similar intellectual property. Software licensing payments may qualify as royalties under this provision."
+                  : "ABD kaynaklı olup Türkiye mukimine ödenen gayrimaddi hak bedelleri ABD'de vergilendirilebilir; ancak anlaşma stopaj oranını %10 ile sınırlar (kanuni varsayılan %30 yerine). Bu hüküm; telif hakları, patentler, ticari markalar ve benzeri fikri mülkiyet haklarının kullanımı veya kullanım hakkı karşılığında yapılan ödemeleri kapsar. Yazılım lisans bedelleri de bu kapsamda gayrimaddi hak bedeli sayılabilir."}
               </p>
             </div>
 
@@ -503,8 +503,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Franchise Tax vs Income Tax' : 'Franchise Vergisi ve Gelir Vergisi Farkı'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "A franchise tax is a fee for the privilege of doing business in a state. Unlike income tax, it may apply regardless of whether the entity earns a profit. Delaware charges an annual franchise tax for LLCs ($300 flat fee). California imposes an annual $800 minimum franchise tax on LLCs. Texas applies a franchise tax based on margin. Wyoming and Nevada impose no franchise tax or state income tax, which is one reason they are popular for foreign-owned LLCs."
-                  : "Franchise vergisi, bir eyalette ticari faaliyet gösterme ayrıcalığı karşılığında ödenen bir vergidir. Gelir vergisinden farklı olarak, kuruluşun kâr edip etmediğine bakılmaksızın uygulanabilir. Delaware, LLC'lerden yıllık sabit 300 dolar franchise vergisi alır. California, LLC'lere yıllık asgari 800 dolar franchise vergisi uygular. Texas, marj üzerinden franchise vergisi tahsil eder. Wyoming ve Nevada, franchise vergisi veya eyalet gelir vergisi uygulamaz; bu durum, yabancı sahipli LLC'ler arasında bu eyaletlerin tercih edilmesinin nedenlerinden biridir."}
+                  ? "A franchise tax is a fee for the privilege of doing business in a state. Unlike income tax, it may apply regardless of whether the entity earns a profit. Delaware charges LLCs an annual $300 flat-fee franchise tax. California imposes an annual $800 minimum franchise tax on LLCs. Texas applies a margin-based franchise tax. Wyoming and Nevada impose neither franchise tax nor state income tax — one reason they are popular for foreign-owned LLCs."
+                  : "Franchise vergisi, bir eyalette ticari faaliyet gösterme ayrıcalığı karşılığında ödenen bir vergidir. Gelir vergisinden farklı olarak kuruluşun kâr edip etmediğine bakılmaksızın uygulanabilir. Delaware LLC'lerden yıllık sabit 300 dolar franchise vergisi alır. California LLC'lere yıllık asgari 800 dolar franchise vergisi uygular. Texas marj üzerinden franchise vergisi tahsil eder. Wyoming ve Nevada ne franchise vergisi ne de eyalet gelir vergisi uygular — bu durum, yabancı sahipli LLC'ler arasında bu eyaletlerin tercih edilme nedenlerinden biridir."}
               </p>
             </div>
           </div>
@@ -558,8 +558,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">{isEnglish ? 'Underpayment Penalties and Safe Harbor' : 'Eksik Ödeme Cezaları ve Güvenli Liman Kuralı'}</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Failure to make adequate estimated payments triggers an underpayment penalty under IRC Section 6654. The penalty is calculated as interest on the underpaid amount. Safe harbor rules: you avoid the penalty if you pay at least 100% of the prior year's tax liability (110% if prior year AGI exceeded $150,000), or at least 90% of the current year's tax liability. For non-resident aliens filing for the first time, the prior-year safe harbor may not apply."
-                  : "Yeterli tahmini ödeme yapılmaması, IRC Section 6654 kapsamında eksik ödeme cezasını tetikler. Ceza, eksik ödenen tutar üzerinden faiz olarak hesaplanır. Güvenli liman kuralları: bir önceki yılın vergi borcunun en az %100'ünü (önceki yıl düzeltilmiş brüt geliri 150.000 doları aşmışsa %110'unu) veya cari yıl vergi borcunun en az %90'ını öderseniz cezadan muaf olursunuz. İlk kez beyanname veren mukim olmayan yabancılar için önceki yıl güvenli limanı uygulanamayabilir."}
+                  ? "Inadequate estimated payments trigger an underpayment penalty under IRC Section 6654. The penalty is calculated as interest on the shortfall. Safe harbor rules provide protection: the penalty does not apply if you pay at least 100% of the prior year's tax liability (110% if prior year AGI exceeded $150,000) or at least 90% of the current year's liability. For non-resident aliens filing for the first time, the prior-year safe harbor may not be available."
+                  : "Yetersiz tahmini ödeme, IRC Section 6654 kapsamında eksik ödeme cezasını tetikler. Ceza, eksik kalan tutar üzerinden faiz olarak hesaplanır. Güvenli liman kuralları koruma sağlar: bir önceki yılın vergi borcunun en az %100'ünü (önceki yıl düzeltilmiş brüt geliri 150.000 doları aşmışsa %110'unu) veya cari yıl borcunun en az %90'ını öderseniz ceza uygulanmaz. İlk kez beyanname veren mukim olmayan yabancılar için önceki yıl güvenli limanı geçerli olmayabilir."}
               </p>
             </div>
           </div>
@@ -593,8 +593,8 @@ export default async function IRSVergiPage({
               <h3 className="font-semibold mb-2">W-8BEN</h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? "Certificate of Foreign Status of Beneficial Owner. Used by non-resident alien individuals to certify foreign status, claim treaty benefits, and establish the applicable withholding rate. Valid for three calendar years (expires on December 31 of the third year). Example: A Turkish software developer receiving royalties from a US company files W-8BEN, citing Article XII of the US-Turkey treaty for the 10% reduced rate."
-                  : "Nihai lehdarın yabancı statü belgesidir. Mukim olmayan yabancı gerçek kişiler tarafından yabancı statünün teyidi, anlaşma avantajlarının talep edilmesi ve geçerli stopaj oranının belirlenmesi amacıyla kullanılır. Üç takvim yılı boyunca geçerlidir (üçüncü yılın 31 Aralık tarihinde sona erer). Örnek: ABD'li bir şirketten telif geliri alan Türk yazılım geliştirici, ABD-Türkiye anlaşmasının XII. maddesine atıfla %10 indirimli oran için W-8BEN doldurur."}
+                  ? "Certificate of Foreign Status of Beneficial Owner. Non-resident alien individuals use this form to certify foreign status, claim treaty benefits, and establish the applicable withholding rate. It is valid for three calendar years and expires on December 31 of the third year. Example: A Turkish software developer receiving royalties from a US company files W-8BEN, citing Article XII of the US-Turkey treaty for the 10% reduced rate."
+                  : "Nihai lehdarın yabancı statü belgesidir. Mukim olmayan yabancı gerçek kişiler bu formu yabancı statülerini teyit etmek, anlaşma avantajlarını talep etmek ve geçerli stopaj oranını belirlemek amacıyla kullanır. Üç takvim yılı boyunca geçerlidir ve üçüncü yılın 31 Aralık tarihinde sona erer. Örnek: ABD'li bir şirketten telif geliri alan Türk yazılım geliştirici, ABD-Türkiye anlaşmasının XII. maddesine atıfla %10 indirimli oran için W-8BEN doldurur."}
               </p>
             </div>
 
@@ -787,8 +787,8 @@ export default async function IRSVergiPage({
               </h3>
               <p className="text-sm text-amber-800">
                 {isEnglish
-                  ? "Paying taxes in Turkey does not automatically exempt you from US tax obligations. The US-Turkey tax treaty provides relief through credit mechanisms (where taxes paid to one country are credited against the tax owed to the other), not through blanket exemptions. The treaty operates on an article-by-article basis: some income categories may be exempt, others may be subject to reduced rates, and some may remain fully taxable. Each income type must be analyzed individually."
-                  : "Türkiye'de vergi ödüyor olmak, ABD vergi yükümlülüklerinden otomatik muafiyet sağlamaz. ABD-Türkiye vergi anlaşması, toptan muafiyet değil mahsup mekanizması (bir ülkeye ödenen verginin diğer ülkedeki vergi borcundan düşülmesi) yoluyla çifte vergilendirmeyi hafifletir. Anlaşma madde bazında işler: bazı gelir kategorileri muaf olabilir, bazılarında indirimli oran uygulanabilir, bazıları ise tam vergilendirmeye tabi kalabilir. Her gelir türü ayrı ayrı değerlendirilmelidir."}
+                  ? "Paying taxes in Turkey does not automatically exempt you from US tax obligations. The US-Turkey tax treaty provides relief through credit mechanisms — taxes paid to one country are credited against the tax owed to the other — not through blanket exemptions. The treaty operates article by article: some income categories may be exempt, others may be subject to reduced rates, and some may remain fully taxable. Each income type must be analyzed individually."
+                  : "Türkiye'de vergi ödüyor olmak ABD vergi yükümlülüklerinden otomatik muafiyet sağlamaz. ABD-Türkiye vergi anlaşması toptan muafiyet değil, mahsup mekanizması yoluyla çifte vergilendirmeyi hafifletir — bir ülkeye ödenen vergi diğer ülkedeki vergi borcundan düşülür. Anlaşma madde bazında işler: bazı gelir kategorileri muaf olabilir, bazılarında indirimli oran uygulanabilir, bazıları ise tam vergilendirmeye tabi kalabilir. Her gelir türü ayrı ayrı değerlendirilmelidir."}
               </p>
             </div>
 
