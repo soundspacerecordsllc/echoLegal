@@ -765,6 +765,18 @@ export default async function ContractorVsEmployeePage({
           </div>
         </section>
 
+        {/* Authority Framework */}
+        <section className="mb-10">
+          <h3 className="text-lg font-semibold mb-3">
+            {isEnglish ? 'Authority Framework' : 'Otorite Çerçevesi'}
+          </h3>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'Federal statutes enacted by Congress (e.g., the Fair Labor Standards Act, the Internal Revenue Code) are binding law. Regulations promulgated by federal agencies under statutory authority (e.g., 29 C.F.R. Part 795) carry the force of law when validly issued. Supreme Court precedent, such as Nationwide Mutual Insurance Co. v. Darden, is controlling on questions of federal law. Agency guidance materials — including IRS form instructions and revenue rulings — are persuasive but not binding on courts. Courts may afford varying degrees of deference to agency interpretations under doctrines such as Chevron or Skidmore, depending on the formality and persuasiveness of the guidance at issue.'
+              : 'Kongre tarafından çıkarılan federal yasalar (örn. Adil Çalışma Standartları Yasası, İç Gelir Kanunu) bağlayıcı hukuktur. Federal kurumların yasal yetki altında çıkardığı düzenlemeler (örn. 29 C.F.R. Part 795) geçerli biçimde yayımlandığında kanun hükmündedir. Yüksek Mahkeme içtihadı — Nationwide Mutual Insurance Co. v. Darden gibi — federal hukuk meseleleri üzerinde bağlayıcıdır. IRS form talimatları ve gelir kararları dahil kurum rehberlik materyalleri ikna edici niteliktedir ancak mahkemeler üzerinde bağlayıcılığı yoktur. Mahkemeler, söz konusu rehberliğin resmiyetine ve ikna ediciliğine bağlı olarak Chevron veya Skidmore gibi doktrinler kapsamında kurum yorumlarına farklı düzeylerde saygı gösterebilir.'}
+          </p>
+        </section>
+
         <PrimarySources sources={primarySources} lang={lang} />
 
         {/* Cite This Entry */}
