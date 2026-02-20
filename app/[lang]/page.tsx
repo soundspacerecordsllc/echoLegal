@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'EchoLegal — Hukuk Ansiklopedisi ve Referans Platformu'
 
   const description = isEnglish
-    ? 'A bilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Available in English and Turkish.'
-    : 'Profesyonelce hazırlanmış referans makaleleri, açıklamalar ve şablonlar içeren iki dilli hukuk ansiklopedisi. Netlik, doğruluk ve uzun vadeli kullanım için yapılandırılmıştır.'
+    ? 'A multilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Currently published in English and Turkish; designed for additional languages.'
+    : 'Profesyonelce hazırlanmış referans makaleleri, açıklamalar ve şablonlar içeren çok dilli hukuk ansiklopedisi. Netlik, doğruluk ve uzun vadeli kullanım için yapılandırılmıştır. Şu anda İngilizce ve Türkçe yayımlanmaktadır; yeni dillere ölçeklenecek şekilde tasarlanmıştır.'
 
   return {
     title,
@@ -72,14 +72,20 @@ export default async function Home({
           <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight mb-8 text-gray-900 uppercase">
               {isEnglish
-                ? 'Bilingual Legal Encyclopedia'
-                : 'İki Dilli Hukuk Ansiklopedisi'}
+                ? 'Multilingual Legal Encyclopedia'
+                : 'Çok Dilli Hukuk Ansiklopedisi'}
             </h1>
 
             <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-md">
               {isEnglish
-                ? 'A bilingual legal reference system containing encyclopedia entries, document templates, and jurisdictional guides. Content is organized by authority hierarchy and maintained with version traceability.'
-                : 'Ansiklopedi maddeleri, belge şablonları ve yargı alanı rehberlerini içeren iki dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre düzenlenmiş ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
+                ? 'A multilingual legal reference system containing encyclopedia entries, document templates, and jurisdictional guides. Content is organized by authority hierarchy and maintained with version traceability.'
+                : 'Ansiklopedi maddeleri, belge şablonları ve yargı alanı rehberlerini içeren çok dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre düzenlenmiş ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
+            </p>
+
+            <p className="text-xs text-gray-500 mb-8 max-w-md">
+              {isEnglish
+                ? 'Currently published in English and Turkish; designed for additional languages.'
+                : 'Şu anda İngilizce ve Türkçe yayımlanmaktadır; yeni dillere ölçeklenecek şekilde tasarlanmıştır.'}
             </p>
 
             {/* Search */}
