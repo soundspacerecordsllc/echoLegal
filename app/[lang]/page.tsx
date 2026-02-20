@@ -71,17 +71,15 @@ export default async function Home({
           {/* Right - Content */}
           <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-16">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight mb-8 text-gray-900 uppercase">
-              {isEnglish ? (
-                <>Legal<br />Knowledge<br />Should<br />Belong to<br />Everyone.</>
-              ) : (
-                <>Hukuki<br />Bilgi<br />Herkese<br />Ait<br />Olmalı.</>
-              )}
+              {isEnglish
+                ? 'Bilingual Legal Encyclopedia'
+                : 'İki Dilli Hukuk Ansiklopedisi'}
             </h1>
 
             <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-md">
               {isEnglish
-                ? 'EchoLegal is a bilingual legal encyclopedia with professionally drafted reference articles, templates, and guides. Founded by a New York-licensed attorney with dual legal education in Turkey and the United States.'
-                : 'EchoLegal, New York lisanslı ve Türkiye ile ABD\'de çifte hukuk eğitimi almış bir avukat tarafından kurulan iki dilli hukuk ansiklopedisidir. Profesyonelce hazırlanmış referans makaleleri, şablonlar ve rehberler içerir.'}
+                ? 'A bilingual legal reference system containing encyclopedia entries, document templates, and jurisdictional guides. Content is organized by authority hierarchy and maintained with version traceability.'
+                : 'Ansiklopedi maddeleri, belge şablonları ve yargı alanı rehberlerini içeren iki dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre düzenlenmiş ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
             </p>
 
             {/* Search */}
@@ -91,10 +89,10 @@ export default async function Home({
 
             <div className="flex flex-wrap gap-3">
               <Link
-                href={`/${lang}/encyclopedia`}
+                href={`/${lang}/library`}
                 className="btn-secondary text-sm"
               >
-                {isEnglish ? 'Browse Encyclopedia' : 'Ansiklopediyi İncele'}
+                {isEnglish ? 'Enter the Library' : 'Kütüphaneye Gir'}
               </Link>
               <Link
                 href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
@@ -350,13 +348,13 @@ export default async function Home({
             {isEnglish ? 'About This Platform' : 'Bu Platform Hakkında'}
           </p>
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            {isEnglish ? 'Independent. Attorney-Founded. Open Access.' : 'Bağımsız. Avukat Tarafından Kurulmuş. Açık Erişim.'}
+            {isEnglish ? 'Institutional Overview' : 'Kurumsal Genel Bakış'}
           </h2>
           <div className="text-gray-800 leading-relaxed space-y-4">
             <p>
               {isEnglish
-                ? 'EchoLegal is an independent legal reference platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. All content is authored with attorney-level precision and reviewed for accuracy.'
-                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuk referans platformudur. Tüm içerikler avukat düzeyinde hassasiyetle yazılmış ve doğruluk açısından gözden geçirilmiştir.'}
+                ? 'EchoLegal is an independent legal reference platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. Content is authored in a neutral, descriptive register and reviewed for legal accuracy.'
+                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuk referans platformudur. İçerik tarafsız ve betimleyici bir dilde yazılmış, hukuki doğruluk açısından gözden geçirilmiştir.'}
             </p>
             <p className="text-sm text-gray-600">
               {isEnglish
@@ -368,7 +366,7 @@ export default async function Home({
             href={`/${lang}/about`}
             className="arrow-link mt-8"
           >
-            {isEnglish ? 'About EchoLegal' : 'EchoLegal hakkında'}
+            {isEnglish ? 'Governance' : 'Yönetişim'}
             <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
@@ -397,9 +395,9 @@ export default async function Home({
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-gray-900">Open</p>
+              <p className="text-3xl font-bold text-gray-900">US · TR</p>
               <p className="text-sm text-gray-600 mt-1">
-                {isEnglish ? 'Access' : 'Erişim'}
+                {isEnglish ? 'Jurisdictions' : 'Yargı Alanları'}
               </p>
             </div>
           </div>
