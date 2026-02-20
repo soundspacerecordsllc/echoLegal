@@ -6,16 +6,33 @@ import {
   sortByAuthority,
   validateEncyclopediaEntries,
   formatJurisdictionScope,
+  JURISDICTION_SHORT_LABELS,
 } from '@/lib/encyclopedia-authority'
 import type { EncyclopediaIndexEntry } from '@/lib/encyclopedia-authority'
+import type { JurisdictionCode } from '@/lib/jurisdictions'
+
+/**
+ * Jurisdiction codes available as filter options on the index page.
+ * Order here determines button order in the UI.
+ */
+const FILTER_OPTIONS: JurisdictionCode[] = ['US', 'US-NY', 'US-CA', 'EU', 'TR']
 
 export default async function EncyclopediaPage({
   params: { lang },
+  searchParams,
 }: {
   params: { lang: Locale }
+  searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
+
+  // Read jurisdiction filter from ?j= query param.
+  // Unknown values are treated as "All" (no filter).
+  const rawJ = typeof searchParams.j === 'string' ? searchParams.j : undefined
+  const activeFilter = rawJ && FILTER_OPTIONS.includes(rawJ as JurisdictionCode)
+    ? (rawJ as JurisdictionCode)
+    : null
 
   const articles: EncyclopediaIndexEntry[] = [
     {
@@ -76,7 +93,14 @@ export default async function EncyclopediaPage({
     )
   }
 
+  // Sort by authority weight, then filter by jurisdiction.
+  // Filtering is applied after sort so ordering is never affected.
   const sorted = sortByAuthority(articles)
+  const filtered = activeFilter
+    ? sorted.filter((a) => a.jurisdictionScope.includes(activeFilter))
+    : sorted
+
+  const basePath = `/${lang}/encyclopedia`
 
   return (
     <div className="bg-white">
@@ -84,14 +108,49 @@ export default async function EncyclopediaPage({
         <h1 className="text-4xl font-bold mb-4">
           {isEnglish ? 'Legal Encyclopedia' : 'Hukuk Ansiklopedisi'}
         </h1>
-        <p className="text-lg text-gray-600 mb-12">
+        <p className="text-lg text-gray-600 mb-8">
           {isEnglish
             ? 'Comprehensive guides on business law, employment, intellectual property, and more.'
             : 'Ticaret hukuku, iş ilişkileri, fikri mülkiyet ve daha birçok konuda kapsamlı rehberler.'}
         </p>
 
+        {/* Jurisdiction filter */}
+        <nav
+          className="flex flex-wrap items-center gap-2 mb-8"
+          aria-label={isEnglish ? 'Filter by jurisdiction' : 'Yargı alanına göre filtrele'}
+        >
+          <span className="text-sm text-gray-500 mr-1">
+            {isEnglish ? 'Jurisdiction:' : 'Yargı Alanı:'}
+          </span>
+          <Link
+            href={basePath}
+            scroll={false}
+            className={`px-3 py-1 text-sm rounded-md border transition-colors ${
+              !activeFilter
+                ? 'bg-gray-900 text-white border-gray-900'
+                : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
+            }`}
+          >
+            {isEnglish ? 'All' : 'Tümü'}
+          </Link>
+          {FILTER_OPTIONS.map((code) => (
+            <Link
+              key={code}
+              href={`${basePath}?j=${code}`}
+              scroll={false}
+              className={`px-3 py-1 text-sm rounded-md border transition-colors ${
+                activeFilter === code
+                  ? 'bg-gray-900 text-white border-gray-900'
+                  : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
+              }`}
+            >
+              {JURISDICTION_SHORT_LABELS[code]?.[lang] ?? code}
+            </Link>
+          ))}
+        </nav>
+
         <div className="grid md:grid-cols-2 gap-6">
-          {sorted.map((article) => (
+          {filtered.map((article) => (
             <div
               key={article.slug}
               className={`border rounded-lg p-6 ${article.available ? 'border-gray-200 hover:shadow-lg transition-shadow' : 'border-gray-100 bg-gray-50'}`}
