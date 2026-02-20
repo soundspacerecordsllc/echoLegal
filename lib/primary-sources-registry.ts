@@ -892,6 +892,17 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       canonicalId: 'US-IRS-FORM-1040-ES-INSTR',
       jurisdiction: 'US',
     },
+    {
+      type: 'Case',
+      citation: 'Community for Creative Non-Violence v. Reid, 490 U.S. 730 (1989)',
+      label: {
+        en: 'Supreme Court test for "work made for hire" status of independent contractors',
+        tr: 'Bağımsız yüklenicilerin "işe özel eser" statüsü için Yüksek Mahkeme testi',
+      },
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-SCOTUS-CCNV-v-Reid-1989',
+      jurisdiction: 'US',
+    },
   ],
 
   'privacy-policy-guide': [
