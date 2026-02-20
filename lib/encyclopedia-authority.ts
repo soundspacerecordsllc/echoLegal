@@ -9,6 +9,8 @@
 //   5. Procedural guides (practitioner-oriented)
 //   6. Comparative / explanatory articles
 
+import type { JurisdictionCode } from './jurisdictions'
+
 // ============================================
 // AUTHORITY LEVEL ENUM
 // ============================================
@@ -50,13 +52,42 @@ const AUTHORITY_LEVEL_WEIGHT: Record<EncyclopediaAuthorityLevel, number> = {
 }
 
 // ============================================
+// JURISDICTION DISPLAY LABELS
+// ============================================
+
+/**
+ * Bilingual short labels for jurisdiction codes used on the index page.
+ * Only includes codes that appear on current encyclopedia entries.
+ */
+export const JURISDICTION_SHORT_LABELS: Partial<Record<JurisdictionCode, { en: string; tr: string }>> = {
+  US: { en: 'U.S. Federal', tr: 'ABD Federal' },
+  'US-NY': { en: 'New York', tr: 'New York' },
+  'US-CA': { en: 'California', tr: 'Kaliforniya' },
+  'US-FL': { en: 'Florida', tr: 'Florida' },
+  EU: { en: 'EU', tr: 'AB' },
+  TR: { en: 'Turkey', tr: 'Türkiye' },
+}
+
+/**
+ * Format an array of JurisdictionCode values into a display string.
+ */
+export function formatJurisdictionScope(
+  codes: JurisdictionCode[],
+  lang: 'en' | 'tr'
+): string {
+  return codes
+    .map((code) => JURISDICTION_SHORT_LABELS[code]?.[lang] ?? code)
+    .join(' · ')
+}
+
+// ============================================
 // ENCYCLOPEDIA INDEX ENTRY TYPE
 // ============================================
 
 /**
  * Required shape for every entry in the encyclopedia index listing.
- * authorityLevel and canonicalId are non-optional — TypeScript will
- * reject any entry missing either field at compile time.
+ * authorityLevel, canonicalId, and jurisdictionScope are non-optional —
+ * TypeScript will reject any entry missing these fields at compile time.
  */
 export type EncyclopediaIndexEntry = {
   slug: string
@@ -66,6 +97,7 @@ export type EncyclopediaIndexEntry = {
   available: boolean
   authorityLevel: EncyclopediaAuthorityLevel
   canonicalId: string
+  jurisdictionScope: JurisdictionCode[]
 }
 
 // ============================================
@@ -96,7 +128,8 @@ export function sortByAuthority<T extends EncyclopediaIndexEntry>(
 // ============================================
 
 /**
- * Validate that every entry has a non-empty authorityLevel and canonicalId.
+ * Validate that every entry has required authorityLevel, canonicalId,
+ * and jurisdictionScope fields.
  *
  * In development: throws immediately so the error is visible during
  * local `next dev`. In production builds: returns validation errors
@@ -130,6 +163,12 @@ export function validateEncyclopediaEntries(
     } else if (!/^ecl-enc-\d{5}$/.test(entry.canonicalId)) {
       errors.push(
         `Encyclopedia entry "${entry.slug}" has invalid canonicalId format: "${entry.canonicalId}" (expected ecl-enc-XXXXX)`
+      )
+    }
+
+    if (!entry.jurisdictionScope || entry.jurisdictionScope.length === 0) {
+      errors.push(
+        `Encyclopedia entry "${entry.slug}" is missing required jurisdictionScope (must be non-empty array)`
       )
     }
   }

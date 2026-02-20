@@ -17,8 +17,8 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
   const isEnglish = lang === 'en'
   const title = isEnglish ? 'Primary legal sources' : 'Birincil hukuki kaynaklar'
 
-  // Runtime invariant: every source must carry authorityLevel and canonicalId.
-  // Hard fail. No silent degradation.
+  // Runtime invariant: every source must carry authorityLevel, canonicalId,
+  // and jurisdictionScope. Hard fail. No silent degradation.
   for (const source of sources) {
     if (!source.authorityLevel) {
       throw new Error(
@@ -33,6 +33,11 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
     if (!(source.authorityLevel in AUTHORITY_LEVEL_WEIGHT)) {
       throw new Error(
         `PrimarySource invariant violation: unknown authorityLevel "${source.authorityLevel}" on "${source.citation}"`
+      )
+    }
+    if (!source.jurisdictionScope) {
+      throw new Error(
+        `PrimarySource invariant violation: missing jurisdictionScope on "${source.citation}"`
       )
     }
   }
@@ -84,6 +89,7 @@ export default function PrimarySources({ sources, lang }: PrimarySourcesProps) {
                 className="flex items-start gap-2"
                 data-canonical-id={source.canonicalId}
                 data-authority-tier={source.authorityLevel}
+                data-jurisdiction={source.jurisdictionScope}
               >
                 <span className="text-gray-400 select-none mt-px">–</span>
                 <div>

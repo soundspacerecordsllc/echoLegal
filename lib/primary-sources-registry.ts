@@ -10,6 +10,7 @@
  */
 
 import type { PrimarySourceEntry, PrimarySourceType, AuthorityLevel } from './content-schema'
+import type { JurisdictionCode } from './jurisdictions'
 
 type BilingualLabel = { en: string; tr?: string }
 
@@ -1048,6 +1049,7 @@ export function getPrimarySources(slug: string, lang: 'en' | 'tr'): PrimarySourc
     authorityLevel: e.authorityLevel,
     canonicalId: e.canonicalId,
     jurisdiction: e.jurisdiction,
+    jurisdictionScope: e.jurisdiction as JurisdictionCode,
   }))
 }
 

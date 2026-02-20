@@ -5,6 +5,7 @@ import {
   EncyclopediaAuthorityLevel,
   sortByAuthority,
   validateEncyclopediaEntries,
+  formatJurisdictionScope,
 } from '@/lib/encyclopedia-authority'
 import type { EncyclopediaIndexEntry } from '@/lib/encyclopedia-authority'
 
@@ -27,6 +28,7 @@ export default async function EncyclopediaPage({
       available: true,
       authorityLevel: EncyclopediaAuthorityLevel.FEDERAL_STATUTORY,
       canonicalId: 'ecl-enc-00003',
+      jurisdictionScope: ['US'],
     },
     {
       slug: 'what-is-nda',
@@ -38,6 +40,7 @@ export default async function EncyclopediaPage({
       available: true,
       authorityLevel: EncyclopediaAuthorityLevel.DOCTRINAL_FRAMEWORK,
       canonicalId: 'ecl-enc-00001',
+      jurisdictionScope: ['US', 'US-NY'],
     },
     {
       slug: 'privacy-policy-guide',
@@ -49,6 +52,7 @@ export default async function EncyclopediaPage({
       available: true,
       authorityLevel: EncyclopediaAuthorityLevel.COMPLIANCE_REGULATORY,
       canonicalId: 'ecl-enc-00004',
+      jurisdictionScope: ['US', 'US-CA', 'EU', 'TR'],
     },
     {
       slug: 'freelancer-legal-guide',
@@ -60,6 +64,7 @@ export default async function EncyclopediaPage({
       available: true,
       authorityLevel: EncyclopediaAuthorityLevel.PROCEDURAL_GUIDE,
       canonicalId: 'ecl-enc-00002',
+      jurisdictionScope: ['US'],
     },
   ]
 
@@ -112,18 +117,23 @@ export default async function EncyclopediaPage({
                 {article.description}
               </p>
 
-              {article.available ? (
-                <Link
-                  href={`/${lang}/encyclopedia/${article.slug}`}
-                  className="inline-block text-[#C9A227] font-semibold hover:underline"
-                >
-                  {isEnglish ? 'Read Article →' : 'Yazıyı Oku →'}
-                </Link>
-              ) : (
-                <span className="text-gray-400">
-                  {isEnglish ? 'Coming Soon' : 'Yakında'}
+              <div className="flex items-center justify-between">
+                {article.available ? (
+                  <Link
+                    href={`/${lang}/encyclopedia/${article.slug}`}
+                    className="inline-block text-[#C9A227] font-semibold hover:underline"
+                  >
+                    {isEnglish ? 'Read Article →' : 'Yazıyı Oku →'}
+                  </Link>
+                ) : (
+                  <span className="text-gray-400">
+                    {isEnglish ? 'Coming Soon' : 'Yakında'}
+                  </span>
+                )}
+                <span className="text-xs text-gray-400">
+                  {isEnglish ? 'Jurisdiction' : 'Yargı Alanı'}: {formatJurisdictionScope(article.jurisdictionScope, lang)}
                 </span>
-              )}
+              </div>
             </div>
           ))}
         </div>
