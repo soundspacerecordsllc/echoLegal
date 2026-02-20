@@ -357,6 +357,25 @@ export default async function LLCGuidePage({
               </p>
             </div>
 
+            {/* Version Traceability */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 mb-10 border-b border-gray-100 pb-3">
+              <span>
+                <span className="font-medium text-gray-600">
+                  {isEnglish ? 'Version' : 'Sürüm'}:
+                </span>{' '}
+                v{PAGE_META.version}
+              </span>
+              <span>
+                <span className="font-medium text-gray-600">
+                  {isEnglish ? 'Last Reviewed' : 'Son İnceleme'}:
+                </span>{' '}
+                {PAGE_META.dateModified}
+              </span>
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">
+                {isEnglish ? 'Foundational' : 'Temel'}
+              </span>
+            </div>
+
             {/* Table of Contents */}
             <nav className="bg-gray-50 rounded-lg p-6 mb-10">
               <h2 className="text-lg font-bold text-black mb-4">{isEnglish ? 'Table of Contents' : 'İçindekiler'}</h2>
