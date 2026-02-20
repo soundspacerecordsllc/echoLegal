@@ -120,8 +120,8 @@ export default async function PrivacyPolicyGuidePage({
 
         <p className="text-xl text-gray-600 mb-6">
           {isEnglish
-            ? 'A comprehensive guide to privacy laws worldwide: GDPR, CCPA, KVKK, and beyond. Understand your obligations, avoid hefty fines, and build user trust.'
-            : 'Dünya çapında gizlilik yasalarına kapsamlı rehber: GDPR, CCPA, KVKK ve ötesi. Yükümlülüklerinizi anlayın, ağır para cezalarından kaçının ve kullanıcı güveni oluşturun.'}
+            ? 'A comprehensive guide to privacy laws worldwide: GDPR, CCPA, KVKK, and beyond. Understand your legal obligations under these frameworks.'
+            : 'Dünya çapında gizlilik yasalarına kapsamlı rehber: GDPR, CCPA, KVKK ve ötesi. Bu düzenlemeler kapsamındaki yükümlülüklerinizi anlayın.'}
         </p>
 
         <InstitutionalBadge
@@ -133,7 +133,7 @@ export default async function PrivacyPolicyGuidePage({
 
         {/* Quick Answer Box */}
         <div className="bg-[#C9A227]/10 border-2 border-[#C9A227] rounded-xl p-6 mb-12">
-          <h2 className="font-bold text-xl mb-3">{isEnglish ? 'Short Answer: Yes, You Probably Do' : 'Kısa Cevap: Evet, Muhtemelen İhtiyacınız Var'}</h2>
+          <h2 className="font-bold text-xl mb-3">{isEnglish ? 'Summary' : 'Özet'}</h2>
           <p className="text-gray-700 mb-4">
             {isEnglish
               ? 'If your website or app collects ANY personal information (names, emails, IP addresses, cookies, analytics), you need a privacy policy. This applies to businesses of all sizes, including freelancers and side projects.'

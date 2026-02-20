@@ -534,8 +534,8 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
             </Link>
             <p className="mt-2 text-sm text-gray-500 leading-relaxed">
               {isEnglish
-                ? 'A bilingual legal encyclopedia founded by a New York-licensed attorney.'
-                : 'New York lisanslı bir avukat tarafından kurulan iki dilli hukuk ansiklopedisi.'}
+                ? 'A multilingual legal encyclopedia (currently English and Turkish).'
+                : 'Çok dilli bir hukuk ansiklopedisi (şu anda İngilizce ve Türkçe).'}
             </p>
           </div>
 

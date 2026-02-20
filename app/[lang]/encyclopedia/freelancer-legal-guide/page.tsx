@@ -57,13 +57,13 @@ export default async function FreelancerLegalGuidePage({
   const pageTitle = isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi'
 
   const faqs = isEnglish ? [
-    { question: 'Do I need an LLC to freelance?', answer: 'No, you can freelance as a sole proprietor. However, an LLC provides liability protection and tax benefits that become valuable as your income grows. Consider forming one once you earn $50,000+ annually.' },
+    { question: 'Do I need an LLC to freelance?', answer: 'No, you can freelance as a sole proprietor. However, an LLC provides liability protection and tax benefits that become valuable as your income grows. Consider forming one when liability protection becomes relevant to your practice.' },
     { question: 'Can I use a template contract or do I need a lawyer?', answer: 'Template contracts work well for standard projects. However, for high-value projects, unusual terms, or if you\'ve had disputes before, investing in a lawyer to customize your contracts is worthwhile.' },
     { question: 'How much should I save for taxes?', answer: 'Save 25-30% of your income for taxes. This covers self-employment tax (15.3%) plus federal and state income taxes. The exact amount depends on your total income and deductions.' },
     { question: 'What if a client wants me to sign their contract instead of mine?', answer: 'Read their contract carefully. Look for unfavorable terms like full IP transfer, unlimited revisions, or broad non-competes. Negotiate changes or add an addendum for terms you need.' },
     { question: 'Do I need insurance as a freelancer?', answer: 'It depends on your risk level. Professional liability (E&O) insurance is recommended for anyone whose work could cause financial harm to clients. General liability is important if you meet clients in person.' }
   ] : [
-    { question: 'Serbest çalışmak için LLC\'ye ihtiyacım var mı?', answer: 'Hayır, şahıs şirketi olarak serbest çalışabilirsiniz. Ancak, bir LLC geliriniz arttıkça değerli hale gelen sorumluluk koruması ve vergi avantajları sağlar. Yıllık 50.000$+ kazandığınızda bir tane kurmayı düşünün.' },
+    { question: 'Serbest çalışmak için LLC\'ye ihtiyacım var mı?', answer: 'Hayır, şahıs şirketi olarak serbest çalışabilirsiniz. Ancak, bir LLC geliriniz arttıkça değerli hale gelen sorumluluk koruması ve vergi avantajları sağlar. Sorumluluk korumasının uygulamanız için önem kazandığı noktada kurmayı düşünün.' },
     { question: 'Şablon sözleşme kullanabilir miyim yoksa avukata mı ihtiyacım var?', answer: 'Şablon sözleşmeler standart projeler için iyi çalışır. Ancak, yüksek değerli projeler, olağandışı koşullar veya daha önce anlaşmazlıklarınız olduysa, sözleşmelerinizi özelleştirmek için bir avukata yatırım yapmaya değer.' },
     { question: 'Vergiler için ne kadar biriktirmeliyim?', answer: 'Gelirinizin %25-30\'unu vergiler için biriktirin. Bu, serbest meslek vergisini (%15,3) artı federal ve eyalet gelir vergilerini kapsar. Kesin miktar toplam gelirinize ve kesintilerinize bağlıdır.' },
     { question: 'Bir müşteri benimki yerine kendi sözleşmesini imzalamamı isterse ne olur?', answer: 'Sözleşmelerini dikkatlice okuyun. Tam IP devri, sınırsız revizyon veya geniş rekabet yasağı gibi olumsuz koşulları arayın. Değişiklikleri müzakere edin veya ihtiyacınız olan koşullar için ek protokol ekleyin.' },
@@ -199,8 +199,8 @@ export default async function FreelancerLegalGuidePage({
             <p className="font-semibold text-blue-900">{isEnglish ? 'Recommendation' : 'Öneri'}</p>
             <p className="text-blue-800">
               {isEnglish
-                ? 'Most freelancers earning over $50,000/year should consider forming an LLC. It\'s a good balance of liability protection, tax benefits, and administrative simplicity. Consult a tax professional for your specific situation.'
-                : 'Yılda 50.000$\'dan fazla kazanan serbest çalışanların çoğu bir LLC kurmayı düşünmelidir. Sorumluluk koruması, vergi avantajları ve idari basitlik arasında iyi bir dengedir. Özel durumunuz için bir vergi uzmanına danışın.'}
+                ? 'Whether to form an LLC depends on factors such as liability exposure, client requirements, and tax circumstances. An LLC offers liability protection and potential tax benefits but is not necessary for all freelancers. Consult a tax professional for your specific situation.'
+                : 'LLC kurulup kurulmaması; sorumluluk riski, müşteri gereksinimleri ve vergisel koşullar gibi faktörlere bağlıdır. LLC, sorumluluk koruması ve potansiyel vergi avantajları sunar ancak tüm serbest çalışanlar için gerekli değildir. Özel durumunuz için bir vergi uzmanına danışın.'}
             </p>
           </div>
         </section>
@@ -438,8 +438,8 @@ export default async function FreelancerLegalGuidePage({
             <p className="font-semibold text-red-900">{isEnglish ? 'Warning: Keep Records' : 'Uyarı: Kayıt Tutun'}</p>
             <p className="text-red-800">
               {isEnglish
-                ? 'Keep detailed records and receipts for all business expenses. The IRS can audit you up to 3 years after filing (6 years if substantial income is unreported). Use accounting software like QuickBooks, FreshBooks, or Wave.'
-                : 'Tüm iş giderleri için detaylı kayıtlar ve makbuzlar tutun. IRS, dosyalamadan sonra 3 yıla kadar (önemli gelir bildirilmemişse 6 yıl) denetleyebilir. QuickBooks, FreshBooks veya Wave gibi muhasebe yazılımı kullanın.'}
+                ? 'Keep detailed records and receipts for all business expenses. The IRS can audit you up to 3 years after filing (6 years if substantial income is unreported). Use accounting software to track income and expenses.'
+                : 'Tüm iş giderleri için detaylı kayıtlar ve makbuzlar tutun. IRS, dosyalamadan sonra 3 yıla kadar (önemli gelir bildirilmemişse 6 yıl) denetleyebilir. Gelir ve giderleri takip etmek için muhasebe yazılımı kullanın.'}
             </p>
           </div>
         </section>

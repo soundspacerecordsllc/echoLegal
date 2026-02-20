@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? 'US Visa Categories for Turkish Nationals | EchoLegal'
       : "ABD'ye Gelme Yolları: Türk Vatandaşları İçin Vize Rehberi | EchoLegal",
     description: isEnglish
-      ? 'Comprehensive guide to US non-immigrant visa categories for Turkish nationals. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 visas explained with official USCIS references.'
-      : "Türk vatandaşlarına yönelik ABD geçici vize kategorilerinin kapsamlı rehberi. B-1/B-2, F-1, H-1B, L-1, E-2 ve O-1 vizeleri resmi USCIS kaynaklarıyla ele alınmaktadır.",
+      ? 'Guide to US non-immigrant visa categories for Turkish nationals. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 visas explained with official USCIS references.'
+      : "Türk vatandaşlarına yönelik ABD geçici vize kategorileri rehberi. B-1/B-2, F-1, H-1B, L-1, E-2 ve O-1 vizeleri resmi USCIS kaynaklarıyla ele alınmaktadır.",
     alternates: {
       canonical: url,
       languages: {
@@ -69,8 +69,8 @@ export default async function VisaPathwaysPage({
   const articleSchema = generateArticleSchema({
     title: pageTitle,
     description: isEnglish
-      ? 'Comprehensive guide to US non-immigrant visa categories for Turkish nationals.'
-      : "Türk vatandaşlarına yönelik ABD geçici vize kategorilerinin kapsamlı rehberi.",
+      ? 'Guide to US non-immigrant visa categories for Turkish nationals.'
+      : "Türk vatandaşlarına yönelik ABD geçici vize kategorileri rehberi.",
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
     dateModified: PAGE_META.dateModified,
@@ -112,8 +112,8 @@ export default async function VisaPathwaysPage({
 
           <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
             {isEnglish
-              ? 'A comprehensive reference to non-immigrant visa categories relevant to Turkish nationals. Each category has specific requirements, limitations, and pathways.'
-              : 'Türk vatandaşlarını ilgilendiren geçici (non-immigrant) vize kategorilerinin kapsamlı bir özeti. Her kategorinin kendine özgü şartları, sınırları ve izlediği yol farklıdır.'}
+              ? 'A reference to non-immigrant visa categories relevant to Turkish nationals. Each category has specific requirements, limitations, and pathways.'
+              : 'Türk vatandaşlarını ilgilendiren geçici (non-immigrant) vize kategorileri özeti. Her kategorinin kendine özgü şartları, sınırları ve izlediği yol farklıdır.'}
           </p>
           <InstitutionalBadge
             lang={lang}
@@ -252,8 +252,8 @@ export default async function VisaPathwaysPage({
             </h3>
             <p className="text-sm text-red-800 mb-4">
               {isEnglish
-                ? 'Turkey has an E-2 Treaty Investor agreement with the United States, making Turkish citizens eligible for E-2 visas. This is a significant advantage for entrepreneurs, as many countries do not have this treaty relationship.'
-                : 'Türkiye ile ABD arasında E-2 Yatırımcı Anlaşması bulunmaktadır. Bu anlaşma sayesinde Türk vatandaşları E-2 vizesine başvurabilir. Pek çok ülkenin bu imkana sahip olmadığı düşünüldüğünde, girişimciler açısından kayda değer bir avantajdır.'}
+                ? 'Turkey has an E-2 Treaty Investor agreement with the United States, making Turkish citizens eligible for E-2 visas. Not all countries have this treaty relationship with the US.'
+                : 'Türkiye ile ABD arasında E-2 Yatırımcı Anlaşması bulunmaktadır. Bu anlaşma sayesinde Türk vatandaşları E-2 vizesine başvurabilir. Her ülkenin ABD ile bu tür bir anlaşması bulunmamaktadır.'}
             </p>
             <Link
               href={`/${lang}/amerika/vizeler/e2`}
