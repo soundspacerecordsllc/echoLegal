@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : "ABD'de LLC Kurmadan Önce Kontrol Listesi | Türk Girişimciler İçin | EchoLegal"
 
   const description = isEnglish
-    ? 'Free checklist: Everything you need before forming a US LLC. State selection, documents, costs, and timeline for Turkish entrepreneurs.'
+    ? 'Checklist: Key steps before forming a US LLC. State selection, documents, costs, and timeline for Turkish entrepreneurs.'
     : "Ücretsiz kontrol listesi: ABD'de LLC kurmadan önce bilmeniz gereken her şey. Eyalet seçimi, belgeler, maliyetler ve zaman çizelgesi."
 
   return {
@@ -172,7 +172,7 @@ export default async function LLCChecklistPage({
     '@type': 'HowTo',
     name: isEnglish ? 'US LLC Formation Checklist' : "ABD'de LLC Kurma Kontrol Listesi",
     description: isEnglish
-      ? 'Complete checklist for Turkish entrepreneurs forming a US LLC'
+      ? 'Checklist for Turkish entrepreneurs forming a US LLC'
       : 'Türk girişimciler için ABD LLC kurma kontrol listesi',
     step: preFormationChecklist.map((item, index) => ({
       '@type': 'HowToStep',

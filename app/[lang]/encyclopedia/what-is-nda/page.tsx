@@ -116,7 +116,7 @@ export default async function WhatIsNDAPage({
 
         <p className="text-xl text-gray-600 mb-6">
           {isEnglish
-            ? 'Everything you need to know about Non-Disclosure Agreements: when to use them, what to include, and common mistakes to avoid.'
+            ? 'A reference guide to Non-Disclosure Agreements: when they apply, what to include, and common drafting considerations.'
             : 'Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey: ne zaman kullanılır, neler içermeli ve kaçınılması gereken hatalar.'}
         </p>
 

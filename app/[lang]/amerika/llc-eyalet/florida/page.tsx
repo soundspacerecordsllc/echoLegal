@@ -129,7 +129,7 @@ export default async function FloridaLLCPage({
 
             <p className="text-lg text-gray-600 leading-relaxed">
               {isEnglish
-                ? `Everything you need to know about forming and operating an LLC in ${state.name.en} as a Turkish entrepreneur.`
+                ? `Information on forming and operating an LLC in ${state.name.en} as a Turkish entrepreneur.`
                 : `Türk girişimci olarak ${state.name.tr}'da LLC kurma ve işletme hakkında bilmeniz gereken her şey.`}
             </p>
           </div>

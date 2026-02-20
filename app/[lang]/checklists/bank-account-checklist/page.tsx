@@ -178,7 +178,7 @@ export default async function BankAccountChecklistPage({
     '@type': 'HowTo',
     name: isEnglish ? 'US Bank Account Opening Checklist' : 'ABD Banka Hesabı Açma Kontrol Listesi',
     description: isEnglish
-      ? 'Complete checklist for opening a US business bank account as a non-resident'
+      ? 'Checklist for opening a US business bank account as a non-resident'
       : 'Yabancı olarak ABD iş bankası hesabı açma kontrol listesi',
     step: prerequisiteChecklist.map((item, index) => ({
       '@type': 'HowToStep',
@@ -228,7 +228,7 @@ export default async function BankAccountChecklistPage({
 
             <p className="text-lg text-gray-600 leading-relaxed">
               {isEnglish
-                ? 'Everything you need to prepare before opening a US business bank account. Works for neobanks and traditional banks.'
+                ? 'Key steps to prepare before opening a US business bank account. Works for neobanks and traditional banks.'
                 : 'ABD iş bankası hesabı açmadan önce hazırlamanız gereken her şey. Neobankalar ve geleneksel bankalar için geçerlidir.'}
             </p>
           </div>
@@ -324,7 +324,7 @@ export default async function BankAccountChecklistPage({
             <div className="grid md:grid-cols-2 gap-4">
               <Link href={`/${lang}/abdde-banka-hesabi-acmak`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                 <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'US Bank Account Guide' : 'ABD Banka Hesabı Rehberi'}</h3>
-                <p className="text-sm text-gray-600">{isEnglish ? 'Complete banking guide' : 'Tam bankacılık rehberi'}</p>
+                <p className="text-sm text-gray-600">{isEnglish ? 'Banking guide' : 'Tam bankacılık rehberi'}</p>
               </Link>
               <Link href={`/${lang}/checklists/llc-checklist`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                 <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Checklist' : 'LLC Kurma Kontrol Listesi'}</h3>

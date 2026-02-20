@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : '1099 Formları ve ABD Vergi Belgeleri Rehberi | EchoLegal'
 
   const description = isEnglish
-    ? 'Complete guide to 1099 forms for Turkish entrepreneurs. 1099-NEC, 1099-MISC, 1099-K explained. When you receive them, what they mean, and what to do.'
-    : 'Türk girişimciler için 1099 formlarına kapsamlı rehber. 1099-NEC, 1099-MISC, 1099-K açıklandı. Ne zaman alırsınız, ne anlama gelir ve ne yapmalısınız.'
+    ? 'Guide to 1099 forms for Turkish entrepreneurs. 1099-NEC, 1099-MISC, 1099-K explained. When you receive them, what they mean, and what to do.'
+    : 'Türk girişimciler için 1099 formları rehberi. 1099-NEC, 1099-MISC, 1099-K açıklandı. Ne zaman alırsınız, ne anlama gelir ve ne yapmalısınız.'
 
   const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
 
@@ -93,8 +93,8 @@ export default async function TaxDocumentsPage({
   const articleSchema = generateArticleSchema({
     title: pageTitle,
     description: isEnglish
-      ? 'Complete guide to 1099 forms for Turkish entrepreneurs. 1099-NEC, 1099-MISC, 1099-K explained.'
-      : 'Türk girişimciler için 1099 formlarına kapsamlı rehber. 1099-NEC, 1099-MISC, 1099-K açıklandı.',
+      ? 'Guide to 1099 forms for Turkish entrepreneurs. 1099-NEC, 1099-MISC, 1099-K explained.'
+      : 'Türk girişimciler için 1099 formları rehberi. 1099-NEC, 1099-MISC, 1099-K açıklandı.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
     dateModified: PAGE_META.dateModified,

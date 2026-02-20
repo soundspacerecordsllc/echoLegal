@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'Türk Girişimciler İçin ABD Vergi ve Kimlik Rehberi | EchoLegal'
 
   const description = isEnglish
-    ? 'Complete guide to US tax obligations and identification numbers. EIN, ITIN, SSN, W-8, W-9, 1099 forms, tax treaties, and withholding explained for Turkish entrepreneurs.'
+    ? 'Guide to US tax obligations and identification numbers. EIN, ITIN, SSN, W-8, W-9, 1099 forms, tax treaties, and withholding explained for Turkish entrepreneurs.'
     : 'ABD vergi yükümlülükleri ve kimlik numaralarına kapsamlı rehber. Türk girişimciler için EIN, ITIN, SSN, W-8, W-9, 1099 formları, vergi anlaşmaları ve stopaj açıklandı.'
 
   const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
@@ -82,7 +82,7 @@ export default async function TaxIdHubPage({
   const articleSchema = generateArticleSchema({
     title: pageTitle,
     description: isEnglish
-      ? 'Complete guide to US tax obligations and identification numbers for Turkish entrepreneurs.'
+      ? 'Guide to US tax obligations and identification numbers for Turkish entrepreneurs.'
       : 'Türk girişimciler için ABD vergi yükümlülükleri ve kimlik numaralarına kapsamlı rehber.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
@@ -105,7 +105,7 @@ export default async function TaxIdHubPage({
       ? 'US Tax & ID Guide for Turkish Entrepreneurs'
       : 'Türk Girişimciler İçin ABD Vergi ve Kimlik Rehberi',
     description: isEnglish
-      ? 'Complete guide to US tax obligations and identification numbers for Turkish entrepreneurs.'
+      ? 'Guide to US tax obligations and identification numbers for Turkish entrepreneurs.'
       : 'Türk girişimciler için ABD vergi yükümlülükleri ve kimlik numaralarına kapsamlı rehber.',
     publisher: {
       '@type': 'Organization',
@@ -262,7 +262,7 @@ export default async function TaxIdHubPage({
 
           <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
             {isEnglish
-              ? 'Everything you need to know about US tax obligations, identification numbers, and compliance requirements for Turkish entrepreneurs doing business with or in the United States.'
+              ? 'Information on US tax obligations, identification numbers, and compliance requirements for Turkish entrepreneurs doing business with or in the United States.'
               : 'ABD\'de veya ABD ile iş yapan Türk girişimciler için ABD vergi yükümlülükleri, kimlik numaraları ve uyumluluk gereksinimleri hakkında bilmeniz gereken her şey.'}
           </p>
 

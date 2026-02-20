@@ -310,7 +310,7 @@ export const ZEYNEP_MOORE: Contributor = {
     canApproveInJurisdiction: ['US', 'US-NY', 'TR'],
   },
   bio: {
-    en: 'Content is authored and reviewed by a New York-licensed attorney.',
+    en: 'Content is authored and reviewed by licensed legal professionals.',
     tr: 'İçerik, New York lisanslı bir avukat tarafından yazılmakta ve incelenmektedir.',
   },
   jurisdictionalNote: {

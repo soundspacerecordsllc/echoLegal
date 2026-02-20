@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'EIN, ITIN ve SSN Farkları: Hangi Vergi Kimliğine İhtiyacınız Var? | EchoLegal'
 
   const description = isEnglish
-    ? 'Complete guide to US tax identification numbers for Turkish entrepreneurs. EIN for businesses, ITIN for individuals without SSN eligibility, SSN for authorized workers.'
+    ? 'Guide to US tax identification numbers for Turkish entrepreneurs. EIN for businesses, ITIN for individuals without SSN eligibility, SSN for authorized workers.'
     : 'Türk girişimciler için ABD vergi kimlik numaralarına kapsamlı rehber. İşletmeler için EIN, SSN alamayanlar için ITIN, çalışma izni olanlar için SSN.'
 
   const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
@@ -85,7 +85,7 @@ export default async function EinItinSsnPage({
   const articleSchema = generateArticleSchema({
     title: pageTitle,
     description: isEnglish
-      ? 'Complete guide to US tax identification numbers for Turkish entrepreneurs.'
+      ? 'Guide to US tax identification numbers for Turkish entrepreneurs.'
       : 'Türk girişimciler için ABD vergi kimlik numaralarına kapsamlı rehber.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,

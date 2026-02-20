@@ -288,7 +288,7 @@ export default async function PlatformPage({
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
             <p className="text-gray-700 mb-4">
               {isEnglish
-                ? "EchoLegal content is prepared under the supervision of a New York-licensed attorney."
+                ? "EchoLegal content is prepared under the supervision of licensed legal professionals."
                 : "EchoLegal içeriği, New York lisanslı bir avukat gözetiminde hazırlanmaktadır."}
             </p>
             <p className="text-gray-700">

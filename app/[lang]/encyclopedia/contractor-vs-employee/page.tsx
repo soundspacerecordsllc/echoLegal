@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
   return {
     title: isEnglish
-      ? 'Contractor vs Employee: Complete Classification Guide | EchoLegal'
+      ? 'Contractor vs Employee: Classification Guide | EchoLegal'
       : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi | EchoLegal',
     description: isEnglish
       ? 'Understand the critical differences between contractors and employees. Learn IRS tests, legal factors, misclassification risks, and how to properly classify workers.'
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       },
     },
     other: {
-      'citation_title': isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
+      'citation_title': isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi',
       'citation_publisher': 'EchoLegal',
       'citation_publication_date': '2025/07/10',
       'citation_lastmod': '2026/01/22',
@@ -71,7 +71,7 @@ export default async function ContractorVsEmployeePage({
   ]
 
   const scholarlySchema = generateScholarlyArticleSchema({
-    title: isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
+    title: isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi',
     alternativeHeadline: isEnglish ? 'Worker Classification — IRS Tests, ABC Test, and Compliance' : 'İşçi Sınıflandırması — IRS Testleri, ABC Testi ve Uyum',
     abstractText: isEnglish
       ? 'A reference guide to worker classification: legal tests, compliance requirements, and structuring working relationships.'
@@ -764,7 +764,7 @@ export default async function ContractorVsEmployeePage({
         {/* Cite This Entry */}
         <CiteThisEntry
           lang={lang}
-          title={isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi'}
+          title={isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi'}
           url={pageUrl}
           dateModified={PAGE_META.dateModified}
           version={PAGE_META.version}

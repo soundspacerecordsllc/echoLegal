@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'ABD\'de İş Yapan Türkler İçin Olmazsa Olmaz Sözleşmeler | EchoLegal'
 
   const description = isEnglish
-    ? 'Must-have legal contracts for Turkish entrepreneurs doing business in the United States. NDA, Service Agreements, IP Assignment, Privacy Policies, and more.'
+    ? 'Common legal contracts for Turkish entrepreneurs doing business in the United States. NDA, Service Agreements, IP Assignment, Privacy Policies, and more.'
     : 'ABD\'de iş yapan Türk girişimciler için olmazsa olmaz hukuki sözleşmeler. NDA, Hizmet Sözleşmesi, Fikri Mülkiyet Devri, Gizlilik Politikası ve daha fazlası.'
 
   const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
@@ -93,7 +93,7 @@ export default async function ContractsGuidePage({
   const articleSchema = generateArticleSchema({
     title: pageTitle,
     description: isEnglish
-      ? 'Must-have legal contracts for Turkish entrepreneurs doing business in the United States.'
+      ? 'Common legal contracts for Turkish entrepreneurs doing business in the United States.'
       : 'ABD\'de iş yapan Türk girişimciler için olmazsa olmaz hukuki sözleşmeler.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
@@ -881,7 +881,7 @@ export default async function ContractsGuidePage({
                 <div>
                   <h3 className="font-semibold text-black">EchoLegal</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEnglish ? 'Content reviewed by a New York-licensed attorney' : 'İçerik New York lisanslı bir avukat tarafından incelenmektedir'}
+                    {isEnglish ? 'Content reviewed by licensed legal professionals' : 'İçerik New York lisanslı bir avukat tarafından incelenmektedir'}
                   </p>
                 </div>
               </div>

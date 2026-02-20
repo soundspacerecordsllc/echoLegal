@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   return {
     title,
     description: isEnglish
-      ? 'Complete guide to privacy policy requirements under GDPR, CCPA, KVKK, and other laws. Learn when you need a privacy policy, what to include, and how to stay compliant.'
-      : 'GDPR, CCPA, KVKK ve diğer yasalar kapsamında gizlilik politikası gereksinimleri için tam rehber. Ne zaman gizlilik politikasına ihtiyacınız olduğunu, neleri dahil edeceğinizi ve nasıl uyumlu kalacağınızı öğrenin.',
+      ? 'Guide to privacy policy requirements under GDPR, CCPA, KVKK, and other frameworks. Covers when a privacy policy is required, what to include, and compliance steps.'
+      : 'GDPR, CCPA, KVKK ve diğer düzenlemeler kapsamında gizlilik politikası gereksinimleri rehberi. Gizlilik politikasının ne zaman gerekli olduğunu, neleri içermesi gerektiğini ve uyum adımlarını kapsar.',
     alternates: {
       canonical: url,
       languages: {
@@ -78,8 +78,8 @@ export default async function PrivacyPolicyGuidePage({
     title: isEnglish ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained' : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması',
     alternativeHeadline: isEnglish ? 'Privacy Policy Guide — GDPR, CCPA, KVKK Compliance' : 'Gizlilik Politikası Rehberi — GDPR, CCPA, KVKK Uyumu',
     abstractText: isEnglish
-      ? 'A comprehensive guide to privacy policy requirements under GDPR, CCPA, KVKK, and other laws. Learn when you need a privacy policy, what to include, and how to stay compliant.'
-      : 'GDPR, CCPA, KVKK ve diğer yasalar kapsamında gizlilik politikası gereksinimleri için tam rehber. Ne zaman gizlilik politikasına ihtiyacınız olduğunu, neleri dahil edeceğinizi ve nasıl uyumlu kalacağınızı öğrenin.',
+      ? 'Guide to privacy policy requirements under GDPR, CCPA, KVKK, and other frameworks. Covers when a privacy policy is required, what to include, and compliance steps.'
+      : 'GDPR, CCPA, KVKK ve diğer düzenlemeler kapsamında gizlilik politikası gereksinimleri rehberi. Gizlilik politikasının ne zaman gerekli olduğunu, neleri içermesi gerektiğini ve uyum adımlarını kapsar.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
     dateModified: PAGE_META.dateModified,
