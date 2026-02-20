@@ -708,6 +708,66 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       jurisdiction: 'US',
     },
   ],
+
+  'what-is-nda': [
+    {
+      type: 'USC',
+      citation: '18 U.S.C. § 1836',
+      label: {
+        en: 'Defend Trade Secrets Act — federal civil cause of action for trade secret misappropriation',
+        tr: 'Ticari Sırları Koruma Kanunu — ticari sır kötüye kullanımı için federal hukuk davası',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section1836&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-18USC-1836',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '18 U.S.C. § 1839',
+      label: {
+        en: 'Definitions — trade secret, misappropriation, and improper means',
+        tr: 'Tanımlar — ticari sır, kötüye kullanım ve uygunsuz yöntemler',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section1839&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-18USC-1839',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'StateStatute',
+      citation: 'Uniform Trade Secrets Act (UTSA) § 1',
+      label: {
+        en: 'Model state law — definitions of trade secret and misappropriation (adopted in 48 states)',
+        tr: 'Model eyalet yasası — ticari sır ve kötüye kullanım tanımları (48 eyalette kabul edilmiş)',
+      },
+      authorityLevel: 'state_statute',
+      canonicalId: 'US-UTSA-1',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'Restatement (Third) of Unfair Competition §§ 39–45 (1995)',
+      label: {
+        en: 'Trade secret definition, duty of confidence, and remedies for breach',
+        tr: 'Ticari sır tanımı, gizlilik yükümlülüğü ve ihlal çözümleri',
+      },
+      authorityLevel: 'agency_guidance',
+      canonicalId: 'US-RESTATEMENT-UNFAIR-COMP-39',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'StateStatute',
+      citation: 'N.Y. Gen. Oblig. Law § 5-701',
+      label: {
+        en: 'Statute of frauds — agreements required to be in writing',
+        tr: 'Dolandırıcılık tüzüğü — yazılı olması gereken sözleşmeler',
+      },
+      authorityLevel: 'state_statute',
+      canonicalId: 'ny-stat-gen-oblig-law-5-701',
+      jurisdiction: 'US-NY',
+    },
+  ],
 }
 
 // ============================================
