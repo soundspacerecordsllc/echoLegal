@@ -95,9 +95,19 @@ export default async function EncyclopediaPage({
 
   // Sort by authority weight, then filter by jurisdiction.
   // Filtering is applied after sort so ordering is never affected.
+  //
+  // Hierarchical matching: a top-level code like "US" matches entries whose
+  // jurisdictionScope contains "US" OR any sub-jurisdiction starting with "US-".
+  // A sub-jurisdiction code like "US-NY" (contains "-") requires a strict match.
   const sorted = sortByAuthority(articles)
   const filtered = activeFilter
-    ? sorted.filter((a) => a.jurisdictionScope.includes(activeFilter))
+    ? sorted.filter((a) =>
+        activeFilter.includes('-')
+          ? a.jurisdictionScope.includes(activeFilter)
+          : a.jurisdictionScope.some(
+              (s) => s === activeFilter || s.startsWith(`${activeFilter}-`)
+            )
+      )
     : sorted
 
   const basePath = `/${lang}/encyclopedia`
