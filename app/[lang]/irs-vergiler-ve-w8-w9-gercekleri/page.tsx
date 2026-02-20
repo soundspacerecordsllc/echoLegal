@@ -967,7 +967,7 @@ export default async function TaxGuidePage({
                 </Link>
                 <Link href={`/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                   <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler'}</h3>
-                  <p className="text-sm text-gray-600">{isEnglish ? 'Common legal documents for US business' : 'ABD\'de iş için gerekli hukuki belgeler'}</p>
+                  <p className="text-sm text-gray-600">{isEnglish ? 'Must-have legal documents for US business' : 'ABD\'de iş için gerekli hukuki belgeler'}</p>
                 </Link>
                 <Link href={`/${lang}/checklists/w8-w9-karar-haritasi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                   <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası'}</h3>

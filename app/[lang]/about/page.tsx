@@ -200,7 +200,7 @@ export default async function AboutPage({
           </h2>
           <p className="text-gray-800 leading-relaxed">
             {isEnglish
-              ? 'All legal content published on EchoLegal is reviewed for accuracy by licensed legal professionals with expertise in US immigration and business law.'
+              ? 'All legal content published on EchoLegal is reviewed for accuracy by a New York-licensed attorney with expertise in US immigration and business law.'
               : 'EchoLegal\'da yayınlanan tüm hukuki içerik, ABD göçmenlik ve iş hukuku konusunda uzmanlığa sahip New York lisanslı bir avukat tarafından doğruluk açısından incelenmektedir.'}
           </p>
         </section>

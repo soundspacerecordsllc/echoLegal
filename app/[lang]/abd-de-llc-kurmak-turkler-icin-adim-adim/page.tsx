@@ -1036,7 +1036,7 @@ export default async function LLCGuidePage({
                 <div>
                   <h3 className="font-semibold text-black">EchoLegal</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    {isEnglish ? 'Content reviewed by licensed legal professionals' : 'İçerik New York lisanslı bir avukat tarafından incelenmektedir'}
+                    {isEnglish ? 'Content reviewed by a New York-licensed attorney' : 'İçerik New York lisanslı bir avukat tarafından incelenmektedir'}
                   </p>
                 </div>
               </div>

@@ -359,7 +359,7 @@ export default async function Home({
           <div className="text-gray-800 leading-relaxed space-y-4">
             <p>
               {isEnglish
-                ? 'EchoLegal is an independent legal reference platform providing bilingual (English/Turkish) legal encyclopedic content on US law topics. Content is authored in a neutral, descriptive register and reviewed for legal accuracy.'
+                ? 'EchoLegal is an independent legal reference platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. Content is authored in a neutral, descriptive register and reviewed for legal accuracy.'
                 : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuk referans platformudur. İçerik tarafsız ve betimleyici bir dilde yazılmış, hukuki doğruluk açısından gözden geçirilmiştir.'}
             </p>
             <p className="text-sm text-gray-600">
