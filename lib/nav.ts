@@ -48,9 +48,9 @@ export function getAlternatePath(path: string, targetLang: 'en' | 'tr'): string 
 // Central navigation structure
 export const NAV_ITEMS: NavItem[] = [
   {
-    key: 'guides',
-    labelEn: 'Guides',
-    labelTr: 'Rehberler',
+    key: 'library',
+    labelEn: 'Library',
+    labelTr: 'Kütüphane',
     href: '/{lang}/library',
     children: [
       {
@@ -141,53 +141,9 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    key: 'checklists',
-    labelEn: 'Checklists',
-    labelTr: 'Kontrol Listeleri',
-    href: '/{lang}/checklists/llc-checklist',
-    children: [
-      {
-        labelEn: 'LLC Formation Checklist',
-        labelTr: 'LLC Kurulum Listesi',
-        href: '/{lang}/checklists/llc-checklist',
-        descriptionEn: 'Step-by-step LLC setup',
-        descriptionTr: 'Adım adım LLC kurulumu',
-      },
-      {
-        labelEn: 'Bank Account Checklist',
-        labelTr: 'Banka Hesabı Listesi',
-        href: '/{lang}/checklists/bank-account-checklist',
-        descriptionEn: 'Documents needed',
-        descriptionTr: 'Gerekli belgeler',
-      },
-      {
-        labelEn: 'Tax Documents Checklist',
-        labelTr: 'Vergi Belgeleri Listesi',
-        href: '/{lang}/checklists/tax-documents-checklist',
-        descriptionEn: 'IRS compliance docs',
-        descriptionTr: 'IRS uyum belgeleri',
-      },
-    ],
-  },
-  {
-    key: 'kits',
-    labelEn: 'Legal Kits',
-    labelTr: 'Hukuki Kitler',
-    href: '/{lang}/legal-kits',
-    children: [
-      {
-        labelEn: 'ABD Business Starter Kit',
-        labelTr: 'ABD Business Starter Kit',
-        href: '/{lang}/legal-kits/business-starter',
-        descriptionEn: '5 essential documents',
-        descriptionTr: '5 temel belge',
-      },
-    ],
-  },
-  {
-    key: 'about',
-    labelEn: 'About',
-    labelTr: 'Hakkımızda',
+    key: 'governance',
+    labelEn: 'Governance',
+    labelTr: 'Yönetişim',
     href: '/{lang}/about',
     children: [
       {
@@ -218,14 +174,13 @@ export const NAV_ITEMS: NavItem[] = [
         descriptionEn: 'Accuracy and sourcing standards',
         descriptionTr: 'Doğruluk ve kaynak standartları',
       },
-      {
-        labelEn: 'Jurisdictions',
-        labelTr: 'Yargı Alanları',
-        href: '/{lang}/jurisdictions',
-        descriptionEn: 'Coverage by jurisdiction',
-        descriptionTr: 'Yargı alanına göre kapsam',
-      },
     ],
+  },
+  {
+    key: 'jurisdictions',
+    labelEn: 'Jurisdictions',
+    labelTr: 'Yargı Alanları',
+    href: '/{lang}/jurisdictions',
   },
   {
     key: 'support',

@@ -12,6 +12,7 @@ import JudicialInterpretation from '@/components/JudicialInterpretation'
 import type { JudicialEntry, InterpretiveNote, ResolutionBullet } from '@/components/JudicialInterpretation'
 import ConflictPrecedence from '@/components/ConflictPrecedence'
 import type { CaseIllustration, UnresolvedItem } from '@/components/ConflictPrecedence'
+import JudicialAuthoritySection from '@/components/editorial/JudicialAuthoritySection'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
@@ -333,6 +334,80 @@ export default async function TaxGuidePage({
                 {isEnglish
                   ? 'This content is for informational purposes only and does not constitute tax, legal, or financial advice. Tax laws are complex and change frequently. Always consult a qualified CPA, tax attorney, or enrolled agent for advice specific to your situation.'
                   : 'Bu içerik yalnızca bilgilendirme amaçlıdır; vergi, hukuki veya mali danışmanlık teşkil etmez. Vergi yasaları karmaşıktır ve sık sık değişir. Kendi durumunuza özgü tavsiye için mutlaka uzman bir mali müşavir veya vergi avukatına danışın.'}
+              </p>
+            </div>
+
+            {/* Scope & Method */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                {isEnglish ? 'Scope & Method' : 'Kapsam ve Metodoloji'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry addresses federal tax forms and withholding obligations relevant to non-US persons receiving payments from US sources. It does not cover state-level tax obligations, individual tax return preparation, or jurisdiction-specific treaty analysis. Statutory and regulatory sources are presented as the normative framework; agency guidance and judicial interpretation are addressed in separate sections below.'
+                  : 'Bu madde, ABD kaynaklarından ödeme alan ABD dışı kişilerle ilgili federal vergi formlarını ve stopaj yükümlülüklerini ele almaktadır. Eyalet düzeyinde vergi yükümlülüklerini, bireysel vergi beyannamesi hazırlığını veya yetki alanına özgü anlaşma analizini kapsamamaktadır. Yasal ve düzenleyici kaynaklar normatif çerçeve olarak sunulmaktadır; kurum rehberliği ve yargısal yorum aşağıda ayrı bölümlerde ele alınmaktadır.'}
+              </p>
+            </div>
+
+            {/* Version Traceability */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 mb-10 border-b border-gray-100 pb-3">
+              <span>
+                <span className="font-medium text-gray-600">
+                  {isEnglish ? 'Version' : 'Sürüm'}:
+                </span>{' '}
+                v{PAGE_META.version}
+              </span>
+              <span>
+                <span className="font-medium text-gray-600">
+                  {isEnglish ? 'Last Reviewed' : 'Son İnceleme'}:
+                </span>{' '}
+                {PAGE_META.dateModified}
+              </span>
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-800">
+                {isEnglish ? 'Foundational' : 'Temel'}
+              </span>
+            </div>
+
+            {/* Judicial Deference Framework */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-3">
+                {isEnglish ? 'Judicial Deference Framework' : 'Yargısal İtibar (Deference) Çerçevesi'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                {isEnglish
+                  ? 'Judicial deference describes the weight courts give to an administrative agency\'s interpretation of a statute or regulation it administers.'
+                  : 'Yargısal itibar (deference), mahkemelerin bir idari kurumun yönettiği kanun veya yönetmeliğe ilişkin yorumuna ne ölçüde ağırlık verdiğini ifade eder.'}
+              </p>
+              <ul className="text-xs text-gray-500 leading-relaxed space-y-2 list-disc list-inside">
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Chevron deference' : 'Chevron itibarı'}:</strong>{' '}
+                  {isEnglish
+                    ? 'Applies when Congress has delegated authority to an agency and the agency\'s interpretation is reasonable. Courts defer unless the statute is unambiguous.'
+                    : 'Kongre bir kuruma yetki devrettiğinde ve kurumun yorumu makul olduğunda uygulanır. Kanun açık olmadıkça mahkemeler kurumun yorumuna itibar eder.'}
+                </li>
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Skidmore deference' : 'Skidmore itibarı'}:</strong>{' '}
+                  {isEnglish
+                    ? 'A lesser standard based on the persuasiveness of the agency\'s reasoning, consistency of its interpretation, and expertise demonstrated.'
+                    : 'Kurumun muhakemesinin ikna ediciliğine, yorum tutarlılığına ve ortaya koyduğu uzmanlığa dayanan daha düşük düzeyde bir itibar standardı.'}
+                </li>
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Non-binding guidance' : 'Bağlayıcı olmayan rehberlik'}:</strong>{' '}
+                  {isEnglish
+                    ? 'Agency materials such as internal manuals (e.g., IRM), FAQs, opinion letters, and informal guidance do not carry the force of law. Courts may consider them but are not bound by them.'
+                    : 'İç kılavuzlar (ör. IRM), SSS, görüş mektupları ve gayri resmi rehberlik gibi kurum materyalleri kanun gücü taşımaz. Mahkemeler bunları dikkate alabilir ancak bunlarla bağlı değildir.'}
+                </li>
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Application on this platform' : 'Bu platformdaki uygulaması'}:</strong>{' '}
+                  {isEnglish
+                    ? 'EchoLegal labels content by authority level (statute, regulation, agency guidance, judicial interpretation). Courts may assign different weight to these sources than implied by their presentation order.'
+                    : 'EchoLegal içeriği otorite düzeyine göre etiketler (kanun, yönetmelik, kurum rehberliği, yargısal yorum). Mahkemeler bu kaynaklara sunum sırasının ima ettiğinden farklı ağırlık atayabilir.'}
+                </li>
+              </ul>
+              <p className="text-xs text-gray-400 mt-3 italic">
+                {isEnglish
+                  ? 'This framework is provided for contextual understanding and does not constitute legal advice regarding any specific matter.'
+                  : 'Bu çerçeve bağlamsal anlayış için sunulmaktadır ve herhangi bir spesifik konuda hukuki tavsiye teşkil etmez.'}
               </p>
             </div>
 
@@ -851,23 +926,34 @@ export default async function TaxGuidePage({
               </div>
             </section>
 
-            {/* Sections 8–9: Judicial Interpretation & Interpretive Notes */}
-            <JudicialInterpretation
+            {/* Sections 8–11: Judicial Interpretation Framework */}
+            <JudicialAuthoritySection
               lang={isEnglish ? 'en' : 'tr'}
-              entries={judicialEntries}
-              conflictNotes={conflictNotes}
-              resolves={resolves}
-              doesNotResolve={doesNotResolve}
-              sectionNumber="8"
-            />
+              id="judicial-authority"
+              title={{
+                en: 'Judicial Interpretation Framework',
+                tr: 'Yargısal Yorum Çerçevesi',
+              }}
+              version="v1.0"
+              lastReviewed="2026-02-19"
+              reviewStatus="foundational"
+            >
+              <JudicialInterpretation
+                lang={isEnglish ? 'en' : 'tr'}
+                entries={judicialEntries}
+                conflictNotes={conflictNotes}
+                resolves={resolves}
+                doesNotResolve={doesNotResolve}
+                sectionNumber="8"
+              />
 
-            {/* Sections 10–11: Conflict Precedence & Case Illustrations */}
-            <ConflictPrecedence
-              lang={isEnglish ? 'en' : 'tr'}
-              caseIllustrations={caseIllustrations}
-              unresolvedItems={unresolvedItems}
-              sectionNumber="10"
-            />
+              <ConflictPrecedence
+                lang={isEnglish ? 'en' : 'tr'}
+                caseIllustrations={caseIllustrations}
+                unresolvedItems={unresolvedItems}
+                sectionNumber="10"
+              />
+            </JudicialAuthoritySection>
 
             <PrimarySources sources={primarySources} lang={isEnglish ? 'en' : 'tr'} />
 
