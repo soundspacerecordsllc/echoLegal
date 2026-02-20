@@ -368,6 +368,49 @@ export default async function TaxGuidePage({
               </span>
             </div>
 
+            {/* Judicial Deference Framework */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-3">
+                {isEnglish ? 'Judicial Deference Framework' : 'Yargısal İtibar (Deference) Çerçevesi'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                {isEnglish
+                  ? 'Judicial deference describes the weight courts give to an administrative agency\'s interpretation of a statute or regulation it administers.'
+                  : 'Yargısal itibar (deference), mahkemelerin bir idari kurumun yönettiği kanun veya yönetmeliğe ilişkin yorumuna ne ölçüde ağırlık verdiğini ifade eder.'}
+              </p>
+              <ul className="text-xs text-gray-500 leading-relaxed space-y-2 list-disc list-inside">
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Chevron deference' : 'Chevron itibarı'}:</strong>{' '}
+                  {isEnglish
+                    ? 'Applies when Congress has delegated authority to an agency and the agency\'s interpretation is reasonable. Courts defer unless the statute is unambiguous.'
+                    : 'Kongre bir kuruma yetki devrettiğinde ve kurumun yorumu makul olduğunda uygulanır. Kanun açık olmadıkça mahkemeler kurumun yorumuna itibar eder.'}
+                </li>
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Skidmore deference' : 'Skidmore itibarı'}:</strong>{' '}
+                  {isEnglish
+                    ? 'A lesser standard based on the persuasiveness of the agency\'s reasoning, consistency of its interpretation, and expertise demonstrated.'
+                    : 'Kurumun muhakemesinin ikna ediciliğine, yorum tutarlılığına ve ortaya koyduğu uzmanlığa dayanan daha düşük düzeyde bir itibar standardı.'}
+                </li>
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Non-binding guidance' : 'Bağlayıcı olmayan rehberlik'}:</strong>{' '}
+                  {isEnglish
+                    ? 'Agency materials such as internal manuals (e.g., IRM), FAQs, opinion letters, and informal guidance do not carry the force of law. Courts may consider them but are not bound by them.'
+                    : 'İç kılavuzlar (ör. IRM), SSS, görüş mektupları ve gayri resmi rehberlik gibi kurum materyalleri kanun gücü taşımaz. Mahkemeler bunları dikkate alabilir ancak bunlarla bağlı değildir.'}
+                </li>
+                <li>
+                  <strong className="text-gray-600">{isEnglish ? 'Application on this platform' : 'Bu platformdaki uygulaması'}:</strong>{' '}
+                  {isEnglish
+                    ? 'EchoLegal labels content by authority level (statute, regulation, agency guidance, judicial interpretation). Courts may assign different weight to these sources than implied by their presentation order.'
+                    : 'EchoLegal içeriği otorite düzeyine göre etiketler (kanun, yönetmelik, kurum rehberliği, yargısal yorum). Mahkemeler bu kaynaklara sunum sırasının ima ettiğinden farklı ağırlık atayabilir.'}
+                </li>
+              </ul>
+              <p className="text-xs text-gray-400 mt-3 italic">
+                {isEnglish
+                  ? 'This framework is provided for contextual understanding and does not constitute legal advice regarding any specific matter.'
+                  : 'Bu çerçeve bağlamsal anlayış için sunulmaktadır ve herhangi bir spesifik konuda hukuki tavsiye teşkil etmez.'}
+              </p>
+            </div>
+
             {/* Table of Contents */}
             <nav className="bg-gray-50 rounded-lg p-6 mb-10">
               <h2 className="text-lg font-bold text-black mb-4">{isEnglish ? 'Table of Contents' : 'İçindekiler'}</h2>
