@@ -74,8 +74,8 @@ export default async function ContractorVsEmployeePage({
     title: isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
     alternativeHeadline: isEnglish ? 'Worker Classification — IRS Tests, ABC Test, and Compliance' : 'İşçi Sınıflandırması — IRS Testleri, ABC Testi ve Uyum',
     abstractText: isEnglish
-      ? 'The definitive guide to worker classification: understand the legal tests, avoid costly misclassification penalties, and structure your working relationships correctly.'
-      : 'İşçi statüsü belirleme rehberi: Hukuki testleri kavrayın, ağır yanlış sınıflandırma yaptırımlarından korunun ve çalışma ilişkilerinizi doğru kurun.',
+      ? 'A reference guide to worker classification: legal tests, compliance requirements, and structuring working relationships.'
+      : 'İşçi sınıflandırması referans rehberi: hukuki testler, uyum gereklilikleri ve çalışma ilişkilerinin yapılandırılması.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
     dateModified: PAGE_META.dateModified,
@@ -116,8 +116,8 @@ export default async function ContractorVsEmployeePage({
 
         <p className="text-xl text-gray-600 mb-6">
           {isEnglish
-            ? 'The definitive guide to worker classification: understand the legal tests, avoid costly misclassification penalties, and structure your working relationships correctly.'
-            : 'İşçi statüsü belirleme rehberi: Hukuki testleri kavrayın, ağır yanlış sınıflandırma yaptırımlarından korunun ve çalışma ilişkilerinizi doğru kurun.'}
+            ? 'A reference guide to worker classification: legal tests, compliance requirements, and structuring working relationships.'
+            : 'İşçi sınıflandırması referans rehberi: hukuki testler, uyum gereklilikleri ve çalışma ilişkilerinin yapılandırılması.'}
         </p>
 
         <InstitutionalBadge
@@ -132,8 +132,8 @@ export default async function ContractorVsEmployeePage({
           <h2 className="font-bold text-red-900 mb-2">{isEnglish ? 'Why This Matters' : 'Bu Neden Önemli'}</h2>
           <p className="text-red-800">
             {isEnglish
-              ? 'Misclassifying an employee as an independent contractor can result in back taxes, penalties of up to 40% of unpaid employment taxes, lawsuits for unpaid benefits, and even criminal prosecution. Both businesses hiring workers and individuals working as contractors need to understand these rules.'
-              : 'Bir işçiyi bağımsız yüklenici olarak hatalı sınıflandırmak ciddi sonuçlar doğurabilir: geriye dönük vergi borcu, ödenmemiş istihdam vergilerinin %40\'ına varan cezalar, hak talepleri davaları ve hatta cezai soruşturma. Bu kuralları hem işveren hem de yüklenici konumundaki kişilerin bilmesi zorunludur.'}
+              ? 'Misclassifying an employee as an independent contractor can result in back taxes, penalties calculated as a percentage of unpaid employment taxes [citation needed for current rates], lawsuits for unpaid benefits, and even criminal prosecution. Both businesses hiring workers and individuals working as contractors need to understand these rules.'
+              : 'Bir işçiyi bağımsız yüklenici olarak hatalı sınıflandırmak ciddi sonuçlar doğurabilir: geriye dönük vergi borcu, ödenmemiş istihdam vergilerinin belirli bir yüzdesine ulaşan cezalar [güncel oranlar için kaynak doğrulaması gereklidir], hak talepleri davaları ve hatta cezai soruşturma. Bu kuralları hem işveren hem de yüklenici konumundaki kişilerin bilmesi zorunludur.'}
           </p>
         </div>
 

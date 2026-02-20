@@ -31,8 +31,9 @@ export default function LanguageSwitcher({
     return (
       <Link
         href={`/${otherLang}${pathWithoutLocale}`}
-        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium border border-gray-300 rounded-full hover:border-black hover:bg-black hover:text-white transition-all ${className}`}
+        className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 min-h-[44px] min-w-[44px] text-sm font-medium border border-gray-300 rounded-full hover:border-black hover:bg-black hover:text-white transition-all ${className}`}
         title={otherLangData.label}
+        aria-label={currentLang === 'en' ? 'Switch language' : 'Dili değiştir'}
       >
         <span className="text-xs">{otherLangData.flag}</span>
         <span>{otherLang.toUpperCase()}</span>
@@ -48,12 +49,15 @@ export default function LanguageSwitcher({
           <Link
             key={lang.code}
             href={`/${lang.code}${pathWithoutLocale}`}
-            className={`inline-flex items-center gap-1 px-2 py-1 text-sm rounded transition-colors ${
+            className={`inline-flex items-center justify-center gap-1 px-2 py-1 min-h-[44px] min-w-[44px] text-sm rounded transition-colors ${
               isActive
                 ? 'bg-black text-white font-semibold'
                 : 'text-gray-600 hover:text-black hover:bg-gray-100'
             }`}
             aria-current={isActive ? 'true' : undefined}
+            aria-label={currentLang === lang.code
+              ? (lang.code === 'en' ? 'Current language: English' : 'Mevcut dil: Türkçe')
+              : (currentLang === 'en' ? 'Switch language' : 'Dili değiştir')}
           >
             <span className="text-xs">{lang.flag}</span>
             <span>{lang.code.toUpperCase()}</span>
