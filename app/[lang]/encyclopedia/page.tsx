@@ -1,26 +1,12 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
-
-/**
- * AUTHORITY_ORDER — explicit weight map for encyclopedia index listing.
- *
- * Ordering reflects institutional authority hierarchy:
- *   10–19  Federal / statutory-heavy (worker classification rooted in IRC, FLSA)
- *   20–29  Core doctrinal framework (contract doctrine, enforceability)
- *   30–39  Compliance / regulatory obligation (privacy statutes, reporting)
- *   40–49  Procedural guides (practitioner-oriented walkthrough)
- *
- * Unlisted slugs fall back to 999 and sort last.
- */
-const AUTHORITY_ORDER: Record<string, number> = {
-  'contractor-vs-employee': 10,   // Federal statutory classification (IRC § 530, FLSA, Darden)
-  'what-is-nda': 20,              // Contract doctrine (enforceability, trade-secret statutes)
-  'privacy-policy-guide': 30,     // Compliance / regulatory (GDPR, CCPA, KVKK)
-  'freelancer-legal-guide': 40,   // Procedural guide (cross-cutting practical orientation)
-}
-
-const FALLBACK_WEIGHT = 999
+import {
+  EncyclopediaAuthorityLevel,
+  sortByAuthority,
+  validateEncyclopediaEntries,
+} from '@/lib/encyclopedia-authority'
+import type { EncyclopediaIndexEntry } from '@/lib/encyclopedia-authority'
 
 export default async function EncyclopediaPage({
   params: { lang },
@@ -30,25 +16,7 @@ export default async function EncyclopediaPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
-  const articles = [
-    {
-      slug: 'what-is-nda',
-      title: isEnglish ? 'What is an NDA?' : 'Gizlilik Sözleşmesi (NDA) Nedir?',
-      description: isEnglish
-        ? 'Everything you need to know about Non-Disclosure Agreements.'
-        : 'Gizlilik sözleşmelerinin hukuki niteliği, kapsamı ve uygulamadaki yeri.',
-      readTime: '8 min',
-      available: true,
-    },
-    {
-      slug: 'freelancer-legal-guide',
-      title: isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışanlar İçin Hukuk Rehberi',
-      description: isEnglish
-        ? 'Essential legal knowledge for freelancers and independent contractors.'
-        : 'Serbest çalışanların ve bağımsız yüklenicilerin bilmesi gereken temel hukuki konular.',
-      readTime: '12 min',
-      available: true,
-    },
+  const articles: EncyclopediaIndexEntry[] = [
     {
       slug: 'contractor-vs-employee',
       title: isEnglish ? 'Contractor vs Employee' : 'Bağımsız Yüklenici mi, İşçi mi?',
@@ -57,6 +25,19 @@ export default async function EncyclopediaPage({
         : 'Temel farklar ve doğru sınıflandırmanın hukuki önemi.',
       readTime: '10 min',
       available: true,
+      authorityLevel: EncyclopediaAuthorityLevel.FEDERAL_STATUTORY,
+      canonicalId: 'ecl-enc-00003',
+    },
+    {
+      slug: 'what-is-nda',
+      title: isEnglish ? 'What is an NDA?' : 'Gizlilik Sözleşmesi (NDA) Nedir?',
+      description: isEnglish
+        ? 'Everything you need to know about Non-Disclosure Agreements.'
+        : 'Gizlilik sözleşmelerinin hukuki niteliği, kapsamı ve uygulamadaki yeri.',
+      readTime: '8 min',
+      available: true,
+      authorityLevel: EncyclopediaAuthorityLevel.DOCTRINAL_FRAMEWORK,
+      canonicalId: 'ecl-enc-00001',
     },
     {
       slug: 'privacy-policy-guide',
@@ -66,10 +47,31 @@ export default async function EncyclopediaPage({
         : 'GDPR, CCPA ve KVKK kapsamında yükümlülükleriniz.',
       readTime: '8 min',
       available: true,
+      authorityLevel: EncyclopediaAuthorityLevel.COMPLIANCE_REGULATORY,
+      canonicalId: 'ecl-enc-00004',
     },
-  ].sort((a, b) =>
-    (AUTHORITY_ORDER[a.slug] ?? FALLBACK_WEIGHT) - (AUTHORITY_ORDER[b.slug] ?? FALLBACK_WEIGHT)
-  )
+    {
+      slug: 'freelancer-legal-guide',
+      title: isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışanlar İçin Hukuk Rehberi',
+      description: isEnglish
+        ? 'Essential legal knowledge for freelancers and independent contractors.'
+        : 'Serbest çalışanların ve bağımsız yüklenicilerin bilmesi gereken temel hukuki konular.',
+      readTime: '12 min',
+      available: true,
+      authorityLevel: EncyclopediaAuthorityLevel.PROCEDURAL_GUIDE,
+      canonicalId: 'ecl-enc-00002',
+    },
+  ]
+
+  // Validate invariants — throws in dev, returns errors for build
+  const validation = validateEncyclopediaEntries(articles)
+  if (!validation.valid) {
+    throw new Error(
+      `Encyclopedia index build failed:\n${validation.errors.join('\n')}`
+    )
+  }
+
+  const sorted = sortByAuthority(articles)
 
   return (
     <div className="bg-white">
@@ -84,7 +86,7 @@ export default async function EncyclopediaPage({
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {articles.map((article) => (
+          {sorted.map((article) => (
             <div
               key={article.slug}
               className={`border rounded-lg p-6 ${article.available ? 'border-gray-200 hover:shadow-lg transition-shadow' : 'border-gray-100 bg-gray-50'}`}
