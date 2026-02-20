@@ -286,7 +286,7 @@ export default async function ContractsGuidePage({
             {/* Scope & Method */}
             <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
               <h3 className="text-sm font-semibold text-gray-700 mb-2">
-                {isEnglish ? 'Scope & Method' : 'Kapsam ve Yöntem'}
+                {isEnglish ? 'Scope & Method' : 'Kapsam ve Metodoloji'}
               </h3>
               <p className="text-xs text-gray-500 leading-relaxed">
                 {isEnglish

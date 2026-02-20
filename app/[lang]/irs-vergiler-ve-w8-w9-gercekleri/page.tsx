@@ -337,6 +337,18 @@ export default async function TaxGuidePage({
               </p>
             </div>
 
+            {/* Scope & Method */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                {isEnglish ? 'Scope & Method' : 'Kapsam ve Metodoloji'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry addresses federal tax forms and withholding obligations relevant to non-US persons receiving payments from US sources. It does not cover state-level tax obligations, individual tax return preparation, or jurisdiction-specific treaty analysis. Statutory and regulatory sources are presented as the normative framework; agency guidance and judicial interpretation are addressed in separate sections below.'
+                  : 'Bu madde, ABD kaynaklarından ödeme alan ABD dışı kişilerle ilgili federal vergi formlarını ve stopaj yükümlülüklerini ele almaktadır. Eyalet düzeyinde vergi yükümlülüklerini, bireysel vergi beyannamesi hazırlığını veya yetki alanına özgü anlaşma analizini kapsamamaktadır. Yasal ve düzenleyici kaynaklar normatif çerçeve olarak sunulmaktadır; kurum rehberliği ve yargısal yorum aşağıda ayrı bölümlerde ele alınmaktadır.'}
+              </p>
+            </div>
+
             {/* Table of Contents */}
             <nav className="bg-gray-50 rounded-lg p-6 mb-10">
               <h2 className="text-lg font-bold text-black mb-4">{isEnglish ? 'Table of Contents' : 'İçindekiler'}</h2>
@@ -851,18 +863,6 @@ export default async function TaxGuidePage({
                 </div>
               </div>
             </section>
-
-            {/* Scope Clarification */}
-            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
-              <h3 className="text-sm font-semibold text-gray-700 mb-2">
-                {isEnglish ? 'Scope of This Entry' : 'Bu Maddenin Kapsamı'}
-              </h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                {isEnglish
-                  ? 'This entry addresses federal tax forms and withholding obligations relevant to non-US persons receiving payments from US sources. It does not cover state-level tax obligations, individual tax return preparation, or jurisdiction-specific treaty analysis. Statutory and regulatory sources are presented as the normative framework; agency guidance and judicial interpretation are addressed in separate sections below.'
-                  : 'Bu madde, ABD kaynaklarından ödeme alan ABD dışı kişilerle ilgili federal vergi formlarını ve stopaj yükümlülüklerini ele almaktadır. Eyalet düzeyinde vergi yükümlülüklerini, bireysel vergi beyannamesi hazırlığını veya yetki alanına özgü anlaşma analizini kapsamamaktadır. Yasal ve düzenleyici kaynaklar normatif çerçeve olarak sunulmaktadır; kurum rehberliği ve yargısal yorum aşağıda ayrı bölümlerde ele alınmaktadır.'}
-              </p>
-            </div>
 
             {/* Sections 8–11: Judicial Interpretation Framework */}
             <JudicialAuthoritySection

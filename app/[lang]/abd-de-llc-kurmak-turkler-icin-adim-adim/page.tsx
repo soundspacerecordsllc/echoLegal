@@ -345,6 +345,18 @@ export default async function LLCGuidePage({
               </p>
             </div>
 
+            {/* Scope & Method */}
+            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
+              <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                {isEnglish ? 'Scope & Method' : 'Kapsam ve Metodoloji'}
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                {isEnglish
+                  ? 'This entry is structured according to a formal legal authority hierarchy. Binding sources (statutes and regulations) are presented separately from interpretive authorities (judicial decisions and agency interpretations). Ordering reflects relative legal force.'
+                  : 'Bu madde, resmi bir hukuki otorite hiyerarşisine göre yapılandırılmıştır. Bağlayıcı kaynaklar (kanunlar ve yönetmelikler), yorumlayıcı otoritelerden (yargı kararları ve kurum yorumları) ayrı olarak sunulmaktadır. Sıralama, göreli hukuki bağlayıcılığı yansıtmaktadır.'}
+              </p>
+            </div>
+
             {/* Table of Contents */}
             <nav className="bg-gray-50 rounded-lg p-6 mb-10">
               <h2 className="text-lg font-bold text-black mb-4">{isEnglish ? 'Table of Contents' : 'İçindekiler'}</h2>
@@ -851,18 +863,6 @@ export default async function LLCGuidePage({
                 <li>{isEnglish ? 'Federal immigration law (distinguishing entity formation from immigration status)' : 'Federal göçmenlik hukuku (tüzel kişilik kuruluşunun göçmenlik statüsünden ayrımı)'}</li>
               </ul>
             </section>
-
-            {/* Authority Transparency Note */}
-            <div className="border border-gray-200 rounded-lg px-5 py-4 mb-10">
-              <h3 className="text-sm font-semibold text-gray-700 mb-2">
-                {isEnglish ? 'Authority Structure' : 'Otorite Yapısı'}
-              </h3>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                {isEnglish
-                  ? 'This entry is structured according to a formal legal authority hierarchy. Binding sources (statutes and regulations) are presented separately from interpretive authorities (judicial decisions and agency interpretations). Ordering reflects relative legal force.'
-                  : 'Bu madde, resmi bir hukuki otorite hiyerarşisine göre yapılandırılmıştır. Bağlayıcı kaynaklar (kanunlar ve yönetmelikler), yorumlayıcı otoritelerden (yargı kararları ve kurum yorumları) ayrı olarak sunulmaktadır. Sıralama, göreli hukuki bağlayıcılığı yansıtmaktadır.'}
-              </p>
-            </div>
 
             {/* Sections 9–12: Judicial Interpretation Framework */}
             <JudicialAuthoritySection
