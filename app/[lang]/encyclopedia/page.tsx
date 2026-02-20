@@ -2,6 +2,26 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 
+/**
+ * AUTHORITY_ORDER — explicit weight map for encyclopedia index listing.
+ *
+ * Ordering reflects institutional authority hierarchy:
+ *   10–19  Federal / statutory-heavy (worker classification rooted in IRC, FLSA)
+ *   20–29  Core doctrinal framework (contract doctrine, enforceability)
+ *   30–39  Compliance / regulatory obligation (privacy statutes, reporting)
+ *   40–49  Procedural guides (practitioner-oriented walkthrough)
+ *
+ * Unlisted slugs fall back to 999 and sort last.
+ */
+const AUTHORITY_ORDER: Record<string, number> = {
+  'contractor-vs-employee': 10,   // Federal statutory classification (IRC § 530, FLSA, Darden)
+  'what-is-nda': 20,              // Contract doctrine (enforceability, trade-secret statutes)
+  'privacy-policy-guide': 30,     // Compliance / regulatory (GDPR, CCPA, KVKK)
+  'freelancer-legal-guide': 40,   // Procedural guide (cross-cutting practical orientation)
+}
+
+const FALLBACK_WEIGHT = 999
+
 export default async function EncyclopediaPage({
   params: { lang },
 }: {
@@ -47,7 +67,9 @@ export default async function EncyclopediaPage({
       readTime: '8 min',
       available: true,
     },
-  ]
+  ].sort((a, b) =>
+    (AUTHORITY_ORDER[a.slug] ?? FALLBACK_WEIGHT) - (AUTHORITY_ORDER[b.slug] ?? FALLBACK_WEIGHT)
+  )
 
   return (
     <div className="bg-white">
