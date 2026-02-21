@@ -14,11 +14,11 @@ type AuthorityLevel = 'primary_law' | 'regulation' | 'case_law' | 'official_guid
 
 const AUTHORITY_WEIGHTS: Record<AuthorityLevel, number> = {
   primary_law: 100,
-  regulation: 200,
-  case_law: 300,
-  official_guidance: 400,
-  secondary_analysis: 500,
-  template: 600,
+  regulation: 80,
+  case_law: 70,
+  official_guidance: 60,
+  secondary_analysis: 40,
+  template: 20,
 }
 
 const AUTHORITY_LABELS: Record<AuthorityLevel, { en: string; tr: string }> = {
@@ -136,11 +136,11 @@ export default function SiteSearch({ lang, variant = 'header', className = '' }:
       }
     })
 
-    // Sort by authority level, then title match, then alphabetical
+    // Sort by authority weight desc, then title match, then alphabetical
     allResults.sort((a, b) => {
       const weightA = AUTHORITY_WEIGHTS[a.authorityLevel]
       const weightB = AUTHORITY_WEIGHTS[b.authorityLevel]
-      if (weightA !== weightB) return weightA - weightB
+      if (weightA !== weightB) return weightB - weightA
       const aTitle = a.title.toLowerCase()
       const bTitle = b.title.toLowerCase()
       const aStartsWith = aTitle.startsWith(searchTerms[0])

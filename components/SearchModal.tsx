@@ -16,14 +16,14 @@ type SearchItem = {
   authorityLevel?: string
 }
 
-// Authority level weight map for deterministic ordering
+// Authority level weight map — higher = higher authority = listed first
 const AUTHORITY_WEIGHTS: Record<string, number> = {
   primary_law: 100,
-  regulation: 200,
-  case_law: 300,
-  official_guidance: 400,
-  secondary_analysis: 500,
-  template: 600,
+  regulation: 80,
+  case_law: 70,
+  official_guidance: 60,
+  secondary_analysis: 40,
+  template: 20,
 }
 
 const AUTHORITY_LABELS: Record<string, { en: string; tr: string }> = {
@@ -144,9 +144,9 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
     const filtered = scored
       .filter((s) => s.score > 0)
       .sort((a, b) => {
-        const weightA = AUTHORITY_WEIGHTS[getItemAuthorityLevel(a.item)] ?? 500
-        const weightB = AUTHORITY_WEIGHTS[getItemAuthorityLevel(b.item)] ?? 500
-        if (weightA !== weightB) return weightA - weightB
+        const weightA = AUTHORITY_WEIGHTS[getItemAuthorityLevel(a.item)] ?? 40
+        const weightB = AUTHORITY_WEIGHTS[getItemAuthorityLevel(b.item)] ?? 40
+        if (weightA !== weightB) return weightB - weightA
         if (a.score !== b.score) return b.score - a.score
         return a.item.id.localeCompare(b.item.id)
       })

@@ -29,14 +29,14 @@ export const SearchAuthorityLevel = {
 export type SearchAuthorityLevel =
   typeof SearchAuthorityLevel[keyof typeof SearchAuthorityLevel]
 
-/** Lower weight = higher authority = listed first. */
+/** Higher weight = higher authority = listed first (sort descending). */
 export const SEARCH_AUTHORITY_WEIGHT: Record<SearchAuthorityLevel, number> = {
   [SearchAuthorityLevel.PRIMARY_LAW]: 100,
-  [SearchAuthorityLevel.REGULATION]: 200,
-  [SearchAuthorityLevel.CASE_LAW]: 300,
-  [SearchAuthorityLevel.OFFICIAL_GUIDANCE]: 400,
-  [SearchAuthorityLevel.SECONDARY_ANALYSIS]: 500,
-  [SearchAuthorityLevel.TEMPLATE]: 600,
+  [SearchAuthorityLevel.REGULATION]: 80,
+  [SearchAuthorityLevel.CASE_LAW]: 70,
+  [SearchAuthorityLevel.OFFICIAL_GUIDANCE]: 60,
+  [SearchAuthorityLevel.SECONDARY_ANALYSIS]: 40,
+  [SearchAuthorityLevel.TEMPLATE]: 20,
 }
 
 /** Bilingual display label for authority level in search results. */
@@ -629,17 +629,48 @@ export function searchIndex(
     })
     .filter(({ score }) => score > 0)
     .sort((a, b) => {
-      // Primary: authority level weight (higher authority first)
+      // Primary: authority weight descending (higher weight = higher authority)
       const weightA = SEARCH_AUTHORITY_WEIGHT[a.item.authorityLevel]
       const weightB = SEARCH_AUTHORITY_WEIGHT[b.item.authorityLevel]
-      if (weightA !== weightB) return weightA - weightB
-      // Secondary: relevance score (higher first)
+      if (weightA !== weightB) return weightB - weightA
+      // Secondary: relevance score descending
       if (a.score !== b.score) return b.score - a.score
-      // Tertiary: deterministic id tiebreaker
-      return a.item.id.localeCompare(b.item.id)
+      // Tertiary: lastUpdated descending (newer first)
+      return b.item.updatedAt.localeCompare(a.item.updatedAt)
     })
 
   return scoredItems.slice(0, limit).map(({ item }) => item)
+}
+
+// ============================================
+// BUILD-TIME VALIDATION
+// ============================================
+
+const VALID_AUTHORITY_LEVELS = new Set(Object.values(SearchAuthorityLevel))
+
+/**
+ * Validate that every item in the search index has a valid authorityLevel.
+ * Throws in development; returns errors in production.
+ */
+export function validateSearchIndex(
+  items: SearchItem[]
+): { valid: boolean; errors: string[] } {
+  const errors: string[] = []
+  for (const item of items) {
+    if (!item.authorityLevel) {
+      errors.push(`Search item "${item.id}" is missing required authorityLevel`)
+    } else if (!VALID_AUTHORITY_LEVELS.has(item.authorityLevel)) {
+      errors.push(
+        `Search item "${item.id}" has invalid authorityLevel: "${item.authorityLevel}"`
+      )
+    }
+  }
+  if (errors.length > 0 && process.env.NODE_ENV === 'development') {
+    throw new Error(
+      `Search index validation failed:\n${errors.map((e) => `  - ${e}`).join('\n')}`
+    )
+  }
+  return { valid: errors.length === 0, errors }
 }
 
 // Get type label

@@ -871,14 +871,47 @@ function buildSearchIndex() {
   };
 }
 
+// Valid authority levels — must match SearchAuthorityLevel in lib/search-index.ts
+const VALID_AUTHORITY_LEVELS = new Set([
+  'primary_law',
+  'regulation',
+  'case_law',
+  'official_guidance',
+  'secondary_analysis',
+  'template',
+]);
+
+// Validate every item has a valid authorityLevel (fail build if not)
+function validateIndex(items) {
+  const errors = [];
+  for (const item of items) {
+    if (!item.authorityLevel) {
+      errors.push(`Item "${item.id}" is missing required authorityLevel`);
+    } else if (!VALID_AUTHORITY_LEVELS.has(item.authorityLevel)) {
+      errors.push(`Item "${item.id}" has invalid authorityLevel: "${item.authorityLevel}"`);
+    }
+  }
+  return errors;
+}
+
 // Write the index to public folder
 function writeIndex() {
   const index = buildSearchIndex();
+
+  // Enforce non-optional authorityLevel at build time
+  const errors = validateIndex(index.items);
+  if (errors.length > 0) {
+    console.error('Search index validation FAILED:');
+    errors.forEach((e) => console.error(`  - ${e}`));
+    process.exit(1);
+  }
+
   const outputPath = path.join(__dirname, '..', 'public', 'search-index.json');
 
   fs.writeFileSync(outputPath, JSON.stringify(index, null, 2));
   console.log(`Search index built successfully!`);
   console.log(`Total items: ${index.totalItems}`);
+  console.log(`All ${index.totalItems} items have valid authorityLevel.`);
   console.log(`Output: ${outputPath}`);
 }
 
