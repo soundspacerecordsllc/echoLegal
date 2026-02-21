@@ -13,6 +13,39 @@ type SearchItem = {
   category: string
   jurisdiction: string | null
   keywords: string[]
+  authorityLevel?: string
+}
+
+// Authority level weight map for deterministic ordering
+const AUTHORITY_WEIGHTS: Record<string, number> = {
+  primary_law: 100,
+  regulation: 200,
+  case_law: 300,
+  official_guidance: 400,
+  secondary_analysis: 500,
+  template: 600,
+}
+
+const AUTHORITY_LABELS: Record<string, { en: string; tr: string }> = {
+  primary_law: { en: 'Statute', tr: 'Kanun' },
+  regulation: { en: 'Regulation', tr: 'Düzenleme' },
+  case_law: { en: 'Case Law', tr: 'İçtihat' },
+  official_guidance: { en: 'Official Guidance', tr: 'Resmi Rehber' },
+  secondary_analysis: { en: 'Analysis', tr: 'Analiz' },
+  template: { en: 'Template', tr: 'Şablon' },
+}
+
+// Derive authority level from item category when not explicitly set
+function getItemAuthorityLevel(item: SearchItem): string {
+  if (item.authorityLevel) return item.authorityLevel
+  switch (item.category) {
+    case 'contract': return 'template'
+    case 'checklist': return 'template'
+    case 'consular': return 'official_guidance'
+    case 'cornerstone': return 'regulation'
+    case 'amerika': return 'official_guidance'
+    default: return 'secondary_analysis'
+  }
 }
 
 type SearchIndex = {
@@ -110,7 +143,13 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
 
     const filtered = scored
       .filter((s) => s.score > 0)
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => {
+        const weightA = AUTHORITY_WEIGHTS[getItemAuthorityLevel(a.item)] ?? 500
+        const weightB = AUTHORITY_WEIGHTS[getItemAuthorityLevel(b.item)] ?? 500
+        if (weightA !== weightB) return weightA - weightB
+        if (a.score !== b.score) return b.score - a.score
+        return a.item.id.localeCompare(b.item.id)
+      })
       .slice(0, 8)
       .map((s) => s.item)
 
@@ -244,6 +283,9 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
                         <span className="font-medium text-gray-900 truncate">
                           {isEnglish ? item.titleEn : item.titleTr}
                         </span>
+                        <span className="text-xs text-stone-400">
+                          {AUTHORITY_LABELS[getItemAuthorityLevel(item)]?.[isEnglish ? 'en' : 'tr'] ?? ''}
+                        </span>
                         <span className="inline-flex px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 rounded">
                           {getCategoryLabel(item.category)}
                         </span>
@@ -252,7 +294,7 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
                         {isEnglish ? item.descriptionEn : item.descriptionTr}
                       </p>
                     </div>
-                    <span className="text-[#C9A227] flex-shrink-0">→</span>
+                    <span className="text-stone-400 flex-shrink-0">→</span>
                   </div>
                 </Link>
               ))}

@@ -9,6 +9,56 @@ type SupportedLang = 'en' | 'tr'
 const getSupportedLang = (lang: LanguageCode): SupportedLang =>
   lang === 'tr' ? 'tr' : 'en'
 
+// ============================================
+// SEARCH AUTHORITY LEVEL HIERARCHY
+// ============================================
+
+/**
+ * Authority classification for search results.
+ * Determines deterministic ordering: higher authority = listed first.
+ */
+export const SearchAuthorityLevel = {
+  PRIMARY_LAW: 'primary_law',
+  REGULATION: 'regulation',
+  CASE_LAW: 'case_law',
+  OFFICIAL_GUIDANCE: 'official_guidance',
+  SECONDARY_ANALYSIS: 'secondary_analysis',
+  TEMPLATE: 'template',
+} as const
+
+export type SearchAuthorityLevel =
+  typeof SearchAuthorityLevel[keyof typeof SearchAuthorityLevel]
+
+/** Lower weight = higher authority = listed first. */
+export const SEARCH_AUTHORITY_WEIGHT: Record<SearchAuthorityLevel, number> = {
+  [SearchAuthorityLevel.PRIMARY_LAW]: 100,
+  [SearchAuthorityLevel.REGULATION]: 200,
+  [SearchAuthorityLevel.CASE_LAW]: 300,
+  [SearchAuthorityLevel.OFFICIAL_GUIDANCE]: 400,
+  [SearchAuthorityLevel.SECONDARY_ANALYSIS]: 500,
+  [SearchAuthorityLevel.TEMPLATE]: 600,
+}
+
+/** Bilingual display label for authority level in search results. */
+export function getAuthorityLabel(
+  level: SearchAuthorityLevel,
+  lang: 'en' | 'tr'
+): string {
+  const labels: Record<SearchAuthorityLevel, { en: string; tr: string }> = {
+    [SearchAuthorityLevel.PRIMARY_LAW]: { en: 'Statute', tr: 'Kanun' },
+    [SearchAuthorityLevel.REGULATION]: { en: 'Regulation', tr: 'Düzenleme' },
+    [SearchAuthorityLevel.CASE_LAW]: { en: 'Case Law', tr: 'İçtihat' },
+    [SearchAuthorityLevel.OFFICIAL_GUIDANCE]: { en: 'Official Guidance', tr: 'Resmi Rehber' },
+    [SearchAuthorityLevel.SECONDARY_ANALYSIS]: { en: 'Analysis', tr: 'Analiz' },
+    [SearchAuthorityLevel.TEMPLATE]: { en: 'Template', tr: 'Şablon' },
+  }
+  return labels[level][lang]
+}
+
+// ============================================
+// SEARCH ITEM TYPES
+// ============================================
+
 export type SearchItemType = 'template' | 'guide' | 'checklist' | 'kit' | 'page'
 
 export type SearchItem = {
@@ -21,6 +71,7 @@ export type SearchItem = {
   category: string
   tags: string[]
   updatedAt: string
+  authorityLevel: SearchAuthorityLevel
 }
 
 // Static guides index
@@ -36,6 +87,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Business',
     tags: ['llc', 'formation', 'business', 'delaware', 'wyoming'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-ds160-en',
@@ -47,6 +99,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Immigration',
     tags: ['visa', 'ds-160', 'immigration', 'application'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   {
     id: 'guide-w8w9-en',
@@ -58,6 +111,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['w8', 'w9', 'irs', 'tax', 'withholding'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-ein-en',
@@ -69,6 +123,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['ein', 'itin', 'ssn', 'tax', 'id'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-1099-en',
@@ -80,6 +135,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['1099', 'tax', 'reporting', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-bank-en',
@@ -91,6 +147,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Banking',
     tags: ['bank', 'account', 'mercury', 'relay', 'non-resident'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   {
     id: 'guide-payments-en',
@@ -102,6 +159,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Payments',
     tags: ['payments', 'stripe', 'paypal', 'wise', 'transfer'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   {
     id: 'guide-salestax-en',
@@ -113,6 +171,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['sales-tax', 'nexus', 'ecommerce', 'state-tax'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-llc-corp-en',
@@ -124,6 +183,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Business',
     tags: ['llc', 'corporation', 'c-corp', 's-corp', 'structure'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'guide-contracts-en',
@@ -135,6 +195,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Contracts',
     tags: ['contracts', 'legal', 'nda', 'agreement'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'guide-visa-paths-en',
@@ -146,6 +207,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Immigration',
     tags: ['visa', 'e2', 'l1', 'h1b', 'o1', 'immigration'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   // Turkish guides
   {
@@ -158,6 +220,7 @@ const guidesIndex: SearchItem[] = [
     category: 'İş',
     tags: ['llc', 'kuruluş', 'şirket', 'delaware', 'wyoming'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-ds160-tr',
@@ -169,6 +232,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Göçmenlik',
     tags: ['vize', 'ds-160', 'göçmenlik', 'başvuru'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   {
     id: 'guide-w8w9-tr',
@@ -180,6 +244,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['w8', 'w9', 'irs', 'vergi', 'stopaj'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-ein-tr',
@@ -191,6 +256,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['ein', 'itin', 'ssn', 'vergi', 'kimlik'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-1099-tr',
@@ -202,6 +268,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['1099', 'vergi', 'raporlama', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-bank-tr',
@@ -213,6 +280,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Bankacılık',
     tags: ['banka', 'hesap', 'mercury', 'relay', 'yabancı'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   {
     id: 'guide-payments-tr',
@@ -224,6 +292,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Ödemeler',
     tags: ['ödeme', 'stripe', 'paypal', 'wise', 'transfer'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
   {
     id: 'guide-salestax-tr',
@@ -235,6 +304,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['satış-vergisi', 'nexus', 'e-ticaret', 'eyalet-vergisi'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
   },
   {
     id: 'guide-llc-corp-tr',
@@ -246,6 +316,7 @@ const guidesIndex: SearchItem[] = [
     category: 'İş',
     tags: ['llc', 'corporation', 'c-corp', 's-corp', 'yapı'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'guide-contracts-tr',
@@ -257,6 +328,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Sözleşmeler',
     tags: ['sözleşme', 'hukuki', 'nda', 'anlaşma'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'guide-visa-paths-tr',
@@ -268,6 +340,7 @@ const guidesIndex: SearchItem[] = [
     category: 'Göçmenlik',
     tags: ['vize', 'e2', 'l1', 'h1b', 'o1', 'göçmenlik'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
   },
 ]
 
@@ -283,6 +356,7 @@ const checklistsIndex: SearchItem[] = [
     category: 'Business',
     tags: ['llc', 'formation', 'checklist', 'steps'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
   {
     id: 'checklist-bank-en',
@@ -294,6 +368,7 @@ const checklistsIndex: SearchItem[] = [
     category: 'Banking',
     tags: ['bank', 'account', 'checklist', 'documents'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
   {
     id: 'checklist-tax-en',
@@ -305,6 +380,7 @@ const checklistsIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['tax', 'documents', 'checklist', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
   {
     id: 'checklist-llc-tr',
@@ -316,6 +392,7 @@ const checklistsIndex: SearchItem[] = [
     category: 'İş',
     tags: ['llc', 'kuruluş', 'kontrol-listesi', 'adımlar'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
   {
     id: 'checklist-bank-tr',
@@ -327,6 +404,7 @@ const checklistsIndex: SearchItem[] = [
     category: 'Bankacılık',
     tags: ['banka', 'hesap', 'kontrol-listesi', 'belgeler'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
   {
     id: 'checklist-tax-tr',
@@ -338,6 +416,7 @@ const checklistsIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['vergi', 'belgeler', 'kontrol-listesi', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
 ]
 
@@ -353,6 +432,7 @@ const kitsIndex: SearchItem[] = [
     category: 'Legal Kits',
     tags: ['starter', 'bundle', 'essential', 'business'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
   {
     id: 'kit-starter-tr',
@@ -364,6 +444,7 @@ const kitsIndex: SearchItem[] = [
     category: 'Hukuki Kitler',
     tags: ['başlangıç', 'paket', 'temel', 'iş'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   },
 ]
 
@@ -379,6 +460,7 @@ const pagesIndex: SearchItem[] = [
     category: 'Library',
     tags: ['templates', 'library', 'documents'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'page-templates-tr',
@@ -390,6 +472,7 @@ const pagesIndex: SearchItem[] = [
     category: 'Kütüphane',
     tags: ['şablonlar', 'kütüphane', 'belgeler'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'page-amerika-en',
@@ -401,6 +484,7 @@ const pagesIndex: SearchItem[] = [
     category: 'Hub',
     tags: ['hub', 'immigration', 'business', 'usa'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'page-amerika-tr',
@@ -412,6 +496,7 @@ const pagesIndex: SearchItem[] = [
     category: 'Merkez',
     tags: ['merkez', 'göçmenlik', 'iş', 'abd'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'page-taxhub-en',
@@ -423,6 +508,7 @@ const pagesIndex: SearchItem[] = [
     category: 'Hub',
     tags: ['tax', 'ein', 'itin', 'ssn', 'hub'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
   {
     id: 'page-taxhub-tr',
@@ -434,6 +520,7 @@ const pagesIndex: SearchItem[] = [
     category: 'Merkez',
     tags: ['vergi', 'ein', 'itin', 'ssn', 'merkez'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
   },
 ]
 
@@ -452,6 +539,7 @@ function getTemplateSearchItems(): SearchItem[] {
     category: categoryLabels[template.category][getSupportedLang(template.lang)],
     tags: template.tags,
     updatedAt: template.updatedAt,
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
   }))
 }
 
@@ -471,7 +559,7 @@ export function getSearchIndexByLang(lang: 'en' | 'tr'): SearchItem[] {
   return getSearchIndex().filter((item) => item.lang === lang)
 }
 
-// Search function with language awareness
+// Search function with language awareness and authority-weighted ordering
 export function searchIndex(
   query: string,
   options: {
@@ -540,7 +628,16 @@ export function searchIndex(
       return { item, score }
     })
     .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => {
+      // Primary: authority level weight (higher authority first)
+      const weightA = SEARCH_AUTHORITY_WEIGHT[a.item.authorityLevel]
+      const weightB = SEARCH_AUTHORITY_WEIGHT[b.item.authorityLevel]
+      if (weightA !== weightB) return weightA - weightB
+      // Secondary: relevance score (higher first)
+      if (a.score !== b.score) return b.score - a.score
+      // Tertiary: deterministic id tiebreaker
+      return a.item.id.localeCompare(b.item.id)
+    })
 
   return scoredItems.slice(0, limit).map(({ item }) => item)
 }

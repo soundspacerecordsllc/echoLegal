@@ -7,6 +7,20 @@
 const fs = require('fs');
 const path = require('path');
 
+// Authority level defaults by content category
+const CATEGORY_AUTHORITY = {
+  contract: 'template',
+  article: 'secondary_analysis',
+  consular: 'official_guidance',
+  library: 'secondary_analysis',
+  checklist: 'template',
+  cornerstone: 'regulation',
+  governance: 'secondary_analysis',
+  legal: 'secondary_analysis',
+  page: 'secondary_analysis',
+  amerika: 'official_guidance',
+};
+
 // Content registry - manually maintained list of all searchable pages
 const searchableContent = {
   contracts: [
@@ -331,6 +345,7 @@ const searchableContent = {
       descriptionEn: 'Guide to US business contracts: types, key clauses, red flags, and international enforcement.',
       descriptionTr: 'ABD\'de ticari sözleşmelere ilişkin rehber: sözleşme türleri, kritik hükümler ve uluslararası tenfiz.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['contracts', 'sözleşmeler', 'NDA', 'service agreement', 'governing law', 'arbitration'],
     },
     {
@@ -340,6 +355,7 @@ const searchableContent = {
       descriptionEn: 'Comprehensive guide to forming a US LLC. State comparison, formation steps, Operating Agreement, EIN, and compliance.',
       descriptionTr: 'ABD\'de LLC kurulumuna ilişkin kapsamlı rehber. Eyalet karşılaştırması, kuruluş adımları ve uyum yükümlülükleri.',
       category: 'amerika',
+      authorityLevel: 'regulation',
       keywords: ['LLC', 'formation', 'kuruluş', 'Delaware', 'Wyoming', 'EIN', 'Operating Agreement'],
     },
     {
@@ -358,6 +374,7 @@ const searchableContent = {
       descriptionEn: 'US tax obligations for non-resident aliens. Substantial presence test, FATCA, FBAR, and US-Turkey tax treaty.',
       descriptionTr: 'Mukim olmayan yabancılar için ABD vergi yükümlülükleri. Substantial presence test, FATCA, FBAR ve vergi anlaşması.',
       category: 'amerika',
+      authorityLevel: 'regulation',
       keywords: ['IRS', 'tax', 'vergi', 'substantial presence', 'FATCA', 'FBAR', 'W-8', 'tax treaty'],
     },
     {
@@ -367,6 +384,7 @@ const searchableContent = {
       descriptionEn: 'Curated legal template and guide packages for US business and immigration.',
       descriptionTr: 'ABD iş ve göçmenlik için derlenmiş hukuki şablon ve rehber paketleri.',
       category: 'amerika',
+      authorityLevel: 'template',
       keywords: ['legal kits', 'templates', 'şablonlar', 'guides', 'rehber', 'contracts', 'business documents'],
     },
     {
@@ -376,6 +394,7 @@ const searchableContent = {
       descriptionEn: 'Compare LLC and Corporation structures. Tax implications, liability protection, and investor expectations.',
       descriptionTr: 'LLC ve Corporation yapılarının karşılaştırması. Vergisel sonuçlar, sorumluluk koruması ve yatırımcı beklentileri.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['LLC', 'corporation', 'C-Corp', 'S-Corp', 'business structure', 'iş yapısı', 'tax'],
     },
     {
@@ -385,6 +404,7 @@ const searchableContent = {
       descriptionEn: 'Why New York law is preferred for international commercial contracts. Choice of law considerations.',
       descriptionTr: 'Uluslararası ticari sözleşmelerde New York hukukunun neden tercih edildiği.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['New York law', 'choice of law', 'hukuk seçimi', 'commercial contracts', 'Delaware', 'governing law'],
     },
     {
@@ -394,6 +414,7 @@ const searchableContent = {
       descriptionEn: 'EchoLegal\'s scope, limitations, and what you can expect from this legal reference platform.',
       descriptionTr: 'EchoLegal\'ın kapsamı, sınırları ve bu platformdan neler bekleyebileceğiniz.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['platform scope', 'kapsam', 'limitations', 'sınırlar', 'legal reference', 'disclaimer'],
     },
     {
@@ -667,6 +688,11 @@ function buildSearchIndex() {
   const index = [];
   const timestamp = new Date().toISOString();
 
+  // Helper: resolve authority level (per-item override or category default)
+  function resolveAuthority(item) {
+    return item.authorityLevel || CATEGORY_AUTHORITY[item.category] || 'secondary_analysis';
+  }
+
   // Process contracts
   searchableContent.contracts.forEach((item) => {
     index.push({
@@ -679,6 +705,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: item.jurisdiction || null,
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -695,6 +722,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: item.jurisdiction || null,
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -711,6 +739,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: 'Turkey',
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -727,6 +756,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: 'US/Turkey',
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -743,6 +773,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: 'US',
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -759,6 +790,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: 'US/Turkey',
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -775,6 +807,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: item.jurisdiction,
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -791,6 +824,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: null,
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -807,6 +841,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: null,
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -823,6 +858,7 @@ function buildSearchIndex() {
       category: item.category,
       jurisdiction: null,
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });

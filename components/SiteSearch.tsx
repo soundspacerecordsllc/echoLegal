@@ -10,12 +10,33 @@ import {
   Template,
 } from '@/lib/templates-registry'
 
+type AuthorityLevel = 'primary_law' | 'regulation' | 'case_law' | 'official_guidance' | 'secondary_analysis' | 'template'
+
+const AUTHORITY_WEIGHTS: Record<AuthorityLevel, number> = {
+  primary_law: 100,
+  regulation: 200,
+  case_law: 300,
+  official_guidance: 400,
+  secondary_analysis: 500,
+  template: 600,
+}
+
+const AUTHORITY_LABELS: Record<AuthorityLevel, { en: string; tr: string }> = {
+  primary_law: { en: 'Statute', tr: 'Kanun' },
+  regulation: { en: 'Regulation', tr: 'Düzenleme' },
+  case_law: { en: 'Case Law', tr: 'İçtihat' },
+  official_guidance: { en: 'Official Guidance', tr: 'Resmi Rehber' },
+  secondary_analysis: { en: 'Analysis', tr: 'Analiz' },
+  template: { en: 'Template', tr: 'Şablon' },
+}
+
 type SearchResult = {
   title: string
   description: string
   href: string
   category: string
   type: 'template' | 'guide' | 'page'
+  authorityLevel: AuthorityLevel
 }
 
 type SiteSearchProps = {
@@ -27,38 +48,38 @@ type SiteSearchProps = {
 // Static search index for guides and pages
 const staticSearchIndex: Record<string, SearchResult[]> = {
   en: [
-    { title: 'LLC Formation Guide', description: 'Step-by-step guide to forming a US LLC', href: '/en/abd-de-llc-kurmak-turkler-icin-adim-adim', category: 'Guides', type: 'guide' },
-    { title: 'DS-160 Form Guide', description: 'Visa application instructions', href: '/en/ds-160-rehberi', category: 'Immigration', type: 'guide' },
-    { title: 'W-8BEN Guide', description: 'Tax forms for non-residents', href: '/en/irs-vergiler-ve-w8-w9-gercekleri', category: 'Tax', type: 'guide' },
-    { title: 'EIN vs ITIN vs SSN', description: 'Tax ID numbers explained', href: '/en/ein-itin-ssn-farki', category: 'Tax', type: 'guide' },
-    { title: '1099 Tax Documents', description: 'Understanding 1099 forms', href: '/en/1099-vergi-belgeleri', category: 'Tax', type: 'guide' },
-    { title: 'Tax & ID Hub', description: 'All tax and ID guides', href: '/en/vergi-kimlik-rehberi', category: 'Tax', type: 'page' },
-    { title: 'US Bank Account', description: 'Opening accounts as non-resident', href: '/en/abdde-banka-hesabi-acmak', category: 'Banking', type: 'guide' },
-    { title: 'Sales Tax & Nexus', description: 'E-commerce tax obligations', href: '/en/abd-satis-vergisi-rehberi', category: 'Tax', type: 'guide' },
-    { title: 'Payment Platforms', description: 'Stripe, PayPal, Wise guide', href: '/en/abd-odemeleri-alma-rehberi', category: 'Payments', type: 'guide' },
-    { title: 'LLC vs Corporation', description: 'Business structure comparison', href: '/en/llc-mi-corporation-mi', category: 'Business', type: 'guide' },
-    { title: 'Essential Contracts', description: 'Must-have legal documents', href: '/en/abdde-is-yapan-turkler-icin-sozlesmeler', category: 'Contracts', type: 'guide' },
-    { title: 'Visa Categories', description: 'US visa types explained', href: '/en/amerika/abdye-gelme-yollari', category: 'Immigration', type: 'guide' },
-    { title: 'Legal Starter Kit', description: 'Essential documents bundle', href: '/en/legal-kits/business-starter', category: 'Kits', type: 'page' },
-    { title: 'Templates Library', description: 'Browse all legal templates', href: '/en/templates', category: 'Library', type: 'page' },
-    { title: 'US Business Hub', description: 'All US business resources', href: '/en/amerika', category: 'Hub', type: 'page' },
+    { title: 'LLC Formation Guide', description: 'Step-by-step guide to forming a US LLC', href: '/en/abd-de-llc-kurmak-turkler-icin-adim-adim', category: 'Guides', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'DS-160 Form Guide', description: 'Visa application instructions', href: '/en/ds-160-rehberi', category: 'Immigration', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'W-8BEN Guide', description: 'Tax forms for non-residents', href: '/en/irs-vergiler-ve-w8-w9-gercekleri', category: 'Tax', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'EIN vs ITIN vs SSN', description: 'Tax ID numbers explained', href: '/en/ein-itin-ssn-farki', category: 'Tax', type: 'guide', authorityLevel: 'regulation' },
+    { title: '1099 Tax Documents', description: 'Understanding 1099 forms', href: '/en/1099-vergi-belgeleri', category: 'Tax', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'Tax & ID Hub', description: 'All tax and ID guides', href: '/en/vergi-kimlik-rehberi', category: 'Tax', type: 'page', authorityLevel: 'secondary_analysis' },
+    { title: 'US Bank Account', description: 'Opening accounts as non-resident', href: '/en/abdde-banka-hesabi-acmak', category: 'Banking', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'Sales Tax & Nexus', description: 'E-commerce tax obligations', href: '/en/abd-satis-vergisi-rehberi', category: 'Tax', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'Payment Platforms', description: 'Stripe, PayPal, Wise guide', href: '/en/abd-odemeleri-alma-rehberi', category: 'Payments', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'LLC vs Corporation', description: 'Business structure comparison', href: '/en/llc-mi-corporation-mi', category: 'Business', type: 'guide', authorityLevel: 'secondary_analysis' },
+    { title: 'Essential Contracts', description: 'Must-have legal documents', href: '/en/abdde-is-yapan-turkler-icin-sozlesmeler', category: 'Contracts', type: 'guide', authorityLevel: 'secondary_analysis' },
+    { title: 'Visa Categories', description: 'US visa types explained', href: '/en/amerika/abdye-gelme-yollari', category: 'Immigration', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'Legal Starter Kit', description: 'Essential documents bundle', href: '/en/legal-kits/business-starter', category: 'Kits', type: 'page', authorityLevel: 'template' },
+    { title: 'Templates Library', description: 'Browse all legal templates', href: '/en/templates', category: 'Library', type: 'page', authorityLevel: 'secondary_analysis' },
+    { title: 'US Business Hub', description: 'All US business resources', href: '/en/amerika', category: 'Hub', type: 'page', authorityLevel: 'secondary_analysis' },
   ],
   tr: [
-    { title: 'LLC Kurma Rehberi', description: 'ABD LLC kurma adım adım rehberi', href: '/tr/abd-de-llc-kurmak-turkler-icin-adim-adim', category: 'Rehberler', type: 'guide' },
-    { title: 'DS-160 Formu Rehberi', description: 'Vize başvurusu talimatları', href: '/tr/ds-160-rehberi', category: 'Göçmenlik', type: 'guide' },
-    { title: 'W-8BEN Rehberi', description: 'Yabancılar için vergi formları', href: '/tr/irs-vergiler-ve-w8-w9-gercekleri', category: 'Vergi', type: 'guide' },
-    { title: 'EIN, ITIN, SSN Farkları', description: 'Vergi kimlik numaraları', href: '/tr/ein-itin-ssn-farki', category: 'Vergi', type: 'guide' },
-    { title: '1099 Vergi Belgeleri', description: '1099 formlarını anlama', href: '/tr/1099-vergi-belgeleri', category: 'Vergi', type: 'guide' },
-    { title: 'Vergi ve Kimlik Rehberi', description: 'Tüm vergi ve kimlik rehberleri', href: '/tr/vergi-kimlik-rehberi', category: 'Vergi', type: 'page' },
-    { title: 'ABD Banka Hesabı', description: 'Yabancı olarak hesap açma', href: '/tr/abdde-banka-hesabi-acmak', category: 'Bankacılık', type: 'guide' },
-    { title: 'Satış Vergisi ve Nexus', description: 'E-ticaret vergi yükümlülükleri', href: '/tr/abd-satis-vergisi-rehberi', category: 'Vergi', type: 'guide' },
-    { title: 'Ödeme Platformları', description: 'Stripe, PayPal, Wise rehberi', href: '/tr/abd-odemeleri-alma-rehberi', category: 'Ödemeler', type: 'guide' },
-    { title: 'LLC mi Corporation mı', description: 'İş yapısı karşılaştırması', href: '/tr/llc-mi-corporation-mi', category: 'İş', type: 'guide' },
-    { title: 'Temel Sözleşmeler', description: 'Olmazsa olmaz hukuki belgeler', href: '/tr/abdde-is-yapan-turkler-icin-sozlesmeler', category: 'Sözleşmeler', type: 'guide' },
-    { title: 'Vize Kategorileri', description: 'ABD vize türleri açıklandı', href: '/tr/amerika/abdye-gelme-yollari', category: 'Göçmenlik', type: 'guide' },
-    { title: 'Legal Starter Kit', description: 'Temel belgeler paketi', href: '/tr/legal-kits/business-starter', category: 'Kitler', type: 'page' },
-    { title: 'Şablon Kütüphanesi', description: 'Tüm hukuki şablonlara göz atın', href: '/tr/templates', category: 'Kütüphane', type: 'page' },
-    { title: 'ABD İş Merkezi', description: 'Tüm ABD iş kaynakları', href: '/tr/amerika', category: 'Merkez', type: 'page' },
+    { title: 'LLC Kurma Rehberi', description: 'ABD LLC kurma adım adım rehberi', href: '/tr/abd-de-llc-kurmak-turkler-icin-adim-adim', category: 'Rehberler', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'DS-160 Formu Rehberi', description: 'Vize başvurusu talimatları', href: '/tr/ds-160-rehberi', category: 'Göçmenlik', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'W-8BEN Rehberi', description: 'Yabancılar için vergi formları', href: '/tr/irs-vergiler-ve-w8-w9-gercekleri', category: 'Vergi', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'EIN, ITIN, SSN Farkları', description: 'Vergi kimlik numaraları', href: '/tr/ein-itin-ssn-farki', category: 'Vergi', type: 'guide', authorityLevel: 'regulation' },
+    { title: '1099 Vergi Belgeleri', description: '1099 formlarını anlama', href: '/tr/1099-vergi-belgeleri', category: 'Vergi', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'Vergi ve Kimlik Rehberi', description: 'Tüm vergi ve kimlik rehberleri', href: '/tr/vergi-kimlik-rehberi', category: 'Vergi', type: 'page', authorityLevel: 'secondary_analysis' },
+    { title: 'ABD Banka Hesabı', description: 'Yabancı olarak hesap açma', href: '/tr/abdde-banka-hesabi-acmak', category: 'Bankacılık', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'Satış Vergisi ve Nexus', description: 'E-ticaret vergi yükümlülükleri', href: '/tr/abd-satis-vergisi-rehberi', category: 'Vergi', type: 'guide', authorityLevel: 'regulation' },
+    { title: 'Ödeme Platformları', description: 'Stripe, PayPal, Wise rehberi', href: '/tr/abd-odemeleri-alma-rehberi', category: 'Ödemeler', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'LLC mi Corporation mı', description: 'İş yapısı karşılaştırması', href: '/tr/llc-mi-corporation-mi', category: 'İş', type: 'guide', authorityLevel: 'secondary_analysis' },
+    { title: 'Temel Sözleşmeler', description: 'Olmazsa olmaz hukuki belgeler', href: '/tr/abdde-is-yapan-turkler-icin-sozlesmeler', category: 'Sözleşmeler', type: 'guide', authorityLevel: 'secondary_analysis' },
+    { title: 'Vize Kategorileri', description: 'ABD vize türleri açıklandı', href: '/tr/amerika/abdye-gelme-yollari', category: 'Göçmenlik', type: 'guide', authorityLevel: 'official_guidance' },
+    { title: 'Legal Starter Kit', description: 'Temel belgeler paketi', href: '/tr/legal-kits/business-starter', category: 'Kitler', type: 'page', authorityLevel: 'template' },
+    { title: 'Şablon Kütüphanesi', description: 'Tüm hukuki şablonlara göz atın', href: '/tr/templates', category: 'Kütüphane', type: 'page', authorityLevel: 'secondary_analysis' },
+    { title: 'ABD İş Merkezi', description: 'Tüm ABD iş kaynakları', href: '/tr/amerika', category: 'Merkez', type: 'page', authorityLevel: 'secondary_analysis' },
   ],
 }
 
@@ -70,6 +91,7 @@ function templateToSearchResult(template: Template, lang: 'en' | 'tr'): SearchRe
     href: `/${lang}/templates/${template.slug}`,
     category: categoryLabels[template.category][lang],
     type: 'template',
+    authorityLevel: 'template',
   }
 }
 
@@ -114,15 +136,18 @@ export default function SiteSearch({ lang, variant = 'header', className = '' }:
       }
     })
 
-    // Sort by relevance (title matches first)
+    // Sort by authority level, then title match, then alphabetical
     allResults.sort((a, b) => {
+      const weightA = AUTHORITY_WEIGHTS[a.authorityLevel]
+      const weightB = AUTHORITY_WEIGHTS[b.authorityLevel]
+      if (weightA !== weightB) return weightA - weightB
       const aTitle = a.title.toLowerCase()
       const bTitle = b.title.toLowerCase()
       const aStartsWith = aTitle.startsWith(searchTerms[0])
       const bStartsWith = bTitle.startsWith(searchTerms[0])
       if (aStartsWith && !bStartsWith) return -1
       if (!aStartsWith && bStartsWith) return 1
-      return 0
+      return aTitle.localeCompare(bTitle)
     })
 
     setResults(allResults.slice(0, 10))
@@ -244,9 +269,10 @@ export default function SiteSearch({ lang, variant = 'header', className = '' }:
                     <span className={`px-2 py-0.5 text-xs rounded ${badge.bg} ${badge.text}`}>
                       {badge.label}
                     </span>
+                    <span className="text-xs text-stone-400">{AUTHORITY_LABELS[result.authorityLevel]?.[lang] ?? ''}</span>
                     <span className="text-xs text-gray-400">{result.category}</span>
                   </div>
-                  <span className="font-medium text-sm text-black">{result.title}</span>
+                  <span className="font-medium text-sm text-ink">{result.title}</span>
                   <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{result.description}</p>
                 </button>
               )
@@ -324,9 +350,10 @@ export default function SiteSearch({ lang, variant = 'header', className = '' }:
                   <span className={`px-2 py-0.5 text-xs rounded ${badge.bg} ${badge.text}`}>
                     {badge.label}
                   </span>
+                  <span className="text-xs text-stone-400">{AUTHORITY_LABELS[result.authorityLevel]?.[lang] ?? ''}</span>
                   <span className="text-xs text-gray-400">{result.category}</span>
                 </div>
-                <span className="font-medium text-black">{result.title}</span>
+                <span className="font-medium text-ink">{result.title}</span>
                 <p className="text-sm text-gray-600 mt-1">{result.description}</p>
               </Link>
             )

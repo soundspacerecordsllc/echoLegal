@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-02-19T23:48:56.097Z",
+  "generated": "2026-02-21T23:26:07.356Z",
   "totalItems": 69,
   "items": [
     {
@@ -20,7 +20,8 @@
         "trade secret",
         "ticari sır"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "contract-service-agreement",
@@ -39,7 +40,8 @@
         "scope",
         "payment"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "contract-freelance-agreement",
@@ -57,7 +59,8 @@
         "contractor",
         "gig"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "contract-independent-contractor",
@@ -77,7 +80,8 @@
         "IRS",
         "misclassification"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "contract-influencer-agreement",
@@ -96,7 +100,8 @@
         "sosyal medya",
         "collaboration"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "contract-privacy-policy",
@@ -116,7 +121,8 @@
         "data protection",
         "veri koruma"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "contract-terms-of-service",
@@ -135,7 +141,8 @@
         "app",
         "uygulama"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "encyclopedia-common-misconceptions",
@@ -157,7 +164,8 @@
         "Delaware",
         "misconception"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "encyclopedia-what-is-nda",
@@ -177,7 +185,8 @@
         "types",
         "clauses"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "encyclopedia-contractor-vs-employee",
@@ -197,7 +206,8 @@
         "misclassification",
         "employment law"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "encyclopedia-freelancer-legal-guide",
@@ -216,7 +226,8 @@
         "intellectual property",
         "liability"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "encyclopedia-privacy-policy-guide",
@@ -236,7 +247,8 @@
         "data protection",
         "veri koruma"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-pasaport",
@@ -255,7 +267,8 @@
         "consulate",
         "konsolosluk"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-tc-kimlik",
@@ -274,7 +287,8 @@
         "nüfus",
         "population"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-vekaletname",
@@ -292,7 +306,8 @@
         "notary",
         "vekil"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-dogum-tescili",
@@ -312,7 +327,8 @@
         "bebek",
         "nüfus"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-evlilik-tescili",
@@ -331,7 +347,8 @@
         "registration",
         "tescil"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-olum-tescili",
@@ -349,7 +366,8 @@
         "registration",
         "tescil"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-nufus-kayit",
@@ -368,7 +386,8 @@
         "certificate",
         "belge"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "consular-belge-onay",
@@ -387,7 +406,8 @@
         "belge",
         "tasdik"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "library-hukuki-yanilgilar",
@@ -406,7 +426,8 @@
         "tax myths",
         "banking"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "library-irs-vergi-gercekleri",
@@ -427,7 +448,8 @@
         "withholding tax",
         "FATCA"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "library-llc-kurma-rehberi",
@@ -447,7 +469,8 @@
         "EIN",
         "state selection"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "library-llc-vize-yanilgisi",
@@ -468,7 +491,8 @@
         "work authorization",
         "visa myths"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "library-temel-sozlesmeler",
@@ -487,7 +511,8 @@
         "hizmet sözleşmesi",
         "business documents"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "checklist-bank-account-checklist",
@@ -506,7 +531,8 @@
         "Relay",
         "non-resident"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "checklist-irs-mektup-rehberi",
@@ -525,7 +551,8 @@
         "correspondence",
         "tax"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "checklist-llc-checklist",
@@ -544,7 +571,8 @@
         "EIN",
         "Articles of Organization"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "checklist-llc-kontrol-listesi",
@@ -563,7 +591,8 @@
         "registered agent",
         "EIN"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "checklist-tax-documents-checklist",
@@ -583,7 +612,8 @@
         "tax forms",
         "tax filing"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "checklist-w8-w9-karar-haritasi",
@@ -604,7 +634,8 @@
         "treaty benefits",
         "withholding"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-abd-ye-gelmeden-once",
@@ -622,7 +653,8 @@
         "business formation",
         "tax compliance"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-abdde-banka-hesabi",
@@ -642,7 +674,8 @@
         "non-resident",
         "Mercury"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-abdde-is-yapanlar-icin-sozlesmeler",
@@ -661,7 +694,8 @@
         "governing law",
         "arbitration"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-abdde-llc-kurmak",
@@ -681,7 +715,8 @@
         "EIN",
         "Operating Agreement"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-abdye-gelme-yollari",
@@ -702,7 +737,8 @@
         "O-1",
         "immigration"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-irs-vergi-gercekleri",
@@ -723,7 +759,8 @@
         "W-8",
         "tax treaty"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-legal-kitler",
@@ -743,7 +780,8 @@
         "contracts",
         "business documents"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-llc-mi-corp-mu",
@@ -763,7 +801,8 @@
         "iş yapısı",
         "tax"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-ny-law-neden-tercih-edilir",
@@ -782,7 +821,8 @@
         "Delaware",
         "governing law"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-platform-ne-yapar-ne-yapmaz",
@@ -801,7 +841,8 @@
         "legal reference",
         "disclaimer"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-statuden-statuye-gecis-gercekleri",
@@ -820,7 +861,8 @@
         "immigration",
         "göçmenlik"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "amerika-turist-vizesi-gercekleri",
@@ -839,7 +881,8 @@
         "visa denial",
         "immigrant intent"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "cornerstone-abd-llc-kurmak-prosedurel-mimari",
@@ -863,7 +906,8 @@
         "disregarded entity",
         "check-the-box"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "cornerstone-foreign-owned-single-member-llc-reporting",
@@ -887,7 +931,8 @@
         "ceza",
         "BOI"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "cornerstone-irs-vergiler-ve-w8-w9-gercekleri",
@@ -912,7 +957,8 @@
         "ITIN",
         "EIN"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-index",
@@ -930,7 +976,8 @@
         "misyon",
         "editorial standards"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-charter",
@@ -948,7 +995,8 @@
         "yönetişim",
         "editorial independence"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-citation-guide",
@@ -967,7 +1015,8 @@
         "academic",
         "reference"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-contributor-standards",
@@ -986,7 +1035,8 @@
         "bar verification",
         "editorial"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-corrections",
@@ -1005,7 +1055,8 @@
         "error reporting",
         "version history"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-editorial-board",
@@ -1023,7 +1074,8 @@
         "avukatlar",
         "legal review"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "about-editorial-policy",
@@ -1041,7 +1093,8 @@
         "source hierarchy",
         "attorney oversight"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "legal-cookies",
@@ -1059,7 +1112,8 @@
         "gizlilik",
         "analytics"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "legal-disclaimer",
@@ -1077,7 +1131,8 @@
         "sınırlamalar",
         "liability"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "legal-privacy",
@@ -1096,7 +1151,8 @@
         "user rights",
         "kullanıcı hakları"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "legal-terms",
@@ -1115,7 +1171,8 @@
         "website",
         "service"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-home",
@@ -1133,7 +1190,8 @@
         "legal",
         "hukuk"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-contracts",
@@ -1151,7 +1209,8 @@
         "şablonlar",
         "library"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-encyclopedia",
@@ -1169,7 +1228,8 @@
         "rehber",
         "articles"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-consular-documents",
@@ -1188,7 +1248,8 @@
         "checklist",
         "kontrol listesi"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-support",
@@ -1207,7 +1268,8 @@
         "FAQ",
         "contact"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-templates",
@@ -1227,7 +1289,8 @@
         "ücretsiz",
         "download"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-library",
@@ -1246,7 +1309,8 @@
         "guides",
         "rehberler"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-checklists",
@@ -1265,7 +1329,8 @@
         "LLC",
         "tax"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-amerika",
@@ -1284,7 +1349,8 @@
         "Türk girişimciler",
         "legal guide"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-contribute",
@@ -1303,7 +1369,8 @@
         "editorial",
         "submission"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-jurisdictions",
@@ -1322,7 +1389,8 @@
         "US",
         "Turkey"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     },
     {
       "id": "page-updates",
@@ -1342,7 +1410,8 @@
         "Congress",
         "Federal Register"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-21T23:26:07.356Z"
     }
   ]
 }

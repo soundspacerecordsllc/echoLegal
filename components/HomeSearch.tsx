@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { LanguageCode } from '@/lib/jurisdictions'
+import { getAuthorityLabel, type SearchAuthorityLevel } from '@/lib/search-index'
 
 type SearchResult = {
   id: string
@@ -12,6 +13,7 @@ type SearchResult = {
   category: string
   type: 'template' | 'guide' | 'checklist' | 'kit' | 'page'
   lang: LanguageCode
+  authorityLevel: SearchAuthorityLevel
 }
 
 type HomeSearchProps = {
@@ -173,6 +175,7 @@ export default function HomeSearch({ lang }: HomeSearchProps) {
                       <span className={`px-2 py-0.5 text-xs rounded font-medium ${badge.bg} ${badge.text}`}>
                         {badge.label}
                       </span>
+                      <span className="text-xs text-stone-400">{getAuthorityLabel(result.authorityLevel, lang)}</span>
                       <span className="text-xs text-gray-400">{result.category}</span>
                     </div>
                     <div className="font-medium text-gray-900">{result.title}</div>
