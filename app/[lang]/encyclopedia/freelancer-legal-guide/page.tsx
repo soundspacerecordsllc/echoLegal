@@ -8,6 +8,7 @@ import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
 
 const PAGE_META = {
   slug: 'freelancer-legal-guide',
@@ -590,6 +591,7 @@ export default async function FreelancerLegalGuidePage({
               <Link href={`/${lang}/encyclopedia/privacy-policy-guide`} className="text-[#C9A227] hover:underline text-sm">
                 {isEnglish ? 'Learn more in our Privacy Policy Guide →' : 'Gizlilik Politikası Rehberimizde daha fazla bilgi edinin →'}
               </Link>
+              <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="privacy-policy-guide" />
             </div>
           </div>
         </section>
@@ -798,16 +800,19 @@ export default async function FreelancerLegalGuidePage({
             <Link href={`/${lang}/encyclopedia/contractor-vs-employee`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Yüklenici mi Çalışan mı: Sınıflandırma Rehberi'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="contractor-vs-employee" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia/what-is-nda`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'What is an NDA?' : 'NDA Nedir?'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="what-is-nda" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia/privacy-policy-guide`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikasına İhtiyacım Var mı?'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="privacy-policy-guide" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia`} className="text-[#C9A227] hover:underline">

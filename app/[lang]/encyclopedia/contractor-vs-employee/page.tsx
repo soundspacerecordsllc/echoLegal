@@ -8,6 +8,7 @@ import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
 
 const PAGE_META = {
   slug: 'contractor-vs-employee',
@@ -801,6 +802,7 @@ export default async function ContractorVsEmployeePage({
             <Link href={`/${lang}/encyclopedia/freelancer-legal-guide`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="freelancer-legal-guide" />
           </li>
           <li>
             <Link href={`/${lang}/1099-vergi-belgeleri`} className="text-[#C9A227] hover:underline">
