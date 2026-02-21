@@ -9,6 +9,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'privacy-policy-guide',
@@ -683,6 +685,28 @@ export default async function PrivacyPolicyGuidePage({
             </div>
           </div>
         </section>
+
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Website and app operators collecting personal data',
+              'E-commerce businesses processing customer information',
+              'Organizations subject to GDPR, CCPA, or KVKK',
+            ],
+            risk: 'Non-compliance may result in regulatory fines (up to \u20AC20M under GDPR), enforcement actions, or private litigation.',
+            nextStep: 'Audit current data collection practices and verify your privacy policy reflects each applicable regulatory framework.',
+          } : {
+            affected: [
+              'Kişisel veri toplayan web sitesi ve uygulama işletmecileri',
+              'Müşteri bilgilerini işleyen e-ticaret işletmeleri',
+              'GDPR, CCPA veya KVKK\'ya tabi kuruluşlar',
+            ],
+            risk: 'Uyumsuzluk, düzenleyici para cezaları (GDPR kapsamında 20 milyon \u20AC\'ya kadar), yaptırım işlemleri veya bireysel davalarla sonuçlanabilir.',
+            nextStep: 'Mevcut veri toplama uygulamalarını denetleyin ve gizlilik politikanızın geçerli düzenleyici çerçeveleri yansıttığını doğrulayın.',
+          }}
+        />
 
         <PrimarySources sources={primarySources} lang={lang} />
 

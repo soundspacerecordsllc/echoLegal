@@ -10,6 +10,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'common-misconceptions',
@@ -309,6 +311,28 @@ export default async function CommonMisconceptionsPage({
               </Link>
             </div>
           </section>
+          <PracticalNextStep
+            lang={lang}
+            className="mb-8"
+            practical={isEnglish ? {
+              affected: [
+                'Individuals relying on informal legal assumptions',
+                'Small business owners without legal counsel',
+                'First-time founders',
+              ],
+              risk: 'Acting on common misconceptions may result in inadequate legal protection or unintended obligations.',
+              nextStep: 'Identify which assumptions apply to your situation and verify them against the applicable statutory or regulatory framework.',
+            } : {
+              affected: [
+                'Gayri resmi hukuki varsayımlara dayanan bireyler',
+                'Hukuki danışmanlık almayan küçük işletme sahipleri',
+                'İlk kez girişimciler',
+              ],
+              risk: 'Yaygın yanlış varsayımlara göre hareket etmek, yetersiz hukuki koruma veya istenmeyen yükümlülüklerle sonuçlanabilir.',
+              nextStep: 'Durumunuza uygulanan varsayımları belirleyin ve bunları geçerli yasal veya düzenleyici çerçeveye göre doğrulayın.',
+            }}
+          />
+
           <PrimarySources sources={primarySources} lang={lang} />
 
           {/* Cite This Entry */}

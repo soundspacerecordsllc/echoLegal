@@ -9,6 +9,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'freelancer-legal-guide',
@@ -775,6 +777,28 @@ export default async function FreelancerLegalGuidePage({
             ))}
           </div>
         </section>
+
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Freelancers and independent contractors',
+              'Sole proprietors',
+              'Clients engaging freelance talent',
+            ],
+            risk: 'Operating without written agreements may result in unpaid invoices, intellectual property disputes, or uninsured liability.',
+            nextStep: 'Establish a standard client engagement process that includes a written service agreement and clear payment terms.',
+          } : {
+            affected: [
+              'Serbest çalışanlar ve bağımsız yükleniciler',
+              'Şahıs işletmeleri',
+              'Serbest yetenek çalıştıran müşteriler',
+            ],
+            risk: 'Yazılı sözleşme olmadan çalışmak, ödenmemiş faturalar, fikri mülkiyet uyuşmazlıkları veya sigortasız sorumluluk riskine yol açabilir.',
+            nextStep: 'Yazılı hizmet sözleşmesi ve net ödeme koşulları içeren standart bir müşteri süreç prosedürü oluşturun.',
+          }}
+        />
 
         <PrimarySources sources={primarySources} lang={lang} />
 

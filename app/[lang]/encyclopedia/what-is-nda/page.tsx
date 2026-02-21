@@ -8,6 +8,8 @@ import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'what-is-nda',
@@ -325,6 +327,28 @@ export default async function WhatIsNDAPage({
             ))}
           </div>
         </section>
+
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Business owners sharing proprietary information',
+              'Employees and contractors under confidentiality obligations',
+              'Parties entering negotiations or partnerships',
+            ],
+            risk: 'An inadequately drafted NDA may fail to protect trade secrets or be deemed unenforceable due to overbreadth.',
+            nextStep: 'Review existing NDAs for clearly defined scope, reasonable duration, and enforceable remedy provisions.',
+          } : {
+            affected: [
+              'Tescilli bilgi paylaşan işletme sahipleri',
+              'Gizlilik yükümlülüğü altındaki çalışanlar ve yükleniciler',
+              'Müzakere veya ortaklık sürecine giren taraflar',
+            ],
+            risk: 'Yetersiz hazırlanmış bir NDA, ticari sırları koruyamayabilir veya aşırı geniş kapsamı nedeniyle uygulanamaz sayılabilir.',
+            nextStep: 'Mevcut NDA\'ları açıkça tanımlanmış kapsam, makul süre ve uygulanabilir çözüm hükümleri açısından gözden geçirin.',
+          }}
+        />
 
         <PrimarySources sources={primarySources} lang={lang} />
 

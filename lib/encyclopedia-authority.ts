@@ -81,6 +81,26 @@ export function formatJurisdictionScope(
 }
 
 // ============================================
+// PRACTICAL METADATA
+// ============================================
+
+/**
+ * Structured "Practical Implications" metadata for an encyclopedia entry.
+ * Rendered by <PracticalNextStep /> at the bottom of each article page.
+ *
+ * All string values must be pre-localized (pass the correct language
+ * variant when constructing the object).
+ */
+export type PracticalMetadata = {
+  /** Roles, entities, or persons affected by this topic. */
+  affected: string[]
+  /** The immediate legal or compliance risk if unaddressed. */
+  risk: string
+  /** The next concrete procedural step a reader should take. */
+  nextStep: string
+}
+
+// ============================================
 // ENCYCLOPEDIA INDEX ENTRY TYPE
 // ============================================
 
@@ -98,6 +118,7 @@ export type EncyclopediaIndexEntry = {
   authorityLevel: EncyclopediaAuthorityLevel
   canonicalId: string
   jurisdictionScope: JurisdictionCode[]
+  practical?: PracticalMetadata
 }
 
 // ============================================

@@ -9,6 +9,8 @@ import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
 import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'contractor-vs-employee',
@@ -777,6 +779,28 @@ export default async function ContractorVsEmployeePage({
               : 'Kongre tarafından çıkarılan federal yasalar (örn. Adil Çalışma Standartları Yasası, İç Gelir Kanunu) bağlayıcı hukuktur. Federal kurumların yasal yetki altında çıkardığı düzenlemeler (örn. 29 C.F.R. Part 795) geçerli biçimde yayımlandığında kanun hükmündedir. Yüksek Mahkeme içtihadı — Nationwide Mutual Insurance Co. v. Darden gibi — federal hukuk meseleleri üzerinde bağlayıcıdır. IRS form talimatları ve gelir kararları dahil kurum rehberlik materyalleri ikna edici niteliktedir ancak mahkemeler üzerinde bağlayıcılığı yoktur. Mahkemeler, söz konusu rehberliğin resmiyetine ve ikna ediciliğine bağlı olarak Chevron veya Skidmore gibi doktrinler kapsamında kurum yorumlarına farklı düzeylerde saygı gösterebilir.'}
           </p>
         </section>
+
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Businesses classifying workers',
+              'Independent contractors',
+              'HR and payroll departments',
+            ],
+            risk: 'Misclassification may result in back taxes, penalties under the FLSA, and liability for unpaid benefits.',
+            nextStep: 'Review current worker classifications against the IRS common-law test and applicable state standards.',
+          } : {
+            affected: [
+              'İşçi sınıflandırması yapan işletmeler',
+              'Bağımsız yükleniciler',
+              'İK ve bordro departmanları',
+            ],
+            risk: 'Yanlış sınıflandırma, geriye dönük vergi, FLSA kapsamında cezalar ve ödenmemiş sosyal haklara ilişkin sorumluluk doğurabilir.',
+            nextStep: 'Mevcut işçi sınıflandırmalarını IRS ortak hukuk testi ve ilgili eyalet standartlarına göre gözden geçirin.',
+          }}
+        />
 
         <PrimarySources sources={primarySources} lang={lang} />
 
