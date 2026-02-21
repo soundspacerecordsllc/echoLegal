@@ -30,6 +30,16 @@ module.exports = {
         '18': '4.5rem',
         '22': '5.5rem',
       },
+      colors: {
+        // Institutional law-tone palette
+        surface: '#FAF9F7',   // warm paper background
+        ink: '#1C1917',       // charcoal primary text
+        muted: '#57534E',     // warm gray secondary text
+        accent: {
+          DEFAULT: '#6B2B3A', // deep burgundy — links and underlines only
+          hover: '#7A3040',   // slightly lighter for hover states
+        },
+      },
     },
   },
   plugins: [],
