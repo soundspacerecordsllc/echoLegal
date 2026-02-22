@@ -114,4 +114,26 @@
   .arrow-link {
     @apply text-sm font-medium text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1 underline underline-offset-4 decoration-stone-300 hover:decoration-accent;
   }
+
+  /* Encyclopedia entry body — full-size text for substantive reading */
+  .entry-body {
+    @apply text-base text-ink leading-relaxed;
+  }
+  .entry-body p {
+    @apply mb-4;
+  }
+  .entry-body ul, .entry-body ol {
+    @apply mb-4 pl-5;
+  }
+  .entry-body li {
+    @apply mb-2 leading-relaxed;
+  }
+
+  /* Encyclopedia entry section spacing — consistent rhythm */
+  .entry-body h2 {
+    @apply font-serif text-2xl font-semibold text-ink mt-14 mb-6;
+  }
+  .entry-body h3 {
+    @apply font-serif text-lg font-semibold text-ink mt-10 mb-4;
+  }
 }

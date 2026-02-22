@@ -36,8 +36,8 @@ module.exports = {
         ink: '#1C1917',       // charcoal primary text
         muted: '#57534E',     // warm gray secondary text
         accent: {
-          DEFAULT: '#5A1F2D', // restrained burgundy — links and underlines only
-          hover: '#4A1825',   // darkened on hover, not brightened
+          DEFAULT: '#2C4A3E', // deep institutional green — links and underlines only
+          hover: '#1E3A2E',   // darkened on hover, not brightened
         },
       },
     },
