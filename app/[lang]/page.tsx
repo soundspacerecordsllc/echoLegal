@@ -202,50 +202,6 @@ export default async function Home({
         </div>
       </section>
 
-      {/* 4. Editorial Methodology — Prominent, not buried */}
-      <section className="section-spacing border-b border-stone-200">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-6">
-            {isEnglish ? 'Editorial Methodology' : 'Editoryal Metodoloji'}
-          </h2>
-          <div className="space-y-4 text-ink leading-relaxed">
-            <p>
-              {isEnglish
-                ? 'Content is organized by authority hierarchy. Primary legal sources — statutes, regulations, official agency guidance, and judicial interpretation — are prioritized over secondary commentary, practitioner summaries, and editorial analysis. All material is maintained in a neutral, descriptive register.'
-                : 'İçerik otorite hiyerarşisine göre düzenlenmiştir. Birincil hukuk kaynakları — kanunlar, yönetmelikler, resmi kurum rehberliği ve yargısal yorum — ikincil yorumlar, uygulayıcı özetleri ve editoryal analizlerin önünde tutulur. Tüm materyal tarafsız, betimleyici bir dilde sürdürülmektedir.'}
-            </p>
-            <p>
-              {isEnglish
-                ? 'Templates, checklists, and procedural guides are reference tools and are clearly separated from binding legal sources. They do not constitute legal authority and are not substitutes for primary source analysis.'
-                : 'Şablonlar, kontrol listeleri ve prosedür rehberleri referans araçlarıdır ve bağlayıcı hukuk kaynaklarından açıkça ayrılmıştır. Hukuki otorite teşkil etmezler ve birincil kaynak analizinin yerini tutmazlar.'}
-            </p>
-            <p>
-              {isEnglish
-                ? 'All entries are versioned (version number and last-reviewed date), jurisdiction-tagged, and periodically reviewed. Citations to primary sources are provided where relevant.'
-                : 'Tüm maddeler sürümlenmiş (sürüm numarası ve son inceleme tarihi), yargı alanı etiketli ve düzenli olarak gözden geçirilmektedir. Birincil kaynaklara yapılan atıflar ilgili yerlerde verilmektedir.'}
-            </p>
-            <p>
-              {isEnglish
-                ? 'EchoLegal is authored by a New York-licensed attorney with dual legal education in Turkey and the United States. Content is reviewed for legal accuracy and maintained independently.'
-                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından yazılmaktadır. İçerik hukuki doğruluk açısından gözden geçirilmekte ve bağımsız olarak sürdürülmektedir.'}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Institutional Notice — Closing section */}
-      <section className="bg-stone-900 text-white py-12">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-3">
-            {isEnglish ? 'Legal Notice' : 'Hukuki Uyarı'}
-          </p>
-          <p className="text-sm text-stone-300 leading-relaxed max-w-2xl mx-auto">
-            {isEnglish
-              ? 'EchoLegal provides legal information for educational and reference purposes. This content does not constitute legal advice and does not create an attorney-client relationship. Laws vary by jurisdiction. Consult a licensed attorney for advice specific to your situation.'
-              : 'EchoLegal, eğitim ve referans amaçlı hukuki bilgiler sunar. Bu içerik hukuki tavsiye teşkil etmez ve avukat-müvekkil ilişkisi oluşturmaz. Yasalar yargı alanlarına göre farklılık gösterir. Durumunuza özel tavsiye için lisanslı bir avukata danışın.'}
-          </p>
-        </div>
-      </section>
     </div>
   )
 }
