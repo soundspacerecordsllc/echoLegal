@@ -89,130 +89,130 @@ export default async function LegalMisconceptionsPage({
     {
       id: 1,
       category: isEnglish ? 'LLC & Business' : 'LLC ve İş',
-      myth: isEnglish
+      claim: isEnglish
         ? '"Forming a US LLC will get me a visa or green card."'
         : '"ABD\'de LLC kurmak bana vize veya yeşil kart sağlar."',
-      reality: isEnglish
-        ? 'LLC formation and immigration are completely separate legal processes. An LLC is a business structure; it grants no immigration status whatsoever. Some visa categories (like E-2) require a business, but the business alone doesn\'t qualify you for the visa.'
-        : 'LLC kurulumu ve göçmenlik tamamen ayrı hukuki süreçlerdir. LLC bir iş yapısıdır; hiçbir göçmenlik statüsü sağlamaz. Bazı vize kategorileri (E-2 gibi) bir işletme gerektirir, ancak işletme tek başına sizi vizeye hak kazandırmaz.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'LLC formation and immigration are separate legal processes. An LLC is a business structure; it confers no immigration status. Certain visa categories (e.g., E-2) require a qualifying business, but the LLC itself does not make you eligible.'
+        : 'LLC kurulumu ve göçmenlik ayrı hukuki süreçlerdir. LLC bir iş yapısıdır; göçmenlik statüsü sağlamaz. E-2 gibi bazı vize kategorileri nitelikli bir işletme gerektirir, ancak LLC tek başına hak kazandırmaz.',
+      takeaway: isEnglish
         ? 'Business formation ≠ immigration benefit'
         : 'Şirket kurulumu ≠ göçmenlik avantajı',
     },
     {
       id: 2,
       category: isEnglish ? 'Taxes' : 'Vergiler',
-      myth: isEnglish
+      claim: isEnglish
         ? '"A Delaware LLC means I won\'t pay any taxes."'
         : '"Delaware LLC vergisiz demektir."',
-      reality: isEnglish
-        ? 'Delaware has no state income tax on out-of-state income, but this doesn\'t eliminate your tax obligations. You may still owe: (1) US federal taxes depending on your situation, (2) taxes in your country of residence, (3) state taxes if you have nexus in other states.'
-        : 'Delaware\'in eyalet dışı gelirler üzerinde eyalet gelir vergisi yoktur, ancak bu vergi yükümlülüklerinizi ortadan kaldırmaz. Yine de borçlu olabilirsiniz: (1) durumunuza bağlı olarak ABD federal vergileri, (2) ikamet ettiğiniz ülkede vergiler, (3) diğer eyaletlerde bağlantınız varsa eyalet vergileri.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'Delaware imposes no state income tax on out-of-state income, but that does not eliminate all tax obligations. Federal taxes may still apply, along with taxes in your country of residence and in any state where you have nexus.'
+        : 'Delaware eyalet dışı gelirler üzerinde gelir vergisi almaz, ancak bu tüm vergi yükümlülüklerini ortadan kaldırmaz. Federal vergiler, ikamet ettiğiniz ülkedeki vergiler ve bağlantınız olan eyaletlerdeki vergiler yine geçerli olabilir.',
+      takeaway: isEnglish
         ? 'No state tax ≠ no tax at all'
         : 'Eyalet vergisi yok ≠ hiç vergi yok',
     },
     {
       id: 3,
       category: isEnglish ? 'Banking' : 'Bankacılık',
-      myth: isEnglish
+      claim: isEnglish
         ? '"With my LLC, I can easily open any US bank account remotely."'
         : '"LLC\'mle kolayca uzaktan ABD banka hesabı açabilirim."',
-      reality: isEnglish
-        ? 'Many traditional US banks require in-person visits or have strict KYC requirements for non-residents. While some fintech companies and newer banks offer remote account opening for LLC owners, the process often involves additional documentation and verification.'
-        : 'Birçok geleneksel ABD bankası yüz yüze ziyaret gerektirir veya yerleşik olmayanlar için katı KYC gereksinimleri vardır. Bazı fintech şirketleri ve yeni bankalar LLC sahipleri için uzaktan hesap açma sunsa da, süreç genellikle ek dokümantasyon ve doğrulama içerir.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'Most traditional US banks require in-person verification or impose strict KYC requirements on non-residents. Some fintechs offer remote account opening, but the process typically involves additional documentation and longer timelines.'
+        : 'Geleneksel ABD bankalarının çoğu yüz yüze doğrulama gerektirir veya yerleşik olmayanlar için katı KYC kuralları uygular. Bazı fintek şirketleri uzaktan hesap açma sunar, ancak süreç genellikle ek belgeler ve daha uzun süreler içerir.',
+      takeaway: isEnglish
         ? 'LLC ownership ≠ guaranteed bank access'
         : 'LLC sahipliği ≠ garantili banka erişimi',
     },
     {
       id: 4,
       category: isEnglish ? 'Contracts' : 'Sözleşmeler',
-      myth: isEnglish
+      claim: isEnglish
         ? '"Online contract templates are just as good as lawyer-drafted ones."'
         : '"Çevrimiçi sözleşme şablonları avukat hazırladıkları kadar iyidir."',
-      reality: isEnglish
-        ? 'Templates provide a starting point and are useful for understanding common terms, but they cannot account for your specific situation, jurisdiction requirements, or business needs. Important contracts should be reviewed by an attorney who understands your circumstances.'
-        : 'Şablonlar bir başlangıç noktası sağlar ve yaygın terimleri anlamak için kullanışlıdır, ancak özel durumunuzu, yargı yetkisi gereksinimlerini veya iş ihtiyaçlarınızı hesaba katamazlar. Önemli sözleşmeler, koşullarınızı anlayan bir avukat tarafından incelenmelidir.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'Templates are a useful starting point for understanding standard terms, but they cannot address your specific circumstances, jurisdiction, or business needs. Significant contracts should be reviewed by counsel familiar with your situation.'
+        : 'Şablonlar standart terimleri anlamak için faydalı bir başlangıçtır, ancak özel koşullarınızı, yargı yetkisi gerekliliklerini veya iş ihtiyaçlarınızı karşılayamaz. Önemli sözleşmeler, durumunuzu bilen bir avukat tarafından incelenmelidir.',
+      takeaway: isEnglish
         ? 'Templates are educational, not personalized advice'
         : 'Şablonlar eğiticidir, kişiselleştirilmiş tavsiye değildir',
     },
     {
       id: 5,
       category: isEnglish ? 'LLC & Business' : 'LLC ve İş',
-      myth: isEnglish
+      claim: isEnglish
         ? '"An LLC completely protects me from all personal liability."'
         : '"LLC beni tüm kişisel sorumluluktan tamamen korur."',
-      reality: isEnglish
-        ? 'While LLCs provide limited liability protection, this protection can be "pierced" if you: (1) don\'t maintain proper separation between personal and business finances, (2) commit fraud, (3) personally guarantee debts, or (4) fail to follow corporate formalities.'
-        : 'LLC\'ler sınırlı sorumluluk koruması sağlasa da, bu koruma şu durumlarda "delinebilir": (1) kişisel ve işletme finansları arasında uygun ayrımı sürdürmezseniz, (2) dolandırıcılık yaparsanız, (3) borçları kişisel olarak garanti ederseniz veya (4) kurumsal formaliteleri takip etmezseniz.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'LLCs provide limited liability, but courts can pierce that protection if you commingle personal and business finances, commit fraud, personally guarantee debts, or neglect corporate formalities.'
+        : 'LLC\'ler sınırlı sorumluluk koruması sağlar, ancak kişisel ve işletme finanslarını karıştırırsanız, dolandırıcılık yaparsanız, borçları kişisel olarak garanti ederseniz veya kurumsal formaliteleri ihmal ederseniz bu koruma delinebilir.',
+      takeaway: isEnglish
         ? 'LLC protection has limits and requirements'
         : 'LLC korumasının sınırları ve gereksinimleri var',
     },
     {
       id: 6,
       category: isEnglish ? 'Taxes' : 'Vergiler',
-      myth: isEnglish
+      claim: isEnglish
         ? '"If I\'m outside the US, I don\'t need to worry about US taxes."'
         : '"ABD dışındaysam ABD vergileri hakkında endişelenmeme gerek yok."',
-      reality: isEnglish
-        ? 'If you own a US LLC or have US-source income, you may have US tax filing obligations regardless of where you live. This includes: (1) annual tax returns, (2) informational returns, (3) FBAR reporting if you have signature authority over US accounts.'
-        : 'Bir ABD LLC\'niz varsa veya ABD kaynaklı geliriniz varsa, nerede yaşadığınızdan bağımsız olarak ABD vergi beyannamesi yükümlülükleriniz olabilir. Bu şunları içerir: (1) yıllık vergi beyannameleri, (2) bilgi beyannameleri, (3) ABD hesapları üzerinde imza yetkiniz varsa FBAR bildirimi.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'Owning a US LLC or earning US-source income can create filing obligations regardless of where you live—including annual returns, informational filings, and FBAR reporting for accounts with US signature authority.'
+        : 'ABD LLC\'sine sahip olmak veya ABD kaynaklı gelir elde etmek, nerede yaşarsanız yaşayın beyanname yükümlülükleri oluşturabilir—yıllık beyannameler, bilgi formları ve ABD hesapları üzerindeki imza yetkisi için FBAR bildirimi dahil.',
+      takeaway: isEnglish
         ? 'US business = potential US tax obligations'
         : 'ABD işi = potansiyel ABD vergi yükümlülükleri',
     },
     {
       id: 7,
       category: isEnglish ? 'Payments' : 'Ödemeler',
-      myth: isEnglish
+      claim: isEnglish
         ? '"I can receive payments through any method without tax implications."'
         : '"Herhangi bir yöntemle vergi etkisi olmadan ödeme alabilirim."',
-      reality: isEnglish
-        ? 'Payment platforms often report to tax authorities. PayPal, Stripe, and similar services issue 1099-K forms for US-based accounts. Additionally, wire transfers and other payment methods create documentation that tax authorities can access.'
-        : 'Ödeme platformları genellikle vergi otoritelerine bildirimde bulunur. PayPal, Stripe ve benzeri hizmetler ABD merkezli hesaplar için 1099-K formları düzenler. Ayrıca banka havaleleri ve diğer ödeme yöntemleri vergi otoritelerinin erişebileceği belgeler oluşturur.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'Payment platforms routinely report to tax authorities. PayPal, Stripe, and similar services issue 1099-K forms for US-based accounts. Wire transfers and other methods also generate records accessible to regulators.'
+        : 'Ödeme platformları düzenli olarak vergi otoritelerine bildirimde bulunur. PayPal, Stripe ve benzeri hizmetler ABD merkezli hesaplar için 1099-K formları düzenler. Banka havaleleri ve diğer yöntemler de düzenleyicilerin erişebildiği kayıtlar oluşturur.',
+      takeaway: isEnglish
         ? 'Payment methods create tax documentation'
         : 'Ödeme yöntemleri vergi belgeleri oluşturur',
     },
     {
       id: 8,
       category: isEnglish ? 'LLC & Business' : 'LLC ve İş',
-      myth: isEnglish
+      claim: isEnglish
         ? '"I need a US LLC to work with US clients."'
         : '"ABD müşterileriyle çalışmak için ABD LLC\'ye ihtiyacım var."',
-      reality: isEnglish
-        ? 'You can often work with US clients as a foreign individual or through your foreign company. The decision to form a US LLC should be based on various factors: banking needs, payment processing, client requirements, and tax implications—not assumption.'
-        : 'Genellikle ABD müşterileriyle yabancı bir birey olarak veya yabancı şirketiniz aracılığıyla çalışabilirsiniz. ABD LLC kurma kararı çeşitli faktörlere dayanmalıdır: bankacılık ihtiyaçları, ödeme işleme, müşteri gereksinimleri ve vergi etkileri—varsayıma değil.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'You can often serve US clients as a foreign individual or through a foreign entity. The decision to form a US LLC should weigh banking needs, payment processing, client expectations, and tax implications—not default assumptions.'
+        : 'ABD müşterilerine yabancı bir birey olarak veya yabancı şirketiniz aracılığıyla hizmet verebilirsiniz. ABD LLC kurma kararı, bankacılık ihtiyaçları, ödeme işleme, müşteri beklentileri ve vergi etkilerine göre değerlendirilmeli—varsayımlara değil.',
+      takeaway: isEnglish
         ? 'LLC is optional, not required for US business'
         : 'LLC isteğe bağlıdır, ABD işi için zorunlu değildir',
     },
     {
       id: 9,
       category: isEnglish ? 'Contracts' : 'Sözleşmeler',
-      myth: isEnglish
+      claim: isEnglish
         ? '"Verbal agreements are just as enforceable as written contracts."'
         : '"Sözlü anlaşmalar yazılı sözleşmeler kadar uygulanabilir."',
-      reality: isEnglish
-        ? 'While some verbal agreements can be legally binding, many types of contracts must be in writing to be enforceable (Statute of Frauds). Even when verbal agreements are valid, proving their terms in court is extremely difficult without written documentation.'
-        : 'Bazı sözlü anlaşmalar yasal olarak bağlayıcı olabilse de, birçok sözleşme türünün uygulanabilir olması için yazılı olması gerekir (Dolandırıcılık Statüsü). Sözlü anlaşmalar geçerli olduğunda bile, yazılı belge olmadan koşullarını mahkemede kanıtlamak son derece zordur.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'Some verbal agreements are legally binding, but many contract types must be in writing to be enforceable under the Statute of Frauds. Even valid oral agreements are extremely difficult to prove in court without documentation.'
+        : 'Bazı sözlü anlaşmalar hukuken bağlayıcıdır, ancak birçok sözleşme türü Dolandırıcılık Statüsü uyarınca uygulanabilir olmak için yazılı olmalıdır. Geçerli sözlü anlaşmaların bile yazılı belge olmadan mahkemede ispatı son derece güçtür.',
+      takeaway: isEnglish
         ? 'Always get important agreements in writing'
         : 'Önemli anlaşmaları her zaman yazılı alın',
     },
     {
       id: 10,
       category: isEnglish ? 'LLC & Business' : 'LLC ve İş',
-      myth: isEnglish
+      claim: isEnglish
         ? '"All US states have the same LLC laws."'
         : '"Tüm ABD eyaletlerinin LLC yasaları aynıdır."',
-      reality: isEnglish
-        ? 'LLC laws vary significantly by state. Requirements for formation, annual reports, fees, taxation, and operating agreement provisions differ. What\'s required in Delaware may not be the same as Wyoming or your home state.'
-        : 'LLC yasaları eyalete göre önemli ölçüde farklılık gösterir. Kuruluş, yıllık raporlar, ücretler, vergilendirme ve işletme sözleşmesi hükümleri için gereksinimler farklıdır. Delaware\'de gerekli olan Wyoming veya kendi eyaletinizle aynı olmayabilir.',
-      keyPoint: isEnglish
+      correctedFraming: isEnglish
+        ? 'LLC laws vary significantly by state. Formation requirements, annual reports, fees, tax treatment, and operating agreement provisions all differ. What applies in Delaware may not apply in Wyoming or your home state.'
+        : 'LLC yasaları eyalete göre önemli ölçüde farklılık gösterir. Kuruluş gereksinimleri, yıllık raporlar, ücretler, vergi muamelesi ve işletme sözleşmesi hükümleri hep farklıdır. Delaware\'de geçerli olan Wyoming\'de veya kendi eyaletinizde geçerli olmayabilir.',
+      takeaway: isEnglish
         ? 'State laws differ—research your specific state'
         : 'Eyalet yasaları farklıdır—kendi eyaletinizi araştırın',
     },
@@ -235,19 +235,19 @@ export default async function LegalMisconceptionsPage({
 
         {/* Article Header */}
         <article>
-          <header className="mb-12">
-            <span className="inline-block px-3 py-1 bg-red-50 text-red-800 rounded-full text-sm font-medium mb-4">
+          <header className="mb-10">
+            <span className="text-sm tracking-wide uppercase text-gray-500 mb-4 block">
               {isEnglish ? 'Legal Truth Library' : 'Hukuki Gerçekler Kütüphanesi'}
             </span>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight">
               {pageTitle}
             </h1>
 
-            <p className="text-xl text-gray-600 leading-relaxed mb-6">
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
               {isEnglish
-                ? 'Facts vs. myths about doing business in the United States. These are common misunderstandings we see among international entrepreneurs.'
-                : 'ABD\'de iş yapma hakkında gerçekler ve mitler. Bunlar uluslararası girişimciler arasında gördüğümüz yaygın yanlış anlamalardır.'}
+                ? 'Common misunderstandings among international entrepreneurs about US business formation, taxes, banking, and contracts.'
+                : 'Uluslararası girişimcilerin ABD\'de şirket kurulumu, vergiler, bankacılık ve sözleşmeler hakkındaki yaygın yanlış anlamaları.'}
             </p>
 
             <InstitutionalBadge
@@ -256,35 +256,30 @@ export default async function LegalMisconceptionsPage({
               lastReviewedAt={PAGE_META.dateModified}
               className="mb-4"
             />
+
+            <p className="text-xs text-gray-500">
+              <span className="font-medium">{isEnglish ? 'General notice' : 'Genel uyarı'}</span>
+              {' — '}
+              {isEnglish
+                ? 'This guide is for educational purposes only and does not constitute legal, tax, or immigration advice. Consult a licensed professional for your situation.'
+                : 'Bu rehber yalnızca eğitim amaçlıdır; hukuki, vergi veya göçmenlik tavsiyesi teşkil etmez. Durumunuza özel olarak lisanslı bir profesyonele danışın.'}
+            </p>
           </header>
 
-          {/* Important Notice */}
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-10">
-            <p className="text-sm text-amber-900 leading-relaxed">
-              <strong>{isEnglish ? 'Note:' : 'Not:'}</strong>{' '}
-              {isEnglish
-                ? 'This guide provides general information for educational purposes. Laws change and individual circumstances vary. This is not legal, tax, or immigration advice. Consult licensed professionals for your specific situation.'
-                : 'Bu rehber eğitim amaçlı genel bilgi sağlar. Yasalar değişir ve bireysel durumlar farklılık gösterir. Bu hukuki, vergi veya göçmenlik tavsiyesi değildir. Özel durumunuz için lisanslı profesyonellere danışın.'}
-            </p>
-          </div>
-
-          {/* Quick Jump */}
-          <div className="bg-gray-50 rounded-lg p-6 mb-10">
-            <h2 className="font-bold text-black mb-4">
-              {isEnglish ? 'Categories' : 'Kategoriler'}
-            </h2>
+          {/* Category Navigation */}
+          <nav className="mb-10 pb-4 border-b border-gray-200">
             <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
                 <a
                   key={cat}
                   href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 hover:border-gray-400 transition-colors"
+                  className="px-3 py-1 text-sm text-gray-600 border border-gray-300 hover:border-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-1 focus:ring-gray-400"
                 >
                   {cat}
                 </a>
               ))}
             </div>
-          </div>
+          </nav>
 
           {/* Misconceptions by Category */}
           {categories.map((category) => (
@@ -296,38 +291,28 @@ export default async function LegalMisconceptionsPage({
               <div className="space-y-6">
                 {misconceptions.filter(m => m.category === category).map((item) => (
                   <div key={item.id} className="border border-gray-200 rounded-lg overflow-hidden">
-                    {/* Myth */}
-                    <div className="bg-red-50 border-b border-red-100 p-4">
-                      <div className="flex items-start gap-3">
-                        <span className="text-red-500 text-xl">✗</span>
-                        <div>
-                          <span className="text-xs font-semibold text-red-700 uppercase tracking-wider">
-                            {isEnglish ? 'Myth' : 'Yanılgı'}
-                          </span>
-                          <p className="text-red-900 font-medium mt-1">{item.myth}</p>
-                        </div>
-                      </div>
+                    {/* Claim */}
+                    <div className="px-6 py-4">
+                      <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                        {isEnglish ? 'Claim' : 'İddia'}
+                      </span>
+                      <p className="text-gray-900 font-medium mt-1">{item.claim}</p>
                     </div>
 
-                    {/* Reality */}
-                    <div className="bg-white p-4">
-                      <div className="flex items-start gap-3">
-                        <span className="text-green-500 text-xl">✓</span>
-                        <div>
-                          <span className="text-xs font-semibold text-green-700 uppercase tracking-wider">
-                            {isEnglish ? 'Reality' : 'Gerçek'}
-                          </span>
-                          <p className="text-gray-700 mt-1">{item.reality}</p>
-                        </div>
-                      </div>
+                    {/* Correct framing */}
+                    <div className="px-6 py-4 border-t border-gray-100">
+                      <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                        {isEnglish ? 'Correct framing' : 'Doğru çerçeve'}
+                      </span>
+                      <p className="text-gray-700 mt-1">{item.correctedFraming}</p>
                     </div>
 
-                    {/* Key Point */}
-                    <div className="bg-gray-50 px-4 py-3 border-t border-gray-100">
-                      <p className="text-sm">
-                        <span className="font-semibold text-gray-700">{isEnglish ? 'Key takeaway:' : 'Önemli çıkarım:'}</span>{' '}
-                        <span className="text-gray-600">{item.keyPoint}</span>
-                      </p>
+                    {/* Takeaway */}
+                    <div className="px-6 py-3 border-t border-gray-100">
+                      <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                        {isEnglish ? 'Takeaway' : 'Sonuç'}
+                      </span>
+                      <p className="text-sm text-gray-600 mt-1">{item.takeaway}</p>
                     </div>
                   </div>
                 ))}
@@ -341,10 +326,10 @@ export default async function LegalMisconceptionsPage({
               {isEnglish ? 'Key Principles to Remember' : 'Hatırlanması Gereken Temel İlkeler'}
             </h2>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <ul className="space-y-3 text-blue-900">
+            <div className="border border-gray-200 rounded-lg p-6">
+              <ol className="space-y-3 text-gray-700">
                 <li className="flex items-start gap-3">
-                  <span className="font-bold">1.</span>
+                  <span className="font-bold text-gray-400">1.</span>
                   <span>
                     {isEnglish
                       ? 'Business formation and immigration are separate processes.'
@@ -352,7 +337,7 @@ export default async function LegalMisconceptionsPage({
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="font-bold">2.</span>
+                  <span className="font-bold text-gray-400">2.</span>
                   <span>
                     {isEnglish
                       ? '"No state tax" doesn\'t mean "no tax."'
@@ -360,7 +345,7 @@ export default async function LegalMisconceptionsPage({
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="font-bold">3.</span>
+                  <span className="font-bold text-gray-400">3.</span>
                   <span>
                     {isEnglish
                       ? 'LLC protection has requirements and limitations.'
@@ -368,7 +353,7 @@ export default async function LegalMisconceptionsPage({
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="font-bold">4.</span>
+                  <span className="font-bold text-gray-400">4.</span>
                   <span>
                     {isEnglish
                       ? 'US business activity creates US obligations.'
@@ -376,7 +361,7 @@ export default async function LegalMisconceptionsPage({
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="font-bold">5.</span>
+                  <span className="font-bold text-gray-400">5.</span>
                   <span>
                     {isEnglish
                       ? 'Always document important agreements in writing.'
@@ -384,35 +369,33 @@ export default async function LegalMisconceptionsPage({
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="font-bold">6.</span>
+                  <span className="font-bold text-gray-400">6.</span>
                   <span>
                     {isEnglish
                       ? 'Consult professionals for your specific situation.'
                       : 'Özel durumunuz için profesyonellere danışın.'}
                   </span>
                 </li>
-              </ul>
+              </ol>
             </div>
           </section>
 
           {/* Product CTA */}
-          <div className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-xl p-8 mb-12">
-            <h2 className="text-2xl font-bold text-black mb-4 text-center">
+          <div className="border border-gray-200 rounded-lg p-8 mb-12">
+            <h2 className="text-xl font-bold text-black mb-3">
               {isEnglish ? 'Need Business Documents?' : 'İş Belgelerine İhtiyacınız Var mı?'}
             </h2>
-            <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
+            <p className="text-gray-600 mb-6 max-w-xl">
               {isEnglish
                 ? 'Our Business Starter Kit includes essential contracts for US business operations.'
                 : 'Business Starter Kit\'imiz ABD iş operasyonları için temel sözleşmeleri içerir.'}
             </p>
-            <div className="text-center">
-              <Link
-                href={`/${lang}/legal-kits/business-starter`}
-                className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
-              >
-                {isEnglish ? 'View Business Starter Kit →' : 'Business Starter Kit\'i Görüntüle →'}
-              </Link>
-            </div>
+            <Link
+              href={`/${lang}/legal-kits/business-starter`}
+              className="inline-block text-sm font-medium text-gray-900 border border-gray-300 px-6 py-3 hover:border-gray-600 transition-colors"
+            >
+              {isEnglish ? 'View Business Starter Kit →' : 'Business Starter Kit\'i Görüntüle →'}
+            </Link>
           </div>
 
           {/* Related Resources */}
