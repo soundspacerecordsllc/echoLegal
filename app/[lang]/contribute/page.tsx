@@ -13,12 +13,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const isEnglish = lang === 'en'
 
   const title = isEnglish
-    ? 'Contribute to EchoLegal | For Licensed Attorneys'
-    : 'EchoLegal\'a Katkıda Bulunun | Lisanslı Avukatlar İçin'
+    ? 'Contribute to EchoLegal | Contributor Framework'
+    : 'EchoLegal\'a Katkıda Bulunun | Katkıda Bulunan Çerçevesi'
 
   const description = isEnglish
-    ? 'EchoLegal accepts contributions from licensed attorneys for its public legal reference library. Review eligibility requirements, editorial standards, and submission guidelines.'
-    : 'EchoLegal, lisanslı avukatlardan kamu hukuk referans kütüphanesi için katkı kabul etmektedir. Uygunluk gereksinimleri, editöryal standartlar ve gönderim yönergeleri.'
+    ? 'Licensed attorneys may apply to contribute jurisdiction-specific entries to the EchoLegal encyclopedia system. Eligibility requirements, editorial standards, and submission procedures.'
+    : 'Lisanslı avukatlar, EchoLegal ansiklopedi sistemine yargı alanına özgü maddeler katkıda bulunmak üzere başvurabilir. Uygunluk gereksinimleri, editöryal standartlar ve sunum prosedürleri.'
 
   return {
     title,
@@ -102,8 +102,8 @@ export default async function ContributePage({
             </p>
             <p className="text-gray-800 leading-relaxed">
               {isEnglish
-                ? 'The platform currently covers US\u2013Turkey cross-border legal matters. Its architecture is designed to scale to additional jurisdictions and languages as qualified contributors are accepted.'
-                : 'Platform şu anda ABD-Türkiye sınır ötesi hukuki konuları kapsamaktadır. Altyapısı, nitelikli katkıda bulunanlar kabul edildikçe ek yargı alanlarına ve dillere ölçeklenebilir olarak tasarlanmıştır.'}
+                ? 'The encyclopedia currently covers US\u2013Turkey cross-border legal matters. Its architecture is designed to extend to additional jurisdictions and languages as qualified contributors are accepted.'
+                : 'Ansiklopedi şu anda ABD-Türkiye sınır ötesi hukuki konuları kapsamaktadır. Altyapısı, nitelikli katkıda bulunanlar kabul edildikçe ek yargı alanlarına ve dillere genişleyecek şekilde tasarlanmıştır.'}
             </p>
           </div>
         </section>
@@ -185,19 +185,19 @@ export default async function ContributePage({
               </h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? 'Professionally drafted templates with clause explanations. Must be jurisdiction-specific and linked to educational content.'
-                  : 'Madde açıklamalarıyla profesyonelce hazırlanmış şablonlar. Yargı alanına özgü ve eğitim içeriğiyle bağlantılı olmalıdır.'}
+                  ? 'Supplementary document templates with clause annotations. Must be jurisdiction-tagged and classified separately from primary legal sources.'
+                  : 'Madde açıklamalarıyla tamamlayıcı belge şablonları. Yargı alanı etiketli olmalı ve birincil hukuk kaynaklarından ayrı olarak sınıflandırılmalıdır.'}
               </p>
             </div>
 
             <div className="border-t border-gray-200 pt-5">
               <h3 className="font-semibold text-gray-900 mb-2">
-                {isEnglish ? 'Checklists & Guides' : 'Kontrol Listeleri ve Rehberler'}
+                {isEnglish ? 'Checklists & Procedural References' : 'Kontrol Listeleri ve Prosedürel Referanslar'}
               </h3>
               <p className="text-sm text-gray-600">
                 {isEnglish
-                  ? 'Practical step-by-step resources for compliance, procedures, and document preparation.'
-                  : 'Uyum, prosedürler ve belge hazırlama için pratik adım adım kaynaklar.'}
+                  ? 'Structured procedural references for compliance, filing requirements, and document preparation.'
+                  : 'Uyum, dosyalama gereksinimleri ve belge hazırlama için yapılandırılmış prosedürel referanslar.'}
               </p>
             </div>
 
@@ -394,8 +394,8 @@ export default async function ContributePage({
                 </h3>
                 <p className="text-sm text-gray-600 mt-1">
                   {isEnglish
-                    ? 'Submissions are reviewed for accuracy, tone, structural compliance, and alignment with platform standards.'
-                    : 'Gönderimler doğruluk, ton, yapısal uyum ve platform standartlarına uygunluk açısından incelenir.'}
+                    ? 'Submissions are reviewed for accuracy, tone, structural compliance, and alignment with editorial and classification standards. AuthorityLevel assignment, CanonicalId assignment, and jurisdiction tagging are verified.'
+                    : 'Gönderimler doğruluk, ton, yapısal uyum ve editöryal ile sınıflandırma standartlarına uygunluk açısından incelenir. AuthorityLevel ataması, CanonicalId ataması ve yargı alanı etiketlemesi doğrulanır.'}
                 </p>
               </div>
             </div>
@@ -410,8 +410,8 @@ export default async function ContributePage({
                 </h3>
                 <p className="text-sm text-gray-600 mt-1">
                   {isEnglish
-                    ? 'Accepted contributions are attributed by name and credentials. Published entries are intended for professional and academic reference.'
-                    : 'Kabul edilen katkılar isim ve kimlik bilgileriyle atfedilir. Yayınlanan girdiler profesyonel ve akademik referans için tasarlanmıştır.'}
+                    ? 'Accepted contributions carry named attribution with verified credentials and jurisdiction-specific contributor profile. Publication credit is recorded within the encyclopedia system with citation-ready structured references.'
+                    : 'Kabul edilen katkılar, doğrulanmış kimlik bilgileri ve yargı alanına özgü katkıda bulunan profili ile isimli atıf taşır. Yayın kredisi, atıfa hazır yapılandırılmış referanslarla ansiklopedi sistemi içinde kaydedilir.'}
                 </p>
               </div>
             </div>
@@ -425,8 +425,8 @@ export default async function ContributePage({
           </h2>
           <p className="text-gray-600 mb-6">
             {isEnglish
-              ? 'All EchoLegal content is currently reviewed under the editorial authority of:'
-              : 'Tüm EchoLegal içeriği şu anda aşağıdaki editöryal otorite altında incelenmektedir:'}
+              ? 'All content is currently reviewed under the following editorial authority. The founder\u2019s role is structural — governing classification standards, authority hierarchy, and editorial integrity — not promotional.'
+              : 'Tüm içerik şu anda aşağıdaki editöryal otorite altında incelenmektedir. Kurucunun rolü yapısaldır — sınıflandırma standartlarını, otorite hiyerarşisini ve editöryal bütünlüğü yönetir — tanıtım amaçlı değildir.'}
           </p>
           <PrimaryAuthorAttribution lang={lang} variant="full" />
         </section>
@@ -448,8 +448,8 @@ export default async function ContributePage({
         <section className="border-t border-gray-200 pt-10">
           <p className="text-gray-700 text-sm leading-relaxed mb-4">
             {isEnglish
-              ? 'All contributions are subject to editorial review prior to publication. Publication on EchoLegal reflects adherence to the platform\u2019s editorial and structural standards. It does not constitute an endorsement of the contributor, their practice, or any legal position expressed.'
-              : 'Tüm katkılar yayından önce editöryal incelemeye tabidir. EchoLegal\u2019da yayın, platformun editöryal ve yapısal standartlarına uyumu yansıtır. Katkıda bulunanın, uygulamasının veya ifade edilen herhangi bir hukuki pozisyonun onayını teşkil etmez.'}
+              ? 'All contributions are subject to editorial review prior to publication. Publication within the encyclopedia reflects adherence to editorial and classification standards. It does not constitute an endorsement of the contributor, their practice, or any legal position expressed.'
+              : 'Tüm katkılar yayından önce editöryal incelemeye tabidir. Ansiklopedi içindeki yayın, editöryal ve sınıflandırma standartlarına uyumu yansıtır. Katkıda bulunanın, uygulamasının veya ifade edilen herhangi bir hukuki pozisyonun onayını teşkil etmez.'}
           </p>
           <p className="text-gray-600 text-sm text-center">
             {isEnglish

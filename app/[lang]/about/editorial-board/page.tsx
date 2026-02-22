@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'Yayın Kurulu | EchoLegal'
 
   const description = isEnglish
-    ? 'The attorneys and legal professionals who review and maintain EchoLegal\'s content. Verification status, jurisdictional coverage, and editorial roles.'
-    : 'EchoLegal içeriğini inceleyen ve sürdüren avukatlar ve hukuk profesyonelleri. Doğrulama durumu, yargı alanı kapsamı ve editöryal roller.'
+    ? 'The editorial board holding final structural authority over EchoLegal content. Verification status, jurisdictional coverage, classification standards, and editorial roles.'
+    : 'EchoLegal içeriği üzerinde nihai yapısal otoriteye sahip yayın kurulu. Doğrulama durumu, yargı alanı kapsamı, sınıflandırma standartları ve editöryal roller.'
 
   return {
     title,
@@ -152,8 +152,8 @@ export default async function EditorialBoardPage({
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
           {isEnglish
-            ? 'The licensed attorneys and legal professionals responsible for the accuracy and integrity of EchoLegal\'s content.'
-            : 'EchoLegal içeriğinin doğruluğundan ve bütünlüğünden sorumlu lisanslı avukatlar ve hukuk profesyonelleri.'}
+            ? 'The editorial board holds final structural authority over all published content. Members are responsible for maintaining accuracy, jurisdictional integrity, and classification standards across the encyclopedia.'
+            : 'Yayın kurulu, tüm yayınlanan içerik üzerinde nihai yapısal otoriteye sahiptir. Üyeler, ansiklopedi genelinde doğruluk, yargı alanı bütünlüğü ve sınıflandırma standartlarının sürdürülmesinden sorumludur.'}
         </p>
       </div>
 
@@ -162,8 +162,8 @@ export default async function EditorialBoardPage({
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
           <p className="text-gray-700">
             {isEnglish
-              ? 'All substantive legal content on EchoLegal is reviewed by at least one licensed attorney before publication. The reviewing attorney verifies legal accuracy, ensures jurisdictional appropriateness, and confirms that required disclaimers are present. Review dates are displayed on every content page.'
-              : 'EchoLegal\'daki tüm esaslı hukuki içerik, yayınlanmadan önce en az bir lisanslı avukat tarafından incelenir. İnceleme avukatı hukuki doğruluğu doğrular, yargı alanı uygunluğunu sağlar ve gerekli feragatnamelerin mevcut olduğunu teyit eder. İnceleme tarihleri her içerik sayfasında gösterilir.'}
+              ? 'All substantive legal content is reviewed by at least one licensed attorney before publication. The reviewing attorney verifies legal accuracy, ensures jurisdictional appropriateness, and confirms that required disclaimers are present. The editorial board retains final authority over AuthorityLevel assignment, CanonicalId assignment, and jurisdiction tagging for all entries. Review dates are displayed on every content page.'
+              : 'Tüm esaslı hukuki içerik, yayınlanmadan önce en az bir lisanslı avukat tarafından incelenir. İnceleme avukatı hukuki doğruluğu doğrular, yargı alanı uygunluğunu sağlar ve gerekli feragatnamelerin mevcut olduğunu teyit eder. Yayın kurulu, tüm maddeler için AuthorityLevel ataması, CanonicalId ataması ve yargı alanı etiketlemesi üzerinde nihai otoriteyi elinde tutar. İnceleme tarihleri her içerik sayfasında gösterilir.'}
           </p>
         </div>
       </section>
@@ -199,13 +199,13 @@ export default async function EditorialBoardPage({
         </h2>
         <p className="text-gray-700 mb-2">
           {isEnglish
-            ? 'EchoLegal accepts contributions from licensed attorneys. Contributors receive public professional attribution on all published work and listing on this page.'
-            : 'EchoLegal, lisanslı avukatlardan katkıları kabul eder. Katkıda bulunanlar, yayınlanan tüm çalışmalarında kamuya açık profesyonel atıf ve bu sayfada listeleme alır.'}
+            ? 'Licensed attorneys may apply to contribute jurisdiction-specific entries subject to editorial review. Accepted contributors are attributed on published entries and listed on this page with verified credentials.'
+            : 'Lisanslı avukatlar, editöryal incelemeye tabi olarak yargı alanına özgü maddelere katkıda bulunmak üzere başvurabilir. Kabul edilen katkıda bulunanlar yayınlanan maddelerde atfedilir ve doğrulanmış kimlik bilgileriyle bu sayfada listelenir.'}
         </p>
         <p className="text-sm text-gray-500">
           {isEnglish
-            ? 'Review the Contributor Standards for eligibility requirements and application process.'
-            : 'Uygunluk gereksinimleri ve başvuru süreci için Katkıda Bulunan Standartlarını inceleyin.'}
+            ? 'Eligibility requirements and submission procedures are detailed in the Contributor Standards.'
+            : 'Uygunluk gereksinimleri ve sunum prosedürleri Katkıda Bulunan Standartlarında detaylandırılmıştır.'}
         </p>
       </section>
     </main>
