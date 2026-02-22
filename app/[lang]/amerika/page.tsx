@@ -69,9 +69,9 @@ export default async function AmerikaHubPage({
         <section className="mb-12">
           <div>
             <h2 className="text-lg font-bold text-gray-900 mb-4">
-              {isEnglish ? 'Scope' : 'Kapsanan Konular'}
+              {isEnglish ? 'Scope of Coverage' : 'Kapsanan Konular'}
             </h2>
-            <ul className="space-y-2 list-disc list-inside text-gray-700">
+            <ul className="space-y-2 list-disc list-outside pl-6 text-gray-700">
               {coveredTopics.map((topic, index) => (
                 <li key={index}>{topic}</li>
               ))}
