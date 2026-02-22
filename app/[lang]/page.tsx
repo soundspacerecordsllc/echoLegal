@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'EchoLegal — Çok Dilli Hukuk Ansiklopedisi'
 
   const description = isEnglish
-    ? 'A multilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Currently published in English and Turkish; designed for additional languages.'
-    : 'Profesyonelce hazırlanmış referans makaleleri, açıklamalar ve şablonlar içeren çok dilli hukuk ansiklopedisi. Netlik, doğruluk ve uzun vadeli kullanım için yapılandırılmıştır. Şu anda İngilizce ve Türkçe yayımlanmaktadır; yeni dillere ölçeklenecek şekilde tasarlanmıştır.'
+    ? 'A multilingual legal reference system comprising encyclopedia entries, jurisdiction-tagged document templates, and procedural references. Organized by authority hierarchy with version traceability. Published in English and Turkish.'
+    : 'Ansiklopedi maddeleri, yargı alanı etiketli belge şablonları ve prosedürel referanslar içeren çok dilli bir hukuk referans sistemi. Otorite hiyerarşisine göre düzenlenmiş, sürüm izlenebilirliğiyle sürdürülmektedir. İngilizce ve Türkçe yayımlanmaktadır.'
 
   return {
     title,
@@ -63,8 +63,8 @@ export default async function Home({
 
           <p className="text-lg text-muted leading-relaxed mb-4 max-w-2xl mx-auto">
             {isEnglish
-              ? 'A multilingual legal reference system containing encyclopedia entries, document templates, and jurisdictional guides. Content is organized by authority hierarchy and maintained with version traceability.'
-              : 'Ansiklopedi maddeleri, belge şablonları ve yargı alanı rehberlerini içeren çok dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre düzenlenmiş ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
+              ? 'A multilingual legal reference system comprising encyclopedia entries, supplementary document templates, and jurisdictional references. Content is classified by authority hierarchy, jurisdiction-tagged, and maintained with version traceability.'
+              : 'Ansiklopedi maddeleri, tamamlayıcı belge şablonları ve yargı alanı referanslarını kapsayan çok dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre sınıflandırılmış, yargı alanı etiketli ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
           </p>
 
           <p className="text-sm text-muted mb-10">
@@ -115,8 +115,8 @@ export default async function Home({
               </h3>
               <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
-                  ? 'Professionally drafted legal documents — contracts, agreements, and forms — with usage guidance.'
-                  : 'Profesyonelce hazırlanmış hukuki belgeler — sözleşmeler, anlaşmalar ve formlar — kullanım rehberiyle.'}
+                  ? 'Supplementary legal documents — contracts, agreements, and forms — jurisdiction-tagged and maintained separately from primary legal sources.'
+                  : 'Tamamlayıcı hukuki belgeler — sözleşmeler, anlaşmalar ve formlar — yargı alanı etiketli, birincil hukuk kaynaklarından ayrı olarak sürdürülmektedir.'}
               </p>
               <Link
                 href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
@@ -129,18 +129,18 @@ export default async function Home({
 
             <div className="flex flex-col">
               <h3 className="text-base font-semibold text-ink mb-2">
-                {isEnglish ? 'Guides' : 'Rehberler'}
+                {isEnglish ? 'Procedural References' : 'Prosedürel Referanslar'}
               </h3>
               <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
-                  ? 'Process-oriented explanations for navigating legal procedures and compliance matters.'
-                  : 'Hukuki prosedürler ve uyum konularında yol gösterici süreç odaklı açıklamalar.'}
+                  ? 'Procedural references covering legal processes, filing requirements, and jurisdictional compliance matters.'
+                  : 'Hukuki süreçleri, dosyalama gereksinimlerini ve yargı alanlarına özgü uyum konularını kapsayan prosedürel referanslar.'}
               </p>
               <Link
                 href={`/${lang}/library`}
                 className="arrow-link"
               >
-                {isEnglish ? 'Read guides' : 'Rehberleri oku'}
+                {isEnglish ? 'View references' : 'Referansları görüntüle'}
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
@@ -151,14 +151,14 @@ export default async function Home({
               </h3>
               <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
-                  ? 'Practical tools for document preparation, filing requirements, and procedural verification.'
-                  : 'Belge hazırlama, dosyalama gereksinimleri ve prosedür doğrulama için pratik araçlar.'}
+                  ? 'Structured verification lists for document preparation, filing requirements, and procedural compliance.'
+                  : 'Belge hazırlama, dosyalama gereksinimleri ve prosedürel uyum için yapılandırılmış doğrulama listeleri.'}
               </p>
               <Link
                 href={`/${lang}/checklists`}
                 className="arrow-link"
               >
-                {isEnglish ? 'Use checklists' : 'Kontrol listelerini kullan'}
+                {isEnglish ? 'View checklists' : 'Kontrol listelerini görüntüle'}
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
