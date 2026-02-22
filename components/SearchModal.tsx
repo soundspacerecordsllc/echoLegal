@@ -11,7 +11,7 @@ type SearchItem = {
   descriptionEn: string
   descriptionTr: string
   category: string
-  jurisdiction: string | null
+  jurisdiction: string
   keywords: string[]
   authorityLevel?: string
 }
@@ -33,6 +33,24 @@ const AUTHORITY_LABELS: Record<string, { en: string; tr: string }> = {
   official_guidance: { en: 'Official Guidance', tr: 'Resmi Rehber' },
   secondary_analysis: { en: 'Analysis', tr: 'Analiz' },
   template: { en: 'Template', tr: 'Şablon' },
+}
+
+// Jurisdiction weight map — higher = higher institutional priority
+const JURISDICTION_WEIGHTS: Record<string, number> = {
+  US: 50,
+  'US-NY': 45,
+  'US-DE': 45,
+  'US-WY': 45,
+  'US-CA': 45,
+  'US-TX': 45,
+  'US-FL': 45,
+  EU: 30,
+  TR: 25,
+  UK: 20,
+  DE: 20,
+  FR: 20,
+  INTL: 15,
+  GENERAL: 10,
 }
 
 // Derive authority level from item category when not explicitly set
@@ -144,9 +162,12 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
     const filtered = scored
       .filter((s) => s.score > 0)
       .sort((a, b) => {
-        const weightA = AUTHORITY_WEIGHTS[getItemAuthorityLevel(a.item)] ?? 40
-        const weightB = AUTHORITY_WEIGHTS[getItemAuthorityLevel(b.item)] ?? 40
-        if (weightA !== weightB) return weightB - weightA
+        const authA = AUTHORITY_WEIGHTS[getItemAuthorityLevel(a.item)] ?? 40
+        const authB = AUTHORITY_WEIGHTS[getItemAuthorityLevel(b.item)] ?? 40
+        if (authA !== authB) return authB - authA
+        const jurA = JURISDICTION_WEIGHTS[a.item.jurisdiction] ?? 10
+        const jurB = JURISDICTION_WEIGHTS[b.item.jurisdiction] ?? 10
+        if (jurA !== jurB) return jurB - jurA
         if (a.score !== b.score) return b.score - a.score
         return a.item.id.localeCompare(b.item.id)
       })
@@ -286,6 +307,9 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
                         <span className="text-xs text-stone-400">
                           {AUTHORITY_LABELS[getItemAuthorityLevel(item)]?.[isEnglish ? 'en' : 'tr'] ?? ''}
                         </span>
+                        {item.jurisdiction && item.jurisdiction !== 'GENERAL' && (
+                          <span className="text-xs text-stone-400">{item.jurisdiction}</span>
+                        )}
                         <span className="inline-flex px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 rounded">
                           {getCategoryLabel(item.category)}
                         </span>

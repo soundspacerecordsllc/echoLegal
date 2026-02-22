@@ -683,6 +683,35 @@ const searchableContent = {
   ],
 };
 
+// Jurisdiction normalization map (free-form → canonical JurisdictionCode)
+const JURISDICTION_NORMALIZE = {
+  'US': 'US',
+  'US Federal': 'US',
+  'US Federal / State': 'US',
+  'Turkey': 'TR',
+  'TR': 'TR',
+  'US/Turkey': 'US',
+  'US/Turkey/EU': 'US',
+  'EU': 'EU',
+  'GENERAL': 'GENERAL',
+  'General': 'GENERAL',
+  'INTL': 'INTL',
+};
+
+// Category-based jurisdiction defaults (when item has no jurisdiction)
+const CATEGORY_JURISDICTION = {
+  contract: 'US',
+  article: 'GENERAL',
+  consular: 'TR',
+  library: 'US',
+  checklist: 'US',
+  cornerstone: 'US',
+  governance: 'GENERAL',
+  legal: 'GENERAL',
+  page: 'GENERAL',
+  amerika: 'US',
+};
+
 // Build the search index
 function buildSearchIndex() {
   const index = [];
@@ -691,6 +720,15 @@ function buildSearchIndex() {
   // Helper: resolve authority level (per-item override or category default)
   function resolveAuthority(item) {
     return item.authorityLevel || CATEGORY_AUTHORITY[item.category] || 'secondary_analysis';
+  }
+
+  // Helper: resolve jurisdiction (normalize or fall back to category default)
+  function resolveJurisdiction(item, fallback) {
+    if (item.jurisdiction) {
+      return JURISDICTION_NORMALIZE[item.jurisdiction] || item.jurisdiction;
+    }
+    if (fallback) return fallback;
+    return CATEGORY_JURISDICTION[item.category] || 'GENERAL';
   }
 
   // Process contracts
@@ -703,7 +741,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: item.jurisdiction || null,
+      jurisdiction: resolveJurisdiction(item),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -720,7 +758,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: item.jurisdiction || null,
+      jurisdiction: resolveJurisdiction(item),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -737,7 +775,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'Turkey',
+      jurisdiction: resolveJurisdiction(item, 'TR'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -754,7 +792,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'US/Turkey',
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -771,7 +809,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'US',
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -788,7 +826,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'US/Turkey',
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -805,7 +843,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: item.jurisdiction,
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -822,7 +860,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: null,
+      jurisdiction: resolveJurisdiction(item, 'GENERAL'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -839,7 +877,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: null,
+      jurisdiction: resolveJurisdiction(item, 'GENERAL'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -856,7 +894,7 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: null,
+      jurisdiction: resolveJurisdiction(item, 'GENERAL'),
       keywords: item.keywords,
       authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
@@ -881,7 +919,13 @@ const VALID_AUTHORITY_LEVELS = new Set([
   'template',
 ]);
 
-// Validate every item has a valid authorityLevel (fail build if not)
+// Valid jurisdiction codes — must match JurisdictionCode in lib/jurisdictions.ts
+const VALID_JURISDICTION_CODES = new Set([
+  'US', 'TR', 'US-NY', 'US-DE', 'US-WY', 'US-CA', 'US-TX', 'US-FL',
+  'EU', 'UK', 'DE', 'FR', 'INTL', 'GENERAL',
+]);
+
+// Validate every item has valid authorityLevel and jurisdiction (fail build if not)
 function validateIndex(items) {
   const errors = [];
   for (const item of items) {
@@ -889,6 +933,11 @@ function validateIndex(items) {
       errors.push(`Item "${item.id}" is missing required authorityLevel`);
     } else if (!VALID_AUTHORITY_LEVELS.has(item.authorityLevel)) {
       errors.push(`Item "${item.id}" has invalid authorityLevel: "${item.authorityLevel}"`);
+    }
+    if (!item.jurisdiction) {
+      errors.push(`Item "${item.id}" is missing required jurisdiction`);
+    } else if (!VALID_JURISDICTION_CODES.has(item.jurisdiction)) {
+      errors.push(`Item "${item.id}" has invalid jurisdiction: "${item.jurisdiction}"`);
     }
   }
   return errors;
@@ -911,7 +960,7 @@ function writeIndex() {
   fs.writeFileSync(outputPath, JSON.stringify(index, null, 2));
   console.log(`Search index built successfully!`);
   console.log(`Total items: ${index.totalItems}`);
-  console.log(`All ${index.totalItems} items have valid authorityLevel.`);
+  console.log(`All ${index.totalItems} items have valid authorityLevel and jurisdiction.`);
   console.log(`Output: ${outputPath}`);
 }
 
