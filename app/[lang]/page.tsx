@@ -211,13 +211,18 @@ export default async function Home({
           <div className="space-y-4 text-ink leading-relaxed">
             <p>
               {isEnglish
-                ? 'Content is organized by authority hierarchy — statutes, regulations, official agency guidance, and judicial interpretation — and maintained in a neutral, descriptive register.'
-                : 'İçerik otorite hiyerarşisine göre düzenlenmiştir — kanunlar, yönetmelikler, resmi kurum rehberliği ve yargısal yorum — ve tarafsız, betimleyici bir dilde sürdürülmektedir.'}
+                ? 'Content is organized by authority hierarchy. Primary legal sources — statutes, regulations, official agency guidance, and judicial interpretation — are prioritized over secondary commentary, practitioner summaries, and editorial analysis. All material is maintained in a neutral, descriptive register.'
+                : 'İçerik otorite hiyerarşisine göre düzenlenmiştir. Birincil hukuk kaynakları — kanunlar, yönetmelikler, resmi kurum rehberliği ve yargısal yorum — ikincil yorumlar, uygulayıcı özetleri ve editoryal analizlerin önünde tutulur. Tüm materyal tarafsız, betimleyici bir dilde sürdürülmektedir.'}
             </p>
             <p>
               {isEnglish
-                ? 'Key entries carry version traceability (version number and last-reviewed date) and are periodically reviewed. Citations to primary sources are provided where relevant.'
-                : 'Ana maddeler sürüm izlenebilirliği (sürüm numarası ve son inceleme tarihi) taşır ve düzenli olarak gözden geçirilir. Birincil kaynaklara yapılan atıflar ilgili yerlerde verilmektedir.'}
+                ? 'Templates, checklists, and procedural guides are reference tools and are clearly separated from binding legal sources. They do not constitute legal authority and are not substitutes for primary source analysis.'
+                : 'Şablonlar, kontrol listeleri ve prosedür rehberleri referans araçlarıdır ve bağlayıcı hukuk kaynaklarından açıkça ayrılmıştır. Hukuki otorite teşkil etmezler ve birincil kaynak analizinin yerini tutmazlar.'}
+            </p>
+            <p>
+              {isEnglish
+                ? 'All entries are versioned (version number and last-reviewed date), jurisdiction-tagged, and periodically reviewed. Citations to primary sources are provided where relevant.'
+                : 'Tüm maddeler sürümlenmiş (sürüm numarası ve son inceleme tarihi), yargı alanı etiketli ve düzenli olarak gözden geçirilmektedir. Birincil kaynaklara yapılan atıflar ilgili yerlerde verilmektedir.'}
             </p>
             <p>
               {isEnglish
