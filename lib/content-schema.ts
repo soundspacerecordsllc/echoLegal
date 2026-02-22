@@ -655,6 +655,7 @@ export type PrimarySourceEntry = {
   authorityLevel: AuthorityLevel
   canonicalId: string
   jurisdiction: string
+  jurisdictionScope: JurisdictionCode
 }
 
 // ============================================

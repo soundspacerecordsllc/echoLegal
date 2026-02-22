@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-02-19T23:48:56.097Z",
+  "generated": "2026-02-22T00:55:07.382Z",
   "totalItems": 69,
   "items": [
     {
@@ -11,7 +11,7 @@
       "descriptionEn": "Protect confidential business information in partnerships and negotiations.",
       "descriptionTr": "Ortaklıklarda ve müzakerelerde gizli iş bilgilerini koruyun.",
       "category": "contract",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "nda",
         "confidentiality",
@@ -20,7 +20,8 @@
         "trade secret",
         "ticari sır"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "contract-service-agreement",
@@ -30,7 +31,7 @@
       "descriptionEn": "Professional contract for service providers and clients. Define scope, payment, and deliverables.",
       "descriptionTr": "Hizmet sağlayıcılar ve müşteriler için profesyonel sözleşme. Kapsam, ödeme ve teslimatları tanımlayın.",
       "category": "contract",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "service",
         "hizmet",
@@ -39,7 +40,8 @@
         "scope",
         "payment"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "contract-freelance-agreement",
@@ -49,7 +51,7 @@
       "descriptionEn": "Professional contract for freelancers and their clients.",
       "descriptionTr": "Serbest çalışanlar ve müşterileri için profesyonel sözleşme.",
       "category": "contract",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "freelance",
         "serbest",
@@ -57,7 +59,8 @@
         "contractor",
         "gig"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "contract-independent-contractor",
@@ -67,7 +70,7 @@
       "descriptionEn": "Establish clear terms for contractor relationships. Avoid misclassification issues.",
       "descriptionTr": "Yüklenici ilişkileri için net şartlar belirleyin. Yanlış sınıflandırma sorunlarından kaçının.",
       "category": "contract",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "contractor",
         "yüklenici",
@@ -77,7 +80,8 @@
         "IRS",
         "misclassification"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "contract-influencer-agreement",
@@ -87,7 +91,7 @@
       "descriptionEn": "Collaboration agreement between content creators and brands.",
       "descriptionTr": "İçerik üreticileri ve markalar arasında işbirliği sözleşmesi.",
       "category": "contract",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "influencer",
         "brand",
@@ -96,7 +100,8 @@
         "sosyal medya",
         "collaboration"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "contract-privacy-policy",
@@ -106,7 +111,7 @@
       "descriptionEn": "GDPR and CCPA compliant privacy policy for websites and apps.",
       "descriptionTr": "Web siteleri ve uygulamalar için KVKK uyumlu gizlilik politikası.",
       "category": "contract",
-      "jurisdiction": "US/Turkey/EU",
+      "jurisdiction": "US",
       "keywords": [
         "privacy",
         "gizlilik",
@@ -116,7 +121,8 @@
         "data protection",
         "veri koruma"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "contract-terms-of-service",
@@ -126,7 +132,7 @@
       "descriptionEn": "Terms and conditions for websites, apps, and online services.",
       "descriptionTr": "Web siteleri, uygulamalar ve online hizmetler için kullanım şartları.",
       "category": "contract",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "terms",
         "koşullar",
@@ -135,7 +141,8 @@
         "app",
         "uygulama"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "encyclopedia-common-misconceptions",
@@ -145,7 +152,7 @@
       "descriptionEn": "LLCs, immigration, taxes, and contracts—what people get wrong.",
       "descriptionTr": "LLC, göçmenlik, vergiler ve sözleşmeler hakkında yaygın yanlışlar.",
       "category": "article",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "LLC",
         "visa",
@@ -157,7 +164,8 @@
         "Delaware",
         "misconception"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "encyclopedia-what-is-nda",
@@ -167,7 +175,7 @@
       "descriptionEn": "Everything you need to know about Non-Disclosure Agreements.",
       "descriptionTr": "Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey.",
       "category": "article",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "nda",
         "confidentiality",
@@ -177,7 +185,8 @@
         "types",
         "clauses"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "encyclopedia-contractor-vs-employee",
@@ -187,7 +196,7 @@
       "descriptionEn": "The definitive guide to worker classification covering IRS tests, ABC test, economic reality test, and misclassification risks.",
       "descriptionTr": "İşçi statüsü belirleme rehberi: IRS testleri, ABC testi, ekonomik gerçeklik testi ve yanlış sınıflandırma riskleri.",
       "category": "article",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "contractor",
         "employee",
@@ -197,7 +206,8 @@
         "misclassification",
         "employment law"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "encyclopedia-freelancer-legal-guide",
@@ -207,7 +217,7 @@
       "descriptionEn": "Comprehensive legal guide for freelancers covering contracts, taxes, intellectual property, and liability protection.",
       "descriptionTr": "Serbest çalışanlar için sözleşmeler, vergiler, fikri mülkiyet ve sorumluluk koruması rehberi.",
       "category": "article",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "freelancer",
         "serbest çalışan",
@@ -216,7 +226,8 @@
         "intellectual property",
         "liability"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "encyclopedia-privacy-policy-guide",
@@ -226,7 +237,7 @@
       "descriptionEn": "Complete guide to privacy policy requirements under GDPR, CCPA, KVKK, and other data protection laws.",
       "descriptionTr": "GDPR, CCPA, KVKK ve diğer veri koruma yasaları kapsamında gizlilik politikası gereksinimlerinin tam rehberi.",
       "category": "article",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "privacy policy",
         "gizlilik politikası",
@@ -236,7 +247,8 @@
         "data protection",
         "veri koruma"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-pasaport",
@@ -246,7 +258,7 @@
       "descriptionEn": "New passport application, renewal, and lost passport procedures.",
       "descriptionTr": "Yeni pasaport başvurusu, yenileme ve kayıp pasaport işlemleri.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "passport",
         "pasaport",
@@ -255,7 +267,8 @@
         "consulate",
         "konsolosluk"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-tc-kimlik",
@@ -265,7 +278,7 @@
       "descriptionEn": "Turkish ID card application and renewal at consulates.",
       "descriptionTr": "Konsolosluklarda T.C. kimlik kartı başvurusu ve yenileme.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "kimlik",
         "ID",
@@ -274,7 +287,8 @@
         "nüfus",
         "population"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-vekaletname",
@@ -284,7 +298,7 @@
       "descriptionEn": "Notarized power of attorney for legal and financial matters in Turkey.",
       "descriptionTr": "Türkiye'deki hukuki ve mali işlemler için noter onaylı vekaletname.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "vekaletname",
         "power of attorney",
@@ -292,7 +306,8 @@
         "notary",
         "vekil"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-dogum-tescili",
@@ -302,7 +317,7 @@
       "descriptionEn": "Register a birth with Turkish authorities through the consulate.",
       "descriptionTr": "Konsolosluk aracılığıyla Türk makamlarına doğum kaydı.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "birth",
         "doğum",
@@ -312,7 +327,8 @@
         "bebek",
         "nüfus"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-evlilik-tescili",
@@ -322,7 +338,7 @@
       "descriptionEn": "Register your marriage with Turkish authorities.",
       "descriptionTr": "Evliliğinizi Türk makamlarına kaydetme.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "marriage",
         "evlilik",
@@ -331,7 +347,8 @@
         "registration",
         "tescil"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-olum-tescili",
@@ -341,7 +358,7 @@
       "descriptionEn": "Register a death with Turkish authorities.",
       "descriptionTr": "Vefatı Türk makamlarına kaydetme.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "death",
         "ölüm",
@@ -349,7 +366,8 @@
         "registration",
         "tescil"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-nufus-kayit",
@@ -359,7 +377,7 @@
       "descriptionEn": "Obtain certified population registry records.",
       "descriptionTr": "Onaylı nüfus kayıt örneği alma.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "nüfus",
         "population",
@@ -368,7 +386,8 @@
         "certificate",
         "belge"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "consular-belge-onay",
@@ -378,7 +397,7 @@
       "descriptionEn": "Apostille and document certification services.",
       "descriptionTr": "Apostil ve belge onay hizmetleri.",
       "category": "consular",
-      "jurisdiction": "Turkey",
+      "jurisdiction": "TR",
       "keywords": [
         "apostille",
         "certification",
@@ -387,7 +406,8 @@
         "belge",
         "tasdik"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "library-hukuki-yanilgilar",
@@ -397,7 +417,7 @@
       "descriptionEn": "Facts vs. myths about doing business in the United States covering LLC formation, taxes, banking, and immigration.",
       "descriptionTr": "ABD'de iş yapma hakkında gerçekler ve mitler: LLC kurulumu, vergiler, bankacılık ve göçmenlik.",
       "category": "library",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "legal misconceptions",
         "hukuki hatalar",
@@ -406,7 +426,8 @@
         "tax myths",
         "banking"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "library-irs-vergi-gercekleri",
@@ -416,7 +437,7 @@
       "descriptionEn": "Plain-language guide to US tax forms for non-US entrepreneurs covering W-8BEN, W-9, 1099-NEC, and withholding tax.",
       "descriptionTr": "ABD dışından girişimcilere yönelik ABD vergi formları rehberi: W-8BEN, W-9, 1099-NEC ve stopaj vergisi.",
       "category": "library",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "IRS",
         "W-8BEN",
@@ -427,7 +448,8 @@
         "withholding tax",
         "FATCA"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "library-llc-kurma-rehberi",
@@ -437,7 +459,7 @@
       "descriptionEn": "Comprehensive reference guide to LLC formation covering state selection, formation process, tax implications, and common misconceptions.",
       "descriptionTr": "LLC kurulumu hakkında kapsamlı rehber: eyalet seçimi, kuruluş süreci, vergisel etkiler ve yaygın yanılgılar.",
       "category": "library",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "LLC",
         "limited liability company",
@@ -447,7 +469,8 @@
         "EIN",
         "state selection"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "library-llc-vize-yanilgisi",
@@ -457,7 +480,7 @@
       "descriptionEn": "Why forming a US LLC does not grant any visa or immigration benefit. The separation between business formation and immigration law.",
       "descriptionTr": "LLC kurmanın neden vize veya göçmenlik hakkı sağlamadığı: şirket kuruluşu ve göçmenlik hukuku ayrımı.",
       "category": "library",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "LLC",
         "visa",
@@ -468,7 +491,8 @@
         "work authorization",
         "visa myths"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "library-temel-sozlesmeler",
@@ -478,7 +502,7 @@
       "descriptionEn": "Guide to must-have legal documents for business including NDAs, Service Agreements, Privacy Policies, and Terms of Service.",
       "descriptionTr": "İş yapanlar için olmazsa olmaz hukuki belgeler: NDA, Hizmet Sözleşmeleri, Gizlilik Politikaları ve Kullanım Koşulları.",
       "category": "library",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "contracts",
         "sözleşmeler",
@@ -487,7 +511,8 @@
         "hizmet sözleşmesi",
         "business documents"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "checklist-bank-account-checklist",
@@ -506,7 +531,8 @@
         "Relay",
         "non-resident"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "checklist-irs-mektup-rehberi",
@@ -525,7 +551,8 @@
         "correspondence",
         "tax"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "checklist-llc-checklist",
@@ -544,7 +571,8 @@
         "EIN",
         "Articles of Organization"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "checklist-llc-kontrol-listesi",
@@ -563,7 +591,8 @@
         "registered agent",
         "EIN"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "checklist-tax-documents-checklist",
@@ -583,7 +612,8 @@
         "tax forms",
         "tax filing"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "checklist-w8-w9-karar-haritasi",
@@ -604,7 +634,8 @@
         "treaty benefits",
         "withholding"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-abd-ye-gelmeden-once",
@@ -614,7 +645,7 @@
       "descriptionEn": "Essential legal preparation checklist for Turkish entrepreneurs before arriving in the United States.",
       "descriptionTr": "Türk girişimcilerin ABD'ye gelmeden önce tamamlaması gereken hukuki hazırlıklar.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "pre-arrival",
         "ABD hazırlık",
@@ -622,7 +653,8 @@
         "business formation",
         "tax compliance"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-abdde-banka-hesabi",
@@ -632,7 +664,7 @@
       "descriptionEn": "How to open a US bank account as a non-resident. EIN/ITIN requirements, FBAR obligations, and common challenges.",
       "descriptionTr": "Yerleşik olmayan biri olarak ABD banka hesabı nasıl açılır. EIN/ITIN gereksinimleri ve FBAR yükümlülükleri.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "bank account",
         "banka hesabı",
@@ -642,7 +674,8 @@
         "non-resident",
         "Mercury"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-abdde-is-yapanlar-icin-sozlesmeler",
@@ -652,7 +685,7 @@
       "descriptionEn": "Guide to US business contracts: types, key clauses, red flags, and international enforcement.",
       "descriptionTr": "ABD'de ticari sözleşmelere ilişkin rehber: sözleşme türleri, kritik hükümler ve uluslararası tenfiz.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "contracts",
         "sözleşmeler",
@@ -661,7 +694,8 @@
         "governing law",
         "arbitration"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-abdde-llc-kurmak",
@@ -671,7 +705,7 @@
       "descriptionEn": "Comprehensive guide to forming a US LLC. State comparison, formation steps, Operating Agreement, EIN, and compliance.",
       "descriptionTr": "ABD'de LLC kurulumuna ilişkin kapsamlı rehber. Eyalet karşılaştırması, kuruluş adımları ve uyum yükümlülükleri.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "LLC",
         "formation",
@@ -681,7 +715,8 @@
         "EIN",
         "Operating Agreement"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-abdye-gelme-yollari",
@@ -691,7 +726,7 @@
       "descriptionEn": "Guide to US non-immigrant visa categories for Turkish nationals. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 visas.",
       "descriptionTr": "Türk vatandaşlarına yönelik ABD geçici vize kategorilerinin rehberi. B-1/B-2, F-1, H-1B, L-1, E-2, O-1.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "visa",
         "vize",
@@ -702,7 +737,8 @@
         "O-1",
         "immigration"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-irs-vergi-gercekleri",
@@ -712,7 +748,7 @@
       "descriptionEn": "US tax obligations for non-resident aliens. Substantial presence test, FATCA, FBAR, and US-Turkey tax treaty.",
       "descriptionTr": "Mukim olmayan yabancılar için ABD vergi yükümlülükleri. Substantial presence test, FATCA, FBAR ve vergi anlaşması.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "IRS",
         "tax",
@@ -723,7 +759,8 @@
         "W-8",
         "tax treaty"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-legal-kitler",
@@ -733,7 +770,7 @@
       "descriptionEn": "Curated legal template and guide packages for US business and immigration.",
       "descriptionTr": "ABD iş ve göçmenlik için derlenmiş hukuki şablon ve rehber paketleri.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "legal kits",
         "templates",
@@ -743,7 +780,8 @@
         "contracts",
         "business documents"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "template",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-llc-mi-corp-mu",
@@ -753,7 +791,7 @@
       "descriptionEn": "Compare LLC and Corporation structures. Tax implications, liability protection, and investor expectations.",
       "descriptionTr": "LLC ve Corporation yapılarının karşılaştırması. Vergisel sonuçlar, sorumluluk koruması ve yatırımcı beklentileri.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "LLC",
         "corporation",
@@ -763,7 +801,8 @@
         "iş yapısı",
         "tax"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-ny-law-neden-tercih-edilir",
@@ -773,7 +812,7 @@
       "descriptionEn": "Why New York law is preferred for international commercial contracts. Choice of law considerations.",
       "descriptionTr": "Uluslararası ticari sözleşmelerde New York hukukunun neden tercih edildiği.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "New York law",
         "choice of law",
@@ -782,7 +821,8 @@
         "Delaware",
         "governing law"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-platform-ne-yapar-ne-yapmaz",
@@ -792,7 +832,7 @@
       "descriptionEn": "EchoLegal's scope, limitations, and what you can expect from this legal reference platform.",
       "descriptionTr": "EchoLegal'ın kapsamı, sınırları ve bu platformdan neler bekleyebileceğiniz.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "platform scope",
         "kapsam",
@@ -801,7 +841,8 @@
         "legal reference",
         "disclaimer"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-statuden-statuye-gecis-gercekleri",
@@ -811,7 +852,7 @@
       "descriptionEn": "The truth about changing immigration status in the US. 30/60 day rule, preconceived intent, and adjustment of status.",
       "descriptionTr": "ABD'de göçmenlik statüsü değişikliğine ilişkin gerçekler. 30/60 gün kuralı ve statü düzeltmesi.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "status change",
         "statü değişikliği",
@@ -820,7 +861,8 @@
         "immigration",
         "göçmenlik"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "amerika-turist-vizesi-gercekleri",
@@ -830,7 +872,7 @@
       "descriptionEn": "The truth about US tourist visas. 214(b) refusals, immigrant intent presumption, and common mistakes.",
       "descriptionTr": "ABD turist vizesine ilişkin gerçekler. 214(b) ret gerekçesi ve Türk başvuru sahiplerinin sık düştüğü hatalar.",
       "category": "amerika",
-      "jurisdiction": "US/Turkey",
+      "jurisdiction": "US",
       "keywords": [
         "tourist visa",
         "turist vizesi",
@@ -839,7 +881,8 @@
         "visa denial",
         "immigrant intent"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "official_guidance",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "cornerstone-abd-llc-kurmak-prosedurel-mimari",
@@ -849,7 +892,7 @@
       "descriptionEn": "End-to-end procedural reference covering entity classification, formation, EIN acquisition, banking, federal reporting, platform integration, and ongoing compliance for Turkish entrepreneurs forming a US LLC.",
       "descriptionTr": "Türk girişimciler için ABD LLC kurma sürecinin uçtan uca prosedürel referansı. Tüzel kişilik sınıflandırması, kuruluş, EIN edinimi, bankacılık, federal raporlama, platform entegrasyonu ve sürekli uyum.",
       "category": "cornerstone",
-      "jurisdiction": "US Federal / State",
+      "jurisdiction": "US",
       "keywords": [
         "LLC",
         "formation",
@@ -863,7 +906,8 @@
         "disregarded entity",
         "check-the-box"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "cornerstone-foreign-owned-single-member-llc-reporting",
@@ -873,7 +917,7 @@
       "descriptionEn": "Comprehensive reference on Form 5472, pro forma Form 1120, and information reporting requirements for foreign-owned disregarded entities under 26 U.S.C. § 6038A.",
       "descriptionTr": "Form 5472, pro forma Form 1120 ve 26 U.S.C. § 6038A kapsamında yabancı sermayeli disregarded entity'ler için bilgi raporlama gereksinimleri hakkında kapsamlı referans.",
       "category": "cornerstone",
-      "jurisdiction": "US Federal",
+      "jurisdiction": "US",
       "keywords": [
         "Form 5472",
         "Form 1120",
@@ -887,7 +931,8 @@
         "ceza",
         "BOI"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "cornerstone-irs-vergiler-ve-w8-w9-gercekleri",
@@ -897,7 +942,7 @@
       "descriptionEn": "Institutional reference on US tax obligations for non-resident entrepreneurs. Covers withholding, W-8BEN/W-8BEN-E, W-9, 1099 reporting, treaty benefits, and FATCA compliance.",
       "descriptionTr": "Mukim olmayan girişimciler için ABD vergi yükümlülükleri hakkında kurumsal referans. Stopaj, W-8BEN/W-8BEN-E, W-9, 1099 raporlama, anlaşma avantajları ve FATCA uyumu.",
       "category": "cornerstone",
-      "jurisdiction": "US Federal",
+      "jurisdiction": "US",
       "keywords": [
         "IRS",
         "W-8BEN",
@@ -912,7 +957,8 @@
         "ITIN",
         "EIN"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "regulation",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-index",
@@ -922,7 +968,7 @@
       "descriptionEn": "EchoLegal's mission to democratize legal knowledge. Our encyclopedic approach and editorial standards.",
       "descriptionTr": "EchoLegal'ın hukuki bilgiyi demokratikleştirme misyonu. Ansiklopedik yaklaşımımız ve editöryal standartlarımız.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "about",
         "hakkımızda",
@@ -930,7 +976,8 @@
         "misyon",
         "editorial standards"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-charter",
@@ -940,7 +987,7 @@
       "descriptionEn": "The founding charter of EchoLegal. Mission, editorial independence, governance structure.",
       "descriptionTr": "EchoLegal'ın kuruluş tüzüğü. Misyon, editöryal bağımsızlık, yönetişim yapısı.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "charter",
         "tüzük",
@@ -948,7 +995,8 @@
         "yönetişim",
         "editorial independence"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-citation-guide",
@@ -958,7 +1006,7 @@
       "descriptionEn": "How to cite EchoLegal content in legal, academic, and machine-readable contexts.",
       "descriptionTr": "Hukuki, akademik ve makine tarafından okunabilir bağlamlarda EchoLegal içeriğine atıf yapma.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "citation",
         "atıf",
@@ -967,7 +1015,8 @@
         "academic",
         "reference"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-contributor-standards",
@@ -977,7 +1026,7 @@
       "descriptionEn": "Requirements for contributing to EchoLegal. Eligibility, bar verification, and editorial process.",
       "descriptionTr": "EchoLegal'a katkıda bulunma gereksinimleri. Uygunluk, baro doğrulaması ve editöryal süreç.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "contributor",
         "katkıda bulunan",
@@ -986,7 +1035,8 @@
         "bar verification",
         "editorial"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-corrections",
@@ -996,7 +1046,7 @@
       "descriptionEn": "How EchoLegal handles errors, corrections, and retractions.",
       "descriptionTr": "EchoLegal'ın hataları, düzeltmeleri ve geri çekmeleri nasıl ele aldığı.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "corrections",
         "düzeltme",
@@ -1005,7 +1055,8 @@
         "error reporting",
         "version history"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-editorial-board",
@@ -1015,7 +1066,7 @@
       "descriptionEn": "The attorneys and legal professionals who review and maintain EchoLegal's content.",
       "descriptionTr": "EchoLegal içeriğini inceleyen ve sürdüren avukatlar ve hukuk profesyonelleri.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "editorial board",
         "yayın kurulu",
@@ -1023,7 +1074,8 @@
         "avukatlar",
         "legal review"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "about-editorial-policy",
@@ -1033,7 +1085,7 @@
       "descriptionEn": "EchoLegal's editorial standards for legal content. Source hierarchy, update policy, and attorney oversight.",
       "descriptionTr": "EchoLegal'ın hukuki içerik için editöryal standartları. Kaynak hiyerarşisi ve avukat gözetimi.",
       "category": "governance",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "editorial policy",
         "editöryal politika",
@@ -1041,7 +1093,8 @@
         "source hierarchy",
         "attorney oversight"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "legal-cookies",
@@ -1051,7 +1104,7 @@
       "descriptionEn": "How EchoLegal uses cookies for language preferences and analytics.",
       "descriptionTr": "EchoLegal'ın dil tercihleri ve analitik için çerezleri nasıl kullandığı.",
       "category": "legal",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "cookies",
         "çerez",
@@ -1059,7 +1112,8 @@
         "gizlilik",
         "analytics"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "legal-disclaimer",
@@ -1069,7 +1123,7 @@
       "descriptionEn": "Important limitations and disclaimers of EchoLegal's content and services.",
       "descriptionTr": "EchoLegal'ın içeriği ve hizmetleri hakkında önemli sınırlamalar ve uyarılar.",
       "category": "legal",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "disclaimer",
         "yasal uyarı",
@@ -1077,7 +1131,8 @@
         "sınırlamalar",
         "liability"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "legal-privacy",
@@ -1087,7 +1142,7 @@
       "descriptionEn": "EchoLegal's privacy policy covering information collection, usage, and user rights.",
       "descriptionTr": "EchoLegal'ın bilgi toplama, kullanım ve kullanıcı haklarını kapsayan gizlilik politikası.",
       "category": "legal",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "privacy",
         "gizlilik",
@@ -1096,7 +1151,8 @@
         "user rights",
         "kullanıcı hakları"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "legal-terms",
@@ -1106,7 +1162,7 @@
       "descriptionEn": "Terms of use governing website access, content usage, and service conditions.",
       "descriptionTr": "Web sitesi erişimi, içerik kullanımı ve hizmet koşullarını düzenleyen kullanım koşulları.",
       "category": "legal",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "terms",
         "koşullar",
@@ -1115,7 +1171,8 @@
         "website",
         "service"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-home",
@@ -1125,7 +1182,7 @@
       "descriptionEn": "Legal knowledge should belong to everyone. Bilingual legal encyclopedia.",
       "descriptionTr": "Hukuki bilgi herkesin olmalı. İki dilli hukuk ansiklopedisi.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "home",
         "ana sayfa",
@@ -1133,7 +1190,8 @@
         "legal",
         "hukuk"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-contracts",
@@ -1143,7 +1201,7 @@
       "descriptionEn": "Professional legal templates for everyday business needs.",
       "descriptionTr": "Günlük iş ihtiyaçları için profesyonel hukuki şablonlar.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "contracts",
         "sözleşmeler",
@@ -1151,7 +1209,8 @@
         "şablonlar",
         "library"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-encyclopedia",
@@ -1161,7 +1220,7 @@
       "descriptionEn": "Comprehensive guides on business law, employment, and intellectual property.",
       "descriptionTr": "İş hukuku, istihdam ve fikri mülkiyet hakkında kapsamlı rehberler.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "encyclopedia",
         "ansiklopedi",
@@ -1169,7 +1228,8 @@
         "rehber",
         "articles"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-consular-documents",
@@ -1179,7 +1239,7 @@
       "descriptionEn": "Free checklists for passport, ID, notary services, and more.",
       "descriptionTr": "Pasaport, kimlik, noter hizmetleri için ücretsiz kontrol listeleri.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "consular",
         "konsolosluk",
@@ -1188,7 +1248,8 @@
         "checklist",
         "kontrol listesi"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-support",
@@ -1198,7 +1259,7 @@
       "descriptionEn": "Frequently asked questions and how to get help.",
       "descriptionTr": "Sık sorulan sorular ve yardım alma.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "support",
         "destek",
@@ -1207,7 +1268,8 @@
         "FAQ",
         "contact"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-templates",
@@ -1217,7 +1279,7 @@
       "descriptionEn": "Browse 50+ free legal templates: contracts, business forms, immigration letters, tax checklists.",
       "descriptionTr": "Sözleşmeler, iş formları, göç mektupları, vergi kontrol listeleri dahil 50+ ücretsiz hukuki şablon.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "templates",
         "şablonlar",
@@ -1227,7 +1289,8 @@
         "ücretsiz",
         "download"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-library",
@@ -1237,7 +1300,7 @@
       "descriptionEn": "Comprehensive legal reference guides for doing business in the United States.",
       "descriptionTr": "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "library",
         "kütüphane",
@@ -1246,7 +1309,8 @@
         "guides",
         "rehberler"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-checklists",
@@ -1256,7 +1320,7 @@
       "descriptionEn": "Quick reference checklists and decision guides for common US business legal questions.",
       "descriptionTr": "Yaygın ABD iş hukuku soruları için hızlı referans kontrol listeleri ve karar rehberleri.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "checklists",
         "kontrol listeleri",
@@ -1265,7 +1329,8 @@
         "LLC",
         "tax"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-amerika",
@@ -1275,7 +1340,7 @@
       "descriptionEn": "Comprehensive legal reference hub for Turkish entrepreneurs doing business in the United States.",
       "descriptionTr": "ABD'de iş kurmak isteyen Türk girişimcilere yönelik kapsamlı hukuki başvuru kaynağı.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "Amerika",
         "ABD",
@@ -1284,7 +1349,8 @@
         "Türk girişimciler",
         "legal guide"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-contribute",
@@ -1294,7 +1360,7 @@
       "descriptionEn": "EchoLegal accepts contributions from licensed attorneys for its public legal reference library.",
       "descriptionTr": "EchoLegal, lisanslı avukatlardan kamu hukuk referans kütüphanesi için katkı kabul etmektedir.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "contribute",
         "katkı",
@@ -1303,7 +1369,8 @@
         "editorial",
         "submission"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-jurisdictions",
@@ -1313,7 +1380,7 @@
       "descriptionEn": "Jurisdictions covered by EchoLegal with published legal content.",
       "descriptionTr": "EchoLegal tarafından kapsanan ve yayınlanmış hukuki içeriğe sahip yargı alanları.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "jurisdictions",
         "yargı alanı",
@@ -1322,7 +1389,8 @@
         "US",
         "Turkey"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     },
     {
       "id": "page-updates",
@@ -1332,7 +1400,7 @@
       "descriptionEn": "Latest legal updates from official US government sources including IRS, Congress, and Federal Register.",
       "descriptionTr": "IRS, Kongre ve Federal Register dahil resmi ABD hükümeti kaynaklarından son hukuki güncellemeler.",
       "category": "page",
-      "jurisdiction": null,
+      "jurisdiction": "GENERAL",
       "keywords": [
         "updates",
         "güncellemeler",
@@ -1342,7 +1410,8 @@
         "Congress",
         "Federal Register"
       ],
-      "lastVerified": "2026-02-19T23:48:56.097Z"
+      "authorityLevel": "secondary_analysis",
+      "lastVerified": "2026-02-22T00:55:07.382Z"
     }
   ]
 }

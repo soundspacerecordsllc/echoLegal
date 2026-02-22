@@ -2,12 +2,101 @@
 // Unified search index for site-wide search functionality
 
 import { templatesRegistry, Template, categoryLabels } from './templates-registry'
-import { LanguageCode } from './jurisdictions'
+import {
+  LanguageCode,
+  JurisdictionCode,
+  jurisdictions,
+  getJurisdictionShortName,
+} from './jurisdictions'
 
 // Helper to get supported language for category labels (fallback to English)
 type SupportedLang = 'en' | 'tr'
 const getSupportedLang = (lang: LanguageCode): SupportedLang =>
   lang === 'tr' ? 'tr' : 'en'
+
+// ============================================
+// SEARCH AUTHORITY LEVEL HIERARCHY
+// ============================================
+
+/**
+ * Authority classification for search results.
+ * Determines deterministic ordering: higher authority = listed first.
+ */
+export const SearchAuthorityLevel = {
+  PRIMARY_LAW: 'primary_law',
+  REGULATION: 'regulation',
+  CASE_LAW: 'case_law',
+  OFFICIAL_GUIDANCE: 'official_guidance',
+  SECONDARY_ANALYSIS: 'secondary_analysis',
+  TEMPLATE: 'template',
+} as const
+
+export type SearchAuthorityLevel =
+  typeof SearchAuthorityLevel[keyof typeof SearchAuthorityLevel]
+
+/** Higher weight = higher authority = listed first (sort descending). */
+export const SEARCH_AUTHORITY_WEIGHT: Record<SearchAuthorityLevel, number> = {
+  [SearchAuthorityLevel.PRIMARY_LAW]: 100,
+  [SearchAuthorityLevel.REGULATION]: 80,
+  [SearchAuthorityLevel.CASE_LAW]: 70,
+  [SearchAuthorityLevel.OFFICIAL_GUIDANCE]: 60,
+  [SearchAuthorityLevel.SECONDARY_ANALYSIS]: 40,
+  [SearchAuthorityLevel.TEMPLATE]: 20,
+}
+
+// ============================================
+// JURISDICTION WEIGHT HIERARCHY
+// ============================================
+
+/**
+ * Institutional priority for jurisdiction ordering.
+ * Used as secondary sort layer after authority weight.
+ * Higher weight = listed first within the same authority tier.
+ */
+export const JURISDICTION_WEIGHT: Partial<Record<JurisdictionCode, number>> & {
+  _DEFAULT: number
+} = {
+  US: 50,
+  'US-NY': 45,
+  'US-DE': 45,
+  'US-WY': 45,
+  'US-CA': 45,
+  'US-TX': 45,
+  'US-FL': 45,
+  EU: 30,
+  TR: 25,
+  UK: 20,
+  DE: 20,
+  FR: 20,
+  INTL: 15,
+  GENERAL: 10,
+  _DEFAULT: 10,
+}
+
+/** Resolve jurisdiction weight, falling back to _DEFAULT for unmapped codes. */
+export function getJurisdictionWeight(code: JurisdictionCode): number {
+  return (JURISDICTION_WEIGHT as Record<string, number>)[code] ?? JURISDICTION_WEIGHT._DEFAULT
+}
+
+/** Bilingual display label for authority level in search results. */
+export function getAuthorityLabel(
+  level: SearchAuthorityLevel,
+  lang: 'en' | 'tr'
+): string {
+  const labels: Record<SearchAuthorityLevel, { en: string; tr: string }> = {
+    [SearchAuthorityLevel.PRIMARY_LAW]: { en: 'Statute', tr: 'Kanun' },
+    [SearchAuthorityLevel.REGULATION]: { en: 'Regulation', tr: 'Düzenleme' },
+    [SearchAuthorityLevel.CASE_LAW]: { en: 'Case Law', tr: 'İçtihat' },
+    [SearchAuthorityLevel.OFFICIAL_GUIDANCE]: { en: 'Official Guidance', tr: 'Resmi Rehber' },
+    [SearchAuthorityLevel.SECONDARY_ANALYSIS]: { en: 'Analysis', tr: 'Analiz' },
+    [SearchAuthorityLevel.TEMPLATE]: { en: 'Template', tr: 'Şablon' },
+  }
+  return labels[level][lang]
+}
+
+// ============================================
+// SEARCH ITEM TYPES
+// ============================================
 
 export type SearchItemType = 'template' | 'guide' | 'checklist' | 'kit' | 'page'
 
@@ -21,6 +110,8 @@ export type SearchItem = {
   category: string
   tags: string[]
   updatedAt: string
+  authorityLevel: SearchAuthorityLevel
+  jurisdiction: JurisdictionCode
 }
 
 // Static guides index
@@ -36,6 +127,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Business',
     tags: ['llc', 'formation', 'business', 'delaware', 'wyoming'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-ds160-en',
@@ -47,6 +140,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Immigration',
     tags: ['visa', 'ds-160', 'immigration', 'application'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-w8w9-en',
@@ -58,6 +153,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['w8', 'w9', 'irs', 'tax', 'withholding'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-ein-en',
@@ -69,6 +166,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['ein', 'itin', 'ssn', 'tax', 'id'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-1099-en',
@@ -80,6 +179,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['1099', 'tax', 'reporting', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-bank-en',
@@ -91,6 +192,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Banking',
     tags: ['bank', 'account', 'mercury', 'relay', 'non-resident'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-payments-en',
@@ -102,6 +205,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Payments',
     tags: ['payments', 'stripe', 'paypal', 'wise', 'transfer'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-salestax-en',
@@ -113,6 +218,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['sales-tax', 'nexus', 'ecommerce', 'state-tax'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-llc-corp-en',
@@ -124,6 +231,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Business',
     tags: ['llc', 'corporation', 'c-corp', 's-corp', 'structure'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-contracts-en',
@@ -135,6 +244,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Contracts',
     tags: ['contracts', 'legal', 'nda', 'agreement'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-visa-paths-en',
@@ -146,6 +257,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Immigration',
     tags: ['visa', 'e2', 'l1', 'h1b', 'o1', 'immigration'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   // Turkish guides
   {
@@ -158,6 +271,8 @@ const guidesIndex: SearchItem[] = [
     category: 'İş',
     tags: ['llc', 'kuruluş', 'şirket', 'delaware', 'wyoming'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-ds160-tr',
@@ -169,6 +284,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Göçmenlik',
     tags: ['vize', 'ds-160', 'göçmenlik', 'başvuru'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-w8w9-tr',
@@ -180,6 +297,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['w8', 'w9', 'irs', 'vergi', 'stopaj'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-ein-tr',
@@ -191,6 +310,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['ein', 'itin', 'ssn', 'vergi', 'kimlik'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-1099-tr',
@@ -202,6 +323,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['1099', 'vergi', 'raporlama', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-bank-tr',
@@ -213,6 +336,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Bankacılık',
     tags: ['banka', 'hesap', 'mercury', 'relay', 'yabancı'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-payments-tr',
@@ -224,6 +349,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Ödemeler',
     tags: ['ödeme', 'stripe', 'paypal', 'wise', 'transfer'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-salestax-tr',
@@ -235,6 +362,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['satış-vergisi', 'nexus', 'e-ticaret', 'eyalet-vergisi'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.REGULATION,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-llc-corp-tr',
@@ -246,6 +375,8 @@ const guidesIndex: SearchItem[] = [
     category: 'İş',
     tags: ['llc', 'corporation', 'c-corp', 's-corp', 'yapı'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-contracts-tr',
@@ -257,6 +388,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Sözleşmeler',
     tags: ['sözleşme', 'hukuki', 'nda', 'anlaşma'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'guide-visa-paths-tr',
@@ -268,6 +401,8 @@ const guidesIndex: SearchItem[] = [
     category: 'Göçmenlik',
     tags: ['vize', 'e2', 'l1', 'h1b', 'o1', 'göçmenlik'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.OFFICIAL_GUIDANCE,
+    jurisdiction: 'US',
   },
 ]
 
@@ -283,6 +418,8 @@ const checklistsIndex: SearchItem[] = [
     category: 'Business',
     tags: ['llc', 'formation', 'checklist', 'steps'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
   {
     id: 'checklist-bank-en',
@@ -294,6 +431,8 @@ const checklistsIndex: SearchItem[] = [
     category: 'Banking',
     tags: ['bank', 'account', 'checklist', 'documents'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
   {
     id: 'checklist-tax-en',
@@ -305,6 +444,8 @@ const checklistsIndex: SearchItem[] = [
     category: 'Tax',
     tags: ['tax', 'documents', 'checklist', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
   {
     id: 'checklist-llc-tr',
@@ -316,6 +457,8 @@ const checklistsIndex: SearchItem[] = [
     category: 'İş',
     tags: ['llc', 'kuruluş', 'kontrol-listesi', 'adımlar'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
   {
     id: 'checklist-bank-tr',
@@ -327,6 +470,8 @@ const checklistsIndex: SearchItem[] = [
     category: 'Bankacılık',
     tags: ['banka', 'hesap', 'kontrol-listesi', 'belgeler'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
   {
     id: 'checklist-tax-tr',
@@ -338,6 +483,8 @@ const checklistsIndex: SearchItem[] = [
     category: 'Vergi',
     tags: ['vergi', 'belgeler', 'kontrol-listesi', 'irs'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
 ]
 
@@ -353,6 +500,8 @@ const kitsIndex: SearchItem[] = [
     category: 'Legal Kits',
     tags: ['starter', 'bundle', 'essential', 'business'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
   {
     id: 'kit-starter-tr',
@@ -364,6 +513,8 @@ const kitsIndex: SearchItem[] = [
     category: 'Hukuki Kitler',
     tags: ['başlangıç', 'paket', 'temel', 'iş'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: 'US',
   },
 ]
 
@@ -379,6 +530,8 @@ const pagesIndex: SearchItem[] = [
     category: 'Library',
     tags: ['templates', 'library', 'documents'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'GENERAL',
   },
   {
     id: 'page-templates-tr',
@@ -390,6 +543,8 @@ const pagesIndex: SearchItem[] = [
     category: 'Kütüphane',
     tags: ['şablonlar', 'kütüphane', 'belgeler'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'GENERAL',
   },
   {
     id: 'page-amerika-en',
@@ -401,6 +556,8 @@ const pagesIndex: SearchItem[] = [
     category: 'Hub',
     tags: ['hub', 'immigration', 'business', 'usa'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'page-amerika-tr',
@@ -412,6 +569,8 @@ const pagesIndex: SearchItem[] = [
     category: 'Merkez',
     tags: ['merkez', 'göçmenlik', 'iş', 'abd'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'page-taxhub-en',
@@ -423,6 +582,8 @@ const pagesIndex: SearchItem[] = [
     category: 'Hub',
     tags: ['tax', 'ein', 'itin', 'ssn', 'hub'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
   {
     id: 'page-taxhub-tr',
@@ -434,8 +595,18 @@ const pagesIndex: SearchItem[] = [
     category: 'Merkez',
     tags: ['vergi', 'ein', 'itin', 'ssn', 'merkez'],
     updatedAt: '2025-01-01',
+    authorityLevel: SearchAuthorityLevel.SECONDARY_ANALYSIS,
+    jurisdiction: 'US',
   },
 ]
+
+// Map template registry jurisdiction ('US' | 'TR' | 'US/TR' | 'General') to JurisdictionCode
+const TEMPLATE_JURISDICTION_MAP: Record<string, JurisdictionCode> = {
+  US: 'US',
+  TR: 'TR',
+  'US/TR': 'US',
+  General: 'GENERAL',
+}
 
 // Convert templates from registry to search items
 function getTemplateSearchItems(): SearchItem[] {
@@ -452,6 +623,8 @@ function getTemplateSearchItems(): SearchItem[] {
     category: categoryLabels[template.category][getSupportedLang(template.lang)],
     tags: template.tags,
     updatedAt: template.updatedAt,
+    authorityLevel: SearchAuthorityLevel.TEMPLATE,
+    jurisdiction: TEMPLATE_JURISDICTION_MAP[template.jurisdiction] ?? 'GENERAL',
   }))
 }
 
@@ -471,7 +644,7 @@ export function getSearchIndexByLang(lang: 'en' | 'tr'): SearchItem[] {
   return getSearchIndex().filter((item) => item.lang === lang)
 }
 
-// Search function with language awareness
+// Search function with language awareness and authority-weighted ordering
 export function searchIndex(
   query: string,
   options: {
@@ -540,9 +713,61 @@ export function searchIndex(
       return { item, score }
     })
     .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => {
+      // 1st: authority weight descending (higher weight = higher authority)
+      const authA = SEARCH_AUTHORITY_WEIGHT[a.item.authorityLevel]
+      const authB = SEARCH_AUTHORITY_WEIGHT[b.item.authorityLevel]
+      if (authA !== authB) return authB - authA
+      // 2nd: jurisdiction weight descending
+      const jurA = getJurisdictionWeight(a.item.jurisdiction)
+      const jurB = getJurisdictionWeight(b.item.jurisdiction)
+      if (jurA !== jurB) return jurB - jurA
+      // 3rd: relevance score descending
+      if (a.score !== b.score) return b.score - a.score
+      // 4th: lastUpdated descending (newer first)
+      return b.item.updatedAt.localeCompare(a.item.updatedAt)
+    })
 
   return scoredItems.slice(0, limit).map(({ item }) => item)
+}
+
+// ============================================
+// BUILD-TIME VALIDATION
+// ============================================
+
+const VALID_AUTHORITY_LEVELS = new Set(Object.values(SearchAuthorityLevel))
+const VALID_JURISDICTION_CODES = new Set(Object.keys(jurisdictions))
+
+/**
+ * Validate that every item in the search index has valid authorityLevel and jurisdiction.
+ * Throws in development; returns errors in production.
+ */
+export function validateSearchIndex(
+  items: SearchItem[]
+): { valid: boolean; errors: string[] } {
+  const errors: string[] = []
+  for (const item of items) {
+    if (!item.authorityLevel) {
+      errors.push(`Search item "${item.id}" is missing required authorityLevel`)
+    } else if (!VALID_AUTHORITY_LEVELS.has(item.authorityLevel)) {
+      errors.push(
+        `Search item "${item.id}" has invalid authorityLevel: "${item.authorityLevel}"`
+      )
+    }
+    if (!item.jurisdiction) {
+      errors.push(`Search item "${item.id}" is missing required jurisdiction`)
+    } else if (!VALID_JURISDICTION_CODES.has(item.jurisdiction)) {
+      errors.push(
+        `Search item "${item.id}" has invalid jurisdiction: "${item.jurisdiction}"`
+      )
+    }
+  }
+  if (errors.length > 0 && process.env.NODE_ENV === 'development') {
+    throw new Error(
+      `Search index validation failed:\n${errors.map((e) => `  - ${e}`).join('\n')}`
+    )
+  }
+  return { valid: errors.length === 0, errors }
 }
 
 // Get type label

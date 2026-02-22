@@ -14,9 +14,9 @@ import {
 } from '@/lib/templates-registry'
 
 export const metadata: Metadata = {
-  title: 'Ücretsiz Hukuki Şablon ve Belge Kütüphanesi | EchoLegal',
+  title: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
   description:
-    'Sözleşmeler, iş formları, göç mektupları, vergi kontrol listeleri dahil 50+ ücretsiz hukuki şablon. Türk girişimciler için iki dilli (EN/TR).',
+    'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri. İngilizce ve Türkçe yayımlanan tamamlayıcı referans materyalleri.',
   alternates: {
     canonical: 'https://echo-legal.com/tr/sablonlar',
     languages: {
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Ücretsiz Hukuki Şablon Kütüphanesi',
+    title: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
     description:
-      '50+ iki dilli hukuki şablon: sözleşmeler, göç, vergi ve iş belgeleri.',
+      'İngilizce ve Türkçe yargı alanı etiketli hukuki belge şablonları. Birincil hukuk kaynaklarından ayrı olarak sürdürülen tamamlayıcı materyaller.',
     type: 'website',
     url: 'https://echo-legal.com/tr/sablonlar',
   },
@@ -55,9 +55,9 @@ export default async function SablonlarPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Hukuki Şablon ve Belge Kütüphanesi',
+    name: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
     description:
-      'Sözleşmeler, iş belgeleri, göç mektupları ve vergi formları için ücretsiz hukuki şablonlar.',
+      'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
     url: 'https://echo-legal.com/tr/sablonlar',
     inLanguage: 'tr-TR',
     isPartOf: {
@@ -94,9 +94,10 @@ export default async function SablonlarPage() {
         <div className="mb-10">
           <h1 className="text-4xl font-bold text-black mb-4">Şablonlar</h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            Türk girişimcilere yönelik {templates.length}+ ücretsiz hukuki şablon.
-            Sözleşmeler, formlar, mektuplar, kontrol listeleri ve belge
-            örnekleri bu sayfada yer almaktadır.
+            Yargı alanı etiketli {templates.length} hukuki belge şablonu.
+            Sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum
+            kontrol listeleri — birincil hukuk kaynaklarından ayrı olarak
+            sürdürülen tamamlayıcı referans materyalleri.
           </p>
         </div>
 
@@ -201,20 +202,21 @@ export default async function SablonlarPage() {
         )}
 
         {/* Support CTA */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-xl">
+        <div className="mt-16 p-8 bg-stone-50 border border-stone-200 rounded-xl">
           <div className="max-w-2xl">
             <h2 className="text-xl font-bold text-gray-900 mb-2">
-              EchoLegal&apos;i destekleyin
+              Sürdürülebilirlik Katkısı
             </h2>
             <p className="text-gray-700 mb-4">
-              Tüm şablonlar ücretsiz olarak sunulmaktadır. Bu kaynaklar işinize
-              yaradıysa, platformun sürdürülmesine katkıda bulunabilirsiniz.
+              Bu referans materyalleri bağımsız olarak sürdürülmektedir.
+              Kaynağın devamlılığına katkıda bulunmak için destek sayfasını
+              inceleyebilirsiniz.
             </p>
             <Link
               href="/tr/support"
-              className="inline-flex items-center px-5 py-2.5 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors"
+              className="inline-flex items-center px-5 py-2.5 bg-stone-700 text-white font-semibold rounded-lg hover:bg-stone-800 transition-colors"
             >
-              EchoLegal&apos;i Destekle
+              Destek Bilgileri
               <svg
                 className="ml-2 w-4 h-4"
                 fill="none"

@@ -5,7 +5,11 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'what-is-nda',
@@ -89,6 +93,8 @@ export default async function WhatIsNDAPage({
 
   const faqSchema = generateFAQSchema(faqs)
 
+  const primarySources = getPrimarySources(PAGE_META.slug, lang)
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
     { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
@@ -116,7 +122,7 @@ export default async function WhatIsNDAPage({
 
         <p className="text-xl text-gray-600 mb-6">
           {isEnglish
-            ? 'Everything you need to know about Non-Disclosure Agreements: when to use them, what to include, and common mistakes to avoid.'
+            ? 'A reference guide to Non-Disclosure Agreements: when they apply, what to include, and common drafting considerations.'
             : 'Gizlilik Sözleşmeleri hakkında bilmeniz gereken her şey: ne zaman kullanılır, neler içermeli ve kaçınılması gereken hatalar.'}
         </p>
 
@@ -321,6 +327,30 @@ export default async function WhatIsNDAPage({
             ))}
           </div>
         </section>
+
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Business owners sharing proprietary information',
+              'Employees and contractors under confidentiality obligations',
+              'Parties entering negotiations or partnerships',
+            ],
+            risk: 'An inadequately drafted NDA may fail to protect trade secrets or be deemed unenforceable due to overbreadth.',
+            nextStep: 'Review existing NDAs for clearly defined scope, reasonable duration, and enforceable remedy provisions.',
+          } : {
+            affected: [
+              'Tescilli bilgi paylaşan işletme sahipleri',
+              'Gizlilik yükümlülüğü altındaki çalışanlar ve yükleniciler',
+              'Müzakere veya ortaklık sürecine giren taraflar',
+            ],
+            risk: 'Yetersiz hazırlanmış bir NDA, ticari sırları koruyamayabilir veya aşırı geniş kapsamı nedeniyle uygulanamaz sayılabilir.',
+            nextStep: 'Mevcut NDA\'ları açıkça tanımlanmış kapsam, makul süre ve uygulanabilir çözüm hükümleri açısından gözden geçirin.',
+          }}
+        />
+
+        <PrimarySources sources={primarySources} lang={lang} />
 
         {/* Cite This Entry */}
         <CiteThisEntry

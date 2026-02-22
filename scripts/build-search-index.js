@@ -7,6 +7,20 @@
 const fs = require('fs');
 const path = require('path');
 
+// Authority level defaults by content category
+const CATEGORY_AUTHORITY = {
+  contract: 'template',
+  article: 'secondary_analysis',
+  consular: 'official_guidance',
+  library: 'secondary_analysis',
+  checklist: 'template',
+  cornerstone: 'regulation',
+  governance: 'secondary_analysis',
+  legal: 'secondary_analysis',
+  page: 'secondary_analysis',
+  amerika: 'official_guidance',
+};
+
 // Content registry - manually maintained list of all searchable pages
 const searchableContent = {
   contracts: [
@@ -331,6 +345,7 @@ const searchableContent = {
       descriptionEn: 'Guide to US business contracts: types, key clauses, red flags, and international enforcement.',
       descriptionTr: 'ABD\'de ticari sözleşmelere ilişkin rehber: sözleşme türleri, kritik hükümler ve uluslararası tenfiz.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['contracts', 'sözleşmeler', 'NDA', 'service agreement', 'governing law', 'arbitration'],
     },
     {
@@ -340,6 +355,7 @@ const searchableContent = {
       descriptionEn: 'Comprehensive guide to forming a US LLC. State comparison, formation steps, Operating Agreement, EIN, and compliance.',
       descriptionTr: 'ABD\'de LLC kurulumuna ilişkin kapsamlı rehber. Eyalet karşılaştırması, kuruluş adımları ve uyum yükümlülükleri.',
       category: 'amerika',
+      authorityLevel: 'regulation',
       keywords: ['LLC', 'formation', 'kuruluş', 'Delaware', 'Wyoming', 'EIN', 'Operating Agreement'],
     },
     {
@@ -358,6 +374,7 @@ const searchableContent = {
       descriptionEn: 'US tax obligations for non-resident aliens. Substantial presence test, FATCA, FBAR, and US-Turkey tax treaty.',
       descriptionTr: 'Mukim olmayan yabancılar için ABD vergi yükümlülükleri. Substantial presence test, FATCA, FBAR ve vergi anlaşması.',
       category: 'amerika',
+      authorityLevel: 'regulation',
       keywords: ['IRS', 'tax', 'vergi', 'substantial presence', 'FATCA', 'FBAR', 'W-8', 'tax treaty'],
     },
     {
@@ -367,6 +384,7 @@ const searchableContent = {
       descriptionEn: 'Curated legal template and guide packages for US business and immigration.',
       descriptionTr: 'ABD iş ve göçmenlik için derlenmiş hukuki şablon ve rehber paketleri.',
       category: 'amerika',
+      authorityLevel: 'template',
       keywords: ['legal kits', 'templates', 'şablonlar', 'guides', 'rehber', 'contracts', 'business documents'],
     },
     {
@@ -376,6 +394,7 @@ const searchableContent = {
       descriptionEn: 'Compare LLC and Corporation structures. Tax implications, liability protection, and investor expectations.',
       descriptionTr: 'LLC ve Corporation yapılarının karşılaştırması. Vergisel sonuçlar, sorumluluk koruması ve yatırımcı beklentileri.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['LLC', 'corporation', 'C-Corp', 'S-Corp', 'business structure', 'iş yapısı', 'tax'],
     },
     {
@@ -385,6 +404,7 @@ const searchableContent = {
       descriptionEn: 'Why New York law is preferred for international commercial contracts. Choice of law considerations.',
       descriptionTr: 'Uluslararası ticari sözleşmelerde New York hukukunun neden tercih edildiği.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['New York law', 'choice of law', 'hukuk seçimi', 'commercial contracts', 'Delaware', 'governing law'],
     },
     {
@@ -394,6 +414,7 @@ const searchableContent = {
       descriptionEn: 'EchoLegal\'s scope, limitations, and what you can expect from this legal reference platform.',
       descriptionTr: 'EchoLegal\'ın kapsamı, sınırları ve bu platformdan neler bekleyebileceğiniz.',
       category: 'amerika',
+      authorityLevel: 'secondary_analysis',
       keywords: ['platform scope', 'kapsam', 'limitations', 'sınırlar', 'legal reference', 'disclaimer'],
     },
     {
@@ -662,10 +683,53 @@ const searchableContent = {
   ],
 };
 
+// Jurisdiction normalization map (free-form → canonical JurisdictionCode)
+const JURISDICTION_NORMALIZE = {
+  'US': 'US',
+  'US Federal': 'US',
+  'US Federal / State': 'US',
+  'Turkey': 'TR',
+  'TR': 'TR',
+  'US/Turkey': 'US',
+  'US/Turkey/EU': 'US',
+  'EU': 'EU',
+  'GENERAL': 'GENERAL',
+  'General': 'GENERAL',
+  'INTL': 'INTL',
+};
+
+// Category-based jurisdiction defaults (when item has no jurisdiction)
+const CATEGORY_JURISDICTION = {
+  contract: 'US',
+  article: 'GENERAL',
+  consular: 'TR',
+  library: 'US',
+  checklist: 'US',
+  cornerstone: 'US',
+  governance: 'GENERAL',
+  legal: 'GENERAL',
+  page: 'GENERAL',
+  amerika: 'US',
+};
+
 // Build the search index
 function buildSearchIndex() {
   const index = [];
   const timestamp = new Date().toISOString();
+
+  // Helper: resolve authority level (per-item override or category default)
+  function resolveAuthority(item) {
+    return item.authorityLevel || CATEGORY_AUTHORITY[item.category] || 'secondary_analysis';
+  }
+
+  // Helper: resolve jurisdiction (normalize or fall back to category default)
+  function resolveJurisdiction(item, fallback) {
+    if (item.jurisdiction) {
+      return JURISDICTION_NORMALIZE[item.jurisdiction] || item.jurisdiction;
+    }
+    if (fallback) return fallback;
+    return CATEGORY_JURISDICTION[item.category] || 'GENERAL';
+  }
 
   // Process contracts
   searchableContent.contracts.forEach((item) => {
@@ -677,8 +741,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: item.jurisdiction || null,
+      jurisdiction: resolveJurisdiction(item),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -693,8 +758,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: item.jurisdiction || null,
+      jurisdiction: resolveJurisdiction(item),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -709,8 +775,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'Turkey',
+      jurisdiction: resolveJurisdiction(item, 'TR'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -725,8 +792,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'US/Turkey',
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -741,8 +809,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'US',
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -757,8 +826,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: 'US/Turkey',
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -773,8 +843,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: item.jurisdiction,
+      jurisdiction: resolveJurisdiction(item, 'US'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -789,8 +860,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: null,
+      jurisdiction: resolveJurisdiction(item, 'GENERAL'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -805,8 +877,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: null,
+      jurisdiction: resolveJurisdiction(item, 'GENERAL'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -821,8 +894,9 @@ function buildSearchIndex() {
       descriptionEn: item.descriptionEn,
       descriptionTr: item.descriptionTr,
       category: item.category,
-      jurisdiction: null,
+      jurisdiction: resolveJurisdiction(item, 'GENERAL'),
       keywords: item.keywords,
+      authorityLevel: resolveAuthority(item),
       lastVerified: timestamp,
     });
   });
@@ -835,14 +909,58 @@ function buildSearchIndex() {
   };
 }
 
+// Valid authority levels — must match SearchAuthorityLevel in lib/search-index.ts
+const VALID_AUTHORITY_LEVELS = new Set([
+  'primary_law',
+  'regulation',
+  'case_law',
+  'official_guidance',
+  'secondary_analysis',
+  'template',
+]);
+
+// Valid jurisdiction codes — must match JurisdictionCode in lib/jurisdictions.ts
+const VALID_JURISDICTION_CODES = new Set([
+  'US', 'TR', 'US-NY', 'US-DE', 'US-WY', 'US-CA', 'US-TX', 'US-FL',
+  'EU', 'UK', 'DE', 'FR', 'INTL', 'GENERAL',
+]);
+
+// Validate every item has valid authorityLevel and jurisdiction (fail build if not)
+function validateIndex(items) {
+  const errors = [];
+  for (const item of items) {
+    if (!item.authorityLevel) {
+      errors.push(`Item "${item.id}" is missing required authorityLevel`);
+    } else if (!VALID_AUTHORITY_LEVELS.has(item.authorityLevel)) {
+      errors.push(`Item "${item.id}" has invalid authorityLevel: "${item.authorityLevel}"`);
+    }
+    if (!item.jurisdiction) {
+      errors.push(`Item "${item.id}" is missing required jurisdiction`);
+    } else if (!VALID_JURISDICTION_CODES.has(item.jurisdiction)) {
+      errors.push(`Item "${item.id}" has invalid jurisdiction: "${item.jurisdiction}"`);
+    }
+  }
+  return errors;
+}
+
 // Write the index to public folder
 function writeIndex() {
   const index = buildSearchIndex();
+
+  // Enforce non-optional authorityLevel at build time
+  const errors = validateIndex(index.items);
+  if (errors.length > 0) {
+    console.error('Search index validation FAILED:');
+    errors.forEach((e) => console.error(`  - ${e}`));
+    process.exit(1);
+  }
+
   const outputPath = path.join(__dirname, '..', 'public', 'search-index.json');
 
   fs.writeFileSync(outputPath, JSON.stringify(index, null, 2));
   console.log(`Search index built successfully!`);
   console.log(`Total items: ${index.totalItems}`);
+  console.log(`All ${index.totalItems} items have valid authorityLevel and jurisdiction.`);
   console.log(`Output: ${outputPath}`);
 }
 

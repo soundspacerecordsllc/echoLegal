@@ -27,14 +27,14 @@ export default function MobileNav({ lang, isEnglish }: MobileNavProps) {
           <Link
             key={link.href}
             href={link.href}
-            className="text-sm font-semibold hover:opacity-60 transition-opacity text-[#000000]"
+            className="text-sm font-semibold hover:opacity-60 transition-opacity text-ink"
           >
             {isEnglish ? link.labelEn : link.labelTr}
           </Link>
         ))}
         <Link
           href={`/${isEnglish ? 'tr' : 'en'}`}
-          className="flex items-center gap-2 text-sm font-semibold border-2 border-[#000000] rounded-full px-4 py-2 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
+          className="flex items-center gap-2 text-sm font-semibold border-2 border-ink rounded-full px-4 py-2 hover:bg-ink hover:text-white transition-all text-ink"
         >
           {isEnglish ? 'TR' : 'EN'}
         </Link>
@@ -45,7 +45,7 @@ export default function MobileNav({ lang, isEnglish }: MobileNavProps) {
         {/* Language Toggle - Always visible on mobile */}
         <Link
           href={`/${isEnglish ? 'tr' : 'en'}`}
-          className="text-sm font-semibold border-2 border-[#000000] rounded-full px-3 py-1.5 hover:bg-[#000000] hover:text-[#ffffff] transition-all text-[#000000]"
+          className="text-sm font-semibold border-2 border-ink rounded-full px-3 py-1.5 hover:bg-ink hover:text-white transition-all text-ink"
         >
           {isEnglish ? 'TR' : 'EN'}
         </Link>
@@ -53,7 +53,7 @@ export default function MobileNav({ lang, isEnglish }: MobileNavProps) {
         {/* Hamburger Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 text-[#000000] focus:outline-none"
+          className="p-2 text-ink focus:outline-none"
           aria-label="Toggle menu"
         >
           {isOpen ? (
@@ -77,7 +77,7 @@ export default function MobileNav({ lang, isEnglish }: MobileNavProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="px-8 py-3 text-base font-semibold text-[#000000] hover:bg-gray-50 transition-colors"
+                className="px-8 py-3 text-base font-semibold text-ink hover:bg-gray-50 transition-colors"
               >
                 {isEnglish ? link.labelEn : link.labelTr}
               </Link>
@@ -85,7 +85,7 @@ export default function MobileNav({ lang, isEnglish }: MobileNavProps) {
             <Link
               href={`/${lang}/support`}
               onClick={() => setIsOpen(false)}
-              className="px-8 py-3 text-base font-semibold text-[#000000] hover:bg-gray-50 transition-colors"
+              className="px-8 py-3 text-base font-semibold text-ink hover:bg-gray-50 transition-colors"
             >
               {isEnglish ? 'Support' : 'Destek'}
             </Link>

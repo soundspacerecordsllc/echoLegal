@@ -5,7 +5,12 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'privacy-policy-guide',
@@ -26,8 +31,8 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   return {
     title,
     description: isEnglish
-      ? 'Complete guide to privacy policy requirements under GDPR, CCPA, KVKK, and other laws. Learn when you need a privacy policy, what to include, and how to stay compliant.'
-      : 'GDPR, CCPA, KVKK ve diğer yasalar kapsamında gizlilik politikası gereksinimleri için tam rehber. Ne zaman gizlilik politikasına ihtiyacınız olduğunu, neleri dahil edeceğinizi ve nasıl uyumlu kalacağınızı öğrenin.',
+      ? 'Guide to privacy policy requirements under GDPR, CCPA, KVKK, and other frameworks. Covers when a privacy policy is required, what to include, and compliance steps.'
+      : 'GDPR, CCPA, KVKK ve diğer düzenlemeler kapsamında gizlilik politikası gereksinimleri rehberi. Gizlilik politikasının ne zaman gerekli olduğunu, neleri içermesi gerektiğini ve uyum adımlarını kapsar.',
     alternates: {
       canonical: url,
       languages: {
@@ -78,8 +83,8 @@ export default async function PrivacyPolicyGuidePage({
     title: isEnglish ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained' : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması',
     alternativeHeadline: isEnglish ? 'Privacy Policy Guide — GDPR, CCPA, KVKK Compliance' : 'Gizlilik Politikası Rehberi — GDPR, CCPA, KVKK Uyumu',
     abstractText: isEnglish
-      ? 'A comprehensive guide to privacy policy requirements under GDPR, CCPA, KVKK, and other laws. Learn when you need a privacy policy, what to include, and how to stay compliant.'
-      : 'GDPR, CCPA, KVKK ve diğer yasalar kapsamında gizlilik politikası gereksinimleri için tam rehber. Ne zaman gizlilik politikasına ihtiyacınız olduğunu, neleri dahil edeceğinizi ve nasıl uyumlu kalacağınızı öğrenin.',
+      ? 'Guide to privacy policy requirements under GDPR, CCPA, KVKK, and other frameworks. Covers when a privacy policy is required, what to include, and compliance steps.'
+      : 'GDPR, CCPA, KVKK ve diğer düzenlemeler kapsamında gizlilik politikası gereksinimleri rehberi. Gizlilik politikasının ne zaman gerekli olduğunu, neleri içermesi gerektiğini ve uyum adımlarını kapsar.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
     dateModified: PAGE_META.dateModified,
@@ -92,6 +97,8 @@ export default async function PrivacyPolicyGuidePage({
   })
 
   const faqSchema = generateFAQSchema(faqs)
+
+  const primarySources = getPrimarySources(PAGE_META.slug, lang)
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
@@ -679,6 +686,30 @@ export default async function PrivacyPolicyGuidePage({
           </div>
         </section>
 
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Website and app operators collecting personal data',
+              'E-commerce businesses processing customer information',
+              'Organizations subject to GDPR, CCPA, or KVKK',
+            ],
+            risk: 'Non-compliance may result in regulatory fines (up to \u20AC20M under GDPR), enforcement actions, or private litigation.',
+            nextStep: 'Audit current data collection practices and verify your privacy policy reflects each applicable regulatory framework.',
+          } : {
+            affected: [
+              'Kişisel veri toplayan web sitesi ve uygulama işletmecileri',
+              'Müşteri bilgilerini işleyen e-ticaret işletmeleri',
+              'GDPR, CCPA veya KVKK\'ya tabi kuruluşlar',
+            ],
+            risk: 'Uyumsuzluk, düzenleyici para cezaları (GDPR kapsamında 20 milyon \u20AC\'ya kadar), yaptırım işlemleri veya bireysel davalarla sonuçlanabilir.',
+            nextStep: 'Mevcut veri toplama uygulamalarını denetleyin ve gizlilik politikanızın geçerli düzenleyici çerçeveleri yansıttığını doğrulayın.',
+          }}
+        />
+
+        <PrimarySources sources={primarySources} lang={lang} />
+
         {/* Cite This Entry */}
         <CiteThisEntry
           lang={lang}
@@ -701,11 +732,13 @@ export default async function PrivacyPolicyGuidePage({
             <Link href={`/${lang}/encyclopedia/freelancer-legal-guide`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="freelancer-legal-guide" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia/what-is-nda`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'What is an NDA?' : 'NDA Nedir?'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="what-is-nda" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia`} className="text-[#C9A227] hover:underline">

@@ -11,8 +11,59 @@ type SearchItem = {
   descriptionEn: string
   descriptionTr: string
   category: string
-  jurisdiction: string | null
+  jurisdiction: string
   keywords: string[]
+  authorityLevel?: string
+}
+
+// Authority level weight map — higher = higher authority = listed first
+const AUTHORITY_WEIGHTS: Record<string, number> = {
+  primary_law: 100,
+  regulation: 80,
+  case_law: 70,
+  official_guidance: 60,
+  secondary_analysis: 40,
+  template: 20,
+}
+
+const AUTHORITY_LABELS: Record<string, { en: string; tr: string }> = {
+  primary_law: { en: 'Statute', tr: 'Kanun' },
+  regulation: { en: 'Regulation', tr: 'Düzenleme' },
+  case_law: { en: 'Case Law', tr: 'İçtihat' },
+  official_guidance: { en: 'Official Guidance', tr: 'Resmi Rehber' },
+  secondary_analysis: { en: 'Analysis', tr: 'Analiz' },
+  template: { en: 'Template', tr: 'Şablon' },
+}
+
+// Jurisdiction weight map — higher = higher institutional priority
+const JURISDICTION_WEIGHTS: Record<string, number> = {
+  US: 50,
+  'US-NY': 45,
+  'US-DE': 45,
+  'US-WY': 45,
+  'US-CA': 45,
+  'US-TX': 45,
+  'US-FL': 45,
+  EU: 30,
+  TR: 25,
+  UK: 20,
+  DE: 20,
+  FR: 20,
+  INTL: 15,
+  GENERAL: 10,
+}
+
+// Derive authority level from item category when not explicitly set
+function getItemAuthorityLevel(item: SearchItem): string {
+  if (item.authorityLevel) return item.authorityLevel
+  switch (item.category) {
+    case 'contract': return 'template'
+    case 'checklist': return 'template'
+    case 'consular': return 'official_guidance'
+    case 'cornerstone': return 'regulation'
+    case 'amerika': return 'official_guidance'
+    default: return 'secondary_analysis'
+  }
 }
 
 type SearchIndex = {
@@ -110,7 +161,16 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
 
     const filtered = scored
       .filter((s) => s.score > 0)
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => {
+        const authA = AUTHORITY_WEIGHTS[getItemAuthorityLevel(a.item)] ?? 40
+        const authB = AUTHORITY_WEIGHTS[getItemAuthorityLevel(b.item)] ?? 40
+        if (authA !== authB) return authB - authA
+        const jurA = JURISDICTION_WEIGHTS[a.item.jurisdiction] ?? 10
+        const jurB = JURISDICTION_WEIGHTS[b.item.jurisdiction] ?? 10
+        if (jurA !== jurB) return jurB - jurA
+        if (a.score !== b.score) return b.score - a.score
+        return a.item.id.localeCompare(b.item.id)
+      })
       .slice(0, 8)
       .map((s) => s.item)
 
@@ -244,6 +304,12 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
                         <span className="font-medium text-gray-900 truncate">
                           {isEnglish ? item.titleEn : item.titleTr}
                         </span>
+                        <span className="text-xs text-stone-400">
+                          {AUTHORITY_LABELS[getItemAuthorityLevel(item)]?.[isEnglish ? 'en' : 'tr'] ?? ''}
+                        </span>
+                        {item.jurisdiction && item.jurisdiction !== 'GENERAL' && (
+                          <span className="text-xs text-stone-400">{item.jurisdiction}</span>
+                        )}
                         <span className="inline-flex px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 rounded">
                           {getCategoryLabel(item.category)}
                         </span>
@@ -252,7 +318,7 @@ export default function SearchModal({ isOpen, onClose, lang }: SearchModalProps)
                         {isEnglish ? item.descriptionEn : item.descriptionTr}
                       </p>
                     </div>
-                    <span className="text-[#C9A227] flex-shrink-0">→</span>
+                    <span className="text-stone-400 flex-shrink-0">→</span>
                   </div>
                 </Link>
               ))}

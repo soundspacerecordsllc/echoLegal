@@ -28,11 +28,11 @@ export async function generateMetadata({
 
   return {
     title: isEnglish
-      ? 'Free Legal Templates & Document Library | EchoLegal'
-      : 'Ücretsiz Hukuki Şablon ve Belge Kütüphanesi | EchoLegal',
+      ? 'Legal Document Templates — Supplementary Materials | EchoLegal'
+      : 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
     description: isEnglish
-      ? 'Browse 50+ free legal templates: contracts, business forms, immigration letters, tax checklists. Available in English and Turkish.'
-      : 'Sözleşmeler, iş formları, göç mektupları, vergi kontrol listeleri dahil 50+ ücretsiz hukuki şablon. İngilizce ve Türkçe olarak mevcuttur.',
+      ? 'Jurisdiction-tagged legal document templates: contracts, regulatory forms, consular correspondence, and compliance checklists. Supplementary reference materials published in English and Turkish.'
+      : 'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri. İngilizce ve Türkçe yayımlanan tamamlayıcı referans materyalleri.',
     alternates: {
       canonical: `https://echo-legal.com/${lang}/templates`,
       languages: {
@@ -42,11 +42,11 @@ export async function generateMetadata({
     },
     openGraph: {
       title: isEnglish
-        ? 'Free Legal Templates & Document Library'
-        : 'Ücretsiz Hukuki Şablon Kütüphanesi',
+        ? 'Legal Document Templates — Supplementary Materials'
+        : 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
       description: isEnglish
-        ? '50+ bilingual legal templates for contracts, immigration, tax, and business documents.'
-        : '50+ iki dilli hukuki şablon: sözleşmeler, göç, vergi ve iş belgeleri.',
+        ? 'Jurisdiction-tagged legal document templates in English and Turkish. Supplementary materials maintained separately from primary legal sources.'
+        : 'İngilizce ve Türkçe yargı alanı etiketli hukuki belge şablonları. Birincil hukuk kaynaklarından ayrı olarak sürdürülen tamamlayıcı materyaller.',
       type: 'website',
     },
   }
@@ -77,11 +77,11 @@ export default async function TemplatesPage({
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: isEnglish
-      ? 'Legal Templates & Document Library'
-      : 'Hukuki Şablon ve Belge Kütüphanesi',
+      ? 'Legal Document Templates — Supplementary Materials'
+      : 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
     description: isEnglish
-      ? 'Free legal templates for contracts, business documents, immigration letters, and tax forms.'
-      : 'Sözleşmeler, iş belgeleri, göç mektupları ve vergi formları için ücretsiz hukuki şablonlar.',
+      ? 'Jurisdiction-tagged legal document templates: contracts, regulatory forms, consular correspondence, and compliance checklists.'
+      : 'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
     url: `https://echo-legal.com/${lang}/templates`,
     inLanguage: lang === 'en' ? 'en-US' : 'tr-TR',
     isPartOf: {
@@ -129,8 +129,8 @@ export default async function TemplatesPage({
             </h1>
             <p className="text-base text-gray-500 leading-relaxed max-w-2xl">
               {isEnglish
-                ? `${templates.length} professionally drafted legal documents. Contracts, regulatory forms, consular correspondence, and compliance checklists — available in English and Turkish.`
-                : `Profesyonel olarak hazırlanmış ${templates.length} hukuki belge. Sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri — İngilizce ve Türkçe olarak sunulmaktadır.`}
+                ? `${templates.length} jurisdiction-tagged legal document templates. Contracts, regulatory forms, consular correspondence, and compliance checklists — supplementary reference materials published in English and Turkish.`
+                : `Yargı alanı etiketli ${templates.length} hukuki belge şablonu. Sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri — İngilizce ve Türkçe yayımlanan tamamlayıcı referans materyalleri.`}
             </p>
           </div>
 

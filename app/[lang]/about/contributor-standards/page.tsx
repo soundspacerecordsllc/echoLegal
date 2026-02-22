@@ -69,8 +69,8 @@ export default async function ContributorStandardsPage({
         </h1>
         <p className="text-xl text-gray-600 leading-relaxed">
           {isEnglish
-            ? 'Requirements and expectations for attorneys contributing to EchoLegal.'
-            : 'EchoLegal\'a katkıda bulunan avukatlar için gereksinimler ve beklentiler.'}
+            ? 'Licensed attorneys may apply to contribute jurisdiction-specific entries subject to editorial review and credential verification. The following standards govern eligibility, submission requirements, and editorial compliance.'
+            : 'Lisanslı avukatlar, editöryal inceleme ve kimlik doğrulamasına tabi olarak yargı alanına özgü maddeler katkıda bulunmak üzere başvurabilir. Aşağıdaki standartlar uygunluk, sunum gereksinimleri ve editöryal uyumu düzenler.'}
         </p>
       </div>
 
@@ -243,8 +243,8 @@ export default async function ContributorStandardsPage({
                   </p>
                   <p className="text-sm text-gray-600 mt-0.5">
                     {isEnglish
-                      ? 'Approved content is published by a Jurisdiction Editor, Senior Editor, or the Editorial Director. Published content displays the publication date, author attribution, reviewer attribution, and review date.'
-                      : 'Onaylanan içerik Yargı Alanı Editörü, Kıdemli Editör veya Editöryal Direktör tarafından yayınlanır. Yayınlanan içerik yayın tarihi, yazar atfı, incelemeci atfı ve inceleme tarihini gösterir.'}
+                      ? 'Approved content is published by a Jurisdiction Editor, Senior Editor, or the Editorial Director. The editorial board retains final structural authority over classification, jurisdiction tagging, and authority-level assignment. Published content displays the publication date, author attribution, reviewer attribution, and review date.'
+                      : 'Onaylanan içerik Yargı Alanı Editörü, Kıdemli Editör veya Editöryal Direktör tarafından yayınlanır. Yayın kurulu, sınıflandırma, yargı alanı etiketleme ve otorite seviyesi ataması üzerinde nihai yapısal otoriteyi elinde tutar. Yayınlanan içerik yayın tarihi, yazar atfı, incelemeci atfı ve inceleme tarihini gösterir.'}
                   </p>
                 </div>
               </li>
@@ -269,7 +269,7 @@ export default async function ContributorStandardsPage({
       {/* What Contributors Receive */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-black mb-6">
-          {isEnglish ? 'What Contributors Receive' : 'Katkıda Bulunanlar Ne Alır'}
+          {isEnglish ? 'Contributor Attribution and Recognition' : 'Katkıda Bulunan Atfı ve Tanınırlığı'}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-gray-50 rounded-lg p-5">
@@ -278,18 +278,18 @@ export default async function ContributorStandardsPage({
             </h3>
             <p className="text-sm text-gray-600">
               {isEnglish
-                ? 'Public attribution on every published entry. Author and reviewer names, bar admissions, and jurisdictional competence are displayed alongside all content.'
-                : 'Yayınlanan her maddede kamuya açık atıf. Yazar ve incelemeci adları, baro kayıtları ve yargı alanı yetkinliği tüm içerikle birlikte gösterilir.'}
+                ? 'Named attribution on every published entry. Author and reviewer credentials, bar admissions, and jurisdictional competence are recorded alongside all content.'
+                : 'Yayınlanan her maddede isimli atıf. Yazar ve incelemeci kimlik bilgileri, baro kayıtları ve yargı alanı yetkinliği tüm içerikle birlikte kaydedilir.'}
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-5">
             <h3 className="font-semibold text-black mb-2">
-              {isEnglish ? 'Editorial Board Listing' : 'Yayın Kurulu Listesi'}
+              {isEnglish ? 'Jurisdiction-Specific Contributor Profile' : 'Yargı Alanına Özgü Katkıda Bulunan Profili'}
             </h3>
             <p className="text-sm text-gray-600">
               {isEnglish
-                ? 'All verified contributors are listed on the Editorial Board page with their credentials, jurisdictions, and role within EchoLegal.'
-                : 'Doğrulanmış tüm katkıda bulunanlar, yetkinlikleri, yargı alanları ve EchoLegal\'daki rolleriyle birlikte Yayın Kurulu sayfasında listelenir.'}
+                ? 'Verified contributors are listed on the Editorial Board page with their credentials, jurisdictional coverage, and role within the encyclopedia system.'
+                : 'Doğrulanmış katkıda bulunanlar, kimlik bilgileri, yargı alanı kapsamları ve ansiklopedi sistemi içindeki rolleriyle birlikte Yayın Kurulu sayfasında listelenir.'}
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-5">
@@ -298,18 +298,18 @@ export default async function ContributorStandardsPage({
             </h3>
             <p className="text-sm text-gray-600">
               {isEnglish
-                ? 'Published entries carry structured citation metadata and are designed to be citable in legal and academic contexts.'
-                : 'Yayınlanan maddeler yapılandırılmış atıf meta verileri taşır ve hukuki ve akademik bağlamlarda atıf yapılabilir olacak şekilde tasarlanmıştır.'}
+                ? 'Published entries carry structured citation metadata, persistent identifiers, and authority-level classification. Entries are formatted for citation in legal and academic contexts.'
+                : 'Yayınlanan maddeler yapılandırılmış atıf meta verileri, kalıcı tanımlayıcılar ve otorite seviyesi sınıflandırması taşır. Maddeler hukuki ve akademik bağlamlarda atıf için biçimlendirilmiştir.'}
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-5">
             <h3 className="font-semibold text-black mb-2">
-              {isEnglish ? 'Peer Recognition' : 'Meslektaş Tanınırlığı'}
+              {isEnglish ? 'Publication Credit' : 'Yayın Kredisi'}
             </h3>
             <p className="text-sm text-gray-600">
               {isEnglish
-                ? 'Contributions to a growing legal encyclopedia serve as a verifiable professional credential and demonstrate subject-matter expertise to peers and clients.'
-                : 'Büyüyen bir hukuk ansiklopedisine yapılan katkılar, doğrulanabilir bir profesyonel yetkinlik belgesi olarak hizmet eder ve meslektaşlara ve müvekkillere konu uzmanlığını gösterir.'}
+                ? 'Publication within the encyclopedia system constitutes a verifiable record of subject-matter expertise, documented with jurisdiction tagging and citation metadata.'
+                : 'Ansiklopedi sistemi içindeki yayın, yargı alanı etiketleme ve atıf meta verileriyle belgelenen, doğrulanabilir bir konu uzmanlığı kaydı oluşturur.'}
             </p>
           </div>
         </div>
@@ -576,8 +576,8 @@ export default async function ContributorStandardsPage({
         </h2>
         <p className="text-gray-700">
           {isEnglish
-            ? 'Licensed attorneys interested in contributing to EchoLegal may direct inquiries through the support page.'
-            : 'EchoLegal\'a katkıda bulunmak isteyen lisanslı avukatlar, destek sayfası aracılığıyla sorularını iletebilir.'}
+            ? 'Licensed attorneys may apply to contribute jurisdiction-specific entries subject to editorial review. Inquiries may be directed through the support page.'
+            : 'Lisanslı avukatlar, editöryal incelemeye tabi olarak yargı alanına özgü maddelere katkıda bulunmak üzere başvurabilir. Sorular destek sayfası aracılığıyla iletilebilir.'}
         </p>
         <Link
           href={`/${lang}/support`}

@@ -5,7 +5,12 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'contractor-vs-employee',
@@ -21,7 +26,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
   return {
     title: isEnglish
-      ? 'Contractor vs Employee: Complete Classification Guide | EchoLegal'
+      ? 'Contractor vs Employee: Classification Guide | EchoLegal'
       : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi | EchoLegal',
     description: isEnglish
       ? 'Understand the critical differences between contractors and employees. Learn IRS tests, legal factors, misclassification risks, and how to properly classify workers.'
@@ -34,7 +39,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       },
     },
     other: {
-      'citation_title': isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
+      'citation_title': isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi',
       'citation_publisher': 'EchoLegal',
       'citation_publication_date': '2025/07/10',
       'citation_lastmod': '2026/01/22',
@@ -71,7 +76,7 @@ export default async function ContractorVsEmployeePage({
   ]
 
   const scholarlySchema = generateScholarlyArticleSchema({
-    title: isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi',
+    title: isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi',
     alternativeHeadline: isEnglish ? 'Worker Classification — IRS Tests, ABC Test, and Compliance' : 'İşçi Sınıflandırması — IRS Testleri, ABC Testi ve Uyum',
     abstractText: isEnglish
       ? 'A reference guide to worker classification: legal tests, compliance requirements, and structuring working relationships.'
@@ -88,6 +93,8 @@ export default async function ContractorVsEmployeePage({
   })
 
   const faqSchema = generateFAQSchema(faqs)
+
+  const primarySources = getPrimarySources(PAGE_META.slug, lang)
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
@@ -761,10 +768,46 @@ export default async function ContractorVsEmployeePage({
           </div>
         </section>
 
+        {/* Authority Framework */}
+        <section className="mb-10">
+          <h3 className="text-lg font-semibold mb-3">
+            {isEnglish ? 'Authority Framework' : 'Otorite Çerçevesi'}
+          </h3>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            {isEnglish
+              ? 'Federal statutes enacted by Congress (e.g., the Fair Labor Standards Act, the Internal Revenue Code) are binding law. Regulations promulgated by federal agencies under statutory authority (e.g., 29 C.F.R. Part 795) carry the force of law when validly issued. Supreme Court precedent, such as Nationwide Mutual Insurance Co. v. Darden, is controlling on questions of federal law. Agency guidance materials — including IRS form instructions and revenue rulings — are persuasive but not binding on courts. Courts may afford varying degrees of deference to agency interpretations under doctrines such as Chevron or Skidmore, depending on the formality and persuasiveness of the guidance at issue.'
+              : 'Kongre tarafından çıkarılan federal yasalar (örn. Adil Çalışma Standartları Yasası, İç Gelir Kanunu) bağlayıcı hukuktur. Federal kurumların yasal yetki altında çıkardığı düzenlemeler (örn. 29 C.F.R. Part 795) geçerli biçimde yayımlandığında kanun hükmündedir. Yüksek Mahkeme içtihadı — Nationwide Mutual Insurance Co. v. Darden gibi — federal hukuk meseleleri üzerinde bağlayıcıdır. IRS form talimatları ve gelir kararları dahil kurum rehberlik materyalleri ikna edici niteliktedir ancak mahkemeler üzerinde bağlayıcılığı yoktur. Mahkemeler, söz konusu rehberliğin resmiyetine ve ikna ediciliğine bağlı olarak Chevron veya Skidmore gibi doktrinler kapsamında kurum yorumlarına farklı düzeylerde saygı gösterebilir.'}
+          </p>
+        </section>
+
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Businesses classifying workers',
+              'Independent contractors',
+              'HR and payroll departments',
+            ],
+            risk: 'Misclassification may result in back taxes, penalties under the FLSA, and liability for unpaid benefits.',
+            nextStep: 'Review current worker classifications against the IRS common-law test and applicable state standards.',
+          } : {
+            affected: [
+              'İşçi sınıflandırması yapan işletmeler',
+              'Bağımsız yükleniciler',
+              'İK ve bordro departmanları',
+            ],
+            risk: 'Yanlış sınıflandırma, geriye dönük vergi, FLSA kapsamında cezalar ve ödenmemiş sosyal haklara ilişkin sorumluluk doğurabilir.',
+            nextStep: 'Mevcut işçi sınıflandırmalarını IRS ortak hukuk testi ve ilgili eyalet standartlarına göre gözden geçirin.',
+          }}
+        />
+
+        <PrimarySources sources={primarySources} lang={lang} />
+
         {/* Cite This Entry */}
         <CiteThisEntry
           lang={lang}
-          title={isEnglish ? 'Contractor vs Employee: Complete Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Kapsamlı Sınıflandırma Rehberi'}
+          title={isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi'}
           url={pageUrl}
           dateModified={PAGE_META.dateModified}
           version={PAGE_META.version}
@@ -783,6 +826,7 @@ export default async function ContractorVsEmployeePage({
             <Link href={`/${lang}/encyclopedia/freelancer-legal-guide`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Freelancer Legal Guide' : 'Serbest Çalışan Hukuk Rehberi'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="freelancer-legal-guide" />
           </li>
           <li>
             <Link href={`/${lang}/1099-vergi-belgeleri`} className="text-[#C9A227] hover:underline">

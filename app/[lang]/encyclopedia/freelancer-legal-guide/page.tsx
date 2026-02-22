@@ -5,7 +5,12 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'freelancer-legal-guide',
@@ -21,11 +26,11 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   const url = `${SITE_URL}/${params.lang}/encyclopedia/${PAGE_META.slug}`
   return {
     title: isEnglish
-      ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors | EchoLegal'
-      : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz | EchoLegal',
+      ? 'Freelancer Legal Guide: Independent Contractors | EchoLegal'
+      : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Kılavuz | EchoLegal',
     description: isEnglish
-      ? 'Comprehensive legal guide for freelancers covering contracts, taxes, intellectual property, liability protection, and international clients.'
-      : 'Sözleşmeler, vergiler, fikri mülkiyet, sorumluluk koruması ve uluslararası müşteriler hakkında serbest çalışanlar için kapsamlı hukuk rehberi.',
+      ? 'Legal guide for freelancers covering contracts, taxes, intellectual property, liability protection, and international clients.'
+      : 'Sözleşmeler, vergiler, fikri mülkiyet, sorumluluk koruması ve uluslararası müşteriler hakkında serbest çalışanlar için hukuk rehberi.',
     alternates: {
       canonical: url,
       languages: {
@@ -34,7 +39,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       },
     },
     other: {
-      'citation_title': isEnglish ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz',
+      'citation_title': isEnglish ? 'Freelancer Legal Guide: Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Kılavuz',
       'citation_publisher': 'EchoLegal',
       'citation_publication_date': '2025/08/01',
       'citation_lastmod': '2026/01/20',
@@ -71,11 +76,11 @@ export default async function FreelancerLegalGuidePage({
   ]
 
   const scholarlySchema = generateScholarlyArticleSchema({
-    title: isEnglish ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz',
+    title: isEnglish ? 'Freelancer Legal Guide: Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Kılavuz',
     alternativeHeadline: isEnglish ? 'Freelancer Legal Guide — Contracts, Taxes, IP, and Liability' : 'Serbest Çalışan Hukuk Rehberi — Sözleşmeler, Vergiler, Fikri Mülkiyet ve Sorumluluk',
     abstractText: isEnglish
-      ? 'Comprehensive legal guide for freelancers and independent contractors covering business structure, contracts, intellectual property, taxes, liability protection, international clients, invoicing, and dispute resolution.'
-      : 'Serbest çalışanlar ve bağımsız yükleniciler için iş yapısı, sözleşmeler, fikri mülkiyet, vergiler, sorumluluk koruması, uluslararası müşteriler, faturalama ve uyuşmazlık çözümünü kapsayan kapsamlı hukuk rehberi.',
+      ? 'Legal guide for freelancers and independent contractors covering business structure, contracts, intellectual property, taxes, liability protection, international clients, invoicing, and dispute resolution.'
+      : 'Serbest çalışanlar ve bağımsız yükleniciler için iş yapısı, sözleşmeler, fikri mülkiyet, vergiler, sorumluluk koruması, uluslararası müşteriler, faturalama ve uyuşmazlık çözümünü kapsayan hukuk rehberi.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
     dateModified: PAGE_META.dateModified,
@@ -88,6 +93,8 @@ export default async function FreelancerLegalGuidePage({
   })
 
   const faqSchema = generateFAQSchema(faqs)
+
+  const primarySources = getPrimarySources(PAGE_META.slug, lang)
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
@@ -116,8 +123,8 @@ export default async function FreelancerLegalGuidePage({
 
         <p className="text-xl text-gray-600 mb-6">
           {isEnglish
-            ? 'The complete legal handbook for freelancers and independent contractors: from structuring your business to protecting your work and getting paid.'
-            : 'Serbest çalışanlar ve bağımsız yükleniciler için kapsamlı hukuk el kitabı: işinizi yapılandırmaktan çalışmalarınızı korumaya ve ödeme almaya kadar.'}
+            ? 'A legal reference for freelancers and independent contractors: business structure, contracts, intellectual property, taxes, and dispute resolution.'
+            : 'Serbest çalışanlar ve bağımsız yükleniciler için hukuk referansı: iş yapısı, sözleşmeler, fikri mülkiyet, vergiler ve uyuşmazlık çözümü.'}
         </p>
 
         <InstitutionalBadge
@@ -219,8 +226,8 @@ export default async function FreelancerLegalGuidePage({
               <h3 className="text-lg font-semibold mb-2">{isEnglish ? 'Master Service Agreement (MSA)' : 'Ana Hizmet Sözleşmesi (MSA)'}</h3>
               <p className="text-gray-600 mb-2">
                 {isEnglish
-                  ? 'A comprehensive contract that covers the overall relationship with a client. It includes:'
-                  : 'Bir müşteriyle genel ilişkiyi kapsayan kapsamlı bir sözleşme. İçerir:'}
+                  ? 'A contract that governs the overall relationship with a client. It includes:'
+                  : 'Bir müşteriyle genel ilişkiyi düzenleyen sözleşme. İçerir:'}
               </p>
               <ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
                 <li>{isEnglish ? 'Payment terms and rates' : 'Ödeme koşulları ve oranlar'}</li>
@@ -586,6 +593,7 @@ export default async function FreelancerLegalGuidePage({
               <Link href={`/${lang}/encyclopedia/privacy-policy-guide`} className="text-[#C9A227] hover:underline text-sm">
                 {isEnglish ? 'Learn more in our Privacy Policy Guide →' : 'Gizlilik Politikası Rehberimizde daha fazla bilgi edinin →'}
               </Link>
+              <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="privacy-policy-guide" />
             </div>
           </div>
         </section>
@@ -770,10 +778,34 @@ export default async function FreelancerLegalGuidePage({
           </div>
         </section>
 
+        <PracticalNextStep
+          lang={lang}
+          className="mb-8"
+          practical={isEnglish ? {
+            affected: [
+              'Freelancers and independent contractors',
+              'Sole proprietors',
+              'Clients engaging freelance talent',
+            ],
+            risk: 'Operating without written agreements may result in unpaid invoices, intellectual property disputes, or uninsured liability.',
+            nextStep: 'Establish a standard client engagement process that includes a written service agreement and clear payment terms.',
+          } : {
+            affected: [
+              'Serbest çalışanlar ve bağımsız yükleniciler',
+              'Şahıs işletmeleri',
+              'Serbest yetenek çalıştıran müşteriler',
+            ],
+            risk: 'Yazılı sözleşme olmadan çalışmak, ödenmemiş faturalar, fikri mülkiyet uyuşmazlıkları veya sigortasız sorumluluk riskine yol açabilir.',
+            nextStep: 'Yazılı hizmet sözleşmesi ve net ödeme koşulları içeren standart bir müşteri süreç prosedürü oluşturun.',
+          }}
+        />
+
+        <PrimarySources sources={primarySources} lang={lang} />
+
         {/* Cite This Entry */}
         <CiteThisEntry
           lang={lang}
-          title={isEnglish ? 'Freelancer Legal Guide: Complete Legal Handbook for Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Tam Kılavuz'}
+          title={isEnglish ? 'Freelancer Legal Guide: Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Kılavuz'}
           url={pageUrl}
           dateModified={PAGE_META.dateModified}
           version={PAGE_META.version}
@@ -792,16 +824,19 @@ export default async function FreelancerLegalGuidePage({
             <Link href={`/${lang}/encyclopedia/contractor-vs-employee`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Yüklenici mi Çalışan mı: Sınıflandırma Rehberi'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="contractor-vs-employee" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia/what-is-nda`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'What is an NDA?' : 'NDA Nedir?'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="what-is-nda" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia/privacy-policy-guide`} className="text-[#C9A227] hover:underline">
               {isEnglish ? 'Do I Need a Privacy Policy?' : 'Gizlilik Politikasına İhtiyacım Var mı?'} →
             </Link>
+            <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="privacy-policy-guide" />
           </li>
           <li>
             <Link href={`/${lang}/encyclopedia`} className="text-[#C9A227] hover:underline">

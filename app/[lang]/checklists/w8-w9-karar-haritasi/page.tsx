@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   return {
     title: isEnglish
-      ? 'W-8 or W-9? Interactive Decision Tool & Complete Guide | EchoLegal'
+      ? 'W-8 or W-9? Interactive Decision Tool & Guide | EchoLegal'
       : 'W-8 mi W-9 mu? Etkileşimli Karar Aracı ve Tam Rehber | EchoLegal',
     description: isEnglish
       ? 'Interactive tool to determine which US tax form you need: W-9, W-8BEN, or W-8BEN-E. Comprehensive guide covering US person status, beneficial owner rules, treaty benefits, and FATCA compliance.'
@@ -86,7 +86,7 @@ export default async function W8W9DecisionMapPage({
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: isEnglish
-      ? 'W-8 or W-9? Complete Decision Guide for International Entrepreneurs'
+      ? 'W-8 or W-9? Decision Guide for International Entrepreneurs'
       : 'W-8 mi W-9 mu? Uluslararası Girişimciler İçin Tam Karar Rehberi',
     author: {
       '@type': 'Organization',
@@ -205,7 +205,7 @@ export default async function W8W9DecisionMapPage({
 
             <p className="text-lg text-gray-600 leading-relaxed">
               {isEnglish
-                ? 'Use this interactive tool to determine whether you need Form W-9, W-8BEN, or W-8BEN-E. Then explore our comprehensive guide below covering definitions, special cases, and common mistakes.'
+                ? 'Use this interactive tool to determine whether you need Form W-9, W-8BEN, or W-8BEN-E. Then explore the reference guide below covering definitions, special cases, and common mistakes.'
                 : 'W-9, W-8BEN veya W-8BEN-E Formuna ihtiyacınız olup olmadığını belirlemek için bu etkileşimli aracı kullanın. Ardından aşağıdaki tanımları, özel durumları ve yaygın hataları kapsayan kapsamlı rehberimizi inceleyin.'}
             </p>
           </header>

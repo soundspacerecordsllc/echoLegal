@@ -10,6 +10,7 @@
  */
 
 import type { PrimarySourceEntry, PrimarySourceType, AuthorityLevel } from './content-schema'
+import type { JurisdictionCode } from './jurisdictions'
 
 type BilingualLabel = { en: string; tr?: string }
 
@@ -708,6 +709,323 @@ const REGISTRY: Record<string, RegistryEntry[]> = {
       jurisdiction: 'US',
     },
   ],
+
+  'what-is-nda': [
+    {
+      type: 'USC',
+      citation: '18 U.S.C. § 1836',
+      label: {
+        en: 'Defend Trade Secrets Act — federal civil cause of action for trade secret misappropriation',
+        tr: 'Ticari Sırları Koruma Kanunu — ticari sır kötüye kullanımı için federal hukuk davası',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section1836&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-18USC-1836',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '18 U.S.C. § 1839',
+      label: {
+        en: 'Definitions — trade secret, misappropriation, and improper means',
+        tr: 'Tanımlar — ticari sır, kötüye kullanım ve uygunsuz yöntemler',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section1839&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-18USC-1839',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'StateStatute',
+      citation: 'Uniform Trade Secrets Act (UTSA) § 1',
+      label: {
+        en: 'Model state law — definitions of trade secret and misappropriation (adopted in 48 states)',
+        tr: 'Model eyalet yasası — ticari sır ve kötüye kullanım tanımları (48 eyalette kabul edilmiş)',
+      },
+      authorityLevel: 'state_statute',
+      canonicalId: 'US-UTSA-1',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'Restatement (Third) of Unfair Competition §§ 39–45 (1995)',
+      label: {
+        en: 'Trade secret definition, duty of confidence, and remedies for breach',
+        tr: 'Ticari sır tanımı, gizlilik yükümlülüğü ve ihlal çözümleri',
+      },
+      authorityLevel: 'agency_guidance',
+      canonicalId: 'US-RESTATEMENT-UNFAIR-COMP-39',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'StateStatute',
+      citation: 'N.Y. Gen. Oblig. Law § 5-701',
+      label: {
+        en: 'Statute of frauds — agreements required to be in writing',
+        tr: 'Dolandırıcılık tüzüğü — yazılı olması gereken sözleşmeler',
+      },
+      authorityLevel: 'state_statute',
+      canonicalId: 'ny-stat-gen-oblig-law-5-701',
+      jurisdiction: 'US-NY',
+    },
+  ],
+
+  'contractor-vs-employee': [
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 3509',
+      label: {
+        en: 'Determination of employer\'s liability for certain employment taxes',
+        tr: 'Belirli istihdam vergileri için işveren sorumluluğunun belirlenmesi',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section3509&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-3509',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '29 U.S.C. § 203(e)–(g)',
+      label: {
+        en: 'Fair Labor Standards Act — definitions of employee, employer, and employ',
+        tr: 'Adil Çalışma Standartları Yasası — işçi, işveren ve istihdam tanımları',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section203&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-29USC-203',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'CFR',
+      citation: '29 C.F.R. § 795.100 et seq.',
+      label: {
+        en: 'DOL final rule on employee or independent contractor classification under the FLSA',
+        tr: 'FLSA kapsamında işçi veya bağımsız yüklenici sınıflandırmasına ilişkin DOL nihai kuralı',
+      },
+      url: 'https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-C/part-795',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-29CFR-795.100',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Case',
+      citation: 'Nationwide Mutual Insurance Co. v. Darden, 503 U.S. 318 (1992)',
+      label: {
+        en: 'Supreme Court common-law agency test for employee status',
+        tr: 'İşçi statüsü için Yüksek Mahkeme genel hukuk vekalet testi',
+      },
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-SCOTUS-Darden-1992',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS, Instructions for Form SS-8',
+      label: {
+        en: 'Determination of Worker Status for Purposes of Federal Employment Taxes and Income Tax Withholding',
+        tr: 'Federal istihdam vergileri ve gelir vergisi kesintisi amacıyla işçi statüsünün belirlenmesi',
+      },
+      url: 'https://www.irs.gov/forms-pubs/about-form-ss-8',
+      authorityLevel: 'form_instruction',
+      canonicalId: 'US-IRS-FORM-SS-8-INSTR',
+      jurisdiction: 'US',
+    },
+  ],
+
+  'freelancer-legal-guide': [
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 1401',
+      label: {
+        en: 'Rate of self-employment tax',
+        tr: 'Serbest meslek vergisi oranı',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section1401&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-1401',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '17 U.S.C. § 101',
+      label: {
+        en: 'Definitions — including "work made for hire" under Copyright Act',
+        tr: 'Tanımlar — Telif Hakkı Kanunu kapsamında "işe özel eser" dahil',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section101&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-17USC-101',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '17 U.S.C. § 201(b)',
+      label: {
+        en: 'Ownership of copyright — works made for hire',
+        tr: 'Telif hakkı sahipliği — işe özel eserler',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section201&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-17USC-201-b',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. § 1.1402(a)-1',
+      label: {
+        en: 'Definition of net earnings from self-employment',
+        tr: 'Serbest meslek net kazançlarının tanımı',
+      },
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/subject-group-ECFRa15d633e3406c1a/section-1.1402(a)-1',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-26CFR-1.1402a-1',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'IRS, Instructions for Form 1040-ES',
+      label: {
+        en: 'Estimated Tax for Individuals — quarterly payment requirements',
+        tr: 'Bireyler için tahmini vergi — üç aylık ödeme gereksinimleri',
+      },
+      url: 'https://www.irs.gov/forms-pubs/about-form-1040-es',
+      authorityLevel: 'form_instruction',
+      canonicalId: 'US-IRS-FORM-1040-ES-INSTR',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Case',
+      citation: 'Community for Creative Non-Violence v. Reid, 490 U.S. 730 (1989)',
+      label: {
+        en: 'Supreme Court test for "work made for hire" status of independent contractors',
+        tr: 'Bağımsız yüklenicilerin "işe özel eser" statüsü için Yüksek Mahkeme testi',
+      },
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-SCOTUS-CCNV-v-Reid-1989',
+      jurisdiction: 'US',
+    },
+  ],
+
+  'privacy-policy-guide': [
+    {
+      type: 'Other',
+      citation: 'Regulation (EU) 2016/679 (GDPR)',
+      label: {
+        en: 'General Data Protection Regulation — EU framework for personal data processing',
+        tr: 'Genel Veri Koruma Yönetmeliği — kişisel veri işleme için AB çerçevesi',
+      },
+      authorityLevel: 'federal_statute',
+      canonicalId: 'EU-GDPR-2016-679',
+      jurisdiction: 'EU',
+    },
+    {
+      type: 'StateStatute',
+      citation: 'Cal. Civ. Code § 1798.100 et seq.',
+      label: {
+        en: 'California Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA)',
+        tr: 'Kaliforniya Tüketici Gizliliği Yasası (CCPA) / Kaliforniya Gizlilik Hakları Yasası (CPRA)',
+      },
+      authorityLevel: 'state_statute',
+      canonicalId: 'US-CA-CIV-1798.100',
+      jurisdiction: 'US-CA',
+    },
+    {
+      type: 'Other',
+      citation: 'Kişisel Verilerin Korunması Kanunu, Kanun No. 6698 (KVKK)',
+      label: {
+        en: 'Turkey Personal Data Protection Law',
+        tr: 'Kişisel Verilerin Korunması Kanunu',
+      },
+      authorityLevel: 'federal_statute',
+      canonicalId: 'TR-KVKK-6698',
+      jurisdiction: 'TR',
+    },
+    {
+      type: 'CFR',
+      citation: '16 C.F.R. Part 312',
+      label: {
+        en: 'Children\'s Online Privacy Protection Rule (COPPA)',
+        tr: 'Çocukların Çevrimiçi Gizlilik Koruması Kuralı (COPPA)',
+      },
+      url: 'https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-16CFR-312',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'Guidance',
+      citation: 'FTC, Protecting Consumer Privacy in an Era of Rapid Change (2012)',
+      label: {
+        en: 'FTC privacy framework and enforcement guidance',
+        tr: 'FTC gizlilik çerçevesi ve uygulama rehberliği',
+      },
+      url: 'https://www.ftc.gov/reports/protecting-consumer-privacy-era-rapid-change-recommendations-businesses-policymakers',
+      authorityLevel: 'agency_guidance',
+      canonicalId: 'US-FTC-PRIVACY-FRAMEWORK-2012',
+      jurisdiction: 'US',
+    },
+  ],
+
+  'common-misconceptions': [
+    {
+      type: 'USC',
+      citation: '26 U.S.C. § 7701(a)',
+      label: {
+        en: 'Definitions — entity classification and domestic/foreign status',
+        tr: 'Tanımlar — tüzel kişilik sınıflandırması ve yerli/yabancı statüsü',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section7701&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-26USC-7701-a-misconceptions',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'USC',
+      citation: '8 U.S.C. § 1101(a)(15)(E)',
+      label: {
+        en: 'Immigration and Nationality Act — treaty trader and treaty investor visa classifications',
+        tr: 'Göçmenlik ve Vatandaşlık Yasası — anlaşma tüccarı ve anlaşma yatırımcısı vize sınıflandırmaları',
+      },
+      url: 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title8-section1101&num=0&edition=prelim',
+      authorityLevel: 'federal_statute',
+      canonicalId: 'US-8USC-1101-a-15-E',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'CFR',
+      citation: '26 C.F.R. §§ 301.7701-1 through 301.7701-3',
+      label: {
+        en: 'Entity classification regulations (check-the-box)',
+        tr: 'Tüzel kişilik sınıflandırma düzenlemeleri (check-the-box)',
+      },
+      url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-F/part-301/subpart-ECFRd43e1e5bf6e7513/subject-group-ECFRa28caacb356462e',
+      authorityLevel: 'federal_regulation',
+      canonicalId: 'US-26CFR-301.7701-misconceptions',
+      jurisdiction: 'US',
+    },
+    {
+      type: 'StateStatute',
+      citation: '6 Del. C. § 18-101 et seq.',
+      label: {
+        en: 'Delaware Limited Liability Company Act',
+        tr: 'Delaware Limited Şirket Kanunu',
+      },
+      authorityLevel: 'state_statute',
+      canonicalId: 'US-DE-LLC-ACT-misconceptions',
+      jurisdiction: 'US-DE',
+    },
+    {
+      type: 'Guidance',
+      citation: 'Restatement (Second) of Contracts § 17 (1981)',
+      label: {
+        en: 'Requirement of a bargain — formation of enforceable contracts',
+        tr: 'Pazarlık gerekliliği — uygulanabilir sözleşmelerin oluşumu',
+      },
+      authorityLevel: 'agency_guidance',
+      canonicalId: 'US-RESTATEMENT-CONTRACTS-17',
+      jurisdiction: 'US',
+    },
+  ],
 }
 
 // ============================================
@@ -731,6 +1049,7 @@ export function getPrimarySources(slug: string, lang: 'en' | 'tr'): PrimarySourc
     authorityLevel: e.authorityLevel,
     canonicalId: e.canonicalId,
     jurisdiction: e.jurisdiction,
+    jurisdictionScope: e.jurisdiction as JurisdictionCode,
   }))
 }
 

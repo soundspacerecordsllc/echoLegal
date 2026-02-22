@@ -1,7 +1,6 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Metadata } from 'next'
 import HomeSearch from '@/components/HomeSearch'
 
@@ -10,12 +9,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const isEnglish = lang === 'en'
 
   const title = isEnglish
-    ? 'EchoLegal — Legal Encyclopedia & Reference Platform'
-    : 'EchoLegal — Hukuk Ansiklopedisi ve Referans Platformu'
+    ? 'EchoLegal — Multilingual Legal Encyclopedia'
+    : 'EchoLegal — Çok Dilli Hukuk Ansiklopedisi'
 
   const description = isEnglish
-    ? 'A multilingual legal encyclopedia with professionally drafted reference articles, explanations, and templates. Structured for clarity, accuracy, and long-term use. Currently published in English and Turkish; designed for additional languages.'
-    : 'Profesyonelce hazırlanmış referans makaleleri, açıklamalar ve şablonlar içeren çok dilli hukuk ansiklopedisi. Netlik, doğruluk ve uzun vadeli kullanım için yapılandırılmıştır. Şu anda İngilizce ve Türkçe yayımlanmaktadır; yeni dillere ölçeklenecek şekilde tasarlanmıştır.'
+    ? 'A multilingual legal reference system comprising encyclopedia entries, jurisdiction-tagged document templates, and procedural references. Organized by authority hierarchy with version traceability. Published in English and Turkish.'
+    : 'Ansiklopedi maddeleri, yargı alanı etiketli belge şablonları ve prosedürel referanslar içeren çok dilli bir hukuk referans sistemi. Otorite hiyerarşisine göre düzenlenmiş, sürüm izlenebilirliğiyle sürdürülmektedir. İngilizce ve Türkçe yayımlanmaktadır.'
 
   return {
     title,
@@ -52,231 +51,51 @@ export default async function Home({
   const isEnglish = lang === 'en'
 
   return (
-    <div className="bg-white">
-      {/* Hero — Split Layout with Photo */}
-      <section className="border-b border-gray-100">
-        <div className="grid md:grid-cols-2 min-h-[70vh]">
-          {/* Left - Image */}
-          <div className="relative h-[40vh] md:h-auto">
-            <Image
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070"
-              alt={isEnglish ? 'Legal documents on a desk' : 'Masadaki hukuki belgeler'}
-              className="object-cover"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-            />
-          </div>
-
-          {/* Right - Content */}
-          <div className="flex flex-col justify-center px-8 md:px-16 py-12 md:py-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[0.95] tracking-tight mb-8 text-gray-900 uppercase">
-              {isEnglish
-                ? 'Multilingual Legal Encyclopedia'
-                : 'Çok Dilli Hukuk Ansiklopedisi'}
-            </h1>
-
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-md">
-              {isEnglish
-                ? 'A multilingual legal reference system containing encyclopedia entries, document templates, and jurisdictional guides. Content is organized by authority hierarchy and maintained with version traceability.'
-                : 'Ansiklopedi maddeleri, belge şablonları ve yargı alanı rehberlerini içeren çok dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre düzenlenmiş ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
-            </p>
-
-            <p className="text-xs text-gray-500 mb-8 max-w-md">
-              {isEnglish
-                ? 'Currently published in English and Turkish; designed for additional languages.'
-                : 'Şu anda İngilizce ve Türkçe yayımlanmaktadır; yeni dillere ölçeklenecek şekilde tasarlanmıştır.'}
-            </p>
-
-            {/* Search */}
-            <div className="max-w-md mb-8">
-              <HomeSearch lang={lang} />
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href={`/${lang}/library`}
-                className="btn-secondary text-sm"
-              >
-                {isEnglish ? 'Enter the Library' : 'Kütüphaneye Gir'}
-              </Link>
-              <Link
-                href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
-                className="btn-secondary text-sm"
-              >
-                {isEnglish ? 'View Templates' : 'Şablonları Gör'}
-              </Link>
-              <Link
-                href={`/${lang}/amerika`}
-                className="btn-secondary text-sm"
-              >
-                {isEnglish ? 'US Business Hub' : 'ABD İş Rehberi'}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Methodology & Structure */}
-      <section className="py-10 md:py-12 border-b border-gray-100">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-3">
-            {isEnglish ? 'Methodology & Structure' : 'Metodoloji ve Yapı'}
-          </h2>
-          <p className="text-sm text-gray-600 leading-relaxed mb-2">
+    <div className="bg-surface">
+      {/* 1. Masthead — Text-only, search-centered */}
+      <section className="section-spacing border-b border-stone-200">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
             {isEnglish
-              ? 'Content is organized by authority hierarchy — statutes, regulations, official agency guidance, and judicial interpretation — and maintained in a neutral, descriptive register.'
-              : 'İçerik otorite hiyerarşisine göre düzenlenmiştir — kanunlar, yönetmelikler, resmi kurum rehberliği ve yargısal yorum — ve tarafsız, betimleyici bir dilde sürdürülmektedir.'}
+              ? 'Multilingual Legal Encyclopedia'
+              : 'Çok Dilli Hukuk Ansiklopedisi'}
+          </h1>
+
+          <p className="text-lg text-muted leading-relaxed mb-4 max-w-2xl mx-auto">
+            {isEnglish
+              ? 'A multilingual legal reference system providing structured encyclopedia entries, supplementary document templates, and jurisdiction-specific guidance. Content is organized by authority and jurisdiction, with maintained version traceability.'
+              : 'Ansiklopedi maddeleri, tamamlayıcı belge şablonları ve yargı alanı referanslarını kapsayan çok dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre sınıflandırılmış, yargı alanı etiketli ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
           </p>
-          <p className="text-sm text-gray-600 leading-relaxed mb-2">
+
+          <p className="text-sm text-muted mb-10">
             {isEnglish
-              ? 'Key entries carry version traceability (version number and last-reviewed date) and are periodically reviewed. Citations to primary sources are provided where relevant.'
-              : 'Ana maddeler sürüm izlenebilirliği (sürüm numarası ve son inceleme tarihi) taşır ve düzenli olarak gözden geçirilir. Birincil kaynaklara yapılan atıflar ilgili yerlerde verilmektedir.'}
+              ? 'Currently published in English and Turkish; designed for additional languages.'
+              : 'Şu anda İngilizce ve Türkçe yayımlanmaktadır; yeni dillere ölçeklenecek şekilde tasarlanmıştır.'}
           </p>
-          <p className="text-xs text-gray-400">
+
+          <div className="max-w-lg mx-auto">
+            <HomeSearch lang={lang} />
+          </div>
+          <p className="sr-only">
             {isEnglish
-              ? 'Jurisdiction-tagged: US Federal / State'
-              : 'Yargı alanı etiketli: ABD Federal / Eyalet'}
+              ? 'Results ordered by authority hierarchy and jurisdiction. Deterministic ranking enforced.'
+              : 'Sonuçlar otorite hiyerarşisi ve yargı alanına göre sıralanır. Belirleyici sıralama uygulanır.'}
           </p>
         </div>
       </section>
 
-      {/* Pillar Content Areas */}
-      <section className="py-20 md:py-24">
+      {/* 2. Content Index — Four equal-weight text columns */}
+      <section className="section-spacing border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-3 text-center">
-            {isEnglish ? 'Core Reference Areas' : 'Temel Referans Alanları'}
+          <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-12 text-center">
+            {isEnglish ? 'Reference Collection' : 'Referans Koleksiyonu'}
           </h2>
-          <p className="text-gray-500 text-center mb-12 max-w-2xl mx-auto">
-            {isEnglish
-              ? 'Structured legal information across business formation, contracts, tax compliance, immigration, and consular procedures.'
-              : 'Şirket kuruluşu, sözleşmeler, vergi uyumu, göçmenlik ve konsolosluk işlemleri alanlarında yapılandırılmış hukuki bilgi.'}
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-6">
-            {/* Pillar 1: LLC / Business */}
-            <Link
-              href={`/${lang}/amerika/abdde-llc-kurmak`}
-              className="group card-elevated flex flex-col"
-            >
-              <p className="section-label">
-                {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
-              </p>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
-                {isEnglish ? 'LLC Formation in the US' : 'ABD\'de LLC Kurmak'}
-              </h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                {isEnglish
-                  ? 'Comprehensive guide to forming an LLC as a non-resident. Entity types, state selection, compliance, and post-formation requirements.'
-                  : 'Türkler için ABD\'de LLC kurma rehberi. Tüzel kişilik türleri, eyalet seçimi, uyum gereksinimleri ve kuruluş sonrası yükümlülükler.'}
-              </p>
-              <span className="text-xs text-gray-400 mt-auto block pt-2">
-                {isEnglish ? 'US Federal & State Law' : 'ABD Federal ve Eyalet Hukuku'}
-              </span>
-            </Link>
-
-            {/* Pillar 2: Contracts */}
-            <Link
-              href={`/${lang}/amerika/abdde-is-yapanlar-icin-sozlesmeler`}
-              className="group card-elevated flex flex-col"
-            >
-              <p className="section-label">
-                {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
-              </p>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
-                {isEnglish ? 'Essential Contracts for US Business' : 'ABD\'de İş Yapanlar İçin Sözleşmeler'}
-              </h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                {isEnglish
-                  ? 'What contracts exist, when each is needed, risks of operating without them, and how they interact across jurisdictions.'
-                  : 'Hangi sözleşmeler var, her biri ne zaman gerekli, sözleşmesiz çalışmanın riskleri ve farklı yargı alanlarında etkileşimleri.'}
-              </p>
-              <span className="text-xs text-gray-400 mt-auto block pt-2">
-                {isEnglish ? 'US · Turkey' : 'ABD · Türkiye'}
-              </span>
-            </Link>
-
-            {/* Pillar 3: Tax */}
-            <Link
-              href={`/${lang}/amerika/irs-vergi-gercekleri`}
-              className="group card-elevated flex flex-col"
-            >
-              <p className="section-label">
-                {isEnglish ? 'Pillar Guide' : 'Ana Rehber'}
-              </p>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
-                {isEnglish ? 'IRS, Taxes & W-8 / W-9 Realities' : 'IRS, Vergi ve W-8 / W-9 Gerçekleri'}
-              </h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                {isEnglish
-                  ? 'Tax residency, reporting obligations, FATCA/FBAR, treaty benefits, and common misconceptions for non-residents.'
-                  : 'Vergi mukimliği, raporlama yükümlülükleri, FATCA/FBAR, anlaşma hakları ve mukim olmayanlar için yaygın yanılgılar.'}
-              </p>
-              <span className="text-xs text-gray-400 mt-auto block pt-2">
-                {isEnglish ? 'US Federal Tax Law' : 'ABD Federal Vergi Hukuku'}
-              </span>
-            </Link>
-          </div>
-
-          {/* Secondary content areas */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link
-              href={`/${lang}/amerika/abdye-gelme-yollari`}
-              className="group card-link"
-            >
-              <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
-                {isEnglish ? 'Immigration & Visas' : 'Göçmenlik ve Vizeler'}
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                {isEnglish
-                  ? 'Visa categories, status changes, consular procedures, and pathways documented thoroughly.'
-                  : 'Vize kategorileri, statü değişiklikleri, konsolosluk süreçleri ve yollar kapsamlı olarak belgelenmiştir.'}
-              </p>
-            </Link>
-
-            <Link
-              href={`/${lang}/contracts`}
-              className="group card-link"
-            >
-              <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
-                {isEnglish ? 'Template Library' : 'Şablon Kütüphanesi'}
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                {isEnglish
-                  ? 'Professionally drafted contracts, agreements, and forms with annotations and usage guidance.'
-                  : 'Profesyonelce hazırlanmış sözleşmeler, anlaşmalar ve formlar — açıklamalar ve kullanım rehberiyle.'}
-              </p>
-            </Link>
-
-            <Link
-              href={`/${lang}/consular-documents`}
-              className="group card-link"
-            >
-              <h3 className="text-base font-semibold text-gray-900 mb-1.5 group-hover:text-gray-700 transition-colors">
-                {isEnglish ? 'Consular Procedures' : 'Konsolosluk İşlemleri'}
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                {isEnglish
-                  ? 'Document requirements, official procedures, and checklists for Turkish consular services.'
-                  : 'Türk konsolosluk hizmetleri için belge gereksinimleri, resmi prosedürler ve kontrol listeleri.'}
-              </p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Categories */}
-      <section className="py-20 md:py-24 border-t border-gray-200">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-12 text-center">
-            {isEnglish ? 'Browse by Content Type' : 'İçerik Türüne Göre İncele'}
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
             <div className="flex flex-col">
-              <h3 className="text-base font-semibold text-gray-900 mb-2">
+              <h3 className="text-base font-semibold text-ink mb-2">
                 {isEnglish ? 'Encyclopedia' : 'Ansiklopedi'}
               </h3>
-              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Reference articles explaining legal concepts, doctrines, and processes with precision and neutrality.'
                   : 'Hukuki kavramları, doktrinleri ve süreçleri hassasiyet ve tarafsızlıkla açıklayan referans makaleleri.'}
@@ -291,13 +110,13 @@ export default async function Home({
             </div>
 
             <div className="flex flex-col">
-              <h3 className="text-base font-semibold text-gray-900 mb-2">
+              <h3 className="text-base font-semibold text-ink mb-2">
                 {isEnglish ? 'Templates' : 'Şablonlar'}
               </h3>
-              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
-                  ? 'Professionally drafted legal documents — contracts, agreements, and forms — with usage guidance.'
-                  : 'Profesyonelce hazırlanmış hukuki belgeler — sözleşmeler, anlaşmalar ve formlar — kullanım rehberiyle.'}
+                  ? 'Supplementary legal documents — contracts, agreements, and forms — jurisdiction-tagged and maintained separately from primary legal sources.'
+                  : 'Tamamlayıcı hukuki belgeler — sözleşmeler, anlaşmalar ve formlar — yargı alanı etiketli, birincil hukuk kaynaklarından ayrı olarak sürdürülmektedir.'}
               </p>
               <Link
                 href={isEnglish ? `/${lang}/templates` : `/${lang}/sablonlar`}
@@ -309,37 +128,37 @@ export default async function Home({
             </div>
 
             <div className="flex flex-col">
-              <h3 className="text-base font-semibold text-gray-900 mb-2">
-                {isEnglish ? 'Guides' : 'Rehberler'}
+              <h3 className="text-base font-semibold text-ink mb-2">
+                {isEnglish ? 'Procedural References' : 'Prosedürel Referanslar'}
               </h3>
-              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
-                  ? 'Process-oriented explanations for navigating legal procedures and compliance matters.'
-                  : 'Hukuki prosedürler ve uyum konularında yol gösterici süreç odaklı açıklamalar.'}
+                  ? 'Procedural references covering legal processes, filing requirements, and jurisdictional compliance matters.'
+                  : 'Hukuki süreçleri, dosyalama gereksinimlerini ve yargı alanlarına özgü uyum konularını kapsayan prosedürel referanslar.'}
               </p>
               <Link
                 href={`/${lang}/library`}
                 className="arrow-link"
               >
-                {isEnglish ? 'Read guides' : 'Rehberleri oku'}
+                {isEnglish ? 'View references' : 'Referansları görüntüle'}
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
 
             <div className="flex flex-col">
-              <h3 className="text-base font-semibold text-gray-900 mb-2">
+              <h3 className="text-base font-semibold text-ink mb-2">
                 {isEnglish ? 'Checklists' : 'Kontrol Listeleri'}
               </h3>
-              <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
-                  ? 'Practical tools for document preparation, filing requirements, and procedural verification.'
-                  : 'Belge hazırlama, dosyalama gereksinimleri ve prosedür doğrulama için pratik araçlar.'}
+                  ? 'Structured verification lists for document preparation, filing requirements, and procedural compliance.'
+                  : 'Belge hazırlama, dosyalama gereksinimleri ve prosedürel uyum için yapılandırılmış doğrulama listeleri.'}
               </p>
               <Link
                 href={`/${lang}/checklists`}
                 className="arrow-link"
               >
-                {isEnglish ? 'Use checklists' : 'Kontrol listelerini kullan'}
+                {isEnglish ? 'View checklists' : 'Kontrol listelerini görüntüle'}
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
@@ -347,76 +166,80 @@ export default async function Home({
         </div>
       </section>
 
-      {/* About & Credentials */}
-      <section className="py-20 md:py-24 border-t border-gray-200">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="section-label">
-            {isEnglish ? 'About This Platform' : 'Bu Platform Hakkında'}
-          </p>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            {isEnglish ? 'Institutional Overview' : 'Kurumsal Genel Bakış'}
+      {/* 3. Jurisdiction Coverage — Compact horizontal display */}
+      <section className="py-14 md:py-18 border-b border-stone-200">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-xl font-semibold text-ink mb-8 text-center">
+            {isEnglish ? 'Jurisdiction Coverage' : 'Yargı Alanı Kapsamı'}
           </h2>
-          <div className="text-gray-800 leading-relaxed space-y-4">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm">
+            <div className="flex items-baseline gap-2">
+              <span className="font-semibold text-ink">US Federal</span>
+              <span className="text-muted">{isEnglish ? 'Active' : 'Aktif'}</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-semibold text-ink">US — New York</span>
+              <span className="text-muted">{isEnglish ? 'Active' : 'Aktif'}</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-semibold text-ink">US — California</span>
+              <span className="text-muted">{isEnglish ? 'Active' : 'Aktif'}</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-semibold text-ink">EU</span>
+              <span className="text-muted">{isEnglish ? 'Active' : 'Aktif'}</span>
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-semibold text-ink">{isEnglish ? 'Turkey' : 'Türkiye'}</span>
+              <span className="text-muted">{isEnglish ? 'Active' : 'Aktif'}</span>
+            </div>
+          </div>
+          <p className="text-xs text-muted text-center mt-6">
+            {isEnglish
+              ? 'Published in English and Turkish. All content is jurisdiction-tagged.'
+              : 'İngilizce ve Türkçe yayımlanmaktadır. Tüm içerik yargı alanı etiketlidir.'}
+          </p>
+        </div>
+      </section>
+
+      {/* 4. Editorial Methodology — Prominent, not buried */}
+      <section className="section-spacing border-b border-stone-200">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-6">
+            {isEnglish ? 'Editorial Methodology' : 'Editoryal Metodoloji'}
+          </h2>
+          <div className="space-y-4 text-ink leading-relaxed">
             <p>
               {isEnglish
-                ? 'EchoLegal is an independent legal reference platform founded by a New York-licensed attorney with dual legal education in Turkey and the United States. Content is authored in a neutral, descriptive register and reviewed for legal accuracy.'
-                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından kurulan bağımsız bir hukuk referans platformudur. İçerik tarafsız ve betimleyici bir dilde yazılmış, hukuki doğruluk açısından gözden geçirilmiştir.'}
+                ? 'Content is organized by authority hierarchy. Primary legal sources — statutes, regulations, official agency guidance, and judicial interpretation — are prioritized over secondary commentary, practitioner summaries, and editorial analysis. All material is maintained in a neutral, descriptive register.'
+                : 'İçerik otorite hiyerarşisine göre düzenlenmiştir. Birincil hukuk kaynakları — kanunlar, yönetmelikler, resmi kurum rehberliği ve yargısal yorum — ikincil yorumlar, uygulayıcı özetleri ve editoryal analizlerin önünde tutulur. Tüm materyal tarafsız, betimleyici bir dilde sürdürülmektedir.'}
             </p>
-            <p className="text-sm text-gray-600">
+            <p>
               {isEnglish
-                ? 'Content is published for reference and educational purposes. It does not constitute legal advice and is not a substitute for consultation with a licensed attorney in the relevant jurisdiction.'
-                : 'İçerik referans ve eğitim amaçlı yayınlanmaktadır. Hukuki tavsiye teşkil etmez ve ilgili yargı alanında lisanslı bir avukata danışmanın yerini tutmaz.'}
+                ? 'Templates, checklists, and procedural guides are reference tools and are clearly separated from binding legal sources. They do not constitute legal authority and are not substitutes for primary source analysis.'
+                : 'Şablonlar, kontrol listeleri ve prosedür rehberleri referans araçlarıdır ve bağlayıcı hukuk kaynaklarından açıkça ayrılmıştır. Hukuki otorite teşkil etmezler ve birincil kaynak analizinin yerini tutmazlar.'}
+            </p>
+            <p>
+              {isEnglish
+                ? 'All entries are versioned (version number and last-reviewed date), jurisdiction-tagged, and periodically reviewed. Citations to primary sources are provided where relevant.'
+                : 'Tüm maddeler sürümlenmiş (sürüm numarası ve son inceleme tarihi), yargı alanı etiketli ve düzenli olarak gözden geçirilmektedir. Birincil kaynaklara yapılan atıflar ilgili yerlerde verilmektedir.'}
+            </p>
+            <p>
+              {isEnglish
+                ? 'EchoLegal is authored by a New York-licensed attorney with dual legal education in Turkey and the United States. Content is reviewed for legal accuracy and maintained independently.'
+                : 'EchoLegal, Türkiye ve Amerika Birleşik Devletleri\'nde çifte hukuk eğitimi almış, New York lisanslı bir avukat tarafından yazılmaktadır. İçerik hukuki doğruluk açısından gözden geçirilmekte ve bağımsız olarak sürdürülmektedir.'}
             </p>
           </div>
-          <Link
-            href={`/${lang}/about`}
-            className="arrow-link mt-8"
-          >
-            {isEnglish ? 'Governance' : 'Yönetişim'}
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-14 border-t border-gray-200">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-3xl font-bold text-gray-900">50+</p>
-              <p className="text-sm text-gray-600 mt-1">
-                {isEnglish ? 'Templates' : 'Şablon'}
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-gray-900">80+</p>
-              <p className="text-sm text-gray-600 mt-1">
-                {isEnglish ? 'Reference Articles' : 'Referans Makale'}
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-gray-900">2</p>
-              <p className="text-sm text-gray-600 mt-1">
-                {isEnglish ? 'Languages' : 'Dil'}
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-gray-900">US · TR</p>
-              <p className="text-sm text-gray-600 mt-1">
-                {isEnglish ? 'Jurisdictions' : 'Yargı Alanları'}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <section className="bg-gray-900 text-white py-8">
+      {/* 5. Institutional Notice — Closing section */}
+      <section className="bg-stone-900 text-white py-12">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-3">
             {isEnglish ? 'Legal Notice' : 'Hukuki Uyarı'}
           </p>
-          <p className="text-sm text-gray-300 leading-relaxed">
+          <p className="text-sm text-stone-300 leading-relaxed max-w-2xl mx-auto">
             {isEnglish
               ? 'EchoLegal provides legal information for educational and reference purposes. This content does not constitute legal advice and does not create an attorney-client relationship. Laws vary by jurisdiction. Consult a licensed attorney for advice specific to your situation.'
               : 'EchoLegal, eğitim ve referans amaçlı hukuki bilgiler sunar. Bu içerik hukuki tavsiye teşkil etmez ve avukat-müvekkil ilişkisi oluşturmaz. Yasalar yargı alanlarına göre farklılık gösterir. Durumunuza özel tavsiye için lisanslı bir avukata danışın.'}

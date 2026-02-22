@@ -6,7 +6,12 @@ import SearchButton from '@/components/SearchButton'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
+import PrimarySources from '@/components/PrimarySources'
+import { getPrimarySources } from '@/lib/primary-sources-registry'
 import { generateScholarlyArticleSchema, generateFAQSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import CrossJurisdictionBadge from '@/components/CrossJurisdictionBadge'
+import PracticalNextStep from '@/components/PracticalNextStep'
+import type { PracticalMetadata } from '@/lib/encyclopedia-authority'
 
 const PAGE_META = {
   slug: 'common-misconceptions',
@@ -75,6 +80,8 @@ export default async function CommonMisconceptionsPage({
     citationKey: PAGE_META.citationKey,
     aboutTopics: ['Legal Misconceptions', 'Business Law', 'Immigration Law', 'Contract Law'],
   })
+
+  const primarySources = getPrimarySources(PAGE_META.slug, lang)
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
@@ -304,6 +311,30 @@ export default async function CommonMisconceptionsPage({
               </Link>
             </div>
           </section>
+          <PracticalNextStep
+            lang={lang}
+            className="mb-8"
+            practical={isEnglish ? {
+              affected: [
+                'Individuals relying on informal legal assumptions',
+                'Small business owners without legal counsel',
+                'First-time founders',
+              ],
+              risk: 'Acting on common misconceptions may result in inadequate legal protection or unintended obligations.',
+              nextStep: 'Identify which assumptions apply to your situation and verify them against the applicable statutory or regulatory framework.',
+            } : {
+              affected: [
+                'Gayri resmi hukuki varsayımlara dayanan bireyler',
+                'Hukuki danışmanlık almayan küçük işletme sahipleri',
+                'İlk kez girişimciler',
+              ],
+              risk: 'Yaygın yanlış varsayımlara göre hareket etmek, yetersiz hukuki koruma veya istenmeyen yükümlülüklerle sonuçlanabilir.',
+              nextStep: 'Durumunuza uygulanan varsayımları belirleyin ve bunları geçerli yasal veya düzenleyici çerçeveye göre doğrulayın.',
+            }}
+          />
+
+          <PrimarySources sources={primarySources} lang={lang} />
+
           {/* Cite This Entry */}
           <CiteThisEntry
             lang={lang}
@@ -326,6 +357,7 @@ export default async function CommonMisconceptionsPage({
               <Link href={`/${lang}/encyclopedia/what-is-nda`} className="text-[#C9A227] hover:underline">
                 {isEnglish ? 'What is an NDA?' : 'NDA Nedir?'} →
               </Link>
+              <CrossJurisdictionBadge lang={lang} sourceSlug={PAGE_META.slug} targetSlug="what-is-nda" />
             </li>
             <li>
               <Link href={`/${lang}/encyclopedia`} className="text-[#C9A227] hover:underline">

@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     : 'ABD\'de LLC Kurmak: Türkler İçin Adım Adım Hukuki Rehber | EchoLegal'
 
   const description = isEnglish
-    ? 'Complete legal guide for Turkish entrepreneurs forming an LLC in the United States. State selection, EIN, registered agent, bank account, and compliance requirements.'
+    ? 'Guide to LLC formation in the United States for Turkish entrepreneurs. State selection, EIN, registered agent, bank account, and compliance requirements.'
     : 'Türk girişimciler için ABD\'de LLC kurma rehberi. Eyalet seçimi, EIN başvurusu, registered agent, banka hesabı açma ve uyum gereksinimleri.'
 
   const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
@@ -114,7 +114,7 @@ export default async function LLCGuidePage({
   const articleSchema = generateArticleSchema({
     title: pageTitle,
     description: isEnglish
-      ? 'Complete legal guide for Turkish entrepreneurs forming an LLC in the United States.'
+      ? 'Guide to LLC formation in the United States for Turkish entrepreneurs.'
       : 'Türk girişimciler için ABD\'de LLC kurma rehberi.',
     url: pageUrl,
     datePublished: PAGE_META.datePublished,
@@ -1009,7 +1009,7 @@ export default async function LLCGuidePage({
               <div className="grid md:grid-cols-2 gap-4">
                 <Link href={`/${lang}/abdde-is-yapan-turkler-icin-sozlesmeler`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                   <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'Essential Contracts' : 'Olmazsa Olmaz Sözleşmeler'}</h3>
-                  <p className="text-sm text-gray-600">{isEnglish ? 'Must-have legal documents for US business' : 'ABD\'de iş için gerekli hukuki belgeler'}</p>
+                  <p className="text-sm text-gray-600">{isEnglish ? 'Common legal documents for US business' : 'ABD\'de iş için gerekli hukuki belgeler'}</p>
                 </Link>
                 <Link href={`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
                   <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'IRS & Tax Realities' : 'IRS ve Vergi Gerçekleri'}</h3>
