@@ -80,13 +80,22 @@ export default async function ContributePage({
         {/* Hero */}
         <div className="mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
-            {isEnglish ? 'Contribute to EchoLegal' : 'EchoLegal\'a Katkıda Bulunun'}
+            {isEnglish ? 'Contribute to EchoLegal' : 'EchoLegal\'a Katkıda Bulunma'}
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed">
             {isEnglish
               ? 'EchoLegal is a public legal reference library. Contributions to this platform constitute scholarly legal reference work, intended for long-term public access by legal professionals, institutions, and researchers.'
-              : 'EchoLegal, bir kamu hukuk referans kütüphanesidir. Bu platforma yapılan katkılar, hukuk profesyonelleri, kurumlar ve araştırmacılar tarafından uzun vadeli kamusal erişim için tasarlanmış akademik hukuk referans çalışmalarıdır.'}
+              : 'Lisanslı avukatlar, editoryal inceleme ve kimlik doğrulama sürecinden geçerek belirli yargı alanlarına ilişkin maddelere katkıda bulunmak üzere başvurabilir. Kabul edilen katkılar yayımlanan maddelerde açıkça atfedilir; doğrulanmış kimlik ve mesleki bilgiler (uygun olduğu ölçüde) bu sayfada listelenir.'}
           </p>
+          {!isEnglish && (
+            <p className="text-lg text-gray-700 leading-relaxed mt-4">
+              {'Uygunluk kriterleri ve sunum prosedürü, '}
+              <Link href={`/${lang}/about/contributor-standards`} className="text-gray-900 font-medium hover:underline">
+                Katkıda Bulunan Standartları
+              </Link>
+              {'\'nda açıklanmıştır.'}
+            </p>
+          )}
         </div>
 
         {/* Scope and Purpose */}

@@ -532,11 +532,6 @@ function AppFooter({ lang }: { lang: 'en' | 'tr' }) {
             <Link href={`/${lang}`} className="text-lg font-bold text-black tracking-tight">
               EchoLegal
             </Link>
-            <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-              {isEnglish
-                ? 'A multilingual legal encyclopedia (currently English and Turkish).'
-                : 'Çok dilli bir hukuk ansiklopedisi (şu anda İngilizce ve Türkçe).'}
-            </p>
           </div>
 
           {/* Reference */}
