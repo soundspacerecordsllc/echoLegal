@@ -63,7 +63,7 @@ export default async function Home({
 
           <p className="text-lg text-muted leading-relaxed mb-4 max-w-2xl mx-auto">
             {isEnglish
-              ? 'A multilingual legal reference system comprising encyclopedia entries, supplementary document templates, and jurisdictional references. Content is classified by authority hierarchy, jurisdiction-tagged, and maintained with version traceability.'
+              ? 'A multilingual legal reference system providing structured encyclopedia entries, supplementary document templates, and jurisdiction-specific guidance. Content is organized by authority and jurisdiction, with maintained version traceability.'
               : 'Ansiklopedi maddeleri, tamamlayıcı belge şablonları ve yargı alanı referanslarını kapsayan çok dilli bir hukuk referans sistemi. İçerik otorite hiyerarşisine göre sınıflandırılmış, yargı alanı etiketli ve sürüm izlenebilirliğiyle sürdürülmektedir.'}
           </p>
 
