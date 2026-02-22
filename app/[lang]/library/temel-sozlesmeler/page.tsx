@@ -168,29 +168,26 @@ export default async function EssentialContractsPage({
   ]
 
   return (
-    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
 
       {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-8">
-        <Link href={`/${lang}`} className="hover:text-black">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
-        <span className="mx-2">→</span>
-        <Link href={`/${lang}/library`} className="hover:text-black">{isEnglish ? 'Library' : 'Kütüphane'}</Link>
-        <span className="mx-2">→</span>
-        <span className="text-black">{isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler'}</span>
+      <nav className="text-sm text-muted mb-12">
+        <Link href={`/${lang}`} className="hover:text-ink transition-colors">{isEnglish ? 'Home' : 'Ana Sayfa'}</Link>
+        <span className="mx-2 text-stone-300">/</span>
+        <Link href={`/${lang}/library`} className="hover:text-ink transition-colors">{isEnglish ? 'Library' : 'Kütüphane'}</Link>
+        <span className="mx-2 text-stone-300">/</span>
+        <span className="text-ink">{isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler'}</span>
       </nav>
 
       <article>
-        <header className="mb-12">
-          <span className="inline-block px-3 py-1 bg-purple-50 text-purple-800 rounded-full text-sm font-medium mb-4">
-            {isEnglish ? 'Contract Guide' : 'Sözleşme Rehberi'}
-          </span>
-
-          <h1 className="text-3xl md:text-4xl font-bold text-black mb-6 leading-tight">
+        {/* Header — no badge bubble, institutional tone */}
+        <header className="mb-16">
+          <h1 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-6 leading-tight tracking-tight">
             {pageTitle}
           </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed mb-6">
+          <p className="text-lg text-muted leading-relaxed max-w-prose mb-8">
             {isEnglish
               ? 'A guide to the legal documents you\'ll likely need when doing business in or with the United States. Understanding when and why you need each contract.'
               : 'ABD\'de veya ABD ile iş yaparken muhtemelen ihtiyaç duyacağınız hukuki belgelere rehber. Her bir sözleşmeye ne zaman ve neden ihtiyaç duyacağınızı anlama.'}
@@ -200,111 +197,102 @@ export default async function EssentialContractsPage({
             lang={lang}
             jurisdictions={['US']}
             lastReviewedAt={PAGE_META.dateModified}
-            className="mb-4"
           />
         </header>
 
-        {/* Disclaimer */}
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-10">
-          <p className="text-sm text-amber-900 leading-relaxed">
-            <strong>{isEnglish ? 'Note:' : 'Not:'}</strong>{' '}
+        {/* Disclaimer — institutional left-border style */}
+        <div className="border-l-2 border-stone-300 pl-5 mb-14">
+          <p className="text-sm text-muted leading-relaxed">
+            <strong className="text-ink">{isEnglish ? 'Note' : 'Not'}</strong>{' — '}
             {isEnglish
               ? 'This guide provides general information about common business contracts. Template documents should be reviewed by an attorney for your specific situation and jurisdiction.'
               : 'Bu rehber yaygın iş sözleşmeleri hakkında genel bilgi sağlar. Şablon belgeler, özel durumunuz ve yargı yetkiniz için bir avukat tarafından incelenmelidir.'}
           </p>
         </div>
 
-        {/* Contracts List */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-black mb-6">
+        {/* Contracts List — flat sections, no cards */}
+        <section className="mb-16">
+          <h2 className="font-serif text-2xl font-semibold text-ink mb-10">
             {isEnglish ? 'Contract Overview' : 'Sözleşmelere Genel Bakış'}
           </h2>
 
-          <div className="space-y-6">
+          <div className="divide-y divide-stone-200">
             {contracts.map((contract, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
-                <div className="bg-gray-50 p-4 flex items-center justify-between">
-                  <h3 className="font-bold text-black">{contract.name}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    contract.priority === 'Essential' || contract.priority === 'Temel' || contract.priority === 'Required' || contract.priority === 'Zorunlu'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-blue-100 text-blue-800'
-                  }`}>
+              <div key={index} className="py-8 first:pt-0 last:pb-0">
+                <div className="flex items-baseline justify-between gap-4 mb-3">
+                  <h3 className="font-serif text-lg font-semibold text-ink">{contract.name}</h3>
+                  <span className="text-xs font-medium text-muted tracking-wide uppercase whitespace-nowrap bg-stone-100 px-2 py-0.5 rounded">
                     {contract.priority}
                   </span>
                 </div>
-                <div className="p-4 space-y-3">
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">{isEnglish ? 'When to use:' : 'Ne zaman kullanılır:'}</p>
-                    <p className="text-sm text-gray-600">{contract.when}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">{isEnglish ? 'What it protects:' : 'Neyi korur:'}</p>
-                    <p className="text-sm text-gray-600">{contract.protects}</p>
-                  </div>
-                  <Link
-                    href={`/${lang}/contracts/${contract.slug}`}
-                    className="inline-block text-sm text-[#C9A227] font-medium hover:text-[#B8922A]"
-                  >
-                    {isEnglish ? 'View Template →' : 'Şablonu Görüntüle →'}
-                  </Link>
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm text-muted leading-relaxed">
+                    <span className="font-medium text-ink">{isEnglish ? 'When to use' : 'Ne zaman kullanılır'}:</span>{' '}
+                    {contract.when}
+                  </p>
+                  <p className="text-sm text-muted leading-relaxed">
+                    <span className="font-medium text-ink">{isEnglish ? 'What it protects' : 'Neyi korur'}:</span>{' '}
+                    {contract.protects}
+                  </p>
                 </div>
+                <Link
+                  href={`/${lang}/contracts/${contract.slug}`}
+                  className="arrow-link"
+                >
+                  {isEnglish ? 'View Template' : 'Şablonu Görüntüle'} <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Quick Start Guide */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-black mb-6">
-            {isEnglish ? 'Quick Start: Minimum Essentials' : 'Hızlı Başlangıç: Minimum Gereklilikler'}
+        {/* Minimum Essentials — understated, no colored box */}
+        <section className="mb-16">
+          <h2 className="font-serif text-2xl font-semibold text-ink mb-6">
+            {isEnglish ? 'Minimum Essentials' : 'Minimum Gereklilikler'}
           </h2>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <p className="text-blue-900 mb-4">
-              {isEnglish
-                ? 'If you\'re just starting out, here are the absolute minimum documents you should have:'
-                : 'Yeni başlıyorsanız, sahip olmanız gereken mutlak minimum belgeler şunlardır:'}
-            </p>
-            <ol className="list-decimal pl-6 space-y-2 text-blue-900">
-              <li><strong>NDA</strong> - {isEnglish ? 'Before any business discussions' : 'Herhangi bir iş görüşmesinden önce'}</li>
-              <li><strong>{isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</strong> - {isEnglish ? 'For all client work' : 'Tüm müşteri işleri için'}</li>
-              <li><strong>{isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}</strong> - {isEnglish ? 'If you have a website/app' : 'Web siteniz/uygulamanız varsa'}</li>
-            </ol>
-          </div>
+          <p className="text-sm text-muted leading-relaxed mb-5">
+            {isEnglish
+              ? 'If you are just starting out, these are the documents you should prioritize first:'
+              : 'Yeni başlıyorsanız, öncelik vermeniz gereken belgeler şunlardır:'}
+          </p>
+          <ol className="list-decimal pl-5 space-y-2 text-sm text-ink leading-relaxed">
+            <li><strong>NDA</strong> — {isEnglish ? 'Before any business discussions' : 'Herhangi bir iş görüşmesinden önce'}</li>
+            <li><strong>{isEnglish ? 'Service Agreement' : 'Hizmet Sözleşmesi'}</strong> — {isEnglish ? 'For all client work' : 'Tüm müşteri işleri için'}</li>
+            <li><strong>{isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}</strong> — {isEnglish ? 'If you have a website or app' : 'Web siteniz veya uygulamanız varsa'}</li>
+          </ol>
         </section>
 
-        {/* Product CTA */}
-        <div className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200 rounded-xl p-8 mb-12">
-          <h2 className="text-2xl font-bold text-black mb-4 text-center">
+        {/* Product CTA — restrained, no gradient */}
+        <div className="border border-stone-200 rounded px-8 py-8 mb-16 text-center">
+          <h2 className="font-serif text-xl font-semibold text-ink mb-3">
             {isEnglish ? 'Get All Essential Documents' : 'Tüm Temel Belgeleri Alın'}
           </h2>
-          <p className="text-gray-600 text-center mb-6 max-w-xl mx-auto">
+          <p className="text-sm text-muted mb-6 max-w-md mx-auto leading-relaxed">
             {isEnglish
               ? 'Our Business Starter Kit includes 3 essential legal documents. I support EchoLegal – $49 recommended.'
               : 'Business Starter Kit\'imiz 3 temel hukuki belge içerir. Gücünüz kadar ödeyin.'}
           </p>
-          <div className="text-center">
-            <Link
-              href={`/${lang}/legal-kits/business-starter`}
-              className="inline-block bg-[#C9A227] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#B8922A] transition-colors"
-            >
-              {isEnglish ? 'View Business Starter Kit →' : 'Business Starter Kit\'i Görüntüle →'}
-            </Link>
-          </div>
+          <Link
+            href={`/${lang}/legal-kits/business-starter`}
+            className="btn-primary inline-block"
+          >
+            {isEnglish ? 'View Business Starter Kit' : 'Business Starter Kit\'i Görüntüle'}
+          </Link>
         </div>
 
-        {/* Related */}
-        <section>
-          <h2 className="text-xl font-bold text-black mb-6">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            <Link href={`/${lang}/library/llc-kurma-rehberi`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
-              <p className="text-sm text-gray-600">{isEnglish ? 'If you\'re forming a US business' : 'ABD işi kuruyorsanız'}</p>
+        {/* Related Resources — flat, no card hover effects */}
+        <section className="mb-14">
+          <h2 className="font-serif text-xl font-semibold text-ink mb-6">{isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}</h2>
+          <div className="divide-y divide-stone-200">
+            <Link href={`/${lang}/library/llc-kurma-rehberi`} className="block py-4 group">
+              <h3 className="text-sm font-semibold text-ink mb-1 group-hover:text-accent transition-colors">{isEnglish ? 'LLC Formation Guide' : 'LLC Kurma Rehberi'}</h3>
+              <p className="text-sm text-muted">{isEnglish ? 'If you\'re forming a US business' : 'ABD işi kuruyorsanız'}</p>
             </Link>
-            <Link href={`/${lang}/contracts`} className="block border border-gray-200 rounded-lg p-5 hover:border-gray-300 hover:shadow-sm transition-all">
-              <h3 className="text-sm font-semibold text-black mb-1">{isEnglish ? 'All Contract Templates' : 'Tüm Sözleşme Şablonları'}</h3>
-              <p className="text-sm text-gray-600">{isEnglish ? 'Browse our full library' : 'Tam kütüphanemize göz atın'}</p>
+            <Link href={`/${lang}/contracts`} className="block py-4 group">
+              <h3 className="text-sm font-semibold text-ink mb-1 group-hover:text-accent transition-colors">{isEnglish ? 'All Contract Templates' : 'Tüm Sözleşme Şablonları'}</h3>
+              <p className="text-sm text-muted">{isEnglish ? 'Browse our full library' : 'Tam kütüphanemize göz atın'}</p>
             </Link>
           </div>
         </section>
