@@ -45,34 +45,26 @@ export default function InstitutionalBadge({
       role="status"
       aria-label={isEnglish ? 'Content authority information' : 'İçerik otorite bilgisi'}
     >
-      {/* Attorney-Reviewed signal */}
-      <span className="inline-flex items-center gap-1.5">
-        <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-        <span className="text-green-700 font-medium">
-          {isEnglish ? 'Attorney-Reviewed' : 'Avukat İncelemesinden Geçmiş'}
-        </span>
+      <span className="font-medium text-muted">
+        {isEnglish ? 'Attorney-Reviewed' : 'Avukat İncelemesinden Geçmiş'}
       </span>
 
-      {/* Separator */}
-      <span className="text-gray-300 hidden sm:inline" aria-hidden="true">·</span>
-
-      {/* Jurisdiction */}
       {primaryJurisdictionName && (
         <>
-          <span className="text-gray-600">
+          <span className="text-stone-300 hidden sm:inline" aria-hidden="true">&middot;</span>
+          <span className="text-muted">
             {primaryJurisdictionName}
           </span>
-          <span className="text-gray-300 hidden sm:inline" aria-hidden="true">·</span>
         </>
       )}
 
-      {/* Last Updated */}
       {lastReviewedAt && (
-        <span className="text-gray-500">
-          {isEnglish ? 'Updated' : 'Güncellendi'} {formatDate(lastReviewedAt)}
-        </span>
+        <>
+          <span className="text-stone-300 hidden sm:inline" aria-hidden="true">&middot;</span>
+          <span className="text-muted">
+            {isEnglish ? 'Updated' : 'Güncellendi'} {formatDate(lastReviewedAt)}
+          </span>
+        </>
       )}
     </div>
   )
@@ -102,7 +94,7 @@ export function InstitutionalBadgeInline({
 
   return (
     <p className={`text-sm text-gray-500 ${className}`}>
-      <span className="text-green-700">
+      <span className="text-muted font-medium">
         {isEnglish
           ? 'Reviewed by a licensed attorney'
           : 'Lisanslı avukat tarafından incelendi'}
