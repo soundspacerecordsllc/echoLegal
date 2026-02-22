@@ -10,11 +10,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
   const isEnglish = lang === 'en'
   const title = isEnglish
     ? 'Legal Reference Library | EchoLegal'
-    : 'Hukuki Başvuru Kaynakları | EchoLegal'
+    : 'Hukuki Başvuru Kütüphanesi | EchoLegal'
 
   const description = isEnglish
-    ? 'Comprehensive legal reference guides for doing business in the United States. LLC formation, tax compliance, common misconceptions, and more. Available in English and Turkish.'
-    : "ABD'de iş yapmak için kapsamlı hukuki referans rehberleri. LLC kurulumu, vergi uyumu, sık yapılan hatalar ve daha fazlası. İngilizce ve Türkçe olarak mevcuttur."
+    ? 'Reference entries on US business law for non-US entrepreneurs. LLC formation, tax compliance, contracts, and common misconceptions. Available in English and Turkish.'
+    : 'ABD dışından girişimciler için ABD iş hukukuna ilişkin başvuru maddeleri. LLC kuruluşu, vergi uyumu, sözleşmeler ve yaygın yanılgılar. İngilizce ve Türkçe olarak mevcuttur.'
 
   return {
     title,
@@ -53,226 +53,176 @@ export default async function LibraryPage({
   const categories = [
     {
       id: 'business-formation',
-      title: isEnglish ? 'Business Formation' : 'Şirket Kurulumu',
+      title: isEnglish ? 'Business Formation' : 'Şirket Kuruluşu',
       description: isEnglish
-        ? 'Guides on forming business entities in the United States'
-        : "ABD'de ticari yapı oluşturmaya ilişkin rehberler",
+        ? 'Entity structure, state selection, and formation process'
+        : 'Tüzel kişilik yapısı, eyalet seçimi ve kuruluş süreci',
       articles: [
         {
           slug: 'llc-kurma-rehberi',
-          title: isEnglish ? 'LLC Formation in the US: What You Need to Know' : "ABD'de LLC Kurmak: Bilmeniz Gerekenler",
+          title: isEnglish ? 'LLC Formation in the United States' : 'ABD\'de LLC Kuruluşu',
           description: isEnglish
-            ? 'A comprehensive reference guide to understanding LLC formation in the United States.'
-            : "ABD'de LLC kurulum sürecine dair kapsamlı bir başvuru rehberi.",
+            ? 'Legal structure, state selection, formation process, and tax classification for non-US entrepreneurs.'
+            : 'ABD dışından girişimciler için hukuki yapı, eyalet seçimi, kuruluş süreci ve vergi sınıflandırması.',
           available: true,
-          featured: true,
-          badge: isEnglish ? 'Guide' : 'Rehber',
         },
         {
           slug: 'llc-vize-yanilgisi',
-          title: isEnglish ? 'LLC ≠ Visa: Immigration Realities' : 'LLC Kurmak Vize Vermez: Göçmenlik Gerçekleri',
+          title: isEnglish ? 'LLC Formation and Visa Eligibility' : 'LLC Kuruluşu ve Vize Uygunluğu',
           description: isEnglish
-            ? 'Understanding the relationship between business formation and US immigration law.'
-            : 'Şirket kuruluşu ile ABD göçmenlik hukuku arasındaki ilişki.',
+            ? 'The legal separation between business entity formation and immigration status.'
+            : 'Ticari tüzel kişilik kuruluşu ile göçmenlik statüsü arasındaki hukuki ayrım.',
           available: true,
-          featured: false,
-          badge: isEnglish ? 'Guide' : 'Rehber',
         },
       ]
     },
     {
       id: 'tax-compliance',
-      title: isEnglish ? 'Tax & Compliance' : 'Vergi ve Yasal Uyum',
+      title: isEnglish ? 'Tax & Compliance' : 'Vergi ve Uyum',
       description: isEnglish
-        ? 'Understanding US tax obligations and IRS requirements'
-        : 'ABD vergi yükümlülükleri ve IRS gereklilikleri hakkında bilgi',
+        ? 'US tax forms, withholding obligations, and treaty considerations'
+        : 'ABD vergi formları, stopaj yükümlülükleri ve anlaşma hususları',
       articles: [
         {
           slug: 'irs-vergi-gercekleri',
-          title: isEnglish ? 'IRS, Taxes & Form Realities' : 'IRS, Vergi ve Form Gerçekleri',
+          title: isEnglish ? 'US Tax Forms for Non-US Entrepreneurs' : 'ABD Dışından Girişimciler İçin Vergi Formları',
           description: isEnglish
-            ? 'W-8, W-9, 1099 forms explained. What they mean and when you need them.'
-            : 'W-8, W-9, 1099 formları nedir, ne zaman gerekir ve ne anlama gelir?',
+            ? 'W-8BEN, W-9, 1099-NEC, withholding obligations, and the US\u2013Turkey tax treaty.'
+            : 'W-8BEN, W-9, 1099-NEC, stopaj yükümlülükleri ve ABD-Türkiye vergi anlaşması.',
           available: true,
-          featured: true,
-          badge: isEnglish ? 'Guide' : 'Rehber',
-        },
-      ]
-    },
-    {
-      id: 'legal-truths',
-      title: isEnglish ? 'Legal Truth Library' : 'Hukuki Gerçekler Kütüphanesi',
-      description: isEnglish
-        ? 'Common misconceptions vs. legal realities'
-        : 'Yaygın yanılgılar ve hukuki gerçekler',
-      articles: [
-        {
-          slug: 'hukuki-yanilgilar',
-          title: isEnglish ? 'Common Legal Misconceptions' : "ABD'de İş Yaparken Sık Yapılan Hukuki Hatalar",
-          description: isEnglish
-            ? 'Debunking the most common legal myths about doing business in the US.'
-            : "ABD'de iş yapmaya dair en yaygın hukuki yanılgıları gerçeklerle karşılaştırıyoruz.",
-          available: true,
-          featured: true,
-          badge: isEnglish ? 'Guide' : 'Rehber',
         },
       ]
     },
     {
       id: 'contracts',
-      title: isEnglish ? 'Essential Contracts' : 'Temel Sözleşmeler',
+      title: isEnglish ? 'Contracts' : 'Sözleşmeler',
       description: isEnglish
-        ? 'Understanding the contracts every business needs'
-        : 'Her işletme için vazgeçilmez sözleşme türleri',
+        ? 'Contracts commonly required for US business operations'
+        : 'ABD iş faaliyetleri için yaygın olarak gerekli sözleşmeler',
       articles: [
         {
           slug: 'temel-sozlesmeler',
-          title: isEnglish ? 'Essential Contracts for US Business' : "ABD'de İş Yapmak İçin Temel Sözleşmeler",
+          title: isEnglish ? 'Essential Contracts for US Business' : 'ABD\'de İş İçin Temel Sözleşmeler',
           description: isEnglish
-            ? 'The contracts you need when starting a business in the United States.'
-            : "ABD'de iş kurarken hazırlamanız gereken sözleşmeler.",
+            ? 'NDAs, service agreements, privacy policies, terms of service, and contractor agreements.'
+            : 'NDA, hizmet sözleşmeleri, gizlilik politikaları, kullanım koşulları ve yüklenici sözleşmeleri.',
           available: true,
-          featured: false,
-          badge: isEnglish ? 'Contracts' : 'Sözleşmeler',
+        },
+      ]
+    },
+    {
+      id: 'misconceptions',
+      title: isEnglish ? 'Misconceptions' : 'Yanılgılar',
+      description: isEnglish
+        ? 'Frequently misunderstood aspects of US business law'
+        : 'ABD iş hukukunun sıkça yanlış anlaşılan yönleri',
+      articles: [
+        {
+          slug: 'hukuki-yanilgilar',
+          title: isEnglish ? 'Common Legal Misconceptions About US Business' : 'ABD\'de İş Hukukuna İlişkin Yaygın Yanılgılar',
+          description: isEnglish
+            ? 'LLC formation, tax obligations, immigration, contracts, and banking — what is commonly misunderstood.'
+            : 'LLC kuruluşu, vergi yükümlülükleri, göçmenlik, sözleşmeler ve bankacılık — yaygın olarak yanlış anlaşılanlar.',
+          available: true,
         },
       ]
     },
   ]
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <main className="max-w-5xl mx-auto px-4 md:px-8 py-12 md:py-16">
-        {/* Header */}
-        <header className="mb-10">
-          <p className="text-sm font-medium text-[#C9A227] uppercase tracking-widest mb-2">
-            {isEnglish ? 'Reference' : 'Referans'}
-          </p>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            {isEnglish ? 'Library' : 'Kütüphane'}
-          </h1>
-          <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-2xl">
-            {isEnglish
-              ? 'In-depth reference guides explaining US business and legal concepts. Written for accuracy and clarity, not as advice.'
-              : 'ABD iş hukuku ve ticari yapılara ilişkin ayrıntılı başvuru rehberleri. Hukuki tavsiye niteliğinde değildir; doğruluk ve anlaşılırlık esas alınarak hazırlanmıştır.'}
-          </p>
-        </header>
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Header */}
+      <header className="mb-14">
+        <p className="section-label">
+          {isEnglish ? 'Reference' : 'Referans'}
+        </p>
+        <h1 className="font-serif text-3xl md:text-4xl font-semibold text-ink mb-4 leading-tight tracking-tight">
+          {isEnglish ? 'Library' : 'Kütüphane'}
+        </h1>
+        <p className="text-lg text-muted leading-relaxed max-w-2xl">
+          {isEnglish
+            ? 'Reference entries on US business law for non-US entrepreneurs. Written for accuracy, not as advice.'
+            : 'ABD dışından girişimciler için ABD iş hukukuna ilişkin başvuru maddeleri. Doğruluk esas alınarak hazırlanmıştır; tavsiye niteliğinde değildir.'}
+        </p>
+      </header>
 
-        {/* Section Jump Links */}
-        <nav className="mb-10 flex flex-wrap gap-2" aria-label={isEnglish ? 'Jump to section' : 'Bölüme atla'}>
-          {categories.map((cat) => (
-            <a
-              key={cat.id}
-              href={`#${cat.id}`}
-              className="inline-block px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-full hover:border-gray-400 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-colors"
-            >
-              {cat.title}
-            </a>
-          ))}
-        </nav>
+      {/* Categories */}
+      <div className="space-y-14">
+        {categories.map((category) => (
+          <section key={category.id} id={category.id} className="scroll-mt-20">
+            {/* Section Header */}
+            <div className="mb-6 border-b border-stone-200 pb-3">
+              <h2 className="font-serif text-xl font-semibold text-ink">{category.title}</h2>
+              <p className="text-sm text-muted mt-1">{category.description}</p>
+            </div>
 
-        {/* Categories */}
-        <div className="space-y-14">
-          {categories.map((category) => (
-            <section key={category.id} id={category.id} className="scroll-mt-20">
-              {/* Section Header */}
-              <div className="mb-5 border-b border-gray-200 pb-3">
-                <h2 className="text-xl md:text-2xl font-bold text-gray-900">{category.title}</h2>
-                <p className="text-sm text-gray-500 mt-1">{category.description}</p>
-              </div>
+            {/* Article List */}
+            <div className="divide-y divide-stone-200">
+              {category.articles.map((article) =>
+                article.available ? (
+                  <Link
+                    key={article.slug}
+                    href={`/${lang}/library/${article.slug}`}
+                    className="block py-5 first:pt-0 group"
+                  >
+                    <h3 className="text-base font-semibold text-ink group-hover:text-accent transition-colors mb-1.5 leading-snug">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-muted leading-relaxed">
+                      {article.description}
+                    </p>
+                  </Link>
+                ) : (
+                  <div
+                    key={article.slug}
+                    className="py-5 first:pt-0 opacity-50"
+                  >
+                    <h3 className="text-base font-semibold text-muted mb-1.5 leading-snug">
+                      {article.title}
+                      <span className="ml-2 text-xs font-normal">
+                        {isEnglish ? '(Coming)' : '(Yakında)'}
+                      </span>
+                    </h3>
+                    <p className="text-sm text-muted leading-relaxed">
+                      {article.description}
+                    </p>
+                  </div>
+                )
+              )}
+            </div>
+          </section>
+        ))}
+      </div>
 
-              {/* Cards Grid */}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {category.articles.map((article) =>
-                  article.available ? (
-                    <Link
-                      key={article.slug}
-                      href={`/${lang}/library/${article.slug}`}
-                      className="group relative flex flex-col justify-between p-5 md:p-6 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all duration-150"
-                    >
-                      {/* Badge */}
-                      <div>
-                        <span className="inline-block px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase rounded-full bg-gray-100 text-gray-600 mb-3">
-                          {article.badge}
-                        </span>
-                        <h3 className="text-base font-semibold text-gray-900 group-hover:text-gray-700 transition-colors mb-2 leading-snug">
-                          {article.title}
-                        </h3>
-                        <p className="text-sm text-gray-500 leading-relaxed">
-                          {article.description}
-                        </p>
-                      </div>
-
-                      {/* Open CTA */}
-                      <div className="mt-4 flex items-center text-sm font-medium text-[#C9A227] group-hover:text-[#b08d1f] transition-colors">
-                        <span>{isEnglish ? 'Open' : 'Aç'}</span>
-                        <svg
-                          className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform duration-150"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
-                    </Link>
-                  ) : (
-                    <div
-                      key={article.slug}
-                      className="relative flex flex-col justify-between p-5 md:p-6 bg-white border border-gray-100 rounded-xl opacity-50 cursor-default"
-                    >
-                      <div>
-                        <span className="inline-block px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase rounded-full bg-gray-100 text-gray-400 mb-3">
-                          {article.badge}
-                        </span>
-                        <h3 className="text-base font-semibold text-gray-700 mb-2 leading-snug">
-                          {article.title}
-                          <span className="ml-2 text-xs font-normal text-gray-400">
-                            {isEnglish ? '(Coming)' : '(Yakında)'}
-                          </span>
-                        </h3>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                          {article.description}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            </section>
-          ))}
+      {/* Related Resources */}
+      <nav className="mt-16 pt-8 border-t border-stone-200" aria-label={isEnglish ? 'Related resources' : 'İlgili kaynaklar'}>
+        <p className="section-label">
+          {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
+        </p>
+        <div className="divide-y divide-stone-200">
+          <Link
+            href={`/${lang}/contracts`}
+            className="flex items-center justify-between py-3 group"
+          >
+            <span className="text-sm font-medium text-ink group-hover:text-accent transition-colors">{isEnglish ? 'Contract Templates' : 'Sözleşme Şablonları'}</span>
+            <span className="text-muted text-sm">&rarr;</span>
+          </Link>
+          <Link
+            href={`/${lang}/checklists`}
+            className="flex items-center justify-between py-3 group"
+          >
+            <span className="text-sm font-medium text-ink group-hover:text-accent transition-colors">{isEnglish ? 'Checklists' : 'Kontrol Listeleri'}</span>
+            <span className="text-muted text-sm">&rarr;</span>
+          </Link>
+          <Link
+            href={`/${lang}/legal-kits`}
+            className="flex items-center justify-between py-3 group"
+          >
+            <span className="text-sm font-medium text-ink group-hover:text-accent transition-colors">{isEnglish ? 'Document Kits' : 'Belge Kitleri'}</span>
+            <span className="text-muted text-sm">&rarr;</span>
+          </Link>
         </div>
-
-        {/* Related Resources */}
-        <nav className="mt-16 pt-8 border-t border-gray-200" aria-label={isEnglish ? 'Related resources' : 'İlgili kaynaklar'}>
-          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-            {isEnglish ? 'Related Resources' : 'İlgili Kaynaklar'}
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <Link
-              href={`/${lang}/amerika`}
-              className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all"
-            >
-              <span className="text-sm font-medium text-gray-700">{isEnglish ? 'US Business Hub' : 'ABD İş Merkezi'}</span>
-              <span className="text-gray-400 text-sm">→</span>
-            </Link>
-            <Link
-              href={`/${lang}/checklists`}
-              className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all"
-            >
-              <span className="text-sm font-medium text-gray-700">{isEnglish ? 'Checklists' : 'Kontrol Listeleri'}</span>
-              <span className="text-gray-400 text-sm">→</span>
-            </Link>
-            <Link
-              href={`/${lang}/legal-kits`}
-              className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 transition-all"
-            >
-              <span className="text-sm font-medium text-gray-700">{isEnglish ? 'Legal Kits' : 'Hukuki Kitler'}</span>
-              <span className="text-gray-400 text-sm">→</span>
-            </Link>
-          </div>
-        </nav>
-      </main>
-    </div>
+      </nav>
+    </main>
   )
 }
