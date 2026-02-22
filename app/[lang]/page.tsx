@@ -76,6 +76,11 @@ export default async function Home({
           <div className="max-w-lg mx-auto">
             <HomeSearch lang={lang} />
           </div>
+          <p className="text-xs text-stone-400 mt-4">
+            {isEnglish
+              ? 'Results ordered by authority hierarchy and jurisdiction. Deterministic ranking enforced.'
+              : 'Sonuçlar otorite hiyerarşisi ve yargı alanına göre sıralanır. Belirleyici sıralama uygulanır.'}
+          </p>
         </div>
       </section>
 
