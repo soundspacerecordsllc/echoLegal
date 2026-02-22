@@ -48,7 +48,7 @@ export default async function AmerikaHubPage({
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero */}
         <div className="mb-12">
-          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-800 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block text-sm tracking-wide uppercase text-gray-500 mb-4">
             {isEnglish ? 'US Business Hub' : 'ABD Ticaret Rehberi'}
           </span>
 
