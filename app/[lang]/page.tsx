@@ -152,7 +152,7 @@ export default async function Home({
               <p className="text-sm text-muted leading-relaxed mb-4 flex-1">
                 {isEnglish
                   ? 'Structured verification lists for document preparation, filing requirements, and procedural compliance.'
-                  : 'Belge hazırlama, dosyalama gereksinimleri ve prosedürel uyum için yapılandırılmış doğrulama listeleri.'}
+                  : 'Yaygın hukuki ve iş süreçlerine ilişkin kontrol listeleri. Profesyonel hukuki danışmanlığın yerine geçmez.'}
               </p>
               <Link
                 href={`/${lang}/checklists`}
