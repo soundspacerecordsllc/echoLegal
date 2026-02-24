@@ -2,8 +2,6 @@
 // Email reminder service stub for the Control Panel.
 // MVP: uses Resend. Swap provider by changing this module only.
 
-import { UserComplianceItem, ComplianceItem } from './types'
-
 // ─── Configuration ──────────────────────────────────────────────────
 
 const FROM_EMAIL = process.env.REMINDER_FROM_EMAIL || 'compliance@echo-legal.com'

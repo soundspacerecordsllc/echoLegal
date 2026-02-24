@@ -5,9 +5,7 @@
 
 import {
   ComplianceItem,
-  ComplianceFrequency,
   LLCProfile,
-  UserComplianceItem,
 } from './types'
 
 // ─── Master Compliance Item Registry ────────────────────────────────
