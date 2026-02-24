@@ -17,10 +17,12 @@ export function middleware(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname
 
-  // Skip static files and API routes
+  // Skip static files, API routes, and non-i18n app areas
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/control-panel') ||
+    pathname.startsWith('/admin') ||
     pathname.includes('.') ||
     pathname === '/favicon.ico'
   ) {
