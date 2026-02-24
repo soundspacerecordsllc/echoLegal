@@ -62,17 +62,18 @@ export async function GET(request: NextRequest) {
   }
 
   // Group by user_id
-  const byUser = new Map<string, typeof dueItems>()
+  const byUser: Record<string, typeof dueItems> = {}
   for (const item of dueItems) {
-    const list = byUser.get(item.user_id) || []
-    list.push(item)
-    byUser.set(item.user_id, list)
+    if (!byUser[item.user_id]) byUser[item.user_id] = []
+    byUser[item.user_id].push(item)
   }
 
+  const userIds = Object.keys(byUser)
   let totalSent = 0
   let totalFailed = 0
 
-  for (const [userId, items] of byUser) {
+  for (const userId of userIds) {
+    const items = byUser[userId]
     // Check if user has active subscription
     const { data: sub } = await supabase
       .from('cp_subscriptions')
@@ -125,7 +126,7 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({
     sent: totalSent,
     failed: totalFailed,
-    users_processed: byUser.size,
+    users_processed: userIds.length,
     timestamp: now.toISOString(),
   })
 }
