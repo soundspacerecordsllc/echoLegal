@@ -5,6 +5,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceClient } from '@/lib/control-panel/db'
 import { sendComplianceReminder, ReminderPayload } from '@/lib/control-panel/emails'
+import { canAccessFeature } from '@/lib/control-panel/feature-access'
 
 function verifyCronAuth(request: NextRequest): boolean {
   if (process.env.NODE_ENV === 'development') return true
@@ -70,19 +71,19 @@ export async function GET(request: NextRequest) {
 
   const userIds = Object.keys(byUser)
   let totalSent = 0
+  let totalSkipped = 0
   let totalFailed = 0
 
   for (const userId of userIds) {
     const items = byUser[userId]
-    // Check if user has active subscription
-    const { data: sub } = await supabase
-      .from('cp_subscriptions')
-      .select('status')
-      .eq('user_id', userId)
-      .in('status', ['active', 'trialing'])
-      .single()
 
-    if (!sub) continue // No active subscription, skip reminders
+    // Gate: only active subscribers receive email reminders
+    const hasAccess = await canAccessFeature(userId, 'reminders')
+    if (!hasAccess) {
+      console.log(`[cron/reminders] Reminder skipped for user ${userId} (inactive subscription)`)
+      totalSkipped++
+      continue
+    }
 
     // Get user email and profile
     const { data: profile } = await supabase
@@ -111,6 +112,7 @@ export async function GET(request: NextRequest) {
     const success = await sendComplianceReminder(payload)
 
     if (success) {
+      console.log(`[cron/reminders] Reminder sent to user ${userId}`)
       totalSent++
       // Update last_reminder_sent_at for each item
       const itemIds = items.map((i) => i.id)
@@ -125,6 +127,7 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     sent: totalSent,
+    skipped: totalSkipped,
     failed: totalFailed,
     users_processed: userIds.length,
     timestamp: now.toISOString(),
