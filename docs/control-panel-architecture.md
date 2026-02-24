@@ -135,6 +135,14 @@ Deterministic rules engine. Takes an `LLCProfile`, returns applicable
 
 No external calls. Fully testable.
 
+**Fiscal deadline selection (`getNextFiscalDeadline`):** The function considers
+three candidate fiscal years — `year-1`, `year`, and `year+1` relative to the
+current date — and returns the earliest deadline that is still on or after today.
+This is necessary because the filing window (fiscal year end + offset days) can
+span the year boundary: e.g., FY ending Dec 31, 2025 has a 105-day deadline of
+Apr 15, 2026, which must be returned when "now" falls between Jan 1 and Apr 15,
+2026 rather than skipping ahead to the FY2026 deadline of Apr 15, 2027.
+
 ### `lib/control-panel/subscription.ts`
 Stripe integration. Handles:
 - Active subscription check (`getActiveSubscription`)

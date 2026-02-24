@@ -77,11 +77,11 @@ describe('Scenario 1 — FL LLC, formed Jan 15, 2024', () => {
     assert.equal(ar.compliance_item.jurisdiction, 'FL')
   })
 
-  it('Form 5472 present, due 2027-04-15 (FY2026 ending Dec 31 + 105d)', () => {
+  it('Form 5472 present, due 2026-04-15 (FY2025 ending Dec 31 + 105d)', () => {
     const items = generateComplianceItems(profile)
     const f5472 = findByKey(items, 'irs_form_5472')
     assert.ok(f5472, 'Form 5472 must exist')
-    assert.equal(f5472.due_date, '2027-04-15')
+    assert.equal(f5472.due_date, '2026-04-15')
   })
 
   it('EIN application due 2024-02-14 (formation + 30d)', () => {
@@ -330,6 +330,85 @@ describe('TX — franchise tax included', () => {
     })
     const items = generateComplianceItems(profile)
     assert.equal(items.length, 8)
+  })
+})
+
+// ─── Fiscal deadline FY-1 handling ──────────────────────────────────
+
+describe('Fiscal deadline — FY-1 selection', () => {
+  it('now = Feb 10, 2026: picks FY2025 deadline (Apr 15, 2026), not FY2026', () => {
+    mock.timers.enable({ apis: ['Date'], now: new Date('2026-02-10T12:00:00Z').getTime() })
+    const profile = makeProfile({
+      state_of_formation: 'FL',
+      formation_date: '2024-01-15',
+      fiscal_year_end_month: 12,
+    })
+    const items = generateComplianceItems(profile)
+    const f5472 = findByKey(items, 'irs_form_5472')
+    assert.ok(f5472, 'Form 5472 must exist')
+    // FY2025 ends Dec 31, 2025 → +105d = Apr 15, 2026 (still future)
+    assert.equal(f5472.due_date, '2026-04-15')
+    mock.timers.reset()
+  })
+
+  it('now = May 1, 2026: FY2025 deadline passed → picks FY2026 (Apr 15, 2027)', () => {
+    mock.timers.enable({ apis: ['Date'], now: new Date('2026-05-01T12:00:00Z').getTime() })
+    const profile = makeProfile({
+      state_of_formation: 'FL',
+      formation_date: '2024-01-15',
+      fiscal_year_end_month: 12,
+    })
+    const items = generateComplianceItems(profile)
+    const f5472 = findByKey(items, 'irs_form_5472')
+    assert.ok(f5472, 'Form 5472 must exist')
+    // FY2025 deadline (Apr 15, 2026) already passed → FY2026: Dec 31, 2026 + 105d = Apr 15, 2027
+    assert.equal(f5472.due_date, '2027-04-15')
+    mock.timers.reset()
+  })
+
+  it('non-December FY end (June): now = Feb 10, 2026 → picks Oct 13, 2026', () => {
+    mock.timers.enable({ apis: ['Date'], now: new Date('2026-02-10T12:00:00Z').getTime() })
+    const profile = makeProfile({
+      state_of_formation: 'NM',
+      formation_date: '2024-01-15',
+      fiscal_year_end_month: 6,
+    })
+    const items = generateComplianceItems(profile)
+    const f5472 = findByKey(items, 'irs_form_5472')
+    assert.ok(f5472, 'Form 5472 must exist')
+    // FY-1: FY ending Jun 30, 2025 → +105d = Oct 13, 2025 (past) ✗
+    // FY0:  FY ending Jun 30, 2026 → +105d = Oct 13, 2026 (future) ✓
+    assert.equal(f5472.due_date, '2026-10-13')
+    mock.timers.reset()
+  })
+
+  it('non-December FY end (June): now = Aug 1, 2026 → still Oct 13, 2026', () => {
+    mock.timers.enable({ apis: ['Date'], now: new Date('2026-08-01T12:00:00Z').getTime() })
+    const profile = makeProfile({
+      state_of_formation: 'NM',
+      formation_date: '2024-01-15',
+      fiscal_year_end_month: 6,
+    })
+    const items = generateComplianceItems(profile)
+    const f5472 = findByKey(items, 'irs_form_5472')
+    assert.ok(f5472)
+    // FY ending Jun 30, 2026 → Oct 13, 2026 (still future from Aug 1) ✓
+    assert.equal(f5472.due_date, '2026-10-13')
+    mock.timers.reset()
+  })
+
+  it('FBAR also uses corrected fiscal deadline', () => {
+    mock.timers.enable({ apis: ['Date'], now: new Date('2026-02-10T12:00:00Z').getTime() })
+    const profile = makeProfile({
+      state_of_formation: 'FL',
+      formation_date: '2024-01-15',
+      fiscal_year_end_month: 12,
+    })
+    const items = generateComplianceItems(profile)
+    const fbar = findByKey(items, 'fincen_fbar')
+    assert.ok(fbar, 'FBAR must exist')
+    assert.equal(fbar.due_date, '2026-04-15')
+    mock.timers.reset()
   })
 })
 

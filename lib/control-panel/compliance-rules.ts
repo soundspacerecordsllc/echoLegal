@@ -274,26 +274,34 @@ function calculateDueDate(
 /**
  * Next deadline relative to fiscal year end.
  * E.g., fiscal year ends Dec 31, offset 105 days = April 15.
+ *
+ * Checks three candidate fiscal years (year-1, year, year+1) and returns
+ * the earliest deadline that is still >= now. This ensures that a filing
+ * window from the prior fiscal year (e.g., FY2025 ending Dec 31, 2025
+ * with deadline Apr 15, 2026) is returned when "now" falls between the
+ * fiscal year end and its offset deadline.
  */
 function getNextFiscalDeadline(
   fiscalYearEndMonth: number,
   offsetDays: number,
   now: Date
 ): string {
-  // Try current year's fiscal year end first
-  let year = now.getFullYear()
-  let fyEnd = new Date(year, fiscalYearEndMonth - 1 + 1, 0) // last day of month
-  let deadline = new Date(fyEnd)
-  deadline.setDate(deadline.getDate() + offsetDays)
+  const baseYear = now.getFullYear()
 
-  // If deadline already passed, use next year
-  if (deadline < now) {
-    year++
-    fyEnd = new Date(year, fiscalYearEndMonth - 1 + 1, 0)
-    deadline = new Date(fyEnd)
+  for (const y of [baseYear - 1, baseYear, baseYear + 1]) {
+    const fyEnd = new Date(y, fiscalYearEndMonth - 1 + 1, 0) // last day of FY-end month
+    const deadline = new Date(fyEnd)
     deadline.setDate(deadline.getDate() + offsetDays)
+
+    if (deadline >= now) {
+      return deadline.toISOString().split('T')[0]
+    }
   }
 
+  // Fallback: should never reach here since year+1 always produces a future date
+  const fyEnd = new Date(baseYear + 2, fiscalYearEndMonth - 1 + 1, 0)
+  const deadline = new Date(fyEnd)
+  deadline.setDate(deadline.getDate() + offsetDays)
   return deadline.toISOString().split('T')[0]
 }
 
