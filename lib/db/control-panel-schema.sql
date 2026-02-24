@@ -77,6 +77,10 @@ CREATE TABLE IF NOT EXISTS cp_compliance_items (
   offset_days INTEGER NOT NULL DEFAULT 0,
   url TEXT,
   active BOOLEAN NOT NULL DEFAULT TRUE,
+  authority_label TEXT,
+  authority_url TEXT,
+  summary_text TEXT,
+  risk_note TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 

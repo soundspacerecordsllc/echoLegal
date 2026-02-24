@@ -56,7 +56,11 @@ export default async function ChecklistPage() {
         authority_level,
         jurisdiction,
         frequency,
-        url
+        url,
+        authority_label,
+        authority_url,
+        summary_text,
+        risk_note
       )
     `
     )
@@ -111,9 +115,33 @@ export default async function ChecklistPage() {
                   {ref?.authority_level === 'federal'
                     ? 'Federal'
                     : ref?.jurisdiction ?? '—'}
-                  {ref?.url && (
-                    <>
-                      {' · '}
+                  {' · Due: '}{item.due_date}
+                </p>
+                {ref?.summary_text && (
+                  <p className="text-xs text-gray-600 mt-1.5 leading-relaxed">
+                    {ref.summary_text}
+                  </p>
+                )}
+                <div className="flex items-center gap-3 mt-1.5">
+                  {ref?.authority_label && (
+                    <p className="text-[11px] text-muted">
+                      {'Source: '}
+                      {ref.authority_url ? (
+                        <a
+                          href={ref.authority_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-ink"
+                        >
+                          {ref.authority_label}
+                        </a>
+                      ) : (
+                        <span>{ref.authority_label}</span>
+                      )}
+                    </p>
+                  )}
+                  {!ref?.authority_label && ref?.url && (
+                    <p className="text-[11px] text-muted">
                       <a
                         href={ref.url}
                         target="_blank"
@@ -122,13 +150,17 @@ export default async function ChecklistPage() {
                       >
                         Official source
                       </a>
-                    </>
+                    </p>
                   )}
-                </p>
+                </div>
+                {ref?.risk_note && (
+                  <p className="text-[11px] text-gray-400 mt-1 italic">
+                    {ref.risk_note}
+                  </p>
+                )}
               </div>
               <div className="text-right shrink-0">
                 <StatusBadge status={item.status} />
-                <p className="text-xs text-muted mt-1">{item.due_date}</p>
               </div>
             </div>
           )

@@ -58,6 +58,11 @@ export type ComplianceItem = {
   offset_days: number
   url: string | null // link to official source
   active: boolean
+  // Optional institutional metadata
+  authority_label?: string // e.g. "IRS", "FinCEN", "Delaware Division of Corporations"
+  authority_url?: string   // link to the governing authority
+  summary_text?: string    // 2-3 sentence institutional explanation
+  risk_note?: string       // short neutral compliance consequence statement
 }
 
 // ─── User Compliance Tracking ───────────────────────────────────────

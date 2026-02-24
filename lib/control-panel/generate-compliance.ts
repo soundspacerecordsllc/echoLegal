@@ -55,6 +55,10 @@ export async function generateComplianceForUser(userId: string): Promise<number>
     offset_days: g.compliance_item.offset_days,
     url: g.compliance_item.url,
     active: true,
+    authority_label: g.compliance_item.authority_label ?? null,
+    authority_url: g.compliance_item.authority_url ?? null,
+    summary_text: g.compliance_item.summary_text ?? null,
+    risk_note: g.compliance_item.risk_note ?? null,
   }))
 
   const { error: refError } = await supabase

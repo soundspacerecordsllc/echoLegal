@@ -28,6 +28,12 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 30,
     url: 'https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online',
     active: true,
+    authority_label: 'IRS',
+    authority_url: 'https://www.irs.gov',
+    summary_text:
+      'An Employer Identification Number (EIN) is a federal tax identification number assigned by the IRS. Foreign-owned LLCs require an EIN to open U.S. bank accounts, file federal tax returns, and comply with withholding obligations.',
+    risk_note:
+      'Operating without an EIN may delay bank account opening and trigger penalties for late tax filings.',
   },
   {
     id: 'federal-form-5472',
@@ -42,6 +48,12 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 105, // ~3.5 months (15th day of 4th month)
     url: 'https://www.irs.gov/forms-pubs/about-form-5472',
     active: true,
+    authority_label: 'IRS',
+    authority_url: 'https://www.irs.gov',
+    summary_text:
+      'Form 5472 reports transactions between a foreign-owned U.S. LLC and its foreign owner. The IRS requires this form to be filed annually with a pro forma Form 1120, even if the LLC has no income or activity during the tax year.',
+    risk_note:
+      'Failure to file or late filing may result in a $25,000 penalty per return, per year (IRC §6038A(d)).',
   },
   {
     id: 'federal-fbar',
@@ -56,6 +68,12 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 105,
     url: 'https://www.fincen.gov/report-foreign-bank-and-financial-accounts',
     active: true,
+    authority_label: 'FinCEN',
+    authority_url: 'https://www.fincen.gov',
+    summary_text:
+      'The Foreign Bank Account Report (FBAR) is filed with FinCEN by U.S. persons, including entities, who hold financial interest in or signature authority over foreign accounts exceeding $10,000 in aggregate value at any point during the calendar year.',
+    risk_note:
+      'Non-willful violations may result in penalties up to $10,000 per account. Willful violations carry substantially higher penalties.',
   },
   {
     id: 'federal-boi-report',
@@ -70,6 +88,12 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 90,
     url: 'https://www.fincen.gov/boi',
     active: true,
+    authority_label: 'FinCEN',
+    authority_url: 'https://www.fincen.gov',
+    summary_text:
+      'The Corporate Transparency Act requires most LLCs to report their beneficial owners to FinCEN. This includes the identity of individuals who own or control the company, intended to prevent illicit use of anonymous shell entities.',
+    risk_note:
+      'Failure to file a BOI report may result in civil penalties of up to $500 per day the report is late, and potential criminal penalties.',
   },
   {
     id: 'federal-itin-application',
@@ -84,6 +108,12 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 60,
     url: 'https://www.irs.gov/individuals/individual-taxpayer-identification-number',
     active: true,
+    authority_label: 'IRS',
+    authority_url: 'https://www.irs.gov',
+    summary_text:
+      'An Individual Taxpayer Identification Number (ITIN) is issued by the IRS to individuals who are required to have a U.S. taxpayer identification number but are not eligible for a Social Security Number. Foreign LLC owners typically need an ITIN to file required U.S. tax returns.',
+    risk_note:
+      'Without an ITIN, the foreign owner may be unable to file required tax returns, potentially leading to penalties and withholding complications.',
   },
   {
     id: 'federal-registered-agent',
@@ -98,6 +128,11 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 365,
     url: null,
     active: true,
+    authority_label: 'State Secretary of State',
+    summary_text:
+      'Every LLC must maintain a registered agent with a physical address in its state of formation. The registered agent receives legal and government correspondence on behalf of the LLC, including service of process.',
+    risk_note:
+      'Failure to maintain a registered agent may result in administrative dissolution of the LLC and loss of good standing.',
   },
 
   // ── State-level (generic, applies to all states) ──────────────────
@@ -114,6 +149,11 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 365,
     url: null,
     active: true,
+    authority_label: 'State Secretary of State',
+    summary_text:
+      'Annual reports confirm that an LLC\'s information on file with the state is current, including its registered agent, principal address, and member/manager details. Filing requirements and fees vary by jurisdiction.',
+    risk_note:
+      'Late or missed annual report filings may result in late fees, loss of good standing, or involuntary dissolution of the LLC.',
   },
   {
     id: 'state-franchise-tax',
@@ -128,6 +168,11 @@ export const COMPLIANCE_ITEMS: ComplianceItem[] = [
     offset_days: 105,
     url: null,
     active: true,
+    authority_label: 'State Tax Authority',
+    summary_text:
+      'Franchise taxes are levied by certain states for the privilege of doing business in that jurisdiction. The amount and calculation method vary by state. This obligation is separate from income tax and applies regardless of whether the LLC generates revenue.',
+    risk_note:
+      'Unpaid franchise taxes may result in penalties, interest, and eventual forfeiture or revocation of the LLC\'s authority to conduct business.',
   },
 ]
 
