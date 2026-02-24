@@ -3,15 +3,15 @@
 // All routes under /control-panel/app require authentication.
 
 import Link from 'next/link'
+import { requireAuth } from '@/lib/control-panel/auth'
 import ComplianceDisclaimer from '@/components/control-panel/ComplianceDisclaimer'
 
-export default function AppLayout({
+export default async function AppLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // TODO: Check auth with requireAuth() and redirect if needed.
-  // For scaffolding, render layout without auth check.
+  await requireAuth()
 
   return (
     <div className="min-h-screen flex flex-col">
