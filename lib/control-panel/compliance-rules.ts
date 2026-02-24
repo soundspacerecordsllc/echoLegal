@@ -242,28 +242,28 @@ function calculateDueDate(
     return due.toISOString().split('T')[0]
   }
 
+  // State-specific overrides take precedence over generic reference_event logic
+  if (item.key === 'state_annual_report' && stateOverride) {
+    if (!stateOverride.annual_report_month && !stateOverride.annual_report_day) {
+      return null // State doesn't require annual report (e.g., NM)
+    }
+    const month = stateOverride.annual_report_month || (formationDate.getMonth() + 1)
+    const day = stateOverride.annual_report_day || 1
+    return getNextAnnualDate(month, day, now)
+  }
+
+  if (item.key === 'state_franchise_tax' && stateOverride) {
+    const month = stateOverride.franchise_tax_month || 6
+    const day = stateOverride.franchise_tax_day || 1
+    return getNextAnnualDate(month, day, now)
+  }
+
   // Recurring items: find the next occurrence
   if (item.reference_event === 'fiscal_year_end') {
     return getNextFiscalDeadline(profile.fiscal_year_end_month, item.offset_days, now)
   }
 
   if (item.reference_event === 'formation_date') {
-    // State annual report: use state-specific month if available
-    if (item.key === 'state_annual_report' && stateOverride) {
-      if (!stateOverride.annual_report_month && !stateOverride.annual_report_day) {
-        return null // State doesn't require annual report (e.g., NM)
-      }
-      const month = stateOverride.annual_report_month || (formationDate.getMonth() + 1)
-      const day = stateOverride.annual_report_day || 1
-      return getNextAnnualDate(month, day, now)
-    }
-
-    if (item.key === 'state_franchise_tax' && stateOverride) {
-      const month = stateOverride.franchise_tax_month || 6
-      const day = stateOverride.franchise_tax_day || 1
-      return getNextAnnualDate(month, day, now)
-    }
-
     // Default: anniversary of formation + offset
     return getNextAnniversary(formationDate, item.offset_days, now)
   }
