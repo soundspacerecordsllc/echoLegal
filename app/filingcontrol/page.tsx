@@ -34,10 +34,13 @@ export default function FilingControlLanding() {
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-4 sm:px-6 py-24 text-center">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--fc-navy)]">
-            {FC_APP.name}
+            Foreign-Owned U.S. Entities: Compliance, Under Control.
           </h1>
           <p className="mt-4 text-lg text-[var(--fc-slate-500)]">
-            {FC_APP.tagline}
+            A structured operating system for filings, deadlines, and reminders—built for foreign founders.
+          </p>
+          <p className="mt-2 text-sm text-[var(--fc-slate-400)]">
+            Authority-labeled obligations. Calculated due dates. No missed filings.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Link
@@ -53,10 +56,18 @@ export default function FilingControlLanding() {
               View Pricing
             </Link>
           </div>
+          <div className="mt-4">
+            <a
+              href="#features"
+              className="text-sm text-[var(--fc-slate-400)] hover:text-[var(--fc-slate-500)] transition-colors"
+            >
+              See what&apos;s tracked
+            </a>
+          </div>
         </section>
 
         {/* Value props */}
-        <section className="border-t border-[var(--fc-slate-200)] bg-white">
+        <section id="features" className="border-t border-[var(--fc-slate-200)] bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
             <div className="grid sm:grid-cols-3 gap-8">
               <ValueProp
