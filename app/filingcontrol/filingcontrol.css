@@ -1,0 +1,13 @@
+/* FilingControl theme — navy / slate palette only */
+
+.fc-theme {
+  --fc-navy: #0f172a;
+  --fc-navy-light: #1e293b;
+  --fc-slate-700: #334155;
+  --fc-slate-500: #64748b;
+  --fc-slate-400: #94a3b8;
+  --fc-slate-200: #e2e8f0;
+  --fc-slate-100: #f1f5f9;
+  --fc-slate-50: #f8fafc;
+  --fc-white: #ffffff;
+}

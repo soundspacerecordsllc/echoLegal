@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
   let totalSent = 0
   let totalFailed = 0
 
-  for (const [userId, items] of byUser) {
+  for (const [userId, items] of Array.from(byUser.entries())) {
     // Check if user has active subscription
     const { data: sub } = await supabase
       .from('cp_subscriptions')

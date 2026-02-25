@@ -22,6 +22,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/control-panel') ||
+    pathname.startsWith('/filingcontrol') ||
     pathname.startsWith('/admin') ||
     pathname.includes('.') ||
     pathname === '/favicon.ico'
