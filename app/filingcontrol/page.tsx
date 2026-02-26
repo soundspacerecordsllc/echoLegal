@@ -56,7 +56,13 @@ export default function FilingControlLanding() {
               View Pricing
             </Link>
           </div>
-          <div className="mt-4">
+          <div className="mt-4 flex justify-center gap-4">
+            <Link
+              href="/filingcontrol/tool"
+              className="text-sm text-[var(--fc-slate-500)] hover:text-[var(--fc-navy)] transition-colors underline underline-offset-4"
+            >
+              Try the filing checker
+            </Link>
             <a
               href="#features"
               className="text-sm text-[var(--fc-slate-400)] hover:text-[var(--fc-slate-500)] transition-colors"
