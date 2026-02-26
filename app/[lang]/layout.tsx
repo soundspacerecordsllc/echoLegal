@@ -9,11 +9,25 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export const metadata: Metadata = {
-  title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
-  description:
-    'Multilingual legal encyclopedia providing professionally drafted contracts and legal guides. Currently in English and Turkish. Legal knowledge for everyone.',
-  metadataBase: new URL('https://echo-legal.com'),
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: 'en' | 'tr' }>
+}): Promise<Metadata> {
+  const { lang } = await params
+
+  return {
+    title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
+    description:
+      'Multilingual legal encyclopedia providing professionally drafted contracts and legal guides. Currently in English and Turkish. Legal knowledge for everyone.',
+    alternates: {
+      canonical: `/${lang}`,
+      languages: {
+        en: `/en`,
+        tr: `/tr`,
+      },
+    },
+  }
 }
 
 // Generate dynamic hreflang links based on current path
