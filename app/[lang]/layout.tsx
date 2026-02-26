@@ -64,7 +64,7 @@ export default async function RootLayout({
   const globalSchemas = getGlobalSchemas()
 
   return (
-    <html lang={lang}>
+    <>
       <head>
         {/* Dynamic hreflang tags */}
         <link rel="alternate" hrefLang="en" href={hreflangs.en} />
@@ -79,9 +79,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body>
-        <AppShell lang={lang}>{children}</AppShell>
-      </body>
-    </html>
+      <AppShell lang={lang}>{children}</AppShell>
+    </>
   )
 }
