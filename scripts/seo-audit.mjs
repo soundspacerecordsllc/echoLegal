@@ -3,7 +3,7 @@
 // Automated SEO audit: fetches sitemap, checks canonical + hreflang on every URL.
 // Requires Node 18+ (global fetch).
 
-const SITE = 'https://echo-legal.com'
+const SITE = process.env.AUDIT_URL || 'https://echo-legal.com'
 const SITEMAP_URL = `${SITE}/sitemap.xml`
 const REQUIRED_HREFLANGS = ['en', 'tr', 'x-default']
 const CONCURRENCY = 5

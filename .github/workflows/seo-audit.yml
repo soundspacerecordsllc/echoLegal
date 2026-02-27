@@ -3,8 +3,9 @@ name: SEO Audit
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # every Monday 06:00 UTC
+  workflow_dispatch:
 
 jobs:
   seo-audit:
