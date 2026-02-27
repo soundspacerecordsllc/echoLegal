@@ -17,6 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Essential legal realities and preparation checklist before coming to the US. Visa categories, immigrant intent, and status change rules."
       : "ABD'ye gelmeden önce bilinmesi gereken temel hukuki gerçekler ve hazırlık kontrol listesi.",
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi`,
+      languages: {
+        en: 'https://echo-legal.com/en/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi',
+        tr: 'https://echo-legal.com/tr/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi',
+        'x-default': 'https://echo-legal.com/en/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi',
+      },
+    },
   }
 }
 

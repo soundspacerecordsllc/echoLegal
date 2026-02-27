@@ -15,6 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Quick reference checklists and decision guides for common US business legal questions. LLC formation, tax forms, IRS letters explained.'
       : 'Yaygın ABD iş hukuku soruları için hızlı referans kontrol listeleri ve karar rehberleri. LLC kurulumu, vergi formları, IRS mektupları açıklandı.',
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/checklists`,
+      languages: {
+        en: 'https://echo-legal.com/en/checklists',
+        tr: 'https://echo-legal.com/tr/checklists',
+        'x-default': 'https://echo-legal.com/en/checklists',
+      },
+    },
   }
 }
 

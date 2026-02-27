@@ -1,5 +1,6 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
+import { Metadata } from 'next'
 import Link from 'next/link'
 import {
   EncyclopediaAuthorityLevel,
@@ -16,6 +17,27 @@ import type { JurisdictionCode } from '@/lib/jurisdictions'
  * Order here determines button order in the UI.
  */
 const FILTER_OPTIONS: JurisdictionCode[] = ['US', 'US-NY', 'US-CA', 'EU', 'TR']
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
+  const { lang } = await params
+  const isEnglish = lang === 'en'
+  return {
+    title: isEnglish
+      ? 'Legal Encyclopedia | EchoLegal'
+      : 'Hukuki Ansiklopedi | EchoLegal',
+    description: isEnglish
+      ? 'Browse legal encyclopedia entries covering US business law, contracts, and compliance. Authority-ranked, jurisdiction-tagged.'
+      : 'ABD iş hukuku, sözleşmeler ve uyumu kapsayan hukuki ansiklopedi maddelerine göz atın. Otorite sıralamalı, yargı alanı etiketli.',
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/encyclopedia`,
+      languages: {
+        en: 'https://echo-legal.com/en/encyclopedia',
+        tr: 'https://echo-legal.com/tr/encyclopedia',
+        'x-default': 'https://echo-legal.com/en/encyclopedia',
+      },
+    },
+  }
+}
 
 export default async function EncyclopediaPage({
   params: { lang },

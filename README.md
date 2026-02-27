@@ -187,7 +187,22 @@ Every page includes:
 - **hreflang tags** for bilingual SEO
 - **Automatic sitemap** (via Next.js)
 - **Meta tags** optimized per page
-- **OpenGraph** ready for social sharing  
+- **OpenGraph** ready for social sharing
+
+### SEO Audit
+
+An automated audit script checks every URL in the production sitemap for:
+- Exactly one `<link rel="canonical">` pointing to `echo-legal.com`
+- Correct language prefix (`/en` or `/tr`) in the canonical URL
+- `hreflang` alternates for `en`, `tr`, and `x-default`
+- No duplicate sitemap entries
+
+```bash
+# Run locally (requires the production site to be live)
+npm run seo:audit
+```
+
+This also runs automatically on every push and PR via GitHub Actions.
 
 ### To submit sitemap:
 1. Go to [Google Search Console](https://search.google.com/search-console)
