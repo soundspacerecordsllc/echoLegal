@@ -2,8 +2,6 @@ import { Metadata } from 'next'
 import { Locale } from '@/i18n-config'
 import SiteSearch from '@/components/SiteSearch'
 
-const SITE = 'https://echo-legal.com'
-
 export async function generateMetadata({
   params,
 }: {
@@ -18,13 +16,6 @@ export async function generateMetadata({
       ? 'Search the EchoLegal legal encyclopedia, templates, and guides.'
       : 'EchoLegal hukuk ansiklopedisi, şablon ve rehberlerinde arama yapın.',
     robots: { index: false, follow: true },
-    alternates: {
-      canonical: `${SITE}/${lang}/search`,
-      languages: {
-        en: `${SITE}/en/search`,
-        tr: `${SITE}/tr/search`,
-      },
-    },
   }
 }
 

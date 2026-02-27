@@ -27,13 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual freelance contract template. I support EchoLegal ($49 recommended) or download free. Protect your freelance projects.'
       : 'Ücretsiz iki dilli serbest çalışan sözleşmesi. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Freelance Service Agreement' : 'Serbest Çalışan Hizmet Sözleşmesi',
       'citation_publisher': 'EchoLegal',

@@ -27,13 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual Terms of Service template. I support EchoLegal ($49 recommended) or download free. Protect your website or app.'
       : 'Ücretsiz iki dilli Kullanım Koşulları şablonu. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Terms of Service Template' : 'Kullanım Koşulları Şablonu',
       'citation_publisher': 'EchoLegal',

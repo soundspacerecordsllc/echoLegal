@@ -33,13 +33,6 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Guide to privacy policy requirements under GDPR, CCPA, KVKK, and other frameworks. Covers when a privacy policy is required, what to include, and compliance steps.'
       : 'GDPR, CCPA, KVKK ve diğer düzenlemeler kapsamında gizlilik politikası gereksinimleri rehberi. Gizlilik politikasının ne zaman gerekli olduğunu, neleri içermesi gerektiğini ve uyum adımlarını kapsar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Do I Need a Privacy Policy? GDPR, CCPA & KVKK Explained' : 'Gizlilik Politikasına İhtiyacım Var mı? GDPR, CCPA ve KVKK Açıklaması',
       'citation_publisher': 'EchoLegal',

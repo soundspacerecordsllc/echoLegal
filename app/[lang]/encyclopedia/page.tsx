@@ -28,14 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Browse legal encyclopedia entries covering US business law, contracts, and compliance. Authority-ranked, jurisdiction-tagged.'
       : 'ABD iş hukuku, sözleşmeler ve uyumu kapsayan hukuki ansiklopedi maddelerine göz atın. Otorite sıralamalı, yargı alanı etiketli.',
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/encyclopedia`,
-      languages: {
-        en: 'https://echo-legal.com/en/encyclopedia',
-        tr: 'https://echo-legal.com/tr/encyclopedia',
-        'x-default': 'https://echo-legal.com/en/encyclopedia',
-      },
-    },
   }
 }
 

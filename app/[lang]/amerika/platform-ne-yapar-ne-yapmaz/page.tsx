@@ -28,13 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Clear explanation of EchoLegal's scope, limitations, and what you can expect from this legal reference platform."
       : "EchoLegal'in kapsamı, sınırları ve bu hukuk referans platformundan neler bekleyebileceğiniz hakkında açık bilgilendirme.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'What This Platform Does and Does Not Do' : 'Platform Ne Yapar, Ne Yapmaz?',
       'citation_publisher': 'EchoLegal',

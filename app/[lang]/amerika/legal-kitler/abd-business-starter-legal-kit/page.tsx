@@ -17,14 +17,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Essential legal templates and guides for starting a business in the US. LLC Operating Agreement, NDA, Service Agreement, and more."
       : "ABD'de iş kurmak için temel hukuki şablonlar ve rehberler. LLC Operating Agreement, NDA, Hizmet Sözleşmesi ve daha fazlası.",
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/amerika/legal-kitler/abd-business-starter-legal-kit`,
-      languages: {
-        en: 'https://echo-legal.com/en/amerika/legal-kitler/abd-business-starter-legal-kit',
-        tr: 'https://echo-legal.com/tr/amerika/legal-kitler/abd-business-starter-legal-kit',
-        'x-default': 'https://echo-legal.com/en/amerika/legal-kitler/abd-business-starter-legal-kit',
-      },
-    },
   }
 }
 

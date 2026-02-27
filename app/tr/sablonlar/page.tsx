@@ -17,13 +17,6 @@ export const metadata: Metadata = {
   title: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
   description:
     'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri. İngilizce ve Türkçe yayımlanan tamamlayıcı referans materyalleri.',
-  alternates: {
-    canonical: 'https://echo-legal.com/tr/sablonlar',
-    languages: {
-      en: 'https://echo-legal.com/en/templates',
-      tr: 'https://echo-legal.com/tr/sablonlar',
-    },
-  },
   openGraph: {
     title: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
     description:

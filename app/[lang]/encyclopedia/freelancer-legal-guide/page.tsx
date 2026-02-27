@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Legal guide for freelancers covering contracts, taxes, intellectual property, liability protection, and international clients.'
       : 'Sözleşmeler, vergiler, fikri mülkiyet, sorumluluk koruması ve uluslararası müşteriler hakkında serbest çalışanlar için hukuk rehberi.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Freelancer Legal Guide: Independent Contractors' : 'Serbest Çalışan Hukuk Rehberi: Bağımsız Yükleniciler İçin Kılavuz',
       'citation_publisher': 'EchoLegal',

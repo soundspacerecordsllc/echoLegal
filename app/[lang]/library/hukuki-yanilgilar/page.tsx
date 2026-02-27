@@ -28,13 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Reference entry addressing frequently misunderstood aspects of US business law for non-US entrepreneurs. Covers LLC formation, tax obligations, immigration, contracts, and banking.'
       : 'ABD dışından girişimciler için ABD iş hukukunun sıkça yanlış anlaşılan yönlerini ele alan başvuru maddesi. LLC kuruluşu, vergi yükümlülükleri, göçmenlik, sözleşmeler ve bankacılığı kapsar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Common Legal Misconceptions About US Business' : 'ABD\'de İş Hukukuna İlişkin Yaygın Yanılgılar',
       'citation_publisher': 'EchoLegal',

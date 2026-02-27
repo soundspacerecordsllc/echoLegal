@@ -15,14 +15,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Comprehensive legal reference hub for Turkish entrepreneurs doing business in the United States. LLC formation, tax facts, common misconceptions, and essential documents.'
       : "ABD'de iş kurmak isteyen Türk girişimcilere yönelik kapsamlı hukuki başvuru kaynağı. LLC kurulumu, vergi esasları, yaygın yanılgılar ve temel belgeler.",
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/amerika`,
-      languages: {
-        en: 'https://echo-legal.com/en/amerika',
-        tr: 'https://echo-legal.com/tr/amerika',
-        'x-default': 'https://echo-legal.com/en/amerika',
-      },
-    },
   }
 }
 

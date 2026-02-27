@@ -17,14 +17,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Curated legal template and guide packages for US business and immigration. Pay what you can - $49 recommended."
       : "ABD iş ve göçmenlik için derlenmiş hukuki şablon ve rehber paketleri. Ödeyebildiğiniz kadar ödeyin - $49 önerilir.",
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/amerika/legal-kitler`,
-      languages: {
-        en: 'https://echo-legal.com/en/amerika/legal-kitler',
-        tr: 'https://echo-legal.com/tr/amerika/legal-kitler',
-        'x-default': 'https://echo-legal.com/en/amerika/legal-kitler',
-      },
-    },
   }
 }
 

@@ -32,13 +32,6 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Learn what an NDA (Non-Disclosure Agreement) is, when you need one, key clauses to include, and download a free template.'
       : 'NDA (Gizlilik Sözleşmesi) nedir, ne zaman gereklidir, hangi maddeler bulunmalı ve ücretsiz şablon indirin.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'What is an NDA? Non-Disclosure Agreement Explained' : 'NDA Nedir? Gizlilik Sözleşmesi Rehberi',
       'citation_publisher': 'EchoLegal',

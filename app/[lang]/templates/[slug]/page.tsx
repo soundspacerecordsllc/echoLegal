@@ -54,13 +54,6 @@ export async function generateMetadata({
   return {
     title: `${template.title} | EchoLegal`,
     description: template.shortDescription,
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/templates/${slug}`,
-      languages: {
-        en: `https://echo-legal.com/en/templates/${slug}`,
-        tr: `https://echo-legal.com/tr/templates/${slug}`,
-      },
-    },
     openGraph: {
       title: template.title,
       description: template.shortDescription,

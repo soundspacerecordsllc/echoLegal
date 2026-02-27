@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Why New York law is preferred for international commercial contracts. Choice of law considerations and when NY law makes sense."
       : "Uluslararası ticari sözleşmelerde New York hukukunun neden tercih edildiği. Hukuk seçimi değerlendirmeleri ve NY hukukunun hangi durumlarda uygun olduğu.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Why New York Law Is Preferred' : 'New York Hukuku Neden Tercih Edilir?',
       'citation_publisher': 'EchoLegal',

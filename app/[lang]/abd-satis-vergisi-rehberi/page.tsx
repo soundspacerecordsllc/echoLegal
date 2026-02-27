@@ -46,13 +46,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       title,
       description,
     },
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'US Sales Tax & Nexus Guide' : 'ABD Satış Vergisi ve Nexus Rehberi',
       'citation_publisher': 'EchoLegal',

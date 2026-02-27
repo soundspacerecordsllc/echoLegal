@@ -41,13 +41,6 @@ export async function generateMetadata({
     title,
     description,
     robots: { index: false },
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/encyclopedia/${slug}/history`,
-      languages: {
-        'en': `https://echo-legal.com/en/encyclopedia/${slug}/history`,
-        'tr': `https://echo-legal.com/tr/encyclopedia/${slug}/history`,
-      },
-    },
   }
 }
 

@@ -30,13 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Reference entry on the US tax forms most relevant to non-US entrepreneurs. Covers W-8BEN, W-8BEN-E, W-9, 1099-NEC, withholding obligations, and the US–Turkey tax treaty.'
       : 'ABD dışından girişimciler için en ilgili ABD vergi formlarına ilişkin başvuru maddesi. W-8BEN, W-8BEN-E, W-9, 1099-NEC, stopaj yükümlülükleri ve ABD-Türkiye vergi anlaşmasını kapsar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'US Tax Forms for Non-US Entrepreneurs: W-8, W-9, 1099' : 'ABD Dışından Girişimciler İçin Vergi Formları: W-8, W-9, 1099',
       'citation_publisher': 'EchoLegal',

@@ -30,13 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Reference entry on LLC formation in the United States for non-US entrepreneurs. Covers legal structure, state selection, formation process, tax classification, and common misconceptions.'
       : 'ABD dışından girişimciler için ABD\'de LLC kuruluşuna ilişkin başvuru maddesi. Hukuki yapı, eyalet seçimi, kuruluş süreci, vergi sınıflandırması ve yaygın yanılgıları kapsar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'LLC Formation in the United States' : 'ABD\'de LLC Kuruluşu',
       'citation_publisher': 'EchoLegal',

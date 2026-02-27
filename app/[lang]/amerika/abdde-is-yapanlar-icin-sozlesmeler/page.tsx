@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Comprehensive guide to US business contracts: types, key clauses, red flags, international enforcement, and when to seek legal review. NDAs, service agreements, contractor agreements, and more."
       : "ABD'de ticari sözleşmelere ilişkin kapsamlı rehber: sözleşme türleri, kritik hükümler, tehlikeli maddeler, uluslararası tenfiz ve hukuki inceleme gerekliliği. NDA, hizmet sözleşmesi, yüklenici sözleşmesi ve daha fazlası.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Business Contracts in the US' : "ABD'de İş Yapanlar İçin Sözleşmeler",
       'citation_publisher': 'EchoLegal',

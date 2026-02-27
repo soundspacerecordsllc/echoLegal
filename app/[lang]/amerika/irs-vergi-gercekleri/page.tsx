@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Understanding US tax obligations for non-resident aliens. Substantial presence test, FATCA, FBAR, FDAP vs ECI, US-Turkey tax treaty (TIAS 10205), W-8 forms, state taxes, estimated payments, and common misconceptions."
       : "Mukim olmayan yabancılar için ABD vergi yükümlülüklerine kapsamlı bakış. Substantial presence test, FATCA, FBAR, FDAP ve ECI ayrımı, ABD-Türkiye vergi anlaşması (TIAS 10205), W-8 formları, eyalet vergileri, tahmini vergi ödemeleri ve sık karşılaşılan yanılgılar.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'IRS Tax Realities' : 'IRS Vergi Gerçekleri',
       'citation_publisher': 'EchoLegal',

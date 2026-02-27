@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Understand the critical differences between contractors and employees. Learn IRS tests, legal factors, misclassification risks, and how to properly classify workers.'
       : 'Bağımsız yüklenici ile işçi arasındaki temel farklar. IRS testleri, hukuki kriterler, hatalı sınıflandırma riskleri ve doğru statü belirleme yöntemleri.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Contractor vs Employee: Classification Guide' : 'Bağımsız Yüklenici mi, İşçi mi: Sınıflandırma Rehberi',
       'citation_publisher': 'EchoLegal',

@@ -30,13 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "The truth about US tourist visas. 214(b) refusals, immigrant intent presumption, and common mistakes Turkish applicants make."
       : "ABD turist vizesine ilişkin temel gerçekler. 214(b) ret gerekçesi, göçmen niyeti karinesi ve Türk başvuru sahiplerinin sık düştüğü hatalar.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Tourist Visa Realities' : 'Turist Vizesi Gerçekleri',
       'citation_publisher': 'EchoLegal',
