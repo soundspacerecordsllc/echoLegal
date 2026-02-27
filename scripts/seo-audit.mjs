@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // scripts/seo-audit.mjs
-// Automated SEO audit: fetches sitemap, checks canonical + hreflang on every URL.
+// Automated SEO audit: validates sitemap XML structure + hreflang alternates,
+// then fetches every URL and checks canonical + hreflang in HTML <head>.
 // Requires Node 18+ (global fetch).
 
 const SITE = process.env.AUDIT_URL || 'https://echo-legal.com'
@@ -65,6 +66,121 @@ async function fetchText(url) {
     // retry once on network/timeout errors
     return await fetchOnce(url)
   }
+}
+
+/** Fetch with response metadata (content-type). Retries once. */
+async function fetchResponse(url) {
+  async function once() {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+    try {
+      const res = await fetch(url, {
+        headers: { 'User-Agent': USER_AGENT },
+        redirect: 'follow',
+        signal: controller.signal,
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const contentType = res.headers.get('content-type') || ''
+      const body = await res.text()
+      return { contentType, body }
+    } finally {
+      clearTimeout(timer)
+    }
+  }
+  try {
+    return await once()
+  } catch {
+    return await once()
+  }
+}
+
+// ── sitemap XML validation ──────────────────────────────────────────────────
+
+/**
+ * Validate sitemap XML structure, namespace, hreflang alternates per <url>,
+ * and duplicate <loc> detection. Returns an array of error strings.
+ */
+function auditSitemapXml(xml, contentType) {
+  const errors = []
+
+  // 1. Must be XML (content-type or body structure)
+  const isXmlContentType = contentType.includes('xml')
+  const trimmed = xml.trimStart()
+  const startsXml = trimmed.startsWith('<?xml') || trimmed.startsWith('<urlset')
+  if (!isXmlContentType && !startsXml) {
+    errors.push(
+      `Sitemap is not valid XML (content-type: ${contentType}, body does not start with <?xml or <urlset>)`
+    )
+    return errors // cannot parse further
+  }
+
+  // 2. xmlns:xhtml namespace must be declared
+  if (!/xmlns:xhtml\s*=\s*["']http:\/\/www\.w3\.org\/1999\/xhtml["']/.test(xml)) {
+    errors.push('Missing xmlns:xhtml="http://www.w3.org/1999/xhtml" on <urlset>')
+  }
+
+  // 3. At least one <xhtml:link> must exist
+  if (!/<xhtml:link\s/.test(xml)) {
+    errors.push('Zero <xhtml:link> tags found in sitemap')
+    return errors
+  }
+
+  // 4. Parse each <url> block
+  const urlBlocks = xml.match(/<url>[\s\S]*?<\/url>/g) || []
+  if (urlBlocks.length === 0) {
+    errors.push('No <url> entries found in sitemap')
+    return errors
+  }
+
+  const allLocs = []
+
+  for (const block of urlBlocks) {
+    // 4a. Exactly one <loc>
+    const locMatches = block.match(/<loc>([^<]+)<\/loc>/g) || []
+    if (locMatches.length === 0) {
+      errors.push('<url> block missing <loc>')
+      continue
+    }
+    const loc = locMatches[0].replace(/<\/?loc>/g, '').trim()
+    if (locMatches.length > 1) {
+      errors.push(`${loc}: multiple <loc> tags (${locMatches.length})`)
+    }
+    allLocs.push(loc)
+
+    // 4b. Extract hreflang values from xhtml:link tags
+    const hreflangRe = /<xhtml:link\s[^>]*hreflang=["']([^"']+)["'][^>]*\/?>/g
+    const seen = new Set()
+    const dupes = []
+    let match
+    while ((match = hreflangRe.exec(block)) !== null) {
+      const lang = match[1]
+      if (seen.has(lang)) dupes.push(lang)
+      seen.add(lang)
+    }
+
+    // 4c. No duplicate hreflang within same <url>
+    for (const d of dupes) {
+      errors.push(`${loc}: duplicate hreflang="${d}"`)
+    }
+
+    // 4d. Must have all required hreflangs
+    for (const req of REQUIRED_HREFLANGS) {
+      if (!seen.has(req)) {
+        errors.push(`${loc}: missing hreflang="${req}"`)
+      }
+    }
+  }
+
+  // 5. No duplicate <loc> across entire sitemap
+  const locSet = new Set()
+  for (const loc of allLocs) {
+    if (locSet.has(loc)) {
+      errors.push(`Duplicate <loc> in sitemap: ${loc}`)
+    }
+    locSet.add(loc)
+  }
+
+  return errors
 }
 
 async function pool(tasks, concurrency) {
@@ -161,34 +277,36 @@ function isSearchPage(pathname) {
 async function main() {
   console.log(`Fetching sitemap: ${SITEMAP_URL}\n`)
 
+  // ── Phase 1: Sitemap XML structural validation ──
   let xml
+  let sitemapContentType
   try {
-    xml = await fetchText(SITEMAP_URL)
+    const resp = await fetchResponse(SITEMAP_URL)
+    xml = resp.body
+    sitemapContentType = resp.contentType
   } catch (e) {
     console.error(`FATAL: Could not fetch sitemap – ${e.message}`)
     process.exit(1)
   }
 
+  const sitemapErrors = auditSitemapXml(xml, sitemapContentType)
   const urls = extractLocs(xml)
+
   if (urls.length === 0) {
     console.error('FATAL: Sitemap contains zero <loc> entries.')
     process.exit(1)
   }
-  console.log(`Found ${urls.length} URLs in sitemap.\n`)
+  console.log(`Found ${urls.length} URLs in sitemap.`)
 
-  // Check for duplicate URLs in sitemap
-  const seen = new Set()
-  const dupes = []
-  for (const u of urls) {
-    if (seen.has(u)) dupes.push(u)
-    seen.add(u)
+  if (sitemapErrors.length) {
+    console.log(`\nSitemap XML: ${sitemapErrors.length} issue(s) found:`)
+    for (const e of sitemapErrors) console.log(`  - ${e}`)
+  } else {
+    console.log('Sitemap XML: OK (valid structure, namespace, hreflang alternates)')
   }
-  if (dupes.length) {
-    console.error('Duplicate URLs in sitemap:')
-    dupes.forEach((d) => console.error(`  ${d}`))
-    console.error()
-  }
+  console.log()
 
+  // ── Phase 2: Per-page HTML canonical + hreflang checks ──
   const failures = []
   let passed = 0
   let fetchErrors = 0
@@ -213,7 +331,7 @@ async function main() {
 
   await pool(tasks, CONCURRENCY)
 
-  // ── search-page noindex probe (these pages are not in the sitemap) ──
+  // ── Phase 3: Search-page noindex probe (not in sitemap) ──
   const searchUrls = [`${SITE}/en/search`, `${SITE}/tr/search`]
   console.log(`Probing ${searchUrls.length} search page(s) for noindex...\n`)
 
@@ -246,14 +364,16 @@ async function main() {
   }
 
   // ── report ──
+  const totalIssues = sitemapErrors.length + failures.length
   console.log('─'.repeat(60))
-  if (failures.length === 0 && dupes.length === 0) {
-    console.log(`\nAll ${passed} URLs passed SEO checks.`)
+
+  if (totalIssues === 0) {
+    console.log(`\nAll checks passed: sitemap XML valid, ${passed} page(s) OK.`)
     process.exit(0)
   }
 
   if (failures.length) {
-    console.log(`\nFAILED: ${failures.length} URL(s) with issues:\n`)
+    console.log(`\nFAILED: ${failures.length} page(s) with issues:\n`)
     for (const { url, errors } of failures) {
       console.log(`  ${url}`)
       for (const e of errors) console.log(`    - ${e}`)
@@ -261,7 +381,12 @@ async function main() {
     }
   }
 
-  console.log(`Summary: ${passed} passed, ${failures.length} failed${fetchErrors ? `, ${fetchErrors} fetch errors` : ''}${dupes.length ? `, ${dupes.length} sitemap duplicates` : ''}`)
+  const parts = []
+  if (sitemapErrors.length) parts.push(`${sitemapErrors.length} sitemap XML error(s)`)
+  parts.push(`${passed} page(s) passed`)
+  if (failures.length) parts.push(`${failures.length} page(s) failed`)
+  if (fetchErrors) parts.push(`${fetchErrors} fetch error(s)`)
+  console.log(`Summary: ${parts.join(', ')}`)
   process.exit(1)
 }
 
