@@ -20,6 +20,14 @@ function extractLocs(xml) {
   return locs
 }
 
+function extractMetaTags(html) {
+  const tags = []
+  const re = /<meta\s[^>]*>/gi
+  let m
+  while ((m = re.exec(html)) !== null) tags.push(m[0])
+  return tags
+}
+
 function extractLinkTags(html) {
   const tags = []
   const re = /<link\s[^>]*>/gi
@@ -77,6 +85,7 @@ async function pool(tasks, concurrency) {
 function auditPage(url, html) {
   const errors = []
   const links = extractLinkTags(html)
+  const path = new URL(url).pathname
 
   // 1. Canonical checks
   const canonicals = links.filter(
@@ -96,7 +105,6 @@ function auditPage(url, html) {
     }
 
     // 4. Language prefix check
-    const path = new URL(url).pathname
     if (path.startsWith('/en') && !href.startsWith(`${SITE}/en`)) {
       errors.push(`EN page canonical doesn't start with ${SITE}/en: ${href}`)
     }
@@ -125,7 +133,27 @@ function auditPage(url, html) {
     }
   }
 
+  // 5. Search pages must be noindex, follow
+  if (isSearchPage(path)) {
+    const metas = extractMetaTags(html)
+    const robotsMeta = metas.find(
+      (t) => attr(t, 'name')?.toLowerCase() === 'robots'
+    )
+    const robotsContent = robotsMeta ? attr(robotsMeta, 'content') || '' : ''
+    if (!robotsContent.includes('noindex')) {
+      errors.push('Search page missing robots "noindex"')
+    }
+    if (!robotsContent.includes('follow')) {
+      errors.push('Search page missing robots "follow"')
+    }
+  }
+
   return errors
+}
+
+function isSearchPage(pathname) {
+  // Matches /en/search, /tr/search (with or without trailing slash / query)
+  return /^\/[a-z]{2}\/search\/?$/.test(pathname)
 }
 
 // ── main ─────────────────────────────────────────────────────────────────────
@@ -184,6 +212,38 @@ async function main() {
   })
 
   await pool(tasks, CONCURRENCY)
+
+  // ── search-page noindex probe (these pages are not in the sitemap) ──
+  const searchUrls = [`${SITE}/en/search`, `${SITE}/tr/search`]
+  console.log(`Probing ${searchUrls.length} search page(s) for noindex...\n`)
+
+  for (const sUrl of searchUrls) {
+    let html
+    try {
+      html = await fetchText(sUrl)
+    } catch (e) {
+      fetchErrors++
+      failures.push({ url: sUrl, errors: [`Fetch failed: ${e.message}`] })
+      continue
+    }
+    const metas = extractMetaTags(html)
+    const robotsMeta = metas.find(
+      (t) => attr(t, 'name')?.toLowerCase() === 'robots'
+    )
+    const robotsContent = robotsMeta ? attr(robotsMeta, 'content') || '' : ''
+    const searchErrors = []
+    if (!robotsContent.includes('noindex')) {
+      searchErrors.push('Search page missing robots "noindex"')
+    }
+    if (!robotsContent.includes('follow')) {
+      searchErrors.push('Search page missing robots "follow"')
+    }
+    if (searchErrors.length) {
+      failures.push({ url: sUrl, errors: searchErrors })
+    } else {
+      passed++
+    }
+  }
 
   // ── report ──
   console.log('─'.repeat(60))
