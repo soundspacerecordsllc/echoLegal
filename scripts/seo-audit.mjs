@@ -7,6 +7,8 @@ const SITE = 'https://echo-legal.com'
 const SITEMAP_URL = `${SITE}/sitemap.xml`
 const REQUIRED_HREFLANGS = ['en', 'tr', 'x-default']
 const CONCURRENCY = 5
+const REQUEST_TIMEOUT_MS = 15_000
+const USER_AGENT = 'EchoLegalSEOAudit/1.0'
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
@@ -32,13 +34,29 @@ function attr(tag, name) {
   return m ? m[1] : null
 }
 
+async function fetchOnce(url) {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': USER_AGENT },
+      redirect: 'follow',
+      signal: controller.signal,
+    })
+    if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
+    return await res.text()
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 async function fetchText(url) {
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'EchoLegal-SEO-Audit/1.0' },
-    redirect: 'follow',
-  })
-  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`)
-  return res.text()
+  try {
+    return await fetchOnce(url)
+  } catch {
+    // retry once on network/timeout errors
+    return await fetchOnce(url)
+  }
 }
 
 async function pool(tasks, concurrency) {
