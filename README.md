@@ -191,18 +191,25 @@ Every page includes:
 
 ### SEO Audit
 
-An automated audit script checks every URL in the production sitemap for:
+An automated audit script validates the production sitemap and every page:
+
+**Sitemap XML validation:**
+- Response is valid XML with proper `xmlns:xhtml` namespace
+- Every `<url>` has exactly one `<loc>` and `hreflang` alternates for `en`, `tr`, `x-default`
+- No duplicate `hreflang` within a `<url>`, no duplicate `<loc>` across sitemap
+
+**Per-page HTML checks:**
 - Exactly one `<link rel="canonical">` pointing to `echo-legal.com`
 - Correct language prefix (`/en` or `/tr`) in the canonical URL
 - `hreflang` alternates for `en`, `tr`, and `x-default`
-- No duplicate sitemap entries
+- Search pages have `noindex, follow` robots directive
 
 ```bash
 # Run locally (requires the production site to be live)
 npm run seo:audit
 ```
 
-This also runs automatically on every push and PR via GitHub Actions.
+This runs weekly and on-demand via GitHub Actions (`workflow_dispatch`).
 
 ### To submit sitemap:
 1. Go to [Google Search Console](https://search.google.com/search-console)
