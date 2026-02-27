@@ -1,6 +1,7 @@
 // app/[lang]/contracts/page.tsx
 // Legal document database with search and filtering
 
+import { Suspense } from 'react'
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
@@ -101,7 +102,9 @@ export default async function ContractsPage({
           </div>
 
           {/* Document Discovery Interface */}
-          <ContractDiscovery lang={lang} />
+          <Suspense>
+            <ContractDiscovery lang={lang} />
+          </Suspense>
 
           {/* Additional Resources Section */}
           <section className="mt-16 pt-8 border-t border-gray-200">

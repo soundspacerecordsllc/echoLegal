@@ -1,8 +1,7 @@
 import '../globals.css'
 import type { Metadata } from 'next'
 import { i18n, Locale } from '@/i18n-config'
-import { headers } from 'next/headers'
-import { getGlobalSchemas, SITE_URL } from '@/lib/structured-data'
+import { getGlobalSchemas } from '@/lib/structured-data'
 import AppShell from '@/components/AppShell'
 
 export async function generateStaticParams() {
@@ -25,28 +24,13 @@ export async function generateMetadata({
       languages: {
         en: `/en`,
         tr: `/tr`,
+        'x-default': `/en`,
       },
     },
   }
 }
 
-// Generate dynamic hreflang links based on current path
-function generateHreflangLinks(currentPath: string) {
-  // Remove language prefix from path
-  let pathWithoutLang = currentPath.replace(/^\/(en|tr)/, '') || ''
-
-  // Handle special TR/EN path mappings for hreflang
-  const enPath = pathWithoutLang.replace('/sablonlar', '/templates')
-  const trPath = pathWithoutLang.replace('/templates', '/sablonlar')
-
-  return {
-    en: `${SITE_URL}/en${enPath}`,
-    tr: `${SITE_URL}/tr${trPath}`,
-    xDefault: `${SITE_URL}/en${enPath}`,
-  }
-}
-
-export default async function RootLayout({
+export default async function LangLayout({
   children,
   params,
 }: {
@@ -55,22 +39,12 @@ export default async function RootLayout({
 }) {
   const { lang } = await params
 
-  // Get current pathname for dynamic hreflang
-  const headersList = await headers()
-  const pathname = headersList.get('x-pathname') || `/${lang}`
-  const hreflangs = generateHreflangLinks(pathname)
-
   // Get global structured data schemas
   const globalSchemas = getGlobalSchemas()
 
   return (
     <>
       <head>
-        {/* Dynamic hreflang tags */}
-        <link rel="alternate" hrefLang="en" href={hreflangs.en} />
-        <link rel="alternate" hrefLang="tr" href={hreflangs.tr} />
-        <link rel="alternate" hrefLang="x-default" href={hreflangs.xDefault} />
-
         {/* Global structured data */}
         <script
           type="application/ld+json"
