@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next'
-import { templatesRegistry } from '@/lib/templates-registry'
 
 const SITE = 'https://echo-legal.com'
 
@@ -144,8 +143,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'population-registry',
   ]
 
-  // Get unique template slugs from registry
-  const templateSlugs = Array.from(new Set(templatesRegistry.map((t) => t.slug)))
+  // Template slugs (inlined to avoid @/ imports in metadata route context)
+  const templateSlugs = [
+    'nda',
+    'service-agreement',
+    'independent-contractor',
+    'privacy-policy',
+    'terms-of-service',
+    'freelance-agreement',
+    'influencer-agreement',
+    'invoice-template',
+    'receipt-template',
+    'authorization-letter',
+    'company-policy-notice',
+    'operating-agreement-outline',
+    'visa-appointment-cover-letter',
+    'sponsor-letter',
+    'affidavit-support-outline',
+    'travel-consent-letter',
+    'consulate-appointment-request',
+    'nufus-cuzdani-example',
+    'power-of-attorney-outline',
+    'residency-proof-letter',
+    'translation-certification',
+    'apostille-request-guide',
+    'name-change-affidavit',
+    'w8-attachment-checklist',
+    'ein-request-cover-letter',
+    'vendor-onboarding-form',
+    'itin-application-guide',
+    '1099-response-letter',
+    'tax-treaty-claim-checklist',
+    'demand-letter',
+    'termination-notice',
+    'cease-desist-outline',
+  ]
 
   const languages = ['tr', 'en'] as const
 
