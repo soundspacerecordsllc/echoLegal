@@ -15,6 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free Turkish consular procedure checklists in English & Turkish. Passport, ID, notary, birth/marriage registration. Appointment portal guidance.'
       : 'Ücretsiz Türk konsolosluk işlem kontrol listeleri İngilizce & Türkçe. Pasaport, kimlik, noter, doğum/evlilik kaydı. Randevu portalı rehberi.',
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/consular-documents`,
+      languages: {
+        en: 'https://echo-legal.com/en/consular-documents',
+        tr: 'https://echo-legal.com/tr/consular-documents',
+        'x-default': 'https://echo-legal.com/en/consular-documents',
+      },
+    },
   }
 }
 

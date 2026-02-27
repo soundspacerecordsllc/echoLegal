@@ -19,14 +19,6 @@ export async function generateMetadata({
     title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
     description:
       'Multilingual legal encyclopedia providing professionally drafted contracts and legal guides. Currently in English and Turkish. Legal knowledge for everyone.',
-    alternates: {
-      canonical: `/${lang}`,
-      languages: {
-        en: `/en`,
-        tr: `/tr`,
-        'x-default': `/en`,
-      },
-    },
   }
 }
 

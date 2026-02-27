@@ -71,9 +71,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Checklist pages
   const checklistPages = [
+    '/checklists',
     '/checklists/llc-checklist',
+    '/checklists/llc-kontrol-listesi',
     '/checklists/bank-account-checklist',
     '/checklists/tax-documents-checklist',
+    '/checklists/irs-mektup-rehberi',
+    '/checklists/w8-w9-karar-haritasi',
+  ]
+
+  // Additional content pages
+  const additionalPages = [
+    '/contribute',
+    '/jurisdictions',
+    '/about/charter',
+    '/about/citation-guide',
+    '/about/contributor-standards',
+    '/about/corrections',
+    '/about/editorial-board',
+    '/about/governance',
+    '/abd-llc-kurmak-prosedurel-mimari',
+    '/foreign-owned-single-member-llc-reporting',
+    '/encyclopedia/common-misconceptions',
+    '/encyclopedia/contractor-vs-employee',
+    '/encyclopedia/freelancer-legal-guide',
+    '/encyclopedia/privacy-policy-guide',
   ]
 
   // State-specific LLC pages
@@ -151,6 +173,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guidePages,
     ...legalKitPages,
     ...checklistPages,
+    ...additionalPages,
     ...stateLLCPages,
     ...amerikaPages,
   ]

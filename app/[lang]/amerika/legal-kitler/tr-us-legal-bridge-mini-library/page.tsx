@@ -17,6 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Comprehensive contract and guide library for doing business between Turkey and the US. All templates in English and Turkish."
       : "Türkiye-ABD arasında iş yapanlar için kapsamlı sözleşme ve rehber kütüphanesi. Tüm şablonlar İngilizce ve Türkçe.",
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/amerika/legal-kitler/tr-us-legal-bridge-mini-library`,
+      languages: {
+        en: 'https://echo-legal.com/en/amerika/legal-kitler/tr-us-legal-bridge-mini-library',
+        tr: 'https://echo-legal.com/tr/amerika/legal-kitler/tr-us-legal-bridge-mini-library',
+        'x-default': 'https://echo-legal.com/en/amerika/legal-kitler/tr-us-legal-bridge-mini-library',
+      },
+    },
   }
 }
 

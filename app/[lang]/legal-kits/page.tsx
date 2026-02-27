@@ -15,6 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Professionally curated legal document bundles for specific business and legal use cases. Reference-grade templates with annotations.'
       : 'Belirli iş ve hukuki kullanım durumları için profesyonelce hazırlanmış hukuki belge paketleri. Açıklamalı referans kalitesinde şablonlar.',
+    alternates: {
+      canonical: `https://echo-legal.com/${lang}/legal-kits`,
+      languages: {
+        en: 'https://echo-legal.com/en/legal-kits',
+        tr: 'https://echo-legal.com/tr/legal-kits',
+        'x-default': 'https://echo-legal.com/en/legal-kits',
+      },
+    },
   }
 }
 
