@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { templatesRegistry } from '@/lib/templates-registry'
+import { getAlternatePath } from '@/lib/nav'
 
 /**
  * Dynamic Sitemap Generator for EchoLegal
@@ -10,6 +11,19 @@ import { templatesRegistry } from '@/lib/templates-registry'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://echo-legal.com'
+
+  // Compute hreflang alternates for a given full URL path (e.g. /en/contracts)
+  function hreflangAlternates(fullPath: string) {
+    const enPath = getAlternatePath(fullPath, 'en')
+    const trPath = getAlternatePath(fullPath, 'tr')
+    return {
+      languages: {
+        en: `${baseUrl}${enPath}`,
+        tr: `${baseUrl}${trPath}`,
+        'x-default': `${baseUrl}${enPath}`,
+      },
+    }
+  }
 
   // Static pages
   const staticPages = [
@@ -184,33 +198,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // Skip /templates for TR - use /sablonlar instead
       if (lang === 'tr' && page === '/templates') continue
 
+      const fullPath = `/${lang}${page}`
       urls.push({
-        url: `${baseUrl}/${lang}${page}`,
+        url: `${baseUrl}${fullPath}`,
         lastModified: now,
         changeFrequency: getChangeFreq(page),
         priority: getPriority(page, lang),
+        alternates: hreflangAlternates(fullPath),
       })
     }
 
     // Add consular document pages
     for (const slug of consularSlugs) {
-      const page = `/consular-documents/${slug}`
+      const fullPath = `/${lang}/consular-documents/${slug}`
       urls.push({
-        url: `${baseUrl}/${lang}${page}`,
+        url: `${baseUrl}${fullPath}`,
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
+        alternates: hreflangAlternates(fullPath),
       })
     }
 
     // Add template pages with language-appropriate URLs
     for (const slug of templateSlugs) {
       const templatePath = lang === 'tr' ? `/sablonlar/${slug}` : `/templates/${slug}`
+      const fullPath = `/${lang}${templatePath}`
       urls.push({
-        url: `${baseUrl}/${lang}${templatePath}`,
+        url: `${baseUrl}${fullPath}`,
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.75,
+        alternates: hreflangAlternates(fullPath),
       })
     }
   }
@@ -221,6 +240,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.9,
+    alternates: hreflangAlternates('/tr/sablonlar'),
   })
 
   return urls
