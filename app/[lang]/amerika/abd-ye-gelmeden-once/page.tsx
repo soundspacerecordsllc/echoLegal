@@ -29,13 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Essential legal preparation checklist for Turkish entrepreneurs before arriving in the United States. Business formation, tax compliance, banking, and documentation.'
       : "Türk girişimcilerin ABD'ye gelmeden önce tamamlaması gereken hukuki hazırlıklar. Şirket kurulumu, vergi uyumu, bankacılık ve belge düzeni.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Pre-Arrival Legal Checklist' : "ABD'ye Gelmeden Önce Yapılacaklar",
       'citation_publisher': 'EchoLegal',

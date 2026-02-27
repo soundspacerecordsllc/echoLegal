@@ -34,13 +34,6 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     description: isEnglish
       ? 'Common legal misconceptions about LLCs, immigration, contracts, and business law in the United States.'
       : 'LLC, göçmenlik, sözleşmeler ve ABD iş hukuku hakkında yaygın yanlış varsayımlar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/encyclopedia/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/encyclopedia/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Common Legal Misconceptions' : 'Yaygın Yanlış Varsayımlar',
       'citation_publisher': 'EchoLegal',

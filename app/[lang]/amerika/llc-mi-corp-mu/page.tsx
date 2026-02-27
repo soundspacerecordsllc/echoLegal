@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Compare LLC and Corporation structures for your US business. Tax implications, liability protection, investor expectations, and when each makes sense."
       : "ABD işletmeniz için LLC ve Corporation yapılarının karşılaştırması. Vergisel sonuçlar, sorumluluk koruması, yatırımcı beklentileri ve hangi yapının ne zaman uygun olduğu.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'LLC vs Corporation' : 'LLC mi Corporation mı?',
       'citation_publisher': 'EchoLegal',

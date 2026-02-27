@@ -35,13 +35,6 @@ export async function generateMetadata({
     description: isEnglish
       ? 'Interactive tool to determine which US tax form you need: W-9, W-8BEN, or W-8BEN-E. Comprehensive guide covering US person status, beneficial owner rules, treaty benefits, and FATCA compliance.'
       : 'Hangi ABD vergi formuna ihtiyacınız olduğunu belirlemek için etkileşimli araç: W-9, W-8BEN veya W-8BEN-E. ABD kişisi statüsü, gerçek hak sahibi kuralları, anlaşma avantajları ve FATCA uyumunu kapsayan kapsamlı rehber.',
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
-        tr: `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
-      },
-    },
     openGraph: {
       title: isEnglish
         ? 'W-8 or W-9? Interactive Decision Tool'

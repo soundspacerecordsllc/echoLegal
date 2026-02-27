@@ -27,13 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual privacy policy template. GDPR, CCPA & KVKK compliant. I support EchoLegal ($49 recommended) or download free.'
       : 'Ücretsiz iki dilli gizlilik politikası şablonu. GDPR, CCPA ve KVKK uyumlu. Gücünüz kadar ödeyin (49$ önerilir).',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Privacy Policy Template' : 'Gizlilik Politikası Şablonu',
       'citation_publisher': 'EchoLegal',

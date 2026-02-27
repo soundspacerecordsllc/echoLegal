@@ -30,13 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "The truth about changing immigration status in the US. 30/60 day rule, preconceived intent, and adjustment of status realities."
       : "ABD'de göçmenlik statüsü değişikliğine ilişkin gerçekler. 30/60 gün kuralı, önceden planlanmış niyet doktrini ve statü düzeltmesi süreci.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Status Change Realities' : 'Statüden Statüye Geçiş Gerçekleri',
       'citation_publisher': 'EchoLegal',

@@ -27,13 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual influencer/brand collaboration template. I support EchoLegal ($49 recommended) or download free. FTC compliant.'
       : 'Ücretsiz iki dilli influencer/marka işbirliği şablonu. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Influencer / Brand Collaboration Agreement' : 'Influencer / Marka İşbirliği Sözleşmesi',
       'citation_publisher': 'EchoLegal',

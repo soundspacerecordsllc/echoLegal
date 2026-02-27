@@ -67,13 +67,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       title,
       description,
     },
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish
         ? 'Forming an LLC in the US – Procedural Architecture for Turkish Founders'

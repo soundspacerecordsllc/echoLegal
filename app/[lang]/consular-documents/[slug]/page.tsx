@@ -27,14 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? `${title} - Free Checklist (English & Turkish) | EchoLegal`
       : `${title} - Ücretsiz Kontrol Listesi (İngilizce & Türkçe) | EchoLegal`,
     description: isEnglish ? procedure.descriptionEn : procedure.descriptionTr,
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/consular-documents/${slug}`,
-      languages: {
-        en: `https://echo-legal.com/en/consular-documents/${slug}`,
-        tr: `https://echo-legal.com/tr/consular-documents/${slug}`,
-        'x-default': `https://echo-legal.com/en/consular-documents/${slug}`,
-      },
-    },
   }
 }
 

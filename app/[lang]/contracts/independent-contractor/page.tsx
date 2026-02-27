@@ -27,13 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Free bilingual contractor agreement template. I support EchoLegal ($49 recommended) or download free. Avoid misclassification issues.'
       : 'Ücretsiz iki dilli yüklenici sözleşmesi. Gücünüz kadar ödeyin (49$ önerilir) veya ücretsiz indirin.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/contracts/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/contracts/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Independent Contractor Agreement' : 'Bağımsız Yüklenici Sözleşmesi',
       'citation_publisher': 'EchoLegal',

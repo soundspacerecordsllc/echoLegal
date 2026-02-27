@@ -28,13 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Key questions to consider before starting the LLC formation process. A reference checklist for international entrepreneurs.'
       : 'LLC kurulum sürecini başlatmadan önce düşünülmesi gereken temel sorular. Uluslararası girişimciler için referans kontrol listesi.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'LLC Control List' : 'LLC Kontrol Listesi',
       'citation_publisher': 'EchoLegal',

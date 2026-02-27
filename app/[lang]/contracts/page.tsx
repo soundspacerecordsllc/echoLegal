@@ -21,13 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? `Browse ${templateCount}+ legal document templates. Contracts, agreements, policies, and forms for US business. Available in English and Turkish.`
       : `${templateCount}+ hukuki belge şablonuna göz atın. ABD işi için sözleşmeler, anlaşmalar, politikalar ve formlar. İngilizce ve Türkçe olarak mevcuttur.`,
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/contracts`,
-      languages: {
-        en: 'https://echo-legal.com/en/contracts',
-        tr: 'https://echo-legal.com/tr/contracts',
-      },
-    },
     openGraph: {
       title: isEnglish
         ? 'Legal Document Templates | EchoLegal'

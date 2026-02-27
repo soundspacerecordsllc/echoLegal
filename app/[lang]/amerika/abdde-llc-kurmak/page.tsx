@@ -32,13 +32,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "Comprehensive guide to forming a US LLC. State comparison (Delaware, Wyoming, Florida, Nevada, New Mexico), formation steps, Operating Agreement, EIN application, post-formation compliance, and corporate veil protection."
       : "ABD'de LLC kurulumuna ilişkin kapsamlı rehber. Eyalet karşılaştırması (Delaware, Wyoming, Florida, Nevada, New Mexico), kuruluş adımları, Operating Agreement, EIN başvurusu, kuruluş sonrası uyum yükümlülükleri ve tüzel kişilik perdesi korunması.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Forming an LLC in the US' : "ABD'de LLC Kurmak",
       'citation_publisher': 'EchoLegal',

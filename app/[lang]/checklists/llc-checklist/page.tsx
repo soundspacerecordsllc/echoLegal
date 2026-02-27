@@ -40,13 +40,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       locale: isEnglish ? 'en_US' : 'tr_TR',
       siteName: 'EchoLegal',
     },
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'LLC Formation Checklist' : 'LLC Kuruluş Kontrol Listesi',
       'citation_publisher': 'EchoLegal',

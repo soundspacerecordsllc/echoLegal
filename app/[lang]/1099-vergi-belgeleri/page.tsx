@@ -41,14 +41,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       locale: isEnglish ? 'en_US' : 'tr_TR',
       siteName: 'EchoLegal',
     },
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
-        'x-default': `${SITE_URL}/en/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? '1099 Forms & US Tax Documents' : '1099 Formları ve ABD Vergi Belgeleri',
       'citation_publisher': 'EchoLegal',

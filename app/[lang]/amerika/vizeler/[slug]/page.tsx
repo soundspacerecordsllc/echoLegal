@@ -29,14 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       ? `${visa.code} ${title} | US Visa Guide | EchoLegal`
       : `${visa.code} ${title} | ABD Vize Rehberi | EchoLegal`,
     description: isEnglish ? visa.shortDescEn : visa.shortDescTr,
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/amerika/vizeler/${slug}`,
-      languages: {
-        en: `https://echo-legal.com/en/amerika/vizeler/${slug}`,
-        tr: `https://echo-legal.com/tr/amerika/vizeler/${slug}`,
-        'x-default': `https://echo-legal.com/en/amerika/vizeler/${slug}`,
-      },
-    },
   }
 }
 

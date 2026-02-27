@@ -23,14 +23,6 @@ export async function generateMetadata({
   return {
     title: `${update.title} | Legal Updates | EchoLegal`,
     description: update.summary.substring(0, 160),
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/updates/${slug}`,
-      languages: {
-        en: `https://echo-legal.com/en/updates/${slug}`,
-        tr: `https://echo-legal.com/tr/updates/${slug}`,
-        'x-default': `https://echo-legal.com/en/updates/${slug}`,
-      },
-    },
   }
 }
 

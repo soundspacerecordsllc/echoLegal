@@ -42,14 +42,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       locale: isEnglish ? 'en_US' : 'tr_TR',
       siteName: 'EchoLegal',
     },
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/${PAGE_META.slug}`,
-        'x-default': `${SITE_URL}/en/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Tax ID Guide' : 'Vergi Kimlik Rehberi',
       'citation_publisher': 'EchoLegal',

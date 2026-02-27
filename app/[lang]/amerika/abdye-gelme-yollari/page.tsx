@@ -30,13 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Guide to US non-immigrant visa categories for Turkish nationals. B-1/B-2, F-1, H-1B, L-1, E-2, O-1 visas explained with official USCIS references.'
       : "Türk vatandaşlarına yönelik ABD geçici vize kategorileri rehberi. B-1/B-2, F-1, H-1B, L-1, E-2 ve O-1 vizeleri resmi USCIS kaynaklarıyla ele alınmaktadır.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Pathways to the US' : "ABD'ye Gelme Yolları",
       'citation_publisher': 'EchoLegal',

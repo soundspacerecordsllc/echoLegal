@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? "How to open a US bank account as a non-resident. Business accounts, EIN/ITIN requirements, FBAR obligations, and common challenges."
       : "Yerleşik olmayan biri olarak ABD banka hesabı nasıl açılır. İş hesapları, EIN/ITIN gereksinimleri, FBAR yükümlülükleri ve yaygın zorluklar.",
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/amerika/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/amerika/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Opening a US Bank Account' : "ABD'de Banka Hesabı Açmak",
       'citation_publisher': 'EchoLegal',

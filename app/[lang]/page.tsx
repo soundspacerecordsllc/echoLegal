@@ -26,14 +26,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       locale: isEnglish ? 'en_US' : 'tr_TR',
       siteName: 'EchoLegal',
     },
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}`,
-      languages: {
-        'en': 'https://echo-legal.com/en',
-        'tr': 'https://echo-legal.com/tr',
-        'x-default': 'https://echo-legal.com/en',
-      },
-    },
   }
 }
 

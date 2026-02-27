@@ -33,13 +33,6 @@ export async function generateMetadata({
     description: isEnglish
       ? 'Jurisdiction-tagged legal document templates: contracts, regulatory forms, consular correspondence, and compliance checklists. Supplementary reference materials published in English and Turkish.'
       : 'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri. İngilizce ve Türkçe yayımlanan tamamlayıcı referans materyalleri.',
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/templates`,
-      languages: {
-        en: 'https://echo-legal.com/en/templates',
-        tr: 'https://echo-legal.com/tr/templates',
-      },
-    },
     openGraph: {
       title: isEnglish
         ? 'Legal Document Templates — Supplementary Materials'

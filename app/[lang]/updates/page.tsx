@@ -22,14 +22,6 @@ export async function generateMetadata({
     description: isEnglish
       ? 'Stay informed with the latest legal updates from official US government sources including IRS, Congress, and the Federal Register.'
       : 'IRS, Kongre ve Federal Register dahil resmi ABD hükümeti kaynaklarından en son hukuki güncellemelerle bilgilenin.',
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/updates`,
-      languages: {
-        en: 'https://echo-legal.com/en/updates',
-        tr: 'https://echo-legal.com/tr/updates',
-        'x-default': 'https://echo-legal.com/en/updates',
-      },
-    },
   }
 }
 

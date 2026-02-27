@@ -28,14 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
       locale: isEnglish ? 'en_US' : 'tr_TR',
       siteName: 'EchoLegal',
     },
-    alternates: {
-      canonical: `https://echo-legal.com/${lang}/about/editorial-board`,
-      languages: {
-        'en': 'https://echo-legal.com/en/about/editorial-board',
-        'tr': 'https://echo-legal.com/tr/about/editorial-board',
-        'x-default': 'https://echo-legal.com/en/about/editorial-board',
-      },
-    },
   }
 }
 

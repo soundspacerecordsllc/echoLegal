@@ -31,13 +31,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Reference entry on the contracts most commonly required when a non-US entrepreneur begins doing business in or with the United States. Covers NDAs, service agreements, privacy policies, terms of service, and contractor agreements.'
       : 'ABD\'de veya ABD ile iş yapan yabancı girişimcilerin en sık ihtiyaç duyduğu sözleşmelere ilişkin başvuru maddesi. NDA, hizmet sözleşmeleri, gizlilik politikaları, kullanım koşulları ve yüklenici sözleşmelerini kapsar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'Essential Contracts for Turkish Entrepreneurs in the US' : 'ABD\'de İş Yapan Türkler İçin Temel Sözleşmeler',
       'citation_publisher': 'EchoLegal',

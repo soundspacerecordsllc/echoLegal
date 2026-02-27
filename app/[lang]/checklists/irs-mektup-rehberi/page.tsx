@@ -28,13 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'General facts to understand when you receive a letter from the IRS. Reference information for international entrepreneurs.'
       : 'IRS\'ten mektup aldığınızda anlamanız gereken genel gerçekler. Uluslararası girişimciler için referans bilgisi.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/checklists/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/checklists/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'IRS Letter Guide' : 'IRS Mektup Rehberi',
       'citation_publisher': 'EchoLegal',

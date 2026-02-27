@@ -30,13 +30,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     description: isEnglish
       ? 'Reference entry on the legal separation between US business formation and immigration status. Explains why LLC formation does not confer visa eligibility or immigration benefits.'
       : 'ABD\'de şirket kuruluşu ile göçmenlik statüsü arasındaki hukuki ayrıma ilişkin başvuru maddesi. LLC kuruluşunun neden vize uygunluğu veya göçmenlik avantajı sağlamadığını açıklar.',
-    alternates: {
-      canonical: url,
-      languages: {
-        'en': `${SITE_URL}/en/library/${PAGE_META.slug}`,
-        'tr': `${SITE_URL}/tr/library/${PAGE_META.slug}`,
-      },
-    },
     other: {
       'citation_title': isEnglish ? 'LLC Formation and Visa Eligibility' : 'LLC Kuruluşu ve Vize Uygunluğu',
       'citation_publisher': 'EchoLegal',
