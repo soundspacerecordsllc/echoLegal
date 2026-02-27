@@ -6,6 +6,8 @@ import { getGlobalSchemas, SITE_URL } from '@/lib/structured-data'
 import { getAlternatePath } from '@/lib/nav'
 import AppShell from '@/components/AppShell'
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
