@@ -1,29 +1,31 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 import { templatesRegistry } from '@/lib/templates-registry'
-import { getAlternatePath } from '@/lib/nav'
 
-/**
- * Dynamic Sitemap Generator for EchoLegal
- * Generates XML sitemap with hreflang alternates for all pages
- *
- * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
- */
+const SITE = 'https://echo-legal.com'
+
+/** Swap /en↔/tr prefix and /templates↔/sablonlar in one step. */
+function langUrl(fullPath: string, targetLang: 'en' | 'tr'): string {
+  let p = fullPath.replace(/^\/(en|tr)/, '')
+  if (targetLang === 'tr') {
+    p = p.replace(/^\/templates/, '/sablonlar')
+  } else {
+    p = p.replace(/^\/sablonlar/, '/templates')
+  }
+  return `${SITE}/${targetLang}${p}`
+}
+
+function alternates(fullPath: string) {
+  return {
+    languages: {
+      en: langUrl(fullPath, 'en'),
+      tr: langUrl(fullPath, 'tr'),
+      'x-default': langUrl(fullPath, 'en'),
+    },
+  }
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://echo-legal.com'
-
-  // Compute hreflang alternates for a given full URL path (e.g. /en/contracts)
-  function hreflangAlternates(fullPath: string) {
-    const enPath = getAlternatePath(fullPath, 'en')
-    const trPath = getAlternatePath(fullPath, 'tr')
-    return {
-      languages: {
-        en: `${baseUrl}${enPath}`,
-        tr: `${baseUrl}${trPath}`,
-        'x-default': `${baseUrl}${enPath}`,
-      },
-    }
-  }
+  const now = new Date()
 
   // Static pages
   const staticPages = [
@@ -49,10 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about/editorial-policy',
   ]
 
-  // Get unique template slugs from registry
-  const templateSlugs = Array.from(new Set(templatesRegistry.map(t => t.slug)))
-
-  // Library pages (educational content)
+  // Library pages
   const libraryPages = [
     '/library',
     '/library/llc-kurma-rehberi',
@@ -62,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/library/temel-sozlesmeler',
   ]
 
-  // Standalone guide pages (new comprehensive guides)
+  // Standalone guide pages
   const guidePages = [
     '/abd-de-llc-kurmak-turkler-icin-adim-adim',
     '/abdde-is-yapan-turkler-icin-sozlesmeler',
@@ -112,12 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/encyclopedia/privacy-policy-guide',
   ]
 
-  // State-specific LLC pages
-  const stateLLCPages = [
-    '/amerika/llc-eyalet/florida',
-  ]
-
-  // Amerika Hub pages
+  // Amerika Hub pages (includes state-specific LLC pages)
   const amerikaPages = [
     '/amerika',
     '/amerika/abdye-gelme-yollari',
@@ -135,6 +129,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/amerika/legal-kitler/abd-business-starter-legal-kit',
     '/amerika/legal-kitler/abdye-gelmeden-once-hukuki-gercekler-rehberi',
     '/amerika/legal-kitler/tr-us-legal-bridge-mini-library',
+    '/amerika/llc-eyalet/florida',
   ]
 
   // Consular document slugs
@@ -149,16 +144,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'population-registry',
   ]
 
+  // Get unique template slugs from registry
+  const templateSlugs = Array.from(new Set(templatesRegistry.map((t) => t.slug)))
+
   const languages = ['tr', 'en'] as const
-  const now = new Date().toISOString()
 
-  const urls: MetadataRoute.Sitemap = []
-
-  // Helper to determine priority
+  // Priority helper
   const getPriority = (page: string, lang: string): number => {
     if (page === '') return 1.0
     if (page === '/contracts' || page === '/library' || page === '/legal-kits' || page === '/templates') return 0.9
-    // New standalone guide pages get high priority
     if (guidePages.includes(page)) return 0.85
     if (page.startsWith('/templates/')) return 0.75
     if (page.startsWith('/contracts/')) return 0.8
@@ -172,11 +166,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return 0.5
   }
 
-  // Helper to determine change frequency
+  // Change frequency helper
   const getChangeFreq = (page: string): 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' => {
     if (page === '') return 'weekly'
     if (page.startsWith('/legal/')) return 'yearly'
-    if (page.startsWith('/contracts') || page.startsWith('/legal-kits') || page.startsWith('/templates')) return 'monthly'
     return 'monthly'
   }
 
@@ -188,60 +181,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...legalKitPages,
     ...checklistPages,
     ...additionalPages,
-    ...stateLLCPages,
     ...amerikaPages,
   ]
 
-  // Add all pages for both languages
+  const entries: MetadataRoute.Sitemap = []
+
   for (const lang of languages) {
     for (const page of allPages) {
-      // Skip /templates for TR - use /sablonlar instead
+      // Skip /templates for TR — use /sablonlar instead
       if (lang === 'tr' && page === '/templates') continue
 
       const fullPath = `/${lang}${page}`
-      urls.push({
-        url: `${baseUrl}${fullPath}`,
+      entries.push({
+        url: `${SITE}${fullPath}`,
         lastModified: now,
         changeFrequency: getChangeFreq(page),
         priority: getPriority(page, lang),
-        alternates: hreflangAlternates(fullPath),
+        alternates: alternates(fullPath),
       })
     }
 
-    // Add consular document pages
+    // Consular document pages
     for (const slug of consularSlugs) {
       const fullPath = `/${lang}/consular-documents/${slug}`
-      urls.push({
-        url: `${baseUrl}${fullPath}`,
+      entries.push({
+        url: `${SITE}${fullPath}`,
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
-        alternates: hreflangAlternates(fullPath),
+        alternates: alternates(fullPath),
       })
     }
 
-    // Add template pages with language-appropriate URLs
+    // Template pages with language-appropriate URLs
     for (const slug of templateSlugs) {
       const templatePath = lang === 'tr' ? `/sablonlar/${slug}` : `/templates/${slug}`
       const fullPath = `/${lang}${templatePath}`
-      urls.push({
-        url: `${baseUrl}${fullPath}`,
+      entries.push({
+        url: `${SITE}${fullPath}`,
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.75,
-        alternates: hreflangAlternates(fullPath),
+        alternates: alternates(fullPath),
       })
     }
   }
 
-  // Add Turkish templates index with native URL
-  urls.push({
-    url: `${baseUrl}/tr/sablonlar`,
+  // Turkish templates index with native URL
+  entries.push({
+    url: `${SITE}/tr/sablonlar`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.9,
-    alternates: hreflangAlternates('/tr/sablonlar'),
+    alternates: alternates('/tr/sablonlar'),
   })
 
-  return urls
+  return entries
 }
