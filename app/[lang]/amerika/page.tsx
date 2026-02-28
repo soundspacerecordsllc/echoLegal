@@ -45,6 +45,25 @@ export default async function AmerikaHubPage({
   ]
 
   const canonicalUrl = `https://echo-legal.com/${lang}/amerika`
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${canonicalUrl}#breadcrumbs`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: isEnglish ? 'Home' : 'Ana Sayfa',
+        item: `https://echo-legal.com/${lang}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: isEnglish ? 'US Business Hub' : 'ABD Ticaret Rehberi',
+        item: canonicalUrl,
+      },
+    ],
+  }
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -73,6 +92,12 @@ export default async function AmerikaHubPage({
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <Script
+        id="ld-breadcrumbs-amerika"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

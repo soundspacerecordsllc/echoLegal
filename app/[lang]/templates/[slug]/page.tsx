@@ -109,6 +109,7 @@ export default async function TemplateDetailPage({
     },
     breadcrumb: {
       '@type': 'BreadcrumbList',
+      '@id': `https://echo-legal.com/${lang}/templates/${slug}#breadcrumbs`,
       itemListElement: [
         {
           '@type': 'ListItem',

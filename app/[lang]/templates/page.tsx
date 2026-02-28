@@ -68,6 +68,25 @@ export default async function TemplatesPage({
 
   // JSON-LD: CollectionPage + WebPage authority signal (merged)
   const canonicalUrl = `https://echo-legal.com/${lang}/templates`
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${canonicalUrl}#breadcrumbs`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: isEnglish ? 'Home' : 'Ana Sayfa',
+        item: `https://echo-legal.com/${lang}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: isEnglish ? 'Templates' : 'Şablonlar',
+        item: canonicalUrl,
+      },
+    ],
+  }
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -118,6 +137,12 @@ export default async function TemplatesPage({
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Script
+        id="ld-breadcrumbs-templates"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <div className="bg-gray-50 min-h-screen">

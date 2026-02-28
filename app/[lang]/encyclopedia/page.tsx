@@ -128,6 +128,25 @@ export default async function EncyclopediaPage({
   const basePath = `/${lang}/encyclopedia`
 
   const canonicalUrl = `https://echo-legal.com/${lang}/encyclopedia`
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': `${canonicalUrl}#breadcrumbs`,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: isEnglish ? 'Home' : 'Ana Sayfa',
+        item: `https://echo-legal.com/${lang}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: isEnglish ? 'Legal Encyclopedia' : 'Hukuk Ansiklopedisi',
+        item: canonicalUrl,
+      },
+    ],
+  }
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -156,6 +175,12 @@ export default async function EncyclopediaPage({
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <Script
+        id="ld-breadcrumbs-encyclopedia"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     <div className="bg-white">
       <main className="max-w-7xl mx-auto px-4 py-12">
