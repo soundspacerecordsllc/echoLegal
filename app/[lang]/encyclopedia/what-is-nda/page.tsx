@@ -103,6 +103,11 @@ export default async function WhatIsNDAPage({
     mainEntityOfPage: `${pageUrl}#webpage`,
     publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
     author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    identifier: [{
+      '@type': 'PropertyValue',
+      propertyID: 'EchoLegal:CanonicalId',
+      value: PAGE_META.citationKey,
+    }],
   }
 
   return (
