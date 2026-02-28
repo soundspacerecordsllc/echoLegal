@@ -74,16 +74,8 @@ export default async function SablonlarPage() {
       'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
     url: 'https://echo-legal.com/tr/sablonlar',
     inLanguage: 'tr',
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
+    isPartOf: { '@id': 'https://echo-legal.com/#website' },
+    publisher: { '@id': 'https://echo-legal.com/#organization' },
     numberOfItems: templates.length,
     mainEntity: {
       '@type': 'ItemList',

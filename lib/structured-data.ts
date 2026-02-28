@@ -10,6 +10,16 @@
 
 import { ContentTypeKey, ContentStatus, type UniversalMeta } from './content-schema'
 import { LanguageCode } from './jurisdictions'
+import {
+  entityGraph,
+  organizationNode,
+  authorNode,
+  websiteNode,
+  legalServiceNode,
+  publisherRef,
+  authorRef,
+  isPartOfRef,
+} from './entity-graph'
 
 // ============================================
 // CONSTANTS
@@ -19,86 +29,17 @@ export const SITE_URL = 'https://echo-legal.com'
 export const SITE_NAME = 'EchoLegal'
 
 // ============================================
-// GLOBAL SCHEMAS
+// GLOBAL SCHEMAS (re-exported from entity-graph)
 // ============================================
 
-/** Organization schema — EchoLegal as publisher. */
-export const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': `${SITE_URL}/#organization`,
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: {
-    '@type': 'ImageObject',
-    url: `${SITE_URL}/logo.png`,
-    width: 200,
-    height: 60,
-  },
-  description: 'Global legal encyclopedia providing professionally drafted contracts and legal guides. Attorney-reviewed, multilingual.',
-  foundingDate: '2024',
-  sameAs: [],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer support',
-    url: `${SITE_URL}/en/support`,
-    availableLanguage: ['English', 'Turkish'],
-  },
-}
+export const organizationSchema = organizationNode
+export const authorSchema = authorNode
+export const websiteSchema = websiteNode
+export const legalServiceSchema = legalServiceNode
 
-/** Author schema — always Organization, never Person (governance rule). */
-export const authorSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': `${SITE_URL}/#author`,
-  name: SITE_NAME,
-  url: SITE_URL,
-}
-
-/** WebSite schema with SearchAction. */
-export const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': `${SITE_URL}/#website`,
-  url: SITE_URL,
-  name: SITE_NAME,
-  description: 'Global legal encyclopedia — attorney-reviewed legal reference and contract templates.',
-  publisher: {
-    '@id': `${SITE_URL}/#organization`,
-  },
-  inLanguage: ['en', 'tr'],
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${SITE_URL}/en/search?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
-}
-
-/** LegalService schema — organizational classification (Section 4.1.1). */
-export const legalServiceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LegalService',
-  '@id': `${SITE_URL}/#legalservice`,
-  name: SITE_NAME,
-  description: 'Open-access legal encyclopedia and contract template library. Attorney-reviewed content for international professionals.',
-  url: SITE_URL,
-  provider: {
-    '@id': `${SITE_URL}/#organization`,
-  },
-  serviceType: 'Legal Information Service',
-  areaServed: [
-    { '@type': 'Country', name: 'United States' },
-    { '@type': 'Country', name: 'Turkey' },
-  ],
-  availableLanguage: ['English', 'Turkish'],
-}
-
-/** Combined global schemas for layout. */
+/** Combined global schemas for layout. Use entityGraph from lib/entity-graph.ts in new code. */
 export function getGlobalSchemas() {
-  return [organizationSchema, authorSchema, websiteSchema, legalServiceSchema]
+  return [...entityGraph]
 }
 
 // ============================================
@@ -141,11 +82,11 @@ export function generateArticleSchema({
     datePublished,
     dateModified,
     inLanguage: lang,
-    author: { '@id': `${SITE_URL}/#author` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: authorRef,
+    publisher: publisherRef,
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    isPartOf: { '@id': `${SITE_URL}/#website` },
-    copyrightHolder: { '@id': `${SITE_URL}/#organization` },
+    isPartOf: isPartOfRef,
+    copyrightHolder: publisherRef,
     isAccessibleForFree: true,
     ...(section && { articleSection: section }),
     ...(version && { version }),
@@ -203,9 +144,9 @@ export function generateScholarlyArticleSchema({
     ...(dateCreated && { dateCreated }),
     ...(version && { version }),
     inLanguage: lang,
-    author: { '@id': `${SITE_URL}/#organization` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
-    isPartOf: { '@id': `${SITE_URL}/#website` },
+    author: authorRef,
+    publisher: publisherRef,
+    isPartOf: isPartOfRef,
     mainEntityOfPage: url,
     ...(aboutTopics && aboutTopics.length > 0 && {
       about: aboutTopics.map(name => ({ '@type': 'Thing', name })),
@@ -219,7 +160,7 @@ export function generateScholarlyArticleSchema({
     }),
     ...(keywords && keywords.length > 0 && { keywords: keywords.join(', ') }),
     ...(wordCount && { wordCount }),
-    copyrightHolder: { '@id': `${SITE_URL}/#organization` },
+    copyrightHolder: publisherRef,
     license: `${SITE_URL}/en/legal/terms`,
     isAccessibleForFree: true,
     ...(citationKey && { identifier: citationKey }),
@@ -262,8 +203,8 @@ export function generateDigitalDocumentSchema({
     dateModified,
     ...(version && { version }),
     inLanguage: lang,
-    author: { '@id': `${SITE_URL}/#organization` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: authorRef,
+    publisher: publisherRef,
     hasDigitalDocumentPermission: {
       '@type': 'DigitalDocumentPermission',
       permissionType: 'https://schema.org/ReadPermission',
@@ -312,8 +253,8 @@ export function generateHowToSchema({
       position: step.position,
     })),
     ...(keywords && keywords.length > 0 && { keywords: keywords.join(', ') }),
-    author: { '@id': `${SITE_URL}/#organization` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: authorRef,
+    publisher: publisherRef,
   }
 }
 
@@ -490,8 +431,8 @@ export function generateContentSchema(meta: {
         dateModified: meta.dateModified,
         ...(meta.version && { version: meta.version }),
         inLanguage: meta.lang,
-        author: { '@id': `${SITE_URL}/#organization` },
-        publisher: { '@id': `${SITE_URL}/#organization` },
+        author: authorRef,
+        publisher: publisherRef,
         isAccessibleForFree: true,
         ...(meta.keywords && meta.keywords.length > 0 && {
           keywords: meta.keywords.join(', '),

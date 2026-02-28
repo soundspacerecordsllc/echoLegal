@@ -104,8 +104,8 @@ export default async function ContractorVsEmployeePage({
       ? 'Understand the critical differences between contractors and employees. Learn IRS tests, legal factors, misclassification risks, and how to properly classify workers.'
       : 'Bağımsız yüklenici ile işçi arasındaki temel farklar. IRS testleri, hukuki kriterler, hatalı sınıflandırma riskleri ve doğru statü belirleme yöntemleri.',
     mainEntityOfPage: `${pageUrl}#webpage`,
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: { '@id': `${SITE_URL}/#organization` },
     identifier: [{
       '@type': 'PropertyValue',
       propertyID: 'EchoLegal:CanonicalId',

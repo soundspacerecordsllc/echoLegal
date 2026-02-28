@@ -108,8 +108,8 @@ export default async function PrivacyPolicyGuidePage({
       ? 'Guide to privacy policy requirements under GDPR, CCPA, KVKK, and other frameworks. Covers when a privacy policy is required, what to include, and compliance steps.'
       : 'GDPR, CCPA, KVKK ve diğer düzenlemeler kapsamında gizlilik politikası gereksinimleri rehberi. Gizlilik politikasının ne zaman gerekli olduğunu, neleri içermesi gerektiğini ve uyum adımlarını kapsar.',
     mainEntityOfPage: `${pageUrl}#webpage`,
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: { '@id': `${SITE_URL}/#organization` },
     identifier: [{
       '@type': 'PropertyValue',
       propertyID: 'EchoLegal:CanonicalId',

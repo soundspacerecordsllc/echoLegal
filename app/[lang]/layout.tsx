@@ -2,7 +2,9 @@ import '../globals.css'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { i18n, Locale } from '@/i18n-config'
-import { getGlobalSchemas, SITE_URL } from '@/lib/structured-data'
+import { SITE_URL } from '@/lib/structured-data'
+import { entityGraph } from '@/lib/entity-graph'
+import JsonLdScript from '@/components/JsonLdScript'
 import { getAlternatePath } from '@/lib/nav'
 import AppShell from '@/components/AppShell'
 
@@ -48,19 +50,11 @@ export default async function LangLayout({
 }) {
   const { lang } = await params
 
-  // Get global structured data schemas
-  const globalSchemas = getGlobalSchemas()
-
   return (
     <>
       <head>
-        {/* Global structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(globalSchemas),
-          }}
-        />
+        {/* Global entity graph (Organization + WebSite + LegalService) */}
+        <JsonLdScript data={[...entityGraph]} />
       </head>
       <AppShell lang={lang}>{children}</AppShell>
     </>

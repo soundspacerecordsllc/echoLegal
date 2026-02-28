@@ -156,16 +156,8 @@ export default async function EncyclopediaPage({
       ? 'Legal Encyclopedia | EchoLegal'
       : 'Hukuki Ansiklopedi | EchoLegal',
     inLanguage: lang,
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
+    isPartOf: { '@id': 'https://echo-legal.com/#website' },
+    publisher: { '@id': 'https://echo-legal.com/#organization' },
   }
 
   return (

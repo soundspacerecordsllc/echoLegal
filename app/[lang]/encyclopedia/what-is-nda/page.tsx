@@ -103,8 +103,8 @@ export default async function WhatIsNDAPage({
       ? 'Learn what an NDA (Non-Disclosure Agreement) is, when you need one, key clauses to include, and download a free template.'
       : 'NDA (Gizlilik Sözleşmesi) nedir, ne zaman gereklidir, hangi maddeler bulunmalı ve ücretsiz şablon indirin.',
     mainEntityOfPage: `${pageUrl}#webpage`,
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: { '@id': `${SITE_URL}/#organization` },
     identifier: [{
       '@type': 'PropertyValue',
       propertyID: 'EchoLegal:CanonicalId',

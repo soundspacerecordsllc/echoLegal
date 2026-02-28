@@ -104,8 +104,8 @@ export default async function FreelancerLegalGuidePage({
       ? 'Legal guide for freelancers covering contracts, taxes, intellectual property, liability protection, and international clients.'
       : 'Sözleşmeler, vergiler, fikri mülkiyet, sorumluluk koruması ve uluslararası müşteriler hakkında serbest çalışanlar için hukuk rehberi.',
     mainEntityOfPage: `${pageUrl}#webpage`,
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: { '@id': `${SITE_URL}/#organization` },
     identifier: [{
       '@type': 'PropertyValue',
       propertyID: 'EchoLegal:CanonicalId',
