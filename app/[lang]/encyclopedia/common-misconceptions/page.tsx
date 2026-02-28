@@ -91,8 +91,8 @@ export default async function CommonMisconceptionsPage({
       ? 'Common legal misconceptions about LLCs, immigration, contracts, and business law in the United States.'
       : 'LLC, göçmenlik, sözleşmeler ve ABD iş hukuku hakkında yaygın yanlış varsayımlar.',
     mainEntityOfPage: `${pageUrl}#webpage`,
-    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
-    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    author: { '@id': `${SITE_URL}/#organization` },
     identifier: [{
       '@type': 'PropertyValue',
       propertyID: 'EchoLegal:CanonicalId',

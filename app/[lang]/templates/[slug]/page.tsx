@@ -102,11 +102,7 @@ export default async function TemplateDetailPage({
     url: `https://echo-legal.com/${lang}/templates/${slug}`,
     dateModified: template.updatedAt,
     inLanguage: lang === 'en' ? 'en-US' : 'tr-TR',
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
+    isPartOf: { '@id': 'https://echo-legal.com/#website' },
     breadcrumb: {
       '@type': 'BreadcrumbList',
       '@id': `https://echo-legal.com/${lang}/templates/${slug}#breadcrumbs`,

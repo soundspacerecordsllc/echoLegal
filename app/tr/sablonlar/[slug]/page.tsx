@@ -89,11 +89,7 @@ export default async function TurkishTemplateDetailPage({
     url: `https://echo-legal.com/tr/sablonlar/${slug}`,
     dateModified: template.updatedAt,
     inLanguage: 'tr-TR',
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'EchoLegal',
-      url: 'https://echo-legal.com',
-    },
+    isPartOf: { '@id': 'https://echo-legal.com/#website' },
     breadcrumb: {
       '@type': 'BreadcrumbList',
       '@id': `https://echo-legal.com/tr/sablonlar/${slug}#breadcrumbs`,
