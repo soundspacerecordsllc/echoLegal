@@ -3,7 +3,7 @@
 
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Script from 'next/script'
+import JsonLdScript from '@/components/JsonLdScript'
 import { Locale } from '@/i18n-config'
 import {
   getTemplatesByLang,
@@ -132,18 +132,7 @@ export default async function TemplatesPage({
 
   return (
     <>
-      <Script
-        id="ld-webpage-templates"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Script
-        id="ld-breadcrumbs-templates"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLdScript data={[jsonLd, breadcrumbJsonLd]} />
 
       <div className="bg-gray-50 min-h-screen">
         {/* Page Header */}

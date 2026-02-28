@@ -3,7 +3,7 @@
 
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Script from 'next/script'
+import JsonLdScript from '@/components/JsonLdScript'
 import {
   getTemplatesByLang,
   categoryLabels,
@@ -103,18 +103,7 @@ export default async function SablonlarPage() {
 
   return (
     <>
-      <Script
-        id="ld-webpage-sablonlar"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Script
-        id="ld-breadcrumbs-sablonlar"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLdScript data={[jsonLd, breadcrumbJsonLd]} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Header */}
