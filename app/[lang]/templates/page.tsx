@@ -3,6 +3,7 @@
 
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 import { Locale } from '@/i18n-config'
 import {
   getTemplatesByLang,
@@ -65,16 +66,19 @@ export default async function TemplatesPage({
     return acc
   }, {} as Record<TemplateCategory, Template[]>)
 
-  // JSON-LD: WebPage authority signal
+  // JSON-LD: CollectionPage + WebPage authority signal (merged)
   const canonicalUrl = `https://echo-legal.com/${lang}/templates`
-  const webPageJsonLd = {
+  const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
+    '@type': 'CollectionPage',
     '@id': `${canonicalUrl}#webpage`,
-    url: canonicalUrl,
     name: isEnglish
-      ? 'Legal Document Templates — Supplementary Materials | EchoLegal'
-      : 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
+      ? 'Legal Document Templates — Supplementary Materials'
+      : 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
+    description: isEnglish
+      ? 'Jurisdiction-tagged legal document templates: contracts, regulatory forms, consular correspondence, and compliance checklists.'
+      : 'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
+    url: canonicalUrl,
     inLanguage: lang,
     isPartOf: {
       '@type': 'WebSite',
@@ -83,24 +87,6 @@ export default async function TemplatesPage({
     },
     publisher: {
       '@type': 'Organization',
-      name: 'EchoLegal',
-    },
-  }
-
-  // JSON-LD: CollectionPage structured data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: isEnglish
-      ? 'Legal Document Templates — Supplementary Materials'
-      : 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
-    description: isEnglish
-      ? 'Jurisdiction-tagged legal document templates: contracts, regulatory forms, consular correspondence, and compliance checklists.'
-      : 'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
-    url: `https://echo-legal.com/${lang}/templates`,
-    inLanguage: lang === 'en' ? 'en-US' : 'tr-TR',
-    isPartOf: {
-      '@type': 'WebSite',
       name: 'EchoLegal',
       url: 'https://echo-legal.com',
     },
@@ -127,12 +113,10 @@ export default async function TemplatesPage({
 
   return (
     <>
-      <script
+      <Script
+        id="ld-webpage-templates"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 

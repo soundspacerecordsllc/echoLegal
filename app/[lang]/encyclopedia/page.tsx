@@ -2,6 +2,7 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 import {
   EncyclopediaAuthorityLevel,
   sortByAuthority,
@@ -144,13 +145,16 @@ export default async function EncyclopediaPage({
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
   }
 
   return (
     <>
-      <script
+      <Script
+        id="ld-webpage-encyclopedia"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
     <div className="bg-white">
