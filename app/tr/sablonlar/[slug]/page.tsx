@@ -14,6 +14,7 @@ import {
   templatesRegistry,
   Template,
 } from '@/lib/templates-registry'
+import { absoluteUrl, siteId } from '@/lib/site'
 
 // Generate static params for all Turkish templates
 export async function generateStaticParams() {
@@ -45,7 +46,7 @@ export async function generateMetadata({
       title: template.title,
       description: template.shortDescription,
       type: 'article',
-      url: `https://echo-legal.com/tr/sablonlar/${slug}`,
+      url: absoluteUrl(`/tr/sablonlar/${slug}`),
     },
   }
 }
@@ -86,31 +87,31 @@ export default async function TurkishTemplateDetailPage({
     '@type': 'DigitalDocument',
     name: template.title,
     description: template.shortDescription,
-    url: `https://echo-legal.com/tr/sablonlar/${slug}`,
+    url: absoluteUrl(`/tr/sablonlar/${slug}`),
     dateModified: template.updatedAt,
     inLanguage: 'tr-TR',
-    isPartOf: { '@id': 'https://echo-legal.com/#website' },
+    isPartOf: { '@id': siteId('website') },
     breadcrumb: {
       '@type': 'BreadcrumbList',
-      '@id': `https://echo-legal.com/tr/sablonlar/${slug}#breadcrumbs`,
+      '@id': `${absoluteUrl(`/tr/sablonlar/${slug}`)}#breadcrumbs`,
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
           name: 'Ana Sayfa',
-          item: 'https://echo-legal.com/tr',
+          item: absoluteUrl('/tr'),
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Şablonlar',
-          item: 'https://echo-legal.com/tr/sablonlar',
+          item: absoluteUrl('/tr/sablonlar'),
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: template.title,
-          item: `https://echo-legal.com/tr/sablonlar/${slug}`,
+          item: absoluteUrl(`/tr/sablonlar/${slug}`),
         },
       ],
     },

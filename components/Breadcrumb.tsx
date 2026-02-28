@@ -1,6 +1,5 @@
 import Link from 'next/link'
-
-const SITE_URL = 'https://echo-legal.com'
+import { absoluteUrl } from '@/lib/site'
 
 export interface BreadcrumbItem {
   label: string
@@ -24,13 +23,13 @@ export default function Breadcrumb({ items, lang }: BreadcrumbProps) {
         '@type': 'ListItem',
         position: 1,
         name: homeLabel,
-        item: `${SITE_URL}/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       ...items.map((item, index) => ({
         '@type': 'ListItem',
         position: index + 2,
         name: item.label,
-        ...(item.href && { item: `${SITE_URL}${item.href}` }),
+        ...(item.href && { item: absoluteUrl(item.href) }),
       })),
     ],
   }

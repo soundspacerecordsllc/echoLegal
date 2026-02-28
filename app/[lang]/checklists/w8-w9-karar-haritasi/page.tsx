@@ -9,7 +9,7 @@ import AuthorBox from '@/components/AuthorBox'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { SITE_URL } from '@/lib/structured-data'
+import { SITE_ORIGIN, absoluteUrl } from '@/lib/site'
 
 const PAGE_META = {
   slug: 'w8-w9-karar-haritasi',
@@ -26,7 +26,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   const isEnglish = lang === 'en'
-  const url = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const url = absoluteUrl(`/${lang}/checklists/${PAGE_META.slug}`)
 
   return {
     title: isEnglish
@@ -71,7 +71,7 @@ export default async function W8W9DecisionMapPage({
   const { lang } = await params
   const isEnglish = lang === 'en'
 
-  const pageUrl = `${SITE_URL}/${lang}/checklists/${PAGE_META.slug}`
+  const pageUrl = absoluteUrl(`/${lang}/checklists/${PAGE_META.slug}`)
   const pageTitle = isEnglish ? 'W-8/W-9 Decision Map' : 'W-8/W-9 Karar Haritası'
 
   // JSON-LD structured data
@@ -84,18 +84,18 @@ export default async function W8W9DecisionMapPage({
     author: {
       '@type': 'Organization',
       name: 'EchoLegal',
-      url: 'https://echo-legal.com',
+      url: SITE_ORIGIN,
     },
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
-      url: 'https://echo-legal.com',
+      url: SITE_ORIGIN,
     },
     datePublished: '2026-01-25',
     dateModified: '2026-01-25',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/checklists/w8-w9-karar-haritasi`,
+      '@id': absoluteUrl(`/${lang}/checklists/w8-w9-karar-haritasi`),
     },
   }
 
@@ -107,19 +107,19 @@ export default async function W8W9DecisionMapPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: isEnglish ? 'Checklists' : 'Kontrol Listeleri',
-        item: `https://echo-legal.com/${lang}/checklists`,
+        item: absoluteUrl(`/${lang}/checklists`),
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: isEnglish ? 'W-8 vs W-9 Decision Tool' : 'W-8 W-9 Karar Aracı',
-        item: `https://echo-legal.com/${lang}/checklists/w8-w9-karar-haritasi`,
+        item: absoluteUrl(`/${lang}/checklists/w8-w9-karar-haritasi`),
       },
     ],
   }

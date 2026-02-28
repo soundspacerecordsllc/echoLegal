@@ -4,6 +4,7 @@ import { Locale } from '@/i18n-config'
 import { Metadata } from 'next'
 import Breadcrumb from '@/components/Breadcrumb'
 import GovernanceNav from '@/components/GovernanceNav'
+import { SITE_ORIGIN } from '@/lib/site'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -101,8 +102,8 @@ export default async function CitationGuidePage({
             </p>
             <p className="font-mono text-sm text-gray-800">
               {isEnglish
-                ? '[Entry Title], EchoLegal Legal Encyclopedia (last updated [Date]), https://echo-legal.com/en/encyclopedia/[slug].'
-                : '[Madde Başlığı], EchoLegal Hukuk Ansiklopedisi (son güncelleme [Tarih]), https://echo-legal.com/tr/ansiklopedi/[slug].'}
+                ? `[Entry Title], EchoLegal Legal Encyclopedia (last updated [Date]), ${SITE_ORIGIN}/en/encyclopedia/[slug].`
+                : `[Madde Başlığı], EchoLegal Hukuk Ansiklopedisi (son güncelleme [Tarih]), ${SITE_ORIGIN}/tr/ansiklopedi/[slug].`}
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-5">
@@ -110,7 +111,7 @@ export default async function CitationGuidePage({
               {isEnglish ? 'Example' : 'Örnek'}
             </p>
             <p className="font-mono text-sm text-gray-800">
-              What Is a Non-Disclosure Agreement (NDA), EchoLegal Legal Encyclopedia (last updated Jan. 25, 2026), https://echo-legal.com/en/encyclopedia/what-is-nda.
+              {`What Is a Non-Disclosure Agreement (NDA), EchoLegal Legal Encyclopedia (last updated Jan. 25, 2026), ${SITE_ORIGIN}/en/encyclopedia/what-is-nda.`}
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-5">
@@ -119,8 +120,8 @@ export default async function CitationGuidePage({
             </p>
             <p className="font-mono text-sm text-gray-800">
               {isEnglish
-                ? '[Template Name], EchoLegal (v[Version], [Date]), https://echo-legal.com/en/templates/[slug].'
-                : '[Şablon Adı], EchoLegal (v[Sürüm], [Tarih]), https://echo-legal.com/tr/sablonlar/[slug].'}
+                ? `[Template Name], EchoLegal (v[Version], [Date]), ${SITE_ORIGIN}/en/templates/[slug].`
+                : `[Şablon Adı], EchoLegal (v[Sürüm], [Tarih]), ${SITE_ORIGIN}/tr/sablonlar/[slug].`}
             </p>
           </div>
         </div>
@@ -152,7 +153,7 @@ export default async function CitationGuidePage({
               {isEnglish ? 'Example' : 'Örnek'}
             </p>
             <p className="font-mono text-sm text-gray-800">
-              &apos;What Is a Non-Disclosure Agreement (NDA)&apos; (EchoLegal Legal Encyclopedia, last updated 25 January 2026) &lt;https://echo-legal.com/en/encyclopedia/what-is-nda&gt; accessed 4 February 2026.
+              {`'What Is a Non-Disclosure Agreement (NDA)' (EchoLegal Legal Encyclopedia, last updated 25 January 2026) <${SITE_ORIGIN}/en/encyclopedia/what-is-nda> accessed 4 February 2026.`}
             </p>
           </div>
         </div>

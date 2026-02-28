@@ -15,6 +15,7 @@ import {
   templatesRegistry,
   Template,
 } from '@/lib/templates-registry'
+import { absoluteUrl, siteId } from '@/lib/site'
 
 // Generate static params for all templates
 export async function generateStaticParams() {
@@ -58,7 +59,7 @@ export async function generateMetadata({
       title: template.title,
       description: template.shortDescription,
       type: 'article',
-      url: `https://echo-legal.com/${lang}/templates/${slug}`,
+      url: absoluteUrl(`/${lang}/templates/${slug}`),
     },
   }
 }
@@ -99,31 +100,31 @@ export default async function TemplateDetailPage({
     '@type': 'DigitalDocument',
     name: template.title,
     description: template.shortDescription,
-    url: `https://echo-legal.com/${lang}/templates/${slug}`,
+    url: absoluteUrl(`/${lang}/templates/${slug}`),
     dateModified: template.updatedAt,
     inLanguage: lang === 'en' ? 'en-US' : 'tr-TR',
-    isPartOf: { '@id': 'https://echo-legal.com/#website' },
+    isPartOf: { '@id': siteId('website') },
     breadcrumb: {
       '@type': 'BreadcrumbList',
-      '@id': `https://echo-legal.com/${lang}/templates/${slug}#breadcrumbs`,
+      '@id': `${absoluteUrl(`/${lang}/templates/${slug}`)}#breadcrumbs`,
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
           name: isEnglish ? 'Home' : 'Ana Sayfa',
-          item: `https://echo-legal.com/${lang}`,
+          item: absoluteUrl(`/${lang}`),
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: isEnglish ? 'Templates' : 'Şablonlar',
-          item: `https://echo-legal.com/${lang}/templates`,
+          item: absoluteUrl(`/${lang}/templates`),
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: template.title,
-          item: `https://echo-legal.com/${lang}/templates/${slug}`,
+          item: absoluteUrl(`/${lang}/templates/${slug}`),
         },
       ],
     },

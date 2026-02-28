@@ -9,7 +9,7 @@
 //     title="What Is a Non-Disclosure Agreement"
 //     dateModified="2026-01-25"
 //     lang="en"
-//     url="https://echo-legal.com/en/encyclopedia/what-is-nda"
+//     url={absoluteUrl('/en/encyclopedia/what-is-nda')}
 //   />
 
 import { generateCitationMetaTags } from '@/lib/structured-data'

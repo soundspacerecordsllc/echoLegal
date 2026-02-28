@@ -3,6 +3,7 @@
 // Designed to meet Big Law / Legal Encyclopedia standards
 
 import { Contributor, getCanonicalAuthor, getContributor } from '@/lib/contributors'
+import { SITE_ORIGIN } from '@/lib/site'
 
 type AuthorBoxProps = {
   lang: 'en' | 'tr'
@@ -187,6 +188,6 @@ export function getAuthorSchema(authorId?: string) {
   return {
     '@type': 'Organization',
     name: 'EchoLegal',
-    url: 'https://echo-legal.com',
+    url: SITE_ORIGIN,
   }
 }

@@ -4,7 +4,7 @@
 // then fetches every URL and checks canonical + hreflang in HTML <head>.
 // Requires Node 18+ (global fetch).
 
-const SITE = process.env.AUDIT_URL || 'https://echo-legal.com'
+const SITE = process.env.AUDIT_URL || process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://echo-legal.com'
 const SITEMAP_URL = `${SITE}/sitemap.xml`
 const REQUIRED_HREFLANGS = ['en', 'tr', 'x-default']
 const CONCURRENCY = 5

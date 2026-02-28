@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import ContractDiscovery from '@/components/ContractDiscovery'
 import { getTemplatesByLang } from '@/lib/templates-registry'
+import { SITE_ORIGIN, absoluteUrl } from '@/lib/site'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -55,12 +56,12 @@ export default async function ContractsPage({
     description: isEnglish
       ? 'Comprehensive collection of legal document templates for US business operations.'
       : 'ABD iş operasyonları için kapsamlı hukuki belge şablonları koleksiyonu.',
-    url: `https://echo-legal.com/${lang}/contracts`,
+    url: absoluteUrl(`/${lang}/contracts`),
     inLanguage: lang === 'en' ? 'en-US' : 'tr-TR',
     isPartOf: {
       '@type': 'WebSite',
       name: 'EchoLegal',
-      url: 'https://echo-legal.com',
+      url: SITE_ORIGIN,
     },
     numberOfItems: templates.length,
     about: {

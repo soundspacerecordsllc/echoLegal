@@ -5,6 +5,7 @@ import { Locale } from '@/i18n-config'
 import Link from 'next/link'
 import JsonLdScript from '@/components/JsonLdScript'
 import { Metadata } from 'next'
+import { absoluteUrl, siteId } from '@/lib/site'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
   const { lang } = await params
@@ -44,7 +45,7 @@ export default async function AmerikaHubPage({
     'Temel ticari belgeler ve sözleşmeler',
   ]
 
-  const canonicalUrl = `https://echo-legal.com/${lang}/amerika`
+  const canonicalUrl = absoluteUrl(`/${lang}/amerika`)
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -54,7 +55,7 @@ export default async function AmerikaHubPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       {
         '@type': 'ListItem',
@@ -73,8 +74,8 @@ export default async function AmerikaHubPage({
       ? 'US Business & Legal Guide for Turkish Entrepreneurs | EchoLegal'
       : 'Türk Girişimciler İçin ABD Hukuk Rehberi | EchoLegal',
     inLanguage: lang,
-    isPartOf: { '@id': 'https://echo-legal.com/#website' },
-    publisher: { '@id': 'https://echo-legal.com/#organization' },
+    isPartOf: { '@id': siteId('website') },
+    publisher: { '@id': siteId('organization') },
   }
 
   return (

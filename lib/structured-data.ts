@@ -20,12 +20,14 @@ import {
   authorRef,
   isPartOfRef,
 } from './entity-graph'
+import { SITE_ORIGIN, absoluteUrl } from './site'
 
 // ============================================
 // CONSTANTS
 // ============================================
 
-export const SITE_URL = 'https://echo-legal.com'
+/** @deprecated Import SITE_ORIGIN from '@/lib/site' instead. Kept for backwards compat. */
+export const SITE_URL = SITE_ORIGIN
 export const SITE_NAME = 'EchoLegal'
 
 // ============================================
@@ -161,7 +163,7 @@ export function generateScholarlyArticleSchema({
     ...(keywords && keywords.length > 0 && { keywords: keywords.join(', ') }),
     ...(wordCount && { wordCount }),
     copyrightHolder: publisherRef,
-    license: `${SITE_URL}/en/legal/terms`,
+    license: absoluteUrl('/en/legal/terms'),
     isAccessibleForFree: true,
     ...(citationKey && { identifier: citationKey }),
   }

@@ -2,7 +2,7 @@ import '../globals.css'
 import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { i18n, Locale } from '@/i18n-config'
-import { SITE_URL } from '@/lib/structured-data'
+import { absoluteUrl } from '@/lib/site'
 import { entityGraph } from '@/lib/entity-graph'
 import JsonLdScript from '@/components/JsonLdScript'
 import { getAlternatePath } from '@/lib/nav'
@@ -23,15 +23,15 @@ export async function generateMetadata({
   const headersList = await headers()
   const pathname = headersList.get('x-pathname') || `/${lang}`
 
-  const enUrl = `${SITE_URL}${getAlternatePath(pathname, 'en')}`
-  const trUrl = `${SITE_URL}${getAlternatePath(pathname, 'tr')}`
+  const enUrl = absoluteUrl(getAlternatePath(pathname, 'en'))
+  const trUrl = absoluteUrl(getAlternatePath(pathname, 'tr'))
 
   return {
     title: 'EchoLegal | Free Legal Encyclopedia & Contract Templates',
     description:
       'Multilingual legal encyclopedia providing professionally drafted contracts and legal guides. Currently in English and Turkish. Legal knowledge for everyone.',
     alternates: {
-      canonical: `${SITE_URL}${pathname}`,
+      canonical: absoluteUrl(pathname),
       languages: {
         en: enUrl,
         tr: trUrl,

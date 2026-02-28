@@ -7,8 +7,8 @@
 //
 // The graph is injected once, server-rendered, in app/[lang]/layout.tsx.
 
-// Self-contained constants (avoids circular dependency with structured-data.ts)
-const SITE_URL = 'https://echo-legal.com'
+import { SITE_ORIGIN, absoluteUrl, siteId } from './site'
+
 const SITE_NAME = 'EchoLegal'
 
 // ============================================
@@ -16,16 +16,16 @@ const SITE_NAME = 'EchoLegal'
 // ============================================
 
 /** @id for the Organization node (publisher / copyright holder). */
-export const ORGANIZATION_ID = `${SITE_URL}/#organization`
+export const ORGANIZATION_ID = siteId('organization')
 
 /** @id for the author node (governance rule: always Organization). */
-export const AUTHOR_ID = `${SITE_URL}/#author`
+export const AUTHOR_ID = siteId('author')
 
 /** @id for the WebSite node (isPartOf target). */
-export const WEBSITE_ID = `${SITE_URL}/#website`
+export const WEBSITE_ID = siteId('website')
 
 /** @id for the LegalService node. */
-export const LEGAL_SERVICE_ID = `${SITE_URL}/#legalservice`
+export const LEGAL_SERVICE_ID = siteId('legalservice')
 
 // ============================================
 // @id REFERENCE HELPERS
@@ -50,10 +50,10 @@ export const organizationNode = {
   '@type': 'Organization',
   '@id': ORGANIZATION_ID,
   name: SITE_NAME,
-  url: SITE_URL,
+  url: SITE_ORIGIN,
   logo: {
     '@type': 'ImageObject',
-    url: `${SITE_URL}/logo.png`,
+    url: absoluteUrl('/logo.png'),
     width: 200,
     height: 60,
   },
@@ -64,7 +64,7 @@ export const organizationNode = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
-    url: `${SITE_URL}/en/support`,
+    url: absoluteUrl('/en/support'),
     availableLanguage: ['English', 'Turkish'],
   },
 } as const
@@ -75,7 +75,7 @@ export const authorNode = {
   '@type': 'Organization',
   '@id': AUTHOR_ID,
   name: SITE_NAME,
-  url: SITE_URL,
+  url: SITE_ORIGIN,
 } as const
 
 /** WebSite node with SearchAction. */
@@ -83,7 +83,7 @@ export const websiteNode = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': WEBSITE_ID,
-  url: SITE_URL,
+  url: SITE_ORIGIN,
   name: SITE_NAME,
   description:
     'Global legal encyclopedia — attorney-reviewed legal reference and contract templates.',
@@ -93,7 +93,7 @@ export const websiteNode = {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: `${SITE_URL}/en/search?q={search_term_string}`,
+      urlTemplate: absoluteUrl('/en/search?q={search_term_string}'),
     },
     'query-input': 'required name=search_term_string',
   },
@@ -107,7 +107,7 @@ export const legalServiceNode = {
   name: SITE_NAME,
   description:
     'Open-access legal encyclopedia and contract template library. Attorney-reviewed content for international professionals.',
-  url: SITE_URL,
+  url: SITE_ORIGIN,
   provider: publisherRef,
   serviceType: 'Legal Information Service',
   areaServed: [

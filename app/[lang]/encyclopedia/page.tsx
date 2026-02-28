@@ -12,6 +12,7 @@ import {
 } from '@/lib/encyclopedia-authority'
 import type { EncyclopediaIndexEntry } from '@/lib/encyclopedia-authority'
 import type { JurisdictionCode } from '@/lib/jurisdictions'
+import { absoluteUrl, siteId } from '@/lib/site'
 
 /**
  * Jurisdiction codes available as filter options on the index page.
@@ -127,7 +128,7 @@ export default async function EncyclopediaPage({
 
   const basePath = `/${lang}/encyclopedia`
 
-  const canonicalUrl = `https://echo-legal.com/${lang}/encyclopedia`
+  const canonicalUrl = absoluteUrl(`/${lang}/encyclopedia`)
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -137,7 +138,7 @@ export default async function EncyclopediaPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       {
         '@type': 'ListItem',
@@ -156,8 +157,8 @@ export default async function EncyclopediaPage({
       ? 'Legal Encyclopedia | EchoLegal'
       : 'Hukuki Ansiklopedi | EchoLegal',
     inLanguage: lang,
-    isPartOf: { '@id': 'https://echo-legal.com/#website' },
-    publisher: { '@id': 'https://echo-legal.com/#organization' },
+    isPartOf: { '@id': siteId('website') },
+    publisher: { '@id': siteId('organization') },
   }
 
   return (

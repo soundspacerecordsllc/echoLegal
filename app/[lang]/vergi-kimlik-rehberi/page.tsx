@@ -8,7 +8,8 @@ import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/structured-data'
+import { SITE_ORIGIN, absoluteUrl } from '@/lib/site'
 
 const PAGE_META = {
   slug: 'vergi-kimlik-rehberi',
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Complete guide to US tax obligations and identification numbers. EIN, ITIN, SSN, W-8, W-9, 1099 forms, tax treaties, and withholding explained for Turkish entrepreneurs.'
     : 'ABD vergi yükümlülükleri ve kimlik numaralarına kapsamlı rehber. Türk girişimciler için EIN, ITIN, SSN, W-8, W-9, 1099 formları, vergi anlaşmaları ve stopaj açıklandı.'
 
-  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const url = absoluteUrl(`/${lang}/${PAGE_META.slug}`)
 
   return {
     title,
@@ -68,7 +69,7 @@ export default async function TaxIdHubPage({
   const dict = await getDictionary(lang)
   const isEnglish = lang === 'en'
 
-  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageUrl = absoluteUrl(`/${lang}/${PAGE_META.slug}`)
   const pageTitle = isEnglish ? 'Tax ID Guide' : 'Vergi Kimlik Rehberi'
 
   const articleSchema = generateArticleSchema({
@@ -86,7 +87,7 @@ export default async function TaxIdHubPage({
   })
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: absoluteUrl(`/${lang}`) },
     { name: pageTitle, url: pageUrl },
   ])
 
@@ -102,7 +103,7 @@ export default async function TaxIdHubPage({
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
-      url: 'https://echo-legal.com',
+      url: SITE_ORIGIN,
     },
     mainEntity: {
       '@type': 'ItemList',
@@ -110,17 +111,17 @@ export default async function TaxIdHubPage({
         {
           '@type': 'ListItem',
           position: 1,
-          url: `https://echo-legal.com/${lang}/irs-vergiler-ve-w8-w9-gercekleri`,
+          url: absoluteUrl(`/${lang}/irs-vergiler-ve-w8-w9-gercekleri`),
         },
         {
           '@type': 'ListItem',
           position: 2,
-          url: `https://echo-legal.com/${lang}/ein-itin-ssn-farki`,
+          url: absoluteUrl(`/${lang}/ein-itin-ssn-farki`),
         },
         {
           '@type': 'ListItem',
           position: 3,
-          url: `https://echo-legal.com/${lang}/1099-vergi-belgeleri`,
+          url: absoluteUrl(`/${lang}/1099-vergi-belgeleri`),
         },
       ],
     },
@@ -134,13 +135,13 @@ export default async function TaxIdHubPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi',
-        item: `https://echo-legal.com/${lang}/vergi-kimlik-rehberi`,
+        item: absoluteUrl(`/${lang}/vergi-kimlik-rehberi`),
       },
     ],
   }
