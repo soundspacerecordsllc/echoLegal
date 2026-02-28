@@ -24,8 +24,24 @@ export const AUTHOR_ID = siteId('author')
 /** @id for the WebSite node (isPartOf target). */
 export const WEBSITE_ID = siteId('website')
 
-/** @id for the LegalService node. */
+/** @id for the LegalService node (retained for backward compat; not in graph). */
 export const LEGAL_SERVICE_ID = siteId('legalservice')
+
+// ============================================
+// DETERMINISTIC TOPIC LIST (sorted, shared)
+// ============================================
+
+/**
+ * Factual topic list for knowsAbout. Sorted alphabetically for determinism.
+ * Used by both Organization and Author nodes to stay aligned.
+ */
+const KNOWS_ABOUT: readonly string[] = [
+  'Bilingual legal reference (English/Turkish)',
+  'Contract templates',
+  'U.S. business law',
+  'U.S. tax reporting',
+  'U.S.\u2013Turkey cross-border compliance',
+] as const
 
 // ============================================
 // @id REFERENCE HELPERS
@@ -58,8 +74,15 @@ export const organizationNode = {
     height: 60,
   },
   description:
-    'Global legal encyclopedia providing professionally drafted contracts and legal guides. Attorney-reviewed, multilingual.',
+    'Multilingual legal encyclopedia and contract template library. Attorney-reviewed reference content in English and Turkish.',
   foundingDate: '2024',
+  publishingPrinciples: absoluteUrl('/en/about/citation-guide'),
+  inLanguage: ['en', 'tr'],
+  areaServed: [
+    { '@type': 'Country', name: 'Turkey' },
+    { '@type': 'Country', name: 'United States' },
+  ],
+  knowsAbout: [...KNOWS_ABOUT],
   sameAs: [],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -76,9 +99,10 @@ export const authorNode = {
   '@id': AUTHOR_ID,
   name: SITE_NAME,
   url: SITE_ORIGIN,
+  knowsAbout: [...KNOWS_ABOUT],
 } as const
 
-/** WebSite node with SearchAction. */
+/** WebSite node with SearchAction and content hub references. */
 export const websiteNode = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -86,9 +110,20 @@ export const websiteNode = {
   url: SITE_ORIGIN,
   name: SITE_NAME,
   description:
-    'Global legal encyclopedia — attorney-reviewed legal reference and contract templates.',
+    'Attorney-reviewed legal encyclopedia and contract template library covering U.S. and Turkish law.',
   publisher: publisherRef,
   inLanguage: ['en', 'tr'],
+  about: [
+    'Contract law',
+    'Legal encyclopedia',
+    'U.S. business formation',
+    'U.S. tax identification',
+  ],
+  hasPart: [
+    { '@type': 'WebPage', name: 'Amerika Hub', url: absoluteUrl('/en/amerika') },
+    { '@type': 'WebPage', name: 'Encyclopedia', url: absoluteUrl('/en/encyclopedia') },
+    { '@type': 'WebPage', name: 'Templates', url: absoluteUrl('/en/templates') },
+  ],
   potentialAction: {
     '@type': 'SearchAction',
     target: {
@@ -99,20 +134,23 @@ export const websiteNode = {
   },
 } as const
 
-/** LegalService node — organizational classification. */
+/**
+ * LegalService node — retained for backward compatibility.
+ * Removed from the entity graph to avoid implying legal representation.
+ * Kept as an export in case downstream code references it.
+ */
 export const legalServiceNode = {
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   '@id': LEGAL_SERVICE_ID,
   name: SITE_NAME,
   description:
-    'Open-access legal encyclopedia and contract template library. Attorney-reviewed content for international professionals.',
+    'Open-access legal encyclopedia and contract template library.',
   url: SITE_ORIGIN,
   provider: publisherRef,
-  serviceType: 'Legal Information Service',
   areaServed: [
-    { '@type': 'Country', name: 'United States' },
     { '@type': 'Country', name: 'Turkey' },
+    { '@type': 'Country', name: 'United States' },
   ],
   availableLanguage: ['English', 'Turkish'],
 } as const
@@ -124,10 +162,12 @@ export const legalServiceNode = {
 /**
  * The complete entity graph array.
  * Rendered as a single <script type="application/ld+json"> in the layout.
+ *
+ * Node order: Organization, Author, WebSite (deterministic).
+ * LegalService is intentionally excluded to avoid implying legal representation.
  */
 export const entityGraph = [
   organizationNode,
   authorNode,
   websiteNode,
-  legalServiceNode,
 ] as const
