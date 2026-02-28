@@ -2,7 +2,7 @@ import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Script from 'next/script'
+import JsonLdScript from '@/components/JsonLdScript'
 import {
   EncyclopediaAuthorityLevel,
   sortByAuthority,
@@ -170,18 +170,7 @@ export default async function EncyclopediaPage({
 
   return (
     <>
-      <Script
-        id="ld-webpage-encyclopedia"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
-      />
-      <Script
-        id="ld-breadcrumbs-encyclopedia"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLdScript data={[webPageJsonLd, breadcrumbJsonLd]} />
     <div className="bg-white">
       <main className="max-w-7xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-4">

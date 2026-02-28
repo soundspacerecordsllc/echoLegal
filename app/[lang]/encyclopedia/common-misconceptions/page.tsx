@@ -5,7 +5,6 @@ import { Metadata } from 'next'
 import SearchButton from '@/components/SearchButton'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
-import Script from 'next/script'
 import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
@@ -192,8 +191,7 @@ export default async function CommonMisconceptionsPage({
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <Script id="ld-article" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-        <JsonLdScript data={[breadcrumbSchema]} />
+        <JsonLdScript data={[articleJsonLd, breadcrumbSchema]} />
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">
