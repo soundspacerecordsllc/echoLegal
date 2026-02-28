@@ -44,7 +44,26 @@ export default async function SablonlarPage() {
     {} as Record<TemplateCategory, Template[]>
   )
 
-  // JSON-LD structured data
+  // JSON-LD: WebPage authority signal
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': 'https://echo-legal.com/tr/sablonlar#webpage',
+    url: 'https://echo-legal.com/tr/sablonlar',
+    name: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
+    inLanguage: 'tr',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'EchoLegal',
+    },
+  }
+
+  // JSON-LD: CollectionPage structured data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -77,6 +96,10 @@ export default async function SablonlarPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

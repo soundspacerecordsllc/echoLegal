@@ -43,7 +43,33 @@ export default async function AmerikaHubPage({
     'Temel ticari belgeler ve sözleşmeler',
   ]
 
+  const canonicalUrl = `https://echo-legal.com/${lang}/amerika`
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: isEnglish
+      ? 'US Business & Legal Guide for Turkish Entrepreneurs | EchoLegal'
+      : 'Türk Girişimciler İçin ABD Hukuk Rehberi | EchoLegal',
+    inLanguage: lang,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'EchoLegal',
+    },
+  }
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
     <div className="bg-white">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero */}
@@ -245,5 +271,6 @@ export default async function AmerikaHubPage({
         </section>
       </main>
     </div>
+    </>
   )
 }

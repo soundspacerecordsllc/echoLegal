@@ -126,7 +126,33 @@ export default async function EncyclopediaPage({
 
   const basePath = `/${lang}/encyclopedia`
 
+  const canonicalUrl = `https://echo-legal.com/${lang}/encyclopedia`
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: isEnglish
+      ? 'Legal Encyclopedia | EchoLegal'
+      : 'Hukuki Ansiklopedi | EchoLegal',
+    inLanguage: lang,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'EchoLegal',
+      url: 'https://echo-legal.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'EchoLegal',
+    },
+  }
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
     <div className="bg-white">
       <main className="max-w-7xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-4">
@@ -222,5 +248,6 @@ export default async function EncyclopediaPage({
         </div>
       </main>
     </div>
+    </>
   )
 }
