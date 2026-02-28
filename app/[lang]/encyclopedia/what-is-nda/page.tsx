@@ -89,11 +89,14 @@ export default async function WhatIsNDAPage({
 
   const primarySources = getPrimarySources(PAGE_META.slug, lang)
 
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
-    { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
-    { name: pageTitle, url: pageUrl },
-  ])
+  const breadcrumbSchema = {
+    ...generateBreadcrumbSchema([
+      { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
+      { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
+      { name: pageTitle, url: pageUrl },
+    ]),
+    '@id': `${pageUrl}#breadcrumbs`,
+  }
 
   const articleJsonLd = {
     ...scholarlySchema,

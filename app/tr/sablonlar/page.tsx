@@ -46,6 +46,25 @@ export default async function SablonlarPage() {
   )
 
   // JSON-LD: CollectionPage + WebPage authority signal (merged)
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    '@id': 'https://echo-legal.com/tr/sablonlar#breadcrumbs',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Ana Sayfa',
+        item: 'https://echo-legal.com/tr',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Şablonlar',
+        item: 'https://echo-legal.com/tr/sablonlar',
+      },
+    ],
+  }
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -89,6 +108,12 @@ export default async function SablonlarPage() {
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Script
+        id="ld-breadcrumbs-sablonlar"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

@@ -96,6 +96,7 @@ export default async function TurkishTemplateDetailPage({
     },
     breadcrumb: {
       '@type': 'BreadcrumbList',
+      '@id': `https://echo-legal.com/tr/sablonlar/${slug}#breadcrumbs`,
       itemListElement: [
         {
           '@type': 'ListItem',
