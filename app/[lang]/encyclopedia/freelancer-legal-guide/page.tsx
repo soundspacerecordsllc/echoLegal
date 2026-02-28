@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
+import Script from 'next/script'
 import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
@@ -95,9 +96,20 @@ export default async function FreelancerLegalGuidePage({
     { name: pageTitle, url: pageUrl },
   ])
 
+  const articleJsonLd = {
+    ...scholarlySchema,
+    description: isEnglish
+      ? 'Legal guide for freelancers covering contracts, taxes, intellectual property, liability protection, and international clients.'
+      : 'Sözleşmeler, vergiler, fikri mülkiyet, sorumluluk koruması ve uluslararası müşteriler hakkında serbest çalışanlar için hukuk rehberi.',
+    mainEntityOfPage: `${pageUrl}#webpage`,
+    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+  }
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
-      <JsonLdScript data={[scholarlySchema, faqSchema, breadcrumbSchema]} />
+      <Script id="ld-article" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <JsonLdScript data={[faqSchema, breadcrumbSchema]} />
 
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
