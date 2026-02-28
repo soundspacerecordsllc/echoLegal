@@ -108,6 +108,11 @@ export default async function PrivacyPolicyGuidePage({
     mainEntityOfPage: `${pageUrl}#webpage`,
     publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
     author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    identifier: [{
+      '@type': 'PropertyValue',
+      propertyID: 'EchoLegal:CanonicalId',
+      value: PAGE_META.citationKey,
+    }],
   }
 
   return (

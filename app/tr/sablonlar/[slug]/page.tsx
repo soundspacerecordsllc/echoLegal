@@ -117,6 +117,11 @@ export default async function TurkishTemplateDetailPage({
         },
       ],
     },
+    identifier: [{
+      '@type': 'PropertyValue',
+      propertyID: 'EchoLegal:CanonicalId',
+      value: template.id,
+    }],
   }
 
   // Official sources for certain template types

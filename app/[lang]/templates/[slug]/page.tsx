@@ -130,6 +130,11 @@ export default async function TemplateDetailPage({
         },
       ],
     },
+    identifier: [{
+      '@type': 'PropertyValue',
+      propertyID: 'EchoLegal:CanonicalId',
+      value: template.id,
+    }],
   }
 
   return (
