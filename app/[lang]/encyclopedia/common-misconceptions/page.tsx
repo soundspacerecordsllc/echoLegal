@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import SearchButton from '@/components/SearchButton'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
+import Script from 'next/script'
 import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
@@ -81,6 +82,16 @@ export default async function CommonMisconceptionsPage({
     { name: isEnglish ? 'Encyclopedia' : 'Ansiklopedi', url: `${SITE_URL}/${lang}/encyclopedia` },
     { name: pageTitle, url: pageUrl },
   ])
+
+  const articleJsonLd = {
+    ...scholarlySchema,
+    description: isEnglish
+      ? 'Common legal misconceptions about LLCs, immigration, contracts, and business law in the United States.'
+      : 'LLC, göçmenlik, sözleşmeler ve ABD iş hukuku hakkında yaygın yanlış varsayımlar.',
+    mainEntityOfPage: `${pageUrl}#webpage`,
+    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+  }
 
   const misconceptions = isEnglish ? [
     {
@@ -173,7 +184,8 @@ export default async function CommonMisconceptionsPage({
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <JsonLdScript data={[scholarlySchema, breadcrumbSchema]} />
+        <Script id="ld-article" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+        <JsonLdScript data={[breadcrumbSchema]} />
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-8">

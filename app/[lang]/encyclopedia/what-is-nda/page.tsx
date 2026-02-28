@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
+import Script from 'next/script'
 import JsonLdScript from '@/components/JsonLdScript'
 import PrimarySources from '@/components/PrimarySources'
 import { getPrimarySources } from '@/lib/primary-sources-registry'
@@ -94,9 +95,20 @@ export default async function WhatIsNDAPage({
     { name: pageTitle, url: pageUrl },
   ])
 
+  const articleJsonLd = {
+    ...scholarlySchema,
+    description: isEnglish
+      ? 'Learn what an NDA (Non-Disclosure Agreement) is, when you need one, key clauses to include, and download a free template.'
+      : 'NDA (Gizlilik Sözleşmesi) nedir, ne zaman gereklidir, hangi maddeler bulunmalı ve ücretsiz şablon indirin.',
+    mainEntityOfPage: `${pageUrl}#webpage`,
+    publisher: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+    author: { '@type': 'Organization', name: 'EchoLegal', url: SITE_URL },
+  }
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
-      <JsonLdScript data={[scholarlySchema, faqSchema, breadcrumbSchema]} />
+      <Script id="ld-article" type="application/ld+json" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <JsonLdScript data={[faqSchema, breadcrumbSchema]} />
 
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-8">
