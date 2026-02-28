@@ -29,7 +29,7 @@ export default function DashboardLayout({
               href={FC_APP.dashboardPath}
               className="text-[var(--fc-slate-500)] hover:text-[var(--fc-navy)] transition-colors"
             >
-              Checklist
+              Assessments
             </Link>
             <Link
               href={`${FC_APP.dashboardPath}/settings`}

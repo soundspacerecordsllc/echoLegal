@@ -213,7 +213,7 @@ export default function AssessmentResultPage() {
             onClick={() => setGateOpen(true)}
             className="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-[var(--fc-navy)] rounded-lg hover:bg-[var(--fc-navy-light)] transition-colors"
           >
-            Download Full Compliance Report
+            Save Assessment
           </button>
           <Link
             href="/filingcontrol/assessment"
@@ -237,7 +237,11 @@ export default function AssessmentResultPage() {
       </main>
 
       {/* Conversion gate modal */}
-      <ConversionGate open={gateOpen} onClose={() => setGateOpen(false)} />
+      <ConversionGate
+        open={gateOpen}
+        onClose={() => setGateOpen(false)}
+        resultJSON={result as unknown as Record<string, unknown>}
+      />
     </div>
   )
 }

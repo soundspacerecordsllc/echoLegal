@@ -53,6 +53,7 @@ export default function AssessmentPage() {
 
       const result = await res.json()
       sessionStorage.setItem('fc_compliance_result', JSON.stringify(result))
+      sessionStorage.setItem('fc_entity_profile', JSON.stringify(profile))
       router.push('/filingcontrol/assessment/result')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.')
