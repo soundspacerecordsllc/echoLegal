@@ -3,6 +3,7 @@
 
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 import {
   getTemplatesByLang,
   categoryLabels,
@@ -44,13 +45,15 @@ export default async function SablonlarPage() {
     {} as Record<TemplateCategory, Template[]>
   )
 
-  // JSON-LD: WebPage authority signal
-  const webPageJsonLd = {
+  // JSON-LD: CollectionPage + WebPage authority signal (merged)
+  const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
+    '@type': 'CollectionPage',
     '@id': 'https://echo-legal.com/tr/sablonlar#webpage',
-    url: 'https://echo-legal.com/tr/sablonlar',
     name: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
+    description:
+      'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
+    url: 'https://echo-legal.com/tr/sablonlar',
     inLanguage: 'tr',
     isPartOf: {
       '@type': 'WebSite',
@@ -59,21 +62,6 @@ export default async function SablonlarPage() {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'EchoLegal',
-    },
-  }
-
-  // JSON-LD: CollectionPage structured data
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller',
-    description:
-      'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
-    url: 'https://echo-legal.com/tr/sablonlar',
-    inLanguage: 'tr-TR',
-    isPartOf: {
-      '@type': 'WebSite',
       name: 'EchoLegal',
       url: 'https://echo-legal.com',
     },
@@ -96,12 +84,10 @@ export default async function SablonlarPage() {
 
   return (
     <>
-      <script
+      <Script
+        id="ld-webpage-sablonlar"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 

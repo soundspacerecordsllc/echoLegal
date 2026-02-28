@@ -3,6 +3,7 @@
 import { getDictionary } from '@/get-dictionary'
 import { Locale } from '@/i18n-config'
 import Link from 'next/link'
+import Script from 'next/script'
 import { Metadata } from 'next'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }): Promise<Metadata> {
@@ -61,13 +62,16 @@ export default async function AmerikaHubPage({
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
+      url: 'https://echo-legal.com',
     },
   }
 
   return (
     <>
-      <script
+      <Script
+        id="ld-webpage-amerika"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
     <div className="bg-white">
