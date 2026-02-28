@@ -10,7 +10,8 @@ import { getPrimarySources } from '@/lib/primary-sources-registry'
 import InstitutionalBadge from '@/components/InstitutionalBadge'
 import CiteThisEntry from '@/components/CiteThisEntry'
 import JsonLdScript from '@/components/JsonLdScript'
-import { generateArticleSchema, generateBreadcrumbSchema, SITE_URL } from '@/lib/structured-data'
+import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/structured-data'
+import { SITE_ORIGIN, absoluteUrl } from '@/lib/site'
 
 const ARTICLE_SLUG = 'ein-itin-ssn-farki'
 
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Loc
     ? 'Guide to US tax identification numbers for Turkish entrepreneurs. EIN for businesses, ITIN for individuals without SSN eligibility, SSN for authorized workers.'
     : 'Türk girişimciler için ABD vergi kimlik numaralarına kapsamlı rehber. İşletmeler için EIN, SSN alamayanlar için ITIN, çalışma izni olanlar için SSN.'
 
-  const url = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const url = absoluteUrl(`/${lang}/${PAGE_META.slug}`)
 
   return {
     title,
@@ -71,7 +72,7 @@ export default async function EinItinSsnPage({
   const { lang } = await params
   const isEnglish = lang === 'en'
 
-  const pageUrl = `${SITE_URL}/${lang}/${PAGE_META.slug}`
+  const pageUrl = absoluteUrl(`/${lang}/${PAGE_META.slug}`)
   const pageTitle = isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN ve SSN Farkı'
 
   const articleSchema = generateArticleSchema({
@@ -89,8 +90,8 @@ export default async function EinItinSsnPage({
   })
 
   const breadcrumbSchemaNew = generateBreadcrumbSchema([
-    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: `${SITE_URL}/${lang}` },
-    { name: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik', url: `${SITE_URL}/${lang}/vergi-kimlik-rehberi` },
+    { name: isEnglish ? 'Home' : 'Ana Sayfa', url: absoluteUrl(`/${lang}`) },
+    { name: isEnglish ? 'Tax & ID Hub' : 'Vergi ve Kimlik', url: absoluteUrl(`/${lang}/vergi-kimlik-rehberi`) },
     { name: pageTitle, url: pageUrl },
   ])
 
@@ -118,18 +119,18 @@ export default async function EinItinSsnPage({
     author: {
       '@type': 'Organization',
       name: 'EchoLegal',
-      url: 'https://echo-legal.com',
+      url: SITE_ORIGIN,
     },
     publisher: {
       '@type': 'Organization',
       name: 'EchoLegal',
-      url: 'https://echo-legal.com',
+      url: SITE_ORIGIN,
     },
     datePublished: articleMeta?.datePublished || '2025-08-20',
     dateModified: articleMeta?.dateModified || '2026-01-25',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://echo-legal.com/${lang}/ein-itin-ssn-farki`,
+      '@id': absoluteUrl(`/${lang}/ein-itin-ssn-farki`),
     },
   }
 
@@ -141,19 +142,19 @@ export default async function EinItinSsnPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: isEnglish ? 'Tax & ID Guide' : 'Vergi ve Kimlik Rehberi',
-        item: `https://echo-legal.com/${lang}/vergi-kimlik-rehberi`,
+        item: absoluteUrl(`/${lang}/vergi-kimlik-rehberi`),
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: isEnglish ? 'EIN vs ITIN vs SSN' : 'EIN, ITIN, SSN Farkları',
-        item: `https://echo-legal.com/${lang}/ein-itin-ssn-farki`,
+        item: absoluteUrl(`/${lang}/ein-itin-ssn-farki`),
       },
     ],
   }

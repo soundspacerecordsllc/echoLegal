@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { absoluteUrl } from '@/lib/site'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -13,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://echo-legal.com/sitemap.xml',
+    sitemap: absoluteUrl('/sitemap.xml'),
   }
 }

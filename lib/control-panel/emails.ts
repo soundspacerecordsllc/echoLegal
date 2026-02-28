@@ -3,12 +3,13 @@
 // MVP: uses Resend. Swap provider by changing this module only.
 
 import { UserComplianceItem, ComplianceItem } from './types'
+import { SITE_ORIGIN } from '../site'
 
 // ─── Configuration ──────────────────────────────────────────────────
 
 const FROM_EMAIL = process.env.REMINDER_FROM_EMAIL || 'compliance@echo-legal.com'
 const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://echo-legal.com'
+const BASE_URL = SITE_ORIGIN
 
 // ─── Types ──────────────────────────────────────────────────────────
 

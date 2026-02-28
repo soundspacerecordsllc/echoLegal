@@ -13,6 +13,7 @@ import {
   TemplateCategory,
   Template,
 } from '@/lib/templates-registry'
+import { absoluteUrl, siteId } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     description:
       'İngilizce ve Türkçe yargı alanı etiketli hukuki belge şablonları. Birincil hukuk kaynaklarından ayrı olarak sürdürülen tamamlayıcı materyaller.',
     type: 'website',
-    url: 'https://echo-legal.com/tr/sablonlar',
+    url: absoluteUrl('/tr/sablonlar'),
   },
 }
 
@@ -49,33 +50,33 @@ export default async function SablonlarPage() {
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    '@id': 'https://echo-legal.com/tr/sablonlar#breadcrumbs',
+    '@id': `${absoluteUrl('/tr/sablonlar')}#breadcrumbs`,
     itemListElement: [
       {
         '@type': 'ListItem',
         position: 1,
         name: 'Ana Sayfa',
-        item: 'https://echo-legal.com/tr',
+        item: absoluteUrl('/tr'),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Şablonlar',
-        item: 'https://echo-legal.com/tr/sablonlar',
+        item: absoluteUrl('/tr/sablonlar'),
       },
     ],
   }
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    '@id': 'https://echo-legal.com/tr/sablonlar#webpage',
+    '@id': `${absoluteUrl('/tr/sablonlar')}#webpage`,
     name: 'Hukuki Belge Şablonları — Tamamlayıcı Materyaller | EchoLegal',
     description:
       'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
-    url: 'https://echo-legal.com/tr/sablonlar',
+    url: absoluteUrl('/tr/sablonlar'),
     inLanguage: 'tr',
-    isPartOf: { '@id': 'https://echo-legal.com/#website' },
-    publisher: { '@id': 'https://echo-legal.com/#organization' },
+    isPartOf: { '@id': siteId('website') },
+    publisher: { '@id': siteId('organization') },
     numberOfItems: templates.length,
     mainEntity: {
       '@type': 'ItemList',
@@ -87,7 +88,7 @@ export default async function SablonlarPage() {
           '@type': 'DigitalDocument',
           name: template.title,
           description: template.shortDescription,
-          url: `https://echo-legal.com/tr/sablonlar/${template.slug}`,
+          url: absoluteUrl(`/tr/sablonlar/${template.slug}`),
         },
       })),
     },

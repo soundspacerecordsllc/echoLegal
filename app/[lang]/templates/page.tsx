@@ -14,6 +14,7 @@ import {
   TemplateCategory,
   Template,
 } from '@/lib/templates-registry'
+import { absoluteUrl, siteId } from '@/lib/site'
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'tr' }]
@@ -67,7 +68,7 @@ export default async function TemplatesPage({
   }, {} as Record<TemplateCategory, Template[]>)
 
   // JSON-LD: CollectionPage + WebPage authority signal (merged)
-  const canonicalUrl = `https://echo-legal.com/${lang}/templates`
+  const canonicalUrl = absoluteUrl(`/${lang}/templates`)
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -77,7 +78,7 @@ export default async function TemplatesPage({
         '@type': 'ListItem',
         position: 1,
         name: isEnglish ? 'Home' : 'Ana Sayfa',
-        item: `https://echo-legal.com/${lang}`,
+        item: absoluteUrl(`/${lang}`),
       },
       {
         '@type': 'ListItem',
@@ -99,8 +100,8 @@ export default async function TemplatesPage({
       : 'Yargı alanı etiketli hukuki belge şablonları: sözleşmeler, düzenleyici formlar, konsolosluk yazışmaları ve uyum kontrol listeleri.',
     url: canonicalUrl,
     inLanguage: lang,
-    isPartOf: { '@id': 'https://echo-legal.com/#website' },
-    publisher: { '@id': 'https://echo-legal.com/#organization' },
+    isPartOf: { '@id': siteId('website') },
+    publisher: { '@id': siteId('organization') },
     numberOfItems: templates.length,
     mainEntity: {
       '@type': 'ItemList',
@@ -112,7 +113,7 @@ export default async function TemplatesPage({
           '@type': 'DigitalDocument',
           name: template.title,
           description: template.shortDescription,
-          url: `https://echo-legal.com/${lang}/templates/${template.slug}`,
+          url: absoluteUrl(`/${lang}/templates/${template.slug}`),
         },
       })),
     },

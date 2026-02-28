@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://echo-legal.com"),
+  metadataBase: new URL(SITE_ORIGIN),
 };
 
 export default function RootLayout({

@@ -1,4 +1,4 @@
-const SITE = 'https://echo-legal.com'
+import { SITE_ORIGIN, absoluteUrl } from '@/lib/site'
 
 /** Swap /en↔/tr prefix and /templates↔/sablonlar in one step. */
 function langUrl(fullPath: string, targetLang: 'en' | 'tr'): string {
@@ -8,7 +8,7 @@ function langUrl(fullPath: string, targetLang: 'en' | 'tr'): string {
   } else {
     p = p.replace(/^\/sablonlar/, '/templates')
   }
-  return `${SITE}/${targetLang}${p}`
+  return absoluteUrl(`/${targetLang}${p}`)
 }
 
 // Static pages
@@ -206,7 +206,7 @@ export async function GET() {
   ]
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`
-  xml += `<?xml-stylesheet type="text/xsl" href="${SITE}/sitemap.xsl"?>\n`
+  xml += `<?xml-stylesheet type="text/xsl" href="${SITE_ORIGIN}/sitemap.xsl"?>\n`
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`
 
   for (const lang of languages) {
@@ -214,7 +214,7 @@ export async function GET() {
       if (lang === 'tr' && page === '/templates') continue
 
       const fullPath = `/${lang}${page}`
-      const url = `${SITE}${fullPath}`
+      const url = `${SITE_ORIGIN}${fullPath}`
       xml += `<url>\n`
       xml += `<loc>${escapeXml(url)}</loc>\n`
       xml += `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(langUrl(fullPath, 'en'))}" />\n`
@@ -228,7 +228,7 @@ export async function GET() {
 
     for (const slug of consularSlugs) {
       const fullPath = `/${lang}/consular-documents/${slug}`
-      const url = `${SITE}${fullPath}`
+      const url = `${SITE_ORIGIN}${fullPath}`
       xml += `<url>\n`
       xml += `<loc>${escapeXml(url)}</loc>\n`
       xml += `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(langUrl(fullPath, 'en'))}" />\n`
@@ -243,7 +243,7 @@ export async function GET() {
     for (const slug of templateSlugs) {
       const templatePath = lang === 'tr' ? `/sablonlar/${slug}` : `/templates/${slug}`
       const fullPath = `/${lang}${templatePath}`
-      const url = `${SITE}${fullPath}`
+      const url = `${SITE_ORIGIN}${fullPath}`
       xml += `<url>\n`
       xml += `<loc>${escapeXml(url)}</loc>\n`
       xml += `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(langUrl(fullPath, 'en'))}" />\n`
@@ -259,7 +259,7 @@ export async function GET() {
   // Turkish templates index with native URL
   const trSablonlarPath = '/tr/sablonlar'
   xml += `<url>\n`
-  xml += `<loc>${escapeXml(`${SITE}${trSablonlarPath}`)}</loc>\n`
+  xml += `<loc>${escapeXml(`${SITE_ORIGIN}${trSablonlarPath}`)}</loc>\n`
   xml += `<xhtml:link rel="alternate" hreflang="en" href="${escapeXml(langUrl(trSablonlarPath, 'en'))}" />\n`
   xml += `<xhtml:link rel="alternate" hreflang="tr" href="${escapeXml(langUrl(trSablonlarPath, 'tr'))}" />\n`
   xml += `<xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(langUrl(trSablonlarPath, 'en'))}" />\n`

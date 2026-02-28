@@ -17,6 +17,7 @@ import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
 // ---- Mirror entity-graph.ts constants ----
+// This mirrors the default value from lib/site.ts. Keep in sync.
 
 const SITE_URL = 'https://echo-legal.com'
 
