@@ -1,7 +1,8 @@
 'use client'
 
 // app/filingcontrol/tool/page.tsx
-// Interactive filing obligation checker. Client-side only, no DB, no auth.
+// Interactive filing obligation checker with deadline computation.
+// Client-side only, no DB, no auth.
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -11,6 +12,11 @@ import {
   type FilingInput,
   type Obligation,
 } from '../lib/obligations'
+import {
+  computeDeadlines,
+  type DeadlineResult,
+  type Deadline,
+} from '@/lib/engine/deadlines'
 
 const ENTITY_OPTIONS: { value: EntityType; label: string }[] = [
   { value: 'llc', label: 'LLC' },
@@ -29,6 +35,7 @@ export default function FilingToolPage() {
   const [taxYear, setTaxYear] = useState(CURRENT_YEAR)
   const [state, setState] = useState('')
   const [results, setResults] = useState<Obligation[] | null>(null)
+  const [deadlineResult, setDeadlineResult] = useState<DeadlineResult | null>(null)
 
   function handleCheck() {
     const input: FilingInput = {
@@ -39,7 +46,17 @@ export default function FilingToolPage() {
       taxYear,
       state,
     }
-    setResults(computeObligations(input))
+    const obligations = computeObligations(input)
+    setResults(obligations)
+
+    const entityProfile = {
+      entityType,
+      foreignOwned,
+      taxYear,
+      state,
+      fiscalYearEndMonth: 12,
+    }
+    setDeadlineResult(computeDeadlines(entityProfile, obligations))
   }
 
   return (
@@ -183,6 +200,23 @@ export default function FilingToolPage() {
             )}
           </div>
         )}
+
+        {/* Deadlines */}
+        {deadlineResult !== null && deadlineResult.deadlines.length > 0 && (
+          <div className="mt-8 space-y-4">
+            <h2 className="text-lg font-bold text-[var(--fc-navy)]">
+              Filing Deadlines
+            </h2>
+            <div className="border border-[var(--fc-slate-200)] rounded-lg bg-white divide-y divide-[var(--fc-slate-100)]">
+              {deadlineResult.deadlines.map((dl, i) => (
+                <DeadlineRow key={i} deadline={dl} />
+              ))}
+            </div>
+            <p className="text-xs text-[var(--fc-slate-400)]">
+              Engine v{deadlineResult.engineVersion} — Tax year {deadlineResult.taxYear}
+            </p>
+          </div>
+        )}
       </main>
 
       {/* Footer */}
@@ -251,6 +285,69 @@ function ToggleRow({
       >
         {noLabel}
       </button>
+    </div>
+  )
+}
+
+function getDeadlineUrgency(dueDate: string): {
+  label: string
+  className: string
+} {
+  const now = new Date()
+  const due = new Date(dueDate)
+  const diffMs = due.getTime() - now.getTime()
+  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24))
+
+  if (diffDays < 30) {
+    return {
+      label: `${diffDays}d`,
+      className: 'bg-red-100 text-red-700',
+    }
+  }
+  if (diffDays < 90) {
+    return {
+      label: `${diffDays}d`,
+      className: 'bg-amber-100 text-amber-700',
+    }
+  }
+  return {
+    label: `${diffDays}d`,
+    className: 'bg-[var(--fc-slate-100)] text-[var(--fc-slate-500)]',
+  }
+}
+
+function formatDeadlineDate(iso: string): string {
+  const d = new Date(iso + 'T00:00:00')
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+function DeadlineRow({ deadline }: { deadline: Deadline }) {
+  const urgency = getDeadlineUrgency(deadline.dueDate)
+
+  return (
+    <div className="p-4 flex items-start justify-between gap-3">
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-[var(--fc-navy)]">
+          {deadline.form}
+        </p>
+        <p className="text-xs text-[var(--fc-slate-400)] mt-0.5">
+          {deadline.basis}
+        </p>
+      </div>
+      <div className="text-right shrink-0">
+        <p className="text-sm font-medium text-[var(--fc-navy)]">
+          {formatDeadlineDate(deadline.dueDate)}
+        </p>
+        <span
+          className={`inline-block mt-1 text-xs px-2 py-0.5 rounded font-medium ${urgency.className}`}
+        >
+          {urgency.label}
+        </span>
+      </div>
     </div>
   )
 }
