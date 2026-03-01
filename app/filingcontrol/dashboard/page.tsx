@@ -12,6 +12,7 @@ import {
   type Deadline,
 } from '@/lib/engine/deadlines'
 import { computeObligations } from '@/app/filingcontrol/lib/obligations'
+import { ComplianceStatusSection } from './compliance-status'
 
 export const metadata = {
   title: 'Dashboard — FilingControl',
@@ -85,6 +86,9 @@ export default function DashboardPage() {
           </p>
         </div>
       )}
+
+      {/* Compliance Status */}
+      <ComplianceStatusSection />
 
       {/* Checklist */}
       <div className="border border-[var(--fc-slate-200)] rounded-lg bg-white divide-y divide-[var(--fc-slate-100)]">
