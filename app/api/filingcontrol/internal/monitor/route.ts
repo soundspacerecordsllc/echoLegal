@@ -6,7 +6,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceClient } from '@/lib/control-panel/db'
 import { computeComplianceState } from '@/lib/filingcontrol/monitoring'
-import { upsertComplianceState } from '@/lib/filingcontrol/compliance-state-db'
+import {
+  upsertComplianceState,
+  getComplianceStateForEntity,
+} from '@/lib/filingcontrol/compliance-state-db'
+import { computeNotificationEvents } from '@/lib/filingcontrol/notifications'
 
 function verifyMonitorAuth(request: NextRequest): boolean {
   const secret = request.headers.get('x-fc-monitor-secret')
@@ -47,6 +51,8 @@ export async function POST(request: NextRequest) {
 
   let updatedStates = 0
   let skippedNoDeadlines = 0
+  let createdEvents = 0
+  let skippedDuplicates = 0
 
   for (const entity of entities) {
     // 2. Fetch latest assessment for this entity's user (newest created_at)
@@ -64,22 +70,25 @@ export async function POST(request: NextRequest) {
       continue
     }
 
-    // 3. Compute state
-    const state = computeComplianceState({
+    // 3. Load previous compliance state (before computing new one)
+    const prevState = await getComplianceStateForEntity(entity.id)
+
+    // 4. Compute next state
+    const nextState = computeComplianceState({
       deadlineResult: assessment.deadlines_json as any,
       engineVersion: assessment.engine_version,
       now,
     })
 
-    if (!state) {
+    if (!nextState) {
       skippedNoDeadlines++
       continue
     }
 
-    // 4. Upsert into fc_compliance_state
+    // 5. Upsert into fc_compliance_state
     const { error: upsertError } = await upsertComplianceState(
       entity.id,
-      state
+      nextState
     )
 
     if (upsertError) {
@@ -87,8 +96,42 @@ export async function POST(request: NextRequest) {
         `[monitor] Upsert failed for entity ${entity.id}:`,
         upsertError
       )
-    } else {
-      updatedStates++
+      continue
+    }
+
+    updatedStates++
+
+    // 6. Compute and insert notification events
+    const events = computeNotificationEvents(prevState, nextState, entity.id)
+
+    // Get the compliance_state_id for linking
+    const freshState = await getComplianceStateForEntity(entity.id)
+    const complianceStateId = freshState?.id ?? null
+
+    for (const event of events) {
+      const { error: insertError } = await supabase
+        .from('fc_notification_events')
+        .insert({
+          entity_id: entity.id,
+          compliance_state_id: complianceStateId,
+          event_type: event.event_type,
+          event_key: event.event_key,
+          payload: event.payload,
+        })
+
+      if (insertError) {
+        // UNIQUE constraint violation = duplicate, expected for idempotency
+        if (insertError.code === '23505') {
+          skippedDuplicates++
+        } else {
+          console.error(
+            `[monitor] Event insert failed for entity ${entity.id}:`,
+            insertError
+          )
+        }
+      } else {
+        createdEvents++
+      }
     }
   }
 
@@ -96,6 +139,8 @@ export async function POST(request: NextRequest) {
     processedEntities: entities.length,
     updatedStates,
     skippedNoDeadlines,
+    createdEvents,
+    skippedDuplicates,
     timestamp: now.toISOString(),
   })
 }
