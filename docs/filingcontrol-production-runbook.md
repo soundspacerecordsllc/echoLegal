@@ -153,7 +153,7 @@ Exactly these four events must be enabled on the webhook endpoint:
 ## 7. Debug: Verify Deployed Nav
 
 ```bash
-curl -s https://echo-legal.com/api/_debug/nav | python3 -m json.tool
+curl -s https://echo-legal.com/api/debug/nav | python3 -m json.tool
 ```
 
 Returns `{ keys: [...], hasCompliance: true/false, count: N }`. Use this to confirm the deployed build includes the "Compliance" nav item. If `hasCompliance` is `false`, the deployment is stale or built from the wrong branch.
