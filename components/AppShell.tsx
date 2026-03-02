@@ -169,6 +169,14 @@ function AppHeader({ lang }: { lang: 'en' | 'tr' }) {
               <HeaderSearch lang={lang} />
             </div>
 
+            {/* FilingControl CTA */}
+            <Link
+              href="/filingcontrol/dashboard"
+              className="ml-2 px-3 py-1.5 text-sm font-semibold text-white bg-black rounded-md hover:bg-gray-800 transition-colors"
+            >
+              {isEnglish ? 'Activate FilingControl' : 'FilingControl Başlat'}
+            </Link>
+
             {/* Language Switcher */}
             <Link
               href={switchUrl}
@@ -279,6 +287,16 @@ function AppHeader({ lang }: { lang: 'en' | 'tr' }) {
                 )}
               </div>
             ))}
+
+            {/* Mobile FilingControl CTA */}
+            <div className="pt-4 mt-3 border-t border-gray-100">
+              <Link
+                href="/filingcontrol/dashboard"
+                className="block mx-2 px-4 py-2.5 text-sm font-semibold text-center text-white bg-black rounded-md hover:bg-gray-800 transition-colors"
+              >
+                {isEnglish ? 'Activate FilingControl' : 'FilingControl Başlat'}
+              </Link>
+            </div>
           </div>
         )}
       </nav>
