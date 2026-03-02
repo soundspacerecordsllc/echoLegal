@@ -20,6 +20,7 @@ Optional overrides:
 |----------|---------|-------------|
 | `FC_STRIPE_SUCCESS_URL` | `${SITE_ORIGIN}/filingcontrol/dashboard?upgraded=1` | Checkout success redirect |
 | `FC_STRIPE_CANCEL_URL` | `${SITE_ORIGIN}/filingcontrol/dashboard?upgrade=cancel` | Checkout cancel redirect |
+| `ECHO_DEBUG_KEY` | *(none — endpoint locked)* | Secret for `GET /api/debug/nav` (header: `x-echo-debug-key`) |
 
 ## 2. Stripe Dashboard Setup
 
@@ -152,11 +153,21 @@ Exactly these four events must be enabled on the webhook endpoint:
 
 ## 7. Debug: Verify Deployed Nav
 
+Production-guarded. Requires `ECHO_DEBUG_KEY` env var set on Vercel and the
+matching header on the request. Without it, returns 404.
+
 ```bash
-curl -s https://echo-legal.com/api/debug/nav | python3 -m json.tool
+# Prod — unauthorized (should 404):
+curl -I https://echo-legal.com/api/debug/nav
+
+# Prod — authorized:
+curl -s -H "x-echo-debug-key: YOUR_KEY" https://echo-legal.com/api/debug/nav | python3 -m json.tool
+
+# Local dev (no header needed):
+curl -s http://localhost:3000/api/debug/nav | python3 -m json.tool
 ```
 
-Returns `{ keys: [...], hasCompliance: true/false, count: N }`. Use this to confirm the deployed build includes the "Compliance" nav item. If `hasCompliance` is `false`, the deployment is stale or built from the wrong branch.
+Returns `{ ok, ts, env, keys, hasCompliance, count }`. If `hasCompliance` is `false`, the deployment is stale or built from the wrong branch.
 
 ## 8. Troubleshooting
 
