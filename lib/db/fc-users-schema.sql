@@ -59,3 +59,12 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER fc_users_updated_at
   BEFORE UPDATE ON fc_users
   FOR EACH ROW EXECUTE FUNCTION fc_users_update_updated_at();
+
+-- ─── Helper: email → auth.users.id ─────────────────────────────────
+-- Used by the calendar feed route to bridge fc_users (email-based)
+-- and fc_entities (auth.users.id-based).
+
+CREATE OR REPLACE FUNCTION fc_auth_user_id_by_email(p_email TEXT)
+RETURNS UUID AS $$
+  SELECT id FROM auth.users WHERE email = p_email LIMIT 1;
+$$ LANGUAGE sql SECURITY DEFINER STABLE;
