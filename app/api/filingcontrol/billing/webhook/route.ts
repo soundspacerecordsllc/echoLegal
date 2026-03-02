@@ -11,6 +11,7 @@ import {
   normalizeStripeStatus,
   computePlanFromStatus,
 } from '@/lib/filingcontrol/billing/plan'
+import { ensureCalendarToken } from '@/lib/filingcontrol/calendar/token'
 import type Stripe from 'stripe'
 
 // Events we handle
@@ -116,12 +117,29 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     return
   }
 
+  // Build update, ensuring calendar token for PRO users
+  const updateData: Record<string, unknown> = {
+    stripe_customer_id: session.customer as string,
+    ...patch,
+  }
+
+  if (patch.plan === 'PRO') {
+    // Fetch current row to check if token already exists
+    const { data: currentUser } = await supabase
+      .from('fc_users')
+      .select('calendar_token')
+      .eq('id', userId)
+      .single()
+
+    const { calendar_token, needsUpdate } = ensureCalendarToken(currentUser ?? {})
+    if (needsUpdate) {
+      updateData.calendar_token = calendar_token
+    }
+  }
+
   await supabase
     .from('fc_users')
-    .update({
-      stripe_customer_id: session.customer as string,
-      ...patch,
-    })
+    .update(updateData)
     .eq('id', userId)
 }
 
@@ -159,7 +177,22 @@ async function handleSubscriptionChange(
   )
   if (!userId) return
 
-  await supabase.from('fc_users').update(patch).eq('id', userId)
+  const updateData: Record<string, unknown> = { ...patch }
+
+  if (patch.plan === 'PRO') {
+    const { data: currentUser } = await supabase
+      .from('fc_users')
+      .select('calendar_token')
+      .eq('id', userId)
+      .single()
+
+    const { calendar_token, needsUpdate } = ensureCalendarToken(currentUser ?? {})
+    if (needsUpdate) {
+      updateData.calendar_token = calendar_token
+    }
+  }
+
+  await supabase.from('fc_users').update(updateData).eq('id', userId)
 }
 
 async function handlePaymentFailed(invoice: Stripe.Invoice) {

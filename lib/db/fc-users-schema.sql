@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS fc_users (
   subscription_status TEXT NOT NULL DEFAULT 'none'
     CHECK (subscription_status IN ('none', 'active', 'canceled', 'past_due', 'incomplete')),
   current_period_end TIMESTAMPTZ,
+  calendar_token TEXT UNIQUE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -30,6 +31,9 @@ CREATE INDEX IF NOT EXISTS idx_fc_users_email
 
 CREATE INDEX IF NOT EXISTS idx_fc_users_stripe_customer
   ON fc_users(stripe_customer_id);
+
+CREATE INDEX IF NOT EXISTS idx_fc_users_calendar_token
+  ON fc_users(calendar_token);
 
 -- ─── Stripe Event Idempotency ─────────────────────────────────────────
 

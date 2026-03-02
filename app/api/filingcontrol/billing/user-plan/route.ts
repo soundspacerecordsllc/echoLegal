@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
 
   const { data: user, error } = await supabase
     .from('fc_users')
-    .select('plan, email, subscription_status')
+    .select('plan, email, subscription_status, calendar_token')
     .eq('email', email)
     .single()
 
@@ -36,5 +36,7 @@ export async function GET(request: NextRequest) {
     plan: user.plan,
     email: user.email,
     subscription_status: user.subscription_status,
+    // Only expose calendar_token to PRO users
+    calendar_token: user.plan === 'PRO' ? (user.calendar_token ?? null) : null,
   })
 }
