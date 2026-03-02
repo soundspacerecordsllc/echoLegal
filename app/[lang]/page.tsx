@@ -158,7 +158,30 @@ export default async function Home({
         </div>
       </section>
 
-      {/* 3. Jurisdiction Coverage — Compact horizontal display */}
+      {/* 3. FilingControl CTA — Compliance Monitoring */}
+      <section className="section-spacing border-b border-stone-200 bg-stone-50">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-4">
+            {isEnglish
+              ? 'Automatic Compliance Monitoring'
+              : 'Otomatik Uyum İzleme'}
+          </h2>
+          <p className="text-sm text-muted leading-relaxed mb-8 max-w-xl mx-auto">
+            {isEnglish
+              ? 'FilingControl tracks federal and state filing deadlines for foreign-owned U.S. entities. Get calculated due dates, status tracking, and email reminders before deadlines.'
+              : 'FilingControl, yabancı sermayeli ABD şirketleri için federal ve eyalet dosyalama tarihlerini takip eder. Hesaplanan son tarihler, durum takibi ve son tarihlerden önce e-posta hatırlatmaları alın.'}
+          </p>
+          <Link
+            href="/filingcontrol/dashboard"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-black rounded-md hover:bg-gray-800 transition-colors"
+          >
+            {isEnglish ? 'Start FilingControl' : 'FilingControl Başlat'}
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* 4. Jurisdiction Coverage — Compact horizontal display */}
       <section className="py-14 md:py-18 border-b border-stone-200">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-serif text-xl font-semibold text-ink mb-8 text-center">

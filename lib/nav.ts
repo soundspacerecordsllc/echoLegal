@@ -188,6 +188,35 @@ export const NAV_ITEMS: NavItem[] = [
     labelTr: 'Destek',
     href: '/{lang}/support',
   },
+  {
+    key: 'compliance',
+    labelEn: 'Compliance',
+    labelTr: 'Uyum',
+    href: '/filingcontrol/dashboard',
+    children: [
+      {
+        labelEn: 'FilingControl Dashboard',
+        labelTr: 'FilingControl Panosu',
+        href: '/filingcontrol/dashboard',
+        descriptionEn: 'Compliance tracking for US entities',
+        descriptionTr: 'ABD şirketleri için uyum takibi',
+      },
+      {
+        labelEn: 'Pricing (PRO)',
+        labelTr: 'Fiyatlandırma (PRO)',
+        href: '/filingcontrol/pricing',
+        descriptionEn: 'Full compliance monitoring',
+        descriptionTr: 'Tam uyum izleme',
+      },
+      {
+        labelEn: 'Calendar Integration',
+        labelTr: 'Takvim Entegrasyonu',
+        href: '/filingcontrol/dashboard',
+        descriptionEn: 'ICS feed for filing deadlines',
+        descriptionTr: 'Dosyalama tarihleri için ICS beslemesi',
+      },
+    ],
+  },
 ]
 
 // Helper to resolve href with language
