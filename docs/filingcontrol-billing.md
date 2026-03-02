@@ -24,7 +24,27 @@ Optional:
 | Method | Path | Auth | Purpose |
 |--------|------|------|---------|
 | POST | `/api/filingcontrol/billing/create-checkout` | None (dashboard use) | Create Stripe Checkout Session |
+| POST | `/api/filingcontrol/billing/create-portal-session` | None (dashboard use) | Open Stripe Customer Portal |
+| GET | `/api/filingcontrol/billing/user-plan?email=...` | None (dashboard use) | Fetch user plan status |
 | POST | `/api/filingcontrol/billing/webhook` | Stripe signature | Subscription lifecycle events |
+
+## Customer Portal
+
+PRO users can manage their subscription (cancel, update payment method) via
+Stripe's hosted Customer Portal.
+
+| Method | Path | Auth | Purpose |
+|--------|------|------|---------|
+| POST | `/api/filingcontrol/billing/create-portal-session` | None (dashboard use) | Open Stripe Customer Portal |
+
+**Request:** `{ email: string }`
+**Response:** `{ url: string }` — redirect the user to this URL.
+
+The `return_url` is set to `${SITE_ORIGIN}/filingcontrol/dashboard` (via `absoluteUrl()`).
+
+**Prerequisite:** The Customer Portal must be enabled in the Stripe Dashboard
+under Settings > Billing > Customer Portal. Configure which actions customers
+can take (cancel subscription, update payment method, etc.).
 
 ## Database Tables
 
@@ -71,4 +91,5 @@ stripe trigger invoice.payment_failed
 
 ```bash
 node --test scripts/test-billing-plan.mjs
+node --test scripts/test-billing-portal.mjs
 ```

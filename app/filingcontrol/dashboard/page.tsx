@@ -14,6 +14,7 @@ import {
 import { computeObligations } from '@/app/filingcontrol/lib/obligations'
 import { ComplianceStatusSection } from './compliance-status'
 import { UpgradePrompt } from './upgrade-prompt'
+import { PlanStatus } from './plan-status'
 
 export const metadata = {
   title: 'Dashboard — FilingControl',
@@ -51,6 +52,9 @@ export default function DashboardPage() {
           Federal and state filing obligations for your entity.
         </p>
       </div>
+
+      {/* Plan status */}
+      <PlanStatus />
 
       {/* Summary cards */}
       <div className="grid sm:grid-cols-3 gap-4">
