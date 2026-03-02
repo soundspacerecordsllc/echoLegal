@@ -1,6 +1,8 @@
 // app/filingcontrol/dashboard/settings/page.tsx
 // Entity profile and user settings for FilingControl.
 
+import { AddEntityForm } from '../add-entity-form'
+
 export const metadata = {
   title: 'Settings — FilingControl',
 }
@@ -28,20 +30,8 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Entity details */}
-        <div className="border border-[var(--fc-slate-200)] rounded-lg p-6 bg-white">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[var(--fc-slate-500)] mb-4">
-            Entity Profile
-          </h2>
-          <div className="space-y-3 text-sm text-[var(--fc-slate-500)]">
-            <p>Company: --</p>
-            <p>State of Formation: --</p>
-            <p>Formation Date: --</p>
-            <p>EIN Status: --</p>
-            <p>Tax Classification: --</p>
-            <p>Fiscal Year End: --</p>
-          </div>
-        </div>
+        {/* Add Entity */}
+        <AddEntityForm />
       </div>
     </div>
   )
