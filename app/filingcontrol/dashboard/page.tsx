@@ -13,6 +13,7 @@ import {
 } from '@/lib/engine/deadlines'
 import { computeObligations } from '@/app/filingcontrol/lib/obligations'
 import { ComplianceStatusSection } from './compliance-status'
+import { UpgradePrompt } from './upgrade-prompt'
 
 export const metadata = {
   title: 'Dashboard — FilingControl',
@@ -109,6 +110,9 @@ export default function DashboardPage() {
           />
         ))}
       </div>
+
+      {/* Upgrade prompt */}
+      <UpgradePrompt />
 
       <p className="text-xs text-[var(--fc-slate-400)] text-center">
         Complete onboarding to see calculated deadlines for your entity.
