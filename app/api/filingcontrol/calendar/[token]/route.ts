@@ -35,12 +35,27 @@ export async function GET(
     return new NextResponse('PRO plan required', { status: 403 })
   }
 
-  // 3. Fetch entities (service role — bypasses RLS)
-  //    For MVP single-tenant, fetch all entities.
-  //    The token gates access; each token maps to one user.
+  // 3. Resolve auth user ID from fc_users email, then fetch that user's entities
+  const { data: authUserId } = await supabase.rpc('fc_auth_user_id_by_email', {
+    p_email: user.email,
+  })
+
+  if (!authUserId) {
+    // No auth.users row for this email — return empty calendar
+    const ics = generateICS({ entities: [], now: new Date() })
+    return new NextResponse(ics, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/calendar; charset=utf-8',
+        'Cache-Control': 'private, max-age=300',
+      },
+    })
+  }
+
   const { data: entities } = await supabase
     .from('fc_entities')
     .select('id, user_id, company_name')
+    .eq('user_id', authUserId)
 
   if (!entities || entities.length === 0) {
     // Return empty calendar
