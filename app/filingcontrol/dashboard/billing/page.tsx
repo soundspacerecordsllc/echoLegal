@@ -25,8 +25,8 @@ export default function BillingPage() {
           Current Plan
         </h2>
         <p className="text-sm text-[var(--fc-slate-500)]">
-          No active subscription. Subscribe to unlock email reminders and full
-          compliance tracking.
+          No active subscription. Subscribe to PRO for IRS penalty alerts, 30/7/1-day
+          reminders, and overdue escalation.
         </p>
         <button
           disabled
@@ -42,10 +42,10 @@ export default function BillingPage() {
           {FC_PLAN.name} Plan — ${FC_PLAN.price}/{FC_PLAN.interval}
         </h2>
         <ul className="text-sm text-[var(--fc-slate-500)] space-y-2">
-          <li>Full compliance checklist with status tracking</li>
-          <li>Calculated deadlines per entity</li>
-          <li>Email reminders before due dates</li>
-          <li>Authority source references</li>
+          <li>30-day, 7-day, and 1-day email alerts</li>
+          <li>Overdue escalation alerts</li>
+          <li>Calendar integration (ICS)</li>
+          <li>Unlimited entities</li>
         </ul>
       </div>
     </div>

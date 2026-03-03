@@ -1,8 +1,8 @@
 // app/filingcontrol/pricing/page.tsx
-// FilingControl pricing page. Single plan: Pro $49/month.
+// FilingControl pricing page — Free vs PRO for foreign-owned LLCs.
 
 import Link from 'next/link'
-import { FC_APP, FC_PLAN } from '@/lib/filingcontrol/config'
+import { FC_APP, FC_PLAN, FC_PLAN_FREE } from '@/lib/filingcontrol/config'
 
 export const metadata = {
   title: 'Pricing — FilingControl',
@@ -29,47 +29,78 @@ export default function PricingPage() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 py-16">
+      <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-16">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-[var(--fc-navy)]">
             Pricing
           </h1>
           <p className="mt-3 text-[var(--fc-slate-500)]">
-            One plan. Full compliance tracking.
+            Free to view deadlines. PRO for penalty alerts that protect your LLC.
           </p>
         </div>
 
-        {/* Plan card */}
-        <div className="mt-12 max-w-md mx-auto border border-[var(--fc-slate-200)] rounded-lg bg-white overflow-hidden">
-          <div className="p-8">
-            <p className="text-sm font-semibold uppercase tracking-wider text-[var(--fc-slate-500)]">
-              {FC_PLAN.name}
-            </p>
-            <p className="mt-2 text-4xl font-bold text-[var(--fc-navy)]">
-              ${FC_PLAN.price}
-              <span className="text-base font-normal text-[var(--fc-slate-500)]">
-                /{FC_PLAN.interval}
-              </span>
-            </p>
-            <p className="mt-3 text-sm text-[var(--fc-slate-500)]">
-              {FC_PLAN.description}
-            </p>
+        {/* Two-column plan cards */}
+        <div className="mt-12 grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          {/* Free */}
+          <div className="border border-[var(--fc-slate-200)] rounded-lg bg-white overflow-hidden">
+            <div className="p-8">
+              <p className="text-sm font-semibold uppercase tracking-wider text-[var(--fc-slate-500)]">
+                {FC_PLAN_FREE.name}
+              </p>
+              <p className="mt-2 text-4xl font-bold text-[var(--fc-navy)]">
+                $0
+              </p>
+              <p className="mt-3 text-sm text-[var(--fc-slate-500)]">
+                {FC_PLAN_FREE.description}
+              </p>
 
-            <ul className="mt-6 space-y-3 text-sm text-[var(--fc-slate-700)]">
-              <PlanFeature text="Personalized compliance checklist" />
-              <PlanFeature text="Federal and state filing obligations" />
-              <PlanFeature text="Calculated due dates" />
-              <PlanFeature text="Status tracking per item" />
-              <PlanFeature text="Email reminders before deadlines" />
-              <PlanFeature text="Authority source references" />
-            </ul>
+              <ul className="mt-6 space-y-3 text-sm text-[var(--fc-slate-700)]">
+                <PlanFeature text="View all filing deadlines" />
+                <PlanFeature text="Form 5472 + BOI tracking" />
+                <PlanFeature text="Severity-rated checklist" />
+                <PlanFeature text="Penalty information per item" />
+              </ul>
 
-            <Link
-              href={FC_APP.loginPath}
-              className="mt-8 block w-full px-4 py-3 text-sm font-semibold text-center text-white bg-[var(--fc-navy)] rounded-lg hover:bg-[var(--fc-navy-light)] transition-colors"
-            >
-              Get Started
-            </Link>
+              <Link
+                href={FC_APP.loginPath}
+                className="mt-8 block w-full px-4 py-3 text-sm font-semibold text-center text-[var(--fc-navy)] border border-[var(--fc-slate-200)] rounded-lg hover:border-[var(--fc-slate-400)] transition-colors"
+              >
+                Get Started Free
+              </Link>
+            </div>
+          </div>
+
+          {/* PRO */}
+          <div className="border-2 border-[var(--fc-navy)] rounded-lg bg-white overflow-hidden">
+            <div className="p-8">
+              <p className="text-sm font-semibold uppercase tracking-wider text-[var(--fc-navy)]">
+                {FC_PLAN.name}
+              </p>
+              <p className="mt-2 text-4xl font-bold text-[var(--fc-navy)]">
+                ${FC_PLAN.price}
+                <span className="text-base font-normal text-[var(--fc-slate-500)]">
+                  /{FC_PLAN.interval}
+                </span>
+              </p>
+              <p className="mt-3 text-sm text-[var(--fc-slate-500)]">
+                {FC_PLAN.description}
+              </p>
+
+              <ul className="mt-6 space-y-3 text-sm text-[var(--fc-slate-700)]">
+                <PlanFeature text="Everything in Free" />
+                <PlanFeature text="30-day, 7-day, and 1-day email alerts" />
+                <PlanFeature text="Overdue escalation alerts" />
+                <PlanFeature text="Calendar integration (ICS)" />
+                <PlanFeature text="Unlimited entities" />
+              </ul>
+
+              <Link
+                href={FC_APP.loginPath}
+                className="mt-8 block w-full px-4 py-3 text-sm font-semibold text-center text-white bg-[var(--fc-navy)] rounded-lg hover:bg-[var(--fc-navy-light)] transition-colors"
+              >
+                Start PRO
+              </Link>
+            </div>
           </div>
         </div>
 

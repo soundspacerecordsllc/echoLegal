@@ -44,6 +44,7 @@ export type LLCProfile = {
 
 export type AuthorityLevel = 'federal' | 'state'
 export type ComplianceFrequency = 'one_time' | 'annual' | 'quarterly' | 'monthly'
+export type ComplianceSeverity = 'CRITICAL' | 'HIGH' | 'ROUTINE'
 
 export type ComplianceItem = {
   id: string
@@ -53,6 +54,8 @@ export type ComplianceItem = {
   authority_level: AuthorityLevel
   jurisdiction: string // "federal" or state code e.g. "FL", "WY"
   frequency: ComplianceFrequency
+  severity: ComplianceSeverity
+  penalty?: string // penalty description for display
   // Offset in days from reference date (formation_date or fiscal_year_end)
   reference_event: 'formation_date' | 'fiscal_year_end'
   offset_days: number

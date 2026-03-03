@@ -4,15 +4,13 @@
 
 import Link from 'next/link'
 import { FC_APP } from '@/lib/filingcontrol/config'
+import { OnboardingGate } from './onboarding-gate'
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // TODO: Check auth with requireAuth() and redirect if not authenticated.
-  // For scaffolding, render layout without auth check.
-
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top bar */}
@@ -29,7 +27,7 @@ export default function DashboardLayout({
               href={FC_APP.dashboardPath}
               className="text-[var(--fc-slate-500)] hover:text-[var(--fc-navy)] transition-colors"
             >
-              Checklist
+              Compliance
             </Link>
             <Link
               href={`${FC_APP.dashboardPath}/settings`}
@@ -47,9 +45,9 @@ export default function DashboardLayout({
         </div>
       </header>
 
-      {/* Main content */}
+      {/* Main content — gated by onboarding */}
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 py-8">
-        {children}
+        <OnboardingGate>{children}</OnboardingGate>
       </main>
 
       {/* Footer disclaimer */}

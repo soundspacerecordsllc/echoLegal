@@ -47,12 +47,15 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-xl font-bold text-[var(--fc-navy)]">
-          Compliance Checklist
+          Foreign-Owned LLC Compliance Radar
         </h1>
         <p className="mt-1 text-sm text-[var(--fc-slate-500)]">
-          Federal and state filing obligations for your entity.
+          We track IRS 5472, BOI, and federal reporting deadlines so you don&apos;t trigger $25,000 penalties.
         </p>
       </div>
+
+      {/* Overdue banner */}
+      <OverdueBanner deadlines={deadlineResult.deadlines} />
 
       {/* Plan status */}
       <PlanStatus />
@@ -113,6 +116,8 @@ export default function DashboardPage() {
             description={item.description}
             sourceUrl={item.url}
             frequency={item.frequency}
+            severity={item.severity}
+            penalty={item.penalty}
             status="pending"
             dueDate="--"
           />
@@ -123,7 +128,7 @@ export default function DashboardPage() {
       <UpgradePrompt />
 
       <p className="text-xs text-[var(--fc-slate-400)] text-center">
-        Complete onboarding to see calculated deadlines for your entity.
+        Showing deadlines for foreign-owned single-member LLC (disregarded entity).
       </p>
     </div>
   )
@@ -213,12 +218,20 @@ function DeadlineCard({ deadline }: { deadline: Deadline }) {
   )
 }
 
+const SEVERITY_STYLES = {
+  CRITICAL: { bg: 'bg-red-100', text: 'text-red-800', border: 'border-l-red-500' },
+  HIGH: { bg: 'bg-orange-100', text: 'text-orange-800', border: 'border-l-orange-400' },
+  ROUTINE: { bg: 'bg-[var(--fc-slate-100)]', text: 'text-[var(--fc-slate-600)]', border: 'border-l-[var(--fc-slate-200)]' },
+} as const
+
 function ChecklistRow({
   title,
   authority,
   description,
   sourceUrl,
   frequency,
+  severity,
+  penalty,
   status,
   dueDate,
 }: {
@@ -227,22 +240,35 @@ function ChecklistRow({
   description: string
   sourceUrl: string | null
   frequency: string
+  severity: 'CRITICAL' | 'HIGH' | 'ROUTINE'
+  penalty?: string
   status: string
   dueDate: string
 }) {
+  const sev = SEVERITY_STYLES[severity]
   return (
-    <div className="p-4 flex items-start gap-3">
+    <div className={`p-4 flex items-start gap-3 border-l-4 ${sev.border}`}>
       <input
         type="checkbox"
         disabled
         className="mt-0.5 rounded border-[var(--fc-slate-200)]"
       />
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-[var(--fc-navy)]">{title}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-sm font-medium text-[var(--fc-navy)]">{title}</p>
+          <span className={`text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase ${sev.bg} ${sev.text}`}>
+            {severity}
+          </span>
+        </div>
         <p className="text-xs text-[var(--fc-slate-500)] mt-0.5">{authority}</p>
         <p className="text-xs text-[var(--fc-slate-400)] mt-1 leading-relaxed">
           {description}
         </p>
+        {penalty && (
+          <p className="text-xs text-red-600 mt-1 font-medium">
+            Penalty: {penalty}
+          </p>
+        )}
         {sourceUrl && (
           <a
             href={sourceUrl}
@@ -263,6 +289,23 @@ function ChecklistRow({
           {frequency.replace('_', ' ')}
         </p>
       </div>
+    </div>
+  )
+}
+
+function OverdueBanner({ deadlines }: { deadlines: Deadline[] }) {
+  const now = new Date()
+  const overdue = deadlines.filter((dl) => new Date(dl.dueDate) < now)
+  if (overdue.length === 0) return null
+
+  return (
+    <div className="border border-red-300 bg-red-50 rounded-lg p-4">
+      <p className="text-sm font-semibold text-red-800">
+        You are past the IRS filing deadline. Penalties may already be accruing.
+      </p>
+      <p className="text-xs text-red-700 mt-1">
+        {overdue.map((dl) => dl.form).join(', ')} — overdue
+      </p>
     </div>
   )
 }

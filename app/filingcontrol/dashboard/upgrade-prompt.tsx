@@ -55,15 +55,20 @@ export function UpgradePrompt() {
   return (
     <div className="border border-[var(--fc-slate-200)] rounded-lg p-4 bg-white">
       <div className="flex items-center justify-between gap-4">
-        <p className="text-sm text-[var(--fc-slate-500)]">
-          Email monitoring is available on PRO.
-        </p>
+        <div>
+          <p className="text-sm text-[var(--fc-navy)] font-medium">
+            Get 30-Day IRS Penalty Alerts (PRO)
+          </p>
+          <p className="text-xs text-[var(--fc-slate-500)] mt-0.5">
+            Avoid $25,000 non-filing penalties.
+          </p>
+        </div>
         {!showInput && (
           <button
             onClick={handleUpgrade}
             className="shrink-0 px-4 py-2 text-sm font-medium text-white bg-[var(--fc-navy)] rounded-md hover:opacity-90 transition-opacity"
           >
-            Enable Email Monitoring (PRO)
+            Upgrade to PRO — $49/mo
           </button>
         )}
       </div>

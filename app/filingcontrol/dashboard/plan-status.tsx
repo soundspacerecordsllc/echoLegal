@@ -103,8 +103,8 @@ export function PlanStatus() {
           </p>
           <p className="text-xs text-[var(--fc-slate-500)] mt-0.5">
             {isPro
-              ? 'Email monitoring active'
-              : 'Email monitoring available on PRO'}
+              ? 'Penalty alerts active — 30/7/1-day reminders'
+              : 'Upgrade to PRO for IRS penalty alerts'}
           </p>
         </div>
         {isPro && (

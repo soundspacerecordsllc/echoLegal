@@ -4,7 +4,7 @@
 
 export const FC_APP = {
   name: 'FilingControl',
-  tagline: 'Structured compliance tracking for U.S. entities.',
+  tagline: 'Foreign-Owned LLC Compliance Radar',
   domain: 'filingcontrolapp.com',
   basePath: '/filingcontrol',
   dashboardPath: '/filingcontrol/dashboard',
@@ -12,13 +12,19 @@ export const FC_APP = {
   pricingPath: '/filingcontrol/pricing',
 } as const
 
-// Single plan: Pro – $49/month
+export const FC_PLAN_FREE = {
+  name: 'Free',
+  price: 0,
+  interval: 'month' as const,
+  description: 'View deadlines. No reminders.',
+} as const
+
 export const FC_PLAN = {
   name: 'Pro',
   price: 49,
   interval: 'month' as const,
   features: ['reminders'] as const,
-  description: 'Full compliance tracking with email reminders.',
+  description: 'IRS penalty alerts, 30/7/1-day reminders, overdue escalation.',
 }
 
 // Feature that Pro plan unlocks (maps to canAccessFeature)

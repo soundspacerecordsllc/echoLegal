@@ -3,7 +3,7 @@
 // Takes an entity profile and an assessment result (list of obligations)
 // and returns statutory filing deadlines. Pure function, no DB, no auth.
 
-export const DEADLINE_ENGINE_VERSION = '1.0.0'
+export const DEADLINE_ENGINE_VERSION = '2.0.0'
 
 export type EntityProfile = {
   entityType: string
@@ -48,32 +48,40 @@ export function computeDeadlines(
   const taxYear = entityProfile.taxYear
   const deadlines: Deadline[] = []
 
-  // Calendar year assumption: fiscal year ends Dec 31
-  // April 15 of the following year is the due date
-  const aprilDeadline = `${taxYear + 1}-04-15`
+  // 5472 deadline: 15th day of 4th month after fiscal year end
+  const fyEndMonth = entityProfile.fiscalYearEndMonth ?? 12
+  const fyEnd = new Date(taxYear, fyEndMonth, 0) // last day of FY end month
+  const deadlineDate = new Date(fyEnd)
+  deadlineDate.setDate(deadlineDate.getDate() + 105) // ~15th day of 4th month
+  const form5472Deadline = deadlineDate.toISOString().split('T')[0]
 
   for (const obligation of assessmentResult) {
     const formLower = (obligation.form ?? '').toLowerCase()
 
-    // Form 5472 required → due April 15 following tax year
+    // Form 5472 + Pro Forma 1120 (combined obligation)
     if (formLower.includes('5472')) {
       deadlines.push({
-        form: 'Form 5472',
-        dueDate: aprilDeadline,
-        basis: 'IRC §6038A reporting due with Form 1120',
+        form: 'Form 5472 + Pro Forma 1120',
+        dueDate: form5472Deadline,
+        basis: `IRC §6038A — 15th day of 4th month after FY end (${fyEndMonth === 12 ? 'Calendar Year' : 'Month ' + fyEndMonth}). $25,000 penalty for non-filing.`,
       })
     }
 
-    // Pro Forma 1120 required → same date as Form 5472
-    if (
-      formLower.includes('1120') &&
-      !formLower.includes('1120-f') &&
-      formLower.includes('pro forma')
-    ) {
+    // BOI Report — 90 days from formation for new entities
+    if (formLower.includes('boi')) {
       deadlines.push({
-        form: 'Pro Forma 1120',
-        dueDate: aprilDeadline,
-        basis: 'Pro forma return due with Form 5472 (IRC §6038A)',
+        form: 'BOI Report (FinCEN)',
+        dueDate: form5472Deadline, // uses same fiscal deadline as placeholder; real date from formation
+        basis: 'FinCEN 31 USC §5336 — 90 days from formation (post-2024 entities).',
+      })
+    }
+
+    // FBAR
+    if (formLower.includes('fbar') || formLower.includes('form 114')) {
+      deadlines.push({
+        form: 'FBAR (Form 114)',
+        dueDate: `${taxYear + 1}-04-15`,
+        basis: 'Due April 15, automatic extension to October 15. Required if foreign accounts > $10,000.',
       })
     }
   }

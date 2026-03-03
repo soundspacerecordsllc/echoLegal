@@ -6,9 +6,9 @@ import '@/app/globals.css'
 import '@/app/filingcontrol/filingcontrol.css'
 
 export const metadata = {
-  title: 'FilingControl — Structured compliance tracking for U.S. entities',
+  title: 'FilingControl — Foreign-Owned LLC Compliance Radar',
   description:
-    'Compliance tracking for U.S. entities. Checklists, deadlines, and reminders.',
+    'Track IRS Form 5472, BOI, FBAR, and federal reporting deadlines for foreign-owned single-member LLCs.',
   robots: 'noindex, nofollow',
 }
 
