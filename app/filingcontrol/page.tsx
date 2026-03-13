@@ -86,7 +86,7 @@ export default function FilingControlLanding() {
               />
               <ValueProp
                 title="Deadline Alerts (PRO)"
-                description="Calendar feed integration and penalty alerts before high-risk deadlines. Email reminders coming soon."
+                description="Email alerts at 30, 7, and 1 day before deadlines. Calendar feed integration. Never miss a high-risk filing."
               />
             </div>
           </div>

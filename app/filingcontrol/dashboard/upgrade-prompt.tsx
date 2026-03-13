@@ -62,8 +62,8 @@ export function UpgradePrompt() {
           <p className="text-xs text-[var(--fc-slate-500)] mt-0.5">
             Email reminders before high-risk deadlines. Avoid missed IRS filings and $25,000+ penalties.
           </p>
-          <p className="text-xs text-[var(--fc-slate-400)] mt-1 italic">
-            Coming soon — email delivery is under active development. Calendar feed available now.
+          <p className="text-xs text-[var(--fc-slate-400)] mt-1">
+            Automated email alerts at 30, 7, and 1 day before deadlines. Calendar feed included.
           </p>
         </div>
         {!showInput && (
