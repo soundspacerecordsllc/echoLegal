@@ -115,8 +115,7 @@ export default function Footer({ lang, dict }: FooterProps) {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <p className="text-lg font-serif font-semibold text-white mb-1">EchoLegal</p>
-              <p className="text-sm text-gray-400">{dict.footer.tagline}</p>
+              <p className="text-lg font-serif font-semibold text-white">EchoLegal</p>
             </div>
             <p className="text-sm text-gray-500">
               {dict.footer.copyright}
