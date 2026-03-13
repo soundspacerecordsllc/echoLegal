@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
   }
 
   // 2. Collect unique entity IDs to batch-resolve entities + users
-  const entityIds = [...new Set(pendingEvents.map((e) => e.entity_id))]
+  const entityIds = Array.from(new Set(pendingEvents.map((e: any) => e.entity_id)))
 
   const { data: entities, error: entitiesError } = await supabase
     .from('fc_entities')
@@ -119,10 +119,10 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const entityMap = new Map(entities.map((e) => [e.id, e]))
+  const entityMap = new Map(entities.map((e: any) => [e.id, e]))
 
   // 3. Collect unique user IDs and resolve plans + emails
-  const userIds = [...new Set(entities.map((e) => e.user_id))]
+  const userIds = Array.from(new Set(entities.map((e: any) => e.user_id)))
 
   const { data: users, error: usersError } = await supabase
     .from('fc_users')
@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const userMap = new Map(users.map((u) => [u.id, u]))
+  const userMap = new Map(users.map((u: any) => [u.id, u]))
 
   // 4. Process each event
   let sent = 0
