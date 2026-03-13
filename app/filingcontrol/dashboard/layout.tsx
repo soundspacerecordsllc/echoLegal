@@ -4,14 +4,16 @@
 
 import Link from 'next/link'
 import { FC_APP } from '@/lib/filingcontrol/config'
+import { requireFCAuth } from '@/lib/filingcontrol/auth'
+import { SignOutButton } from './sign-out-button'
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // TODO: Check auth with requireAuth() and redirect if not authenticated.
-  // For scaffolding, render layout without auth check.
+  // Enforce auth — redirects to /filingcontrol/login if not authenticated
+  const user = await requireFCAuth()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -29,7 +31,7 @@ export default function DashboardLayout({
               href={FC_APP.dashboardPath}
               className="text-[var(--fc-slate-500)] hover:text-[var(--fc-navy)] transition-colors"
             >
-              Checklist
+              Compliance Radar
             </Link>
             <Link
               href={`${FC_APP.dashboardPath}/settings`}
@@ -43,6 +45,8 @@ export default function DashboardLayout({
             >
               Billing
             </Link>
+            <span className="text-xs text-[var(--fc-slate-400)]">{user.email}</span>
+            <SignOutButton />
           </nav>
         </div>
       </header>

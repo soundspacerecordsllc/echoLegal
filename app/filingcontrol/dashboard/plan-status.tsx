@@ -20,25 +20,8 @@ export function PlanStatus() {
 
   const fetchPlan = useCallback(async () => {
     try {
-      const params = new URLSearchParams(window.location.search)
-      let email = params.get('email')
-
-      // Check sessionStorage as fallback (persists across checkout redirect)
-      if (!email) {
-        email = sessionStorage.getItem('fc_email')
-      }
-
-      if (!email) {
-        setLoading(false)
-        return
-      }
-
-      // Persist for future page loads
-      sessionStorage.setItem('fc_email', email)
-
-      const res = await fetch(
-        `/api/filingcontrol/billing/user-plan?email=${encodeURIComponent(email)}`
-      )
+      // Uses cookie-based auth — no email param needed
+      const res = await fetch('/api/filingcontrol/billing/user-plan')
       if (!res.ok) {
         setLoading(false)
         return

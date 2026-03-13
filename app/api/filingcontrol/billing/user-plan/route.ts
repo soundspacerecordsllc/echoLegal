@@ -1,20 +1,19 @@
 // app/api/filingcontrol/billing/user-plan/route.ts
-// GET: Returns plan status for a user by email.
-// GET /api/filingcontrol/billing/user-plan?email=...
+// Authenticated endpoint: returns plan status for the current user.
+// GET /api/filingcontrol/billing/user-plan
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceClient } from '@/lib/control-panel/db'
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+import { getApiUser, getApiSessionUser } from '@/lib/filingcontrol/auth'
 
 export async function GET(request: NextRequest) {
-  const email = request.nextUrl.searchParams.get('email')?.trim().toLowerCase()
+  // Authenticate
+  const authUser =
+    (await getApiUser(request.headers.get('authorization'))) ??
+    (await getApiSessionUser())
 
-  if (!email || !EMAIL_PATTERN.test(email)) {
-    return NextResponse.json(
-      { error: 'Valid email is required' },
-      { status: 400 }
-    )
+  if (!authUser) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   const supabase = getServiceClient()
@@ -22,7 +21,7 @@ export async function GET(request: NextRequest) {
   const { data: user, error } = await supabase
     .from('fc_users')
     .select('plan, email, subscription_status, calendar_token')
-    .eq('email', email)
+    .eq('email', authUser.email)
     .single()
 
   if (error || !user) {

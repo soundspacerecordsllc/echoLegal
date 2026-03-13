@@ -34,13 +34,13 @@ export default function FilingControlLanding() {
       <main className="flex-1">
         <section className="max-w-3xl mx-auto px-4 sm:px-6 py-24 text-center">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--fc-navy)]">
-            Foreign-Owned U.S. Entities: Compliance, Under Control.
+            Foreign-Owned LLC Compliance Survival Tool
           </h1>
           <p className="mt-4 text-lg text-[var(--fc-slate-500)]">
-            A structured operating system for filings, deadlines, and reminders—built for foreign founders.
+            Track IRS Form 5472, BOI reports, state filings, and penalty deadlines — built for non-US founders who own a US single-member LLC.
           </p>
           <p className="mt-2 text-sm text-[var(--fc-slate-400)]">
-            Authority-labeled obligations. Calculated due dates. No missed filings.
+            Avoid $25,000 penalties. Know exactly what you owe, when it&apos;s due, and what happens if you miss it.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Link
@@ -77,16 +77,16 @@ export default function FilingControlLanding() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
             <div className="grid sm:grid-cols-3 gap-8">
               <ValueProp
-                title="Compliance Checklists"
-                description="Federal and state filing obligations for your entity, organized by authority and deadline."
+                title="Foreign-Owned LLC Checklist"
+                description="Form 5472, pro forma 1120, BOI report, EIN, ITIN, state annual reports — every obligation a non-US LLC owner faces, with authority sources."
               />
               <ValueProp
-                title="Due Date Tracking"
-                description="Calculated deadlines based on your formation date, fiscal year, and state of incorporation."
+                title="Penalty-Aware Deadlines"
+                description="Calculated due dates based on your formation date and fiscal year. Risk labels for high-penalty items like Form 5472 ($25,000 per form)."
               />
               <ValueProp
-                title="Email Reminders"
-                description="Automated reminders before compliance deadlines so nothing falls through the cracks."
+                title="Deadline Alerts (PRO)"
+                description="Calendar feed integration and penalty alerts before high-risk deadlines. Email reminders coming soon."
               />
             </div>
           </div>

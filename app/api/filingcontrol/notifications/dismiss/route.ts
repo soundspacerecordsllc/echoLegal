@@ -1,14 +1,24 @@
 // app/api/filingcontrol/notifications/dismiss/route.ts
-// POST: marks a notification event as CANCELLED (dismissed).
-// Body: { eventId: string, userId: string }
+// Authenticated endpoint: marks a notification event as CANCELLED (dismissed).
+// Body: { eventId: string }
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceClient } from '@/lib/control-panel/db'
+import { getApiUser, getApiSessionUser } from '@/lib/filingcontrol/auth'
 
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 export async function POST(request: NextRequest) {
+  // Authenticate
+  const user =
+    (await getApiUser(request.headers.get('authorization'))) ??
+    (await getApiSessionUser())
+
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   let body: Record<string, unknown>
   try {
     body = await request.json()
@@ -17,7 +27,6 @@ export async function POST(request: NextRequest) {
   }
 
   const eventId = body.eventId as string
-  const userId = body.userId as string
 
   if (!eventId || !UUID_PATTERN.test(eventId)) {
     return NextResponse.json(
@@ -26,16 +35,9 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  if (!userId || !UUID_PATTERN.test(userId)) {
-    return NextResponse.json(
-      { error: 'Missing or invalid userId' },
-      { status: 400 }
-    )
-  }
-
   const supabase = getServiceClient()
 
-  // Verify ownership: event must belong to an entity owned by this user
+  // Verify ownership: event must belong to an entity owned by authenticated user
   const { data: event, error: lookupError } = await supabase
     .from('fc_notification_events')
     .select(
@@ -48,7 +50,7 @@ export async function POST(request: NextRequest) {
     `
     )
     .eq('id', eventId)
-    .eq('fc_entities.user_id', userId)
+    .eq('fc_entities.user_id', user.id)
     .single()
 
   if (lookupError || !event) {

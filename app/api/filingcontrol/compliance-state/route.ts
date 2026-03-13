@@ -1,31 +1,22 @@
 // app/api/filingcontrol/compliance-state/route.ts
-// Public read-only endpoint: returns compliance states for a user's entities.
-// GET /api/filingcontrol/compliance-state?userId=<uuid>
+// Authenticated endpoint: returns compliance states for the current user's entities.
+// GET /api/filingcontrol/compliance-state
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getComplianceStateForUser } from '@/lib/filingcontrol/compliance-state-db'
+import { getApiUser, getApiSessionUser } from '@/lib/filingcontrol/auth'
 
 export async function GET(request: NextRequest) {
-  const userId = request.nextUrl.searchParams.get('userId')
+  // Try Bearer token first, then fall back to cookie session
+  const user =
+    (await getApiUser(request.headers.get('authorization'))) ??
+    (await getApiSessionUser())
 
-  if (!userId) {
-    return NextResponse.json(
-      { error: 'Missing required parameter: userId' },
-      { status: 400 }
-    )
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  // Basic UUID format check
-  const uuidPattern =
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
-  if (!uuidPattern.test(userId)) {
-    return NextResponse.json(
-      { error: 'Invalid userId format' },
-      { status: 400 }
-    )
-  }
-
-  const states = await getComplianceStateForUser(userId)
+  const states = await getComplianceStateForUser(user.id)
 
   return NextResponse.json({ states })
 }

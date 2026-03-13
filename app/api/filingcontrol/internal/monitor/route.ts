@@ -55,17 +55,35 @@ export async function POST(request: NextRequest) {
   let skippedDuplicates = 0
 
   for (const entity of entities) {
-    // 2. Fetch latest assessment for this entity's user (newest created_at)
-    //    fc_assessments uses user_id (see fc-assessments-schema.sql)
-    const { data: assessment, error: assessmentError } = await supabase
+    // 2. Fetch latest assessment for this entity (entity_id stored in entity_profile JSONB)
+    //    Fall back to user_id match if no entity-specific assessment found
+    let assessment: { deadlines_json: unknown; engine_version: string } | null = null
+
+    // Try entity-specific assessment first (onboarding stores entity_id in entity_profile)
+    const { data: entityAssessment } = await supabase
       .from('fc_assessments')
       .select('deadlines_json, engine_version')
       .eq('user_id', entity.user_id)
+      .contains('entity_profile', { entity_id: entity.id })
       .order('created_at', { ascending: false })
       .limit(1)
       .single()
 
-    if (assessmentError || !assessment) {
+    if (entityAssessment) {
+      assessment = entityAssessment
+    } else {
+      // Fall back to latest assessment for this user
+      const { data: userAssessment } = await supabase
+        .from('fc_assessments')
+        .select('deadlines_json, engine_version')
+        .eq('user_id', entity.user_id)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single()
+      assessment = userAssessment
+    }
+
+    if (!assessment) {
       skippedNoDeadlines++
       continue
     }

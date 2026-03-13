@@ -55,15 +55,23 @@ export function UpgradePrompt() {
   return (
     <div className="border border-[var(--fc-slate-200)] rounded-lg p-4 bg-white">
       <div className="flex items-center justify-between gap-4">
-        <p className="text-sm text-[var(--fc-slate-500)]">
-          Email monitoring is available on PRO.
-        </p>
+        <div>
+          <p className="text-sm font-medium text-[var(--fc-navy)]">
+            Get 30-Day Penalty Alerts (PRO)
+          </p>
+          <p className="text-xs text-[var(--fc-slate-500)] mt-0.5">
+            Email reminders before high-risk deadlines. Avoid missed IRS filings and $25,000+ penalties.
+          </p>
+          <p className="text-xs text-[var(--fc-slate-400)] mt-1 italic">
+            Coming soon — email delivery is under active development. Calendar feed available now.
+          </p>
+        </div>
         {!showInput && (
           <button
             onClick={handleUpgrade}
             className="shrink-0 px-4 py-2 text-sm font-medium text-white bg-[var(--fc-navy)] rounded-md hover:opacity-90 transition-opacity"
           >
-            Enable Email Monitoring (PRO)
+            Upgrade to PRO
           </button>
         )}
       </div>
