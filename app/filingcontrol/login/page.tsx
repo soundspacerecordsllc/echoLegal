@@ -1,14 +1,23 @@
 // app/filingcontrol/login/page.tsx
-// FilingControl sign-in page. Reuses shared Supabase auth.
+// FilingControl sign-in page. Uses Supabase magic-link auth.
 
 import Link from 'next/link'
 import { FC_APP } from '@/lib/filingcontrol/config'
+import { getSessionUser } from '@/lib/filingcontrol/auth'
+import { redirect } from 'next/navigation'
+import { MagicLinkForm } from './magic-link-form'
 
 export const metadata = {
   title: 'Sign In — FilingControl',
 }
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  // If already authenticated, redirect to dashboard
+  const user = await getSessionUser()
+  if (user) {
+    redirect(FC_APP.dashboardPath)
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
       <div className="max-w-sm w-full space-y-8">
@@ -24,47 +33,12 @@ export default function LoginPage() {
             Sign in to {FC_APP.name}
           </h1>
           <p className="mt-2 text-sm text-[var(--fc-slate-500)]">
-            {FC_APP.tagline}
+            Foreign-owned LLC compliance tracking.
           </p>
         </div>
 
         {/* Auth form */}
-        <div className="border border-[var(--fc-slate-200)] rounded-lg p-6 bg-white">
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-[var(--fc-navy)] mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                disabled
-                placeholder="you@example.com"
-                className="w-full border border-[var(--fc-slate-200)] rounded-md px-3 py-2 text-sm bg-[var(--fc-slate-50)]"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[var(--fc-navy)] mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                disabled
-                placeholder="Enter your password"
-                className="w-full border border-[var(--fc-slate-200)] rounded-md px-3 py-2 text-sm bg-[var(--fc-slate-50)]"
-              />
-            </div>
-            <button
-              disabled
-              className="w-full px-4 py-2 text-sm font-medium text-white bg-[var(--fc-navy)] rounded-md opacity-50 cursor-not-allowed"
-            >
-              Sign In
-            </button>
-            <p className="text-xs text-center text-[var(--fc-slate-400)]">
-              No account?{' '}
-              <span className="underline">Create one</span>
-            </p>
-          </div>
-        </div>
+        <MagicLinkForm />
 
         {/* Disclaimer */}
         <div className="border border-[var(--fc-slate-200)] bg-[var(--fc-slate-50)] rounded-md px-4 py-3 text-xs text-[var(--fc-slate-400)] leading-relaxed">

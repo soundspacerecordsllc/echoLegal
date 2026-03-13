@@ -57,16 +57,8 @@ export function NotificationsPanel() {
 
   const fetchEvents = useCallback(async () => {
     try {
-      const params = new URLSearchParams(window.location.search)
-      const userId = params.get('userId')
-      if (!userId) {
-        setLoading(false)
-        return
-      }
-
-      const res = await fetch(
-        `/api/filingcontrol/notifications?userId=${encodeURIComponent(userId)}`
-      )
+      // Uses cookie-based auth — no userId param needed
+      const res = await fetch('/api/filingcontrol/notifications')
       if (!res.ok) {
         setError(true)
         setLoading(false)
@@ -91,14 +83,11 @@ export function NotificationsPanel() {
   }, [fetchEvents])
 
   async function handleDismiss(eventId: string) {
-    const params = new URLSearchParams(window.location.search)
-    const userId = params.get('userId')
-    if (!userId) return
-
+    // Uses cookie-based auth — no userId param needed
     const res = await fetch('/api/filingcontrol/notifications/dismiss', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId, userId }),
+      body: JSON.stringify({ eventId }),
     })
 
     if (res.ok) {

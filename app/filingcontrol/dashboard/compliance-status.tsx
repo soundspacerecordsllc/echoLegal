@@ -48,18 +48,8 @@ export function ComplianceStatusSection() {
   useEffect(() => {
     async function fetchStates() {
       try {
-        // TODO: Replace with actual authenticated user ID from session
-        // For now, attempt fetch; will return empty if no userId provided
-        const params = new URLSearchParams(window.location.search)
-        const userId = params.get('userId')
-        if (!userId) {
-          setLoading(false)
-          return
-        }
-
-        const res = await fetch(
-          `/api/filingcontrol/compliance-state?userId=${encodeURIComponent(userId)}`
-        )
+        // Uses cookie-based auth — no userId param needed
+        const res = await fetch('/api/filingcontrol/compliance-state')
         if (!res.ok) {
           setError(true)
           setLoading(false)

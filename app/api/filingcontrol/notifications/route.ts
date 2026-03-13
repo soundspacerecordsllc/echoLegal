@@ -1,33 +1,24 @@
 // app/api/filingcontrol/notifications/route.ts
-// GET: returns notification events for a user's entities.
-// GET /api/filingcontrol/notifications?userId=<uuid>
+// Authenticated endpoint: returns notification events for the current user's entities.
+// GET /api/filingcontrol/notifications
 
 import { NextRequest, NextResponse } from 'next/server'
 import { getServiceClient } from '@/lib/control-panel/db'
-
-const UUID_PATTERN =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+import { getApiUser, getApiSessionUser } from '@/lib/filingcontrol/auth'
 
 export async function GET(request: NextRequest) {
-  const userId = request.nextUrl.searchParams.get('userId')
+  // Try Bearer token first, then fall back to cookie session
+  const user =
+    (await getApiUser(request.headers.get('authorization'))) ??
+    (await getApiSessionUser())
 
-  if (!userId) {
-    return NextResponse.json(
-      { error: 'Missing required parameter: userId' },
-      { status: 400 }
-    )
-  }
-
-  if (!UUID_PATTERN.test(userId)) {
-    return NextResponse.json(
-      { error: 'Invalid userId format' },
-      { status: 400 }
-    )
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   const supabase = getServiceClient()
 
-  // Join through fc_entities to enforce ownership
+  // Join through fc_entities to enforce ownership via authenticated user ID
   const { data, error } = await supabase
     .from('fc_notification_events')
     .select(
@@ -45,7 +36,7 @@ export async function GET(request: NextRequest) {
       )
     `
     )
-    .eq('fc_entities.user_id', userId)
+    .eq('fc_entities.user_id', user.id)
     .order('created_at', { ascending: false })
 
   if (error) {
