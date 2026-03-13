@@ -63,7 +63,7 @@ export function UpgradePrompt() {
             Email reminders before high-risk deadlines. Avoid missed IRS filings and $25,000+ penalties.
           </p>
           <p className="text-xs text-[var(--fc-slate-400)] mt-1 italic">
-            Coming soon — email delivery is under active development. Calendar feed available now.
+            Includes deadline email alerts and calendar feed integration.
           </p>
         </div>
         {!showInput && (

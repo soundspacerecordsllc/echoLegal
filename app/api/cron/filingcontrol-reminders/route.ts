@@ -200,8 +200,22 @@ export async function POST(request: NextRequest) {
       due_date: eventPayload.dueDate,
     })
 
+    // 9. Log the delivery attempt
+    const logEntry = {
+      user_id: user.id,
+      entity_id: event.entity_id,
+      event_id: event.id,
+      email_type: 'reminder',
+      recipient: userEmail,
+      status: success ? 'sent' : 'failed',
+      error_message: success ? null : 'Resend API call failed',
+    }
+    await supabase.from('fc_email_logs').insert(logEntry).then(({ error: logErr }) => {
+      if (logErr) console.warn('[fc-cron] Failed to write email log:', logErr)
+    })
+
     if (success) {
-      // 9. Mark event as sent (idempotent — only updates if still PENDING)
+      // 10. Mark event as sent (idempotent — only updates if still PENDING)
       const { error: updateError } = await supabase
         .from('fc_notification_events')
         .update({ sent_at: now.toISOString(), status: 'SENT' })

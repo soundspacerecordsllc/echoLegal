@@ -11,6 +11,7 @@ import { getServiceClient } from '@/lib/control-panel/db'
 import { buildEntityViewModel } from '@/lib/filingcontrol/entity-view-model'
 import { ComplianceStatusSection } from './compliance-status'
 import { NotificationsPanel } from './notifications-panel'
+import { ReminderStatus } from './reminder-status'
 import { UpgradePrompt } from './upgrade-prompt'
 import { PlanStatus } from './plan-status'
 
@@ -128,6 +129,9 @@ export default async function DashboardPage() {
 
       {/* Compliance Status — from monitoring system */}
       <ComplianceStatusSection />
+
+      {/* Deadline Alerts — shows reminder schedule by plan */}
+      <ReminderStatus />
 
       {/* Notifications */}
       <NotificationsPanel />

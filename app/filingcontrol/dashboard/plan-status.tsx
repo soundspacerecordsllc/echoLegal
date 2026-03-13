@@ -86,8 +86,8 @@ export function PlanStatus() {
           </p>
           <p className="text-xs text-[var(--fc-slate-500)] mt-0.5">
             {isPro
-              ? 'Email monitoring active'
-              : 'Email monitoring available on PRO'}
+              ? 'Deadline email alerts and calendar feed active'
+              : 'Deadline email alerts available on PRO'}
           </p>
         </div>
         {isPro && (
