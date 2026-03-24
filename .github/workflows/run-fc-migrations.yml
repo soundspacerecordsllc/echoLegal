@@ -1,0 +1,42 @@
+name: Run FC Database Migrations
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "run" to confirm migration execution'
+        required: true
+        default: ''
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.confirm == 'run'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run FC migrations
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::DATABASE_URL secret is not set. Add it in Settings → Secrets → Actions."
+            exit 1
+          fi
+
+          echo "Running migration 1/4: fc-production-migration.sql"
+          psql "$DATABASE_URL" -f lib/db/fc-production-migration.sql
+
+          echo "Running migration 2/4: fc-compliance-state-schema.sql"
+          psql "$DATABASE_URL" -f lib/db/fc-compliance-state-schema.sql
+
+          echo "Running migration 3/4: fc-assessments-schema.sql"
+          psql "$DATABASE_URL" -f lib/db/fc-assessments-schema.sql
+
+          echo "Running migration 4/4: fc-notification-queue-schema.sql"
+          psql "$DATABASE_URL" -f lib/db/fc-notification-queue-schema.sql
+
+          echo "All FC migrations completed successfully."
